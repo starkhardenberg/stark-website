@@ -1,0 +1,68 @@
+.aanbod {
+  width: 100%;
+  background: var(--navy);
+}
+
+.intro {
+  padding: 72px 24px 56px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 11vw, 96px);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: uppercase;
+  color: var(--off);
+  margin: 0 0 20px;
+}
+
+.sub {
+  font-family: var(--font-body), sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--slate);
+  margin: 0;
+  max-width: 480px;
+}
+
+.tracks {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 900px) {
+  .intro {
+    padding: 88px 48px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 80px;
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+
+  .heading {
+    margin-bottom: 0;
+    align-self: end;
+  }
+
+  .sub {
+    align-self: end;
+    padding-bottom: 6px;
+    max-width: none;
+  }
+}

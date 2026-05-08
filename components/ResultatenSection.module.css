@@ -1,0 +1,131 @@
+.resultaten {
+  width: 100%;
+  background: var(--navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inner {
+  padding: 72px 24px 80px;
+}
+
+.label {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 40px;
+}
+
+/* ── Hero quote (Joyce) ── */
+.heroQuote {
+  margin: 0 0 56px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.heroImgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(0.4) contrast(1.05) brightness(0.6);
+}
+
+.heroContent {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroText {
+  margin: 0;
+  padding: 0;
+}
+
+.heroText p {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--off);
+  margin: 0;
+}
+
+.heroText p::before {
+  content: '\201C';
+  color: var(--orange);
+}
+
+.heroText p::after {
+  content: '\201D';
+  color: var(--orange);
+}
+
+.heroCite {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.heroName {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.heroContext {
+  font-size: 12px;
+  color: var(--slate);
+}
+
+/* ── Quote grid (3 cards) ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .inner {
+    padding: 88px 48px 96px;
+  }
+
+  .heroQuote {
+    flex-direction: row;
+    margin-bottom: 64px;
+    min-height: 380px;
+  }
+
+  .heroImgWrap {
+    flex: 0 0 48%;
+    aspect-ratio: unset;
+  }
+
+  .heroContent {
+    flex: 1;
+    padding: 56px 56px;
+    justify-content: center;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
