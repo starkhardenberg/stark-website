@@ -27,7 +27,6 @@ export default function TrackItem({ track }: { track: Track }) {
 
       <div className={styles.body}>
         <p className={styles.desc}>{track.desc}</p>
-        <p className={styles.lead}>Mogelijkheden</p>
         <RouteCarousel options={track.routeOptions} light={track.light} />
         <a className={`${styles.cta} ${track.light ? styles.ctaDark : ''}`} href={track.ctaHref}>
           {track.cta}

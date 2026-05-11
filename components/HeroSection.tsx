@@ -25,28 +25,14 @@ export default function HeroSection() {
       <section className={styles.stage}>
         <div className={styles.copy}>
           <h1 className={styles.headline}>
-            <span className={styles.lead}>Wij bouwen</span>
+            <span className={styles.lead}>Wij<br />bouwen</span>
             <span className={styles.punch}>sterke mensen.</span>
           </h1>
 
           <p className={styles.sub}>Fysiek én mentaal.</p>
-
-          <div className={styles.ctaRow}>
-            <a className={styles.btn} href="#kennismaking">
-              Plan je kennismaking
-            </a>
-            <a className={styles.link} href="#proefles">
-              Liever eerst proefles? Boek hier.
-            </a>
-          </div>
         </div>
       </section>
 
-      <div className={styles.anchorShell}>
-        <span>Hardenberg</span>
-        <div className={styles.anchor} />
-        <span>Sinds 2013</span>
-      </div>
     </main>
   )
 }

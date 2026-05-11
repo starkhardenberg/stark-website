@@ -33,7 +33,7 @@ export default function NotFound() {
             Terug naar home
           </a>
           <a className={styles.btnSecondary} href="/#kennismaking">
-            Plan kennismakingsgesprek
+            Plan een kennismaking
           </a>
         </div>
       </div>

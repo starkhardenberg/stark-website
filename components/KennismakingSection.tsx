@@ -20,7 +20,7 @@ export default function KennismakingSection() {
             className={styles.btnPrimary}
             href="mailto:info@starkhardenberg.nl?subject=Kennismakingsgesprek"
           >
-            Plan kennismakingsgesprek
+            Plan een kennismaking
           </a>
           <a
             className={styles.btnSecondary}

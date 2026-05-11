@@ -10,7 +10,7 @@
 .label {
   display: block;
   font-family: var(--font-body), sans-serif;
-  font-size: 11px;
+  font-size: 33px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -31,9 +31,10 @@
 
 .sub {
   font-family: var(--font-body), sans-serif;
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--slate);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--off);
   margin: 0;
   max-width: 480px;
 }
@@ -45,24 +46,13 @@
 @media (min-width: 900px) {
   .intro {
     padding: 88px 48px 64px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 80px;
-  }
-
-  .label {
-    grid-column: 1 / -1;
   }
 
   .heading {
-    margin-bottom: 0;
-    align-self: end;
+    margin-bottom: 20px;
   }
 
   .sub {
-    align-self: end;
-    padding-bottom: 6px;
-    max-width: none;
+    max-width: 580px;
   }
 }

@@ -16,12 +16,15 @@
 }
 
 .card {
-  flex: 0 0 76vw;
+  flex: 0 0 50vw;
   scroll-snap-align: start;
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   background: #1a1c28;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .imgWrap {
@@ -35,6 +38,10 @@
   transition: transform 0.4s ease;
 }
 
+.imgBw {
+  filter: grayscale(1) contrast(1.05);
+}
+
 .card:hover .img {
   transform: scale(1.04);
 }
@@ -42,29 +49,47 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.35) 48%, transparent 72%);
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.3) 50%, transparent 72%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 20px 18px;
+  padding: 16px 14px;
+  transition: background 0.25s;
+}
+
+.card:hover .overlay {
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.97) 0%, rgba(10, 10, 10, 0.5) 60%, rgba(10,10,10,0.2) 100%);
 }
 
 .title {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 28px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #F5F5F5;
   margin: 0 0 6px;
   line-height: 1.2;
+  text-align: left;
 }
 
-.desc {
-  font-size: 13px;
-  line-height: 1.55;
-  color: rgba(245, 245, 245, 0.72);
-  margin: 0;
+.more {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
+  display: block;
+  text-align: left;
+}
+
+.card:hover .more {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav {
@@ -104,22 +129,139 @@
   color: #F5F5F5;
 }
 
+/* ── Modal ── */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.modalImg {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  flex-shrink: 0;
+}
+
+.modalImgEl {
+  object-fit: cover;
+  filter: grayscale(0.1) contrast(1.04);
+}
+
+.modalImgBw {
+  filter: grayscale(1) contrast(1.04);
+}
+
+.modalBody {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.modalTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 4vw, 30px);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--off);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.modalDesc {
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.75);
+  margin: 0;
+  white-space: pre-line;
+}
+
+.modalCta {
+  display: inline-block;
+  padding: 13px 24px;
+  background: var(--orange);
+  color: var(--off);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  transition: background 0.18s;
+  align-self: flex-start;
+}
+
+.modalCta:hover {
+  background: var(--orange-deep);
+}
+
+.modalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  background: rgba(10, 10, 10, 0.6);
+  border: none;
+  color: #F5F5F5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s;
+}
+
+.modalClose:hover {
+  background: var(--orange);
+}
+
 @media (min-width: 900px) {
   .track {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     overflow: visible;
-    gap: 14px;
+    gap: 12px;
     scroll-snap-type: none;
   }
 
   .card {
     flex: none;
     width: auto;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 1 / 1;
   }
 
   .nav {
     display: none;
+  }
+
+  .modal {
+    flex-direction: row;
+    max-width: 820px;
+    max-height: 560px;
+  }
+
+  .modalImg {
+    width: 300px;
+    aspect-ratio: auto;
+    flex-shrink: 0;
   }
 }

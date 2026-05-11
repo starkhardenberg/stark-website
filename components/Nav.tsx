@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import styles from './Nav.module.css'
 
 export default function Nav() {
@@ -9,24 +8,17 @@ export default function Nav() {
 
   return (
     <header className={styles.nav}>
-      <a href="/" aria-label="STARK! home" className={styles.logoLink}>
-        <Image
-          src="/images/stark_logo_wit.png"
-          alt="STARK!"
-          width={120}
-          height={38}
-          className={styles.logo}
-          priority
-        />
+      <a href="/" className={styles.wordmark} aria-label="STARK! home">
+        Wi&apos;j bint STARK!
       </a>
 
       <div className={styles.right}>
-        <span className={styles.signature}>Wi&apos;j bint STARK!</span>
+        <a href="#kennismaking" className={styles.cta}>Plan een kennismaking</a>
 
         <nav className={styles.menu} aria-label="Hoofdmenu">
           <a href="#coaching">Coaching</a>
+          <a href="#trainen">Training</a>
           <a href="#bedrijven">Bedrijven</a>
-          <a href="#trainen">Trainen</a>
           <a href="#kennismaking">Contact</a>
         </nav>
 
@@ -48,6 +40,7 @@ export default function Nav() {
           <a href="#bedrijven" onClick={() => setOpen(false)}>Bedrijven</a>
           <a href="#trainen" onClick={() => setOpen(false)}>Trainen</a>
           <a href="#kennismaking" onClick={() => setOpen(false)}>Contact</a>
+          <a href="#kennismaking" className={styles.mobileCta} onClick={() => setOpen(false)}>Plan een kennismaking</a>
         </nav>
       )}
     </header>
