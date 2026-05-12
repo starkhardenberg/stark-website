@@ -6,9 +6,15 @@ const tracks = [
     id: 'trainen',
     num: '01',
     cat: 'Trainen',
-    photo: 'foto-groep-les.jpg',
-    photoAlt: 'Groepsles bij STARK! Hardenberg',
-    desc: 'Je wilt bewegen. Sterker worden. Meer energie. Maar je hoeft niet fit te zijn om te beginnen: elke training is op jouw niveau. Je begint gewoon waar jij bent, en wij zorgen dat je er verder mee komt. Geen zaaltje vol apparaten waar je zelf maar uitzoekt wat je doet. Wel groepslessen met coaches die jou écht zien. Iedereen start met vier 1-op-1 sessies zodat we weten wie jij bent en waar we op moeten letten om jou veilig en verantwoord te laten trainen. Als je consequent blijft komen, ga je resultaat zien op alle vlakken: sterker, fitter en beter voorbereid op het echte dagelijkse leven.',
+    photo: 'foto-trainen-squat.png',
+    photoAlt: 'Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg',
+    photoObjectPosition: 'center 30%',
+    showTiles: false,
+    introLabel: 'Trainen bij STARK!',
+    readMoreHref: '/trainen',
+    readMoreLabel: 'Lees meer over trainen',
+    desc:
+      'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan (en daardoor: blijven doen wat ertoe doet, vandaag én over twintig jaar).\n\nBij ons train je niet tussen apparaten in. We trainen functioneel: bewegingen die je lijf sterker maken voor wat je elke dag doet. Met een coach die met je mee kijkt en bijstuurt of uitdaagt waar dat past. Voor wie jong is, vroeger jong was en alles daar tussenin.\n\nNiet eerst fit zijn om hier te komen. Wel fit worden door hier te zijn.',
 
     routeOptions: [
       {
@@ -46,7 +52,12 @@ const tracks = [
     cat: 'Coaching',
     photo: 'foto-coaching-moment.jpg',
     photoAlt: 'Coachingsgesprek bij STARK!',
-    desc: 'Je weet wat je moet doen — maar het lukt je niet. Of je loopt vast en je wilt het echt graag anders. Dat is het moment waarop onze coachingstrajecten beginnen. We kijken naar lijf én hoofd, want ze hangen onlosmakelijk samen. Kleine groepen of één-op-één, met coaches die patronen zien die jij zelf niet meer ziet. Deelnemers aan Momentum en Impact rapporteren meer energie, meer richting en meer vertrouwen — niet na jaren, maar na weken. Geen quick fix. Wel blijvende verandering.',
+    introLabel: 'Coaching bij STARK!',
+    showTiles: false,
+    readMoreHref: '/van-punt-a-naar-punt-b',
+    readMoreLabel: 'Lees meer over coaching',
+    desc:
+      'Een sterker lijf. Een helder hoofd. Afspraken met jezelf die je wél nakomt (en daardoor resultaat dat ertoe doet voor jou).\n\nDat is waar onze coachingstrajecten naartoe werken. Lijf en hoofd samen, want het één werkt niet zonder het ander. In een groep of één-op-één, met coaches die patronen herkennen die jij allang niet meer ziet.\n\nGeen quick fix. Wel blijvende verandering. In weken, niet jaren.',
     routeOptions: [
       {
         title: 'Van punt A naar punt B',
@@ -81,7 +92,12 @@ const tracks = [
     cat: 'Bedrijven',
     photo: 'foto-coaching-samen.jpg',
     photoAlt: 'Teamtraining voor bedrijven bij STARK!',
-    desc: 'Uitgevallen medewerkers kosten meer dan hun verzuim. Wij werken met bedrijven die verder kijken dan een ziekteverzuimcijfer: re-integratie die wél werkt, preventieve programma\'s die mensen weerbaarder maken, of een teamtraject dat de onderlinge verbinding versterkt. Fysiek én mentaal, want het een werkt niet zonder het ander.',
+    showTiles: false,
+    introLabel: 'Bedrijven bij STARK!',
+    readMoreHref: '/fundament-preventief',
+    readMoreLabel: 'Lees meer over bedrijven',
+    desc:
+      'Sterkere mensen. Stevigere teams. Een bedrijf dat kan dealen met druk en uitdagingen (en daardoor doorpakt waar nodig).\n\nDaar werken we aan, samen met ondernemers en bedrijven. We maken je mensen fysiek sterk en bouwen aan hun mentale weerbaarheid. Voor medewerkers die willen re-integreren, voor mensen die niet wachten tot ze daadwerkelijk omvallen, of voor teams die klem zitten.\n\nGeen brandjes blussen. Wel een fundament dat staat. Voor mens, team en bedrijf.',
     routeOptions: [
       {
         title: 'Fundament',
@@ -115,14 +131,6 @@ const tracks = [
 export default function AanbodSection() {
   return (
     <section className={styles.aanbod} id="aanbod">
-      <div className={styles.intro}>
-        <span className={styles.label}>Het aanbod</span>
-        <h2 className={styles.heading}>Kies je route.</h2>
-        <p className={styles.sub}>
-          Fysiek sterker, mentaal weerbaarder of beide tegelijk. Kies de route die past bij wat jij nu nodig hebt.
-        </p>
-      </div>
-
       <div className={styles.tracks}>
         {tracks.map((track) => (
           <TrackItem key={track.id} track={track} />

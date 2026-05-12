@@ -3,56 +3,6 @@
   background: var(--navy);
 }
 
-.intro {
-  padding: 72px 24px 56px;
-}
-
-.label {
-  display: block;
-  font-family: var(--font-body), sans-serif;
-  font-size: 33px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 20px;
-}
-
-.heading {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(52px, 11vw, 96px);
-  letter-spacing: var(--display-tracking);
-  line-height: var(--display-leading);
-  text-transform: uppercase;
-  color: var(--off);
-  margin: 0 0 20px;
-}
-
-.sub {
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(18px, 2.2vw, 24px);
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--off);
-  margin: 0;
-  max-width: 480px;
-}
-
 .tracks {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-@media (min-width: 900px) {
-  .intro {
-    padding: 88px 48px 64px;
-  }
-
-  .heading {
-    margin-bottom: 20px;
-  }
-
-  .sub {
-    max-width: 580px;
-  }
 }

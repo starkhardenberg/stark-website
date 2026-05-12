@@ -4,6 +4,70 @@
   background: var(--navy);
 }
 
+/*
+ * Trainen: sectie min-h; hero gecentreerd. CTA alleen onder de foto (introPhotoCta).
+ */
+.item.itemNoTiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: stretch;
+  justify-items: stretch;
+  min-height: clamp(520px, 68vh, 820px);
+  padding: clamp(44px, 8vw, 72px) 24px;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+.trainenRoutesTitle {
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(48px, 14vw, 132px);
+  line-height: 0.92;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--off);
+}
+
+.light .trainenRoutesTitle {
+  color: #0a0a0a;
+}
+
+/* Alleen trainen-track: wrapper rond titel + TrainenBandLayout */
+.trainenBandWrap {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 18px);
+  width: 100%;
+  min-width: 0;
+}
+
+.trainenLead {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(8px, 1.6vw, 16px);
+  min-width: 0;
+  width: 100%;
+}
+
+.trainenIntroRow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  min-width: 0;
+  width: 100%;
+}
+
+.item.itemNoTiles .noTilesHero {
+  align-self: center;
+  width: 100%;
+}
+
 .light {
   background: #F5F5F5;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
@@ -30,6 +94,18 @@
   color: var(--orange-deep);
 }
 
+/* Trainen: 01 outline zoals hero-lead + groter dan standaard routecijfer */
+.itemNoTiles .num {
+  font-size: clamp(78px, 21vw, 132px);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px var(--orange);
+}
+
+.light .itemNoTiles .num {
+  -webkit-text-stroke: 1.5px var(--orange-deep);
+}
+
 .cat {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
@@ -50,6 +126,323 @@
   color: rgba(245, 245, 245, 0.7);
   margin: 0 0 20px;
   max-width: 54ch;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.introNumCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(10px, 2.5vw, 18px);
+  width: 100%;
+  min-width: 0;
+}
+
+.itemNoTiles .cat {
+  text-align: center;
+}
+
+.noTilesHero {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Trainen: editorial «stage» rond tekst + foto (kader, gradient, oranje accentlijn) */
+.itemNoTiles .noTilesHeroTrainen {
+  padding: clamp(18px, 3.2vw, 36px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 5px 0 0;
+  background:
+    linear-gradient(168deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 46%),
+    var(--navy);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  gap: clamp(14px, 3vw, 20px);
+}
+
+.itemNoTiles .noTilesHeroTrainen::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(52%, 340px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange));
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+/* Licht aanbod-blok (coaching): zelfde band-vorm als trainen, contrast op #F5F5F5 */
+.light.itemNoTiles .noTilesHeroTrainen {
+  background:
+    linear-gradient(168deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 46%),
+    rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.light.itemNoTiles .noTilesHeroTrainen::after {
+  opacity: 1;
+}
+
+.light.itemNoTiles .photoFrame .singlePhoto {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.light.itemNoTiles .readMore {
+  color: rgba(10, 10, 10, 0.78) !important;
+  border: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.light.itemNoTiles .readMore:hover {
+  background: transparent;
+  color: var(--orange-deep) !important;
+  border-color: transparent;
+}
+
+/* Titel + introtekst: hoogte matcht met 01 (alleen >=900px via JS) */
+.introMeasure {
+  width: 100%;
+}
+
+.introMeasure .desc {
+  margin-bottom: 0;
+}
+
+.introMeasure .desc:not(:last-of-type) {
+  margin-bottom: 0.85em;
+}
+
+.body .desc:not(:last-of-type) {
+  margin-bottom: 0.85em;
+}
+
+.body .desc:last-of-type {
+  margin-bottom: 20px;
+}
+
+.introLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
+
+.introRest {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  margin: 0 0 28px;
+}
+
+.introPhotoRail {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(14px, 2vw, 22px);
+  width: 100%;
+  min-width: 0;
+}
+
+.photoVisual {
+  width: 100%;
+  min-width: 0;
+}
+
+.introPhotoCta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.noTilesLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+
+/* Zelfde caps-regel boven intro in tiles-secties (o.a. coaching, licht) */
+.sectionIntroLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 0 0 12px;
+  line-height: 1.15;
+  width: 100%;
+}
+
+.light .sectionIntroLabel {
+  color: var(--orange-deep);
+}
+
+/* Gehele intro (label + paragraaf) links; lees meer zelfde kolom */
+.itemNoTiles .introLeft,
+.itemNoTiles .noTilesLabel,
+.itemNoTiles .introMeasure .desc {
+  text-align: left;
+  width: 100%;
+}
+
+/* Optie 3: Lees meer als tekstlink; primaire CTA blijft oranje button */
+.itemNoTiles .readMore {
+  align-self: flex-start;
+  padding: 0 0 2px;
+  margin: 0 0 22px;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  color: rgba(245, 245, 245, 0.82) !important;
+}
+
+.itemNoTiles .readMore:hover {
+  background: transparent;
+  color: var(--orange) !important;
+  border-color: transparent;
+}
+
+.itemNoTiles .introLeft .readMore {
+  margin-bottom: 0;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 12px 22px;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange) !important;
+  text-decoration: none !important;
+  background: transparent;
+  border: 1px solid var(--orange);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.readMore:hover {
+  background: var(--orange);
+  color: var(--off) !important;
+  border-color: var(--orange);
+}
+
+.readMoreArrow {
+  font-size: 15px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.readMore:hover .readMoreArrow {
+  transform: translateX(4px);
+}
+
+.light .readMore {
+  color: var(--orange-deep) !important;
+  border-color: var(--orange-deep);
+}
+
+.light .readMore:hover {
+  background: var(--orange-deep);
+  color: var(--off) !important;
+  border-color: var(--orange-deep);
+}
+
+.photoFrame {
+  width: 100%;
+  min-width: 0;
+}
+
+.itemNoTiles .photoFrame .singlePhoto {
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  box-sizing: border-box;
+}
+
+.singlePhoto {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  overflow: hidden;
+  background: #1a1c28;
+  min-width: 0;
+}
+
+.singlePhotoImg {
+  object-fit: cover;
+  object-position: center 42%;
+  filter: grayscale(0.12) contrast(1.05);
+  transition: transform 0.45s ease;
+}
+
+.singlePhoto:hover .singlePhotoImg {
+  transform: scale(1.02);
+}
+
+/*
+ * Trainen-blok: grote foto; cover met anker naar boven = hoofd blijft, slee onder mag wegvallen.
+ */
+.itemNoTiles .photoVisual .singlePhoto {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  max-height: min(82vh, 840px);
+  min-height: clamp(300px, 54vmin, 620px);
+}
+
+.itemNoTiles .photoVisual .singlePhotoImg {
+  object-fit: cover;
+  /* Bovenkant van de foto vast: volledig hoofd zichtbaar, onder (slee) mag wegvallen */
+  object-position: center top;
+}
+
+.itemNoTiles .photoVisual .singlePhoto:hover .singlePhotoImg {
+  transform: scale(1.015);
+}
+
+.light .singlePhoto {
+  background: #e8e8e8;
+}
+
+.light .singlePhotoImg {
+  filter: grayscale(0.06) contrast(1.03);
 }
 
 .light .desc {
@@ -131,6 +524,16 @@
   background: #222;
 }
 
+/* Compacte CTA onder foto — gecentreerd onder het beeld */
+.itemNoTiles .ctaUnderPhoto {
+  align-self: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 20px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
 @media (min-width: 900px) {
   .item {
     padding: 56px 48px;
@@ -138,6 +541,21 @@
     grid-template-columns: 280px 1fr;
     gap: 0 64px;
     align-items: start;
+  }
+
+  .item.itemNoTiles {
+    /* overschrijft .item (280px + 1fr) — Trainen: één kolom, één rij */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    min-height: clamp(620px, 76vh, 980px);
+    padding: clamp(48px, 6vw, 88px) 48px;
+    gap: 0;
+  }
+
+  .noTilesHero {
+    display: block;
+    width: 100%;
+    min-width: 0;
   }
 
   .header {
@@ -149,6 +567,21 @@
   .num {
     font-size: clamp(80px, 8vw, 112px);
     line-height: 0.88;
+  }
+
+  .itemNoTiles .num {
+    font-size: clamp(120px, 12vw, 168px);
+    line-height: 0.82;
+    display: inline-block;
+    /* Lichte optische shift: stroked display vs body caps op één cap-lijn */
+    transform: translateY(0.028em);
+  }
+
+  /* Eén regelhoogte met het cijfer qua bovenkant; zo min mogelijk extra leading */
+  .itemNoTiles .introMeasure .noTilesLabel {
+    line-height: 1;
+    margin: 0 0 10px;
+    padding-top: 0;
   }
 
   .cat {
@@ -164,4 +597,139 @@
     font-size: 16px;
   }
 
+}
+
+@media (min-width: 720px) {
+  /* Geen trainen-banner: klassiek 01 + intro + foto op één rij */
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .introRest {
+    display: grid;
+    grid-template-columns: minmax(200px, 320px) minmax(0, 1fr) minmax(260px, min(42vw, 520px));
+    grid-template-rows: auto auto;
+    column-gap: clamp(20px, 0.65cm + 1vw, 32px);
+    row-gap: clamp(16px, 2vw, 24px);
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .introNumCol {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .introLeft {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    max-width: min(42ch, 100%);
+    min-width: 0;
+    width: 100%;
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .introPhotoRail {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .photoVisual {
+    width: 100%;
+    transform: translateY(-6px);
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .photoVisual .photoFrame {
+    width: 100%;
+  }
+
+  .itemNoTiles .noTilesHero:not(.noTilesHeroTrainen) .introPhotoCta {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /*
+   * Trainen: eerste kolom auto (geen lege 1fr-band); tekst + foto verticaal gecentreerd.
+   */
+  .itemNoTiles .noTilesHeroTrainen {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    column-gap: 0;
+    justify-content: stretch;
+    row-gap: 0;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .trainenRoutesTitle {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .trainenLead {
+    grid-column: 1;
+    grid-row: 1;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    align-self: center;
+    justify-self: end;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .trainenIntroRow {
+    display: grid;
+    grid-template-columns: minmax(200px, 320px) minmax(0, 1fr);
+    column-gap: clamp(4px, 0.35vw, 8px);
+    align-items: center;
+    row-gap: 0;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .introLeft {
+    max-width: min(42ch, 100%);
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .introPhotoRail {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    width: 100%;
+    max-width: min(520px, 42vw);
+    min-width: 260px;
+    justify-self: start;
+    margin-bottom: -10px;
+    margin-left: clamp(-20px, -1.5vw, -6px);
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .trainenBandWrap {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .photoVisual {
+    width: 100%;
+    transform: none;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .photoVisual .photoFrame {
+    width: 100%;
+  }
+
+  .itemNoTiles .noTilesHeroTrainen .introPhotoCta {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .itemNoTiles .photoVisual {
+    transform: none;
+  }
+
+  .itemNoTiles .photoVisual .singlePhoto:hover .singlePhotoImg {
+    transform: none;
+  }
 }

@@ -1,0 +1,101 @@
+/*
+ * Links: titel → (ruimte) → 01 + tekst. Rechts: foto + CTA.
+ * Desktop: twee kolommen; titel en foto bovenaan gelijk (align-items: start).
+ */
+
+.band {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 4vw, 36px);
+  width: 100%;
+  min-width: 0;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  /* Ruimte titel ↔ 01+tekst: ongeveer 1–2 alinea’s (body ~16–17px, lh ~1.65) */
+  gap: clamp(1.65em, 5vmin, 3.2em);
+  width: 100%;
+  min-width: 0;
+}
+
+.bandTitle {
+  width: 100%;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(14px, 2vw, 22px);
+  width: 100%;
+  min-width: 0;
+}
+
+.copyRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: clamp(6px, 1.2vw, 16px);
+  width: 100%;
+  min-width: 0;
+}
+
+/* Alleen 01: helemaal links, los van de tekstkolom */
+.numOnlyCol {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.textStack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.8vw, 16px);
+}
+
+.photoRail {
+  min-width: 0;
+  width: 100%;
+}
+
+.ctaRail {
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .band {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(46%, min(720px, 52vw));
+    grid-template-rows: auto;
+    column-gap: clamp(24px, 4vw, 48px);
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .leftCol {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .rightCol {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: min(720px, 52vw);
+    width: 100%;
+  }
+
+  .photoRail {
+    max-width: min(720px, 52vw);
+  }
+
+  .ctaRail {
+    max-width: min(720px, 52vw);
+  }
+}

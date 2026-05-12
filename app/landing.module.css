@@ -415,6 +415,13 @@
   transition: background 0.18s;
 }
 
+a.resultItem {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .resultItem::after {
   content: '';
   position: absolute;

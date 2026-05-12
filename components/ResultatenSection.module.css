@@ -8,17 +8,19 @@
   padding: 72px 24px 80px;
 }
 
-.label {
-  font-family: var(--font-body), sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+/* Zelfde displaymaat als Over-sectie “Weg van huus…” (.heading) */
+.sectionTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 68px);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
   text-transform: uppercase;
   color: var(--orange);
-  margin: 0 0 40px;
+  margin: 0 0 clamp(24px, 4vw, 40px);
+  max-width: 100%;
 }
 
-/* ── Hero quote (Joyce) ── */
 .heroQuote {
   margin: 0 0 56px;
   display: flex;
@@ -30,13 +32,18 @@
 .heroImgWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  /* Iets portretter = meer gezicht in het blok bij cover */
+  aspect-ratio: 5 / 6;
   overflow: hidden;
+  background: #1a1c28;
 }
 
 .heroImg {
   object-fit: cover;
-  object-position: center 30%;
+  /* Kruin tot hals: verticaal centreren in uitsnede, licht omhoog, geen extra zoom */
+  object-position: center 22%;
+  transform: translateY(-4%) scale(1);
+  transform-origin: center 32%;
   filter: grayscale(0.4) contrast(1.05) brightness(0.6);
 }
 
@@ -107,15 +114,28 @@
     padding: 88px 48px 96px;
   }
 
+  .sectionTitle {
+    margin-bottom: 48px;
+  }
+
   .heroQuote {
     flex-direction: row;
     margin-bottom: 64px;
-    min-height: 380px;
+    min-height: 400px;
   }
 
   .heroImgWrap {
     flex: 0 0 48%;
     aspect-ratio: unset;
+    align-self: stretch;
+    min-height: 0;
+    background: #1a1c28;
+  }
+
+  .heroImg {
+    object-position: center 20%;
+    transform: translateY(-3%) scale(1);
+    transform-origin: center 30%;
   }
 
   .heroContent {
@@ -127,5 +147,11 @@
   .grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroImg {
+    transform: none;
   }
 }

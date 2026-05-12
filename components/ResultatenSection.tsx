@@ -24,9 +24,9 @@ export default function ResultatenSection() {
   return (
     <section className={styles.resultaten} id="resultaten">
       <div className={styles.inner}>
-        <p className={styles.label}>Wat mensen zeggen</p>
+        <h2 className={styles.sectionTitle}>Wat mensen zeggen</h2>
 
-        {/* Joyce — hero quote */}
+        {/* Amanda — hero quote */}
         <figure className={styles.heroQuote}>
           <div className={styles.heroImgWrap} aria-hidden="true">
             <Image
@@ -44,7 +44,7 @@ export default function ResultatenSection() {
               </p>
             </blockquote>
             <figcaption className={styles.heroCite}>
-              <span className={styles.heroName}>Joyce</span>
+              <span className={styles.heroName}>Amanda</span>
               <span className={styles.heroContext}>na burn-out, Impact traject</span>
             </figcaption>
           </div>
