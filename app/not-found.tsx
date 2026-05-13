@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { mailtoKennismaking } from '@/lib/contact'
 import styles from './not-found.module.css'
 
 export default function NotFound() {
@@ -32,7 +33,7 @@ export default function NotFound() {
           <a className={styles.btnPrimary} href="/">
             Terug naar home
           </a>
-          <a className={styles.btnSecondary} href="/#kennismaking">
+          <a className={styles.btnSecondary} href={mailtoKennismaking}>
             Plan een kennismaking
           </a>
         </div>

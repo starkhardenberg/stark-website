@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 import RouteCarousel, { RouteOption } from './RouteCarousel'
@@ -72,80 +71,6 @@ export default function TrackItem({ track }: { track: Track }) {
     }
   }, [track.showTiles, track.desc, track.introLabel])
 
-  const noTilesNumCol = (
-    <div className={styles.introNumCol}>
-      <span
-        className={styles.num}
-        style={
-          numFontPx != null
-            ? {
-                fontSize: `${numFontPx}px`,
-                lineHeight: NUM_LINE_HEIGHT,
-              }
-            : undefined
-        }
-      >
-        {track.num}
-      </span>
-      <span className={styles.cat}>{track.cat}</span>
-    </div>
-  )
-
-  const noTilesIntroLeft = (
-    <div className={styles.introLeft}>
-      <div ref={measureRef} className={styles.introMeasure}>
-        {track.introLabel ? (
-          <span className={styles.noTilesLabel}>{track.introLabel}</span>
-        ) : null}
-        {descParagraphs ? (
-          descParagraphs.map((block, i) => (
-            <p key={i} className={styles.desc}>
-              {block}
-            </p>
-          ))
-        ) : (
-          <p className={styles.desc}>{track.desc}</p>
-        )}
-      </div>
-      {track.readMoreHref ? (
-        <Link href={track.readMoreHref} className={styles.readMore}>
-          {track.readMoreLabel ?? 'Lees meer'}
-          <span className={styles.readMoreArrow} aria-hidden>
-            →
-          </span>
-        </Link>
-      ) : null}
-    </div>
-  )
-
-  const noTilesPhotoRail = (
-    <div className={styles.introPhotoRail}>
-      <div className={styles.photoVisual}>
-        <div className={styles.photoFrame}>
-          <div className={styles.singlePhoto}>
-            <Image
-              src={`/images/${track.photo}`}
-              alt={track.photoAlt}
-              fill
-              className={styles.singlePhotoImg}
-              sizes="(min-width: 900px) 45vw, 100vw"
-              priority={track.id === 'trainen'}
-              style={
-                track.photoObjectPosition ? { objectPosition: track.photoObjectPosition } : undefined
-              }
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.introPhotoCta}>
-        <a className={noTilesPhotoCtaClass} href={track.ctaHref}>
-          {track.cta}
-        </a>
-      </div>
-    </div>
-  )
-
   return (
     <article
       className={`${styles.item} ${track.light ? styles.light : ''} ${track.showTiles === false ? styles.itemNoTiles : ''}`}
@@ -182,7 +107,7 @@ export default function TrackItem({ track }: { track: Track }) {
             <RouteCarousel options={track.routeOptions} light={track.light} />
           </div>
         </>
-      ) : track.id === 'trainen' ? (
+      ) : (
         <div className={`${styles.noTilesHero} ${styles.noTilesHeroTrainen}`}>
           <div className={styles.trainenBandWrap}>
             <TrainenBandLayout
@@ -200,22 +125,11 @@ export default function TrackItem({ track }: { track: Track }) {
               measureRef={measureRef}
               numFontPx={numFontPx}
               ctaClassName={noTilesPhotoCtaClass}
+              tightPhotoGap={track.id === 'trainen'}
+              ctaUnderTitle
             />
           </div>
         </div>
-      ) : (
-        <>
-          <div className={`${styles.noTilesHero} ${styles.noTilesHeroTrainen}`}>
-            <div className={styles.trainenLead}>
-              <h2 className={styles.trainenRoutesTitle}>{track.cat}</h2>
-              <div className={styles.trainenIntroRow}>
-                {noTilesNumCol}
-                {noTilesIntroLeft}
-              </div>
-            </div>
-            {noTilesPhotoRail}
-          </div>
-        </>
       )}
     </article>
   )

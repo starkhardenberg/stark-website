@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { mailtoKennismaking } from '@/lib/contact'
 import Image from 'next/image'
-import styles from './team.module.css'
 import navStyles from '../landing.module.css'
+import styles from './team.module.css'
 
 const TEAM = [
   { id: 1,  name: 'Engbert-Jan', role: 'Eigenaar, coach en trainer',   photo: '/images/team/engbert-jan.jpg', objectPosition: '50% 34%', quote: 'Laten we niet praten over excuses maar over stappen.' },
@@ -41,7 +42,7 @@ export default function TeamPage() {
 
       <nav className={navStyles.nav}>
         <Link href="/#over" className={navStyles.navBack}>← Terug naar STARK!</Link>
-        <Link href="/#kennismaking" className={navStyles.navCta}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={navStyles.navCta}>Plan een kennismaking</Link>
       </nav>
 
       {/* Hero */}
@@ -133,12 +134,12 @@ export default function TeamPage() {
 
       {/* CTA */}
       <section className={navStyles.cta}>
-        <span className={navStyles.ctaLabel}>Klaar om te bouwen?</span>
+        <span className={`${navStyles.ctaLabel} ${styles.teamBuildLabel}`}>Klaar om te bouwen?</span>
         <h2 className={navStyles.ctaTitle}>WEES WELKOM.</h2>
         <p className={navStyles.ctaSub}>
           Plan een vrijblijvend kennismakingsgesprek. We kijken samen wat het beste bij je past.
         </p>
-        <Link href="/#kennismaking" className={navStyles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={navStyles.ctaBtn}>Plan een kennismaking</Link>
         <span className={navStyles.ctaNote}>Gratis en vrijblijvend</span>
       </section>
 

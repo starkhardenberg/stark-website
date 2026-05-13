@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { mailtoKennismaking } from '@/lib/contact'
 import Image from 'next/image'
 import styles from '../landing.module.css'
 
@@ -13,7 +14,7 @@ export default function FundamentPreventiefPage() {
 
       <nav className={styles.nav}>
         <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href="/#kennismaking" className={styles.navCta}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={styles.navCta}>Plan een kennismaking</Link>
       </nav>
 
       {/* Hero */}
@@ -188,7 +189,7 @@ export default function FundamentPreventiefPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>FUNDAMENT AANBIEDEN?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking voor de mogelijkheden. Maximaal 10 deelnemers per groep.</p>
-        <Link href="/#kennismaking" className={styles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={styles.ctaBtn}>Plan een kennismaking</Link>
         <span className={styles.ctaNote}>Beperkt aantal plaatsen beschikbaar</span>
       </section>
 

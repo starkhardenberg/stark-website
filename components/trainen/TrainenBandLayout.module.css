@@ -67,6 +67,27 @@
 
 .ctaRail {
   width: 100%;
+  justify-content: flex-end;
+}
+
+/* CTA onder de titel, links (trainen, coaching, zakelijk) */
+.ctaUnderTitleWrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding-left: clamp(6px, 1.2vw, 16px);
+  box-sizing: border-box;
+}
+
+.bandCtaUnderTitle .leftCol {
+  /* Iets compactere stapeling: titel → CTA → 01 + intro */
+  gap: clamp(12px, 2.5vmin, 22px);
+}
+
+.bandCtaUnderTitle .copyRow {
+  margin-top: clamp(10px, 2vmin, 24px);
 }
 
 @media (min-width: 720px) {
@@ -77,6 +98,11 @@
     column-gap: clamp(24px, 4vw, 48px);
     row-gap: 0;
     align-items: start;
+  }
+
+  /* Alleen sectie trainen: minder ruimte tussen linkerkolom en foto */
+  .band.bandTight {
+    column-gap: clamp(8px, 1.2vw, 20px);
   }
 
   .leftCol {

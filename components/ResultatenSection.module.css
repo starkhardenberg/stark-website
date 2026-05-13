@@ -44,7 +44,7 @@
   object-position: center 22%;
   transform: translateY(-4%) scale(1);
   transform-origin: center 32%;
-  filter: grayscale(0.4) contrast(1.05) brightness(0.6);
+  filter: contrast(1.04) saturate(1.06);
 }
 
 .heroContent {
@@ -102,8 +102,52 @@
   color: var(--slate);
 }
 
-/* ── Quote grid (3 cards) ── */
+/* ── Testimonialkaarten + pijlen ── */
+.carousel {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.arrowBtn {
+  flex: 0 0 44px;
+  width: 44px;
+  align-self: center;
+  min-height: 120px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--off);
+  cursor: pointer;
+  font-family: var(--font-body), sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+}
+
+.arrowBtn:hover:not(:disabled) {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(234, 92, 31, 0.1);
+}
+
+.arrowBtn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.arrowBtn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
 .grid {
+  flex: 1;
+  min-width: 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
@@ -142,6 +186,15 @@
     flex: 1;
     padding: 56px 56px;
     justify-content: center;
+  }
+
+  .carousel {
+    gap: 16px;
+  }
+
+  .arrowBtn {
+    min-height: 140px;
+    font-size: 32px;
   }
 
   .grid {

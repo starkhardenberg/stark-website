@@ -30,22 +30,21 @@
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--orange);
+  border-bottom: 1.5px solid var(--orange);
+  padding-bottom: 3px;
   margin: 0 0 20px;
+  transition: color 0.18s, border-color 0.18s;
 }
 
 .eyebrow::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--orange);
-  flex-shrink: 0;
+  content: none;
 }
 
 .heading {
@@ -118,12 +117,15 @@
 }
 
 .personRole {
-  font-size: 11px;
+  display: inline-block;
+  font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--orange);
   margin: 0 0 12px;
+  line-height: 1.2;
 }
 
 .personQuote {

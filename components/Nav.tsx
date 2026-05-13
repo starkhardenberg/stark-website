@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { mailtoInfo, mailtoKennismaking } from '@/lib/contact'
 import styles from './Nav.module.css'
 
 export default function Nav() {
@@ -13,13 +14,13 @@ export default function Nav() {
       </a>
 
       <div className={styles.right}>
-        <a href="#kennismaking" className={styles.cta}>Plan een kennismaking</a>
+        <a href={mailtoKennismaking} className={styles.cta}>Plan een kennismaking</a>
 
         <nav className={styles.menu} aria-label="Hoofdmenu">
           <a href="#coaching">Coaching</a>
           <a href="#trainen">Training</a>
           <a href="#bedrijven">Bedrijven</a>
-          <a href="#kennismaking">Contact</a>
+          <a href={mailtoInfo}>Contact</a>
         </nav>
 
         <button
@@ -39,8 +40,8 @@ export default function Nav() {
           <a href="#coaching" onClick={() => setOpen(false)}>Coaching</a>
           <a href="#bedrijven" onClick={() => setOpen(false)}>Bedrijven</a>
           <a href="#trainen" onClick={() => setOpen(false)}>Trainen</a>
-          <a href="#kennismaking" onClick={() => setOpen(false)}>Contact</a>
-          <a href="#kennismaking" className={styles.mobileCta} onClick={() => setOpen(false)}>Plan een kennismaking</a>
+          <a href={mailtoInfo} onClick={() => setOpen(false)}>Contact</a>
+          <a href={mailtoKennismaking} className={styles.mobileCta} onClick={() => setOpen(false)}>Plan een kennismaking</a>
         </nav>
       )}
     </header>

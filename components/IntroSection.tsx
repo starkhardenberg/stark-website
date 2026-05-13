@@ -1,3 +1,4 @@
+import { mailtoKennismaking } from '@/lib/contact'
 import styles from './IntroSection.module.css'
 
 export default function IntroSection() {
@@ -32,7 +33,7 @@ export default function IntroSection() {
         </p>
 
         <div className={styles.ctaRow}>
-          <a href="#kennismaking" className={`${styles.cta} ${styles.ctaFilled}`}>
+          <a href={mailtoKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
             Plan een kennismaking
           </a>
           <a href="#aanbod" className={styles.cta}>

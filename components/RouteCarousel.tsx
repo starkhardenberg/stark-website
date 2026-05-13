@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { mailtoKennismaking } from '@/lib/contact'
 import styles from './RouteCarousel.module.css'
 
 export interface RouteOption {
@@ -109,7 +110,7 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
             <div className={styles.modalBody}>
               <p className={styles.modalTitle}>{selected.title}</p>
               <p className={styles.modalDesc}>{selected.desc}</p>
-              <a className={styles.modalCta} href="#kennismaking" onClick={() => setSelected(null)}>
+              <a className={styles.modalCta} href={mailtoKennismaking} onClick={() => setSelected(null)}>
                 Plan een kennismaking
               </a>
             </div>

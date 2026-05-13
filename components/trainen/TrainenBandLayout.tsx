@@ -21,6 +21,10 @@ export type TrainenBandLayoutProps = {
   measureRef: Ref<HTMLDivElement>
   numFontPx: number | null
   ctaClassName: string
+  /** Kleinere afstand tussen tekst/01 en foto (o.a. sectie trainen) */
+  tightPhotoGap?: boolean
+  /** CTA onder de sectietitel, links (trainen, coaching, zakelijk) */
+  ctaUnderTitle?: boolean
 }
 
 export default function TrainenBandLayout({
@@ -38,11 +42,25 @@ export default function TrainenBandLayout({
   measureRef,
   numFontPx,
   ctaClassName,
+  tightPhotoGap,
+  ctaUnderTitle,
 }: TrainenBandLayoutProps) {
+  const ctaEl = (
+    <a className={ctaClassName} href={ctaHref}>
+      {cta}
+    </a>
+  )
+
   return (
-    <div className={styles.band}>
+    <div
+      className={`${styles.band} ${tightPhotoGap ? styles.bandTight : ''} ${ctaUnderTitle ? styles.bandCtaUnderTitle : ''}`}
+    >
       <div className={styles.leftCol}>
         <h2 className={`${trackStyles.trainenRoutesTitle} ${styles.bandTitle}`}>{sectionTitle}</h2>
+
+        {ctaUnderTitle ? (
+          <div className={styles.ctaUnderTitleWrap}>{ctaEl}</div>
+        ) : null}
 
         <div className={styles.copyRow}>
           <div className={styles.numOnlyCol}>
@@ -100,11 +118,9 @@ export default function TrainenBandLayout({
           </div>
         </div>
 
-        <div className={`${trackStyles.introPhotoCta} ${styles.ctaRail}`}>
-          <a className={ctaClassName} href={ctaHref}>
-            {cta}
-          </a>
-        </div>
+        {!ctaUnderTitle ? (
+          <div className={`${trackStyles.introPhotoCta} ${styles.ctaRail}`}>{ctaEl}</div>
+        ) : null}
       </div>
     </div>
   )

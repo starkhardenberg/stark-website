@@ -1,4 +1,5 @@
 import TrackItem from './TrackItem'
+import { mailtoKennismaking } from '@/lib/contact'
 import styles from './AanbodSection.module.css'
 
 const tracks = [
@@ -10,11 +11,11 @@ const tracks = [
     photoAlt: 'Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg',
     photoObjectPosition: 'center 30%',
     showTiles: false,
-    introLabel: 'Trainen bij STARK!',
+    introLabel: 'Trainen bij STARK',
     readMoreHref: '/trainen',
     readMoreLabel: 'Lees meer over trainen',
     desc:
-      'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan (en daardoor: blijven doen wat ertoe doet, vandaag én over twintig jaar).\n\nBij ons train je niet tussen apparaten in. We trainen functioneel: bewegingen die je lijf sterker maken voor wat je elke dag doet. Met een coach die met je mee kijkt en bijstuurt of uitdaagt waar dat past. Voor wie jong is, vroeger jong was en alles daar tussenin.\n\nNiet eerst fit zijn om hier te komen. Wel fit worden door hier te zijn.',
+      'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan, en daardoor blijven doen wat ertoe doet, vandaag en over twintig jaar.\n\nBij ons train je niet tussen apparaten in. Bij STARK is functioneel trainen pas écht functioneel als het werkt voor jouw lijf, jouw niveau en jouw leven. Niet voor de klok of de persoon naast je.\n\nMet een coach die met je mee kijkt en bijstuurt of uitdaagt waar dat past, voor wie jong is, vroeger jong was en alles daartussenin.\n\nNiet eerst fit zijn voordat je kunt starten. Wel fit worden dóór te starten.',
 
     routeOptions: [
       {
@@ -43,7 +44,7 @@ const tracks = [
       },
     ],
     cta: 'Plan een kennismaking',
-    ctaHref: '#kennismaking',
+    ctaHref: mailtoKennismaking,
     light: false,
   },
   {
@@ -52,12 +53,12 @@ const tracks = [
     cat: 'Coaching',
     photo: 'foto-coaching-moment.jpg',
     photoAlt: 'Coachingsgesprek bij STARK!',
-    introLabel: 'Coaching bij STARK!',
+    introLabel: 'Coaching bij STARK',
     showTiles: false,
     readMoreHref: '/van-punt-a-naar-punt-b',
     readMoreLabel: 'Lees meer over coaching',
     desc:
-      'Een sterker lijf. Een helder hoofd. Afspraken met jezelf die je wél nakomt (en daardoor resultaat dat ertoe doet voor jou).\n\nDat is waar onze coachingstrajecten naartoe werken. Lijf en hoofd samen, want het één werkt niet zonder het ander. In een groep of één-op-één, met coaches die patronen herkennen die jij allang niet meer ziet.\n\nGeen quick fix. Wel blijvende verandering. In weken, niet jaren.',
+      'Een helder hoofd. Een lijf dat aankan wat je vraagt. Afspraken met jezelf die je wél nakomt (en daardoor resultaat dat er voor jou toe doet).\n\nDat is waar onze coachingstrajecten naartoe werken. Lijf en hoofd samen, want het één werkt niet zonder het ander. In een groep of één-op-één, met coaches die patronen herkennen die jij allang niet meer ziet.\n\nGeen quick fix. Wel blijvende verandering, in weken, niet jaren.',
     routeOptions: [
       {
         title: 'Van punt A naar punt B',
@@ -83,21 +84,23 @@ const tracks = [
       },
     ],
     cta: 'Plan een kennismaking',
-    ctaHref: '#kennismaking',
+    ctaHref: mailtoKennismaking,
     light: true,
   },
   {
     id: 'bedrijven',
     num: '03',
-    cat: 'Bedrijven',
-    photo: 'foto-coaching-samen.jpg',
-    photoAlt: 'Teamtraining voor bedrijven bij STARK!',
+    cat: 'Zakelijk',
+    photo: 'foto-trainen-battle-rope.png',
+    photoAlt:
+      'Team in actie: battle ropes tijdens training bij STARK! Hardenberg, zwart-wit, kracht en samenwerking',
+    photoObjectPosition: 'center 40%',
     showTiles: false,
-    introLabel: 'Bedrijven bij STARK!',
+    introLabel: 'Zakelijk bij STARK',
     readMoreHref: '/fundament-preventief',
-    readMoreLabel: 'Lees meer over bedrijven',
+    readMoreLabel: 'Lees meer over zakelijk',
     desc:
-      'Sterkere mensen. Stevigere teams. Een bedrijf dat kan dealen met druk en uitdagingen (en daardoor doorpakt waar nodig).\n\nDaar werken we aan, samen met ondernemers en bedrijven. We maken je mensen fysiek sterk en bouwen aan hun mentale weerbaarheid. Voor medewerkers die willen re-integreren, voor mensen die niet wachten tot ze daadwerkelijk omvallen, of voor teams die klem zitten.\n\nGeen brandjes blussen. Wel een fundament dat staat. Voor mens, team en bedrijf.',
+      'Sterkere mensen. Stevigere teams. Een bedrijf dat kan dealen met druk en uitdagingen (en daardoor doorpakt waar nodig).\n\nDaar werken we aan, samen met ondernemers en bedrijven. We maken je mensen fysiek sterk en bouwen aan hun mentale weerbaarheid. Voor medewerkers die willen re-integreren, voor mensen die niet wachten tot ze daadwerkelijk omvallen, of voor teams die klem zitten.\n\nGeen brandjes blussen. Wel een fundament dat staat, voor mens, team en bedrijf.',
     routeOptions: [
       {
         title: 'Fundament',
@@ -123,7 +126,7 @@ const tracks = [
       },
     ],
     cta: 'Plan een kennismaking',
-    ctaHref: '#kennismaking',
+    ctaHref: mailtoKennismaking,
     light: false,
   },
 ]

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { mailtoKennismaking } from '@/lib/contact'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -12,7 +13,7 @@ export default function VanPuntANaarPuntBPage() {
 
       <nav className={styles.nav}>
         <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href="/#kennismaking" className={styles.navCta}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={styles.navCta}>Plan een kennismaking</Link>
       </nav>
 
       {/* Hero — text only, no photo */}
@@ -131,7 +132,7 @@ export default function VanPuntANaarPuntBPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>KLAAR VOOR DE EERSTE STAP?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking. Lancering september 2026.</p>
-        <Link href="/#kennismaking" className={styles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={mailtoKennismaking} className={styles.ctaBtn}>Plan een kennismaking</Link>
         <span className={styles.ctaNote}>Lancering september 2026</span>
       </section>
 
