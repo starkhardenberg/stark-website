@@ -23,8 +23,12 @@ export default function AanbodSection() {
 
         <div className={styles.sectionCta}>
           <p className={styles.sectionCtaText}>
-            Twijfel je tussen trainen, coaching of zakelijk?
-            <span>Mooi. Dan hebben we iets om over te praten.</span>
+            <span className={styles.sectionCtaLead}>
+              Twijfel je tussen trainen, coaching of zakelijk?
+            </span>
+            <span className={styles.sectionCtaSub}>
+              Mooi. Dan hebben we iets om over te praten.
+            </span>
           </p>
           <a href={mailtoKennismaking} className={styles.sectionCtaButton}>
             Kom kennismaken

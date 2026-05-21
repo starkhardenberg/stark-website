@@ -31,7 +31,7 @@ export default function OverSection() {
           </p>
 
           <a className={styles.link} href="/team">
-            Maak kennis met ons team &rarr;
+            Meer over ons &rarr;
           </a>
 
           <div className={styles.people}>
