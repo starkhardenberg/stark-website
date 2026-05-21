@@ -49,6 +49,12 @@ const cards: Card[] = [
     name: 'Yael',
     context: 'Impact traject',
   },
+  {
+    id: 'robbert-1',
+    text: 'Ik heb het traject niet als leraar/leerling of psycholoog/patiënt ervaren, maar als heel eerlijk, echt en open.',
+    name: 'Robbert',
+    context: 'Impact traject',
+  },
 ]
 
 function usePerPage() {

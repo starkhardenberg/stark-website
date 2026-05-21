@@ -8,7 +8,7 @@ import styles from './team.module.css'
 
 const TEAM = [
   { id: 1,  name: 'Engbert-Jan', role: 'Eigenaar, coach en trainer',   photo: '/images/team/engbert-jan.jpg', objectPosition: '50% 34%', quote: 'Laten we niet praten over excuses maar over stappen.' },
-  { id: 2,  name: 'Yvonne',      role: 'Eigenaar, coach en trainer',   photo: '/images/team/yvonne-new.png', objectPosition: '50% 24%', quote: 'Je hoeft niet sterk te zijn om te beginnen.' },
+  { id: 2,  name: 'Yvonne',      role: 'Eigenaar, coach en trainer',   photo: '/images/team/yvonne-new.png', objectPosition: '50% 24%', quote: 'Je begint door te beginnen.' },
   { id: 3,  name: 'Anne',        role: 'Trainer',                      photo: '/images/team/anne.jpg', objectPosition: '50% 30%', quote: 'Comfort staat groei in de weg. Ga het oncomfortabele aan en groei!' },
   { id: 4,  name: 'Els',         role: 'Trainer',                      photo: '/images/team/els.jpg', objectPosition: '50% 30%', quote: 'Techniek eerst, daarna pas tempo.' },
   { id: 5,  name: 'Yoeri',       role: 'Trainer',                      photo: '/images/team/marinus.jpg', objectPosition: '50% 32%', quote: 'Bewegen is al winst. Hard trainen is nog meer winst.' },
@@ -61,8 +61,8 @@ export default function TeamPage() {
           <span className={styles.heroLabel}>Een team van 11 mensen. Eén aanpak.</span>
           <span className={styles.heroSlash} />
           <h1 className={styles.heroTitle}>
-            <span className={styles.heroLead}>ONS</span>
-            <span className={styles.heroPunch}>TEAM</span>
+            <span className={`${styles.heroLead} ${styles.heroLeadSmaller}`}>OVER</span>
+            <span className={styles.heroPunch}>ONS</span>
           </h1>
         </div>
         <div className={styles.heroBar} />
@@ -132,6 +132,45 @@ export default function TeamPage() {
         </div>
       </section>
 
+      {/* Over ons — eigenaren & ontstaan */}
+      <section className={styles.originSection} aria-labelledby="origin-heading">
+        <div className={styles.originInner}>
+          <div className={styles.originGrid}>
+            <div className={styles.originPhoto} aria-label="Engbert-Jan en Yvonne">
+              <Image
+                src="/images/team/engbert-jan-yvonne-samen.png"
+                alt="Engbert-Jan en Yvonne samen"
+                fill
+                className={styles.originPhotoImg}
+                style={{ objectPosition: 'center 8%' }}
+                sizes="(min-width: 900px) 38vw, 92vw"
+              />
+            </div>
+            <div className={styles.originCopy}>
+              <span className={styles.originLabel}>Over ons</span>
+              <h2 id="origin-heading" className={styles.originTitle}>
+                Van de eerste dag tot nu
+              </h2>
+              <p className={styles.originBody}>
+                Engbert-Jan opende in april 2013 de gym, toen nog als CrossFit Hardenberg. Gewoon beginnen, fouten maken, bijsturen en door. Geen slick verhaal, wel een plek waar je serieus aan jezelf mocht werken.
+              </p>
+              <p className={styles.originBody}>
+                Yvonne stapte in 2017 als deelnemer binnen. Het mooiste was ontdekken dat je niet sterk hoeft zijn om te beginnen, maar dat het werk doen je juist laat groeien. Onderweg stond ze twee keer in de finale van het NK Sterkste Vrouw van Nederland. Inmiddels staan we samen aan het roer, als eigenaren en als partners thuis.
+              </p>
+              <p className={styles.originBody}>
+                Eind 2020 lieten we de CrossFit-naam los en gingen we verder als STARK! Zelfde karakter, wel een naam die paste bij wie we geworden waren. In 2024 hebben we ons team geïnstalleerd. Mensen die de route al gelopen hebben, die de sfeer kennen en weten wat groeien hier vraagt. We investeren daar volop in: coaching, opleiding en verdieping, zodat goede begeleiding niet alleen bij ons tweeën blijft hangen.
+              </p>
+              <p className={styles.originBody}>
+                Begin 2025 verhuisden we naar een pand dat ongeveer drie keer zo groot is. Meer ruimte voor training, voor groepen en voor wat we de komende jaren verder willen uitbouwen. Wat toen begon, zetten we elke week voort, samen met het team en met jou.
+              </p>
+              <p className={styles.originCaption}>
+                Engbert-Jan en Yvonne · eigenaren, coaches en trainers
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className={navStyles.cta}>
         <span className={`${navStyles.ctaLabel} ${styles.teamBuildLabel}`}>Klaar om te bouwen?</span>
@@ -140,7 +179,6 @@ export default function TeamPage() {
           Plan een vrijblijvend kennismakingsgesprek. We kijken samen wat het beste bij je past.
         </p>
         <Link href={mailtoKennismaking} className={navStyles.ctaBtn}>Plan een kennismaking</Link>
-        <span className={navStyles.ctaNote}>Gratis en vrijblijvend</span>
       </section>
 
     </main>

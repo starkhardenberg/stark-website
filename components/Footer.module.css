@@ -1,49 +1,34 @@
 .footer {
-  background: #0a0a0a;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(44px, 8vw, 72px) clamp(16px, 3vw, 40px) clamp(52px, 9vw, 80px);
 }
 
 .inner {
-  padding: 48px 24px 40px;
+  width: 100%;
+  max-width: none;
 }
 
-.hook {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.35rem, 3.8vw, 1.85rem);
-  font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: -0.02em;
-  color: rgba(245, 245, 245, 0.94);
-  margin: 0 0 40px;
-  max-width: 22em;
+.panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  padding: clamp(22px, 3.5vw, 34px);
+  border-top: 2px solid var(--orange);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.08) 0%, rgba(234, 92, 31, 0) 42%),
+    rgba(16, 18, 25, 0.48);
 }
 
-.hookLine {
-  display: block;
-}
-
-.hookLine + .hookLine {
-  margin-top: 0.35em;
-}
-
-.hookAccent {
-  color: var(--orange);
-  font-weight: 700;
-}
-
-/* ── Voorstel 2: asymmetrische editorial + CTA ── */
-.editorial {
+.topRow {
   display: flex;
   flex-direction: column;
-  gap: 36px;
-  padding-bottom: 32px;
-}
-
-.leadCol {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 38ch;
+  align-items: flex-start;
+  gap: clamp(14px, 2vw, 18px);
+  margin-bottom: clamp(28px, 5vw, 44px);
 }
 
 .logoLink {
@@ -54,84 +39,113 @@
 .logo {
   height: 28px;
   width: auto;
-  opacity: 0.85;
-  transition: opacity 0.18s;
 }
 
-.logoLink:hover .logo {
-  opacity: 1;
-}
-
-.tagline {
-  font-family: var(--font-body), sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.55;
-  color: rgba(245, 245, 245, 0.72);
+.label {
   margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
 }
 
-.actionCol {
+.contactList {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  align-items: stretch;
-  width: 100%;
-  min-width: 0;
+  gap: clamp(16px, 2.5vw, 20px);
+  margin-bottom: clamp(28px, 5vw, 44px);
 }
 
-.ctaRow {
+.contactItem {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px;
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: var(--off);
+  text-decoration: none;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.12em;
+  color: var(--orange);
+}
+
+.icon svg {
   display: block;
   width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.body {
+  margin: 0 0 clamp(28px, 5vw, 44px);
+  max-width: 42ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.62);
 }
 
 .btnPrimary {
-  display: inline-block;
-  padding: 14px 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+  padding: 14px 22px;
   background: var(--orange);
+  border: 1px solid var(--orange);
   color: var(--off);
   font-family: var(--font-body), sans-serif;
+  font-size: 12px;
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  text-align: center;
-  transition: background 0.18s;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
 }
 
 .btnPrimary:hover {
   background: var(--orange-deep);
+  transform: translateY(-2px);
 }
 
-.btnPrimary:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 3px;
-}
-
-.navStack {
+.linkStack {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  width: 100%;
-  max-width: 320px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: clamp(12px, 2vw, 18px);
 }
 
-.navStack a {
-  font-family: var(--font-body), sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.linkStack a {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(48px, 14vw, 132px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: var(--display-tracking);
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--off);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.16s ease;
 }
 
-.navStack a:hover {
+.linkStack a:hover {
   color: var(--orange);
 }
 
@@ -140,54 +154,41 @@
   flex-direction: column;
   gap: 8px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.address,
-.copy {
+.meta p {
+  margin: 0;
   font-family: var(--font-body), sans-serif;
   font-size: 12px;
-  color: var(--slate);
-  margin: 0;
   letter-spacing: 0.03em;
+  color: rgba(245, 245, 245, 0.42);
 }
 
-@media (min-width: 900px) {
-  .inner {
-    padding: 56px 48px 44px;
+@media (prefers-reduced-motion: reduce) {
+  .btnPrimary:hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 760px) {
+  .topRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .hook {
-    margin-bottom: 48px;
-    max-width: 24em;
-    font-size: clamp(1.5rem, 2.2vw, 1.95rem);
+  .contactItem {
+    grid-template-columns: 30px minmax(0, 1fr);
   }
 
-  .editorial {
-    display: grid;
-    grid-template-columns: minmax(200px, 0.36fr) minmax(0, 1fr);
-    column-gap: clamp(32px, 6vw, 80px);
-    align-items: start;
-    padding-bottom: 44px;
-  }
-
-  .tagline {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .actionCol {
-    padding-top: 4px;
-  }
-
-  .navStack {
-    max-width: 100%;
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 
   .meta {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
   }
 }

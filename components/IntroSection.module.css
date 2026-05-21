@@ -1,95 +1,103 @@
 .intro {
-  padding: 56px 22px;
+  padding: clamp(56px, 9vw, 96px) clamp(20px, 4vw, 48px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.06) 0%, rgba(234, 92, 31, 0) 42%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%),
     var(--navy);
 }
 
 .inner {
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
-/* Gecentreerd kopblok: andere ritme dan de linkse hero-headline */
-.headingBlock {
-  text-align: center;
-  max-width: 42rem;
-  margin: 0 auto 40px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid rgba(234, 92, 31, 0.35);
+.manifest {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 48px);
+  align-items: start;
+}
+
+.headingCol {
+  text-align: left;
 }
 
 .label {
-  margin: 0 0 16px;
+  margin: 0 0 clamp(14px, 2vw, 18px);
   font-family: var(--font-body), sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.68);
+  color: var(--orange);
 }
 
 .heading {
   margin: 0;
+  max-width: 11ch;
   font-family: var(--font-display), sans-serif;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 96px);
+  line-height: 0.92;
+  letter-spacing: var(--display-tracking);
   text-transform: uppercase;
-}
-
-/* Alleen kopregel (zonder .punch): iets groter en rustiger ritme */
-.heading:has(.lead:only-child) .lead {
-  margin-bottom: 0;
-  font-size: clamp(32px, 7.2vw, 72px);
-  letter-spacing: 0.04em;
-}
-
-/* Geen outline: eerste regel als accent, tweede als zware titel */
-.lead {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-  font-size: clamp(28px, 6vw, 56px);
-  letter-spacing: 0.06em;
-  color: var(--orange);
-}
-
-.punch {
-  display: block;
-  font-weight: 700;
-  font-size: clamp(40px, 9.5vw, 104px);
   color: var(--off);
 }
 
-.body {
-  margin: 0 auto 14px;
-  max-width: 62ch;
-  text-align: center;
+.copyCol {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 5vw, 48px);
+  min-width: 0;
+}
+
+.lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3.5vw, 32px);
+}
+
+.line {
+  margin: 0;
+  padding: 0 0 0 clamp(18px, 2.5vw, 24px);
+  border-left: 2px solid var(--orange);
+}
+
+.lineLead {
+  margin: 0 0 6px;
+  max-width: 38ch;
   font-family: var(--font-body), sans-serif;
-  font-size: 17px;
-  line-height: 1.75;
-  color: rgba(245, 245, 245, 0.68);
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--off);
+}
+
+.lineRest {
+  margin: 0;
+  max-width: 42ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.62);
 }
 
 .ctaRow {
-  margin-top: clamp(40px, 6.5vw, 72px);
-  padding-top: clamp(8px, 1.5vw, 16px);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
-}
-
-.ctaRow .cta {
-  margin-top: 0;
 }
 
 .cta {
   display: inline-block;
-  margin-top: 16px;
   padding: 12px 18px;
   border: 1px solid rgba(245, 245, 245, 0.24);
   font-family: var(--font-body), sans-serif;
@@ -130,31 +138,30 @@
   }
 }
 
-@media (min-width: 560px) {
+@media (min-width: 720px) {
   .ctaRow {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 16px;
   }
 }
 
 @media (min-width: 900px) {
-  .intro {
-    padding: 84px 64px;
+  .manifest {
+    grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 80px);
   }
 
-  .headingBlock {
-    margin-bottom: 48px;
-    padding-bottom: 36px;
-    max-width: 48rem;
+  .headingCol {
+    padding-right: clamp(24px, 3vw, 40px);
   }
 
-  .label {
-    margin-bottom: 20px;
+  .heading {
+    max-width: 9ch;
+    font-size: clamp(48px, 5.5vw, 88px);
   }
 
-  .lead {
-    margin-bottom: 10px;
+  .copyCol {
+    padding-left: clamp(8px, 1vw, 16px);
   }
 }

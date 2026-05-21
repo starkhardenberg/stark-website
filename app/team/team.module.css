@@ -73,6 +73,10 @@
   font-size: 0.76em;
 }
 
+.heroLeadSmaller {
+  font-size: 0.61em;
+}
+
 .heroPunch {
   display: block;
 }
@@ -430,6 +434,107 @@
 
   .memberName {
     font-size: 28px;
+  }
+}
+
+/* Over ons — ontstaan + duo (twee portretten; vervang later door één foto indien gewenst) */
+.originSection {
+  padding: clamp(56px, 9vw, 96px) clamp(22px, 4vw, 64px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(165deg, rgba(234, 92, 31, 0.06) 0%, transparent 55%);
+}
+
+.originInner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.originGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 5vw, 52px);
+  align-items: center;
+}
+
+.originPhoto {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+}
+
+.originPhotoImg {
+  object-fit: cover;
+  filter: grayscale(0.2) contrast(1.04);
+}
+
+.originLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.originTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 5.5vw, 52px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--off);
+  margin: 0 0 clamp(20px, 3vw, 28px);
+}
+
+.originBody {
+  margin: 0 0 clamp(16px, 2vw, 20px);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.65vw, 17px);
+  line-height: 1.72;
+  color: rgba(245, 245, 245, 0.68);
+  max-width: 52ch;
+}
+
+.originBody:last-of-type {
+  margin-bottom: 0;
+}
+
+.originCaption {
+  margin: clamp(22px, 3vw, 28px) 0 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.42);
+}
+
+@media (min-width: 900px) {
+  .originGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    gap: clamp(40px, 5vw, 72px);
+    grid-template-areas: 'photo copy';
+  }
+
+  .originPhoto {
+    grid-area: photo;
+    margin: 0;
+    max-width: none;
+    aspect-ratio: 1 / 1;
+    max-height: min(420px, 52vh);
+  }
+
+  .originCopy {
+    grid-area: copy;
   }
 }
 

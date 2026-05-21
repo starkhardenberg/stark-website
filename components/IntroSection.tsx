@@ -1,44 +1,58 @@
 import { mailtoKennismaking } from '@/lib/contact'
 import styles from './IntroSection.module.css'
 
+const manifestLines = [
+  {
+    lead: 'Vaste gezichten, korte lijnen.',
+    rest: 'Geen poespas.',
+  },
+  {
+    lead: 'Trainen, coachen, of een combinatie.',
+    rest: 'Jij bepaalt.',
+  },
+  {
+    lead: 'We doen wat werkt.',
+    rest: 'Je krijgt een schop onder je kont én we houden je hand vast.',
+  },
+  {
+    lead: 'Sterk in lijf en hoofd.',
+    rest: 'Klaar voor wat er op je pad komt.',
+  },
+  {
+    lead: 'Het begint met een gesprek.',
+    rest: 'Eerst elkaar leren kennen, dan kijken we verder.',
+  },
+]
+
 export default function IntroSection() {
   return (
     <section className={styles.intro} aria-label="Introductie STARK!">
       <div className={styles.inner}>
-        <div className={styles.headingBlock}>
-          <p className={styles.label}>Wi&apos;j bint STARK</p>
+        <div className={styles.manifest}>
+          <div className={styles.headingCol}>
+            <p className={styles.label}>Wi&apos;j bint STARK</p>
+            <h2 className={styles.heading}>Wij doen het anders.</h2>
+          </div>
 
-          <h2 className={styles.heading}>
-            <span className={styles.lead}>Wij doen het anders.</span>
-          </h2>
-        </div>
+          <div className={styles.copyCol}>
+            <ul className={styles.lines}>
+              {manifestLines.map((line) => (
+                <li key={line.lead} className={styles.line}>
+                  <p className={styles.lineLead}>{line.lead}</p>
+                  <p className={styles.lineRest}>{line.rest}</p>
+                </li>
+              ))}
+            </ul>
 
-        <p className={styles.body}>
-          Geen standaard sportschool. Geen quick fix. Wel vaste gezichten, korte lijnen en een aanpak zonder
-          poespas.
-        </p>
-
-        <p className={styles.body}>
-          Wij geloven dat trainen en coaching onlosmakelijk samengaan — en zijn eigenwijs genoeg om te doen wat écht
-          werkt.
-        </p>
-
-        <p className={styles.body}>
-          Een schop onder je kont, terwijl we je hand vasthouden. Consequent en met volle overtuiging. Zo bouwen we
-          sterke mensen — in lijf én hoofd.
-        </p>
-
-        <p className={styles.body}>
-          Nieuwsgierig naar meer? Het begint altijd met een gesprek. Want elkaar leren kennen, dát is het startpunt.
-        </p>
-
-        <div className={styles.ctaRow}>
-          <a href={mailtoKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
-            Plan een kennismaking
-          </a>
-          <a href="#aanbod" className={styles.cta}>
-            Bekijk de routes
-          </a>
+            <div className={styles.ctaRow}>
+              <a href={mailtoKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
+                Plan een kennismaking
+              </a>
+              <a href="#aanbod" className={styles.cta}>
+                Bekijk de routes
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

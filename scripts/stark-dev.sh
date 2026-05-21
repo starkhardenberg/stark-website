@@ -16,7 +16,7 @@ export CHOKIDAR_USEPOLLING="${CHOKIDAR_USEPOLLING:-1}"
 export WATCHPACK_POLLING="${WATCHPACK_POLLING:-true}"
 
 if [ "${NEXT_USE_TURBOPACK:-0}" = "1" ]; then
-  exec npx next dev --turbo -p "$PORT"
+  exec npx next dev --turbo -H 127.0.0.1 -p "$PORT"
 else
-  exec npx next dev -p "$PORT"
+  exec npx next dev -H 127.0.0.1 -p "$PORT"
 fi

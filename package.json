@@ -7,15 +7,20 @@
     "dev": "bash scripts/stark-dev.sh",
     "dev:turbo": "NEXT_USE_TURBOPACK=1 bash scripts/stark-dev.sh",
     "dev:clean": "npm run clean && npm run dev",
-    "dev:auto": "next dev",
+    "dev:auto": "next dev -H 127.0.0.1 -p 3456",
     "build": "next build",
     "start": "next start",
     "start:3456": "next start -p 3456",
     "open:site": "open http://127.0.0.1:3456/#aanbod",
-    "open:trainen": "open http://127.0.0.1:3456/#trainen",
-    "open:home": "open http://127.0.0.1:3456/"
+    "open:home": "open http://127.0.0.1:3456/",
+    "open:home-trainen": "open http://127.0.0.1:3456/#trainen",
+    "open:trainen": "open http://127.0.0.1:3456/trainen",
+    "open:coaching": "open http://127.0.0.1:3456/coaching",
+    "open:zakelijk": "open http://127.0.0.1:3456/zakelijk",
+    "open:team": "open http://127.0.0.1:3456/team"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
     "next": "^14.2.29",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

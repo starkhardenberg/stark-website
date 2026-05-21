@@ -3,16 +3,15 @@ import { mailtoKennismaking } from '@/lib/contact'
 import Image from 'next/image'
 import LandingFooter from '@/components/landing/LandingFooter'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
-import { trainenCards } from '@/components/landing/landing-cards'
+import { coachingCards } from '@/components/landing/landing-cards'
 import styles from '../landing.module.css'
 
 export const metadata = {
-  title: 'Trainen — STARK! Hardenberg',
-  description:
-    'Groepslessen met coaching voor volwassenen, ZilverFitness en Kids & Teens. Start waar jij staat, met techniek en veiligheid voorop.',
+  title: 'Coaching — STARK! Hardenberg',
+  description: 'Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar.',
 }
 
-export default function TrainenPage() {
+export default function CoachingPage() {
   return (
     <main className={styles.main}>
       <nav className={styles.nav}>
@@ -27,33 +26,36 @@ export default function TrainenPage() {
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <Image
-            src="/images/foto-trainen-landingspagina.png"
-            alt="Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg"
+            src="/images/foto-coaching-impact.png"
+            alt="Coachingsgesprek bij STARK! Hardenberg"
             fill
             className={`${styles.heroBgImg} ${styles.heroBgImgTrainen}`}
             sizes="100vw"
             priority
-            style={{ objectPosition: 'center center' }}
+            style={{ objectPosition: 'center 7%' }}
           />
         </div>
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
-            <span className={styles.heroLead}>TRAINEN</span>
+            <span className={styles.heroLead}>COACHING</span>
             <span className={styles.heroPunch}>BIJ STARK</span>
           </h1>
           <p className={styles.heroSub}>
-            Echt trainen, echt resultaat, echte mensen.
+            Een helder hoofd. Een lijf dat aankan wat je vraagt.
           </p>
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
-        <span className={styles.label}>Welke groep past bij jou?</span>
-        <h2 className={styles.title}>WE ZIJN ER VOOR IEDEREEN</h2>
+        <span className={styles.label}>Welk traject past bij?</span>
+        <h2 className={styles.title}>VAN EERSTE STAP TOT DIEPE VERANDERING</h2>
+        <p className={styles.body}>
+          Hieronder vind je per traject wat we aanbieden en hoe je start.
+        </p>
         <div className={`${styles.resultGrid} ${styles.resultGridPhotos}`}>
-          {trainenCards.map((card) => (
+          {coachingCards.map((card) => (
             <LandingServiceCard key={card.title} {...card} />
           ))}
         </div>
@@ -63,25 +65,25 @@ export default function TrainenPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Zo werkt het</span>
-            <h2 className={styles.title}>MEER DAN EEN GYM</h2>
+            <h2 className={styles.title}>TYPISCH STARK</h2>
             <ul className={styles.featureTiles}>
               <li>
-                <span>Groepen waar iedereen elkaar kent.</span>
+                <span>Lijf en hoofd versterken elkaar.</span>
               </li>
               <li>
-                <span>Elke training op jouw eigen niveau.</span>
+                <span>Geen snelle fixes. Wel eerlijke stappen.</span>
               </li>
               <li>
-                <span>Altijd begeleiding tijdens je les.</span>
+                <span>Patronen herkennen voordat je ze doorbreekt.</span>
               </li>
               <li>
-                <span>Echte coaching op techniek en uitvoering.</span>
+                <span>Fysieke training en coaching in één lijn.</span>
               </li>
               <li>
-                <span>Trainers die blijven investeren in hun eigen ontwikkeling.</span>
+                <span>Coaches die jouw verhaal kennen en bijhouden.</span>
               </li>
               <li>
-                <span>Consistentie = resultaat. Sterker, fitter, beter voorbereid.</span>
+                <span>Blijvende verandering. Niet alleen tijdens het traject.</span>
               </li>
             </ul>
           </div>
