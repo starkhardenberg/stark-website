@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { mailtoKennismaking } from '@/lib/contact'
+import { hrefCoaching } from '@/lib/contact'
 import Image from 'next/image'
 import LandingFooter from '@/components/landing/LandingFooter'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
@@ -18,8 +18,8 @@ export default function CoachingPage() {
         <Link href="/#aanbod" className={styles.navBack}>
           ← Terug naar STARK!
         </Link>
-        <Link href={mailtoKennismaking} className={styles.navCta}>
-          Plan een kennismaking
+        <Link href={hrefCoaching} className={styles.navCta}>
+          Kom kennismaken
         </Link>
       </nav>
 

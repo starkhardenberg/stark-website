@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { mailtoKennismaking } from '@/lib/contact'
+import { hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
 import navStyles from '../landing.module.css'
 import styles from './team.module.css'
@@ -42,7 +42,7 @@ export default function TeamPage() {
 
       <nav className={navStyles.nav}>
         <Link href="/#over" className={navStyles.navBack}>← Terug naar STARK!</Link>
-        <Link href={mailtoKennismaking} className={navStyles.navCta}>Plan een kennismaking</Link>
+        <Link href={hrefKennismaking} className={navStyles.navCta}>Kom kennismaken</Link>
       </nav>
 
       {/* Hero */}
@@ -178,7 +178,7 @@ export default function TeamPage() {
         <p className={navStyles.ctaSub}>
           Plan een vrijblijvend kennismakingsgesprek. We kijken samen wat het beste bij je past.
         </p>
-        <Link href={mailtoKennismaking} className={navStyles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={hrefKennismaking} className={navStyles.ctaBtn}>Kom kennismaken</Link>
       </section>
 
     </main>

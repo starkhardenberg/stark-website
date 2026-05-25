@@ -24,10 +24,22 @@ export default function OverSection() {
           </h2>
 
           <p className={styles.body}>
-            Wij zijn het team van STARK! Hardenberg. Negen trainers die stuk voor stuk begonnen als lid&nbsp;&mdash; zelf de weg gelopen die jij nu maakt. We hebben ze opgeleid door een intensieve interne opleiding: theorie, stage, opdrachten en feedback. Want we wilden mensen om ons heen die de aanpak kennen, niet omdat ze het gelezen hebben, maar omdat ze het gevoeld hebben.
+            Wij zijn het team van STARK! Hardenberg.
           </p>
           <p className={styles.body}>
-            We werken klein en persoonlijk. Korte lijntjes, vaste gezichten, altijd een coach die jou kent. Geen zaaltje vol apparaten waar je het zelf maar uitzoekt. Een schop onder je kont, terwijl we je hand vasthouden.
+            Negen trainers die stuk voor stuk ooit gestart zijn in één van onze coachingprogramma&apos;s of als sportend lid. Hierdoor heeft het team onze aanpak aan den lijve ervaren en weten ze hoe het is om te starten, omdat ze ooit zelf op dat punt stonden.
+          </p>
+          <p className={styles.body}>
+            Onze trainers zijn intern opgeleid: theorie, stage, opdrachten en feedback. Zodat ze de STARK aanpak volledig eigen hebben gemaakt.
+          </p>
+          <p className={styles.body}>
+            Het draait om jou en jouw doel. Daarom houden we de lijntjes kort en checken we regelmatig bij je in. En is er altijd een vast gezicht dat weet waar je staat.
+          </p>
+          <p className={styles.body}>
+            Je komt hier voor jezelf, en toch doen we het samen. Hard werken, hard lachen gaan bij ons hand in hand.
+          </p>
+          <p className={styles.body}>
+            Wees welkom.
           </p>
 
           <a className={styles.link} href="/team">

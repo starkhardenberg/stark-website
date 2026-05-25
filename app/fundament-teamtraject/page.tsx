@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { mailtoKennismaking } from '@/lib/contact'
+import { hrefZakelijk } from '@/lib/contact'
 import Image from 'next/image'
 import styles from '../landing.module.css'
 
@@ -14,7 +14,7 @@ export default function FundamentTeamtrajectPage() {
 
       <nav className={styles.nav}>
         <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={mailtoKennismaking} className={styles.navCta}>Plan een kennismaking</Link>
+        <Link href={hrefZakelijk} className={styles.navCta}>Kom kennismaken</Link>
       </nav>
 
       {/* Hero */}
@@ -123,7 +123,7 @@ export default function FundamentTeamtrajectPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>VRAAG EEN OFFERTE AAN</h2>
         <p className={styles.ctaSub}>We denken graag met je mee.</p>
-        <Link href={mailtoKennismaking} className={styles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={hrefZakelijk} className={styles.ctaBtn}>Kom kennismaken</Link>
         <span className={styles.ctaNote}>We denken graag met je mee</span>
       </section>
 

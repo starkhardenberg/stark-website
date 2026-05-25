@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { mailtoInfo, mailtoKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking, mailtoInfo } from '@/lib/contact'
 import styles from './LandingFooter.module.css'
 
 export default function LandingFooter() {
@@ -23,8 +23,8 @@ export default function LandingFooter() {
         <span className={styles.contactText}>Nijverheidsstraat 15c, Hardenberg</span>
       </p>
 
-      <a href={mailtoKennismaking} className={styles.cta}>
-        Plan een kennismaking
+      <a href={hrefKennismaking} className={styles.cta}>
+        {CTA_KENNISMAKING_LABEL}
         <span aria-hidden>→</span>
       </a>
 

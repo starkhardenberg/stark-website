@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { mailtoKennismaking } from '@/lib/contact'
 import styles from './not-found.module.css'
 
 export default function NotFound() {
@@ -10,8 +9,9 @@ export default function NotFound() {
           <Image
             src="/images/stark_logo_wit.png"
             alt="STARK!"
-            width={100}
-            height={32}
+            width={200}
+            height={64}
+            priority
             className={styles.logo}
           />
         </a>
@@ -21,27 +21,23 @@ export default function NotFound() {
         <p className={styles.label}>404</p>
 
         <h1 className={styles.heading}>
-          <span className={styles.lead}>Verkeerd</span>
-          <span className={styles.punch}>ingestapt.</span>
+          Deze pagina heeft een blessure.
         </h1>
 
         <p className={styles.sub}>
-          Deze pagina bestaat niet. Maar een sterk lijf en een helder hoofd&nbsp;&mdash; die bestaan wel. Terug naar de plek waar het gebeurt.
+          Niks aan de hand, even terug naar de basis.
         </p>
 
         <div className={styles.ctas}>
           <a className={styles.btnPrimary} href="/">
             Terug naar home
           </a>
-          <a className={styles.btnSecondary} href={mailtoKennismaking}>
-            Plan een kennismaking
-          </a>
         </div>
       </div>
 
       <div className={styles.anchorShell}>
         <span>STARK! Hardenberg</span>
-        <div className={styles.anchor} />
+        <div className={styles.anchor} aria-hidden="true" />
         <span>Nijverheidsstraat 15c</span>
       </div>
     </main>

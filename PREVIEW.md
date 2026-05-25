@@ -33,6 +33,7 @@ De server luistert nu **alleen op IPv4** `127.0.0.1:3456`. Gebruik daarom **exac
 | Coaching  | http://127.0.0.1:3456/coaching |
 | Zakelijk  | http://127.0.0.1:3456/zakelijk |
 | Team      | http://127.0.0.1:3456/team |
+| 404       | http://127.0.0.1:3456/pagina-bestaat-niet (elke onbestaande URL werkt ook) |
 
 Of met script (tweede terminal, terwijl `dev` draait):
 

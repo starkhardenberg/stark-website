@@ -1,0 +1,134 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+}
+
+.viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 0 8px;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(14px, 2.5vw, 22px);
+  width: max-content;
+  padding: 0 clamp(24px, 8vw, 48px);
+}
+
+.slide {
+  flex: 0 0 min(86vw, 400px);
+  scroll-snap-align: center;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.slideIdle {
+  opacity: 0.5;
+  transform: scale(0.94);
+}
+
+.slideIdle > * {
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dot,
+.dotActive {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.22);
+  transition:
+    width 0.25s ease,
+    background 0.2s ease;
+}
+
+.dot {
+  width: 20px;
+}
+
+.dot:hover {
+  background: rgba(234, 92, 31, 0.55);
+}
+
+.dotActive {
+  width: 40px;
+  background: var(--orange);
+}
+
+.dot:focus-visible,
+.dotActive:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    gap: 32px;
+  }
+
+  .slide {
+    flex: 0 0 min(42vw, 420px);
+  }
+
+  .track {
+    padding: 0 clamp(32px, 12vw, 120px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    scroll-behavior: auto;
+  }
+
+  .slide {
+    transition: none;
+  }
+
+  .slideIdle {
+    opacity: 0.65;
+    transform: none;
+  }
+}

@@ -74,7 +74,7 @@ Styling:
 
 ## Nog niet gedaan / open
 
-- **404-pagina** (eerst richting vragen: humor / positionering / mini-funnel)
+- **404-pagina** — blessure-copy + één CTA (`app/not-found.tsx`)
 - Subpagina’s momentum, impact, fundament-*: nog oude layout, geen menukaart-patroon
 - Netlify: bevestigen dat auto-deploy na GitHub-push werkt
 

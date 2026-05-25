@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { mailtoKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import styles from './RouteCarousel.module.css'
 
 export interface RouteOption {
@@ -110,8 +110,8 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
             <div className={styles.modalBody}>
               <p className={styles.modalTitle}>{selected.title}</p>
               <p className={styles.modalDesc}>{selected.desc}</p>
-              <a className={styles.modalCta} href={mailtoKennismaking} onClick={() => setSelected(null)}>
-                Plan een kennismaking
+              <a className={styles.modalCta} href={hrefKennismaking} onClick={() => setSelected(null)}>
+                {CTA_KENNISMAKING_LABEL}
               </a>
             </div>
             <button className={styles.modalClose} onClick={() => setSelected(null)} aria-label="Sluiten">

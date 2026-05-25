@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { mailtoKennismaking } from '@/lib/contact'
+import { hrefTrainen } from '@/lib/contact'
 import Image from 'next/image'
 import styles from '../landing.module.css'
 
@@ -14,7 +14,7 @@ export default function LidmaatschapVolwassenenPage() {
 
       <nav className={styles.nav}>
         <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={mailtoKennismaking} className={styles.navCta}>Plan een kennismaking</Link>
+        <Link href={hrefTrainen} className={styles.navCta}>Kom kennismaken</Link>
       </nav>
 
       {/* Hero */}
@@ -150,7 +150,7 @@ export default function LidmaatschapVolwassenenPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>KLAAR OM TE BEGINNEN?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking. We kijken samen wat bij jou past.</p>
-        <Link href={mailtoKennismaking} className={styles.ctaBtn}>Plan een kennismaking</Link>
+        <Link href={hrefTrainen} className={styles.ctaBtn}>Kom kennismaken</Link>
         <span className={styles.ctaNote}>Geen verplichtingen — gewoon een gesprek</span>
       </section>
 

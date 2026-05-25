@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contactformulier STARK</title>
+  </head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden"><label>Laat dit veld leeg: <input name="bot-field" /></label></p>
+      <input type="text" name="naam" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefoon" />
+      <select name="onderwerp">
+        <option value="kennismaking">Kennismakingsgesprek</option>
+        <option value="trainen">Trainen</option>
+        <option value="coaching">Coaching</option>
+        <option value="zakelijk">Zakelijk</option>
+        <option value="anders">Anders</option>
+      </select>
+      <textarea name="bericht"></textarea>
+    </form>
+  </body>
+</html>

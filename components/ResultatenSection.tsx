@@ -1,18 +1,8 @@
-'use client'
-
-import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import QuoteCard from './QuoteCard'
+import RotatingTestimonials, { type Testimonial } from './RotatingTestimonials'
 import styles from './ResultatenSection.module.css'
 
-type Card = {
-  id: string
-  text: string
-  name: string
-  context: string
-}
-
-const cards: Card[] = [
+const cards: Testimonial[] = [
   {
     id: 'eva-1',
     text: 'Ik ben de fijnste versie van mezelf. Het is het beste cadeau aan jezelf.',
@@ -57,40 +47,7 @@ const cards: Card[] = [
   },
 ]
 
-function usePerPage() {
-  const [perPage, setPerPage] = useState(1)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 900px)')
-    const update = () => setPerPage(mq.matches ? 3 : 1)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-
-  return perPage
-}
-
 export default function ResultatenSection() {
-  const perPage = usePerPage()
-  const totalPages = Math.max(1, Math.ceil(cards.length / perPage))
-  const [page, setPage] = useState(0)
-
-  useEffect(() => {
-    setPage((p) => Math.min(p, totalPages - 1))
-  }, [totalPages])
-
-  const goPrev = useCallback(() => {
-    setPage((p) => Math.max(0, p - 1))
-  }, [])
-
-  const goNext = useCallback(() => {
-    setPage((p) => Math.min(totalPages - 1, p + 1))
-  }, [totalPages])
-
-  const start = page * perPage
-  const visible = cards.slice(start, start + perPage)
-
   return (
     <section className={styles.resultaten} id="resultaten">
       <div className={styles.inner}>
@@ -121,39 +78,8 @@ export default function ResultatenSection() {
           </div>
         </figure>
 
-        <div
-          className={styles.carousel}
-          role="region"
-          aria-roledescription="carrousel"
-          aria-label="Korte testimonials"
-        >
-          <button
-            type="button"
-            className={styles.arrowBtn}
-            onClick={goPrev}
-            disabled={page <= 0}
-            aria-controls="testimonial-cards-panel"
-            aria-label="Vorige testimonials"
-          >
-            ‹
-          </button>
-
-          <div className={styles.grid} id="testimonial-cards-panel">
-            {visible.map((card) => (
-              <QuoteCard key={card.id} text={card.text} name={card.name} context={card.context} />
-            ))}
-          </div>
-
-          <button
-            type="button"
-            className={styles.arrowBtn}
-            onClick={goNext}
-            disabled={page >= totalPages - 1}
-            aria-controls="testimonial-cards-panel"
-            aria-label="Volgende testimonials"
-          >
-            ›
-          </button>
+        <div className={styles.testimonials}>
+          <RotatingTestimonials items={cards} />
         </div>
       </div>
     </section>

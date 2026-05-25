@@ -1,4 +1,4 @@
-import { mailtoKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import styles from './IntroSection.module.css'
 
 const manifestLines = [
@@ -45,8 +45,8 @@ export default function IntroSection() {
             </ul>
 
             <div className={styles.ctaRow}>
-              <a href={mailtoKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
-                Plan een kennismaking
+              <a href={hrefKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
+                {CTA_KENNISMAKING_LABEL}
               </a>
               <a href="#aanbod" className={styles.cta}>
                 Bekijk de routes

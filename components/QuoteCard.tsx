@@ -4,11 +4,12 @@ interface QuoteCardProps {
   text: string
   name: string
   context: string
+  active?: boolean
 }
 
-export default function QuoteCard({ text, name, context }: QuoteCardProps) {
+export default function QuoteCard({ text, name, context, active = false }: QuoteCardProps) {
   return (
-    <figure className={styles.card}>
+    <figure className={`${styles.card} ${active ? styles.cardActive : ''}`}>
       <blockquote className={styles.quote}>
         <p>{text}</p>
       </blockquote>

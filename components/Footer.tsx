@@ -1,4 +1,4 @@
-import { mailtoInfo, mailtoKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, mailtoInfo, hrefKennismaking } from '@/lib/contact'
 import styles from './Footer.module.css'
 
 const year = new Date().getFullYear()
@@ -9,8 +9,8 @@ export default function Footer() {
       <div className={styles.inner}>
         <p className={styles.welcome}>Wees welkom.</p>
 
-        <a href={mailtoKennismaking} className={styles.cta}>
-          Plan een kennismaking
+        <a href={hrefKennismaking} className={styles.cta}>
+          {CTA_KENNISMAKING_LABEL}
           <span aria-hidden>→</span>
         </a>
 

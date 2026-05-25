@@ -1,0 +1,151 @@
+'use client'
+
+import { useEffect, useState, type FormEvent } from 'react'
+import {
+  CONTACT_ONDERWERP_OPTIONS,
+  type ContactOnderwerp,
+} from '@/lib/contact'
+import styles from './ContactForm.module.css'
+
+type Props = {
+  initialOnderwerp: ContactOnderwerp
+}
+
+function encodeFormBody(data: Record<string, string>) {
+  return new URLSearchParams(data).toString()
+}
+
+export default function ContactForm({ initialOnderwerp }: Props) {
+  const [onderwerp, setOnderwerp] = useState<ContactOnderwerp>(initialOnderwerp)
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  useEffect(() => {
+    setOnderwerp(initialOnderwerp)
+  }, [initialOnderwerp])
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setStatus('submitting')
+
+    const form = event.currentTarget
+    const data = new FormData(form)
+
+    const body = encodeFormBody({
+      'form-name': 'contact',
+      naam: String(data.get('naam') ?? ''),
+      email: String(data.get('email') ?? ''),
+      telefoon: String(data.get('telefoon') ?? ''),
+      onderwerp: String(data.get('onderwerp') ?? ''),
+      bericht: String(data.get('bericht') ?? ''),
+    })
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+
+      if (!res.ok) throw new Error('submit failed')
+      setStatus('success')
+      form.reset()
+      setOnderwerp(initialOnderwerp)
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div className={styles.success} role="status">
+        <p className={styles.successTitle}>Bedankt.</p>
+        <p className={styles.successText}>
+          We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen? 06 21248107.
+        </p>
+        <a href="/" className={styles.successLink}>
+          Terug naar home
+        </a>
+      </div>
+    )
+  }
+
+  return (
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
+      className={styles.form}
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
+      <p className={styles.honeypot}>
+        <label>
+          Laat dit veld leeg
+          <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
+
+      <div className={styles.field}>
+        <label htmlFor="naam">Naam</label>
+        <input id="naam" name="naam" type="text" required autoComplete="name" />
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor="email">E-mail</label>
+        <input id="email" name="email" type="email" required autoComplete="email" />
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor="telefoon">Telefoon</label>
+        <input
+          id="telefoon"
+          name="telefoon"
+          type="tel"
+          required
+          autoComplete="tel"
+          inputMode="tel"
+        />
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor="onderwerp">Waar ben je naar op zoek?</label>
+        <select
+          id="onderwerp"
+          name="onderwerp"
+          required
+          value={onderwerp}
+          onChange={(e) => setOnderwerp(e.target.value as ContactOnderwerp)}
+        >
+          {CONTACT_ONDERWERP_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className={styles.field}>
+        <label htmlFor="bericht">
+          Bericht <span className={styles.optional}>(optioneel)</span>
+        </label>
+        <textarea id="bericht" name="bericht" rows={4} />
+      </div>
+
+      <p className={styles.privacy}>
+        We gebruiken je gegevens alleen om contact met je op te nemen.
+      </p>
+
+      {status === 'error' && (
+        <p className={styles.error} role="alert">
+          Er ging iets mis. Probeer het opnieuw of bel ons op 06 21248107.
+        </p>
+      )}
+
+      <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
+        {status === 'submitting' ? 'Versturen…' : 'Verstuur je aanvraag'}
+      </button>
+    </form>
+  )
+}

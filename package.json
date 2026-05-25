@@ -17,7 +17,10 @@
     "open:trainen": "open http://127.0.0.1:3456/trainen",
     "open:coaching": "open http://127.0.0.1:3456/coaching",
     "open:zakelijk": "open http://127.0.0.1:3456/zakelijk",
-    "open:team": "open http://127.0.0.1:3456/team"
+    "open:team": "open http://127.0.0.1:3456/team",
+    "open:404": "open http://127.0.0.1:3456/pagina-bestaat-niet",
+    "open:resultaten": "open http://127.0.0.1:3456/#resultaten",
+    "open:contact": "open http://127.0.0.1:3456/contact"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

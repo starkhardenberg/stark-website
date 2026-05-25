@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div className={styles.copy}>
           <h1 className={styles.headline}>
             <span className={styles.lead}>Wij<br />bouwen</span>
-            <span className={styles.punch}>sterke mensen.</span>
+            <span className={styles.punch}>starke mensen.</span>
           </h1>
 
           <p className={styles.sub}>Fysiek én mentaal.</p>

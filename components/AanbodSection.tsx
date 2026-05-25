@@ -1,6 +1,6 @@
 import AanbodFeatureCard from './aanbod/AanbodFeatureCard'
 import { aanbodTracks } from './aanbod/aanbod-tracks'
-import { mailtoKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import styles from './AanbodSection.module.css'
 
 export default function AanbodSection() {
@@ -15,24 +15,25 @@ export default function AanbodSection() {
             Drie routes, één vertrekpunt: sterker worden in lijf en hoofd.
           </p>
         </div>
-        <div className={styles.grid}>
-          {aanbodTracks.map((track) => (
-            <AanbodFeatureCard key={track.id} track={track} />
-          ))}
-        </div>
+        <div className={styles.cardsAndCta}>
+          <AanbodFeatureCard track={aanbodTracks[0]} />
+          <AanbodFeatureCard track={aanbodTracks[1]} />
 
-        <div className={styles.sectionCta}>
-          <p className={styles.sectionCtaText}>
-            <span className={styles.sectionCtaLead}>
-              Twijfel je tussen trainen, coaching of zakelijk?
-            </span>
-            <span className={styles.sectionCtaSub}>
-              Mooi. Dan hebben we iets om over te praten.
-            </span>
-          </p>
-          <a href={mailtoKennismaking} className={styles.sectionCtaButton}>
-            Kom kennismaken
-          </a>
+          <div className={styles.sectionCta}>
+            <p className={styles.sectionCtaText}>
+              <span className={styles.sectionCtaLead}>
+                Twijfel je tussen trainen, coaching of zakelijk?
+              </span>
+              <span className={styles.sectionCtaSub}>
+                Mooi. Dan hebben we iets om over te praten.
+              </span>
+            </p>
+            <a href={hrefKennismaking} className={styles.sectionCtaButton}>
+              {CTA_KENNISMAKING_LABEL}
+            </a>
+          </div>
+
+          <AanbodFeatureCard track={aanbodTracks[2]} />
         </div>
       </div>
     </section>
