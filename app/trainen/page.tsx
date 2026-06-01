@@ -66,22 +66,22 @@ export default function TrainenPage() {
             <h2 className={styles.title}>MEER DAN EEN GYM</h2>
             <ul className={styles.featureTiles}>
               <li>
-                <span>Groepen waar iedereen elkaar kent.</span>
+                <span>Je start waar jij staat, op je eigen niveau.</span>
               </li>
               <li>
-                <span>Elke training op jouw eigen niveau.</span>
+                <span>Onze trainers begonnen zelf als lid.</span>
               </li>
               <li>
-                <span>Altijd begeleiding tijdens je les.</span>
+                <span>Coaching die je techniek én je kop scherp houdt.</span>
               </li>
               <li>
-                <span>Echte coaching op techniek en uitvoering.</span>
+                <span>Functioneel sterk worden, geen apparaten op een rij.</span>
               </li>
               <li>
-                <span>Trainers die blijven investeren in hun eigen ontwikkeling.</span>
+                <span>Je komt voor jezelf, je blijft voor de groep.</span>
               </li>
               <li>
-                <span>Consistentie = resultaat. Sterker, fitter, beter voorbereid.</span>
+                <span>Hard werken, hard lachen. Al sinds 2013.</span>
               </li>
             </ul>
           </div>

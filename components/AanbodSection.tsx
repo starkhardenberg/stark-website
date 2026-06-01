@@ -18,22 +18,22 @@ export default function AanbodSection() {
         <div className={styles.cardsAndCta}>
           <AanbodFeatureCard track={aanbodTracks[0]} />
           <AanbodFeatureCard track={aanbodTracks[1]} />
-
-          <div className={styles.sectionCta}>
-            <p className={styles.sectionCtaText}>
-              <span className={styles.sectionCtaLead}>
-                Twijfel je tussen trainen, coaching of zakelijk?
-              </span>
-              <span className={styles.sectionCtaSub}>
-                Mooi. Dan hebben we iets om over te praten.
-              </span>
-            </p>
-            <a href={hrefKennismaking} className={styles.sectionCtaButton}>
-              {CTA_KENNISMAKING_LABEL}
-            </a>
-          </div>
-
           <AanbodFeatureCard track={aanbodTracks[2]} />
+
+          <figure className={styles.sectionCta}>
+            <blockquote className={styles.sectionCtaQuote}>
+              <p>Twijfel je tussen trainen, coaching of zakelijk?</p>
+            </blockquote>
+            <figcaption className={styles.sectionCtaCite}>
+              <p className={styles.sectionCtaSub}>
+                Mooi. Dan hebben we iets om over te praten.
+              </p>
+              <a href={hrefKennismaking} className={styles.sectionCtaButton}>
+                {CTA_KENNISMAKING_LABEL}
+                <span aria-hidden>→</span>
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

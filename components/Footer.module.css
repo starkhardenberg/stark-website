@@ -56,13 +56,25 @@
 }
 
 .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
   margin: 0;
-  max-width: 52ch;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 600;
   line-height: 1.55;
   color: rgba(33, 36, 49, 0.78);
+}
+
+.contactRow,
+.contactAddress {
+  margin: 0;
+}
+
+.contactRow {
+  white-space: nowrap;
 }
 
 .contactLink {
@@ -75,7 +87,7 @@
   color: var(--off);
 }
 
-.contactText {
+.contactAddress {
   color: rgba(33, 36, 49, 0.78);
 }
 
@@ -105,15 +117,11 @@
 }
 
 @media (max-width: 520px) {
-  .contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    max-width: none;
-  }
-
   .sep {
     display: none;
+  }
+
+  .contactRow {
+    white-space: normal;
   }
 }

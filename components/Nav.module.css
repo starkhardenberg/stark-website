@@ -54,24 +54,80 @@
   background: var(--orange-deep);
 }
 
-.menu {
+.tabBar {
   display: none;
-  gap: 32px;
-  align-items: center;
 }
 
-.menu a {
+.tabList {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0;
+  padding: 0 0 0;
+  list-style: none;
+  border-bottom: 2px solid rgba(245, 245, 245, 0.14);
+}
+
+.tabItem,
+.tabItemActive {
+  margin: 0;
+  padding: 0;
+}
+
+.tabLink {
+  position: relative;
+  display: block;
+  padding: 10px 16px 11px;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(245, 245, 245, 0.62);
+  background: rgba(33, 36, 49, 0.55);
+  border: 1px solid rgba(245, 245, 245, 0.1);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.2s ease;
+}
+
+.tabLink:hover {
   color: var(--off);
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.01em;
-  padding: 4px 0;
-  transition: color 0.18s;
-  border-bottom: 1px solid transparent;
+  background: rgba(33, 36, 49, 0.75);
+  border-color: rgba(245, 245, 245, 0.18);
 }
 
-.menu a:hover {
-  color: var(--orange);
+.tabItemActive .tabLink {
+  color: var(--navy);
+  background: var(--off);
+  border-color: rgba(245, 245, 245, 0.35);
+  transform: translateY(-5px);
+  padding-bottom: 15px;
+  box-shadow:
+    0 -6px 16px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(245, 245, 245, 0.08);
+}
+
+.tabItemActive .tabLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 6px 6px 0 0;
+}
+
+.tabItemActive .tabLink:hover {
+  color: var(--navy);
+  background: var(--off);
 }
 
 .burger {
@@ -153,6 +209,10 @@
   color: var(--orange);
 }
 
+.mobileTabActive {
+  color: var(--orange) !important;
+}
+
 .mobileCta {
   display: inline-block;
   margin-top: 28px;
@@ -192,8 +252,8 @@
     letter-spacing: 0.18em;
   }
 
-  .menu {
-    display: flex;
+  .tabBar {
+    display: block;
   }
 
   .burger {
@@ -202,5 +262,15 @@
 
   .mobileMenu {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabItemActive .tabLink {
+    transform: none;
+  }
+
+  .tabLink {
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   }
 }

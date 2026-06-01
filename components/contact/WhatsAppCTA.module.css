@@ -1,0 +1,327 @@
+.panel {
+  --navy: #212431;
+  --off: #f5f5f5;
+  --orange: #ea5c1f;
+  --slate: #4f5d75;
+  --wa-accent: #ea5c1f;
+  --wa-accent-hover: #c44715;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(22px, 4vw, 28px);
+  background: linear-gradient(145deg, #f9f2ee 0%, #f5f5f5 48%, #ffffff 100%);
+  border: 1px solid rgba(33, 36, 49, 0.14);
+  border-left: 4px solid var(--orange);
+  border-radius: 6px;
+}
+
+.panelEmbedded {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.panelAside {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.panelAside .preview {
+  margin-bottom: 18px;
+  color: var(--off);
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: var(--orange);
+  box-shadow: none;
+}
+
+.panelAside .previewLabel {
+  color: rgba(245, 245, 245, 0.55);
+}
+
+.panelAside .btn {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--off);
+  box-shadow: 0 6px 24px rgba(234, 92, 31, 0.28);
+}
+
+.panelAside .btn:hover {
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
+}
+
+.panelAside .btnIcon {
+  color: var(--off);
+}
+
+.panelAside .number {
+  margin-top: 12px;
+  text-align: left;
+  color: rgba(245, 245, 245, 0.55);
+}
+
+.panelAside .number strong {
+  color: var(--off);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-display), 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 4.5vw, 28px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.desc {
+  margin: 0 0 16px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--slate);
+  max-width: 36ch;
+}
+
+.preview {
+  margin: 0 0 20px;
+  padding: 12px 14px 12px 16px;
+  font-family: var(--font-quote), 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--navy);
+  background: #fff;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 2px 12px rgba(33, 36, 49, 0.06);
+}
+
+.previewLabel {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--navy);
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(33, 36, 49, 0.22);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.btn:hover {
+  color: #fff;
+  background: #2d3142;
+  border-color: #2d3142;
+  box-shadow: 0 6px 20px rgba(33, 36, 49, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.btnIcon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--wa-accent);
+}
+
+.number {
+  margin: 14px 0 0;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 13px;
+  color: var(--slate);
+  text-align: center;
+}
+
+.number strong {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* Horizontale snel-balk (optie 1 contactpagina) */
+.strip {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding: clamp(18px, 3vw, 22px) clamp(18px, 3vw, 24px);
+  background: linear-gradient(135deg, #2d3142 0%, var(--navy) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--orange);
+  border-radius: 8px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+}
+
+.stripText {
+  min-width: 0;
+}
+
+.stripLabel {
+  margin: 0 0 6px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.stripDesc {
+  margin: 0;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.78);
+  max-width: 42ch;
+}
+
+.stripNumber {
+  margin: 8px 0 0;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(245, 245, 245, 0.55);
+}
+
+.stripBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 14px 20px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--off);
+  background: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 4px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.stripBtn:hover {
+  color: var(--off);
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
+  transform: translateY(-1px);
+}
+
+.stripBtn:focus-visible {
+  outline: 2px solid var(--off);
+  outline-offset: 3px;
+}
+
+.stripBtnIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 520px) {
+  .strip {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .stripBtn {
+    align-self: center;
+  }
+}
+
+/* Compacte variant (footer contactpagina) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-body), 'Work Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: var(--navy);
+  border-radius: 4px;
+  border: 1px solid var(--navy);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.pill:hover {
+  color: #fff;
+  background: #2d3142;
+  border-color: #2d3142;
+  transform: translateY(-1px);
+}
+
+.pillIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--wa-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover,
+  .pill:hover,
+  .stripBtn:hover {
+    transform: none;
+  }
+}

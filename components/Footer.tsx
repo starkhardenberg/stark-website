@@ -14,21 +14,20 @@ export default function Footer() {
           <span aria-hidden>→</span>
         </a>
 
-        <p className={styles.contact}>
-          <a href="tel:+31621248107" className={styles.contactLink}>
-            06 21248107
-          </a>
-          <span className={styles.sep} aria-hidden>
-            ·
-          </span>
-          <a href={mailtoInfo} className={styles.contactLink}>
-            info@starkhardenberg.nl
-          </a>
-          <span className={styles.sep} aria-hidden>
-            ·
-          </span>
-          <span className={styles.contactText}>Nijverheidsstraat 15c, Hardenberg</span>
-        </p>
+        <div className={styles.contact}>
+          <p className={styles.contactRow}>
+            <a href="tel:+31621248107" className={styles.contactLink}>
+              06 21248107
+            </a>
+            <span className={styles.sep} aria-hidden>
+              ·
+            </span>
+            <a href={mailtoInfo} className={styles.contactLink}>
+              info@starkhardenberg.nl
+            </a>
+          </p>
+          <p className={styles.contactAddress}>Nijverheidsstraat 15c Hardenberg</p>
+        </div>
 
         <p className={styles.meta}>
           &copy; {year} STARK! Hardenberg

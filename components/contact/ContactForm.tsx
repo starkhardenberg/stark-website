@@ -3,8 +3,14 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import {
   CONTACT_ONDERWERP_OPTIONS,
+  CONTACT_ONTDEKT_ANDERS,
+  CONTACT_ONTDEKT_VIA_LID,
+  CONTACT_ONTDEKT_OPTIONS,
+  PHONE_CALL,
   type ContactOnderwerp,
+  type ContactOntdekt,
 } from '@/lib/contact'
+import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import styles from './ContactForm.module.css'
 
 type Props = {
@@ -17,7 +23,11 @@ function encodeFormBody(data: Record<string, string>) {
 
 export default function ContactForm({ initialOnderwerp }: Props) {
   const [onderwerp, setOnderwerp] = useState<ContactOnderwerp>(initialOnderwerp)
+  const [ontdekt, setOntdekt] = useState<ContactOntdekt | ''>('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const vraagtNaamVia = ontdekt === CONTACT_ONTDEKT_VIA_LID
+  const vraagtAndersToelichting = ontdekt === CONTACT_ONTDEKT_ANDERS
 
   useEffect(() => {
     setOnderwerp(initialOnderwerp)
@@ -35,6 +45,9 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       naam: String(data.get('naam') ?? ''),
       email: String(data.get('email') ?? ''),
       telefoon: String(data.get('telefoon') ?? ''),
+      ontdekt: String(data.get('ontdekt') ?? ''),
+      ontdekt_via_naam: String(data.get('ontdekt_via_naam') ?? ''),
+      ontdekt_anders: String(data.get('ontdekt_anders') ?? ''),
       onderwerp: String(data.get('onderwerp') ?? ''),
       bericht: String(data.get('bericht') ?? ''),
     })
@@ -50,6 +63,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       setStatus('success')
       form.reset()
       setOnderwerp(initialOnderwerp)
+      setOntdekt('')
     } catch {
       setStatus('error')
     }
@@ -60,8 +74,12 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       <div className={styles.success} role="status">
         <p className={styles.successTitle}>Bedankt.</p>
         <p className={styles.successText}>
-          We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen? 06 21248107.
+          We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen?{' '}
+          {PHONE_CALL.display}.
         </p>
+        <WhatsAppLink className={styles.successWhatsApp}>
+          Of stuur een WhatsApp
+        </WhatsAppLink>
         <a href="/" className={styles.successLink}>
           Terug naar home
         </a>
@@ -76,7 +94,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
-      className={styles.form}
+      className={`${styles.form} ${styles.wrap}`}
     >
       <input type="hidden" name="form-name" value="contact" />
 
@@ -110,6 +128,53 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       </div>
 
       <div className={styles.field}>
+        <label htmlFor="ontdekt">Hoe heb je ons ontdekt?</label>
+        <select
+          id="ontdekt"
+          name="ontdekt"
+          required
+          value={ontdekt}
+          onChange={(e) => setOntdekt(e.target.value as ContactOntdekt | '')}
+        >
+          <option value="" disabled>
+            Kies een optie
+          </option>
+          {CONTACT_ONTDEKT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {vraagtNaamVia && (
+        <div className={`${styles.field} ${styles.fieldNested}`}>
+          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK!?</label>
+          <input
+            id="ontdekt_via_naam"
+            name="ontdekt_via_naam"
+            type="text"
+            required
+            autoComplete="name"
+            placeholder="Voornaam en achternaam"
+          />
+        </div>
+      )}
+
+      {vraagtAndersToelichting && (
+        <div className={`${styles.field} ${styles.fieldNested}`}>
+          <label htmlFor="ontdekt_anders">Hoe precies?</label>
+          <input
+            id="ontdekt_anders"
+            name="ontdekt_anders"
+            type="text"
+            required
+            placeholder="Bijv. via een flyer, podcast of buurthuis"
+          />
+        </div>
+      )}
+
+      <div className={styles.field}>
         <label htmlFor="onderwerp">Waar ben je naar op zoek?</label>
         <select
           id="onderwerp"
@@ -139,13 +204,18 @@ export default function ContactForm({ initialOnderwerp }: Props) {
 
       {status === 'error' && (
         <p className={styles.error} role="alert">
-          Er ging iets mis. Probeer het opnieuw of bel ons op 06 21248107.
+          Er ging iets mis. Probeer het opnieuw of bel ons op {PHONE_CALL.display}.
         </p>
       )}
 
-      <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-        {status === 'submitting' ? 'Versturen…' : 'Verstuur je aanvraag'}
-      </button>
+      <div className={styles.actions}>
+        <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
+          {status === 'submitting' ? 'Versturen…' : 'Verstuur je aanvraag'}
+        </button>
+        <a href="/#aanbod" className={styles.back}>
+          ← Terug naar home
+        </a>
+      </div>
     </form>
   )
 }

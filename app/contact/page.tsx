@@ -2,7 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import ContactForm from '@/components/contact/ContactForm'
-import { CTA_KENNISMAKING_LABEL, mailtoInfo, parseOnderwerp } from '@/lib/contact'
+import WhatsAppCTA from '@/components/contact/WhatsAppCTA'
+import {
+  CTA_KENNISMAKING_LABEL,
+  mailtoInfo,
+  parseOnderwerp,
+  PHONE_CALL,
+} from '@/lib/contact'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = {
@@ -31,27 +37,36 @@ export default function ContactPage({ searchParams }: PageProps) {
             priority
           />
         </Link>
-        <Link href="/" className={styles.back}>
+        <a href="/#aanbod" className={styles.back}>
           ← Home
-        </Link>
+        </a>
       </header>
 
       <div className={styles.inner}>
         <div className={styles.intro}>
           <p className={styles.eyebrow}>Contact</p>
           <h1 className={styles.title}>{CTA_KENNISMAKING_LABEL}</h1>
-          <p className={styles.lead}>
-            Vrijblijvend. Geen verplichtingen. We kijken samen wat bij je past.
-          </p>
+          <p className={styles.lead}>Vrijblijvend. Geen verplichtingen.</p>
+          <p className={styles.lead}>We kijken samen wat bij je past.</p>
         </div>
 
-        <div className={styles.card}>
+        <WhatsAppCTA variant="strip" />
+
+        <p className={styles.orDivider}>of schriftelijk</p>
+
+        <div className={styles.formCard}>
+          <header className={styles.formHead}>
+            <h2 className={styles.formTitle}>Graag contact opnemen</h2>
+            <p className={styles.formLead}>
+              Vul het formulier in. We nemen binnen uiterlijk 2 werkdagen contact met je op.
+            </p>
+          </header>
           <ContactForm initialOnderwerp={initialOnderwerp} />
         </div>
 
         <p className={styles.direct}>
-          Liever direct?
-          <a href="tel:+31621248107">06 21248107</a>
+          Liever direct bellen of mailen?
+          <a href={PHONE_CALL.tel}>Bel {PHONE_CALL.display}</a>
           <span aria-hidden>·</span>
           <a href={mailtoInfo}>info@starkhardenberg.nl</a>
           <span aria-hidden>·</span>

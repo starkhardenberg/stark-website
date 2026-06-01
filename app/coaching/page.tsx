@@ -68,22 +68,22 @@ export default function CoachingPage() {
             <h2 className={styles.title}>TYPISCH STARK</h2>
             <ul className={styles.featureTiles}>
               <li>
-                <span>Lijf en hoofd versterken elkaar.</span>
+                <span>Lijf en hoofd trainen we samen, nooit los van elkaar.</span>
               </li>
               <li>
-                <span>Geen snelle fixes. Wel eerlijke stappen.</span>
+                <span>We werken aan wie je bent, niet alleen aan wat je doet.</span>
               </li>
               <li>
-                <span>Patronen herkennen voordat je ze doorbreekt.</span>
+                <span>We benoemen wat jij liever overslaat.</span>
               </li>
               <li>
-                <span>Fysieke training en coaching in één lijn.</span>
+                <span>Streng waar nodig, warm waar het kan.</span>
               </li>
               <li>
-                <span>Coaches die jouw verhaal kennen en bijhouden.</span>
+                <span>Coaches die je verhaal kennen en bijhouden.</span>
               </li>
               <li>
-                <span>Blijvende verandering. Niet alleen tijdens het traject.</span>
+                <span>Verandering die blijft, ook als het traject klaar is.</span>
               </li>
             </ul>
           </div>

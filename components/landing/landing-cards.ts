@@ -1,4 +1,5 @@
 import type { LandingServiceCardData } from './LandingServiceCard'
+import { hrefTrainen, hrefWhatsAppKennismaking } from '@/lib/contact'
 
 export const trainenCards: LandingServiceCardData[] = [
   {
@@ -17,11 +18,22 @@ export const trainenCards: LandingServiceCardData[] = [
       },
       {
         label: 'Wat je krijgt',
-        text: 'Alle groepslessen: kracht, conditie en functionele fitness. Altijd begeleiding op techniek. Jaarlijks een incheckgesprek en ledenkorting op clinics.',
+        bullets: [
+          'Alle groepslessen (kracht, conditie, functionele fitness)',
+          'Begeleiding op jou en je techniek',
+          'Twee keer per week of onbeperkt',
+          'Jaarlijks een incheckgesprek + ledenkorting op clinics',
+        ],
       },
       {
         label: 'Hoe starten',
-        text: 'Plan een kennismaking. Daarna het Startpakket: 4x individueel 1-op-1. Vervolgens lidmaatschap: 2x per week of onbeperkt.',
+        parts: [
+          'Plan een kennismaking via ',
+          { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
+          ' of het ',
+          { href: hrefTrainen, label: 'contactformulier' },
+          '. Iedereen start met het Startpakket: een nulmeting van je lijf en een basiscursus trainen bij STARK! Daarna word je lid.',
+        ],
       },
     ],
   },
@@ -46,7 +58,8 @@ export const trainenCards: LandingServiceCardData[] = [
       },
       {
         label: 'Hoe starten',
-        text: 'Plan een kennismaking of boek een gratis proefles. We kijken samen wat past.',
+        text: 'Plan een proefles via',
+        link: { href: 'https://www.zilverfitness.nl', label: 'www.zilverfitness.nl' },
       },
     ],
   },
@@ -71,7 +84,13 @@ export const trainenCards: LandingServiceCardData[] = [
       },
       {
         label: 'Hoe starten',
-        text: 'Stuur ons een berichtje. Kind meenemen, kennismaken en direct proberen.',
+        parts: [
+          'Stuur ons een berichtje via ',
+          { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
+          ' of het ',
+          { href: hrefTrainen, label: 'contactformulier' },
+          '. Neem je kind mee, kom kennismaken en direct proberen. Twee proeflessen zijn gratis en daarna beslis je.',
+        ],
       },
     ],
   },
@@ -79,26 +98,28 @@ export const trainenCards: LandingServiceCardData[] = [
 
 export const coachingCards: LandingServiceCardData[] = [
   {
-    title: 'Van A naar B',
+    title: 'De Eerste Stap',
     image: 'foto-coaching-moment.jpg',
     imageAlt: 'Coachingmoment bij STARK! Hardenberg',
     objectPosition: 'center 40%',
+    detailHref: '/de-eerste-stap',
+    detailLabel: 'Lees meer over De Eerste Stap',
     menu: [
       {
         label: 'Voor wie',
-        text: 'Iedereen die nieuwsgierig is naar onze aanpak, maar nog niet klaar is voor een groot programma.',
+        text: 'Iedereen die voelt dat er meer in zit, maar nog niet klaar is voor een heel traject. Geen lid of ervaring nodig.',
       },
       {
         label: 'Doel',
-        text: 'Een eerste serieuze stap. Patronen herkennen en concreet iets veranderen, op eigen tempo.',
+        text: 'In 60 minuten helder krijgen waar je staat, wat je werkelijk wil en wie je moet zijn om daar te komen.',
       },
       {
         label: 'Wat je krijgt',
-        text: '5 online modules, kennismaking met onze coachingsfilosofie, 1 jaar toegang.',
+        text: 'Een online sessie, een pakket per post met jouw eigen woorden, en een persoonlijk 1-op-1 gesprek.',
       },
       {
         label: 'Hoe starten',
-        text: 'Schrijf je in voor de lancering. Beschikbaar vanaf september 2026.',
+        text: 'Start de sessie online, eenmalig €57. Daarna plan je je gesprek met Engbert-Jan of Yvonne.',
       },
     ],
   },
@@ -108,6 +129,8 @@ export const coachingCards: LandingServiceCardData[] = [
     imageAlt: 'Groepscoaching bij STARK! Hardenberg',
     objectPosition: 'center 30%',
     inverted: true,
+    detailHref: '/momentum',
+    detailLabel: 'Lees meer over Momentum',
     menu: [
       {
         label: 'Voor wie',
@@ -132,6 +155,8 @@ export const coachingCards: LandingServiceCardData[] = [
     image: 'foto-coaching-impact.png',
     imageAlt: 'Persoonlijke coaching bij STARK! Hardenberg',
     objectPosition: 'center 7%',
+    detailHref: '/impact',
+    detailLabel: 'Lees meer over Impact',
     menu: [
       {
         label: 'Voor wie',

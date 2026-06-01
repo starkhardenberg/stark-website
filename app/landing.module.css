@@ -621,6 +621,33 @@ a.resultItem {
   transform: none;
 }
 
+/* Hele tegel klikbaar (stretched link) wanneer er een detailpagina is */
+.resultItemClickable {
+  cursor: pointer;
+}
+
+.resultItemClickable::after {
+  display: block;
+}
+
+.resultItemClickable:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(234, 92, 31, 0.82);
+  transform: translateY(-3px);
+}
+
+.resultItemClickable:hover::after {
+  opacity: 1;
+  transform: rotate(45deg) translate(2px, -2px);
+}
+
+.menuDetailLinkStretched::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .resultItem::after {
   content: '';
   position: absolute;
@@ -745,6 +772,71 @@ a.resultItem {
   font-size: clamp(13px, 1.35vw, 15px);
   line-height: 1.62;
   color: rgba(245, 245, 245, 0.72);
+}
+
+.menuInlineLink {
+  color: var(--off);
+  border-bottom: 1px solid rgba(234, 92, 31, 0.6);
+  padding-bottom: 1px;
+  transition: color 0.18s, border-color 0.18s;
+  white-space: nowrap;
+}
+
+.menuInlineLink:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.menuBullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.menuBullets li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.menuBullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--orange);
+}
+
+.menuDetailLink {
+  margin-top: clamp(14px, 2.2vw, 20px);
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--off);
+  border-bottom: 1px solid rgba(234, 92, 31, 0.5);
+  padding-bottom: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.menuDetailLink:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.menuDetailLink:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
 
 .resultItemInverted .menuCardBody {

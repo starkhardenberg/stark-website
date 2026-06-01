@@ -20,6 +20,8 @@ type Props = {
 export default function RotatingTestimonials({ items }: Props) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [inView, setInView] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
   const slideRefs = useRef<(HTMLDivElement | null)[]>([])
   const viewportRef = useRef<HTMLDivElement>(null)
   const programmaticScroll = useRef(false)
@@ -28,30 +30,65 @@ export default function RotatingTestimonials({ items }: Props) {
 
   const scrollToIndex = useCallback((i: number, behavior: ScrollBehavior = 'smooth') => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const viewport = viewportRef.current
+    const slide = slideRefs.current[i]
+    if (!viewport || !slide) return
+
+    // Alleen de horizontale carousel bewegen; nooit de pagina verticaal scrollen.
+    const targetLeft = slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2
+    const maxLeft = viewport.scrollWidth - viewport.clientWidth
+    const nextLeft = Math.max(0, Math.min(targetLeft, maxLeft))
+    const instant = reduceMotion || behavior === 'auto'
+
+    // Veiligheidsslot: bewaar de paginapositie en herstel die na een instant-scroll,
+    // zodat mobiele browsers de pagina niet naar de carousel toe trekken.
+    const pageY = window.scrollY
+    const pageX = window.scrollX
+
     programmaticScroll.current = true
-    slideRefs.current[i]?.scrollIntoView({
-      behavior: reduceMotion ? 'auto' : behavior,
-      inline: 'center',
-      block: 'nearest',
+    viewport.scrollTo({
+      left: nextLeft,
+      behavior: instant ? 'auto' : behavior,
     })
+    if (instant && (window.scrollY !== pageY || window.scrollX !== pageX)) {
+      window.scrollTo(pageX, pageY)
+    }
     window.setTimeout(() => {
       programmaticScroll.current = false
     }, 500)
   }, [])
 
+  // Pas centreren/roteren zodra de carousel echt in beeld is. Dit voorkomt dat
+  // een programmatische scroll bij het laden de pagina naar onderen trekt.
+  useEffect(() => {
+    const el = wrapRef.current
+    if (!el) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '0px 0px -20% 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   useLayoutEffect(() => {
+    if (!inView) return
     scrollToIndex(index, index === 0 ? 'auto' : 'smooth')
-  }, [index, scrollToIndex])
+  }, [index, inView, scrollToIndex])
 
   useEffect(() => {
-    if (paused || total <= 1) return
+    if (paused || total <= 1 || !inView) return
 
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % total)
     }, INTERVAL_MS)
 
     return () => window.clearInterval(id)
-  }, [paused, total])
+  }, [paused, total, inView])
 
   const goTo = (next: number) => setIndex(next)
 
@@ -81,6 +118,7 @@ export default function RotatingTestimonials({ items }: Props) {
 
   return (
     <div
+      ref={wrapRef}
       className={styles.wrap}
       role="region"
       aria-roledescription="carrousel"
