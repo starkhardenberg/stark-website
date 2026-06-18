@@ -42,6 +42,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
 
     const body = encodeFormBody({
       'form-name': 'contact',
+      'bot-field': String(data.get('bot-field') ?? ''),
       naam: String(data.get('naam') ?? ''),
       email: String(data.get('email') ?? ''),
       telefoon: String(data.get('telefoon') ?? ''),
