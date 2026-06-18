@@ -180,7 +180,7 @@ export const coachingCards: LandingServiceCardData[] = [
 
 export const zakelijkCards: LandingServiceCardData[] = [
   {
-    title: 'Fundament preventief',
+    title: 'Fundament',
     image: 'foto-fundament-tegel.png',
     imageAlt: 'Preventief Fundament-programma bij STARK! Hardenberg',
     objectPosition: 'center center',
@@ -204,7 +204,7 @@ export const zakelijkCards: LandingServiceCardData[] = [
     ],
   },
   {
-    title: 'Fundament re-integratie',
+    title: 'Re-integreren',
     image: 'foto-reintegratie-tegel.png',
     imageAlt: 'Re-integratietraject bij STARK! Hardenberg',
     objectPosition: 'center center',
@@ -229,7 +229,7 @@ export const zakelijkCards: LandingServiceCardData[] = [
     ],
   },
   {
-    title: 'Fundament teamtraject',
+    title: 'Starke teams',
     image: 'foto-teamtraject-tegel.png',
     imageAlt: 'Teamtraject op maat bij STARK! Hardenberg',
     objectPosition: 'center center',

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { hrefTrainen } from '@/lib/contact'
 import Image from 'next/image'
-import LandingFooter from '@/components/landing/LandingFooter'
+import Footer from '@/components/Footer'
+import FaqList from '@/components/faq/FaqList'
+import { trainenFaq } from '@/components/faq/faq-trainen'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { trainenCards } from '@/components/landing/landing-cards'
 import styles from '../landing.module.css'
@@ -51,10 +53,12 @@ export default function TrainenPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
         <span className={styles.label}>Welke groep past bij jou?</span>
-        <h2 className={styles.title}>WE ZIJN ER VOOR IEDEREEN</h2>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos}`}>
-          {trainenCards.map((card) => (
-            <LandingServiceCard key={card.title} {...card} />
+        <h2 className={`${styles.title} ${styles.titleHero}`}>
+          Iedereen <span className={styles.titleHeroOutline}>STARK</span>
+        </h2>
+        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
+          {trainenCards.map((card, i) => (
+            <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
           ))}
         </div>
       </section>
@@ -88,7 +92,15 @@ export default function TrainenPage() {
         </div>
       </div>
 
-      <LandingFooter />
+      <section className={styles.faqSection}>
+        <div className={styles.faqInner}>
+          <span className={styles.label}>Veelgestelde vragen</span>
+          <h2 className={styles.title}>Goede vragen</h2>
+          <FaqList items={trainenFaq} />
+        </div>
+      </section>
+
+      <Footer photoFirst />
     </main>
   )
 }

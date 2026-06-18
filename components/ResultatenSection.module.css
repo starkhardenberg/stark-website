@@ -5,7 +5,7 @@
 }
 
 .inner {
-  padding: 72px 24px 80px;
+  padding: clamp(96px, 11vw, 128px) 24px clamp(100px, 12vw, 140px);
 }
 
 /* Zelfde displaymaat als Over-sectie “Weg van huus…” (.heading) */

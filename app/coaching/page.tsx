@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { hrefCoaching } from '@/lib/contact'
 import Image from 'next/image'
-import LandingFooter from '@/components/landing/LandingFooter'
+import Footer from '@/components/Footer'
+import FaqList from '@/components/faq/FaqList'
+import { coachingFaq } from '@/components/faq/faq-coaching'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { coachingCards } from '@/components/landing/landing-cards'
 import styles from '../landing.module.css'
@@ -49,14 +51,13 @@ export default function CoachingPage() {
       </section>
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
-        <span className={styles.label}>Welk traject past bij?</span>
-        <h2 className={styles.title}>VAN EERSTE STAP TOT DIEPE VERANDERING</h2>
-        <p className={styles.body}>
-          Hieronder vind je per traject wat we aanbieden en hoe je start.
-        </p>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos}`}>
-          {coachingCards.map((card) => (
-            <LandingServiceCard key={card.title} {...card} />
+        <span className={styles.label}>Welk traject past bij mij?</span>
+        <h2 className={`${styles.title} ${styles.titleHero}`}>
+          Stap voor stap, <span className={styles.titleHeroOutline}>echt resultaat</span>
+        </h2>
+        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
+          {coachingCards.map((card, i) => (
+            <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
           ))}
         </div>
       </section>
@@ -90,7 +91,15 @@ export default function CoachingPage() {
         </div>
       </div>
 
-      <LandingFooter />
+      <section className={styles.faqSection}>
+        <div className={styles.faqInner}>
+          <span className={styles.label}>Veelgestelde vragen</span>
+          <h2 className={styles.title}>Goede vragen</h2>
+          <FaqList items={coachingFaq} />
+        </div>
+      </section>
+
+      <Footer photoFirst />
     </main>
   )
 }

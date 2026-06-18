@@ -1,33 +1,77 @@
 .footer {
-  background: var(--orange);
-  border-top: 2px solid var(--navy);
+  background: var(--navy);
+  margin-top: clamp(48px, 8vw, 96px);
+}
+
+.content {
+  background: var(--navy);
+  padding: clamp(12px, 2vw, 24px) clamp(24px, 5vw, 64px) clamp(40px, 6vw, 56px);
 }
 
 .inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 56px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.colStart,
+.colEnd {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: clamp(15px, 2.6vw, 20px);
-  padding: clamp(40px, 6vw, 56px) clamp(24px, 4.5vw, 48px) clamp(36px, 5vw, 46px);
+  gap: clamp(14px, 2.4vw, 20px);
+}
+
+.colEnd {
+  max-width: 34rem;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(40px, 9vw, 68px);
+  font-weight: 700;
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: uppercase;
+  color: var(--orange);
 }
 
 .welcome {
   margin: 0;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(2.1rem, 6vw, 3rem);
+  font-size: clamp(2.4rem, 7vw, 4.25rem);
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.95;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--off);
+}
+
+.lead {
+  margin: 0;
+  max-width: 28rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.65vw, 17px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.88);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(2px, 0.6vw, 6px);
 }
 
 .cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: clamp(4px, 0.8vw, 8px) 0 clamp(4px, 0.8vw, 8px);
   padding: 14px 22px;
   font-family: var(--font-body), sans-serif;
   font-size: 13px;
@@ -36,8 +80,8 @@
   text-transform: uppercase;
   text-decoration: none;
   color: var(--off);
-  background: var(--navy);
-  border: 1px solid var(--navy);
+  background: var(--orange);
+  border: 1px solid var(--orange);
   transition:
     background 0.18s ease,
     border-color 0.18s ease,
@@ -45,8 +89,8 @@
 }
 
 .cta:hover {
-  background: #2d3142;
-  border-color: #2d3142;
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
   transform: translateY(-2px);
 }
 
@@ -55,17 +99,53 @@
   outline-offset: 3px;
 }
 
+.ctaWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--off);
+  background: transparent;
+  border: 1px solid rgba(245, 245, 245, 0.35);
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.ctaWhatsapp:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.ctaWhatsapp:focus-visible {
+  outline: 2px solid var(--off);
+  outline-offset: 3px;
+}
+
+.ctaWhatsappIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 .contact {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2px;
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.8vw, 17px);
+  font-size: clamp(14px, 1.5vw, 16px);
   font-weight: 600;
   line-height: 1.55;
-  color: rgba(33, 36, 49, 0.78);
+  color: rgba(245, 245, 245, 0.78);
 }
 
 .contactRow,
@@ -78,41 +158,120 @@
 }
 
 .contactLink {
-  color: var(--navy);
+  color: var(--off);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .contactLink:hover {
-  color: var(--off);
-}
-
-.contactAddress {
-  color: rgba(33, 36, 49, 0.78);
+  color: var(--orange);
 }
 
 .sep {
   margin: 0 0.4em;
-  color: rgba(33, 36, 49, 0.35);
+  color: rgba(245, 245, 245, 0.35);
 }
 
 .meta {
-  margin: clamp(6px, 1.2vw, 10px) 0 0;
+  margin: clamp(4px, 1vw, 8px) 0 0;
   font-family: var(--font-body), sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  color: rgba(33, 36, 49, 0.48);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.45);
 }
 
 .metaSep {
   margin: 0 0.45em;
-  color: rgba(33, 36, 49, 0.3);
+  color: rgba(245, 245, 245, 0.28);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cta:hover {
-    transform: none;
+.photoWrap {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 38vw, 480px);
+  overflow: hidden;
+  background: var(--navy);
+  border-radius: 14px 14px 0 0;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 72%;
+  filter: grayscale(1) contrast(1.08) brightness(0.88);
+}
+
+.photoHome {
+  object-position: center 52%;
+  filter: grayscale(1) contrast(1.02) brightness(0.96);
+}
+
+.footer:not(.footerPhotoFirst) .photoWrap {
+  height: clamp(360px, 44vw, 540px);
+}
+
+.photoFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--navy) 0%,
+    rgba(33, 36, 49, 0.92) 14%,
+    rgba(33, 36, 49, 0.55) 32%,
+    rgba(33, 36, 49, 0.18) 52%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.footer:not(.footerPhotoFirst) .photoFade {
+  background: linear-gradient(
+    to bottom,
+    var(--navy) 0%,
+    rgba(33, 36, 49, 0.35) 6%,
+    rgba(33, 36, 49, 0.08) 14%,
+    transparent 26%
+  );
+}
+
+.footerPhotoFirst .photoFade {
+  background: linear-gradient(
+    to top,
+    var(--navy) 0%,
+    rgba(33, 36, 49, 0.92) 14%,
+    rgba(33, 36, 49, 0.55) 32%,
+    rgba(33, 36, 49, 0.18) 52%,
+    transparent 72%
+  );
+}
+
+.footerPhotoFirst .content {
+  padding-top: clamp(40px, 6vw, 56px);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .photoWrap {
+    height: clamp(280px, 52vw, 420px);
+  }
+
+  .footer:not(.footerPhotoFirst) .photoWrap {
+    height: clamp(320px, 58vw, 460px);
+  }
+
+  .footerPhotoFirst .photo {
+    object-position: center 68%;
+  }
+
+  .photoHome {
+    object-position: center 48%;
   }
 }
 
@@ -123,5 +282,12 @@
 
   .contactRow {
     white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:hover,
+  .ctaWhatsapp:hover {
+    transform: none;
   }
 }

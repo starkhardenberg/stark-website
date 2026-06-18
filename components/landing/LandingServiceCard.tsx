@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from '@/app/landing.module.css'
 
 export type MenuLink = { href: string; label: string; external?: boolean }
@@ -26,8 +29,21 @@ export type LandingServiceCardData = {
   inverted?: boolean
   detailHref?: string
   detailLabel?: string
+  num?: string
   menu: MenuRow[]
 }
+
+const cardHover = {
+  initial: { y: 0 },
+  whileHover: { y: -6 },
+  transition: { type: 'spring', stiffness: 220, damping: 18 },
+} as const
+
+const mediaHover = {
+  initial: { scale: 1 },
+  whileHover: { scale: 1.02 },
+  transition: { type: 'spring', stiffness: 220, damping: 18 },
+} as const
 
 export default function LandingServiceCard({
   title,
@@ -38,18 +54,19 @@ export default function LandingServiceCard({
   inverted,
   detailHref,
   detailLabel,
+  num,
   menu,
 }: LandingServiceCardData) {
   const clickable = Boolean(detailHref)
-  return (
-    <div
-      className={`${styles.resultItem} ${styles.resultItemStatic}${
-        clickable ? ` ${styles.resultItemClickable}` : ''
-      }${inverted ? ` ${styles.resultItemInverted}` : ''}${
-        kidsImage ? ` ${styles.resultItemKidsBand}` : ''
-      }`}
-    >
-      <div className={styles.resultMedia}>
+  const cardClassName = `${styles.resultItem} ${styles.resultItemStatic}${
+    clickable ? ` ${styles.resultItemClickable}` : ''
+  }${inverted ? ` ${styles.resultItemInverted}` : ''}${
+    kidsImage ? ` ${styles.resultItemKidsBand}` : ''
+  }`
+
+  const cardInner = (
+    <>
+      <motion.div className={styles.resultMedia} {...mediaHover}>
         <Image
           src={`/images/${image}`}
           alt={imageAlt}
@@ -58,7 +75,12 @@ export default function LandingServiceCard({
           sizes="(min-width: 900px) 33vw, 100vw"
           style={objectPosition ? { objectPosition } : undefined}
         />
-      </div>
+        {num ? (
+          <span className={styles.mediaIndex} aria-hidden>
+            {num}
+          </span>
+        ) : null}
+      </motion.div>
       <div className={styles.menuCardBody}>
         <h3 className={styles.resultTitle}>{title}</h3>
         <dl className={styles.menuList}>
@@ -126,6 +148,12 @@ export default function LandingServiceCard({
           </Link>
         ) : null}
       </div>
-    </div>
+    </>
+  )
+
+  return (
+    <motion.div className={cardClassName} {...cardHover}>
+      {cardInner}
+    </motion.div>
   )
 }

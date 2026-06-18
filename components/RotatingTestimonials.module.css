@@ -23,14 +23,16 @@
 
 .track {
   display: flex;
-  align-items: stretch;
-  gap: clamp(14px, 2.5vw, 22px);
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 18px);
   width: max-content;
   padding: 0 clamp(24px, 8vw, 48px);
 }
 
 .slide {
-  flex: 0 0 min(86vw, 400px);
+  flex: 0 0 auto;
+  width: auto;
+  max-width: min(88vw, 320px);
   scroll-snap-align: center;
   transition:
     opacity 0.45s ease,
@@ -110,7 +112,7 @@
   }
 
   .slide {
-    flex: 0 0 min(42vw, 420px);
+    max-width: 320px;
   }
 
   .track {

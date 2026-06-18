@@ -53,7 +53,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
     })
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/contact-form.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,

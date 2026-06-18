@@ -1,42 +1,29 @@
 /* De Eerste Stap — hybride landingspagina (B-structuur + C-kleuren) */
 
-/* ── Hero (tekst-only op navy) ── */
+/* ── Hero (foto + overrides op landing.hero) ── */
 .hero {
-  position: relative;
-  min-height: min(90svh, 760px);
-  min-height: min(90dvh, 760px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px 22px 64px;
-  background:
-    radial-gradient(130% 90% at 18% 12%, rgba(234, 92, 31, 0.16) 0%, rgba(33, 36, 49, 0) 52%),
-    var(--navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
+  min-height: min(84svh, 720px);
+  min-height: min(84dvh, 720px);
+}
+
+.heroBgImg {
+  filter: grayscale(0.45) brightness(0.4) contrast(1.05);
 }
 
 .heroContent {
-  max-width: 880px;
+  max-width: 820px;
 }
 
-.heroEyebrow {
-  display: block;
-  margin-bottom: 22px;
-  font-family: var(--font-body), sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--orange);
+.hero .heroContent::after {
+  content: none;
 }
 
 .heroTitle {
-  margin: 0;
+  margin: 28px 0 18px;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(46px, 11vw, 116px);
-  line-height: 0.92;
+  font-size: clamp(44px, 9.5vw, 104px);
+  line-height: 0.9;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--off);
@@ -46,18 +33,22 @@
   display: block;
 }
 
-.heroTitle span:nth-child(2) {
+.heroTitleOutline {
   color: transparent;
-  -webkit-text-stroke: 1.4px rgba(245, 245, 245, 0.85);
+  -webkit-text-stroke: 1.5px var(--orange);
+  white-space: nowrap;
 }
 
 .heroLead {
-  margin: 30px 0 0;
-  max-width: 60ch;
+  margin: 0;
+  max-width: 48ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 400;
   line-height: 1.62;
-  color: rgba(245, 245, 245, 0.74);
+  letter-spacing: normal;
+  text-transform: none;
+  color: rgba(245, 245, 245, 0.78);
 }
 
 .heroActions {
@@ -65,7 +56,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .heroNote {
@@ -75,13 +66,21 @@
   color: rgba(245, 245, 245, 0.5);
 }
 
-.heroBar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--orange);
+.btnGhost {
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--off);
+  border-bottom: 1px solid rgba(234, 92, 31, 0.55);
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btnGhost:hover {
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
 /* ── Buttons ── */
@@ -102,35 +101,91 @@
   background: var(--orange-deep);
 }
 
-/* ── Belofte-strip ── */
-.strip {
-  display: grid;
-  grid-template-columns: 1fr;
+/* ── Route (zigzag tijdlijn) ── */
+.route {
   background: #1a1d29;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(46px, 8vw, 84px) clamp(22px, 4vw, 64px);
 }
 
-.stripItem {
-  padding: 26px 22px;
-  border-top: 2px solid rgba(234, 92, 31, 0.55);
+.routeList {
+  --gap: 36px;
+  --shift: 0px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 880px;
 }
 
-.stripItem + .stripItem {
-  border-left: none;
+.routeStep {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: clamp(16px, 3vw, 28px);
+  padding-left: 28px;
 }
 
-.stripLabel {
-  display: block;
-  margin-bottom: 8px;
+.routeStep + .routeStep {
+  margin-top: var(--gap);
+}
+
+/* Verticale track per stap */
+.routeStep::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: -1px;
+  width: 2px;
+  background: rgba(234, 92, 31, 0.55);
+}
+
+.routeStep:last-child::before {
+  bottom: auto;
+  height: 32px;
+}
+
+/* Verbinder die het gat naar de vorige stap overbrugt (mobiel: rechte lijn) */
+.routeStep:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--shift));
+  top: calc(-1 * var(--gap));
+  width: var(--shift);
+  height: var(--gap);
+  border-left: 2px solid rgba(234, 92, 31, 0.55);
+  border-bottom: 2px solid rgba(234, 92, 31, 0.55);
+}
+
+.routeNum {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: clamp(46px, 12vw, 80px);
+  line-height: 0.76;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--orange);
+}
+
+.routeBody {
+  padding-top: 3px;
+  max-width: 34ch;
+}
+
+.routeLabel {
+  display: block;
+  margin-bottom: 7px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 4.5vw, 23px);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--off);
 }
 
-.stripText {
+.routeText {
+  margin: 0;
   font-family: var(--font-body), sans-serif;
   font-size: 14px;
   line-height: 1.55;
@@ -154,6 +209,27 @@
 
 .narrow {
   max-width: 64ch;
+}
+
+/* ── Split-blok (kop links, lijst rechts) ── */
+.splitRow {
+  display: block;
+}
+
+.splitHead {
+  max-width: 64ch;
+}
+
+.splitHead .heading {
+  margin-bottom: 16px;
+}
+
+.splitHead .body {
+  margin-bottom: 0;
+}
+
+.splitBody {
+  margin-top: 26px;
 }
 
 .label {
@@ -632,12 +708,48 @@
 
 /* ── Desktop ── */
 @media (min-width: 760px) {
-  .strip {
-    grid-template-columns: repeat(3, 1fr);
+  .routeList {
+    --shift: clamp(90px, 20vw, 300px);
   }
 
-  .stripItem + .stripItem {
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  .routeStep:nth-child(2) {
+    margin-left: var(--shift);
+  }
+
+  .routeStep:nth-child(2)::after {
+    left: calc(-1 * var(--shift));
+    width: var(--shift);
+    border-left: 2px solid rgba(234, 92, 31, 0.55);
+    border-right: none;
+    border-bottom: 2px solid rgba(234, 92, 31, 0.55);
+  }
+
+  .routeStep:nth-child(3)::after {
+    left: 0;
+    width: var(--shift);
+    border-left: none;
+    border-right: 2px solid rgba(234, 92, 31, 0.55);
+    border-bottom: 2px solid rgba(234, 92, 31, 0.55);
+  }
+
+  .routeNum {
+    font-size: clamp(72px, 8vw, 104px);
+  }
+
+  .splitRow {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    column-gap: clamp(36px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .splitHead {
+    position: sticky;
+    top: 96px;
+  }
+
+  .splitBody {
+    margin-top: 6px;
   }
 
   .outcomes {
@@ -651,10 +763,6 @@
 }
 
 @media (min-width: 900px) {
-  .hero {
-    padding: 140px 64px 72px;
-  }
-
   .footer {
     padding: 36px 64px;
   }

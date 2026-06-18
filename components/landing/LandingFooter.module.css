@@ -45,11 +45,18 @@
   color: rgba(245, 245, 245, 0.28);
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(28px, 4vw, 36px);
+}
+
 .cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: clamp(28px, 4vw, 36px);
   padding: 14px 22px;
   background: var(--orange);
   border: 1px solid var(--orange);
@@ -68,6 +75,38 @@
 .cta:hover {
   background: var(--orange-deep);
   transform: translateY(-1px);
+}
+
+.ctaWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: transparent;
+  border: 1px solid rgba(245, 245, 245, 0.3);
+  color: var(--off);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+
+.ctaWhatsapp:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+
+.ctaWhatsappIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .meta {

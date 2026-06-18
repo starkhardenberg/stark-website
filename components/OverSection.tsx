@@ -11,7 +11,7 @@ export default function OverSection() {
             src="/images/team.jpg"
             alt="Het team van STARK! Hardenberg"
             fill
-            sizes="(min-width: 900px) 58vw, 100vw"
+            sizes="(min-width: 900px) 56vw, 100vw"
             className={styles.img}
           />
         </div>

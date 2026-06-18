@@ -19,21 +19,17 @@ export default function AanbodSection() {
           <AanbodFeatureCard track={aanbodTracks[0]} />
           <AanbodFeatureCard track={aanbodTracks[1]} />
           <AanbodFeatureCard track={aanbodTracks[2]} />
+        </div>
 
-          <figure className={styles.sectionCta}>
-            <blockquote className={styles.sectionCtaQuote}>
-              <p>Twijfel je tussen trainen, coaching of zakelijk?</p>
-            </blockquote>
-            <figcaption className={styles.sectionCtaCite}>
-              <p className={styles.sectionCtaSub}>
-                Mooi. Dan hebben we iets om over te praten.
-              </p>
-              <a href={hrefKennismaking} className={styles.sectionCtaButton}>
-                {CTA_KENNISMAKING_LABEL}
-                <span aria-hidden>→</span>
-              </a>
-            </figcaption>
-          </figure>
+        <div className={styles.sectionCta}>
+          <p className={styles.sectionCtaLine}>
+            Niet zeker welke route bij je past?
+            <span className={styles.sectionCtaSub}>Mooi, dan hebben we iets om over te praten.</span>
+          </p>
+          <a href={hrefKennismaking} className={styles.sectionCtaButton}>
+            {CTA_KENNISMAKING_LABEL}
+            <span aria-hidden>→</span>
+          </a>
         </div>
       </div>
     </section>

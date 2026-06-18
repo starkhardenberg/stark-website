@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { hrefCoaching } from '@/lib/contact'
 import styles from '../landing.module.css'
 import b from './page.module.css'
@@ -22,74 +23,88 @@ export default function DeEersteStapPage() {
       </nav>
 
       {/* 1 — Hero */}
-      <section className={b.hero}>
-        <div className={b.heroContent}>
-          <span className={b.heroEyebrow}>STARK! Hardenberg · De Eerste Stap</span>
+      <section className={`${styles.hero} ${b.hero}`}>
+        <div className={styles.heroBg}>
+          <Image
+            src="/images/foto-coaching-impact.png"
+            alt="Coachingsgesprek bij STARK! Hardenberg"
+            fill
+            className={`${styles.heroBgImg} ${b.heroBgImg}`}
+            sizes="100vw"
+            priority
+            style={{ objectPosition: 'center 28%' }}
+          />
+        </div>
+        <div className={`${styles.heroContent} ${b.heroContent}`}>
+          <span className={styles.heroLabel}>Online kennismakingsproduct · De Eerste Stap</span>
           <h1 className={b.heroTitle}>
-            <span>60 minuten.</span>
-            <span>Eén eerlijke blik.</span>
+            <span className={b.heroTitleOutline}>Een eerlijke blik.</span>
             <span>Een nieuw vertrekpunt.</span>
           </h1>
-          <p className={b.heroLead}>
-            De Eerste Stap is een online sessie die je in 60 minuten door drie vragen leidt die je leven
-            veranderen: waar sta je nu, wat wil je werkelijk, en wie moet je zijn om daar te komen? Wat je
-            opschrijft, krijg je thuisgestuurd. Wat je ontdekt, bespreken we samen.
-          </p>
-          <div className={b.heroActions}>
-            <Link href={hrefCoaching} className={b.btnPrimary}>
-              Ik zet de eerste stap
-            </Link>
-            <span className={b.heroNote}>
-              Eenmalig €57 · inclusief fysiek pakket en persoonlijk gesprek
-            </span>
-          </div>
         </div>
-        <div className={b.heroBar} />
       </section>
 
-      {/* 2 — Belofte-strip */}
-      <div className={b.strip}>
-        <div className={b.stripItem}>
-          <span className={b.stripLabel}>Online sessie</span>
-          <p className={b.stripText}>60 minuten, alleen jij en de juiste vragen.</p>
-        </div>
-        <div className={b.stripItem}>
-          <span className={b.stripLabel}>Pakket per post</span>
-          <p className={b.stripText}>Jouw eigen woorden, mooi vormgegeven, thuisbezorgd.</p>
-        </div>
-        <div className={b.stripItem}>
-          <span className={b.stripLabel}>1-op-1 gesprek</span>
-          <p className={b.stripText}>Een persoonlijk gesprek met Engbert-Jan of Yvonne.</p>
-        </div>
-      </div>
+      {/* 2 — Route (zigzag tijdlijn) */}
+      <section className={b.route}>
+        <ol className={b.routeList}>
+          <li className={b.routeStep}>
+            <span className={b.routeNum}>01</span>
+            <div className={b.routeBody}>
+              <span className={b.routeLabel}>Online sessie</span>
+              <p className={b.routeText}>60 minuten, alleen jij en de juiste vragen.</p>
+            </div>
+          </li>
+          <li className={b.routeStep}>
+            <span className={b.routeNum}>02</span>
+            <div className={b.routeBody}>
+              <span className={b.routeLabel}>Pakket per post</span>
+              <p className={b.routeText}>Jouw eigen woorden, mooi vormgegeven, thuisbezorgd.</p>
+            </div>
+          </li>
+          <li className={b.routeStep}>
+            <span className={b.routeNum}>03</span>
+            <div className={b.routeBody}>
+              <span className={b.routeLabel}>1-op-1 gesprek</span>
+              <p className={b.routeText}>Een persoonlijk gesprek met Engbert-Jan of Yvonne.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
 
       {/* 3 — Voor wie */}
       <section className={`${b.sectionBase} ${b.sectionLight}`}>
-        <div className={b.narrow}>
-          <span className={b.label}>Voor wie?</span>
-          <h2 className={b.heading}>Dit is voor jou als je klaar bent met stilstaan</h2>
-          <p className={b.body}>
-            Je weet dat er meer in je zit. Je voelt het al een tijdje. Maar je kunt het niet helemaal
-            benoemen, en dus gebeurt er niets. De Eerste Stap is gemaakt voor mensen die het wél willen
-            benoemen.
-          </p>
+        <div className={b.splitRow}>
+          <div className={b.splitHead}>
+            <span className={b.label}>Voor wie?</span>
+            <h2 className={b.heading}>Dit is voor jou als je klaar bent met stilstaan</h2>
+            <p className={b.body}>
+              Je weet dat er meer in je zit. Je voelt het al een tijdje. Maar je kunt het niet helemaal
+              benoemen, en dus gebeurt er niets. De Eerste Stap is gemaakt voor mensen die het wél willen
+              benoemen.
+            </p>
+          </div>
+          <ul className={`${b.checklist} ${b.splitBody}`}>
+            <li>Je hebt vaker gedacht 'ik wil iets veranderen', zonder te weten waar je moet beginnen.</li>
+            <li>Je weet dat er meer in je zit dan je nu laat zien.</li>
+            <li>Je bent klaar met praten over je doelen en wil eindelijk helderheid.</li>
+            <li>Je wil eerlijk naar jezelf kijken, zonder cursus, zonder verplichting.</li>
+            <li>Je wil weten of de aanpak van STARK! bij jou past.</li>
+          </ul>
         </div>
-        <ul className={b.checklist}>
-          <li>Je hebt vaker gedacht 'ik wil iets veranderen', zonder te weten waar je moet beginnen.</li>
-          <li>Je weet dat er meer in je zit dan je nu laat zien.</li>
-          <li>Je bent klaar met praten over je doelen en wil eindelijk helderheid.</li>
-          <li>Je wil eerlijk naar jezelf kijken, zonder cursus, zonder verplichting.</li>
-          <li>Je wil weten of de aanpak van STARK! bij jou past.</li>
-        </ul>
       </section>
 
       {/* 4 — Hoe het werkt */}
-      <section className={`${b.sectionBase} ${b.sectionNavy}`}>
-        <div className={b.narrow}>
-          <span className={b.label}>Hoe het werkt</span>
-          <h2 className={b.heading}>Drie stappen. Eén ervaring.</h2>
-        </div>
-        <ol className={b.steps}>
+      <section id="hoe-werkt-het" className={`${b.sectionBase} ${b.sectionNavy}`}>
+        <div className={b.splitRow}>
+          <div className={b.splitHead}>
+            <span className={b.label}>Hoe het werkt</span>
+            <h2 className={b.heading}>Drie stappen. Eén ervaring.</h2>
+            <p className={b.body}>
+              Geen cursus om door te ploegen. Een korte route met een begin, een midden en een eind, op een
+              tempo dat jij bepaalt.
+            </p>
+          </div>
+          <ol className={`${b.steps} ${b.splitBody}`}>
           <li>
             <h3 className={b.stepTitle}>De online sessie</h3>
             <p className={b.stepText}>
@@ -113,7 +128,8 @@ export default function DeEersteStapPage() {
               opgeschreven.
             </p>
           </li>
-        </ol>
+          </ol>
+        </div>
       </section>
 
       {/* 5 — De online sessie */}

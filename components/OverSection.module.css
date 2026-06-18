@@ -2,29 +2,31 @@
   width: 100%;
   background: var(--off);
   color: var(--navy);
+  padding-bottom: clamp(32px, 5vw, 56px);
 }
 
 .grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .imgWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
+  min-height: clamp(260px, 52vw, 420px);
   overflow: hidden;
   background: #2a2d3a;
 }
 
 .img {
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 32%;
   filter: grayscale(1) contrast(1.08) brightness(0.88);
 }
 
 .content {
-  padding: 56px 24px 64px;
+  padding: 56px 24px clamp(88px, 10vw, 108px);
 }
 
 .eyebrow {
@@ -146,19 +148,31 @@
 
 @media (min-width: 900px) {
   .grid {
-    flex-direction: row;
-    min-height: 70vh;
+    grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.72fr);
+    align-items: stretch;
+    min-height: clamp(560px, 72vh, 880px);
   }
 
   .imgWrap {
-    flex: 0 0 58%;
     aspect-ratio: unset;
-    min-height: 580px;
+    min-height: 100%;
+    height: 100%;
+  }
+
+  /* Iets uitzoomen: volle breedte van de groep zichtbaar, sectie blijft gevuld */
+  .img {
+    width: 118% !important;
+    height: 118% !important;
+    max-width: none;
+    inset: auto !important;
+    left: 50% !important;
+    top: 34% !important;
+    transform: translate(-50%, -34%);
+    object-position: center center;
   }
 
   .content {
-    flex: 0 0 42%;
-    padding: 72px 64px 72px 72px;
+    padding: 72px 64px clamp(96px, 8vw, 120px) 72px;
     display: flex;
     flex-direction: column;
     justify-content: center;

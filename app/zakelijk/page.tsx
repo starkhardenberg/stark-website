@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { hrefZakelijk } from '@/lib/contact'
 import Image from 'next/image'
-import LandingFooter from '@/components/landing/LandingFooter'
+import Footer from '@/components/Footer'
+import FaqList from '@/components/faq/FaqList'
+import { zakelijkFaq } from '@/components/faq/faq-zakelijk'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { zakelijkCards } from '@/components/landing/landing-cards'
 import styles from '../landing.module.css'
@@ -51,13 +53,12 @@ export default function ZakelijkPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
         <span className={styles.label}>Welk programma past bij?</span>
-        <h2 className={styles.title}>VOOR TEAMS EN MEDEWERKERS</h2>
-        <p className={styles.body}>
-          Hieronder vind je per programma wat we aanbieden en hoe je start.
-        </p>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos}`}>
-          {zakelijkCards.map((card) => (
-            <LandingServiceCard key={card.title} {...card} />
+        <h2 className={`${styles.title} ${styles.titleHero}`}>
+          Voor teams en <span className={styles.titleHeroOutline}>medewerkers</span>
+        </h2>
+        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
+          {zakelijkCards.map((card, i) => (
+            <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
           ))}
         </div>
       </section>
@@ -91,7 +92,15 @@ export default function ZakelijkPage() {
         </div>
       </div>
 
-      <LandingFooter />
+      <section className={styles.faqSection}>
+        <div className={styles.faqInner}>
+          <span className={styles.label}>Veelgestelde vragen</span>
+          <h2 className={styles.title}>Goede vragen</h2>
+          <FaqList items={zakelijkFaq} />
+        </div>
+      </section>
+
+      <Footer photoFirst />
     </main>
   )
 }

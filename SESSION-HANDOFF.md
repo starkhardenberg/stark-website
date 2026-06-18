@@ -1,4 +1,4 @@
-# STARK! website — sessie-handoff (mei 2026)
+# STARK! website — sessie-handoff (juni 2026)
 
 Gebruik dit document + de prompt hieronder om in een **nieuwe Cursor-chat** verder te werken.
 
@@ -9,74 +9,89 @@ Gebruik dit document + de prompt hieronder om in een **nieuwe Cursor-chat** verd
 | Item | Status |
 |------|--------|
 | **Repo** | `git@github.com:starkhardenberg/stark-website.git` — branch `main` |
-| **Laatste commit** | `22b91b6` — *Homepage: oranje footer/CTA, witte quotes, Over-link* |
-| **Push** | Gepusht naar `origin/main` (mei 2026) |
+| **Laatste push** | `4aec8f2` — *De Eerste Stap landingspagina, klikbare tegels en mobiele scroll-fix* |
+| **Lokaal** | Er staan **ongepushte wijzigingen** (trainen/coaching/zakelijk/tegels, testimonials, aanbod-CTA, team WhatsApp, nav-CTA, etc.) |
 | **Netlify** | `netlify.toml`: `npm run build`, publish `.next`, `@netlify/plugin-nextjs` |
-| **Build lokaal** | `npm run build` slaagt (17 routes) |
-| **Netlify live-check** | Handmatig in Netlify-dashboard: deploy na `22b91b6`? |
+| **Dev** | `npm run dev` → **http://127.0.0.1:3456** (IPv4, zie `PREVIEW.md`) |
 
 ---
 
-## Homepage — wat in deze sessie is gedaan
+## Design-systeem (kort)
 
-### Footer (`components/Footer.tsx` + `Footer.module.css`)
+Lees: `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`
 
-**Gekozen richting: B** — gecentreerde oranje balk (geen witte box, geen aanbod-nav).
-
-Volgorde:
-1. **Wees welkom.** (Oswald, navy, ~2.1–3rem)
-2. **Plan een kennismaking →** (navy knop op oranje)
-3. Contact: 06 · info@ · Nijverheidsstraat 15c, Hardenberg
-4. **© {jaar} STARK! Hardenberg · Opgericht 2013**
-
-Styling:
-- Achtergrond `var(--orange)`, border-top 2px navy
-- Tekst navy / rgba navy; geen links naar Trainen/Coaching/Zakelijk
-
-**Niet gekozen** (wel besproken): strapline-footer (optie 1), STARK+! typografie (optie 2), één-regel-footer (optie 3).
-
-### CTA onder Ons aanbod (`components/AanbodSection.tsx` + `.module.css`)
-
-- Blok `.sectionCta`: **oranje achtergrond**, navy tekst, **navy CTA-knop**
-- Layout: tekst + knop **gecentreerd**; op desktop één rij
-- Copy ongewijzigd: twijfel-tussen-routes + *Kom kennismaken*
-
-### Resultaten / testimonials (`components/QuoteCard.module.css`)
-
-- Losse kaartjes (`QuoteCard`): **witte achtergrond**, navy quote, oranje aanhalingstekens, slate context
-- Grote Amanda-quote + foto (`heroQuote` in `ResultatenSection`) blijft op **navy** — contrast met witte kaartjes
-
-### Over / team-sectie homepage (`components/OverSection.tsx`)
-
-- Link naar `/team`: tekst **Meer over ons →** (was: *Maak kennis met ons team*)
+- Kleuren: navy `#212431`, off-white `#F5F5F5`, oranje `#EA5C1F`, orange-deep `#C44715`, slate `#4F5D75`
+- Fonts: Oswald (display), Work Sans (body), Barlow (quotes)
+- Schrijfregels: geen em-dashes, enkele aanhalingstekens, kort/direct Nederlands, geen AI-filler
+- Eén visuele wijziging per prompt, mobile-first, asymmetrie boven symmetrie
+- Landingspagina's: hybride stijl (B-structuur + C-kleuren), afwisselende off-white/navy blokken waar van toepassing
 
 ---
 
-## Wat stond al klaar (eerder)
+## Wat al staat (niet opnieuw bouwen tenzij gevraagd)
 
-### Landingspagina’s (`/trainen`, `/coaching`, `/zakelijk`)
+### Homepage (`app/page.tsx` + components)
 
-- Menukaarten, **MEER DAN EEN GYM**, **LandingFooter** (geen oranje CTA-blok boven footer)
-- Copy: `components/landing/landing-cards.ts`
+- **Hero / Nav:** CTA 'Kom kennismaken' uppercase + pijltje, extra padding op mobiel
+- **Aanbod:** 3 feature cards → `/trainen`, `/coaching`, `/zakelijk`
+- **Aanbod-CTA:** minimalistisch onder de tegels (2 regels + oranje knop, geen witte box):
+  - *Niet zeker welke route bij je past?*
+  - *Mooi, dan hebben we iets om over te praten.*
+- **Testimonials:** carousel met ~17 quotes; mobiele scroll-fix (geen auto-jump naar footer bij laden)
+- **Rosanne A / Rosanne K** onderscheiden; **Stephanie** op Momentum voor 'eerder aangedurfd'
+- **Footer:** oranje balk, Wees welkom + Plan een kennismaking + contact + ©
 
-### Team (`/team`)
+### Landingspagina's
 
-- Hero OVER ONS, teamgrid, Over-ons-blok + duo-foto
-- Yvonne quote: *Je begint door te beginnen.*
+| Route | Status |
+|-------|--------|
+| `/trainen` | Tegels 01/02/03 op foto, sectietitel outline ('We zijn er voor iedereen'), meer ruimte boven tegels, feature tiles 'Meer dan een gym', inline links (WhatsApp + contact) in tegels, footer met WhatsApp |
+| `/coaching` | Feature tiles 'Typisch STARK', 01/02/03 op tegels, footer met WhatsApp |
+| `/zakelijk` | Tegeltitels FUNDAMENT / RE-INTEGREREN / STARKE TEAMS, 01/02/03, footer met WhatsApp |
+| `/de-eerste-stap` | Volledige verkooppagina De Eerste Stap (€57) |
+| `/van-punt-a-naar-punt-b` | Permanente redirect → `/de-eerste-stap` |
+| `/momentum` | Herbouwde landingspagina (hybride stijl) |
+| `/impact` | Nog oude layout |
+| `/team` | Footer-CTA met Kom kennismaken + WhatsApp (oranje sectie) |
 
-### Overige
+### Tegels & componenten
 
-- Homepage aanbod: 3 feature cards → `/trainen`, `/coaching`, `/zakelijk`
-- `lib/contact.ts`: `mailtoKennismaking`, `mailtoInfo`
-- Dev: `npm run dev` → **http://127.0.0.1:3456** (IPv4, zie `PREVIEW.md`)
+- **Volledig klikbare tegels** via stretched link (`LandingServiceCard` + `landing-cards.ts`)
+- **Bullets** in tegel-menu (`bullets` array)
+- **Inline links** in tegeltekst (`parts` array: WhatsApp, contactformulier, zilverfitness.nl)
+- **Nummer-overlay** op foto (`num` prop → 01, 02, 03)
+- **LandingFooter** met optionele `whatsapp` prop (dubbele knop: kennismaking + WhatsApp)
+
+### Bronbestanden (parent map)
+
+- `CONTEXT.md` en `content/aanbod.md` bijgewerkt naar **De Eerste Stap** (€57, niet meer Van A naar B €30)
 
 ---
 
-## Nog niet gedaan / open
+## Belangrijke bestanden
 
-- **404-pagina** — blessure-copy + één CTA (`app/not-found.tsx`)
-- Subpagina’s momentum, impact, fundament-*: nog oude layout, geen menukaart-patroon
-- Netlify: bevestigen dat auto-deploy na GitHub-push werkt
+| Onderdeel | Pad |
+|-----------|-----|
+| Tegels/data | `components/landing/landing-cards.ts` |
+| Tegel-component | `components/landing/LandingServiceCard.tsx` |
+| Landings-styling | `app/landing.module.css` |
+| Footer landings | `components/landing/LandingFooter.tsx` |
+| Contact/WhatsApp | `lib/contact.ts`, `components/contact/WhatsAppLink.tsx` |
+| Aanbod homepage | `components/AanbodSection.tsx`, `components/aanbod/` |
+| Testimonials | `components/ResultatenSection.tsx`, `components/RotatingTestimonials.tsx` |
+| De Eerste Stap | `app/de-eerste-stap/page.tsx`, `page.module.css` |
+| Momentum | `app/momentum/page.tsx`, `momentum.module.css` |
+
+---
+
+## Nog niet gedaan / mogelijke vervolgstappen
+
+- **Impact** landingspagina herbouwen (zelfde hybride aanpak als Momentum/De Eerste Stap)
+- **Checkout/betaalflow** voor De Eerste Stap (CTA's gaan nu naar `hrefCoaching`)
+- **Fundament-subpagina's** klikbaar maken vanaf zakelijk-tegels (`/fundament-preventief`, etc.)
+- **Coaching/zakelijk** sectietitels outline-stijl (zoals trainen) als gewenst
+- **404-pagina** finetunen
+- **Git push** van huidige lokale wijzigingen + Netlify deploy
 
 ---
 
@@ -86,39 +101,34 @@ Styling:
 cd stark-site
 npm run dev          # http://127.0.0.1:3456
 npm run dev:clean    # bij wit scherm / cache
-npm run open:home
-npm run open:team
 ```
 
+Bij stale preview: kill poort 3456, `rm -rf .next`, opnieuw `npm run dev`, hard refresh (Cmd+Shift+R).
+
 **Niet** `localhost` als dat naar IPv6 springt — gebruik **127.0.0.1**.
-
----
-
-## Design-regels (kort)
-
-Lees: `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`
-
-- Oswald + Work Sans; `--navy`, `--orange`, `--off`, `--slate`
-- Oranje secties: navy tekst + navy CTA-knop (footer, aanbod-CTA)
-- Geen em-dashes in nieuwe copy; idiomatisch NL
 
 ---
 
 ## Prompt voor nieuwe chat (kopieer dit)
 
 ```
-Je werkt verder aan de STARK! Hardenberg-site in `stark-site/` (Next.js 14, CSS Modules).
+STARK! Hardenberg website — vervolg bouwen
 
-Lees eerst: `stark-site/SESSION-HANDOFF.md`, `../CLAUDE.md`, `../CONTEXT.md`, `../SCHRIJF-REGELS.md`.
+Ik werk aan de STARK! Hardenberg website in de map `stark-site` (Next.js 14, App Router, CSS Modules).
 
-Huidige stand (homepage):
-- Footer: oranje balk, Wees welkom + Plan een kennismaking + contact + ©/Opgericht 2013.
-- Aanbod-CTA: oranje blok onder de 3 cards, gecentreerd.
-- Testimonials: witte QuoteCards onder grote Amanda-quote.
-- Over-sectie: link "Meer over ons" → /team.
-- Git: main @ 22b91b6 op github.com/starkhardenberg/stark-website.
+Lees eerst: `stark-site/SESSION-HANDOFF.md`, `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`.
 
-Dev: npm run dev in stark-site → http://127.0.0.1:3456
+Dev: `npm run dev` in `stark-site` → http://127.0.0.1:3456 (127.0.0.1, niet localhost). Bij stale preview: kill poort 3456, `rm -rf .next`, opnieuw dev, Cmd+Shift+R.
 
-Wat wil ik nu als eerste stap? [vul in]
+Design: navy #212431, off-white #F5F5F5, oranje #EA5C1F. Oswald + Work Sans + Barlow. Geen em-dashes, enkele quotes, mobile-first, één visuele wijziging per prompt.
+
+Huidige stand (samenvatting):
+- Homepage: minimalistische aanbod-CTA, testimonials-carousel (mobiel gefixt), hero-CTA uppercase
+- Landings: trainen/coaching/zakelijk met 01/02/03 op tegels, klikbare tegels, WhatsApp in footer
+- `/de-eerste-stap` live (redirect van oude route), `/momentum` herbouwd, `/impact` nog oud
+- Team: WhatsApp-knop in footer-CTA
+- Git: main @ 4aec8f2 op GitHub; lokale wijzigingen sindsdien nog niet gepusht
+
+Mijn verzoek nu:
+[VUL HIER IN]
 ```

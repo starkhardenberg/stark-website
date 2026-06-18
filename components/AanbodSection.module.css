@@ -57,96 +57,57 @@
 }
 
 .sectionCta {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: clamp(24px, 3vw, 32px);
-  border: 1px solid rgba(33, 36, 49, 0.1);
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: clamp(18px, 2.5vw, 24px);
-  transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.sectionCta:hover {
-  border-color: rgba(234, 92, 31, 0.45);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
-}
-
-.sectionCtaQuote {
-  margin: 0;
-  padding: 0;
-}
-
-.sectionCtaQuote p {
-  margin: 0;
-  font-family: var(--font-quote), var(--font-body), sans-serif;
-  font-weight: 600;
-  font-size: clamp(18px, 2.2vw, 22px);
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: var(--navy);
-  text-wrap: pretty;
+  align-items: center;
   text-align: center;
+  gap: clamp(18px, 3vw, 26px);
+  margin-top: clamp(48px, 8vw, 88px);
 }
 
-.sectionCtaQuote p::before {
-  content: '\201C';
-  color: var(--orange);
-}
-
-.sectionCtaQuote p::after {
-  content: '\201D';
-  color: var(--orange);
-}
-
-.sectionCtaCite {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(12px, 2vw, 16px);
+.sectionCtaLine {
   margin: 0;
-  padding-top: clamp(14px, 2vw, 18px);
-  border-top: 2px solid var(--orange);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.78);
 }
 
 .sectionCtaSub {
-  margin: 0;
-  font-family: var(--font-body), sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: var(--slate);
-  text-align: center;
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: rgba(245, 245, 245, 0.5);
 }
 
 .sectionCtaButton {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-body), sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--navy);
-  border-bottom: 1px solid rgba(234, 92, 31, 0.45);
-  padding-bottom: 2px;
+  color: var(--off);
+  background: var(--orange);
+  padding: 16px 34px;
   transition:
-    color 0.18s ease,
-    border-color 0.18s ease;
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.sectionCtaButton span {
+  transition: transform 0.18s ease;
 }
 
 .sectionCtaButton:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  background: var(--orange-deep);
+}
+
+.sectionCtaButton:hover span {
+  transform: translateX(3px);
 }
 
 .sectionCtaButton:focus-visible {
@@ -174,28 +135,5 @@
   .cardsAndCta > :nth-child(3) {
     grid-column: 3;
     grid-row: 1;
-  }
-
-  .sectionCta {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(24px, 4vw, 48px);
-  }
-
-  .sectionCtaQuote {
-    flex: 1;
-    min-width: 0;
-    max-width: 56ch;
-  }
-
-  .sectionCtaCite {
-    flex-shrink: 0;
-    padding-top: 0;
-    padding-left: clamp(20px, 3vw, 32px);
-    border-top: none;
-    border-left: 2px solid var(--orange);
   }
 }
