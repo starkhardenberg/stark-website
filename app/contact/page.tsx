@@ -4,6 +4,7 @@ import Link from 'next/link'
 import ContactForm from '@/components/contact/ContactForm'
 import WhatsAppCTA from '@/components/contact/WhatsAppCTA'
 import {
+  ADDRESS,
   CTA_KENNISMAKING_LABEL,
   mailtoInfo,
   parseOnderwerp,
@@ -70,7 +71,9 @@ export default function ContactPage({ searchParams }: PageProps) {
           <span aria-hidden>·</span>
           <a href={mailtoInfo}>info@starkhardenberg.nl</a>
           <span aria-hidden>·</span>
-          <span>Nijverheidsstraat 15c, Hardenberg</span>
+          <a href={ADDRESS.maps} target="_blank" rel="noopener noreferrer">
+            {ADDRESS.display}
+          </a>
         </p>
       </div>
     </main>

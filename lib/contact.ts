@@ -91,5 +91,10 @@ export const hrefWhatsAppKennismaking = whatsappUrl()
 /** Direct mail/telefoon in footer (geen formulier) */
 export const mailtoInfo = 'mailto:info@starkhardenberg.nl'
 
+export const ADDRESS = {
+  display: 'Nijverheidsstraat 15c, Hardenberg',
+  maps: 'https://www.google.com/maps/search/?api=1&query=Nijverheidsstraat+15c,+Hardenberg,+Nederland',
+} as const
+
 /** @deprecated Gebruik hrefKennismaking — behouden voor geleidelijke migratie */
 export const mailtoKennismaking = hrefKennismaking

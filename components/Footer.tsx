@@ -1,4 +1,4 @@
-import { CTA_KENNISMAKING_LABEL, mailtoInfo, hrefKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, ADDRESS, mailtoInfo, hrefKennismaking } from '@/lib/contact'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import styles from './Footer.module.css'
@@ -8,8 +8,10 @@ const year = new Date().getFullYear()
 type FooterProps = {
   /** Foto boven, tekst onder. */
   photoFirst?: boolean
-  /** home = homepage-foto, landing = groepsles. Standaard: landing bij photoFirst, anders home. */
-  photoSet?: 'home' | 'landing'
+  /** home = homepage-foto, landing = groepsles, coaching = coachingsessie. Standaard: landing bij photoFirst, anders home. */
+  photoSet?: 'home' | 'landing' | 'coaching'
+  /** dark = navy (standaard), light = off-white, gradient = navy → off-white van boven naar beneden. */
+  tone?: 'dark' | 'light' | 'gradient'
 }
 
 const HOME_PHOTO = {
@@ -24,17 +26,29 @@ const LANDING_PHOTO = {
   height: 1280,
 } as const
 
-export default function Footer({ photoFirst = false, photoSet }: FooterProps) {
+const COACHING_PHOTO = {
+  src: '/images/footer-coaching-sessie.png',
+  width: 1024,
+  height: 682,
+} as const
+
+export default function Footer({ photoFirst = false, photoSet, tone = 'dark' }: FooterProps) {
   const resolvedPhotoSet = photoSet ?? (photoFirst ? 'landing' : 'home')
-  const photoAsset = resolvedPhotoSet === 'home' ? HOME_PHOTO : LANDING_PHOTO
+  const photoAsset =
+    resolvedPhotoSet === 'home'
+      ? HOME_PHOTO
+      : resolvedPhotoSet === 'coaching'
+        ? COACHING_PHOTO
+        : LANDING_PHOTO
   const isHomePhoto = resolvedPhotoSet === 'home'
+  const isCoachingPhoto = resolvedPhotoSet === 'coaching'
 
   const photo = (
     <div className={styles.photoWrap}>
       <img
         src={photoAsset.src}
         alt=""
-        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}`}
+        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}${isCoachingPhoto ? ` ${styles.photoCoaching}` : ''}`}
         width={photoAsset.width}
         height={photoAsset.height}
         decoding="async"
@@ -47,8 +61,8 @@ export default function Footer({ photoFirst = false, photoSet }: FooterProps) {
       <div className={styles.content}>
         <div className={styles.inner}>
           <div className={styles.colStart}>
-            <p className={styles.brand}>STARK!</p>
             <p className={styles.welcome}>Wees welkom.</p>
+            <p className={styles.brand}>STARK!</p>
             <p className={styles.meta}>
               &copy; {year} STARK! Hardenberg
               <span className={styles.metaSep} aria-hidden>
@@ -88,15 +102,27 @@ export default function Footer({ photoFirst = false, photoSet }: FooterProps) {
                   info@starkhardenberg.nl
                 </a>
               </p>
-              <p className={styles.contactAddress}>Nijverheidsstraat 15c Hardenberg</p>
+              <a
+                href={ADDRESS.maps}
+                className={`${styles.contactLink} ${styles.contactAddress}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ADDRESS.display}
+              </a>
             </div>
           </div>
         </div>
       </div>
   )
 
+  const toneClass =
+    tone === 'light' ? styles.footerLight : tone === 'gradient' ? styles.footerGradient : ''
+
   return (
-    <footer className={`${styles.footer} ${photoFirst ? styles.footerPhotoFirst : ''}`}>
+    <footer
+      className={`${styles.footer} ${photoFirst ? styles.footerPhotoFirst : ''} ${toneClass}`}
+    >
       {photoFirst ? (
         <>
           {photo}

@@ -17,6 +17,10 @@ html, body {
   padding: 0;
 }
 
+html {
+  --font-quote: var(--font-body);
+}
+
 body {
   background: var(--navy);
   color: var(--off);

@@ -30,7 +30,7 @@ export default function OverSection() {
             Negen trainers die stuk voor stuk ooit gestart zijn in één van onze coachingprogramma&apos;s of als sportend lid. Hierdoor heeft het team onze aanpak aan den lijve ervaren en weten ze hoe het is om te starten, omdat ze ooit zelf op dat punt stonden.
           </p>
           <p className={styles.body}>
-            Onze trainers zijn intern opgeleid: theorie, stage, opdrachten en feedback. Zodat ze de STARK aanpak volledig eigen hebben gemaakt.
+            Onze trainers zijn intern opgeleid: theorie, stage, opdrachten en feedback. Zodat ze de STARK! trainingsaanpak volledig eigen hebben gemaakt.
           </p>
           <p className={styles.body}>
             Het draait om jou en jouw doel. Daarom houden we de lijntjes kort en checken we regelmatig bij je in. En is er altijd een vast gezicht dat weet waar je staat.

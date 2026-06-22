@@ -14,15 +14,6 @@ const nextConfig = {
     }
     return config
   },
-  async redirects() {
-    return [
-      {
-        source: '/van-punt-a-naar-punt-b',
-        destination: '/de-eerste-stap',
-        permanent: true,
-      },
-    ]
-  },
 }
 
 export default nextConfig

@@ -8,6 +8,7 @@
   color: var(--off);
   min-height: 100vh;
   overflow-x: hidden;
+  font-family: var(--font-body), sans-serif;
 }
 
 /* ── Fixed nav ── */
@@ -102,7 +103,33 @@
 }
 
 .heroBgImgTrainen {
-  filter: grayscale(0.12) brightness(0.68) contrast(1.05);
+  filter: grayscale(0.06) brightness(0.78) contrast(1.04);
+}
+
+.heroBgImgCoaching {
+  filter: grayscale(1) brightness(0.66) contrast(1.05);
+}
+
+/* Trainen, coaching, zakelijk: foto iets lichter en zichtbaarder */
+.heroBg:has(.heroBgImgTrainen)::before,
+.heroBg:has(.heroBgImgCoaching)::before {
+  background: linear-gradient(
+    180deg,
+    rgba(33, 36, 49, 0.36) 0%,
+    rgba(33, 36, 49, 0.44) 38%,
+    rgba(33, 36, 49, 0.84) 100%
+  );
+  filter: brightness(0.88);
+}
+
+.heroBg:has(.heroBgImgTrainen)::after,
+.heroBg:has(.heroBgImgCoaching)::after {
+  background: radial-gradient(120% 90% at 20% 82%, rgba(33, 36, 49, 0.32) 0%, rgba(33, 36, 49, 0) 60%);
+}
+
+/* Coaching-hero: meer lucht onder de titel voor rust */
+.heroCoaching .heroContent {
+  bottom: 16%;
 }
 
 /* Orange slash bar at bottom of hero */
@@ -492,6 +519,272 @@
   -webkit-text-stroke: 1.5px var(--orange);
 }
 
+/* Subtielere outline op kleinere sectietitels (catalogus i.p.v. hero) */
+.titleAccentOutline {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--orange);
+}
+
+/* Catalogus-sectie: tegels/menu onder een sterke intro — titel blijft ondergeschikt */
+.sectionCatalog {
+  padding-top: clamp(40px, 6vw, 72px);
+}
+
+.sectionCatalog .title {
+  font-size: clamp(24px, 3.6vw, 40px);
+  line-height: 1.02;
+  margin-bottom: clamp(14px, 2vw, 22px);
+  color: rgba(245, 245, 245, 0.88);
+}
+
+.sectionCatalog .label {
+  margin-bottom: 8px;
+}
+
+.sectionCatalog .resultGridSpaced {
+  margin-top: clamp(24px, 4vw, 40px);
+}
+
+/* ── Intro-samenvatting (coaching: tussen hero en tegels) ──
+   Zelfde manifest-look als de tweede sectie op de homepage (IntroSection) */
+.introSection {
+  padding: clamp(56px, 9vw, 96px) clamp(20px, 4vw, 48px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.06) 0%, rgba(234, 92, 31, 0) 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%),
+    var(--navy);
+}
+
+/* Lichte variant: doorbreekt de reeks donkere secties (donker > licht > donker) */
+.introSectionLight {
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.05) 0%, rgba(234, 92, 31, 0) 46%),
+    var(--off);
+  border-top-color: rgba(33, 36, 49, 0.1);
+  border-bottom-color: rgba(33, 36, 49, 0.1);
+}
+
+.introSectionLight .introStatement {
+  color: var(--navy);
+}
+
+.introSectionLight .introColLabel {
+  color: var(--navy);
+}
+
+.introSectionLight .introColText,
+.introSectionLight .introColList {
+  color: rgba(33, 36, 49, 0.7);
+}
+
+.introSectionLight .introCta:not(.introCtaFilled) {
+  border-color: rgba(33, 36, 49, 0.22);
+  color: var(--navy);
+}
+
+.introSectionLight .introCta:not(.introCtaFilled):hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.introRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 48px);
+  align-items: start;
+}
+
+.introLabel {
+  margin: 0 0 clamp(14px, 2vw, 18px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.introStatement {
+  margin: 0;
+  max-width: 11ch;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 96px);
+  line-height: 0.92;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.introBody {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3.5vw, 32px);
+  min-width: 0;
+}
+
+.introCols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(22px, 3.5vw, 32px);
+}
+
+.introCol {
+  margin: 0;
+  padding: 0 0 0 clamp(18px, 2.5vw, 24px);
+  border-left: 2px solid var(--orange);
+}
+
+.introColLabel {
+  display: block;
+  margin: 0 0 7px;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--off);
+}
+
+.introColText {
+  margin: 0;
+  max-width: 42ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.62);
+}
+
+.introColText + .introColList {
+  margin-top: 10px;
+}
+
+.introColList {
+  margin: 0;
+  padding: 0;
+  max-width: 42ch;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.62);
+}
+
+.introColList li {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 14px;
+}
+
+.introColList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  transform: translateY(-50%);
+}
+
+.introCtaRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: clamp(8px, 1.5vw, 14px);
+}
+
+.introCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  border: 1px solid rgba(245, 245, 245, 0.24);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--off);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.introCta:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.introCtaFilled {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--off);
+}
+
+.introCtaFilled:hover {
+  background: var(--orange-deep);
+  border-color: var(--orange-deep);
+  color: var(--off);
+}
+
+.introCtaIcon {
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .introCta:hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 720px) {
+  .introCtaRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  .introRow {
+    grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 80px);
+  }
+
+  .introHead {
+    padding-right: clamp(24px, 3vw, 40px);
+  }
+
+  .introStatement {
+    max-width: 9ch;
+    font-size: clamp(48px, 5.5vw, 88px);
+  }
+
+  .introBody {
+    padding-left: clamp(8px, 1vw, 16px);
+  }
+
+  .introCols {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 4vw, 48px);
+  }
+}
+
 .body {
   font-family: var(--font-body), sans-serif;
   font-size: 16px;
@@ -877,11 +1170,6 @@ a.resultItem {
   padding-bottom: clamp(8px, 1.5vw, 14px);
 }
 
-/* Kids-tegel: lagere fotobalk (portretfoto oogt anders snel “te groot” naast 4/3) */
-.resultGridPhotos .resultItemKidsBand .resultMedia {
-  aspect-ratio: 2.15 / 1;
-}
-
 .resultMedia {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -913,7 +1201,7 @@ a.resultItem {
 }
 
 .resultMediaImgKids {
-  filter: grayscale(1) contrast(1.08) brightness(0.86);
+  filter: grayscale(1) contrast(1.04);
 }
 
 .resultItemInverted {
@@ -1111,6 +1399,14 @@ a.resultItem {
       linear-gradient(180deg, rgba(33, 36, 49, 0.45) 0%, rgba(33, 36, 49, 0) 30%, rgba(33, 36, 49, 0.55) 100%);
   }
 
+  .heroBg:has(.heroBgImgTrainen)::before,
+  .heroBg:has(.heroBgImgCoaching)::before {
+    background:
+      linear-gradient(90deg, rgba(33, 36, 49, 0.82) 0%, rgba(33, 36, 49, 0.58) 36%, rgba(33, 36, 49, 0.18) 68%, rgba(33, 36, 49, 0.42) 100%),
+      linear-gradient(180deg, rgba(33, 36, 49, 0.28) 0%, rgba(33, 36, 49, 0) 28%, rgba(33, 36, 49, 0.46) 100%);
+    filter: brightness(0.94);
+  }
+
   .heroBgImg {
     object-position: center 32%;
   }
@@ -1224,6 +1520,23 @@ a.resultItem {
     align-items: stretch;
   }
 
+  /* Twee tegels: vullen samen de hele sectiebreedte i.p.v. 2/3 ervan,
+     met ruimere tussenruimte zodat de tegels smaller worden maar de
+     buitenranden op dezelfde plek blijven uitlijnen */
+  .resultGridPhotos.resultGridTwo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(72px, 11vw, 184px);
+  }
+
+  /* Breder = anders te hoog: lagere foto + compactere tegel */
+  .resultGridPhotos.resultGridTwo .resultItem {
+    min-height: clamp(620px, 66vh, 780px);
+  }
+
+  .resultGridPhotos.resultGridTwo .resultMedia {
+    aspect-ratio: 16 / 9;
+  }
+
   .resultGridPhotos .resultItem {
     min-height: clamp(820px, 88vh, 1040px);
   }
@@ -1241,10 +1554,6 @@ a.resultItem {
 
   .resultGridPhotos .resultMedia {
     aspect-ratio: 4 / 3;
-  }
-
-  .resultGridPhotos .resultItemKidsBand .resultMedia {
-    aspect-ratio: 2.15 / 1;
   }
 
   .cta {

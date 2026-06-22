@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Barlow, Oswald, Work_Sans } from 'next/font/google'
+import { Barlow, Oswald } from 'next/font/google'
 import './globals.css'
 
 const oswald = Oswald({
@@ -9,17 +9,10 @@ const oswald = Oswald({
   display: 'swap',
 })
 
-const workSans = Work_Sans({
+const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-body',
-  display: 'swap',
-})
-
-const barlow = Barlow({
-  subsets: ['latin'],
-  weight: ['500', '600'],
-  variable: '--font-quote',
   display: 'swap',
 })
 
@@ -40,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl" className={`${oswald.variable} ${workSans.variable} ${barlow.variable}`}>
+    <html lang="nl" className={`${oswald.variable} ${barlow.variable}`}>
       <body>{children}</body>
     </html>
   )

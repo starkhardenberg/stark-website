@@ -1,5 +1,7 @@
 import AanbodFeatureCard from './aanbod/AanbodFeatureCard'
 import { aanbodTracks } from './aanbod/aanbod-tracks'
+import WhatsAppLink from '@/components/contact/WhatsAppLink'
+import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import styles from './AanbodSection.module.css'
 
@@ -26,10 +28,16 @@ export default function AanbodSection() {
             Niet zeker welke route bij je past?
             <span className={styles.sectionCtaSub}>Mooi, dan hebben we iets om over te praten.</span>
           </p>
-          <a href={hrefKennismaking} className={styles.sectionCtaButton}>
-            {CTA_KENNISMAKING_LABEL}
-            <span aria-hidden>→</span>
-          </a>
+          <div className={styles.sectionCtaActions}>
+            <a href={hrefKennismaking} className={styles.sectionCtaButton}>
+              {CTA_KENNISMAKING_LABEL}
+              <span aria-hidden>→</span>
+            </a>
+            <WhatsAppLink className={styles.sectionCtaWhatsapp}>
+              <WhatsAppIcon className={styles.sectionCtaWhatsappIcon} />
+              <span>Stuur een WhatsApp</span>
+            </WhatsAppLink>
+          </div>
         </div>
       </div>
     </section>

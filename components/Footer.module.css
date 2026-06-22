@@ -25,7 +25,7 @@
 }
 
 .colEnd {
-  max-width: 34rem;
+  max-width: 48rem;
 }
 
 .brand {
@@ -36,7 +36,9 @@
   letter-spacing: var(--display-tracking);
   line-height: var(--display-leading);
   text-transform: uppercase;
-  color: var(--orange);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--orange);
 }
 
 .welcome {
@@ -52,11 +54,12 @@
 
 .lead {
   margin: 0;
-  max-width: 28rem;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.65vw, 17px);
+  max-width: none;
+  font-family: var(--font-quote), var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.75vw, 18px);
   font-weight: 500;
   line-height: 1.55;
+  letter-spacing: 0.015em;
   color: rgba(245, 245, 245, 0.88);
 }
 
@@ -139,12 +142,13 @@
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   margin: 0;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(14px, 1.5vw, 16px);
-  font-weight: 600;
-  line-height: 1.55;
+  font-family: var(--font-quote), var(--font-body), sans-serif;
+  font-size: clamp(13px, 1.45vw, 15px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.015em;
   color: rgba(245, 245, 245, 0.78);
 }
 
@@ -208,6 +212,11 @@
 .photoHome {
   object-position: center 52%;
   filter: grayscale(1) contrast(1.02) brightness(0.96);
+}
+
+.photoCoaching {
+  object-position: center 42%;
+  filter: grayscale(1) contrast(1.06) brightness(0.9);
 }
 
 .footer:not(.footerPhotoFirst) .photoWrap {
@@ -290,4 +299,204 @@
   .ctaWhatsapp:hover {
     transform: none;
   }
+}
+
+/* ── Lichte variant (homepage + coaching) ── */
+.footerLight {
+  margin-top: 0;
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.05) 0%, rgba(234, 92, 31, 0) 46%),
+    var(--off);
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.footerLight .content {
+  background: transparent;
+}
+
+.footerLight .welcome {
+  color: var(--navy);
+}
+
+.footerLight .lead {
+  color: rgba(33, 36, 49, 0.82);
+}
+
+.footerLight .ctaWhatsapp {
+  color: var(--navy);
+  border-color: rgba(33, 36, 49, 0.22);
+}
+
+.footerLight .ctaWhatsapp:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.footerLight .cta:focus-visible {
+  outline-color: var(--navy);
+}
+
+.footerLight .ctaWhatsapp:focus-visible {
+  outline-color: var(--navy);
+}
+
+.footerLight .contact {
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.footerLight .contactLink {
+  color: var(--navy);
+}
+
+.footerLight .contactLink:hover {
+  color: var(--orange);
+}
+
+.footerLight .sep {
+  color: rgba(33, 36, 49, 0.35);
+}
+
+.footerLight .meta {
+  color: rgba(33, 36, 49, 0.45);
+}
+
+.footerLight .metaSep {
+  color: rgba(33, 36, 49, 0.28);
+}
+
+.footerLight .photoWrap {
+  background: var(--off);
+}
+
+.footerLight:not(.footerPhotoFirst) .photoFade {
+  background: linear-gradient(
+    to bottom,
+    var(--off) 0%,
+    rgba(245, 245, 245, 0.35) 6%,
+    rgba(245, 245, 245, 0.08) 14%,
+    transparent 26%
+  );
+}
+
+.footerLight.footerPhotoFirst .photoFade {
+  background: linear-gradient(
+    to top,
+    var(--off) 0%,
+    rgba(245, 245, 245, 0.92) 14%,
+    rgba(245, 245, 245, 0.55) 32%,
+    rgba(245, 245, 245, 0.18) 52%,
+    transparent 72%
+  );
+}
+
+/* ── Gradient variant: foto eindigt in navy → content fade navy → off-white ── */
+.footerGradient {
+  margin-top: 0;
+  background: var(--off);
+}
+
+.footerGradient .photoWrap {
+  background: var(--navy);
+}
+
+/* Foto loopt onderaan door in navy (naadloos met sectie erboven + gradient) */
+.footerGradient.footerPhotoFirst .photoFade {
+  background: linear-gradient(
+    to top,
+    var(--navy) 0%,
+    rgba(33, 36, 49, 0.96) 14%,
+    rgba(33, 36, 49, 0.68) 32%,
+    rgba(33, 36, 49, 0.22) 62%,
+    transparent 100%
+  );
+}
+
+/* Gradient zit in content: navy bovenaan → off-white onderaan */
+.footerGradient.footerPhotoFirst .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(340px, 42vw, 460px);
+  padding: 0 clamp(24px, 5vw, 64px) clamp(44px, 7vw, 68px);
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.04) 0%, transparent 48%),
+    linear-gradient(
+      to bottom,
+      var(--navy) 0%,
+      #282b38 10%,
+      #454956 26%,
+      #727682 44%,
+      #a8abb4 62%,
+      #d6d6d6 78%,
+      var(--off) 92%,
+      var(--off) 100%
+    );
+}
+
+.footerGradient:not(.footerPhotoFirst) .photoFade {
+  background: linear-gradient(
+    to bottom,
+    var(--navy) 0%,
+    rgba(33, 36, 49, 0.5) 35%,
+    transparent 70%
+  );
+}
+
+.footerGradient:not(.footerPhotoFirst) .content {
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.04) 0%, transparent 48%),
+    linear-gradient(
+      to bottom,
+      var(--navy) 0%,
+      #454956 28%,
+      #a8abb4 58%,
+      var(--off) 100%
+    );
+}
+
+.footerGradient .welcome {
+  color: #0f1118;
+}
+
+.footerGradient .lead {
+  color: #212431;
+}
+
+.footerGradient .ctaWhatsapp {
+  color: #212431;
+  border-color: rgba(33, 36, 49, 0.32);
+}
+
+.footerGradient .ctaWhatsapp:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.footerGradient .cta:focus-visible,
+.footerGradient .ctaWhatsapp:focus-visible {
+  outline-color: var(--navy);
+}
+
+.footerGradient .contact {
+  color: rgba(15, 17, 24, 0.82);
+}
+
+.footerGradient .contactLink {
+  color: #212431;
+}
+
+.footerGradient .contactLink:hover {
+  color: var(--orange);
+}
+
+.footerGradient .sep {
+  color: rgba(33, 36, 49, 0.35);
+}
+
+.footerGradient .meta {
+  color: rgba(15, 17, 24, 0.58);
+}
+
+.footerGradient .metaSep {
+  color: rgba(33, 36, 49, 0.28);
 }

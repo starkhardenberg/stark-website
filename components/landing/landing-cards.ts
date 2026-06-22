@@ -6,11 +6,11 @@ export const trainenCards: LandingServiceCardData[] = [
     title: 'Volwassenen (vanaf 16 jaar)',
     image: 'foto-trainen-landingspagina.png',
     imageAlt: 'Volwassenen tijdens een groepsles bij STARK! Hardenberg',
-    objectPosition: 'center 78%',
+    objectPosition: '85% center',
     menu: [
       {
         label: 'Voor wie',
-        text: 'Volwassenen vanaf 16 jaar die het Startpakket hebben afgerond. Beginner, al langer bezig, of ergens daartussen: je traint op eigen niveau in een vaste groep.',
+        text: 'Volwassenen vanaf 16 jaar. Beginner, al langer bezig, of ergens daartussen: je traint op eigen niveau in een vaste groep.',
       },
       {
         label: 'Doel',
@@ -42,7 +42,6 @@ export const trainenCards: LandingServiceCardData[] = [
     image: 'foto-vrouw-55-lachen.jpg',
     imageAlt: 'ZilverFitness deelnemer bij STARK! Hardenberg',
     objectPosition: 'center 10%',
-    inverted: true,
     menu: [
       {
         label: 'Voor wie',
@@ -65,9 +64,9 @@ export const trainenCards: LandingServiceCardData[] = [
   },
   {
     title: 'Kids en Teens (5 - 16 jaar)',
-    image: 'foto-kids-kettlebell-v2.png',
-    imageAlt: 'Kind met kettlebell tijdens training bij STARK! Hardenberg',
-    objectPosition: 'center 18%',
+    image: 'foto-kids-coaches-v3.png',
+    imageAlt: 'Twee coaches in gesprek met kinderen bij STARK! Hardenberg',
+    objectPosition: 'center 35%',
     kidsImage: true,
     menu: [
       {
@@ -98,81 +97,63 @@ export const trainenCards: LandingServiceCardData[] = [
 
 export const coachingCards: LandingServiceCardData[] = [
   {
-    title: 'De Eerste Stap',
-    image: 'foto-coaching-moment.jpg',
-    imageAlt: 'Coachingmoment bij STARK! Hardenberg',
-    objectPosition: 'center 40%',
-    detailHref: '/de-eerste-stap',
-    detailLabel: 'Lees meer over De Eerste Stap',
-    menu: [
-      {
-        label: 'Voor wie',
-        text: 'Iedereen die voelt dat er meer in zit, maar nog niet klaar is voor een heel traject. Geen lid of ervaring nodig.',
-      },
-      {
-        label: 'Doel',
-        text: 'In 60 minuten helder krijgen waar je staat, wat je werkelijk wil en wie je moet zijn om daar te komen.',
-      },
-      {
-        label: 'Wat je krijgt',
-        text: 'Een online sessie, een pakket per post met jouw eigen woorden, en een persoonlijk 1-op-1 gesprek.',
-      },
-      {
-        label: 'Hoe starten',
-        text: 'Start de sessie online, eenmalig €57. Daarna plan je je gesprek met Engbert-Jan of Yvonne.',
-      },
-    ],
-  },
-  {
     title: 'Momentum',
-    image: 'foto-coaching-samen.jpg',
-    imageAlt: 'Groepscoaching bij STARK! Hardenberg',
-    objectPosition: 'center 30%',
-    inverted: true,
+    image: 'foto-coaching-tegel-momentum.png',
+    imageAlt: 'Groep in gesprek tijdens coaching bij STARK! Hardenberg',
+    objectPosition: 'center 35%',
     detailHref: '/momentum',
     detailLabel: 'Lees meer over Momentum',
     menu: [
       {
-        label: 'Voor wie',
-        text: 'Mensen die toe zijn aan blijvend resultaat en het samen willen doen. Maximaal 10 per groep.',
+        label: 'Past bij jou als',
+        text: 'Je verder komt in een groep die je scherp houdt. Je wilt tempo, groepsdruk en het gevoel dat je er niet alleen voor staat.',
       },
       {
-        label: 'Doel',
-        text: 'Meer overtuiging, kracht en stappen zetten die voor jou belangrijk zijn. Samen verder dan alleen.',
+        label: 'Zo werkt het',
+        text: '10 weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma. Coaching gebeurt in de groep.',
       },
       {
-        label: 'Wat je krijgt',
-        text: '20 trainingen, 10 uur groepscoaching, 5 mentale en fysieke challenges.',
+        label: 'Wat zit erin',
+        text: '20 trainingen, 10 uur groepscoaching en 5 challenges, mentaal én fysiek.',
       },
       {
-        label: 'Hoe starten',
-        text: 'Plan een kennismaking. Instappen op vaste startdata.',
+        label: 'Start',
+        text: 'Plan een kennismaking. Daarna instappen op vaste startdata.',
+      },
+      {
+        label: 'Daarna',
+        text: 'Als alumni blijf je scherp met Impact+. Je traint verder in onze reguliere groepen.',
       },
     ],
   },
   {
     title: 'Impact',
-    image: 'foto-coaching-impact.png',
-    imageAlt: 'Persoonlijke coaching bij STARK! Hardenberg',
-    objectPosition: 'center 7%',
+    image: 'foto-coaching-tegel-impact.png',
+    imageAlt: 'Coachingsgesprek bij STARK! Hardenberg',
+    objectPosition: '42% center',
+    inverted: true,
     detailHref: '/impact',
     detailLabel: 'Lees meer over Impact',
     menu: [
       {
-        label: 'Voor wie',
-        text: 'Wie maximaal persoonlijke aandacht wil en bereid is drie maanden vol in te gaan.',
+        label: 'Past bij jou als',
+        text: 'Je wilt maximale persoonlijke aandacht en bent bereid 12 weken vol in te gaan. Jouw situatie vraagt om maatwerk, niet om een vaste groepsdynamiek.',
       },
       {
-        label: 'Doel',
-        text: 'Van A naar B komen: fysiek, mentaal en met volledige aandacht voor wat er bij jou speelt.',
+        label: 'Zo werkt het',
+        text: '12 weken, doorlopende instroom. Max. 5 per training, plus elk week een uur 1-op-1 coaching apart van de groep.',
       },
       {
-        label: 'Wat je krijgt',
-        text: 'Startpakket, 2x per week trainen (max. 5 deelnemers), wekelijks 1-op-1 coaching.',
+        label: 'Wat zit erin',
+        text: 'Startpakket, 2× per week trainen in kleine groep, en wekelijks persoonlijke coaching.',
       },
       {
-        label: 'Hoe starten',
-        text: 'Plan een vrijblijvend kennismakingsgesprek. Doorlopende instroom.',
+        label: 'Start',
+        text: 'Vrijblijvend kennismaken. Start wanneer het voor jou past.',
+      },
+      {
+        label: 'Daarna',
+        text: 'Als alumni blijf je scherp met Impact+. Je traint verder in onze reguliere groepen.',
       },
     ],
   },

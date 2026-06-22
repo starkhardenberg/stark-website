@@ -3,6 +3,8 @@ import { hrefCoaching } from '@/lib/contact'
 import Image from 'next/image'
 import styles from '../landing.module.css'
 import b from './momentum.module.css'
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
+import { getMomentumPageTestimonials, heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
 
 export const metadata = {
   title: 'Momentum — 10 weken groepsprogramma — STARK! Hardenberg',
@@ -215,6 +217,8 @@ export default function MomentumPage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection hero={heroQuoteRebekka} items={getMomentumPageTestimonials()} />
 
       <section className={`${b.sectionBase} ${b.sectionNavy}`}>
         <div className={b.narrowOnDark}>

@@ -80,6 +80,14 @@
   color: rgba(245, 245, 245, 0.5);
 }
 
+.sectionCtaActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
 .sectionCtaButton {
   display: inline-flex;
   align-items: center;
@@ -113,6 +121,43 @@
 .sectionCtaButton:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 3px;
+}
+
+.sectionCtaWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 34px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--off);
+  background: transparent;
+  border: 1px solid rgba(245, 245, 245, 0.35);
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.sectionCtaWhatsapp:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.sectionCtaWhatsapp:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.sectionCtaWhatsappIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 @media (min-width: 900px) {

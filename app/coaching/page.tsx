@@ -6,6 +6,8 @@ import FaqList from '@/components/faq/FaqList'
 import { coachingFaq } from '@/components/faq/faq-coaching'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { coachingCards } from '@/components/landing/landing-cards'
+import WhatsAppLink from '@/components/contact/WhatsAppLink'
+import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -25,16 +27,16 @@ export default function CoachingPage() {
         </Link>
       </nav>
 
-      <section className={styles.hero}>
+      <section className={`${styles.hero} ${styles.heroCoaching}`}>
         <div className={styles.heroBg}>
           <Image
-            src="/images/foto-coaching-impact.png"
-            alt="Coachingsgesprek bij STARK! Hardenberg"
+            src="/images/foto-coaching-hero-flipchart.png"
+            alt="Coachinggesprek met scherpe vragen bij STARK! Hardenberg"
             fill
-            className={`${styles.heroBgImg} ${styles.heroBgImgTrainen}`}
+            className={`${styles.heroBgImg} ${styles.heroBgImgCoaching}`}
             sizes="100vw"
             priority
-            style={{ objectPosition: 'center 7%' }}
+            style={{ objectPosition: '55% 38%' }}
           />
         </div>
         <div className={styles.heroContent}>
@@ -50,12 +52,51 @@ export default function CoachingPage() {
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
 
-      <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
-        <span className={styles.label}>Welk traject past bij mij?</span>
-        <h2 className={`${styles.title} ${styles.titleHero}`}>
-          Stap voor stap, <span className={styles.titleHeroOutline}>echt resultaat</span>
+      <section className={`${styles.introSection} ${styles.introSectionLight}`} aria-label="Wat coaching is">
+        <div className={styles.introRow}>
+          <div className={styles.introHead}>
+            <p className={styles.introLabel}>Stap voor stap, echt resultaat</p>
+            <h2 className={styles.introStatement}>Klaar met aanmodderen.</h2>
+          </div>
+          <div className={styles.introBody}>
+            <div className={styles.introCols}>
+              <div className={styles.introCol}>
+                <p className={styles.introColLabel}>Dit herken je. En het irriteert je ook.</p>
+                <ul className={styles.introColList}>
+                  <li>Je weet wat je wilt veranderen, maar blijft hangen in uitstel, twijfel of oude patronen.</li>
+                  <li>Je weet en je voelt het: als ik zo doorga, verandert er niets.</li>
+                  <li>Je bent bereid eerlijk te kijken naar wat je doet, en wat je overslaat.</li>
+                </ul>
+              </div>
+              <div className={styles.introCol}>
+                <p className={styles.introColLabel}>Jouw traject, jouw focus.</p>
+                <ul className={styles.introColList}>
+                  <li>Jij bepaalt waar we op inzetten. Je lijf, je hoofd, of allebei.</li>
+                  <li>Training én coaching in één traject. Geen losse gesprekken, geen losse workouts.</li>
+                  <li>Iemand die hardop zegt wat jij liever niet benoemt. En zo patronen doorbreekt.</li>
+                  <li>Verandering die blijft als het traject klaar is.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.introCtaRow}>
+              <Link href={hrefCoaching} className={`${styles.introCta} ${styles.introCtaFilled}`}>
+                Kom kennismaken
+              </Link>
+              <WhatsAppLink className={styles.introCta}>
+                <WhatsAppIcon className={styles.introCtaIcon} />
+                <span>Stuur een WhatsApp</span>
+              </WhatsAppLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.sectionWithOrangeBottom} ${styles.sectionCatalog}`}>
+        <h2 className={styles.title}>
+          Welk traject <span className={styles.titleAccentOutline}>past bij mij?</span>
         </h2>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
+        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridTwo} ${styles.resultGridSpaced}`}>
           {coachingCards.map((card, i) => (
             <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
           ))}
@@ -99,7 +140,7 @@ export default function CoachingPage() {
         </div>
       </section>
 
-      <Footer photoFirst />
+      <Footer photoFirst photoSet="coaching" tone="gradient" />
     </main>
   )
 }

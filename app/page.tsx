@@ -13,7 +13,7 @@ export default function Home() {
       <AanbodSection />
       <OverSection />
       <ResultatenSection />
-      <Footer photoFirst photoSet="home" />
+      <Footer photoFirst photoSet="home" tone="gradient" />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking, mailtoInfo } from '@/lib/contact'
+import { ADDRESS, CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking, mailtoInfo } from '@/lib/contact'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import styles from './LandingFooter.module.css'
@@ -26,7 +26,14 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
         <span className={styles.sep} aria-hidden>
           ·
         </span>
-        <span className={styles.contactText}>Nijverheidsstraat 15c, Hardenberg</span>
+        <a
+          href={ADDRESS.maps}
+          className={styles.contactLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {ADDRESS.display}
+        </a>
       </p>
 
       <div className={styles.actions}>

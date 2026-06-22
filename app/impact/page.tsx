@@ -2,6 +2,11 @@ import Link from 'next/link'
 import { hrefCoaching } from '@/lib/contact'
 import Image from 'next/image'
 import styles from '../landing.module.css'
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
+import {
+  getImpactPageTestimonials,
+  heroQuoteEva,
+} from '@/components/testimonials/testimonials-data'
 
 export const metadata = {
   title: 'Impact — 12 weken individueel traject — STARK! Hardenberg',
@@ -136,6 +141,8 @@ export default function ImpactPage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection hero={heroQuoteEva} items={getImpactPageTestimonials()} />
 
       {/* CTA */}
       <section className={styles.cta}>
