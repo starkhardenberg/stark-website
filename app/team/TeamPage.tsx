@@ -1,9 +1,9 @@
-'use client'
-import { useState } from 'react'
 import Link from 'next/link'
-import { hrefKennismaking } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
+import Nav from '@/components/Nav'
 import Image from 'next/image'
 import navStyles from '../landing.module.css'
 import styles from './team.module.css'
@@ -14,7 +14,7 @@ const TEAM = [
   { id: 3,  name: 'Anne',        role: 'Trainer',                      photo: '/images/team/anne.jpg', objectPosition: '50% 30%', quote: 'Comfort staat groei in de weg. Ga het oncomfortabele aan en groei!' },
   { id: 4,  name: 'Els',         role: 'Trainer',                      photo: '/images/team/els.jpg', objectPosition: '50% 30%', quote: 'Alleen ben je STARK, samen zijn we STARKER.' },
   { id: 5,  name: 'Yoeri',       role: 'Trainer',                      photo: '/images/team/marinus.jpg', objectPosition: '50% 32%', quote: 'Bewegen is al winst. Hard trainen is nog meer winst.' },
-  { id: 6,  name: 'Marinus',     role: 'Trainer',                      photo: '/images/team/yoeri.jpg', objectPosition: '50% 32%', quote: 'Consistentie wint het altijd van motivatie.' },
+  { id: 6,  name: 'Marinus',     role: 'Trainer',                      photo: '/images/team/yoeri.jpg', objectPosition: '50% 32%', quote: 'Het leven begint aan het einde van je comfortzone.' },
   { id: 7,  name: 'Jordi',       role: 'Trainer kids',                 photo: '/images/team/jordi.jpg', objectPosition: '50% 28%', quote: 'Elke overwinning verdient het om gevierd te worden, ongeacht hoe klein.' },
   { id: 8,  name: 'Tineke',      role: 'Onze steun en toeverlaat',     photo: '/images/team/tineke.jpg', objectPosition: '50% 24%', quote: 'U vraagt, ik draai!' },
   { id: 9,  name: 'Tygo',        role: 'Trainer kids en teens',        photo: '/images/team/tygo.jpg', objectPosition: '50% 32%', quote: 'Sterk worden mag ook gewoon leuk zijn.' },
@@ -27,25 +27,8 @@ const col2 = TEAM.filter((_, i) => i % 3 === 1)
 const col3 = TEAM.filter((_, i) => i % 3 === 2)
 
 export default function TeamPage() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
-
-  const photoClass = (id: number) => {
-    if (hoveredId === null) return ''
-    return hoveredId === id ? styles.active : styles.inactive
-  }
-
-  const nameClass = (id: number) => {
-    if (hoveredId === null) return ''
-    return hoveredId === id ? styles.active : styles.inactive
-  }
-
   return (
     <main className={styles.page}>
-
-      <nav className={navStyles.nav}>
-        <Link href="/#over" className={navStyles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefKennismaking} className={navStyles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -59,6 +42,7 @@ export default function TeamPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>Een team van 11 mensen. Eén aanpak.</span>
           <span className={styles.heroSlash} />
@@ -91,12 +75,7 @@ export default function TeamPage() {
                 className={`${styles.col} ${colIdx === 0 ? styles.col1 : ''} ${colIdx === 1 ? styles.col2 : ''} ${colIdx === 2 ? styles.col3 : ''}`}
               >
                 {col.map((member) => (
-                  <div
-                    key={member.id}
-                    className={`${styles.photoItem} ${photoClass(member.id)}`}
-                    onMouseEnter={() => setHoveredId(member.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                  >
+                  <div key={member.id} className={styles.photoItem}>
                     <Image
                       src={member.photo}
                       alt={member.name}
@@ -115,17 +94,12 @@ export default function TeamPage() {
           {/* Name list */}
           <div className={styles.nameList}>
             {TEAM.map((member, i) => (
-              <div
-                key={member.id}
-                className={`${styles.nameItem} ${nameClass(member.id)}`}
-                onMouseEnter={() => setHoveredId(member.id)}
-                onMouseLeave={() => setHoveredId(null)}
-              >
+              <div key={member.id} className={styles.nameItem}>
                 <span className={styles.nameNum}>{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <div className={styles.memberName}>{member.name}</div>
                   <div className={styles.memberRole}>{member.role}</div>
-                  <p className={styles.memberQuote}>&ldquo;{member.quote}&rdquo;</p>
+                  <p className={styles.memberQuote}>&ldquo;{capitalizeQuoteStart(member.quote)}&rdquo;</p>
                 </div>
               </div>
             ))}
@@ -182,7 +156,7 @@ export default function TeamPage() {
         </p>
         <div className={styles.ctaActions}>
           <Link href={hrefKennismaking} className={navStyles.ctaBtn}>
-            Kom kennismaken
+            {CTA_KENNISMAKING_LABEL}
           </Link>
           <WhatsAppLink className={styles.ctaWhatsapp}>
             <WhatsAppIcon className={styles.ctaWhatsappIcon} />

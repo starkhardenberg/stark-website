@@ -8,88 +8,117 @@ Gebruik dit document + de prompt onderaan om in een **nieuwe Cursor-chat** verde
 
 | Item | Status |
 |------|--------|
-| **Repo** | `git@github.com:starkhardenberg/stark-website.git` — branch `main` (repo zit IN `stark-site`, niet in de parent) |
-| **Laatste pushes** | `ee3ed22` contactformulier honeypot-fix · `87bd81f` De Eerste Stap hero/route herontwerp + site-polish |
-| **Lokaal** | Werktree schoon bij laatste push; nieuwe redesign-stappen nog niet begonnen |
-| **Netlify** | GitHub-sync; `netlify.toml`: `npm run build`, publish `.next`, `@netlify/plugin-nextjs`. Custom domein `stark.roholt.nl` draait via **Cloudflare** vóór Netlify |
-| **Dev** | `npm run dev` → **http://127.0.0.1:3456** (IPv4, niet localhost) |
+| **Repo** | `git@github.com:starkhardenberg/stark-website.git` — branch `main` (repo zit IN `stark-site`) |
+| **Lokaal** | Veel uncommitted wijzigingen — **niet gepusht** |
+| **Netlify** | GitHub-sync; custom domein `stark.roholt.nl` via Cloudflare |
+| **Dev** | `npm run dev` → **http://127.0.0.1:3456** (IPv4). Bij corrupte `.next`: `npm run dev:clean` |
 | **Pushen** | Alleen op expliciet verzoek |
 
 ---
 
 ## Design-systeem (kort)
 
-Lees: `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`, `../FONT-PALETTE.md`
+Lees: `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`
 
-- Kleuren: navy `#212431`, off-white `#F5F5F5`, oranje `#EA5C1F`, orange-deep `#C44715`, slate `#4F5D75`
-- Fonts: Oswald (display), Work Sans (body), Barlow (quotes)
-- Schrijfregels: geen em-dashes, enkele aanhalingstekens, kort/direct Nederlands, geen AI-filler, geen prijzen in lopende tekst
-- Werkwijze: één visuele wijziging per stap, mobile-first, asymmetrie boven symmetrie, eerst tonen/reviewen daarna door. Bij grotere keuzes: 2-3 opties pitchen, dan kiezen.
-- Landingspagina's: hybride stijl (B-structuur + C-kleuren), afwisselende off-white/navy blokken
-
----
-
-## De Eerste Stap — VERWIJDERD (juni 2026)
-
-De landingspagina `/de-eerste-stap` en **alle** verwijzingen ernaar zijn uit de site gehaald. Verwijderd of opgeschoond:
-
-- `app/de-eerste-stap/` (`page.tsx` + `page.module.css`) — hele map weg
-- coaching-tegel 'De Eerste Stap' uit `components/landing/landing-cards.ts` (Momentum/Impact `inverted`-volgorde rechtgezet)
-- pad `/de-eerste-stap` uit `components/Nav.tsx` (coaching-prefixes)
-- `/van-punt-a-naar-punt-b` → `/de-eerste-stap` redirect uit `next.config.mjs` (redirects-blok helemaal weg)
-- vermeldingen in `components/faq/faq-coaching.ts` herschreven naar enkel Momentum/Impact
-
-Niet opnieuw bouwen tenzij expliciet gevraagd.
+- Kleuren: navy `#212431`, off-white `#F5F5F5`, oranje `#EA5C1F`
+- Outline-dikte: **2.5px** op hero-outline + tegelcijfers; **1.8px** op sectietitels/footer/404
+- Tekst tegels: body `clamp(16px, 1.7vw, 18px)`, eyebrows **14px**
+- Tegelfoto's: `grayscale(1) contrast(1.04)` via `.resultMediaImg`
+- Optische uitlijning titels: `lib/displayTrim.ts` → `oswaldTrim()`
+- Schrijfregels: geen em-dashes, kort/direct Nederlands, geen AI-filler
 
 ---
 
-## Contactformulier (afgerond, evt. nog 1 check)
+## Contact & Kennismaken (afgerond deze sessie)
 
-Werkt nu live:
-- Submit gaat naar **`/contact-form.html`** (statisch bestand zodat Netlify Forms het oppikt — NIET naar `/`, dat wordt door Next afgehandeld en gaf 404).
-- Honeypot-veld `bot-field` wordt meegestuurd (leeg voor mensen).
-- Form-detectie + e-mailnotificatie staan aan in Netlify.
+| Route | Doel |
+|-------|------|
+| `/contact` | Vragen stellen — **formulier eerst**, dan gegevens + kaart + eigenaren |
+| `/kennismaken` | Kennismaking plannen — WhatsApp + bellen |
 
-Open check: doe één **echte** inzending (echte naam + e-mail, geen 'test') en bevestig dat 'ie in de gewone lijst komt + mail aankomt. Testverkeer kon door Akismet in de **Spam**-map belanden; daar 'Mark as not spam' om het filter te trainen.
+**CTA-label overal:** `Plan kennismaking` (was: Kom kennismaken)  
+**Paginatitel kennismaken:** blijft warm → `Kom kennismaken` (`KENNISMAKING_TITLE` in `lib/contact.ts`)
 
-Relevante bestanden: `components/contact/ContactForm.tsx`, `public/contact-form.html`.
+**Contact-copy:** eyebrow "Vragen of langskomen", geen kennismaak-verwarring in lead  
+**Kennismaken:** alle body-tekst op tegelgrootte; donker expect-blok **binnen kolom** (niet full-bleed); `tel:+31621248107` fix voor bel-knop  
+**Kennismaken copy-fix:** "volgt binnenkort" niet afbreken → `volgt&nbsp;binnenkort`
 
----
-
-## Hosting Vimexx (geparkeerd tot redesign af is)
-
-Doel: Vimexx live NAAST Netlify (Netlify als preview/test).
-
-- Vimexx shared hosting kan **geen Node** → statische export nodig: `output: 'export'`, `images.unoptimized: true`, `trailingSlash` via een aparte `build:static`-stap. `out/` via FTP naar `public_html`.
-- Formulier op Vimexx via klein **PHP-mailscript** (`public/contact-handler.php`), submit-endpoint per env instelbaar.
-- `.htaccess` voor 404 + HTTPS. SSL via DirectAdmin.
-- **BLOKKEREND voordat dit kan:** naar welk e-mailadres moeten formulier-aanvragen? (liefst adres op eigen domein.)
+Bestanden: `lib/contact.ts`, `app/contact/`, `app/kennismaken/`
 
 ---
 
-## Wat al staat (niet opnieuw bouwen tenzij gevraagd)
+## Coaching-pagina (afgerond deze sessie)
 
-### Homepage (`app/page.tsx` + components)
-- Hero/Nav: CTA 'Kom kennismaken' uppercase + pijltje, extra padding op mobiel
-- Aanbod: 3 feature cards → `/trainen`, `/coaching`, `/zakelijk`; minimalistische CTA eronder
-- Testimonials: carousel (~17 quotes), mobiele scroll-fix
-- Footer: oranje balk, Wees welkom + Plan een kennismaking + contact + ©
+- Tegel-chips **weggelaten** (dubbeling met tegels zelf)
+- Header: **"Twee trajecten."** groter + outline op "trajecten."
+- Extra spacing tussen subkop en tegels
+- Tegels: eyebrow + pill-link + pijl naar `/momentum` en `/impact`
+- **Momentum-tegel foto:** `foto-coaching-tegel-momentum-gesprek.png` + extra contrast filter
+- **Impact-tegel foto:** `foto-coaching-tegel-impact-gesprek.png` (≠ hero Impact)
+- **Footer coaching:** `footer-coaching-sessie.png` (nieuwe gespreksfoto), uitsnede `center 32%`
+- `/momentum` + `/impact`: Nav terug-link → **← Coaching** (`backHref="/coaching"`)
 
-### Landingspagina's
-| Route | Status |
-|-------|--------|
-| `/trainen` | Tegels 01/02/03 op foto, sectietitel outline, feature tiles, inline links, footer met WhatsApp |
-| `/coaching` | Feature tiles 'Typisch STARK', 01/02/03 op tegels, footer met WhatsApp |
-| `/zakelijk` | Tegels FUNDAMENT / RE-INTEGREREN / STARKE TEAMS, 01/02/03, footer met WhatsApp |
-| `/momentum` | Herbouwde landingspagina (hybride stijl) |
-| `/impact` | Nog oude layout |
-| `/team` | Footer-CTA met Kom kennismaken + WhatsApp |
+---
 
-### Tegels & componenten
-- Volledig klikbare tegels via stretched link (`LandingServiceCard` + `landing-cards.ts`)
-- Bullets + inline links (WhatsApp, contact, zilverfitness.nl) in tegeltekst
-- Nummer-overlay op foto (`num` prop)
-- `LandingFooter` met optionele `whatsapp` prop
+## Trainen-pagina (deze sessie)
+
+- Footer-foto: `footer-trainen.png` (kids-groep), uitsnede `center 14%` / mobiel `12%`
+- Nav terug blijft Home
+
+---
+
+## Homepage testimonials (deze sessie)
+
+- **Renske:** dark portrait variant (`darkPortrait: true`) — zwart blok, contain, zoom
+- **Amanda:** dark portrait + cover + zoom getest (`imageCover`, `imageScale: 1.3`) — **check of dit blijft**
+- Carousel: klik op slide → volgende quote; namen/programma groter
+- Hero quote namen: tegelgrootte
+
+---
+
+## Zakelijk / Bedrijven-pagina — STATUS & VOLGENDE STAP
+
+### Beslissing (juni 2026)
+
+**Geen aparte subpagina's** voor de drie zakelijke tegels (voorlopig). Geen doorkliks. Eén landingspagina + gesprek = juiste B2B-route.
+
+### Huidige staat (`app/zakelijk/page.tsx`)
+
+1. Hero
+2. **Business-case blok** (introSection light) — €405/dag, bron Arbo Unie 2024, stakes vs payoff, CTA
+3. **Drie tegels** (geen links):
+   - **Momentum voor teams** (was Fundament preventief)
+   - **Impact voor re-integratie** (was Re-integreren)
+   - **Fundament voor starke teams** (was Starke teams — bewust "starke")
+4. Typisch STARK (featureTiles)
+5. FAQ — **NOG VEROUDERD** (noemt nog "Fundament", "preventief programma")
+6. Footer
+
+Data: `components/landing/landing-cards.ts` → `zakelijkCards`
+
+### Nog te doen op zakelijk (afgesproken, niet gebouwd)
+
+1. **FAQ updaten** naar nieuwe namen (Momentum voor teams / Impact voor re-integratie / Fundament voor starke teams)
+2. **Startproces-blok** toevoegen (3–4 stappen: gesprek → situatie → voorstel → start)
+3. **Keuzezin** onder tegelheader: "Niet zeker welk programma past? Plan een gesprek."
+4. Geen pill-links/pijltjes op tegels (die suggereren doorklik)
+
+### Fundament-subpagina's
+
+`/fundament-preventief`, `/fundament-reintegratie`, `/fundament-teamtraject` bestaan nog met oude namen/copy. **Niet linken** vanaf zakelijk. Later: hernoemen of archiveren + redirects.
+
+---
+
+## Overige fixes deze sessie
+
+- Scroll jank mobile hero: `100svh`, GPU layers
+- Tegel borders: wit op foto-tegels, navy hairline op lichte tegels
+- Gray grid lines verwijderd uit featureTiles/optionRow
+- FAQ vragen/antwoorden tegelgrootte site-wide
+- Trainen FAQ: "Wat kost **een** lidmaatschap"
+- Impact tegel coaching: Startpakket-uitleg in "Wat erin zit"
+- Footer homepage: "Plan kennismakingsgesprek" tekst weg
+- 404: outline op "blessure", uppercase CTA
 
 ---
 
@@ -97,21 +126,28 @@ Doel: Vimexx live NAAST Netlify (Netlify als preview/test).
 
 | Onderdeel | Pad |
 |-----------|-----|
-| Momentum (referentie) | `app/momentum/page.tsx`, `momentum.module.css` |
+| Zakelijk pagina | `app/zakelijk/page.tsx` |
+| Zakelijk tegels + coaching tegels | `components/landing/landing-cards.ts` |
+| Tegel component | `components/landing/LandingServiceCard.tsx` |
+| Zakelijk FAQ | `components/faq/faq-zakelijk.ts` |
 | Landings-styling | `app/landing.module.css` |
-| FAQ-component | `components/faq/FaqList.tsx` + `faq-*.ts` |
-| Gedeelde footer | `components/Footer.tsx` |
-| Tegels/data | `components/landing/landing-cards.ts`, `LandingServiceCard.tsx` |
-| Contact | `components/contact/ContactForm.tsx`, `public/contact-form.html`, `lib/contact.ts` |
+| Nav (backHref) | `components/Nav.tsx` |
+| Contact constants | `lib/contact.ts` |
+| Testimonials data | `components/testimonials/testimonials-data.ts` |
+| Footer foto's | `components/Footer.tsx`, `Footer.module.css` |
+| Optical trim | `lib/displayTrim.ts` |
 
 ---
 
-## Nog niet gedaan / vervolgstappen (later)
+## Nog niet gedaan (algemeen)
 
-- **Impact** landingspagina herbouwen (zelfde hybride aanpak als Momentum)
-- **Fundament-subpagina's** klikbaar maken vanaf zakelijk-tegels
-- **404-pagina** finetunen
-- **Vimexx-hosting** opzetten (zie boven)
+- Zakelijk: FAQ + startproces + keuzezin (prioriteit)
+- Impact-pagina volledig herbouwen (ouder plan in git history)
+- Amanda dark portrait: bevestigen of terugdraaien
+- Fundament-subpagina's hernoemen/archiveren
+- Testimonial-quotes Erwin / Anne / Monique invullen
+- Bookings koppelen aan `/kennismaken`
+- Git commit + push (niet gedaan)
 
 ---
 
@@ -120,32 +156,42 @@ Doel: Vimexx live NAAST Netlify (Netlify als preview/test).
 ```bash
 cd stark-site
 npm run dev          # http://127.0.0.1:3456
+npm run dev:clean    # bij corrupte .next
 ```
 
-Bij stale preview: kill poort 3456, `rm -rf .next`, opnieuw `npm run dev`, hard refresh (Cmd+Shift+R). Gebruik **127.0.0.1**, niet localhost.
+Hard refresh: Cmd+Shift+R. Gebruik **127.0.0.1**, niet localhost.
 
 ---
 
 ## Prompt voor nieuwe chat (kopieer dit)
 
 ```
-STARK! Hardenberg website — vervolg bouwen
+STARK! Hardenberg website — vervolg bouwen (focus: pagina Bedrijven /zakelijk)
 
-Ik werk aan de STARK! Hardenberg website in de map `stark-site` (Next.js 14, App Router, CSS Modules).
+Ik werk aan de STARK! Hardenberg website in `stark-site` (Next.js 14, App Router, CSS Modules).
 
-LEES EERST: `stark-site/SESSION-HANDOFF.md` en in de parent-map CLAUDE.md, CONTEXT.md, DESIGN-REGELS.md, SCHRIJF-REGELS.md, FONT-PALETTE.md.
+LEES EERST:
+- `stark-site/SESSION-HANDOFF.md` (volledige status)
+- Parent-map: CLAUDE.md, CONTEXT.md, DESIGN-REGELS.md, SCHRIJF-REGELS.md
 
-Dev: `npm run dev` in `stark-site` → http://127.0.0.1:3456 (127.0.0.1, niet localhost). Bij stale preview: hard refresh (Cmd+Shift+R).
+Dev: `cd stark-site && npm run dev` → http://127.0.0.1:3456
 
-Design: navy #212431, off-white #F5F5F5, oranje #EA5C1F, orange-deep #C44715, slate #4F5D75. Oswald (display) + Work Sans (body) + Barlow (quotes). Geen em-dashes, enkele aanhalingstekens, kort/direct Nederlands, geen AI-filler, geen prijzen in lopende tekst. Eén visuele wijziging per stap, mobile-first, asymmetrie boven symmetrie. Eerst tonen/reviewen, dan door. Bij grotere keuzes: 2-3 opties pitchen.
+Design: navy #212431, off-white #F5F5F5, oranje #EA5C1F. Oswald + Work Sans. Geen em-dashes, geen AI-filler. Eén wijziging per stap, mobile-first.
 
-De Eerste Stap is volledig uit de site verwijderd (pagina + alle verwijzingen). Niet opnieuw bouwen tenzij expliciet gevraagd.
+Wat al staat op /zakelijk (niet opnieuw doen tenzij gevraagd):
+- Business-case blok onder hero: €405/dag (bron Arbo Unie 2024), stakes vs payoff, CTA
+- Drie tegels hernoemd: Momentum voor teams, Impact voor re-integratie, Fundament voor starke teams
+- Geen doorkliks naar subpagina's (bewuste keuze: één landingspagina + gesprek)
 
-Deploy: git-repo zit in `stark-site`, remote starkhardenberg/stark-website, branch main. Deploy = commit + push naar main (Netlify GitHub-sync, Cloudflare ervoor). Alleen pushen als ik daarom vraag.
+VOLGENDE STAP — zakelijk pagina afmaken:
+1. FAQ updaten (faq-zakelijk.ts) naar nieuwe programmanamen — geen "Fundament" meer als preventief
+2. Startproces-blok toevoegen (3–4 stappen na tegels of vóór FAQ): gesprek → situatie in kaart → voorstel → start
+3. Keuzezin onder tegelheader: "Niet zeker welk programma past? Plan een gesprek."
+4. Geen pill-links op tegels
 
-Open punten: contactformulier werkt (Netlify Forms via /contact-form.html + honeypot) — nog 1 echte inzending checken op spam/mail. Vimexx-hosting (statische export + PHP-formulier) staat geparkeerd; blokkerend: ontvanger-e-mailadres. Later: /impact herbouwen, fundament-subpagina's klikbaar, 404 finetunen.
+Regels: Geen git commit/push tenzij ik vraag. Geen aparte subpagina's voor zakelijke tegels.
 
-Begin met: context-files bevestigen, dev-server starten, en wachten op mijn verzoek.
+Begin met: handoff lezen, dev-server checken, bevestigen dat je het snapt. Vraag waar ik wil starten.
 
 Mijn verzoek nu:
 [VUL HIER IN]

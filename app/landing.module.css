@@ -106,6 +106,10 @@
   filter: grayscale(0.06) brightness(0.78) contrast(1.04);
 }
 
+.heroBgImgTrainenLanding {
+  object-position: center 34%;
+}
+
 .heroBgImgCoaching {
   filter: grayscale(1) brightness(0.66) contrast(1.05);
 }
@@ -130,6 +134,11 @@
 /* Coaching-hero: meer lucht onder de titel voor rust */
 .heroCoaching .heroContent {
   bottom: 16%;
+}
+
+/* Impact-hero: tekst + lijn lager zodat de foto meer ademruimte krijgt */
+.heroCoaching .heroContentLower {
+  bottom: 7%;
 }
 
 /* Orange slash bar at bottom of hero */
@@ -167,30 +176,35 @@
   margin-bottom: 14px;
 }
 
+/* Hero-titel: gelijk aan de homepage-hero (grootte, regelafstand, padding) */
 .heroTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.07em;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(112px, calc(18.8vw * 1.08), 270px);
-  line-height: 0.84;
-  letter-spacing: -0.025em;
+  font-size: clamp(96px, calc(17vw * 1.11), 244px);
+  line-height: 0.92;
   text-transform: uppercase;
   color: var(--off);
   margin: 0 0 22px;
 }
 
 .heroTitleCompact {
-  font-size: clamp(84px, calc(14.1vw * 1.08), 203px);
+  font-size: clamp(96px, calc(17vw * 1.11), 244px);
 }
 
 .heroLead {
   display: block;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--off);
-  font-size: 0.76em;
+  -webkit-text-stroke: 2.5px var(--off);
+  font-size: 0.78em;
+  letter-spacing: 0.05em;
 }
 
 .heroPunch {
   display: block;
+  letter-spacing: -0.025em;
 }
 
 /* Orange line under title — "the slash" */
@@ -200,6 +214,10 @@
 
 .heroSub {
   margin: 28px 0 0;
+  width: fit-content;
+  max-width: 100%;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--orange);
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
   font-size: clamp(22px, 2.4vw, 30px);
@@ -207,16 +225,6 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--off);
-}
-
-.heroContent::after {
-  content: '';
-  display: block;
-  width: 100%;
-  max-width: 780px;
-  height: 1px;
-  background: var(--orange);
-  margin-top: 36px;
 }
 
 .heroSub p {
@@ -395,8 +403,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1px;
-  background: rgba(10, 10, 10, 0.12);
+  gap: 0;
   width: 100%;
 }
 
@@ -407,7 +414,7 @@
   display: grid;
   grid-template-columns: minmax(86px, 0.28fr) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(18px, 3vw, 34px);
+  gap: clamp(28px, 4.5vw, 52px);
   background: var(--off);
   overflow: hidden;
 }
@@ -424,7 +431,7 @@
   line-height: 0.9;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px rgba(196, 71, 21, 0.58);
+  -webkit-text-stroke: 1.8px var(--orange-deep);
 }
 
 .featureTiles li::after {
@@ -478,11 +485,24 @@
   border-bottom-color: var(--orange);
 }
 
+/* Lichte sectie-variant: off-white achtergrond, navy tekst.
+   Gebruikt voor het afwisselende kleurritme (navy > off-white > navy). */
+.sectionLight {
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.05) 0%, rgba(234, 92, 31, 0) 46%),
+    var(--off);
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.sectionLight .title {
+  color: var(--navy);
+}
+
 /* ── Section label + title ── */
 .label {
   display: block;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -491,7 +511,7 @@
 }
 
 .labelProminent {
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.2em;
   margin-bottom: 12px;
 }
@@ -516,14 +536,14 @@
 .titleHeroOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px var(--orange);
+  -webkit-text-stroke: 1.8px var(--orange);
 }
 
 /* Subtielere outline op kleinere sectietitels (catalogus i.p.v. hero) */
 .titleAccentOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px var(--orange);
+  -webkit-text-stroke: 1.8px var(--orange);
 }
 
 /* Catalogus-sectie: tegels/menu onder een sterke intro — titel blijft ondergeschikt */
@@ -532,10 +552,28 @@
 }
 
 .sectionCatalog .title {
-  font-size: clamp(24px, 3.6vw, 40px);
+  font-size: clamp(32px, 5.5vw, 60px);
   line-height: 1.02;
   margin-bottom: clamp(14px, 2vw, 22px);
-  color: rgba(245, 245, 245, 0.88);
+  color: var(--off);
+}
+
+/* Catalogus-header als één strak blok: titel → subkop dicht op elkaar */
+.catalogHead .title {
+  margin-bottom: clamp(8px, 1.2vw, 12px);
+}
+
+.catalogHead .catalogIntro {
+  margin-bottom: 0;
+}
+
+.catalogIntro {
+  margin: 0 0 clamp(8px, 1.6vw, 16px);
+  max-width: 58ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.62);
 }
 
 .sectionCatalog .label {
@@ -543,7 +581,22 @@
 }
 
 .sectionCatalog .resultGridSpaced {
-  margin-top: clamp(24px, 4vw, 40px);
+  margin-top: clamp(48px, 7vw, 80px);
+}
+
+.sectionCatalog .mediaIndex {
+  top: auto;
+  bottom: clamp(12px, 1.8vw, 20px);
+  left: auto;
+  right: clamp(12px, 1.8vw, 20px);
+}
+
+/* Inverted catalogus-kaart (coaching, tegel 2): foto staat onderaan,
+   cijfer naar linksboven van die foto i.p.v. linksonder. */
+.sectionCatalog .resultItemInverted .mediaIndex {
+  top: clamp(8px, 1.4vw, 16px);
+  bottom: auto;
+  left: clamp(12px, 1.8vw, 20px);
 }
 
 /* ── Intro-samenvatting (coaching: tussen hero en tegels) ──
@@ -571,6 +624,80 @@
   color: var(--navy);
 }
 
+.introLayoutZakelijk {
+  --intro-col-gap: clamp(28px, 4vw, 48px);
+}
+
+.introPrologueBridgeCol {
+  margin: 0;
+  min-width: 0;
+}
+
+.introHeroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.introPrologueFact,
+.introPrologueBridge {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
+}
+
+.introPrologueFact {
+  margin-top: clamp(8px, 1.2vw, 12px);
+  max-width: 52ch;
+  color: rgba(245, 245, 245, 0.74);
+}
+
+.introPrologueBridge {
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.74);
+}
+
+.introPrologueSource {
+  font-size: 0.92em;
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.45);
+}
+
+.introPrologueSourceLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 245, 245, 0.28);
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.introPrologueSourceLink:hover {
+  color: rgba(245, 245, 245, 0.72);
+  text-decoration-color: var(--orange);
+}
+
+.introSectionLight .introPrologueSourceLink {
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+}
+
+.introSectionLight .introPrologueSourceLink:hover {
+  color: rgba(33, 36, 49, 0.72);
+  text-decoration-color: var(--orange);
+}
+
+.introSectionLight .introPrologueFact {
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.introSectionLight .introPrologueBridge {
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.introSectionLight .introPrologueSource {
+  color: rgba(33, 36, 49, 0.5);
+}
+
 .introSectionLight .introColLabel {
   color: var(--navy);
 }
@@ -590,6 +717,20 @@
   color: var(--orange);
 }
 
+.introLayout {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 5vw, 56px);
+}
+
+.introStatBlock {
+  min-width: 0;
+}
+
+.introLayout .introBody {
+  padding-left: 0;
+}
+
 .introRow {
   display: grid;
   grid-template-columns: 1fr;
@@ -600,11 +741,139 @@
 .introLabel {
   margin: 0 0 clamp(14px, 2vw, 18px);
   font-family: var(--font-body), sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
+}
+
+.aanbodCardsGrid {
+  margin-top: clamp(48px, 7vw, 80px);
+}
+
+.catalogCta {
+  margin-top: clamp(48px, 7vw, 72px);
+  text-align: center;
+}
+
+.catalogCtaLead {
+  margin: 0 auto clamp(18px, 2.5vw, 24px);
+  max-width: 28ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.9vw, 19px);
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.88);
+}
+
+.catalogCta .introCtaRow {
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+
+/* ── Zakelijk startproces (4 stappen, lichte sectie) ── */
+.processSection {
+  padding-bottom: clamp(64px, 9vw, 96px);
+}
+
+.processTitle {
+  margin: 0 0 clamp(16px, 2.4vw, 22px);
+  max-width: 14ch;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 8vw, 72px);
+  line-height: 0.92;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.processTitleOutline {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.8px var(--orange);
+}
+
+.processIntro {
+  margin: 0 0 clamp(36px, 5vw, 52px);
+  max-width: 52ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.processSteps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 36px);
+}
+
+.processStep {
+  margin: 0;
+  padding: 0;
+}
+
+.processStepNum {
+  display: block;
+  margin-bottom: clamp(10px, 1.4vw, 14px);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 56px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2.5px var(--orange);
+}
+
+.processStepTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 26px);
+  line-height: 0.95;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.processStepDesc {
+  margin: 0;
+  max-width: 36ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.62;
+  color: rgba(33, 36, 49, 0.72);
+}
+
+@media (min-width: 900px) {
+  .processSteps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(20px, 2.2vw, 28px);
+  }
+
+  .processStepDesc {
+    max-width: none;
+  }
+
+  .processTitle {
+    max-width: none;
+    font-size: clamp(44px, 5vw, 68px);
+  }
+}
+
+.introStatementKeep {
+  white-space: nowrap;
+}
+
+.introStatementStat {
+  max-width: none;
 }
 
 .introStatement {
@@ -652,9 +921,9 @@
   margin: 0;
   max-width: 42ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.8vw, 17px);
+  font-size: clamp(16px, 1.7vw, 18px);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.6;
   color: rgba(245, 245, 245, 0.62);
 }
 
@@ -669,30 +938,31 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(14px, 2vw, 18px);
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.8vw, 17px);
+  font-size: clamp(16px, 1.7vw, 18px);
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.6;
   color: rgba(245, 245, 245, 0.62);
 }
 
 .introColList li {
-  position: relative;
   margin: 0;
-  padding: 0 0 0 14px;
+  padding: 0 0 0 1.35em;
+  position: relative;
+  border-left: none;
 }
 
 .introColList li::before {
-  content: '';
+  content: '→';
   position: absolute;
   left: 0;
-  top: 0.62em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--orange);
-  transform: translateY(-50%);
+  top: 0.12em;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95em;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
 }
 
 .introCtaRow {
@@ -770,8 +1040,12 @@
     padding-right: clamp(24px, 3vw, 40px);
   }
 
-  .introStatement {
+  .introStatement:not(.introStatementStat) {
     max-width: 9ch;
+    font-size: clamp(48px, 5.5vw, 88px);
+  }
+
+  .introStatementStat {
     font-size: clamp(48px, 5.5vw, 88px);
   }
 
@@ -779,9 +1053,54 @@
     padding-left: clamp(8px, 1vw, 16px);
   }
 
+  .introLayoutZakelijk .introBody {
+    padding-left: 0;
+  }
+
   .introCols {
     grid-template-columns: 1fr 1fr;
     gap: clamp(28px, 4vw, 48px);
+  }
+
+  .introLayoutZakelijk .introCols,
+  .introLayoutZakelijk .introHeroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--intro-col-gap);
+  }
+
+  .introHeroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(28px, 4vw, 48px);
+    row-gap: clamp(14px, 2vw, 20px);
+    align-items: start;
+  }
+
+  .introHeroGrid .introLabel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .introHeroGrid .introStatement {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .introHeroGrid .introPrologueFact {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: clamp(16px, 2.4vw, 24px);
+    max-width: none;
+  }
+
+  .introHeroGrid .introPrologueBridgeCol {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    margin-top: clamp(16px, 2.4vw, 24px);
+  }
+
+  .introHeroGrid .introPrologueBridge {
+    max-width: none;
   }
 }
 
@@ -812,15 +1131,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 4px;
-  transition: padding-left 0.18s;
 }
 
 .listItem:first-child {
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.listItem:hover {
-  padding-left: 8px;
 }
 
 .listTitle {
@@ -902,16 +1216,12 @@
 
 .resultItem {
   background: var(--navy);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
   border-radius: 14px;
   padding: clamp(24px, 3vw, 34px);
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition:
-    background 0.18s,
-    box-shadow 0.18s,
-    transform 0.18s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 a.resultItem {
@@ -921,18 +1231,27 @@ a.resultItem {
   cursor: pointer;
 }
 
+/* Donkere tegels (coaching, momentum, zakelijk) meer definitie: tegel iets
+   lichter dan de #212431-achtergrond + zachte diepte, zodat hij van de sectie
+   afkomt i.p.v. donker-op-donker te blijven */
+.resultGridPhotos:not(.resultGridLight) .resultItem {
+  background: #2a2e3d;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 52px -32px rgba(0, 0, 0, 0.9);
+}
+
+.resultGridPhotos:not(.resultGridLight) .resultItemClickable:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 36px 64px -30px rgba(0, 0, 0, 0.95);
+}
+
 .resultItemStatic {
   cursor: default;
 }
 
 .resultItemStatic::after {
   display: none;
-}
-
-.resultGridPhotos .resultItemStatic:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 /* Hele tegel klikbaar (stretched link) wanneer er een detailpagina is */
@@ -944,17 +1263,6 @@ a.resultItem {
   display: block;
 }
 
-.resultItemClickable:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 12px 28px rgba(0, 0, 0, 0.22);
-}
-
-.resultItemClickable:hover::after {
-  opacity: 1;
-  transform: rotate(45deg) translate(2px, -2px);
-}
-
 .menuDetailLinkStretched::after {
   content: '';
   position: absolute;
@@ -963,31 +1271,13 @@ a.resultItem {
 }
 
 .resultItem::after {
-  content: '';
-  position: absolute;
-  right: clamp(20px, 2.5vw, 28px);
-  top: clamp(22px, 2.5vw, 28px);
-  width: 12px;
-  height: 12px;
-  border-top: 2px solid var(--orange);
-  border-right: 2px solid var(--orange);
-  transform: rotate(45deg);
-  opacity: 0.72;
-  transition:
-    opacity 0.18s,
-    transform 0.18s;
-}
-
-.resultItem:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 12px 28px rgba(0, 0, 0, 0.22);
+  content: none;
 }
 
 .resultTag {
   display: block;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1008,7 +1298,7 @@ a.resultItem {
 
 .resultText {
   font-family: var(--font-body), sans-serif;
-  font-size: 14px;
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.65;
   color: rgba(245, 245, 245, 0.55);
 }
@@ -1021,21 +1311,12 @@ a.resultItem {
 }
 
 .resultGridPhotos .resultItem::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(52%, 200px);
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--orange));
-  opacity: 0.88;
-  pointer-events: none;
-  z-index: 4;
+  content: none;
 }
 
 .resultGridPhotos .resultItemStatic .resultText {
   flex: 1;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.7;
   max-width: 42ch;
 }
@@ -1050,6 +1331,10 @@ a.resultItem {
 .resultGridPhotos .menuCardBody .resultTitle {
   margin-bottom: clamp(14px, 2vw, 20px);
   font-size: clamp(26px, 3.8vw, 40px);
+}
+
+.resultGridPhotos.resultGridLight .menuCardBody .resultTitle {
+  margin-bottom: clamp(28px, 4.4vw, 48px);
 }
 
 .menuList {
@@ -1074,7 +1359,7 @@ a.resultItem {
 .menuRow dt {
   margin: 0 0 5px;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1082,21 +1367,24 @@ a.resultItem {
 }
 
 .menuRow dt::before {
-  content: '';
+  content: '→';
   display: inline-block;
-  width: 14px;
-  height: 2px;
-  background: var(--orange);
-  margin-right: 8px;
-  vertical-align: middle;
-  transform: translateY(-1px);
+  width: auto;
+  height: auto;
+  background: none;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 6px;
+  vertical-align: baseline;
+  transform: none;
 }
 
 .menuRow dd {
   margin: 0;
   padding-left: 22px;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(13px, 1.35vw, 15px);
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.62;
   color: rgba(245, 245, 245, 0.72);
 }
@@ -1132,10 +1420,13 @@ a.resultItem {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.62em;
-  width: 5px;
-  height: 5px;
+  /* lijn het streepje op het optische midden van de eerste tekstregel
+     (hoofdletter-hoogte bij line-height 1.62) i.p.v. iets te hoog */
+  top: 0.78em;
+  width: 12px;
+  height: 2px;
   background: var(--orange);
+  transform: translateY(-50%);
 }
 
 .menuDetailLink {
@@ -1145,7 +1436,7 @@ a.resultItem {
   align-items: center;
   gap: 8px;
   font-family: var(--font-body), sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1164,6 +1455,62 @@ a.resultItem {
 .menuDetailLink:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 3px;
+}
+
+/* Eyebrow boven de kaarttitel: benoemt het traject-type (coaching) */
+.cardEyebrow {
+  display: inline-block;
+  margin-bottom: clamp(8px, 1.2vw, 12px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* "Naar aparte pagina"-cue rechtsboven op de foto */
+.pageLinkCue {
+  position: absolute;
+  top: clamp(10px, 1.4vw, 16px);
+  right: clamp(10px, 1.4vw, 16px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(34px, 3.4vw, 42px);
+  height: clamp(34px, 3.4vw, 42px);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1;
+  pointer-events: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.resultItemClickable:hover .pageLinkCue {
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* Detaillink als pill-knop: maakt expliciet dat je naar een aparte pagina gaat */
+.menuDetailLinkPill {
+  margin-top: clamp(16px, 2.4vw, 24px);
+  padding: 12px 22px;
+  border: 1px solid var(--orange);
+  border-radius: 999px;
+  color: var(--off);
+  letter-spacing: 0.1em;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.menuDetailLinkPill:hover {
+  background: var(--orange);
+  color: #0a0a0a;
+  border-color: var(--orange);
 }
 
 .resultItemInverted .menuCardBody {
@@ -1190,7 +1537,7 @@ a.resultItem {
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px var(--orange);
+  -webkit-text-stroke: 2.5px var(--orange);
   filter: drop-shadow(0 1px 7px rgba(0, 0, 0, 0.6));
   pointer-events: none;
 }
@@ -1202,6 +1549,60 @@ a.resultItem {
 
 .resultMediaImgKids {
   filter: grayscale(1) contrast(1.04);
+}
+
+/* ── Lichte tegelvariant (alleen onder .resultGridLight, bv. trainen):
+   rijmt op de homepage-aanbodkaarten (off-white, nummer rechtsonder, geen vaste hoogte) ── */
+.resultGridLight .resultItem {
+  background: #f5f5f5;
+  border-color: rgba(33, 36, 49, 0.18);
+}
+
+.resultGridLight.resultGridPhotos .resultItem {
+  min-height: 0;
+}
+
+.resultGridLight .menuCardBody .resultTitle {
+  color: var(--navy);
+  font-size: clamp(20px, 2.9vw, 38px);
+  letter-spacing: -0.01em;
+}
+
+.resultGridLight .menuRow {
+  border-top-color: rgba(33, 36, 49, 0.12);
+}
+
+.resultGridLight .menuRow dd {
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.resultGridLight .menuInlineLink {
+  color: var(--navy);
+  border-bottom-color: rgba(234, 92, 31, 0.6);
+}
+
+.resultGridLight .menuInlineLink:hover {
+  color: var(--orange-deep);
+  border-color: var(--orange-deep);
+}
+
+.resultGridLight .menuDetailLink {
+  color: var(--navy);
+  border-bottom-color: rgba(234, 92, 31, 0.6);
+}
+
+.resultGridLight .menuDetailLink:hover {
+  color: var(--orange-deep);
+  border-color: var(--orange-deep);
+}
+
+.resultGridLight .mediaIndex {
+  top: auto;
+  left: auto;
+  right: clamp(12px, 1.8vw, 20px);
+  bottom: clamp(12px, 1.8vw, 20px);
+  -webkit-text-stroke-color: var(--orange-deep);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 0, 0, 0.5));
 }
 
 .resultItemInverted {
@@ -1281,8 +1682,7 @@ a.resultItem {
 .optionRow {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  background: rgba(255, 255, 255, 0.07);
+  gap: 0;
   margin-top: 24px;
 }
 
@@ -1294,12 +1694,6 @@ a.resultItem {
   justify-content: space-between;
   gap: 16px;
   border-left: 4px solid transparent;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.optionItem:hover {
-  border-left-color: var(--orange);
-  background: rgba(255, 255, 255, 0.02);
 }
 
 .optionTitle {
@@ -1413,15 +1807,7 @@ a.resultItem {
 
   .heroContent {
     bottom: 10%;
-    padding: 0 64px;
-  }
-
-  .heroTitle {
-    font-size: clamp(190px, 19vw, 360px);
-  }
-
-  .heroTitleCompact {
-    font-size: clamp(143px, 14.25vw, 270px);
+    padding: 0 48px;
   }
 
   .heroSub {
@@ -1595,4 +1981,12 @@ a.resultItem {
   font-size: 15px;
   line-height: 1.65;
   color: rgba(245, 245, 245, 0.7);
+}
+
+/* Hero-titels: zelfde verkleining bij korte viewport als de homepage-hero */
+@media (min-width: 900px) and (max-height: 920px) {
+  .heroTitle,
+  .heroTitleCompact {
+    font-size: clamp(80px, 13vw, 172px);
+  }
 }

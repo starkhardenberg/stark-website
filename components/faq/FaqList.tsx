@@ -45,7 +45,7 @@ export default function FaqList({ items }: FaqListProps) {
             >
               <span className={styles.questionText}>{item.question}</span>
               <span className={styles.indicator} aria-hidden>
-                /
+                →
               </span>
             </button>
             <div id={answerId} className={styles.answerWrap} role="region" aria-hidden={!isOpen}>

@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefZakelijk } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function FundamentReIntegratiePage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefZakelijk} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function FundamentReIntegratiePage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>Fundament voor bedrijven</span>
           <span className={styles.heroSlash} />
@@ -78,7 +76,7 @@ export default function FundamentReIntegratiePage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Wat is het</span>
-            <h2 className={styles.title}>HETZELFDE TRAJECT, VOOR RE-INTEGRATIE</h2>
+            <h2 className={styles.title} style={oswaldTrim('HETZELFDE')}>HETZELFDE TRAJECT, VOOR RE-INTEGRATIE</h2>
             <p className={styles.body}>
               Het re-integratietraject is hetzelfde 12-weeks traject als Impact — maar dan specifiek ingezet voor medewerkers die uitgevallen zijn. Het start met het <strong>Startpakket</strong>: vier 1-op-1 sessies voor een nulmeting en een persoonlijk plan.
             </p>
@@ -92,7 +90,7 @@ export default function FundamentReIntegratiePage() {
       {/* Hoe werkt het */}
       <section className={styles.section}>
         <span className={styles.label}>Hoe werkt het</span>
-        <h2 className={styles.title}>STAP VOOR STAP OPBOUWEN</h2>
+        <h2 className={styles.title} style={oswaldTrim('STAP')}>STAP VOOR STAP OPBOUWEN</h2>
         <div className={styles.timeline}>
           <div className={styles.timelineItem}>
             <span className={styles.timelineNum}>01</span>
@@ -135,7 +133,7 @@ export default function FundamentReIntegratiePage() {
       {/* Voor wie */}
       <section className={styles.section}>
         <span className={styles.label}>Voor wie</span>
-        <h2 className={styles.title}>VOOR BEDRIJVEN DIE ECHT HERSTEL WILLEN</h2>
+        <h2 className={styles.title} style={oswaldTrim('VOOR')}>VOOR BEDRIJVEN DIE ECHT HERSTEL WILLEN</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Bedrijven met een uitgevallen medewerker</div>
@@ -157,7 +155,7 @@ export default function FundamentReIntegratiePage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>MEER WETEN?</h2>
         <p className={styles.ctaSub}>We denken graag mee over wat jouw medewerker nodig heeft.</p>
-        <Link href={hrefZakelijk} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>Ook inzetbaar via arbobudget</span>
       </section>
 

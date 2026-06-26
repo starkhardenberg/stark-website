@@ -26,7 +26,7 @@
   cursor: pointer;
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.4;
   color: var(--off);
   transition: color 0.15s ease;
@@ -59,13 +59,14 @@
 .indicator {
   flex-shrink: 0;
   display: inline-block;
-  width: 14px;
-  font-family: var(--font-display), sans-serif;
-  font-size: 18px;
+  width: 18px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1;
   color: var(--orange);
   transform: rotate(0deg);
+  transform-origin: center;
   transition: transform 0.2s ease;
 }
 
@@ -91,7 +92,7 @@
   margin: 0;
   padding: 0 0 20px;
   font-family: var(--font-body), sans-serif;
-  font-size: 15px;
+  font-size: clamp(16px, 1.7vw, 18px);
   line-height: 1.65;
   color: rgba(245, 245, 245, 0.7);
 }

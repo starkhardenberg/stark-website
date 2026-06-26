@@ -25,11 +25,11 @@ export default function HeroSection() {
       <section className={styles.stage}>
         <div className={styles.copy}>
           <h1 className={styles.headline}>
-            <span className={styles.lead}>Wij<br />bouwen</span>
-            <span className={styles.punch}>starke mensen.</span>
+            <span className={`${styles.line} ${styles.lead}`}>Wij</span>
+            <span className={`${styles.line} ${styles.lead}`}>bouwen</span>
+            <span className={`${styles.line} ${styles.punch}`}>starke</span>
+            <span className={`${styles.line} ${styles.punch}`}>mensen.</span>
           </h1>
-
-          <p className={styles.sub}>Fysiek én mentaal.</p>
         </div>
       </section>
 

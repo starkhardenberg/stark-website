@@ -1,0 +1,298 @@
+.trajectIntro {
+  margin: 0 0 clamp(28px, 4vw, 40px);
+  max-width: none;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.68);
+}
+
+/* Blok 4: lichte variant (off-white) — navy tekst i.p.v. off-white */
+.opbouwLight .trajectIntro {
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.opbouwLight .timeline {
+  border-left-color: rgba(234, 92, 31, 0.5);
+}
+
+.opbouwLight .timelineItem {
+  border-bottom-color: rgba(33, 36, 49, 0.1);
+}
+
+.opbouwLight .timelineTitle {
+  color: var(--navy);
+}
+
+.opbouwLight .timelineDesc {
+  color: rgba(33, 36, 49, 0.64);
+}
+
+.opbouwLight .timelineTiming {
+  color: rgba(33, 36, 49, 0.42);
+}
+
+.opbouwLight .hours {
+  border-top-color: rgba(234, 92, 31, 0.45);
+}
+
+.opbouwLight .hoursLabel {
+  color: rgba(33, 36, 49, 0.74);
+}
+
+.opbouwLight .hoursNote {
+  color: rgba(33, 36, 49, 0.52);
+}
+
+/* Blok 4: asymmetrische zijfoto naast de opbouw */
+.trajectGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4.5vw, 52px);
+}
+
+.trajectMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.trajectMediaImg {
+  object-fit: cover;
+  object-position: 50% 40%;
+  filter: grayscale(1) contrast(1.04);
+}
+
+@media (min-width: 860px) {
+  .trajectGrid {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    gap: clamp(40px, 5vw, 72px);
+  }
+
+  .trajectMedia {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}
+
+/* Waarde + ripple-blok — Optie A: asymmetrische split */
+.valueGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(36px, 6vw, 64px);
+}
+
+.valueText {
+  max-width: 42ch;
+}
+
+.valueRipple {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .valueGrid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+  }
+}
+
+.rippleIntro {
+  margin: 0 0 clamp(20px, 3vw, 30px);
+  max-width: 50ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2.2vw, 22px);
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.82);
+}
+
+.ripple {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.8vw, 8px);
+}
+
+.ripple li {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  font-size: clamp(30px, 6.4vw, 60px);
+}
+
+.ripple li:nth-child(1) {
+  margin-left: 0;
+  color: var(--off);
+}
+
+.ripple li:nth-child(2) {
+  margin-left: clamp(18px, 4.5vw, 56px);
+  color: rgba(245, 245, 245, 0.66);
+}
+
+.ripple li:nth-child(3) {
+  margin-left: clamp(36px, 9vw, 112px);
+  color: rgba(245, 245, 245, 0.48);
+}
+
+.ripple li:nth-child(4) {
+  margin-left: clamp(54px, 13.5vw, 168px);
+  color: rgba(245, 245, 245, 0.32);
+}
+
+.valueClose {
+  margin: clamp(22px, 3vw, 30px) 0 0;
+  max-width: 38ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.9vw, 19px);
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.72);
+}
+
+/* Herkenning-blok: re-integratie-regel (lichte sectie, navy tekst) */
+.reintegratieNote {
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding-top: clamp(20px, 3vw, 26px);
+  border-top: 1px solid rgba(33, 36, 49, 0.12);
+  max-width: 64ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.62;
+  color: rgba(33, 36, 49, 0.66);
+}
+
+.reintegratieLink {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reintegratieLink:hover {
+  text-decoration: underline;
+}
+
+.timelineTiming {
+  margin-left: 8px;
+  color: rgba(245, 245, 245, 0.4);
+}
+
+/* Uren-telling onder de timeline */
+.hours {
+  margin-top: clamp(32px, 5vw, 48px);
+  padding-top: clamp(24px, 3.5vw, 32px);
+  border-top: 1px solid rgba(234, 92, 31, 0.35);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2.5vw, 22px);
+  max-width: 640px;
+}
+
+.hoursItem {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hoursNum {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(56px, 9vw, 96px);
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2.5px var(--orange);
+  min-width: 1.6em;
+}
+
+.hoursLabel {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(14px, 1.7vw, 16px);
+  letter-spacing: 0.02em;
+  color: rgba(245, 245, 245, 0.72);
+}
+
+.hoursNote {
+  margin: clamp(16px, 2.5vw, 22px) 0 0;
+  max-width: none;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(13px, 1.5vw, 15px);
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.5);
+}
+
+@media (min-width: 640px) {
+  .hours {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 32px);
+  }
+
+  .hoursItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid rgba(234, 92, 31, 0.35);
+  padding-left: clamp(20px, 3vw, 28px);
+  max-width: 640px;
+}
+
+.timelineItem {
+  position: relative;
+  padding: clamp(18px, 2.5vw, 24px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(20px, 3vw, 28px) - 6px);
+  top: clamp(24px, 3vw, 30px);
+  width: 10px;
+  height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.timelineItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timelineNum {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.timelineTitle {
+  margin: 0 0 8px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 26px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--off);
+  line-height: 1.05;
+}
+
+.timelineDesc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.62);
+}

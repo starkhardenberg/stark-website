@@ -1,11 +1,16 @@
-import Link from 'next/link'
-import { hrefTrainen } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import { trainenFaq } from '@/components/faq/faq-trainen'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { trainenCards } from '@/components/landing/landing-cards'
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
+import {
+  getTrainenPageCarouselTestimonials,
+  heroQuoteRenske,
+} from '@/components/testimonials/testimonials-data'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -17,27 +22,18 @@ export const metadata = {
 export default function TrainenPage() {
   return (
     <main className={styles.main}>
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>
-          ← Terug naar STARK!
-        </Link>
-        <Link href={hrefTrainen} className={styles.navCta}>
-          Kom kennismaken
-        </Link>
-      </nav>
-
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <Image
             src="/images/foto-trainen-landingspagina.png"
             alt="Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg"
             fill
-            className={`${styles.heroBgImg} ${styles.heroBgImgTrainen}`}
+            className={`${styles.heroBgImg} ${styles.heroBgImgTrainen} ${styles.heroBgImgTrainenLanding}`}
             sizes="100vw"
             priority
-            style={{ objectPosition: 'center center' }}
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
@@ -53,10 +49,10 @@ export default function TrainenPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
         <span className={styles.label}>Welke groep past bij jou?</span>
-        <h2 className={`${styles.title} ${styles.titleHero}`}>
-          Iedereen <span className={styles.titleHeroOutline}>STARK</span>
+        <h2 className={`${styles.title} ${styles.titleHero}`} style={oswaldTrim('Iedereen')}>
+          Iedereen is <span className={styles.titleHeroOutline}>STARK</span>
         </h2>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
+        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced} ${styles.resultGridLight}`}>
           {trainenCards.map((card, i) => (
             <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
           ))}
@@ -66,8 +62,8 @@ export default function TrainenPage() {
       <div className={`${styles.split} ${styles.splitStatement}`}>
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
-            <span className={styles.label}>Zo werkt het</span>
-            <h2 className={styles.title}>MEER DAN EEN GYM</h2>
+            <span className={styles.label}>Waar wij voor staan</span>
+            <h2 className={styles.title} style={oswaldTrim('MEER')}>MEER DAN EEN SPORTSCHOOL</h2>
             <ul className={styles.featureTiles}>
               <li>
                 <span>Je start waar jij staat, op je eigen niveau.</span>
@@ -92,15 +88,21 @@ export default function TrainenPage() {
         </div>
       </div>
 
+      <TestimonialsSection
+        hero={heroQuoteRenske}
+        items={getTrainenPageCarouselTestimonials()}
+        narrow
+      />
+
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
-          <span className={styles.label}>Veelgestelde vragen</span>
-          <h2 className={styles.title}>Goede vragen</h2>
+          <span className={styles.label}>Wat je nog wilt weten</span>
+          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
           <FaqList items={trainenFaq} />
         </div>
       </section>
 
-      <Footer photoFirst />
+      <Footer photoFirst photoSet="trainen" brandPrefix="BIJ" />
     </main>
   )
 }

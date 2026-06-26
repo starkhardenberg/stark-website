@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefZakelijk } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function FundamentTeamtrajectPage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefZakelijk} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function FundamentTeamtrajectPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>Fundament op maat</span>
           <span className={styles.heroSlash} />
@@ -58,7 +56,7 @@ export default function FundamentTeamtrajectPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Wat is het</span>
-            <h2 className={styles.title}>GEEN STANDAARDPAKKET</h2>
+            <h2 className={styles.title} style={oswaldTrim('GEEN')}>GEEN STANDAARDPAKKET</h2>
             <p className={styles.body}>
               Volledig op maat samengesteld. Bouwstenen naar behoefte. Voor bedrijven en teams waarbij het standaardaanbod niet past.
             </p>
@@ -69,7 +67,7 @@ export default function FundamentTeamtrajectPage() {
       {/* Mogelijke bouwstenen */}
       <section className={styles.section}>
         <span className={styles.label}>Mogelijke bouwstenen</span>
-        <h2 className={styles.title}>BOUW JE EIGEN TRAJECT</h2>
+        <h2 className={styles.title} style={oswaldTrim('BOUW')}>BOUW JE EIGEN TRAJECT</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Gezamenlijke nulmeting en kick-off</div>
@@ -101,7 +99,7 @@ export default function FundamentTeamtrajectPage() {
       {/* Voor wie */}
       <section className={styles.section}>
         <span className={styles.label}>Voor wie</span>
-        <h2 className={styles.title}>VOOR TEAMS DIE MEER WILLEN</h2>
+        <h2 className={styles.title} style={oswaldTrim('VOOR')}>VOOR TEAMS DIE MEER WILLEN</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Teams die meer willen dan een teamuitje</div>
@@ -123,7 +121,7 @@ export default function FundamentTeamtrajectPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>VRAAG EEN OFFERTE AAN</h2>
         <p className={styles.ctaSub}>We denken graag met je mee.</p>
-        <Link href={hrefZakelijk} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>We denken graag met je mee</span>
       </section>
 

@@ -46,7 +46,7 @@
 .heroTitleLead {
   display: block;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--off);
+  -webkit-text-stroke: 2.5px var(--off);
   font-size: 0.78em;
 }
 
@@ -135,7 +135,7 @@
   display: block;
   margin-bottom: 10px;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;

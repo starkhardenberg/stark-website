@@ -99,11 +99,11 @@
   font-size: clamp(78px, 21vw, 132px);
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px var(--orange);
+  -webkit-text-stroke: 2.5px var(--orange);
 }
 
 .light .itemNoTiles .num {
-  -webkit-text-stroke: 1.5px var(--orange-deep);
+  -webkit-text-stroke: 2.5px var(--orange-deep);
 }
 
 .cat {
@@ -161,26 +161,17 @@
 /* Trainen: editorial «stage» rond tekst + foto (kader, gradient, oranje accentlijn) */
 .itemNoTiles .noTilesHeroTrainen {
   padding: clamp(18px, 3.2vw, 36px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
   border-radius: 0 5px 0 0;
   background:
     linear-gradient(168deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 46%),
     var(--navy);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   position: relative;
   gap: clamp(14px, 3vw, 20px);
 }
 
 .itemNoTiles .noTilesHeroTrainen::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(52%, 340px);
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--orange));
-  opacity: 0.88;
-  pointer-events: none;
+  content: none;
 }
 
 /* Licht aanbod-blok (coaching): zelfde band-vorm als trainen, contrast op #F5F5F5 */
@@ -188,10 +179,7 @@
   background:
     linear-gradient(168deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 46%),
     rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.92),
-    0 1px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(33, 36, 49, 0.18);
 }
 
 .light.itemNoTiles .noTilesHeroTrainen::after {
@@ -410,11 +398,6 @@
   object-fit: cover;
   object-position: center 42%;
   filter: grayscale(0.12) contrast(1.05);
-  transition: transform 0.45s ease;
-}
-
-.singlePhoto:hover .singlePhotoImg {
-  transform: scale(1.02);
 }
 
 /*
@@ -431,10 +414,6 @@
   object-fit: cover;
   /* Bovenkant van de foto vast: volledig hoofd zichtbaar, onder (slee) mag wegvallen */
   object-position: center top;
-}
-
-.itemNoTiles .photoVisual .singlePhoto:hover .singlePhotoImg {
-  transform: scale(1.015);
 }
 
 .light .singlePhoto {
@@ -726,10 +705,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .itemNoTiles .photoVisual {
-    transform: none;
-  }
-
-  .itemNoTiles .photoVisual .singlePhoto:hover .singlePhotoImg {
     transform: none;
   }
 }

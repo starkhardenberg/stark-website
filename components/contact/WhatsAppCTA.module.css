@@ -76,7 +76,7 @@
 .eyebrow {
   margin: 0 0 10px;
   font-family: var(--font-body), 'Work Sans', sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -210,7 +210,7 @@
 .stripLabel {
   margin: 0 0 6px;
   font-family: var(--font-body), 'Work Sans', sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;

@@ -1,6 +1,6 @@
 .footer {
   background: var(--navy);
-  margin-top: clamp(48px, 8vw, 96px);
+  margin-top: clamp(64px, 9vw, 112px);
 }
 
 .content {
@@ -38,7 +38,13 @@
   text-transform: uppercase;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2px var(--orange);
+  -webkit-text-stroke: 1.8px var(--orange);
+}
+
+.brandPrefix {
+  color: var(--off);
+  -webkit-text-fill-color: var(--off);
+  -webkit-text-stroke: 0;
 }
 
 .welcome {
@@ -158,7 +164,10 @@
 }
 
 .contactRow {
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.15em;
 }
 
 .contactLink {
@@ -171,9 +180,18 @@
   color: var(--orange);
 }
 
+.contactLink .sep {
+  color: var(--orange);
+}
+
+.contactLink:hover .sep {
+  color: var(--orange);
+}
+
 .sep {
-  margin: 0 0.4em;
-  color: rgba(245, 245, 245, 0.35);
+  margin: 0 0.55em;
+  color: var(--orange);
+  font-weight: 600;
 }
 
 .meta {
@@ -191,6 +209,153 @@
   color: rgba(245, 245, 245, 0.28);
 }
 
+/* ── Prominente afsluit-CTA: één afsluitbeeld met CTA eroverheen ── */
+.footerCta {
+  margin-top: 0;
+  background: var(--navy);
+}
+
+.ctaHero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(460px, 72vh, 760px);
+  padding: clamp(48px, 9vw, 104px) clamp(24px, 5vw, 64px) clamp(40px, 6vw, 72px);
+  overflow: hidden;
+}
+
+.ctaHeroBg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.ctaHeroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: grayscale(1) contrast(1.05) brightness(0.92);
+}
+
+.ctaHeroScrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(33, 36, 49, 0.25) 0%,
+      rgba(33, 36, 49, 0.5) 52%,
+      rgba(33, 36, 49, 0.94) 100%
+    ),
+    linear-gradient(90deg, rgba(33, 36, 49, 0.72) 0%, rgba(33, 36, 49, 0.18) 58%, transparent 100%);
+}
+
+.ctaHeroContent {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ctaBottom {
+  background: var(--navy);
+  padding: clamp(22px, 3.2vw, 34px) clamp(24px, 5vw, 64px) clamp(32px, 4.5vw, 44px);
+}
+
+.ctaBand {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ctaBandLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.ctaBandTitle {
+  margin: 0 0 clamp(16px, 2.4vw, 22px);
+  max-width: 18ch;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 6.5vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.ctaBandLead {
+  margin: 0 0 clamp(24px, 3.2vw, 32px);
+  max-width: 46ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.7);
+}
+
+.bottomBar {
+  max-width: 1200px;
+  margin: clamp(40px, 6vw, 64px) auto 0;
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: clamp(18px, 3vw, 32px);
+}
+
+.bottomBarFlush {
+  margin: 0 auto;
+  padding-top: 0;
+  border-top: none;
+}
+
+.bottomBrand {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.bottomBrand .meta {
+  margin: 0;
+}
+
+.brandSmall {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--off);
+  line-height: 1;
+}
+
+.bottomBar .contact {
+  align-items: flex-end;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .bottomBar {
+    align-items: flex-start;
+  }
+
+  .bottomBar .contact {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
 .photoWrap {
   position: relative;
   width: 100%;
@@ -206,17 +371,32 @@
   height: 100%;
   object-fit: cover;
   object-position: center 72%;
-  filter: grayscale(1) contrast(1.08) brightness(0.88);
+  filter: grayscale(1) contrast(1.04);
 }
 
 .photoHome {
   object-position: center 52%;
-  filter: grayscale(1) contrast(1.02) brightness(0.96);
 }
 
 .photoCoaching {
-  object-position: center 42%;
-  filter: grayscale(1) contrast(1.06) brightness(0.9);
+  object-position: center 32%;
+}
+
+.photoTrainen {
+  object-position: center 14%;
+}
+
+.photoZakelijk {
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.photoWrapZakelijk {
+  height: clamp(280px, 34vw, 420px);
+}
+
+.footerPhotoFirst .photoWrapZakelijk {
+  height: clamp(280px, 34vw, 420px);
 }
 
 .footer:not(.footerPhotoFirst) .photoWrap {
@@ -267,16 +447,28 @@
     grid-template-columns: 1fr;
   }
 
-  .photoWrap {
+  .photoWrap:not(.photoWrapZakelijk) {
     height: clamp(280px, 52vw, 420px);
   }
 
-  .footer:not(.footerPhotoFirst) .photoWrap {
+  .photoWrapZakelijk {
+    height: clamp(240px, 46vw, 360px);
+  }
+
+  .footerPhotoFirst .photoZakelijk {
+    object-position: center 16%;
+  }
+
+  .footer:not(.footerPhotoFirst) .photoWrap:not(.photoWrapZakelijk) {
     height: clamp(320px, 58vw, 460px);
   }
 
-  .footerPhotoFirst .photo {
+  .footerPhotoFirst .photo:not(.photoZakelijk) {
     object-position: center 68%;
+  }
+
+  .footerPhotoFirst .photoTrainen {
+    object-position: center 12%;
   }
 
   .photoHome {
@@ -285,12 +477,8 @@
 }
 
 @media (max-width: 520px) {
-  .sep {
-    display: none;
-  }
-
   .contactRow {
-    white-space: normal;
+    row-gap: 0.25em;
   }
 }
 
@@ -353,7 +541,7 @@
 }
 
 .footerLight .sep {
-  color: rgba(33, 36, 49, 0.35);
+  color: var(--orange);
 }
 
 .footerLight .meta {
@@ -387,6 +575,33 @@
     rgba(245, 245, 245, 0.18) 52%,
     transparent 72%
   );
+}
+
+/* ── Harde snede: foto → navy, copy vlak navy, oranje lijn ertussen ── */
+.footerSolid {
+  margin-top: 0;
+  background: var(--navy);
+}
+
+.footerSolid .photoWrap {
+  background: var(--navy);
+}
+
+.footerSolid.footerPhotoFirst .photoFade {
+  background: linear-gradient(
+    to top,
+    var(--navy) 0%,
+    var(--navy) 10%,
+    rgba(33, 36, 49, 0.55) 32%,
+    rgba(33, 36, 49, 0.12) 58%,
+    transparent 100%
+  );
+}
+
+.footerSolid.footerPhotoFirst .content {
+  background: var(--navy);
+  border-top: 1px solid var(--orange);
+  padding-top: clamp(40px, 6vw, 56px);
 }
 
 /* ── Gradient variant: foto eindigt in navy → content fade navy → off-white ── */
@@ -490,7 +705,7 @@
 }
 
 .footerGradient .sep {
-  color: rgba(33, 36, 49, 0.35);
+  color: var(--orange);
 }
 
 .footerGradient .meta {
@@ -498,5 +713,90 @@
 }
 
 .footerGradient .metaSep {
+  color: rgba(33, 36, 49, 0.28);
+}
+
+/* ── Warm gradient test: off-white → oranje (homepage) ── */
+.footerGradientWarm {
+  margin-top: 0;
+  background: rgba(234, 92, 31, 0.22);
+}
+
+.footerGradientWarm .photoWrap {
+  background: var(--off);
+}
+
+.footerGradientWarm.footerPhotoFirst .photoFade {
+  background: linear-gradient(
+    to top,
+    var(--off) 0%,
+    rgba(245, 245, 245, 0.97) 16%,
+    rgba(245, 245, 245, 0.62) 34%,
+    rgba(245, 245, 245, 0.16) 58%,
+    transparent 100%
+  );
+}
+
+.footerGradientWarm.footerPhotoFirst .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: clamp(340px, 42vw, 460px);
+  padding: 0 clamp(24px, 5vw, 64px) clamp(44px, 7vw, 68px);
+  background:
+    linear-gradient(105deg, rgba(234, 92, 31, 0.07) 0%, transparent 52%),
+    linear-gradient(
+      to bottom,
+      var(--off) 0%,
+      #f8f0eb 38%,
+      #f3e2d8 68%,
+      rgba(234, 92, 31, 0.2) 100%
+    );
+}
+
+.footerGradientWarm .welcome {
+  color: var(--navy);
+}
+
+.footerGradientWarm .lead {
+  color: rgba(33, 36, 49, 0.84);
+}
+
+.footerGradientWarm .ctaWhatsapp {
+  color: var(--navy);
+  border-color: rgba(33, 36, 49, 0.28);
+}
+
+.footerGradientWarm .ctaWhatsapp:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.footerGradientWarm .cta:focus-visible,
+.footerGradientWarm .ctaWhatsapp:focus-visible {
+  outline-color: var(--navy);
+}
+
+.footerGradientWarm .contact {
+  color: rgba(33, 36, 49, 0.78);
+}
+
+.footerGradientWarm .contactLink {
+  color: var(--navy);
+}
+
+.footerGradientWarm .contactLink:hover {
+  color: var(--orange-deep);
+}
+
+.footerGradientWarm .sep {
+  color: var(--orange);
+}
+
+.footerGradientWarm .meta {
+  color: rgba(33, 36, 49, 0.52);
+}
+
+.footerGradientWarm .metaSep {
   color: rgba(33, 36, 49, 0.28);
 }

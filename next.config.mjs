@@ -3,6 +3,16 @@ const nextConfig = {
   images: {
     remotePatterns: [],
   },
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        has: [{ type: 'query', key: 'onderwerp', value: 'kennismaking' }],
+        destination: '/kennismaken',
+        permanent: false,
+      },
+    ]
+  },
   /**
    * Voorkomt corrupte webpack filesystem-cache in `next dev` (ontbrekende chunks,
    * MODULE_NOT_FOUND, soms “lege” pagina’s zonder CSS).

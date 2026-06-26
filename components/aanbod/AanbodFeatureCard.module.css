@@ -2,13 +2,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: calc(clamp(640px, 84vh, 920px) + 1cm);
   overflow: hidden;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #ffffff;
   background: var(--navy);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
   cursor: pointer;
+}
+
+.cardStatic {
+  cursor: default;
 }
 
 .card:focus-visible {
@@ -16,25 +18,9 @@
   outline-offset: 4px;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(52%, 200px);
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--orange));
-  opacity: 0.88;
-  pointer-events: none;
-  z-index: 4;
-}
-
 .cardLight {
   background: #f5f5f5;
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.92),
-    0 1px 0 rgba(0, 0, 0, 0.05);
+  border-color: rgba(33, 36, 49, 0.18);
 }
 
 .media {
@@ -52,11 +38,18 @@
   object-fit: cover;
 }
 
-.mediaLabel {
+.mediaLabelBlock {
   position: absolute;
   left: clamp(16px, 2.5vw, 24px);
   bottom: clamp(16px, 2.5vw, 24px);
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12em;
+  max-width: calc(100% - clamp(80px, 14vw, 120px));
+}
+
+.mediaLabel {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: clamp(30px, 6.5vw, 58px);
@@ -67,6 +60,24 @@
   text-shadow: 0 2px 18px rgba(33, 36, 49, 0.72);
 }
 
+.mediaSubLabel {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 2.8vw, 24px);
+  line-height: 0.95;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.88);
+  text-shadow: 0 2px 14px rgba(33, 36, 49, 0.72);
+}
+
+.mediaSubLabelAccent {
+  color: var(--orange);
+  text-shadow:
+    0 2px 16px rgba(33, 36, 49, 0.88),
+    0 0 24px rgba(33, 36, 49, 0.55);
+}
+
 .panel {
   position: relative;
   z-index: 2;
@@ -75,7 +86,7 @@
   flex-direction: column;
   min-height: 0;
   margin-top: clamp(14px, 2vw, 22px);
-  padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 28px) clamp(24px, 3vw, 32px);
+  padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 28px) calc(clamp(24px, 3vw, 32px) + 0.5cm);
   background: var(--navy);
 }
 
@@ -84,29 +95,29 @@
 }
 
 .panelInner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(14px, 2.2vw, 22px);
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  min-height: calc(clamp(360px, 44vh, 540px) - 3cm);
 }
 
 .index {
-  flex-shrink: 0;
-  align-self: start;
+  position: absolute;
+  right: clamp(12px, 1.8vw, 20px);
+  bottom: clamp(12px, 1.8vw, 20px);
+  z-index: 2;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(44px, 9vw, 72px);
-  line-height: 0.92;
+  font-size: clamp(46px, 7vw, 76px);
+  line-height: 0.9;
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px var(--orange);
+  -webkit-text-stroke: 2.5px var(--orange);
+  pointer-events: none;
 }
 
 .cardLight .index {
-  -webkit-text-stroke: 1.5px var(--orange-deep);
+  -webkit-text-stroke: 2.5px var(--orange-deep);
 }
 
 .panelContent {
@@ -126,8 +137,8 @@
 
 .paragraph {
   margin: 0;
-  font-size: clamp(14px, 1.6vw, 15px);
-  line-height: 1.65;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
   color: rgba(245, 245, 245, 0.78);
 }
 
@@ -137,7 +148,7 @@
 
 .readMore {
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--orange);
   text-decoration: underline;
@@ -157,29 +168,107 @@
   color: var(--orange);
 }
 
-@media (min-width: 900px) {
-  .card {
-    min-height: calc(clamp(720px, 78vh, 980px) + 1cm);
-  }
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 clamp(10px, 1.4vw, 14px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange-deep);
+}
 
+.card:not(.cardLight) .eyebrow {
+  color: var(--orange);
+}
+
+.cardBusinessContext.cardLight .eyebrowNeutral {
+  color: rgba(33, 36, 49, 0.52);
+  font-weight: 600;
+}
+
+.panelTitle {
+  margin: 0 0 clamp(14px, 2vw, 20px);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.2vw, 34px);
+  line-height: 0.94;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.card:not(.cardLight) .panelTitle {
+  color: var(--off);
+}
+
+.menuList {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuRow {
+  margin: 0;
+  padding: clamp(13px, 1.8vw, 16px) 0;
+  border-top: 1px solid rgba(33, 36, 49, 0.12);
+}
+
+.card:not(.cardLight) .menuRow {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.menuRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.menuRow dt {
+  margin: 0 0 5px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-deep);
+}
+
+.card:not(.cardLight) .menuRow dt {
+  color: var(--orange);
+}
+
+.menuRow dt::before {
+  content: '→';
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.menuRow dd {
+  margin: 0;
+  padding-left: 22px;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
+  color: rgba(10, 10, 10, 0.72);
+}
+
+.card:not(.cardLight) .menuRow dd {
+  color: rgba(245, 245, 245, 0.72);
+}
+
+@media (min-width: 900px) {
   .media {
     aspect-ratio: 4 / 3;
     min-height: calc(clamp(260px, 17vw, 340px) + 4cm);
     max-height: calc(clamp(290px, 18vw, 360px) + 4cm);
   }
 
-  .panelInner {
-    min-height: calc(clamp(380px, 40vh, 560px) - 3cm);
-    gap: clamp(16px, 1.8vw, 24px);
-  }
-
   .index {
     font-size: clamp(52px, 5.5vw, 80px);
-  }
-}
-
-@media (min-width: 1200px) {
-  .panelInner {
-    min-height: calc(clamp(400px, 42vh, 580px) - 3cm);
   }
 }

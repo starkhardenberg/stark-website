@@ -15,9 +15,18 @@ const INTERVAL_MS = 5500
 
 type Props = {
   items: Testimonial[]
+  cardTone?: 'light' | 'dark'
 }
 
-export default function RotatingTestimonials({ items }: Props) {
+function slideScrollLeft(viewport: HTMLDivElement, slide: HTMLDivElement) {
+  const slideRect = slide.getBoundingClientRect()
+  const viewportRect = viewport.getBoundingClientRect()
+  const slideCenter = viewport.scrollLeft + (slideRect.left - viewportRect.left) + slideRect.width / 2
+  const maxLeft = Math.max(0, viewport.scrollWidth - viewport.clientWidth)
+  return Math.max(0, Math.min(slideCenter - viewport.clientWidth / 2, maxLeft))
+}
+
+export default function RotatingTestimonials({ items, cardTone = 'light' }: Props) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [inView, setInView] = useState(false)
@@ -25,41 +34,115 @@ export default function RotatingTestimonials({ items }: Props) {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([])
   const viewportRef = useRef<HTMLDivElement>(null)
   const programmaticScroll = useRef(false)
+  const indexRef = useRef(0)
+  const pendingUserScroll = useRef(false)
+  const programmaticTimer = useRef<number | null>(null)
 
   const total = items.length
 
-  const scrollToIndex = useCallback((i: number, behavior: ScrollBehavior = 'smooth') => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const viewport = viewportRef.current
-    const slide = slideRefs.current[i]
-    if (!viewport || !slide) return
+  indexRef.current = index
 
-    // Alleen de horizontale carousel bewegen; nooit de pagina verticaal scrollen.
-    const targetLeft = slide.offsetLeft - (viewport.clientWidth - slide.offsetWidth) / 2
-    const maxLeft = viewport.scrollWidth - viewport.clientWidth
-    const nextLeft = Math.max(0, Math.min(targetLeft, maxLeft))
-    const instant = reduceMotion || behavior === 'auto'
-
-    // Veiligheidsslot: bewaar de paginapositie en herstel die na een instant-scroll,
-    // zodat mobiele browsers de pagina niet naar de carousel toe trekken.
-    const pageY = window.scrollY
-    const pageX = window.scrollX
-
-    programmaticScroll.current = true
-    viewport.scrollTo({
-      left: nextLeft,
-      behavior: instant ? 'auto' : behavior,
-    })
-    if (instant && (window.scrollY !== pageY || window.scrollX !== pageX)) {
-      window.scrollTo(pageX, pageY)
+  const releaseProgrammaticLock = useCallback(() => {
+    programmaticScroll.current = false
+    if (programmaticTimer.current !== null) {
+      window.clearTimeout(programmaticTimer.current)
+      programmaticTimer.current = null
     }
-    window.setTimeout(() => {
-      programmaticScroll.current = false
-    }, 500)
   }, [])
 
-  // Pas centreren/roteren zodra de carousel echt in beeld is. Dit voorkomt dat
-  // een programmatische scroll bij het laden de pagina naar onderen trekt.
+  const scrollToIndex = useCallback(
+    (i: number, behavior: ScrollBehavior = 'smooth') => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const viewport = viewportRef.current
+      const slide = slideRefs.current[i]
+      if (!viewport || !slide) return
+
+      const nextLeft = slideScrollLeft(viewport, slide)
+      const instant = reduceMotion || behavior === 'auto'
+
+      const pageY = window.scrollY
+      const pageX = window.scrollX
+
+      releaseProgrammaticLock()
+      programmaticScroll.current = true
+      viewport.scrollTo({
+        left: nextLeft,
+        behavior: instant ? 'auto' : behavior,
+      })
+      if (instant && (window.scrollY !== pageY || window.scrollX !== pageX)) {
+        window.scrollTo(pageX, pageY)
+      }
+
+      if (instant) {
+        releaseProgrammaticLock()
+      } else {
+        programmaticTimer.current = window.setTimeout(releaseProgrammaticLock, 450)
+        viewport.addEventListener('scrollend', releaseProgrammaticLock, { once: true })
+      }
+    },
+    [releaseProgrammaticLock],
+  )
+
+  const syncIndexFromViewport = useCallback(() => {
+    if (programmaticScroll.current) return
+
+    const viewport = viewportRef.current
+    if (!viewport || total === 0) return
+
+    const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth)
+    const scrollLeft = viewport.scrollLeft
+
+    if (maxScroll <= 1) {
+      if (indexRef.current !== 0) setIndex(0)
+      return
+    }
+
+    if (scrollLeft <= 1) {
+      if (indexRef.current !== 0) {
+        pendingUserScroll.current = true
+        setIndex(0)
+      }
+      return
+    }
+
+    if (scrollLeft >= maxScroll - 1) {
+      const last = total - 1
+      if (indexRef.current !== last) {
+        pendingUserScroll.current = true
+        setIndex(last)
+      }
+      return
+    }
+
+    const viewportCenterX = viewport.getBoundingClientRect().left + viewport.clientWidth / 2
+
+    let closest = 0
+    let closestDist = Infinity
+
+    slideRefs.current.forEach((slide, i) => {
+      if (!slide) return
+      const rect = slide.getBoundingClientRect()
+      const slideCenterX = rect.left + rect.width / 2
+      const dist = Math.abs(viewportCenterX - slideCenterX)
+      if (dist < closestDist) {
+        closestDist = dist
+        closest = i
+      }
+    })
+
+    if (closest !== indexRef.current) {
+      pendingUserScroll.current = true
+      setIndex(closest)
+    }
+  }, [total])
+
+  useEffect(() => {
+    slideRefs.current = slideRefs.current.slice(0, total)
+    if (indexRef.current >= total) {
+      setIndex(Math.max(0, total - 1))
+    }
+  }, [total])
+
   useEffect(() => {
     const el = wrapRef.current
     if (!el) return
@@ -77,41 +160,55 @@ export default function RotatingTestimonials({ items }: Props) {
 
   useLayoutEffect(() => {
     if (!inView) return
+    if (pendingUserScroll.current) {
+      pendingUserScroll.current = false
+      return
+    }
     scrollToIndex(index, index === 0 ? 'auto' : 'smooth')
   }, [index, inView, scrollToIndex])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const viewport = viewportRef.current
+    if (!viewport) return
+
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => syncIndexFromViewport())
+    }
+
+    viewport.addEventListener('scroll', onScroll, { passive: true })
+    viewport.addEventListener('scrollend', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+
+    onScroll()
+
+    return () => {
+      cancelAnimationFrame(raf)
+      viewport.removeEventListener('scroll', onScroll)
+      viewport.removeEventListener('scrollend', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [inView, syncIndexFromViewport, total])
 
   useEffect(() => {
     if (paused || total <= 1 || !inView) return
 
     const id = window.setInterval(() => {
+      pendingUserScroll.current = false
       setIndex((i) => (i + 1) % total)
     }, INTERVAL_MS)
 
     return () => window.clearInterval(id)
   }, [paused, total, inView])
 
-  const goTo = (next: number) => setIndex(next)
+  useEffect(() => () => releaseProgrammaticLock(), [releaseProgrammaticLock])
 
-  const handleScroll = () => {
-    if (programmaticScroll.current) return
-    const viewport = viewportRef.current
-    if (!viewport) return
-
-    const center = viewport.scrollLeft + viewport.clientWidth / 2
-    let closest = index
-    let closestDist = Infinity
-
-    slideRefs.current.forEach((slide, i) => {
-      if (!slide) return
-      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2
-      const dist = Math.abs(center - slideCenter)
-      if (dist < closestDist) {
-        closestDist = dist
-        closest = i
-      }
-    })
-
-    if (closest !== index) setIndex(closest)
+  const goTo = (next: number) => {
+    pendingUserScroll.current = false
+    setIndex(next)
   }
 
   if (total === 0) return null
@@ -119,7 +216,7 @@ export default function RotatingTestimonials({ items }: Props) {
   return (
     <div
       ref={wrapRef}
-      className={styles.wrap}
+      className={`${styles.wrap} ${cardTone === 'dark' ? styles.wrapDarkCards : ''}`}
       role="region"
       aria-roledescription="carrousel"
       aria-label="Korte testimonials"
@@ -131,7 +228,6 @@ export default function RotatingTestimonials({ items }: Props) {
         className={styles.viewport}
         id="rotating-testimonial-panel"
         aria-live="polite"
-        onScroll={handleScroll}
       >
         <div className={styles.track}>
           {items.map((item, i) => (
@@ -142,12 +238,15 @@ export default function RotatingTestimonials({ items }: Props) {
               }}
               className={`${styles.slide} ${i === index ? styles.slideActive : styles.slideIdle}`}
               aria-hidden={i !== index}
+              onClick={() => goTo((index + 1) % total)}
+              title="Volgende quote"
             >
               <QuoteCard
                 text={item.text}
                 name={item.name}
                 context={item.context}
                 active={i === index}
+                tone={cardTone}
               />
             </div>
           ))}

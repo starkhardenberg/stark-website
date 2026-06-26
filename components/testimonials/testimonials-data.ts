@@ -18,6 +18,21 @@ export type HeroQuote = {
   context: string
   image: string
   imageAlt?: string
+  /** Foto horizontaal spiegelen (scaleX(-1)). */
+  imageMirror?: boolean
+  /** Foto in zwart-wit tonen (zelfde filter als overige B&W-foto's). */
+  imageBw?: boolean
+  objectPosition?: string
+  /** Per-foto inzoom (overschrijft de gedeelde transform). 1 = geen zoom. */
+  imageScale?: number
+  /** Focuspunt voor de inzoom, bv. 'center 30%'. */
+  imageScaleOrigin?: string
+  /** Studioshot op zwart: blok wordt donker, foto volledig in beeld (contain),
+   *  zwart smelt samen met het blok. Alleen voor foto's met zwarte studio-fond. */
+  darkPortrait?: boolean
+  /** Foto het blok laten vullen (object-fit: cover) i.p.v. contain. Handig bij
+   *  een donkere (geen pure zwart-fond) foto die je toch in het dark-blok wilt. */
+  imageCover?: boolean
 }
 
 export const heroQuoteAmanda: HeroQuote = {
@@ -25,6 +40,12 @@ export const heroQuoteAmanda: HeroQuote = {
   name: 'Amanda',
   context: 'Deelnemer Momentum (de vrouwen editie, voorheen Camp Leone)',
   image: '/images/foto-vrouw-lachen.jpg',
+  imageAlt: 'Amanda, deelnemer Momentum bij STARK! Hardenberg',
+  darkPortrait: true,
+  imageCover: true,
+  objectPosition: '62% 16%',
+  imageScale: 1.3,
+  imageScaleOrigin: '62% 16%',
 }
 
 /** Alle testimonials — één bron voor homepage, Momentum en Impact. */
@@ -33,6 +54,34 @@ export const allTestimonials: TestimonialEntry[] = [
     id: 'eva-1',
     text: 'Ik ben de fijnste versie van mezelf. Het is het beste cadeau aan jezelf.',
     name: 'Eva',
+    context: 'Impact traject',
+    category: 'impact',
+  },
+  {
+    id: 'erwin-1',
+    text: 'Zestig kilo eraf. Maar wat echt veranderde zit vanbinnen: ik geef niet meer op.',
+    name: 'Erwin',
+    context: 'Impact traject',
+    category: 'impact',
+  },
+  {
+    id: 'anne-1',
+    text: 'Ik kwam voor mezelf. Ik kreeg er mijn huwelijk bij terug. We zijn weer gelukkig samen.',
+    name: 'Anne',
+    context: 'Impact traject',
+    category: 'impact',
+  },
+  {
+    id: 'monique-1',
+    text: 'Mijn kinderen zien nu een moeder die doorzet. Dat is het mooiste wat ik ze kan geven.',
+    name: 'Monique',
+    context: 'Impact traject',
+    category: 'impact',
+  },
+  {
+    id: 'bethtina-1',
+    text: 'Ik heb de sprong gewaagd. Mijn eigen bedrijf staat er nu, en ik sta achter mezelf.',
+    name: 'Bethtina',
     context: 'Impact traject',
     category: 'impact',
   },
@@ -53,13 +102,6 @@ export const allTestimonials: TestimonialEntry[] = [
   {
     id: 'joyce-1',
     text: 'Ik voel me zekerder, fitter en heb veel meer rust in mijn hoofd.',
-    name: 'Joyce',
-    context: 'Impact traject',
-    category: 'impact',
-  },
-  {
-    id: 'joyce-2',
-    text: 'Ik heb nog geen dag spijt gehad van mijn beslissing.',
     name: 'Joyce',
     context: 'Impact traject',
     category: 'impact',
@@ -93,13 +135,6 @@ export const allTestimonials: TestimonialEntry[] = [
     category: 'impact',
   },
   {
-    id: 'rosanne-2',
-    text: 'Dankzij de veilige en vertrouwde omgeving verleg ik wekelijks mijn grenzen.',
-    name: 'Rosanne A',
-    context: 'Impact traject',
-    category: 'impact',
-  },
-  {
     id: 'gerlinde-1',
     text: 'Ik herken nu patronen bij mezelf en wat ik hiermee kan doen. Dat lukt echt niet altijd, maar heel vaak ook wel.',
     name: 'Gerlinde',
@@ -122,7 +157,7 @@ export const allTestimonials: TestimonialEntry[] = [
   },
   {
     id: 'sandra-1',
-    text: "'Wie zit er nou op mij te wachten!' Coaching helpt me om niet mee te gaan met die beperkende stem.",
+    text: 'Wie zit er nou op mij te wachten! Coaching helpt me om niet mee te gaan met die beperkende stem.',
     name: 'Sandra',
     context: 'Momentum traject',
     category: 'momentum',
@@ -183,6 +218,48 @@ export const allTestimonials: TestimonialEntry[] = [
     context: 'ZilverFitness',
     category: 'zilverfitness',
   },
+  {
+    id: 'renske-1',
+    text: 'Je lijf kan zoveel meer dan je denkt. Je mag het even niet weten, de trainer geeft je de ruimte en helpt je om weer door te gaan.',
+    name: 'Renske',
+    context: 'Groepstraining',
+    category: 'groepstraining',
+  },
+  {
+    id: 'jose-1',
+    text: 'Gewoon lekker sporten, met een grapje en een grolletje op zijn tijd.',
+    name: 'José',
+    context: 'Groepstraining',
+    category: 'groepstraining',
+  },
+  {
+    id: 'mads-1',
+    text: 'Met de juiste begeleiding verleg ik mijn grenzen, groei ik in mijn zelfvertrouwen en zit ik lekkerder in mijn vel.',
+    name: 'Mads',
+    context: 'Groepstraining',
+    category: 'groepstraining',
+  },
+  {
+    id: 'elisa-1',
+    text: 'Gezellig sterker worden. Iedereen is aardig en het is altijd heel gezellig.',
+    name: 'Elisa',
+    context: 'Kids',
+    category: 'kids',
+  },
+  {
+    id: 'gerhard-1',
+    text: 'Ik kom met plezier en ik voel me er goed bij.',
+    name: 'Gerhard',
+    context: 'ZilverFitness',
+    category: 'zilverfitness',
+  },
+  {
+    id: 'rosanne-g-1',
+    text: 'STARK! heeft me geleerd dat ik niet alles hoef te geloven wat mijn hoofd zegt. Juist door door te zetten ontdek ik hoe sterk ik echt ben in plaats van naar mijn twijfels te luisteren.',
+    name: 'Rosanne',
+    context: 'Groepstraining',
+    category: 'groepstraining',
+  },
 ]
 
 /**
@@ -216,11 +293,41 @@ export function getHomepageTestimonials(): Testimonial[] {
   return getTestimonialsByIds(homepageTestimonialIds)
 }
 
+export const heroQuoteRenske: HeroQuote = {
+  text: 'Je lijf kan zoveel meer dan je denkt. Je mag het even niet weten, de trainer geeft je de ruimte en helpt je om weer door te gaan.',
+  name: 'Renske',
+  context: 'Groepstraining',
+  image: '/images/foto-trainen-quotes-renske.jpg',
+  imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
+  darkPortrait: true,
+}
+
+const TRAINEN_PAGE_HERO_ID = 'renske-1'
+
+/** Trainen-landing carousel: quotes die niet op de homepage staan. */
+export const trainenPageCarouselIds = [
+  'jose-1',
+  'mads-1',
+  'elisa-1',
+  'gerhard-1',
+  'rosanne-g-1',
+] as const
+
+export function getTrainenPageCarouselTestimonials(): Testimonial[] {
+  const onHomepage = new Set<string>(homepageTestimonialIds)
+  return getTestimonialsByIds(trainenPageCarouselIds).filter(
+    (item) => item.id !== TRAINEN_PAGE_HERO_ID && !onHomepage.has(item.id),
+  )
+}
+
 export const heroQuoteRebekka: HeroQuote = {
   text: 'De combinatie van sporten en coaching zorgt voor directe feedback tijdens het sporten: wat doe ik als het zwaar wordt?',
   name: 'Rebekka',
   context: 'Momentum traject',
-  image: '/images/foto-coaching-samen.jpg',
+  image: '/images/foto-momentum-quotes-hero.png',
+  imageAlt: 'Deelnemer met battle rope tijdens training bij STARK! Hardenberg',
+  imageMirror: true,
+  objectPosition: 'center 38%',
 }
 
 /** Momentum-pagina: hero Rebekka + carousel (Sandra zit op homepage). */
@@ -234,7 +341,9 @@ export const heroQuoteEva: HeroQuote = {
   text: 'Ik ben de fijnste versie van mezelf. Het is het beste cadeau aan jezelf.',
   name: 'Eva',
   context: 'Impact traject',
-  image: '/images/foto-coaching-impact.png',
+  image: '/images/foto-impact-kettlebell.png',
+  imageBw: true,
+  objectPosition: 'center 38%',
 }
 
 /** Impact-pagina: alle Impact-quotes behalve homepage-keuzes (Hilda) en Eva (hero). */

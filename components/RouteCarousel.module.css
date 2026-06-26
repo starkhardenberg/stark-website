@@ -35,15 +35,10 @@
 .img {
   object-fit: cover;
   filter: grayscale(0.12) contrast(1.05);
-  transition: transform 0.4s ease;
 }
 
 .imgBw {
   filter: grayscale(1) contrast(1.05);
-}
-
-.card:hover .img {
-  transform: scale(1.04);
 }
 
 .overlay {
@@ -54,11 +49,6 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 16px 14px;
-  transition: background 0.25s;
-}
-
-.card:hover .overlay {
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.97) 0%, rgba(10, 10, 10, 0.5) 60%, rgba(10,10,10,0.2) 100%);
 }
 
 .title {
@@ -80,16 +70,10 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--orange);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.2s, transform 0.2s;
-  display: block;
-  text-align: left;
-}
-
-.card:hover .more {
   opacity: 1;
   transform: translateY(0);
+  display: block;
+  text-align: left;
 }
 
 .nav {

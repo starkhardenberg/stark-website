@@ -1,158 +1,213 @@
-import Link from 'next/link'
-import { hrefCoaching } from '@/lib/contact'
 import Image from 'next/image'
-import styles from '../landing.module.css'
+import Link from 'next/link'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
+import FaqList from '@/components/faq/FaqList'
+import { impactFaq } from '@/components/faq/faq-impact'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
-import {
-  getImpactPageTestimonials,
-  heroQuoteEva,
-} from '@/components/testimonials/testimonials-data'
+import { getImpactPageTestimonials, heroQuoteEva } from '@/components/testimonials/testimonials-data'
+import { oswaldTrim } from '@/lib/displayTrim'
+import landing from '../landing.module.css'
+import styles from './impact.module.css'
+
+const IMPACT_STEPS = [
+  {
+    num: '01',
+    timing: 'Vanaf week 1',
+    title: 'Wekelijkse coaching',
+    desc: 'Elke week een uur 1-op-1, apart van de groep. Over wat er speelt, wat werkt en wat niet. Eén vaste coach, het hele traject.',
+  },
+  {
+    num: '02',
+    timing: 'Eerste 2 weken',
+    title: 'Het startpakket',
+    desc: 'Vier 1-op-1 sessies. We brengen in kaart wat goed werkt in je lijf en wat niet, en je leert de basisbewegingen onder de knie te krijgen.',
+  },
+  {
+    num: '03',
+    timing: 'Daarna',
+    title: 'Trainen in een kleine groep',
+    desc: 'Twee keer per week trainen in een vaste groep. Iedereen loopt hetzelfde Impact-traject. Geen anonieme zaal, niemand is een nummer.',
+  },
+] as const
 
 export const metadata = {
   title: 'Impact — 12 weken individueel traject — STARK! Hardenberg',
-  description: 'Twaalf weken volledige aandacht. Fysiek, mentaal, of allebei — met één vaste coach aan je zijde en maximaal vijf deelnemers in je groep.',
+  description:
+    'Twaalf weken waarin je stappen zet die ertoe doen. Fysiek, mentaal, of allebei, met één vaste coach aan je zijde.',
 }
 
 export default function ImpactPage() {
   return (
-    <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefCoaching} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
-
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
+    <main className={landing.main}>
+      <section className={`${landing.hero} ${landing.heroCoaching}`}>
+        <div className={landing.heroBg}>
           <Image
-            src="/images/foto-coaching-moment.jpg"
-            alt="Coaching moment bij STARK! Hardenberg"
+            src="/images/foto-coaching-tegel-impact.png"
+            alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg"
             fill
-            className={styles.heroBgImg}
+            className={`${landing.heroBgImg} ${landing.heroBgImgCoaching}`}
             sizes="100vw"
             priority
+            style={{ objectPosition: '50% 40%' }}
           />
         </div>
-        <div className={styles.heroContent}>
-          <span className={styles.heroLabel}>12-weken individueel traject</span>
-          <span className={styles.heroSlash} />
-          <h1 className={styles.heroTitle}>
-            <span className={styles.heroLead}>TRAJECT</span>
-            <span className={styles.heroPunch}>IMPACT</span>
+        <Nav compact textMenu backHref="/coaching" backLabel="Coaching" />
+        <div className={`${landing.heroContent} ${landing.heroContentLower}`}>
+          <span className={landing.heroSlash} />
+          <h1 className={landing.heroTitle}>
+            <span className={landing.heroLead}>IMPACT</span>
+            <span className={landing.heroPunch}>BIJ STARK</span>
           </h1>
-          <p className={styles.heroSub}>
-            Drie maanden. Volledige aandacht.{' '}
-            <strong>Fysiek, mentaal, of allebei — met één vaste coach aan je zijde.</strong>
+          <p className={landing.heroSub}>
+            Een persoonlijk traject van twaalf weken. Training en coaching, op jou afgestemd.
           </p>
         </div>
-        <div className={styles.heroBar} />
+        <div className={`${landing.heroBar} ${landing.heroBarHidden}`} />
       </section>
 
-      {/* Stats row */}
-      <div className={styles.statsRow}>
-        <div className={styles.statCell}>
-          <span className={styles.statNum}>12</span>
-          <span className={styles.statLabel}>Weken</span>
-        </div>
-        <div className={styles.statCell}>
-          <span className={styles.statNum}>3</span>
-          <span className={styles.statLabel}>Maanden</span>
-        </div>
-        <div className={styles.statCell}>
-          <span className={styles.statNum}>1</span>
-          <span className={styles.statLabel}>Vaste coach</span>
-        </div>
-        <div className={styles.statCell}>
-          <span className={styles.statNum}>Max.5</span>
-          <span className={styles.statLabel}>In groep</span>
-        </div>
-      </div>
+      <section
+        className={`${landing.introSection} ${landing.introSectionLight}`}
+        aria-label="Voor wie Impact is"
+      >
+        <div className={landing.introRow}>
+          <div className={landing.introHead}>
+            <p className={landing.introLabel}>Herken je dit?</p>
+            <h2 className={landing.introStatement}>Je bent hier niet toevallig.</h2>
+          </div>
+          <div className={landing.introBody}>
+            <div className={landing.introCols}>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit speelt er.</p>
+                <ul className={landing.introColList}>
+                  <li>Je weet wat je wilt veranderen, maar het blijft hangen. Je begint, je stopt, je begint opnieuw.</li>
+                  <li>Er speelt iets. In je lijf, in je hoofd, of allebei. Alleen sporten lost het niet op.</li>
+                  <li>Je hebt genoeg in je eentje geprobeerd.</li>
+                </ul>
+              </div>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit wil je nu.</p>
+                <ul className={landing.introColList}>
+                  <li>Iemand naast je die scherp blijft, het hele traject.</li>
+                  <li>Eerlijk kijken naar wat je doet, en naar wat je telkens overslaat.</li>
+                  <li>Volledige aandacht, geen programma waarin je een nummer bent.</li>
+                </ul>
+              </div>
+            </div>
 
-      {/* Wat is Impact — split reverse */}
-      <div className={`${styles.split} ${styles.reverse}`}>
-        <div className={styles.splitPhoto}>
-          <Image
-            src="/images/foto-vrouw-kettlebell.jpg"
-            alt="Vrouw met kettlebell bij STARK! Hardenberg"
-            fill
-            className={styles.splitPhotoImg}
-            sizes="(min-width:900px) 45vw, 100vw"
-          />
-        </div>
-        <div className={styles.splitContent} data-num="01">
-          <div className={styles.splitInner}>
-            <span className={styles.label}>Wat is Impact</span>
-            <h2 className={styles.title}>TWAALF WEKEN. ALLES ERIN.</h2>
-            <p className={styles.body}>
-              Impact begint altijd met het <strong>Startpakket</strong>: vier 1-op-1 sessies voor een nulmeting en een persoonlijk plan. Dan train je twaalf weken lang twee keer per week in een groep van maximaal vijf Impact-deelnemers — kleine groep, maximale aandacht.
+            <p className={styles.reintegratieNote}>
+              Soms zetten we Impact in als re-integratietraject, voor wie is uitgevallen, bijvoorbeeld door een burn-out. Een werkgever of bedrijfsarts kan doorverwijzen.{' '}
+              <Link href="/fundament-reintegratie" className={styles.reintegratieLink}>
+                Lees meer over re-integratie
+              </Link>
             </p>
-            <p className={styles.body}>
-              Daarnaast een wekelijks 1-op-1 coachingsgesprek. Niet naast het traject, maar onderdeel ervan. Jouw coach begeleidt je op wat er speelt — in je lijf, in je hoofd, in je leven.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Vier pijlers */}
-      <section className={styles.section}>
-        <span className={styles.label}>Wat je kunt verwachten</span>
-        <h2 className={styles.title}>VIER PIJLERS</h2>
-        <div className={styles.resultGrid}>
-          <div className={styles.resultItem}>
-            <span className={styles.resultTag}>Start</span>
-            <div className={styles.resultTitle}>Nulmeting en persoonlijk plan</div>
-            <p className={styles.resultText}>Vier 1-op-1 sessies om te meten waar je nu staat. Van daaruit bouwen we een plan dat past bij jou — niet bij een standaard template.</p>
-          </div>
-          <div className={styles.resultItem}>
-            <span className={styles.resultTag}>Training</span>
-            <div className={styles.resultTitle}>Trainen in kleine groep</div>
-            <p className={styles.resultText}>Twee keer per week in een vaste groep van maximaal vijf mensen. Geen anonieme zaal, maar een plek waar iedereen weet wie je bent.</p>
-          </div>
-          <div className={styles.resultItem}>
-            <span className={styles.resultTag}>Coaching</span>
-            <div className={styles.resultTitle}>Wekelijkse 1-op-1 coaching</div>
-            <p className={styles.resultText}>Elke week een gesprek met jouw vaste coach. Over wat er speelt, wat werkt en wat niet, en hoe je de volgende week ingaat.</p>
-          </div>
-          <div className={styles.resultItem}>
-            <span className={styles.resultTag}>Aanpak</span>
-            <div className={styles.resultTitle}>Begeleiding op lijf en hoofd</div>
-            <p className={styles.resultText}>Fysiek en mentaal hangen samen. We begeleiden je op beide — want het een werkt niet zonder het ander.</p>
           </div>
         </div>
       </section>
 
-      {/* Voor wie */}
-      <section className={styles.section}>
-        <span className={styles.label}>Voor wie</span>
-        <h2 className={styles.title}>IMPACT IS VOOR JOU ALS...</h2>
-        <div className={styles.list}>
-          <div className={styles.listItem}>
-            <div className={styles.listTitle}>Je maximale persoonlijke aandacht wil</div>
-            <div className={styles.listText}>Niet een groepsprogramma waarbij je erbij hoort, maar een traject waarbij alles om jou draait.</div>
+      <section
+        className={`${landing.section} ${landing.sectionWithOrangeBottom}`}
+        aria-label="Wat Impact doet"
+      >
+        <div className={styles.valueGrid}>
+          <div className={styles.valueText}>
+            <span className={landing.label}>Wat het doet</span>
+            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Daarom')}>
+              Daarom heet het <span className={landing.titleHeroOutline}>Impact</span>
+            </h2>
+            <p className={styles.rippleIntro}>
+              Je zet stappen die bij jou zorgen dat dingen beter gaan lopen. Dat blijft niet bij jou.
+            </p>
+            <p className={styles.valueClose}>
+              En het houdt niet op als het traject voorbij is. Wat je opbouwt, blijft.
+            </p>
           </div>
-          <div className={styles.listItem}>
-            <div className={styles.listTitle}>Je er drie maanden volledig voor wil gaan</div>
-            <div className={styles.listText}>Impact vraagt inzet. Twee keer per week trainen, wekelijkse gesprekken, eerlijk zijn met jezelf. Voor wie dat commitment aangaat, is de verandering groot.</div>
+          <div className={styles.valueRipple}>
+            <ul className={styles.ripple}>
+              <li>Op jezelf.</li>
+              <li>Op je partner.</li>
+              <li>Op je kinderen.</li>
+              <li>Op je collega&apos;s.</li>
+            </ul>
           </div>
-          <div className={styles.listItem}>
-            <div className={styles.listTitle}>Er iets speelt — fysiek, mentaal of emotioneel</div>
-            <div className={styles.listText}>Je hoeft niet precies te weten wat. Je weet alleen dat je meer nodig hebt dan een sportabonnement. Dat is genoeg om te beginnen.</div>
+        </div>
+      </section>
+
+      <section className={`${landing.section} ${landing.sectionWithOrangeBottom} ${landing.sectionLight} ${styles.opbouwLight}`}>
+        <div className={styles.trajectGrid}>
+          <div className={styles.trajectMedia}>
+            <Image
+              src="/images/foto-coaching-samen.jpg"
+              alt="Coachingmoment tijdens een Impact-traject bij STARK! Hardenberg"
+              fill
+              className={styles.trajectMediaImg}
+              sizes="(min-width: 860px) 40vw, 100vw"
+            />
+          </div>
+          <div className={styles.trajectMain}>
+            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
+              Eén traject.<br />
+              <span className={landing.titleHeroOutline}>De opbouw</span>
+            </h2>
+            <p className={styles.trajectIntro}>
+              Alles zit erin. Coaching, startpakket en training lopen het hele traject samen op.
+            </p>
+            <div className={styles.timeline}>
+              {IMPACT_STEPS.map((step) => (
+                <div key={step.num} className={styles.timelineItem}>
+                  <span className={styles.timelineNum}>
+                    {step.num} <span className={styles.timelineTiming}>{step.timing}</span>
+                  </span>
+                  <h3 className={styles.timelineTitle}>{step.title}</h3>
+                  <p className={styles.timelineDesc}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.hours}>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>24</span>
+                <span className={styles.hoursLabel}>uur groepstraining</span>
+              </div>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>4</span>
+                <span className={styles.hoursLabel}>uur individuele training</span>
+              </div>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>12</span>
+                <span className={styles.hoursLabel}>uur persoonlijke coaching</span>
+              </div>
+            </div>
+            <p className={styles.hoursNote}>Dat is wat we tellen. Geen strak weekschema dat je moet bijbenen.</p>
           </div>
         </div>
       </section>
 
       <TestimonialsSection hero={heroQuoteEva} items={getImpactPageTestimonials()} />
 
-      {/* CTA */}
-      <section className={styles.cta}>
-        <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
-        <h2 className={styles.ctaTitle}>KLAAR VOOR IMPACT?</h2>
-        <p className={styles.ctaSub}>Plan een kennismaking.</p>
-        <Link href={hrefCoaching} className={styles.ctaBtn}>Kom kennismaken</Link>
-        <span className={styles.ctaNote}>Maximaal 5 deelnemers per groep</span>
+      <section className={landing.faqSection}>
+        <div className={landing.faqInner}>
+          <span className={landing.label}>Wat je nog wilt weten</span>
+          <h2 className={landing.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+          <FaqList items={impactFaq} />
+        </div>
       </section>
 
+      <Footer
+        photoFirst
+        photoSet="coaching"
+        ctaImage="/images/foto-impact-footer.png"
+        ctaLabel="Zet de eerste stap"
+        ctaTitle={
+          <>
+            Klaar om stappen te zetten die{' '}
+            <span className={landing.titleHeroOutline} style={{ whiteSpace: 'nowrap' }}>
+              verschil maken?
+            </span>
+          </>
+        }
+        ctaLead="Een uur, vrijblijvend. We kijken samen of Impact bij je past."
+      />
     </main>
   )
 }

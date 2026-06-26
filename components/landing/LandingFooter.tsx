@@ -18,13 +18,13 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
           06 21248107
         </a>
         <span className={styles.sep} aria-hidden>
-          ·
+          –
         </span>
         <a href={mailtoInfo} className={styles.contactLink}>
           info@starkhardenberg.nl
         </a>
         <span className={styles.sep} aria-hidden>
-          ·
+          –
         </span>
         <a
           href={ADDRESS.maps}
@@ -32,7 +32,11 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
           target="_blank"
           rel="noopener noreferrer"
         >
-          {ADDRESS.display}
+          {ADDRESS.street}
+          <span className={styles.sep} aria-hidden>
+            –
+          </span>
+          {ADDRESS.city}
         </a>
       </p>
 

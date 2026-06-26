@@ -1,4 +1,3 @@
-/* Fallbacks als globale CSS even niet laadt (dev-cache) */
 .page {
   --navy: #212431;
   --off: #f5f5f5;
@@ -11,57 +10,24 @@
   overflow-x: hidden;
   background-color: var(--navy);
   color: var(--off);
-  font-family: var(--font-body), 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 22px 24px 0;
-}
-
-.logo {
-  height: 32px;
-  width: auto;
-}
-
-.logoLink {
-  display: block;
-  flex-shrink: 0;
-}
-
-.back {
-  font-family: var(--font-body), 'Work Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--slate);
-  transition: color 0.18s ease;
-}
-
-.back:hover {
-  color: var(--orange);
-}
-
-.inner {
+.shell {
   width: 100%;
-  max-width: 560px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 32px 24px 72px;
+  padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px) clamp(72px, 10vw, 112px);
   box-sizing: border-box;
 }
 
 .intro {
-  margin-bottom: 28px;
+  margin-bottom: clamp(40px, 6vw, 56px);
 }
 
 .eyebrow {
   margin: 0 0 12px;
-  font-family: var(--font-body), 'Work Sans', sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -70,36 +36,243 @@
 
 .title {
   margin: 0 0 16px;
-  font-family: var(--font-display), 'Oswald', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(36px, 8vw, 52px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-size: clamp(36px, 8vw, 56px);
+  line-height: 0.95;
+  letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--off);
+  white-space: nowrap;
 }
 
 .lead {
   margin: 0;
-  font-size: 17px;
+  max-width: 42ch;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.72);
+}
+
+.practical {
+  margin-bottom: clamp(48px, 7vw, 72px);
+  padding-top: clamp(40px, 6vw, 64px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.practicalGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.infoCard {
+  padding: clamp(22px, 3vw, 28px);
+  background: rgba(245, 245, 245, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--orange);
+}
+
+.infoTitle {
+  margin: 0 0 16px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.infoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.infoList li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.45);
+}
+
+.infoList a,
+.whatsAppInline {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--off);
+  transition: color 0.18s ease;
+}
+
+.infoList a:hover,
+.whatsAppInline:hover {
+  color: var(--orange);
+}
+
+.whatsAppInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whatsAppIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.address {
+  margin: 0 0 18px;
+  font-size: 16px;
   line-height: 1.55;
   color: rgba(245, 245, 245, 0.78);
-  max-width: 38ch;
 }
 
-.lead + .lead {
-  margin-top: 0.55em;
+.routeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 1px solid rgba(245, 245, 245, 0.22);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--off);
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
-.orDivider {
-  margin: 22px 0 20px;
-  font-family: var(--font-body), 'Work Sans', sans-serif;
+.routeBtn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.mapWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1a1c28;
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.35) contrast(1.04);
+}
+
+.owners {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 40px);
+  margin-bottom: clamp(48px, 7vw, 72px);
+  padding-top: clamp(8px, 2vw, 16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ownersTitle {
+  margin: 0 0 12px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 4vw, 32px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.ownersLead {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.68);
+  max-width: 42ch;
+}
+
+.ownersNote {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.5);
+}
+
+.ownersLink {
+  color: var(--orange);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(234, 92, 31, 0.35);
+  transition: border-color 0.18s ease;
+}
+
+.ownersLink:hover {
+  border-color: var(--orange);
+}
+
+.ownerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ownerCard {
+  margin: 0;
+}
+
+.ownerPhoto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1c28;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ownerImg {
+  object-fit: cover;
+  filter: grayscale(0.15) contrast(1.04);
+}
+
+.ownerCaption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 2px 0;
+}
+
+.ownerName {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.ownerRole {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  text-align: center;
-  color: var(--slate);
+  color: rgba(245, 245, 245, 0.45);
+}
+
+.formSection {
+  margin-bottom: clamp(48px, 7vw, 72px);
 }
 
 .formCard {
@@ -117,7 +290,7 @@
 
 .formTitle {
   margin: 0 0 10px;
-  font-family: var(--font-display), 'Oswald', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: clamp(22px, 4.5vw, 28px);
   line-height: 1.05;
@@ -128,42 +301,28 @@
 
 .formLead {
   margin: 0;
-  font-family: var(--font-body), 'Work Sans', sans-serif;
   font-size: 15px;
   line-height: 1.55;
   color: var(--slate);
 }
 
-.direct {
-  margin: 28px 0 0;
-  font-size: 14px;
-  line-height: 1.7;
-  text-align: center;
-  color: var(--slate);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 6px 10px;
-}
+@media (min-width: 720px) {
+  .practicalGrid {
+    grid-template-columns: 1fr 1fr;
+  }
 
-.direct a {
-  color: var(--off);
-  border-bottom: 1px solid rgba(245, 245, 245, 0.25);
-  transition: color 0.18s ease, border-color 0.18s ease;
-}
-
-.direct a:hover {
-  color: var(--orange);
-  border-color: var(--orange);
+  .owners {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
 }
 
 @media (min-width: 900px) {
-  .top {
-    padding: 28px 48px 0;
+  .ownerGrid {
+    gap: 18px;
   }
 
-  .inner {
-    padding: 40px 24px 96px;
+  .mapWrap {
+    aspect-ratio: 21 / 9;
   }
 }

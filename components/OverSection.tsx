@@ -20,7 +20,8 @@ export default function OverSection() {
           <p className={styles.eyebrow}>Wie wij zijn</p>
 
           <h2 className={styles.heading}>
-            Weg van huus,<br />en toch thuus.
+            <span className={styles.headingLine}>Weg van huus,</span>
+            <span className={styles.headingLine}>en toch thuus.</span>
           </h2>
 
           <p className={styles.body}>

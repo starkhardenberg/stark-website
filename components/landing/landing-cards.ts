@@ -95,14 +95,137 @@ export const trainenCards: LandingServiceCardData[] = [
   },
 ]
 
+export const momentumCards: LandingServiceCardData[] = [
+  {
+    title: 'Fysieke training',
+    image: 'foto-coaching-samen.jpg',
+    imageAlt: 'Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg',
+    objectPosition: 'center 40%',
+    menu: [
+      {
+        label: 'Past bij jou als',
+        text: 'Je verder komt in een groep die je scherp houdt. Je wilt tempo, groepsdruk en het gevoel dat je er niet alleen voor staat.',
+      },
+      {
+        label: 'Zo werkt het',
+        text: '10 weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma. Coaching gebeurt in de groep.',
+      },
+      {
+        label: 'Wat zit erin',
+        text: '20 uur fysieke training. Sterker worden in je lijf en tegelijk je mindset trainen op het moment dat het zwaar wordt.',
+      },
+    ],
+  },
+  {
+    title: 'Groepscoaching',
+    image: 'foto-coaching-moment.jpg',
+    imageAlt: 'Coachingsmoment tijdens Momentum bij STARK! Hardenberg',
+    objectPosition: 'center 24%',
+    inverted: true,
+    menu: [
+      {
+        label: 'Zo werkt het',
+        text: 'Vijf sessies van twee uur waarin je patronen leert herkennen en doorbreken. Niet praten over mindset op een stoel — oefenen onder druk.',
+      },
+      {
+        label: 'Wat zit erin',
+        text: '10 uur groepscoaching. Tijdens een intensieve work-out hoor je je stemmetjes precies wanneer het zwaar wordt. Daar leer je ze vervangen door gedachten die je verder helpen.',
+      },
+    ],
+  },
+  {
+    title: 'Challenges',
+    image: 'foto-coaching-tegel-momentum.png',
+    imageAlt: 'Groep in gesprek tijdens Momentum bij STARK! Hardenberg',
+    objectPosition: 'center 35%',
+    menu: [
+      {
+        label: 'Wat zit erin',
+        text: '5 mentale en fysieke challenges. Oefenen op het moment dat je normaal uitwijkt. Juist daar gebeurt de doorbraak.',
+      },
+      {
+        label: 'Start',
+        text: 'Plan een kennismaking. Daarna instappen op vaste startdata.',
+      },
+      {
+        label: 'Daarna',
+        text: 'Als alumni blijf je scherp met Impact+. Je traint verder in onze reguliere groepen.',
+      },
+    ],
+  },
+]
+
+export const impactCards: LandingServiceCardData[] = [
+  {
+    title: 'Startpakket',
+    image: 'foto-coaching-moment.jpg',
+    imageAlt: 'Coachingsmoment bij STARK! Hardenberg',
+    objectPosition: 'center 24%',
+    menu: [
+      {
+        label: 'Past bij jou als',
+        text: 'Je wilt maximale persoonlijke aandacht en bent bereid 12 weken vol in te gaan. Jouw situatie vraagt om maatwerk, niet om een vaste groepsdynamiek.',
+      },
+      {
+        label: 'Zo werkt het',
+        text: 'Impact begint altijd met het Startpakket: vier 1-op-1 sessies voor een nulmeting en een persoonlijk plan.',
+      },
+      {
+        label: 'Wat zit erin',
+        text: 'Vier sessies om te meten waar je nu staat. Van daaruit bouwen we een plan dat past bij jou — niet bij een standaard template.',
+      },
+    ],
+  },
+  {
+    title: 'Training in kleine groep',
+    image: 'foto-vrouw-kettlebell.jpg',
+    imageAlt: 'Vrouw met kettlebell bij STARK! Hardenberg',
+    objectPosition: 'center center',
+    inverted: true,
+    menu: [
+      {
+        label: 'Zo werkt het',
+        text: '12 weken, doorlopende instroom. Max. 5 per training. Twee keer per week in een vaste groep van maximaal vijf Impact-deelnemers.',
+      },
+      {
+        label: 'Wat zit erin',
+        text: 'Trainen in kleine groep. Geen anonieme zaal, maar een plek waar iedereen weet wie je bent.',
+      },
+    ],
+  },
+  {
+    title: 'Persoonlijke coaching',
+    image: 'foto-coaching-tegel-impact.png',
+    imageAlt: 'Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg',
+    objectPosition: '50% 40%',
+    menu: [
+      {
+        label: 'Wat zit erin',
+        text: 'Wekelijks een uur 1-op-1 coaching, apart van de groep. Over wat er speelt, wat werkt en wat niet.',
+      },
+      {
+        label: 'Start',
+        text: 'Vrijblijvend kennismaken. Start wanneer het voor jou past.',
+      },
+      {
+        label: 'Daarna',
+        text: 'Als alumni blijf je scherp met Impact+. Je traint verder in onze reguliere groepen.',
+      },
+    ],
+  },
+]
+
 export const coachingCards: LandingServiceCardData[] = [
   {
     title: 'Momentum',
-    image: 'foto-coaching-tegel-momentum.png',
+    eyebrow: 'Traject in de groep · 10 weken',
+    image: 'foto-coaching-tegel-momentum-gesprek.png',
     imageAlt: 'Groep in gesprek tijdens coaching bij STARK! Hardenberg',
-    objectPosition: 'center 35%',
+    objectPosition: 'center 30%',
+    imageFilter: 'grayscale(1) contrast(1.22) brightness(0.9)',
     detailHref: '/momentum',
-    detailLabel: 'Lees meer over Momentum',
+    detailLabel: 'Bekijk de Momentum-pagina',
+    detailAsPageLink: true,
     menu: [
       {
         label: 'Past bij jou als',
@@ -128,12 +251,13 @@ export const coachingCards: LandingServiceCardData[] = [
   },
   {
     title: 'Impact',
-    image: 'foto-coaching-tegel-impact.png',
-    imageAlt: 'Coachingsgesprek bij STARK! Hardenberg',
-    objectPosition: '42% center',
-    inverted: true,
+    eyebrow: 'Traject 1-op-1 · 12 weken',
+    image: 'foto-coaching-tegel-impact-gesprek.png',
+    imageAlt: 'Coachingsgesprek aan tafel bij STARK! Hardenberg',
+    objectPosition: '50% 35%',
     detailHref: '/impact',
-    detailLabel: 'Lees meer over Impact',
+    detailLabel: 'Bekijk de Impact-pagina',
+    detailAsPageLink: true,
     menu: [
       {
         label: 'Past bij jou als',
@@ -145,7 +269,7 @@ export const coachingCards: LandingServiceCardData[] = [
       },
       {
         label: 'Wat zit erin',
-        text: 'Startpakket, 2× per week trainen in kleine groep, en wekelijks persoonlijke coaching.',
+        text: 'Startpakket (4 keer 1-op-1 sporten om de basis te leggen). Aansluitend 2× per week trainen in kleine groep en wekelijks persoonlijke coaching.',
       },
       {
         label: 'Start',
@@ -161,75 +285,78 @@ export const coachingCards: LandingServiceCardData[] = [
 
 export const zakelijkCards: LandingServiceCardData[] = [
   {
-    title: 'Fundament',
+    title: 'Momentum voor teams',
+    eyebrow: 'Preventief · in de groep',
     image: 'foto-fundament-tegel.png',
-    imageAlt: 'Preventief Fundament-programma bij STARK! Hardenberg',
+    imageAlt: 'Momentum voor teams bij STARK! Hardenberg',
     objectPosition: 'center center',
     menu: [
       {
         label: 'Voor wie',
-        text: 'Werkgevers die structureel investeren in een groep medewerkers. Vanaf 5 deelnemers.',
+        text: 'Werkgevers die hun mensen fit én mentaal sterk willen houden. Vanaf 5 deelnemers.',
       },
       {
-        label: 'Doel',
-        text: 'Fittere, weerbaardere medewerkers. Betere prestaties en minder verzuim op lange termijn.',
+        label: 'Zo werkt het',
+        text: 'Hetzelfde Momentum dat we particulier draaien, nu voor je medewerkers. Trainen en coaching in één.',
       },
       {
-        label: 'Wat je krijgt',
-        text: '10 weken: 20 trainingen, 10 uur groepscoaching en 5 challenges. Max. 10 per groep.',
+        label: 'Wat erin zit',
+        text: '10 weken. 20 trainingen, 10 uur groepscoaching, 5 challenges. Max. 10 per groep.',
       },
       {
-        label: 'Hoe starten',
-        text: 'Neem contact op voor een gesprek. We bespreken opbouw, planning en deelnemers.',
+        label: 'Starten',
+        text: 'Plan een gesprek. We bespreken opbouw, planning en deelnemers.',
       },
     ],
   },
   {
-    title: 'Re-integreren',
+    title: 'Impact voor re-integratie',
+    eyebrow: 'Herstel · 1-op-1 + groep',
     image: 'foto-reintegratie-tegel.png',
-    imageAlt: 'Re-integratietraject bij STARK! Hardenberg',
+    imageAlt: 'Impact voor re-integratie bij STARK! Hardenberg',
     objectPosition: 'center center',
     inverted: true,
     menu: [
       {
         label: 'Voor wie',
-        text: 'Werkgevers met een medewerker die is uitgevallen en begeleid wil terugkeren naar werk.',
+        text: 'Werkgevers met een medewerker die is uitgevallen en stevig wil terugkomen.',
       },
       {
-        label: 'Doel',
-        text: 'Duurzame terugkeer. Fysiek én mentaal herstel, geen oppervlakkige quick fix.',
+        label: 'Zo werkt het',
+        text: 'Ons Impact-traject, ingezet voor terugkeer naar werk. Lijf en hoofd pak je samen aan, geen quick fix.',
       },
       {
-        label: 'Wat je krijgt',
-        text: 'Zelfde opbouw als Impact: 12 weken, training en 1-op-1 coaching gecombineerd.',
+        label: 'Wat erin zit',
+        text: '12 weken. Training in een kleine groep plus wekelijks 1-op-1 coaching.',
       },
       {
-        label: 'Hoe starten',
-        text: 'Contact via werkgever. Inzetbaar vanuit arbobudget waar mogelijk.',
+        label: 'Starten',
+        text: 'Loopt via de werkgever. Vaak inzetbaar vanuit het arbobudget.',
       },
     ],
   },
   {
-    title: 'Starke teams',
+    title: 'Fundament voor starke teams',
+    eyebrow: 'Maatwerk',
     image: 'foto-teamtraject-tegel.png',
-    imageAlt: 'Teamtraject op maat bij STARK! Hardenberg',
+    imageAlt: 'Fundament voor starke teams bij STARK! Hardenberg',
     objectPosition: 'center center',
     menu: [
       {
         label: 'Voor wie',
-        text: 'Teams waar een standaardpakket niet past en resultaten achterblijven om onderliggende redenen.',
+        text: 'Teams die vastlopen en waar een standaardpakket niet past.',
       },
       {
-        label: 'Doel',
-        text: 'Het team versterken én de oorzaak aanpakken. Niet plakken, wel doorpakken.',
+        label: 'Zo werkt het',
+        text: 'Eerst kijken wat er speelt, dan pas trainen. We leggen het fundament onder een team dat staat.',
       },
       {
-        label: 'Wat je krijgt',
-        text: 'Gezamenlijke nulmeting, teambijeenkomsten en individuele coaching waar nodig.',
+        label: 'Wat erin zit',
+        text: 'Nulmeting, teambijeenkomsten en 1-op-1 coaching waar nodig. Duur in overleg.',
       },
       {
-        label: 'Hoe starten',
-        text: 'Plan een gesprek. We stellen een traject op maat samen.',
+        label: 'Starten',
+        text: 'Plan een gesprek. We brengen samen in kaart wat nodig is.',
       },
     ],
   },

@@ -1,13 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking } from '@/lib/contact'
 import styles from './Nav.module.css'
 
 const NAV_TABS = [
-  { id: 'coaching', label: 'Coaching', href: '/coaching' },
   { id: 'trainen', label: 'Training', href: '/trainen' },
+  { id: 'coaching', label: 'Coaching', href: '/coaching' },
   { id: 'bedrijven', label: 'Bedrijven', href: '/zakelijk' },
   { id: 'contact', label: 'Contact', href: hrefContactAlgemeen, isContact: true },
 ] as const
@@ -24,9 +25,32 @@ const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
   ],
 }
 
-export default function Nav() {
+export default function Nav({
+  variant = 'dark',
+  compact = false,
+  hideBurger = false,
+  textMenu = false,
+  backHref = '/',
+  backLabel = 'Home',
+}: {
+  variant?: 'dark' | 'light'
+  compact?: boolean
+  hideBurger?: boolean
+  textMenu?: boolean
+  backHref?: string
+  backLabel?: string
+}) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     if (!open) {
@@ -55,67 +79,105 @@ export default function Nav() {
     )
   }
 
-  return (
-    <header className={`${styles.nav} ${open ? styles.navMenuOpen : ''}`}>
-      <a href="/" className={styles.wordmark} aria-label="STARK! home">
-        Wi&apos;j bint STARK!
-      </a>
+  const showBack = pathname !== backHref
 
-      <div className={styles.right}>
-        <a href={hrefKennismaking} className={styles.cta}>{CTA_KENNISMAKING_LABEL}</a>
-
-        <nav className={styles.tabBar} aria-label="Hoofdmenu">
-          <ul className={styles.tabList}>
+  const mobileMenu =
+    open && mounted
+      ? createPortal(
+          <nav
+            className={`${styles.mobileMenu}${compact ? ` ${styles.mobileMenuCompact}` : ''}`}
+            aria-label="Mobiel menu"
+          >
+            {showBack ? (
+              <a href={backHref} className={styles.mobileHome} onClick={() => setOpen(false)}>
+                {backLabel}
+              </a>
+            ) : null}
             {NAV_TABS.map((tab) => {
               const active = isTabActive(tab)
               return (
-                <li key={tab.id} className={active ? styles.tabItemActive : styles.tabItem}>
-                  <a
-                    href={tab.href}
-                    className={styles.tabLink}
-                    aria-current={active ? 'page' : undefined}
-                  >
-                    {tab.label}
-                  </a>
-                </li>
+                <a
+                  key={tab.id}
+                  href={tab.href}
+                  className={active ? styles.mobileTabActive : undefined}
+                  aria-current={active ? 'page' : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {tab.label}
+                </a>
               )
             })}
-          </ul>
-        </nav>
+            <a href={hrefKennismaking} className={styles.mobileCta} onClick={() => setOpen(false)}>
+              {CTA_KENNISMAKING_LABEL}
+            </a>
+          </nav>,
+          document.body,
+        )
+      : null
 
-        <button
-          className={styles.burger}
-          aria-label={open ? 'Menu sluiten' : 'Menu openen'}
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
-          type="button"
-        >
-          <span className={open ? styles.barTopOpen : styles.barTop} />
-          <span className={open ? styles.barBotOpen : styles.barBot} />
-        </button>
-      </div>
-
-      {open && (
-        <nav className={styles.mobileMenu} aria-label="Mobiel menu">
-          {NAV_TABS.map((tab) => {
-            const active = isTabActive(tab)
-            return (
-              <a
-                key={tab.id}
-                href={tab.href}
-                className={active ? styles.mobileTabActive : undefined}
-                aria-current={active ? 'page' : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {tab.label}
-              </a>
-            )
-          })}
-          <a href={hrefKennismaking} className={styles.mobileCta} onClick={() => setOpen(false)}>
-            {CTA_KENNISMAKING_LABEL}
+  return (
+    <>
+      <header
+        className={`${styles.nav} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''}`}
+      >
+        {showBack ? (
+          <a href={backHref} className={styles.home} aria-label={`Terug naar ${backLabel}`}>
+            <span aria-hidden>←</span>
+            {backLabel}
           </a>
-        </nav>
-      )}
-    </header>
+        ) : null}
+
+        <div className={styles.right}>
+          {!compact ? (
+            <>
+              <a href={hrefKennismaking} className={styles.cta}>{CTA_KENNISMAKING_LABEL}</a>
+
+              <nav className={styles.tabBar} aria-label="Hoofdmenu">
+                <ul className={styles.tabList}>
+                  {NAV_TABS.map((tab) => {
+                    const active = isTabActive(tab)
+                    return (
+                      <li key={tab.id} className={active ? styles.tabItemActive : styles.tabItem}>
+                        <a
+                          href={tab.href}
+                          className={styles.tabLink}
+                          aria-current={active ? 'page' : undefined}
+                        >
+                          {tab.label}
+                        </a>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </nav>
+            </>
+          ) : null}
+
+          {textMenu ? (
+            <button
+              className={styles.menuText}
+              aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+              aria-expanded={open}
+              onClick={() => setOpen(!open)}
+              type="button"
+            >
+              {open ? 'Sluiten' : 'Menu'}
+            </button>
+          ) : !hideBurger ? (
+            <button
+              className={`${styles.burger}${compact ? ` ${styles.burgerAlways}` : ''}`}
+              aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+              aria-expanded={open}
+              onClick={() => setOpen(!open)}
+              type="button"
+            >
+              <span className={open ? styles.barTopOpen : styles.barTop} />
+              <span className={open ? styles.barBotOpen : styles.barBot} />
+            </button>
+          ) : null}
+        </div>
+      </header>
+      {mobileMenu}
+    </>
   )
 }

@@ -10,7 +10,6 @@ import {
   type ContactOnderwerp,
   type ContactOntdekt,
 } from '@/lib/contact'
-import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import styles from './ContactForm.module.css'
 
 type Props = {
@@ -78,9 +77,6 @@ export default function ContactForm({ initialOnderwerp }: Props) {
           We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen?{' '}
           {PHONE_CALL.display}.
         </p>
-        <WhatsAppLink className={styles.successWhatsApp}>
-          Of stuur een WhatsApp
-        </WhatsAppLink>
         <a href="/" className={styles.successLink}>
           Terug naar home
         </a>
@@ -211,7 +207,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
 
       <div className={styles.actions}>
         <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-          {status === 'submitting' ? 'Versturen…' : 'Verstuur je aanvraag'}
+          {status === 'submitting' ? 'Versturen…' : 'Verstuur je vraag'}
         </button>
         <a href="/#aanbod" className={styles.back}>
           ← Terug naar home

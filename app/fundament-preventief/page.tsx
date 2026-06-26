@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefZakelijk } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function FundamentPreventiefPage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefZakelijk} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function FundamentPreventiefPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>10 weken — groepsprogramma voor medewerkers</span>
           <span className={styles.heroSlash} />
@@ -78,7 +76,7 @@ export default function FundamentPreventiefPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Wat is Fundament</span>
-            <h2 className={styles.title}>INVESTEER IN JE MENSEN</h2>
+            <h2 className={styles.title} style={oswaldTrim('INVESTEER')}>INVESTEER IN JE MENSEN</h2>
             <p className={styles.body}>
               Fundament is een intensief 10-wekenprogramma waarbij medewerkers niet alleen fysiek sterker worden, maar ook leren begrijpen wat hen tegenhoudt om hun beste werk te leveren. 2x per week kleine groep max 10, vijf groepscoachingsessies inclusief fysieke challenge. 20 uur fysieke training én coaching die beklijft.
             </p>
@@ -89,7 +87,7 @@ export default function FundamentPreventiefPage() {
       {/* Het programma */}
       <section className={styles.section}>
         <span className={styles.label}>Het programma</span>
-        <h2 className={styles.title}>VIJF SESSIES. ÉÉN LIJN.</h2>
+        <h2 className={styles.title} style={oswaldTrim('VIJF')}>VIJF SESSIES. ÉÉN LIJN.</h2>
         <p className={styles.body}>
           Elke coachsessie bouwt voort op de vorige. Van bewustwording naar plan, van plan naar uitvoering, van uitvoering naar vrijheid. Elke sessie sluit af met een fysieke challenge — zodat je de theorie meteen in je lijf ervaart.
         </p>
@@ -135,7 +133,7 @@ export default function FundamentPreventiefPage() {
       {/* Voor wie */}
       <section className={styles.section}>
         <span className={styles.label}>Voor wie</span>
-        <h2 className={styles.title}>VOOR WERKGEVERS ÉN MEDEWERKERS</h2>
+        <h2 className={styles.title} style={oswaldTrim('VOOR')}>VOOR WERKGEVERS ÉN MEDEWERKERS</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Als werkgever: je wil investeren in duurzame inzetbaarheid</div>
@@ -159,7 +157,7 @@ export default function FundamentPreventiefPage() {
       {/* Wat levert het op */}
       <section className={styles.section}>
         <span className={styles.label}>Wat levert het op</span>
-        <h2 className={styles.title}>NA 10 WEKEN FUNDAMENT</h2>
+        <h2 className={styles.title} style={oswaldTrim('NA')}>NA 10 WEKEN FUNDAMENT</h2>
         <div className={styles.resultGrid}>
           <div className={styles.resultItem}>
             <span className={styles.resultTag}>Voor de medewerker — fysiek</span>
@@ -189,7 +187,7 @@ export default function FundamentPreventiefPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>FUNDAMENT AANBIEDEN?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking voor de mogelijkheden. Maximaal 10 deelnemers per groep.</p>
-        <Link href={hrefZakelijk} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>Beperkt aantal plaatsen beschikbaar</span>
       </section>
 

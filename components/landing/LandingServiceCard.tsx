@@ -1,8 +1,5 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import styles from '@/app/landing.module.css'
 
 export type MenuLink = { href: string; label: string; external?: boolean }
@@ -22,38 +19,37 @@ function isMenuLink(part: string | MenuLink): part is MenuLink {
 
 export type LandingServiceCardData = {
   title: string
+  /** Klein label boven de titel, bv. 'In de groep · 10 weken'. */
+  eyebrow?: string
   image: string
   imageAlt: string
   objectPosition?: string
+  /** Eigen CSS-filter voor deze foto (overschrijft de standaard grayscale+contrast).
+   *  Handig om een lichte/lage-contrastfoto bij te trekken naar de rest. */
+  imageFilter?: string
   kidsImage?: boolean
   inverted?: boolean
   detailHref?: string
   detailLabel?: string
+  /** Toon de detaillink als knop + pijl-cue: maakt duidelijk dat er een
+   *  aparte pagina achter de tegel zit. */
+  detailAsPageLink?: boolean
   num?: string
   menu: MenuRow[]
 }
 
-const cardHover = {
-  initial: { y: 0 },
-  whileHover: { y: -6 },
-  transition: { type: 'spring', stiffness: 220, damping: 18 },
-} as const
-
-const mediaHover = {
-  initial: { scale: 1 },
-  whileHover: { scale: 1.02 },
-  transition: { type: 'spring', stiffness: 220, damping: 18 },
-} as const
-
 export default function LandingServiceCard({
   title,
+  eyebrow,
   image,
   imageAlt,
   objectPosition,
+  imageFilter,
   kidsImage,
   inverted,
   detailHref,
   detailLabel,
+  detailAsPageLink,
   num,
   menu,
 }: LandingServiceCardData) {
@@ -64,24 +60,34 @@ export default function LandingServiceCard({
     kidsImage ? ` ${styles.resultItemKidsBand}` : ''
   }`
 
-  const cardInner = (
-    <>
-      <motion.div className={styles.resultMedia} {...mediaHover}>
+  return (
+    <div className={cardClassName}>
+      <div className={styles.resultMedia}>
         <Image
           src={`/images/${image}`}
           alt={imageAlt}
           fill
           className={`${styles.resultMediaImg}${kidsImage ? ` ${styles.resultMediaImgKids}` : ''}`}
           sizes="(min-width: 900px) 33vw, 100vw"
-          style={objectPosition ? { objectPosition } : undefined}
+          style={
+            objectPosition || imageFilter
+              ? { ...(objectPosition ? { objectPosition } : {}), ...(imageFilter ? { filter: imageFilter } : {}) }
+              : undefined
+          }
         />
         {num ? (
           <span className={styles.mediaIndex} aria-hidden>
             {num}
           </span>
         ) : null}
-      </motion.div>
+        {detailAsPageLink ? (
+          <span className={styles.pageLinkCue} aria-hidden>
+            ↗
+          </span>
+        ) : null}
+      </div>
       <div className={styles.menuCardBody}>
+        {eyebrow ? <span className={styles.cardEyebrow}>{eyebrow}</span> : null}
         <h3 className={styles.resultTitle}>{title}</h3>
         <dl className={styles.menuList}>
           {menu.map((row) => (
@@ -141,19 +147,15 @@ export default function LandingServiceCard({
         {detailHref ? (
           <Link
             href={detailHref}
-            className={`${styles.menuDetailLink} ${styles.menuDetailLinkStretched}`}
+            className={`${styles.menuDetailLink} ${styles.menuDetailLinkStretched}${
+              detailAsPageLink ? ` ${styles.menuDetailLinkPill}` : ''
+            }`}
           >
             {detailLabel ?? 'Lees meer'}
             <span aria-hidden>→</span>
           </Link>
         ) : null}
       </div>
-    </>
-  )
-
-  return (
-    <motion.div className={cardClassName} {...cardHover}>
-      {cardInner}
-    </motion.div>
+    </div>
   )
 }

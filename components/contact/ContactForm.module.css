@@ -174,31 +174,6 @@
   max-width: 40ch;
 }
 
-.successWhatsApp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 12px 18px;
-  font-family: var(--font-body), 'Work Sans', sans-serif;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  background: var(--navy);
-  border: 2px solid var(--orange);
-  border-radius: 4px;
-  transition: background 0.18s ease, border-color 0.18s ease;
-}
-
-.successWhatsApp:hover {
-  color: #fff;
-  background: #2d3142;
-  border-color: var(--orange-deep);
-}
-
 .successLink {
   display: inline-block;
   font-weight: 600;

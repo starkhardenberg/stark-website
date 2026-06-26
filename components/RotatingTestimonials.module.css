@@ -34,6 +34,7 @@
   width: auto;
   max-width: min(88vw, 320px);
   scroll-snap-align: center;
+  cursor: pointer;
   transition:
     opacity 0.45s ease,
     transform 0.45s ease;
@@ -85,6 +86,19 @@
 
 .dotActive {
   width: 40px;
+  background: var(--orange);
+}
+
+.wrapDarkCards .dot,
+.wrapDarkCards .dotActive {
+  background: rgba(33, 36, 49, 0.18);
+}
+
+.wrapDarkCards .dot:hover {
+  background: rgba(234, 92, 31, 0.45);
+}
+
+.wrapDarkCards .dotActive {
   background: var(--orange);
 }
 

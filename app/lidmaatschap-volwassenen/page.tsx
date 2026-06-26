@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefTrainen } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function LidmaatschapVolwassenenPage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefTrainen} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function LidmaatschapVolwassenenPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>Lidmaatschap volwassenen</span>
           <span className={styles.heroSlash} />
@@ -58,7 +56,7 @@ export default function LidmaatschapVolwassenenPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Zo werkt het</span>
-            <h2 className={styles.title}>EERST HET STARTPAKKET</h2>
+            <h2 className={styles.title} style={oswaldTrim('EERST')}>EERST HET STARTPAKKET</h2>
             <p className={styles.body}>
               Iedereen begint met het <strong>Startpakket</strong>: vier 1-op-1 sessies nulmeting en basiscursus bewegen. Zo weten wij wat jij nodig hebt, en weet jij wat je kunt verwachten. Daarna kies je het lidmaatschap dat bij je ritme past.
             </p>
@@ -94,7 +92,7 @@ export default function LidmaatschapVolwassenenPage() {
         <div className={styles.splitContent} data-num="02">
           <div className={styles.splitInner}>
             <span className={styles.label}>Voor wie</span>
-            <h2 className={styles.title}>HERKEN JIJ JEZELF?</h2>
+            <h2 className={styles.title} style={oswaldTrim('HERKEN')}>HERKEN JIJ JEZELF?</h2>
             <div className={styles.list}>
               <div className={styles.listItem}>
                 <div className={styles.listTitle}>De stille starter</div>
@@ -120,7 +118,7 @@ export default function LidmaatschapVolwassenenPage() {
       {/* Wat je krijgt */}
       <section className={styles.section}>
         <span className={styles.label}>Wat je krijgt</span>
-        <h2 className={styles.title}>MEER DAN EEN SPORTABONNEMENT</h2>
+        <h2 className={styles.title} style={oswaldTrim('MEER')}>MEER DAN EEN SPORTABONNEMENT</h2>
         <div className={styles.resultGrid}>
           <div className={styles.resultItem}>
             <span className={styles.resultTag}>Training</span>
@@ -150,7 +148,7 @@ export default function LidmaatschapVolwassenenPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>KLAAR OM TE BEGINNEN?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking. We kijken samen wat bij jou past.</p>
-        <Link href={hrefTrainen} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>Geen verplichtingen — gewoon een gesprek</span>
       </section>
 

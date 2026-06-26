@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { hrefCoaching } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import { coachingFaq } from '@/components/faq/faq-coaching'
@@ -8,6 +9,7 @@ import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { coachingCards } from '@/components/landing/landing-cards'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -18,15 +20,6 @@ export const metadata = {
 export default function CoachingPage() {
   return (
     <main className={styles.main}>
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>
-          ← Terug naar STARK!
-        </Link>
-        <Link href={hrefCoaching} className={styles.navCta}>
-          Kom kennismaken
-        </Link>
-      </nav>
-
       <section className={`${styles.hero} ${styles.heroCoaching}`}>
         <div className={styles.heroBg}>
           <Image
@@ -39,6 +32,7 @@ export default function CoachingPage() {
             style={{ objectPosition: '55% 38%' }}
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
@@ -80,8 +74,8 @@ export default function CoachingPage() {
             </div>
 
             <div className={styles.introCtaRow}>
-              <Link href={hrefCoaching} className={`${styles.introCta} ${styles.introCtaFilled}`}>
-                Kom kennismaken
+              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled}`}>
+                {CTA_KENNISMAKING_LABEL}
               </Link>
               <WhatsAppLink className={styles.introCta}>
                 <WhatsAppIcon className={styles.introCtaIcon} />
@@ -93,9 +87,14 @@ export default function CoachingPage() {
       </section>
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom} ${styles.sectionCatalog}`}>
-        <h2 className={styles.title}>
-          Welk traject <span className={styles.titleAccentOutline}>past bij mij?</span>
-        </h2>
+        <div className={styles.catalogHead}>
+          <h2 className={styles.title} style={oswaldTrim('Twee')}>
+            Twee <span className={styles.titleAccentOutline}>trajecten.</span>
+          </h2>
+          <p className={styles.catalogIntro}>
+            Samen sterker in een groep, of alle aandacht voor jou alleen.
+          </p>
+        </div>
         <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridTwo} ${styles.resultGridSpaced}`}>
           {coachingCards.map((card, i) => (
             <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
@@ -106,8 +105,8 @@ export default function CoachingPage() {
       <div className={`${styles.split} ${styles.splitStatement}`}>
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
-            <span className={styles.label}>Zo werkt het</span>
-            <h2 className={styles.title}>TYPISCH STARK</h2>
+            <span className={styles.label}>Waar wij voor staan</span>
+            <h2 className={styles.title} style={oswaldTrim('ZO')}>ZO COACHEN WIJ</h2>
             <ul className={styles.featureTiles}>
               <li>
                 <span>Lijf en hoofd trainen we samen, nooit los van elkaar.</span>
@@ -134,13 +133,13 @@ export default function CoachingPage() {
 
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
-          <span className={styles.label}>Veelgestelde vragen</span>
-          <h2 className={styles.title}>Goede vragen</h2>
+          <span className={styles.label}>Wat je nog wilt weten</span>
+          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
           <FaqList items={coachingFaq} />
         </div>
       </section>
 
-      <Footer photoFirst photoSet="coaching" tone="gradient" />
+      <Footer photoFirst photoSet="coaching" brandPrefix="BIJ" />
     </main>
   )
 }

@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefTrainen } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function ZilverFitnessPage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefTrainen} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function ZilverFitnessPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>55+ training op jouw niveau</span>
           <span className={styles.heroSlash} />
@@ -58,7 +56,7 @@ export default function ZilverFitnessPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Wat is ZilverFitness</span>
-            <h2 className={styles.title}>TRAINING DIE PAST BIJ JOUW LIJF</h2>
+            <h2 className={styles.title} style={oswaldTrim('TRAINING')}>TRAINING DIE PAST BIJ JOUW LIJF</h2>
             <p className={styles.body}>
               ZilverFitness is aangepaste training gericht op <strong>kracht, mobiliteit en zelfredzaamheid</strong>. Geen prestatiedrang. Coaches die weten wat jouw lijf op deze levensfase nodig heeft. Ook als je na een periode van weinig bewegen opnieuw begint, of bij beginnende klachten.
             </p>
@@ -83,7 +81,7 @@ export default function ZilverFitnessPage() {
       {/* Voor wie */}
       <section className={styles.section}>
         <span className={styles.label}>Voor wie</span>
-        <h2 className={styles.title}>BEWEGEN OP JOUW MANIER</h2>
+        <h2 className={styles.title} style={oswaldTrim('BEWEGEN')}>BEWEGEN OP JOUW MANIER</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Je wil zelfredzaam blijven</div>
@@ -103,7 +101,7 @@ export default function ZilverFitnessPage() {
       {/* Wat je kunt verwachten */}
       <section className={styles.section}>
         <span className={styles.label}>Wat je kunt verwachten</span>
-        <h2 className={styles.title}>NA EEN PAAR WEKEN MERK JE HET</h2>
+        <h2 className={styles.title} style={oswaldTrim('NA')}>NA EEN PAAR WEKEN MERK JE HET</h2>
         <div className={styles.resultGrid}>
           <div className={styles.resultItem}>
             <span className={styles.resultTag}>Fysiek</span>
@@ -133,7 +131,7 @@ export default function ZilverFitnessPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>BENIEUWD OF DIT BIJ JE PAST?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking.</p>
-        <Link href={hrefTrainen} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
       </section>
 
     </main>

@@ -11,15 +11,6 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
-  transition:
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    transform 0.35s ease;
-}
-
-.card:hover {
-  border-color: rgba(234, 92, 31, 0.45);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
 }
 
 .cardActive {
@@ -27,6 +18,31 @@
   box-shadow:
     0 14px 40px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(234, 92, 31, 0.1);
+}
+
+.cardDark {
+  background: var(--navy);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 28px rgba(33, 36, 49, 0.22);
+}
+
+.cardDark.cardActive {
+  border-color: rgba(234, 92, 31, 0.65);
+  box-shadow:
+    0 16px 44px rgba(33, 36, 49, 0.36),
+    0 0 0 1px rgba(234, 92, 31, 0.2);
+}
+
+.cardDark .quote p {
+  color: var(--off);
+}
+
+.cardDark .name {
+  color: var(--off);
+}
+
+.cardDark .context {
+  color: rgba(245, 245, 245, 0.55);
 }
 
 .quote {
@@ -66,7 +82,7 @@
 .name {
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--navy);
@@ -74,7 +90,7 @@
 
 .context {
   font-family: var(--font-body), sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--slate);
   letter-spacing: 0.04em;
 }

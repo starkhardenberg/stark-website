@@ -7,6 +7,7 @@ export default function ResultatenSection() {
       id="resultaten"
       hero={heroQuoteAmanda}
       items={getHomepageTestimonials()}
+      narrow
     />
   )
 }

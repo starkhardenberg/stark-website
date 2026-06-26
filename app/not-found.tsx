@@ -21,7 +21,8 @@ export default function NotFound() {
         <p className={styles.label}>404</p>
 
         <h1 className={styles.heading}>
-          Deze pagina heeft een blessure.
+          Deze pagina heeft een{' '}
+          <span className={styles.headingOutline}>blessure</span>
         </h1>
 
         <p className={styles.sub}>

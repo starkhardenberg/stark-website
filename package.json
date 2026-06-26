@@ -20,7 +20,8 @@
     "open:team": "open http://127.0.0.1:3456/team",
     "open:404": "open http://127.0.0.1:3456/pagina-bestaat-niet",
     "open:resultaten": "open http://127.0.0.1:3456/#resultaten",
-    "open:contact": "open http://127.0.0.1:3456/contact"
+    "open:contact": "open http://127.0.0.1:3456/contact",
+    "open:kennismaken": "open http://127.0.0.1:3456/kennismaken"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

@@ -8,12 +8,15 @@
 .inner {
   width: 100%;
   max-width: none;
-  padding: clamp(44px, 8vw, 72px) clamp(16px, 3vw, 40px) clamp(72px, 12vw, 120px);
+  padding: clamp(60px, 9vw, 88px) 22px clamp(88px, 13vw, 136px);
   box-sizing: border-box;
 }
 
 .sectionTitle {
   margin: 0 0 clamp(28px, 5vw, 44px);
+  /* optical alignment: trim Oswald-"O" left side bearing (0.049em) zodat de
+     zichtbare rand van de O exact op de padding-lijn valt */
+  margin-left: -0.049em;
   width: 100%;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
@@ -28,17 +31,20 @@
 .sectionTitleOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px var(--orange);
+  -webkit-text-stroke: 1.8px var(--orange);
 }
 
 .sectionIntro {
   margin: calc(clamp(28px, 5vw, 44px) * -0.45) 0 clamp(62px, 9vw, 96px);
-  padding-left: clamp(18px, 3vw, 40px);
+  padding-left: 0;
   max-width: 72ch;
 }
 
 .sectionIntro p {
   margin: 0;
+  /* optical alignment: trim Barlow-"D" left side bearing (0.094em) zodat de
+     zichtbare rand van de D op exact dezelfde lijn valt als de "O" hierboven */
+  margin-left: -0.094em;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(16px, 1.9vw, 19px);
   line-height: 1.6;
@@ -161,6 +167,11 @@
 }
 
 @media (min-width: 900px) {
+  .inner {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
   .cardsAndCta {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;

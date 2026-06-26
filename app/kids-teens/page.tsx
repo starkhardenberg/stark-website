@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { hrefTrainen } from '@/lib/contact'
+import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import Image from 'next/image'
+import Nav from '@/components/Nav'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
@@ -11,11 +13,6 @@ export const metadata = {
 export default function KidsTeensPage() {
   return (
     <main className={styles.main}>
-
-      <nav className={styles.nav}>
-        <Link href="/#aanbod" className={styles.navBack}>← Terug naar STARK!</Link>
-        <Link href={hrefTrainen} className={styles.navCta}>Kom kennismaken</Link>
-      </nav>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -29,6 +26,7 @@ export default function KidsTeensPage() {
             priority
           />
         </div>
+        <Nav />
         <div className={styles.heroContent}>
           <span className={styles.heroLabel}>5-16 jaar</span>
           <span className={styles.heroSlash} />
@@ -58,7 +56,7 @@ export default function KidsTeensPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Drie groepen</span>
-            <h2 className={styles.title}>AFGESTEMD OP LEEFTIJD</h2>
+            <h2 className={styles.title} style={oswaldTrim('AFGESTEMD')}>AFGESTEMD OP LEEFTIJD</h2>
             <p className={styles.body}>
               Vaste groepen afgestemd op leeftijd en ontwikkeling. Geen prestatiedrang, geen wedstrijddrang. Wel echte coaches met echte aandacht.
             </p>
@@ -89,7 +87,7 @@ export default function KidsTeensPage() {
       {/* Wat je kind leert */}
       <section className={styles.section}>
         <span className={styles.label}>Wat je kind leert</span>
-        <h2 className={styles.title}>MEER DAN ALLEEN STERKER WORDEN</h2>
+        <h2 className={styles.title} style={oswaldTrim('MEER')}>MEER DAN ALLEEN STERKER WORDEN</h2>
         <div className={styles.list}>
           <div className={styles.listItem}>
             <div className={styles.listTitle}>Sterker worden</div>
@@ -113,7 +111,7 @@ export default function KidsTeensPage() {
       {/* De aanpak */}
       <section className={styles.section}>
         <span className={styles.label}>De aanpak</span>
-        <h2 className={styles.title}>ECHTE COACHES, ECHTE AANDACHT</h2>
+        <h2 className={styles.title} style={oswaldTrim('ECHTE')}>ECHTE COACHES, ECHTE AANDACHT</h2>
         <p className={styles.body}>
           Geen prestatiedrang. Geen wedstrijddrang. Wel coaches die weten hoe kinderen leren en wat ze op elke leeftijd aankunnen. We werken met vaste groepen — zodat je kind altijd in een bekende omgeving traint.
         </p>
@@ -127,7 +125,7 @@ export default function KidsTeensPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>INTERESSE VOOR JE KIND?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking.</p>
-        <Link href={hrefTrainen} className={styles.ctaBtn}>Kom kennismaken</Link>
+        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>Voor kinderen van 5 tot 16 jaar</span>
       </section>
 

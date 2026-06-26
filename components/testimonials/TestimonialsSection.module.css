@@ -4,8 +4,50 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.inner {
-  padding: clamp(96px, 11vw, 128px) 24px clamp(100px, 12vw, 140px);
+.sectionLight {
+  background: var(--off);
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.sectionHero {
+  border-bottom: none;
+}
+
+.innerHero {
+  padding: clamp(88px, 11vw, 120px) 24px clamp(64px, 8vw, 88px);
+}
+
+
+.sectionHero .heroQuote {
+  margin-bottom: 0;
+}
+
+.sectionHero .heroContent {
+  background: var(--off);
+}
+
+.sectionHero .heroText p {
+  color: var(--navy);
+}
+
+.sectionHero .heroCite {
+  border-top-color: var(--orange);
+}
+
+.sectionHero .heroName {
+  color: var(--navy);
+}
+
+.sectionHero .heroContext {
+  color: rgba(33, 36, 49, 0.55);
+}
+
+.sectionCarousel {
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.innerCarousel {
+  padding: clamp(56px, 7vw, 80px) 0 clamp(64px, 8vw, 88px);
 }
 
 .sectionTitle {
@@ -17,11 +59,14 @@
   text-transform: uppercase;
   color: var(--orange);
   margin: 0 0 clamp(24px, 4vw, 40px);
+  /* optical alignment: trim Oswald-"W" left side bearing (0.027em) en tel de
+     1px fotorand mee, zodat de zichtbare W-rand exact parallel loopt aan de foto */
+  margin-left: calc(1px - 0.027em);
   max-width: 100%;
 }
 
 .heroQuote {
-  margin: 0 0 clamp(80px, 10vw, 104px);
+  margin: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -42,6 +87,14 @@
   transform: translateY(-4%) scale(1);
   transform-origin: center 32%;
   filter: contrast(1.04) saturate(1.06);
+}
+
+.heroImgMirror {
+  transform: translateY(-4%) scaleX(-1);
+}
+
+.heroImgBw {
+  filter: grayscale(1) contrast(1.04);
 }
 
 .heroContent {
@@ -81,30 +134,67 @@
   flex-direction: column;
   gap: 3px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid var(--orange);
 }
 
 .heroName {
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: clamp(16px, 1.7vw, 18px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--off);
 }
 
 .heroContext {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--slate);
 }
 
-.testimonials {
-  margin-top: clamp(48px, 7vw, 80px);
+/* ── Dark portrait-variant: studioshot zweeft op zwart, volledig in beeld ──
+   Alleen voor foto's met een zwarte studio-fond (bv. Renske). Het zwart van de
+   foto loopt naadloos over in het blok, dus geen crop-spanning meer. */
+.heroQuoteDark {
+  background: #000;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.heroQuoteDark .heroImgWrap {
+  background: #000;
+}
+
+.heroQuoteDark .heroImg {
+  object-fit: contain;
+  object-position: center bottom;
+  /* lichte inzoom vanaf de onderkant + iets laten zakken: meer kopruimte boven,
+     onderkant valt net buiten beeld */
+  transform: translateY(7%) scale(1.1);
+  transform-origin: center bottom;
+  /* crush het studiozwart (~#030303) naar puur #000 zodat de fotorand exact
+     samenvalt met de zwarte blok-achtergrond → geen zichtbare naad */
+  filter: grayscale(1) contrast(1.12);
+}
+
+.sectionHero .heroQuoteDark .heroContent {
+  background: transparent;
+}
+
+.sectionHero .heroQuoteDark .heroText p,
+.sectionHero .heroQuoteDark .heroName {
+  color: var(--off);
+}
+
+.sectionHero .heroQuoteDark .heroContext {
+  color: rgba(245, 245, 245, 0.5);
 }
 
 @media (min-width: 900px) {
-  .inner {
-    padding: 88px 48px 96px;
+  .innerHero {
+    padding: 104px 48px 80px;
+  }
+
+  .innerCarousel {
+    padding: 72px 0 88px;
   }
 
   .sectionTitle {
@@ -113,12 +203,7 @@
 
   .heroQuote {
     flex-direction: row;
-    margin-bottom: clamp(96px, 8vw, 120px);
     min-height: 400px;
-  }
-
-  .testimonials {
-    margin-top: clamp(56px, 5vw, 88px);
   }
 
   .heroImgWrap {
@@ -135,6 +220,10 @@
     transform-origin: center 30%;
   }
 
+  .heroImgMirror {
+    transform: translateY(-3%) scaleX(-1);
+  }
+
   .heroContent {
     flex: 1;
     padding: 56px 56px;
@@ -142,8 +231,20 @@
   }
 }
 
+/* Subtiele inspringing hero-quote (home, trainen): max ~2cm links/rechts.
+   Na de 900px-media gedefinieerd zodat het de bredere desktop-padding overschrijft. */
+.innerHeroNarrow {
+  padding-left: clamp(24px, 6vw, 76px);
+  padding-right: clamp(24px, 6vw, 76px);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .heroImg {
+  .heroImg,
+  .heroImgMirror {
     transform: none;
+  }
+
+  .heroImgMirror {
+    transform: scaleX(-1);
   }
 }

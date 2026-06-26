@@ -1,4 +1,5 @@
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './IntroSection.module.css'
 
 const manifestLines = [
@@ -31,7 +32,7 @@ export default function IntroSection() {
         <div className={styles.manifest}>
           <div className={styles.headingCol}>
             <p className={styles.label}>Wi&apos;j bint STARK</p>
-            <h2 className={styles.heading}>Wij doen het anders.</h2>
+            <h2 className={styles.heading} style={oswaldTrim('Wij')}>Wij doen het anders.</h2>
           </div>
 
           <div className={styles.copyCol}>

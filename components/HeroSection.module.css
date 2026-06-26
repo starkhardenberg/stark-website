@@ -3,8 +3,10 @@
   position: relative;
   width: 100%;
   height: 100svh;
-  height: 100dvh;
   overflow: hidden;
+  /* isoleer paints van de hero zodat scrollen de volgende sectie niet de
+     gefilterde video laat herverven */
+  contain: paint;
 }
 
 /* ── Background video ── */
@@ -13,6 +15,8 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  /* eigen compositor-laag → video wordt niet elke scroll-frame opnieuw geverfd */
+  transform: translateZ(0);
 }
 
 .bg::before {
@@ -42,6 +46,10 @@
   object-fit: cover;
   object-position: 78% center;
   filter: grayscale(1) contrast(1.06) brightness(0.78);
+  /* cache de gefilterde frame als textuur; tijdens scroll alleen compositen */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @media (min-width: 900px) {
@@ -60,47 +68,43 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  padding: 120px 22px 0;
+  padding: 120px 22px clamp(56px, 11vh, 104px);
 }
 
 .copy {
   width: 100%;
+  padding-bottom: clamp(40px, 6vh, 72px);
 }
 
 /* ── Headline ── */
 .headline {
+  --headline-line-gap: 0.07em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--headline-line-gap);
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: clamp(96px, calc(17vw * 1.11), 244px);
-  line-height: 0.84;
-  letter-spacing: -0.025em;
+  line-height: 0.92;
   margin: 0;
   color: var(--off);
 }
 
-.lead {
+.line {
   display: block;
+}
+
+.lead {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--off);
+  -webkit-text-stroke: 2.5px var(--off);
   font-size: 0.78em;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .punch {
-  display: block;
   text-transform: uppercase;
-}
-
-/* ── Subline ── */
-.sub {
-  margin: 28px 0 0;
-  font-family: var(--font-body), sans-serif;
-  font-weight: 600;
-  font-size: clamp(22px, 2.4vw, 30px);
-  line-height: 1.2;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--off);
+  letter-spacing: -0.025em;
 }
 
 /* ── Dunne oranje lijn onder de copy ── */
@@ -110,30 +114,22 @@
   width: 100%;
   height: 1px;
   background: var(--orange);
-  margin-top: 36px;
+  margin-top: clamp(48px, 5vw, 64px);
 }
 
 /* ── Desktop ── */
 @media (min-width: 900px) {
   .stage {
-    padding: 140px 48px 0;
+    padding: 140px 48px clamp(64px, 13vh, 120px);
   }
 
   .copy {
     max-width: 780px;
-  }
-
-  .sub {
-    margin-top: 32px;
   }
 }
 
 @media (min-width: 900px) and (max-height: 920px) {
   .headline {
     font-size: clamp(80px, 13vw, 172px);
-  }
-
-  .sub {
-    margin-top: 24px;
   }
 }
