@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useLayoutEffect, useRef, useState } from 'react'
 import RouteCarousel, { RouteOption } from './RouteCarousel'
 import TrainenBandLayout from './trainen/TrainenBandLayout'
+import { STARK_CTA } from '@/lib/stark-cta'
 import styles from './TrackItem.module.css'
 
 /** Gelijk aan .itemNoTiles .num line-height in CSS (sync voor hoogte-meting) */
@@ -32,7 +33,7 @@ interface Track {
 
 export default function TrackItem({ track }: { track: Track }) {
   /** Onder de foto: altijd primaire oranje CTA (ook op licht coaching-blok). */
-  const noTilesPhotoCtaClass = `${styles.cta} ${styles.ctaUnderPhoto}`
+  const noTilesPhotoCtaClass = `${styles.cta} ${styles.ctaUnderPhoto} ${STARK_CTA}`
   const measureRef = useRef<HTMLDivElement>(null)
   const [numFontPx, setNumFontPx] = useState<number | null>(null)
 

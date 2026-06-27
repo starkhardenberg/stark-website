@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA } from '@/lib/stark-cta'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import { oswaldTrim } from '@/lib/displayTrim'
@@ -187,7 +188,7 @@ export default function FundamentPreventiefPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>FUNDAMENT AANBIEDEN?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking voor de mogelijkheden. Maximaal 10 deelnemers per groep.</p>
-        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
+        <Link href={hrefKennismaking} className={`${styles.ctaBtn} ${STARK_CTA}`}>{CTA_KENNISMAKING_LABEL}</Link>
         <span className={styles.ctaNote}>Beperkt aantal plaatsen beschikbaar</span>
       </section>
 

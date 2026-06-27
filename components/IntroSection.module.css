@@ -96,7 +96,9 @@
 }
 
 .cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 18px;
   border: 1px solid rgba(33, 36, 49, 0.22);
   font-family: var(--font-body), sans-serif;

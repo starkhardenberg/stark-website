@@ -43,10 +43,6 @@ export default function OverSection() {
             Wees welkom.
           </p>
 
-          <a className={styles.link} href="/team">
-            Meer over ons &rarr;
-          </a>
-
           <div className={styles.people}>
             <div className={styles.person}>
               <p className={styles.personName}>Engbert-Jan</p>
@@ -63,6 +59,11 @@ export default function OverSection() {
               </p>
             </div>
           </div>
+
+          <a className={styles.teamCta} href="/team">
+            Alle 11 gezichten en ons ontstaan
+            <span className={styles.teamCtaArrow} aria-hidden>→</span>
+          </a>
         </div>
 
       </div>

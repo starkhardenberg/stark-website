@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { CSSProperties, KeyboardEvent, MouseEvent } from 'react'
 import type { AanbodTrack } from './aanbod-tracks'
+import StarkArrow from '@/components/icons/StarkArrow'
 import styles from './AanbodFeatureCard.module.css'
 
 type AanbodFeatureCardProps = {
@@ -125,7 +126,8 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
             )}
             {track.readMoreHref ? (
               <Link href={track.readMoreHref} className={styles.readMore}>
-                {track.readMoreLabel ?? 'Lees meer'} →
+                {track.readMoreLabel ?? 'Lees meer'}
+                <StarkArrow className={styles.readMoreArrow} />
               </Link>
             ) : null}
           </div>

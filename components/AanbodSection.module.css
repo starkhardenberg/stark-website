@@ -31,7 +31,7 @@
 .sectionTitleOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.8px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
 }
 
 .sectionIntro {
@@ -97,6 +97,7 @@
 .sectionCtaButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   font-family: var(--font-body), sans-serif;
   font-size: 14px;
@@ -107,6 +108,9 @@
   color: var(--off);
   background: var(--orange);
   padding: 16px 34px;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
   transition:
     background 0.18s ease,
     transform 0.18s ease;
@@ -132,6 +136,7 @@
 .sectionCtaWhatsapp {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 16px 34px;
   font-family: var(--font-body), sans-serif;
@@ -143,6 +148,9 @@
   color: var(--off);
   background: transparent;
   border: 1px solid rgba(245, 245, 245, 0.35);
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
   transition:
     border-color 0.18s ease,
     color 0.18s ease,

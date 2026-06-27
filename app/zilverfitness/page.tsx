@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA } from '@/lib/stark-cta'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import { oswaldTrim } from '@/lib/displayTrim'
@@ -131,7 +132,7 @@ export default function ZilverFitnessPage() {
         <span className={styles.ctaLabel}>Klaar om te bouwen?</span>
         <h2 className={styles.ctaTitle}>BENIEUWD OF DIT BIJ JE PAST?</h2>
         <p className={styles.ctaSub}>Plan een kennismaking.</p>
-        <Link href={hrefKennismaking} className={styles.ctaBtn}>{CTA_KENNISMAKING_LABEL}</Link>
+        <Link href={hrefKennismaking} className={`${styles.ctaBtn} ${STARK_CTA}`}>{CTA_KENNISMAKING_LABEL}</Link>
       </section>
 
     </main>

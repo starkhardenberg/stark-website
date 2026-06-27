@@ -205,7 +205,7 @@
   line-height: 0.9;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
   min-width: 1.6em;
 }
 

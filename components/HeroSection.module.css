@@ -96,7 +96,7 @@
 
 .lead {
   color: transparent;
-  -webkit-text-stroke: 2.5px var(--off);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
   font-size: 0.78em;
   text-transform: uppercase;
   letter-spacing: 0.05em;

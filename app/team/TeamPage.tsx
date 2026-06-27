@@ -1,30 +1,13 @@
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
-import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import Nav from '@/components/Nav'
 import Image from 'next/image'
 import navStyles from '../landing.module.css'
+import TeamInteractiveGrid from './TeamInteractiveGrid'
 import styles from './team.module.css'
-
-const TEAM = [
-  { id: 1,  name: 'Engbert-Jan', role: 'Eigenaar, coach en trainer',   photo: '/images/team/engbert-jan.jpg', objectPosition: '50% 34%', quote: 'Laten we niet praten over excuses maar over stappen.' },
-  { id: 2,  name: 'Yvonne',      role: 'Eigenaar, coach en trainer',   photo: '/images/team/yvonne-new.png', objectPosition: '50% 24%', quote: 'Je begint door te beginnen.' },
-  { id: 3,  name: 'Anne',        role: 'Trainer',                      photo: '/images/team/anne.jpg', objectPosition: '50% 30%', quote: 'Comfort staat groei in de weg. Ga het oncomfortabele aan en groei!' },
-  { id: 4,  name: 'Els',         role: 'Trainer',                      photo: '/images/team/els.jpg', objectPosition: '50% 30%', quote: 'Alleen ben je STARK, samen zijn we STARKER.' },
-  { id: 5,  name: 'Yoeri',       role: 'Trainer',                      photo: '/images/team/marinus.jpg', objectPosition: '50% 32%', quote: 'Bewegen is al winst. Hard trainen is nog meer winst.' },
-  { id: 6,  name: 'Marinus',     role: 'Trainer',                      photo: '/images/team/yoeri.jpg', objectPosition: '50% 32%', quote: 'Het leven begint aan het einde van je comfortzone.' },
-  { id: 7,  name: 'Jordi',       role: 'Trainer kids',                 photo: '/images/team/jordi.jpg', objectPosition: '50% 28%', quote: 'Elke overwinning verdient het om gevierd te worden, ongeacht hoe klein.' },
-  { id: 8,  name: 'Tineke',      role: 'Onze steun en toeverlaat',     photo: '/images/team/tineke.jpg', objectPosition: '50% 24%', quote: 'U vraagt, ik draai!' },
-  { id: 9,  name: 'Tygo',        role: 'Trainer kids en teens',        photo: '/images/team/tygo.jpg', objectPosition: '50% 32%', quote: 'Sterk worden mag ook gewoon leuk zijn.' },
-  { id: 10, name: 'Nina',        role: 'Trainer',                      photo: '/images/team/nina.jpg', objectPosition: '50% 30%', quote: 'Kleine progressie is ook progressie.' },
-  { id: 11, name: 'Mark',        role: 'Trainer',                      photo: '/images/team/mark.jpg', objectPosition: '50% 28%', quote: 'Een sterk en fit lichaam is een groot goed en je verdient het om daar tijd in te steken.' },
-]
-
-const col1 = TEAM.filter((_, i) => i % 3 === 0)
-const col2 = TEAM.filter((_, i) => i % 3 === 1)
-const col3 = TEAM.filter((_, i) => i % 3 === 2)
 
 export default function TeamPage() {
   return (
@@ -63,50 +46,7 @@ export default function TeamPage() {
         </p>
       </div>
 
-      {/* Interactive team grid */}
-      <section className={styles.teamSection}>
-        <div className={styles.teamLayout}>
-
-          {/* Photo grid — 3 staggered columns */}
-          <div className={styles.photoGrid}>
-            {[col1, col2, col3].map((col, colIdx) => (
-              <div
-                key={colIdx}
-                className={`${styles.col} ${colIdx === 0 ? styles.col1 : ''} ${colIdx === 1 ? styles.col2 : ''} ${colIdx === 2 ? styles.col3 : ''}`}
-              >
-                {col.map((member) => (
-                  <div key={member.id} className={styles.photoItem}>
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      className={styles.photoImg}
-                      style={{ objectPosition: member.objectPosition }}
-                      sizes="(min-width:900px) 18vw, 33vw"
-                    />
-                    <span className={styles.photoName}>{member.name}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Name list */}
-          <div className={styles.nameList}>
-            {TEAM.map((member, i) => (
-              <div key={member.id} className={styles.nameItem}>
-                <span className={styles.nameNum}>{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <div className={styles.memberName}>{member.name}</div>
-                  <div className={styles.memberRole}>{member.role}</div>
-                  <p className={styles.memberQuote}>&ldquo;{capitalizeQuoteStart(member.quote)}&rdquo;</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      <TeamInteractiveGrid />
 
       {/* Over ons — eigenaren & ontstaan */}
       <section className={styles.originSection} aria-labelledby="origin-heading">
@@ -154,11 +94,11 @@ export default function TeamPage() {
         <p className={navStyles.ctaSub}>
           Plan een vrijblijvend kennismakingsgesprek. We kijken samen wat het beste bij je past.
         </p>
-        <div className={styles.ctaActions}>
-          <Link href={hrefKennismaking} className={navStyles.ctaBtn}>
+        <div className={`${styles.ctaActions} ${STARK_CTA_ROW}`}>
+          <Link href={hrefKennismaking} className={`${navStyles.ctaBtn} ${STARK_CTA}`}>
             {CTA_KENNISMAKING_LABEL}
           </Link>
-          <WhatsAppLink className={styles.ctaWhatsapp}>
+          <WhatsAppLink className={`${styles.ctaWhatsapp} ${STARK_CTA}`}>
             <WhatsAppIcon className={styles.ctaWhatsappIcon} />
             <span>Stuur een WhatsApp</span>
           </WhatsAppLink>

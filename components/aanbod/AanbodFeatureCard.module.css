@@ -112,12 +112,12 @@
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange);
   pointer-events: none;
 }
 
 .cardLight .index {
-  -webkit-text-stroke: 2.5px var(--orange-deep);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange-deep);
 }
 
 .panelContent {
@@ -148,12 +148,26 @@
 
 .readMore {
   margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 15px;
   font-weight: 500;
   color: var(--orange);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
+}
+
+.readMoreArrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+.readMore:hover .readMoreArrow {
+  transform: translateX(2px);
 }
 
 .readMore:hover {
@@ -241,11 +255,21 @@
 }
 
 .menuRow dt::before {
-  content: '→';
+  content: '';
   display: inline-block;
+  width: 13px;
+  height: 13px;
   margin-right: 6px;
-  font-size: 13px;
-  font-weight: 700;
+  vertical-align: -0.12em;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8h9M9 4.5l3.5 3.5L9 11.5' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8h9M9 4.5l3.5 3.5L9 11.5' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 .menuRow dd {

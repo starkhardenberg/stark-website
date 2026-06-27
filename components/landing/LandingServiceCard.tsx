@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import StarkArrow from '@/components/icons/StarkArrow'
 import styles from '@/app/landing.module.css'
 
 export type MenuLink = { href: string; label: string; external?: boolean }
@@ -82,7 +83,7 @@ export default function LandingServiceCard({
         ) : null}
         {detailAsPageLink ? (
           <span className={styles.pageLinkCue} aria-hidden>
-            ↗
+            <StarkArrow variant="up-right" />
           </span>
         ) : null}
       </div>
@@ -152,7 +153,7 @@ export default function LandingServiceCard({
             }`}
           >
             {detailLabel ?? 'Lees meer'}
-            <span aria-hidden>→</span>
+            <StarkArrow className={styles.menuDetailArrow} />
           </Link>
         ) : null}
       </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ADDRESS, CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking, mailtoInfo } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import styles from './LandingFooter.module.css'
@@ -40,13 +41,13 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
         </a>
       </p>
 
-      <div className={styles.actions}>
-        <a href={hrefKennismaking} className={styles.cta}>
+      <div className={`${styles.actions} ${STARK_CTA_ROW}`}>
+        <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA}`}>
           {CTA_KENNISMAKING_LABEL}
           <span aria-hidden>→</span>
         </a>
         {whatsapp ? (
-          <WhatsAppLink className={styles.ctaWhatsapp}>
+          <WhatsAppLink className={`${styles.ctaWhatsapp} ${STARK_CTA}`}>
             <WhatsAppIcon className={styles.ctaWhatsappIcon} />
             <span>Stuur een WhatsApp</span>
           </WhatsAppLink>

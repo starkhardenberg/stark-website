@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { CTA_KENNISMAKING_LABEL, ADDRESS, mailtoInfo, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import styles from './Footer.module.css'
@@ -99,12 +100,12 @@ export default function Footer({
   )
 
   const actionsBlock = (
-    <div className={styles.actions}>
-      <a href={hrefKennismaking} className={styles.cta}>
+    <div className={`${styles.actions} ${STARK_CTA_ROW}`}>
+      <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA}`}>
         {CTA_KENNISMAKING_LABEL}
         <span aria-hidden>→</span>
       </a>
-      <WhatsAppLink className={styles.ctaWhatsapp}>
+      <WhatsAppLink className={`${styles.ctaWhatsapp} ${STARK_CTA}`}>
         <WhatsAppIcon className={styles.ctaWhatsappIcon} />
         <span>Stuur een WhatsApp</span>
       </WhatsAppLink>

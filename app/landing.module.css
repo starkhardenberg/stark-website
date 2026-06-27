@@ -197,7 +197,7 @@
 .heroLead {
   display: block;
   color: transparent;
-  -webkit-text-stroke: 2.5px var(--off);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
   font-size: 0.78em;
   letter-spacing: 0.05em;
 }
@@ -431,7 +431,7 @@
   line-height: 0.9;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.8px var(--orange-deep);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange-deep);
 }
 
 .featureTiles li::after {
@@ -536,14 +536,14 @@
 .titleHeroOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.8px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
 }
 
 /* Subtielere outline op kleinere sectietitels (catalogus i.p.v. hero) */
 .titleAccentOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.8px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
 }
 
 /* Catalogus-sectie: tegels/menu onder een sterke intro — titel blijft ondergeschikt */
@@ -793,7 +793,7 @@
 .processTitleOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.8px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
 }
 
 .processIntro {
@@ -829,7 +829,7 @@
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
 }
 
 .processStepTitle {
@@ -1018,6 +1018,43 @@
 @media (prefers-reduced-motion: reduce) {
   .introCta:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 519px) {
+  .introCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .introCtaRow {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 899px) {
+  .introCtaRow {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .introCta {
+    flex: 1 1 12rem;
+    justify-content: center;
+    text-align: center;
   }
 }
 
@@ -1367,17 +1404,21 @@ a.resultItem {
 }
 
 .menuRow dt::before {
-  content: '→';
+  content: '';
   display: inline-block;
-  width: auto;
-  height: auto;
-  background: none;
-  font-family: var(--font-body), sans-serif;
-  font-size: 13px;
-  font-weight: 700;
+  width: 13px;
+  height: 13px;
   margin-right: 6px;
-  vertical-align: baseline;
-  transform: none;
+  vertical-align: -0.12em;
+  background-color: var(--orange);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8h9M9 4.5l3.5 3.5L9 11.5' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8h9M9 4.5l3.5 3.5L9 11.5' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 .menuRow dd {
@@ -1484,16 +1525,33 @@ a.resultItem {
   background: rgba(10, 10, 10, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.55);
   color: #fff;
-  font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1;
   pointer-events: none;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.pageLinkCue svg {
+  width: clamp(14px, 1.6vw, 18px);
+  height: clamp(14px, 1.6vw, 18px);
+  flex-shrink: 0;
 }
 
 .resultItemClickable:hover .pageLinkCue {
   background: var(--orange);
   border-color: var(--orange);
+  color: #0a0a0a;
   transform: translateY(-2px);
+}
+
+.menuDetailArrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.menuDetailLink:hover .menuDetailArrow {
+  transform: translateX(3px);
 }
 
 /* Detaillink als pill-knop: maakt expliciet dat je naar een aparte pagina gaat */
@@ -1537,7 +1595,7 @@ a.resultItem {
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange);
   filter: drop-shadow(0 1px 7px rgba(0, 0, 0, 0.6));
   pointer-events: none;
 }
@@ -1602,7 +1660,7 @@ a.resultItem {
   right: clamp(12px, 1.8vw, 20px);
   bottom: clamp(12px, 1.8vw, 20px);
   -webkit-text-stroke-color: var(--orange-deep);
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 0, 0, 0.5));
+  filter: none;
 }
 
 .resultItemInverted {
@@ -1754,7 +1812,9 @@ a.resultItem {
 }
 
 .ctaBtn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 16px 36px;
   background: #0a0a0a;
   color: var(--off);
@@ -1763,6 +1823,8 @@ a.resultItem {
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  max-width: 100%;
+  box-sizing: border-box;
   transition: background 0.15s;
 }
 

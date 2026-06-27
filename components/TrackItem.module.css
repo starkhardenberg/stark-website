@@ -99,11 +99,11 @@
   font-size: clamp(78px, 21vw, 132px);
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 2.5px var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange);
 }
 
 .light .itemNoTiles .num {
-  -webkit-text-stroke: 2.5px var(--orange-deep);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange-deep);
 }
 
 .cat {
@@ -478,7 +478,9 @@
 }
 
 .cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 13px 28px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
@@ -487,6 +489,9 @@
   text-transform: uppercase;
   background: var(--orange);
   color: var(--off);
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
   transition: background 0.18s;
 }
 

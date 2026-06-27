@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -73,11 +74,11 @@ export default function CoachingPage() {
               </div>
             </div>
 
-            <div className={styles.introCtaRow}>
-              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled}`}>
+            <div className={`${styles.introCtaRow} ${STARK_CTA_ROW}`}>
+              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled} ${STARK_CTA}`}>
                 {CTA_KENNISMAKING_LABEL}
               </Link>
-              <WhatsAppLink className={styles.introCta}>
+              <WhatsAppLink className={`${styles.introCta} ${STARK_CTA}`}>
                 <WhatsAppIcon className={styles.introCtaIcon} />
                 <span>Stuur een WhatsApp</span>
               </WhatsAppLink>

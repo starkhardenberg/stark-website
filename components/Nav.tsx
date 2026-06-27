@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_NAV } from '@/lib/stark-cta'
 import styles from './Nav.module.css'
 
 const NAV_TABS = [
@@ -130,7 +131,7 @@ export default function Nav({
         <div className={styles.right}>
           {!compact ? (
             <>
-              <a href={hrefKennismaking} className={styles.cta}>{CTA_KENNISMAKING_LABEL}</a>
+              <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_NAV}`}>{CTA_KENNISMAKING_LABEL}</a>
 
               <nav className={styles.tabBar} aria-label="Hoofdmenu">
                 <ul className={styles.tabList}>

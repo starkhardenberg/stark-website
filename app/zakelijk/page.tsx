@@ -11,6 +11,7 @@ import aanbodStyles from '@/components/AanbodSection.module.css'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import { hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
@@ -108,11 +109,11 @@ export default function ZakelijkPage() {
               </div>
             </div>
 
-            <div className={styles.introCtaRow}>
-              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled}`}>
+            <div className={`${styles.introCtaRow} ${STARK_CTA_ROW}`}>
+              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled} ${STARK_CTA}`}>
                 Plan een gesprek
               </Link>
-              <WhatsAppLink className={styles.introCta}>
+              <WhatsAppLink className={`${styles.introCta} ${STARK_CTA}`}>
                 <WhatsAppIcon className={styles.introCtaIcon} />
                 <span>Stuur een WhatsApp</span>
               </WhatsAppLink>
@@ -138,11 +139,11 @@ export default function ZakelijkPage() {
         </div>
         <div className={styles.catalogCta}>
           <p className={styles.catalogCtaLead}>Niet zeker welk programma past?</p>
-          <div className={styles.introCtaRow}>
-            <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled}`}>
+          <div className={`${styles.introCtaRow} ${STARK_CTA_ROW}`}>
+            <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled} ${STARK_CTA}`}>
               Plan een gesprek
             </Link>
-            <WhatsAppLink className={styles.introCta}>
+            <WhatsAppLink className={`${styles.introCta} ${STARK_CTA}`}>
               <WhatsAppIcon className={styles.introCtaIcon} />
               <span>Stuur een WhatsApp</span>
             </WhatsAppLink>

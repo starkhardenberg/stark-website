@@ -182,7 +182,9 @@
 }
 
 .modalCta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 13px 24px;
   background: var(--orange);
   color: var(--off);
@@ -190,8 +192,18 @@
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.04em;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
   transition: background 0.18s;
   align-self: flex-start;
+}
+
+@media (max-width: 519px) {
+  .modalCta {
+    align-self: stretch;
+    width: 100%;
+  }
 }
 
 .modalCta:hover {

@@ -1,4 +1,5 @@
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
+import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './IntroSection.module.css'
 
@@ -45,8 +46,8 @@ export default function IntroSection() {
               ))}
             </ul>
 
-            <div className={styles.ctaRow}>
-              <a href={hrefKennismaking} className={`${styles.cta} ${styles.ctaFilled}`}>
+            <div className={`${styles.ctaRow} ${STARK_CTA_ROW}`}>
+              <a href={hrefKennismaking} className={`${styles.cta} ${styles.ctaFilled} ${STARK_CTA}`}>
                 {CTA_KENNISMAKING_LABEL}
               </a>
               <a href="#aanbod" className={styles.cta}>
