@@ -19,7 +19,7 @@ const ARBO_UNIE_VERZUIM_2024 =
   'https://www.arbounie.nl/nieuws/verzuim-kost-in-2024-een-miljard-meer-dan-het-jaar-ervoor'
 
 export const metadata = {
-  title: 'Zakelijk — STARK! Hardenberg',
+  title: 'Bedrijven — STARK! Hardenberg',
   description:
     'Sterkere, weerbaardere medewerkers en minder verzuim. Momentum voor teams, Impact voor re-integratie en maatwerk voor teams bij STARK! Hardenberg.',
 }
@@ -43,7 +43,7 @@ export default function ZakelijkPage() {
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
-            <span className={styles.heroLead}>ZAKELIJK</span>
+            <span className={styles.heroLead}>BEDRIJVEN</span>
             <span className={styles.heroPunch}>BIJ STARK</span>
           </h1>
           <p className={styles.heroSub}>

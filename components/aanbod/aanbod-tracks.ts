@@ -76,14 +76,14 @@ export const aanbodTracks: AanbodTrack[] = [
   {
     id: 'bedrijven',
     num: '03',
-    cat: 'Zakelijk',
+    cat: 'Bedrijven',
     photo: 'foto-trainen-battle-rope.png',
     photoAlt:
       'Team in actie: battle ropes tijdens training bij STARK! Hardenberg, zwart-wit, kracht en samenwerking',
     photoObjectPosition: 'center 16%',
-    introLabel: 'Zakelijk bij STARK',
+    introLabel: 'Bedrijven bij STARK',
     readMoreHref: '/zakelijk',
-    readMoreLabel: 'Lees meer over zakelijk',
+    readMoreLabel: 'Lees meer over bedrijven',
     desc:
       'Sterkere mensen. Stevigere teams. Een bedrijf dat kan dealen met druk en uitdagingen.\n\nWe maken je mensen fysiek sterk en bouwen aan hun mentale weerbaarheid. Voor medewerkers die willen re-integreren, voor mensen die sterk willen blijven onder druk, of voor teams die klem zitten.\n\nEen fundament dat staat voor iedereen: mens, team en bedrijf.',
     cta: CTA_KENNISMAKING_LABEL,

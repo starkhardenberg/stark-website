@@ -139,15 +139,23 @@
   }
 }
 
-@media (min-width: 720px) {
+@media (max-width: 899px) {
+  .cta {
+    text-transform: none;
+  }
+
+  .ctaFilled {
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 900px) {
   .ctaRow {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
   }
-}
 
-@media (min-width: 900px) {
   .manifest {
     grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
     gap: clamp(40px, 5vw, 80px);

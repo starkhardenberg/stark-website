@@ -25,7 +25,7 @@ export const zakelijkTracks: AanbodTrack[] = [
         text: '10 weken in groep. Vrijwillig instappen. Wij helpen je medewerkers meekrijgen en regelen het programma.',
       },
       {
-        label: 'Waarom zakelijk anders is',
+        label: 'Via werkgever',
         text: 'Dezelfde opbouw als particulier Momentum. Jij investeert als werkgever in een team dat mee kan met wat het werk vraagt.',
       },
       {
@@ -62,7 +62,7 @@ export const zakelijkTracks: AanbodTrack[] = [
         text: 'Eén traject voor je medewerker. In afstemming, overleg waar nodig met de overige betrokkenen.',
       },
       {
-        label: 'Waarom zakelijk anders is',
+        label: 'Via werkgever',
         text: 'Hetzelfde programma als particulier Impact. Via de werkgever ingezet voor re-integratie.',
       },
       {

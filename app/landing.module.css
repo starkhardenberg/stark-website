@@ -1021,6 +1021,16 @@
   }
 }
 
+@media (max-width: 899px) {
+  .introCta {
+    text-transform: none;
+  }
+
+  .introCtaFilled {
+    text-transform: uppercase;
+  }
+}
+
 @media (max-width: 519px) {
   .introCta {
     display: inline-flex;
@@ -1047,23 +1057,15 @@
 
 @media (min-width: 520px) and (max-width: 899px) {
   .introCtaRow {
-    flex-wrap: wrap;
+    width: 100%;
     align-items: stretch;
   }
 
   .introCta {
-    flex: 1 1 12rem;
+    width: 100%;
+    max-width: 100%;
     justify-content: center;
     text-align: center;
-  }
-}
-
-@media (min-width: 720px) {
-  .introCtaRow {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
   }
 }
 
@@ -1138,6 +1140,13 @@
 
   .introHeroGrid .introPrologueBridge {
     max-width: none;
+  }
+
+  .introCtaRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
   }
 }
 

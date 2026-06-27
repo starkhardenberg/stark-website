@@ -12,7 +12,7 @@ export type ContactOnderwerp = 'trainen' | 'coaching' | 'zakelijk' | 'anders'
 export const CONTACT_ONDERWERP_OPTIONS: { value: ContactOnderwerp; label: string }[] = [
   { value: 'trainen', label: 'Trainen / lidmaatschap' },
   { value: 'coaching', label: 'Coaching (Momentum / Impact)' },
-  { value: 'zakelijk', label: 'Zakelijk / Fundament' },
+  { value: 'zakelijk', label: 'Bedrijven / Fundament' },
   { value: 'anders', label: 'Anders / weet ik nog niet' },
 ]
 

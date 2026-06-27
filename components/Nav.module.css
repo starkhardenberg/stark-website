@@ -194,6 +194,12 @@
   z-index: 102;
 }
 
+/* Menu open: header-teruglink verbergen — terug staat één keer in het fullscreen-menu */
+.navMenuOpen .home {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .menuText {
   appearance: none;
   border: 0;
@@ -270,13 +276,21 @@
   justify-content: center;
   align-items: center;
   padding: max(100px, 18vh) 28px max(48px, 8vh);
-  gap: 4px;
+  gap: clamp(24px, 5vw, 40px);
   z-index: 150;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.mobileMenu a {
+.mobileMenuLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}
+
+.mobileMenuLinks a {
   color: var(--off);
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
@@ -289,22 +303,35 @@
   transition: color 0.15s;
 }
 
-.mobileMenu a:hover {
+.mobileMenuLinks a:hover {
   color: var(--orange);
 }
 
-.mobileHome {
-  margin-bottom: 12px;
-  padding-bottom: 20px !important;
-  border-bottom: 1px solid rgba(245, 245, 245, 0.12);
-  font-family: var(--font-body), sans-serif !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.12em !important;
-  color: rgba(245, 245, 245, 0.55) !important;
+.mobileMenuFoot {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+  padding-top: clamp(8px, 2vw, 16px);
+  border-top: 1px solid rgba(245, 245, 245, 0.1);
 }
 
-.mobileHome:hover {
+.mobileNavBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-bottom: clamp(8px, 2vw, 16px);
+  padding-bottom: clamp(20px, 4vw, 28px) !important;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.12);
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(22px, 6vw, 34px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: uppercase !important;
+  color: rgba(245, 245, 245, 0.5) !important;
+}
+
+.mobileNavBack:hover {
   color: var(--orange) !important;
 }
 
@@ -316,22 +343,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 28px;
-  padding: 18px 28px;
-  background: var(--orange);
-  color: var(--off) !important;
-  font-family: var(--font-body), sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: none !important;
+  width: 100%;
   max-width: min(100%, 320px);
+  padding: 14px 22px;
+  background: var(--orange);
+  color: var(--off);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-align: center;
   line-height: 1.35;
+  transition: background 0.18s ease;
 }
 
 .mobileCta:hover {
   background: var(--orange-deep);
+  color: var(--off);
 }
 
 @media (max-width: 899px) {

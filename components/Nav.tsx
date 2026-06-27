@@ -89,28 +89,32 @@ export default function Nav({
             className={`${styles.mobileMenu}${compact ? ` ${styles.mobileMenuCompact}` : ''}`}
             aria-label="Mobiel menu"
           >
-            {showBack ? (
-              <a href={backHref} className={styles.mobileHome} onClick={() => setOpen(false)}>
-                {backLabel}
-              </a>
-            ) : null}
-            {NAV_TABS.map((tab) => {
-              const active = isTabActive(tab)
-              return (
-                <a
-                  key={tab.id}
-                  href={tab.href}
-                  className={active ? styles.mobileTabActive : undefined}
-                  aria-current={active ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  {tab.label}
+            <div className={styles.mobileMenuLinks}>
+              {showBack ? (
+                <a href={backHref} className={styles.mobileNavBack} onClick={() => setOpen(false)}>
+                  <span aria-hidden>←</span> {backLabel}
                 </a>
-              )
-            })}
-            <a href={hrefKennismaking} className={styles.mobileCta} onClick={() => setOpen(false)}>
-              {CTA_KENNISMAKING_LABEL}
-            </a>
+              ) : null}
+              {NAV_TABS.map((tab) => {
+                const active = isTabActive(tab)
+                return (
+                  <a
+                    key={tab.id}
+                    href={tab.href}
+                    className={active ? styles.mobileTabActive : undefined}
+                    aria-current={active ? 'page' : undefined}
+                    onClick={() => setOpen(false)}
+                  >
+                    {tab.label}
+                  </a>
+                )
+              })}
+            </div>
+            <div className={styles.mobileMenuFoot}>
+              <a href={hrefKennismaking} className={`${styles.mobileCta} ${STARK_CTA}`} onClick={() => setOpen(false)}>
+                {CTA_KENNISMAKING_LABEL}
+              </a>
+            </div>
           </nav>,
           document.body,
         )
