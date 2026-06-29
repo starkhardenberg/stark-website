@@ -9,9 +9,10 @@ Gebruik dit document + de prompt onderaan om in een **nieuwe Cursor-chat** verde
 | Item | Status |
 |------|--------|
 | **Repo** | `git@github.com:starkhardenberg/stark-website.git` — branch `main` (repo zit IN `stark-site`) |
-| **Lokaal** | Veel uncommitted wijzigingen — **niet gepusht** |
-| **Netlify** | GitHub-sync; custom domein `stark.roholt.nl` via Cloudflare |
-| **Dev** | `npm run dev` → **http://127.0.0.1:3456** (IPv4). Bij corrupte `.next`: `npm run dev:clean` |
+| **Laatste commit** | `c73212b` — Nav, Bedrijven-naamgeving, mobiele CTA's |
+| **Vorige commit** | `08ac4d6` — team-hover, mobiele CTA's, UI-polish |
+| **Netlify** | GitHub-sync; live op **https://stark.roholt.nl** |
+| **Dev** | `npm run dev` → **http://127.0.0.1:3456**. Bij corrupte `.next`: `npm run dev:clean` |
 | **Pushen** | Alleen op expliciet verzoek |
 
 ---
@@ -21,104 +22,109 @@ Gebruik dit document + de prompt onderaan om in een **nieuwe Cursor-chat** verde
 Lees: `../CLAUDE.md`, `../CONTEXT.md`, `../DESIGN-REGELS.md`, `../SCHRIJF-REGELS.md`
 
 - Kleuren: navy `#212431`, off-white `#F5F5F5`, oranje `#EA5C1F`
-- Outline-dikte: **2.5px** op hero-outline + tegelcijfers; **1.8px** op sectietitels/footer/404
-- Tekst tegels: body `clamp(16px, 1.7vw, 18px)`, eyebrows **14px**
-- Tegelfoto's: `grayscale(1) contrast(1.04)` via `.resultMediaImg`
-- Optische uitlijning titels: `lib/displayTrim.ts` → `oswaldTrim()`
+- Outline-dikte: **`--outline-stroke-hero: 2.5px`** (hero + tegelcijfers); **`--outline-stroke-display: 1.45px`** (sectietitels, footer, 404)
+- Mobiele CTA's: globale classes in `app/globals.css` → `.starkCta`, `.starkCtaRow`, `.starkCtaNav` + `lib/stark-cta.ts`
+- Pijlen: SVG via `components/icons/StarkArrow.tsx` (geen emoji-pijlen op iOS)
 - Schrijfregels: geen em-dashes, kort/direct Nederlands, geen AI-filler
 
 ---
 
-## Contact & Kennismaken (afgerond deze sessie)
+## Afgerond — recente sessies
+
+### Mobiele navigatie (`components/Nav.tsx`, `Nav.module.css`)
+
+- Dubbele Home-knop opgelost: header-Home verborgen als menu open; één teruglink in menu (`mobileNavBack`)
+- Menu-CTA structureel gescheiden: `mobileMenuLinks` + `mobileMenuFoot` (geen CSS-conflict meer met nav-links)
+- Menu-CTA typografie gelijkgetrokken met site-CTA's: `font-body`, 700, uppercase + `starkCta`
+
+### Mobiele CTA's site-breed
+
+- `globals.css`: ruimere padding, breakpoint tot 899px, nav-CTA zonder smalle max-width
+- Coaching/bedrijven intro-CTA's: row-layout pas vanaf 900px (niet meer 720px); WhatsApp sentence case op mobiel
+
+### Naamgeving Bedrijven (optie A)
+
+Publiek **Bedrijven**, intern/URL blijft **`/zakelijk`**:
+
+| Plek | Label |
+|------|--------|
+| Menu | Bedrijven |
+| Hero `/zakelijk` | BEDRIJVEN BIJ STARK |
+| Paginatitel | Bedrijven — STARK! Hardenberg |
+| Homepage-aanbodkaart | Bedrijven / Bedrijven bij STARK |
+| Contactformulier | Bedrijven / Fundament |
+| Tegel-label | Via werkgever (was: Waarom zakelijk anders is) |
+
+Bestanden: `app/zakelijk/page.tsx`, `components/aanbod/aanbod-tracks.ts`, `lib/contact.ts`, `public/contact-form.html`
+
+### Trainen-pagina
+
+- Gradient/schaduw onder tegelcijfers verwijderd (`.resultGridLight .mediaIndex` → `filter: none`)
+
+### Team-pagina
+
+- Hover foto ↔ quote hersteld via client component `app/team/TeamInteractiveGrid.tsx` + `team-members.ts`
+
+### Homepage #over
+
+- CTA "Alle 11 gezichten en ons ontstaan →" onder E&Y-quotes (oranje border)
+
+### Contact & Kennismaken
 
 | Route | Doel |
 |-------|------|
-| `/contact` | Vragen stellen — **formulier eerst**, dan gegevens + kaart + eigenaren |
-| `/kennismaken` | Kennismaking plannen — WhatsApp + bellen |
+| `/contact` | Formulier + gegevens + kaart |
+| `/kennismaken` | Kennismaking plannen |
 
-**CTA-label overal:** `Plan kennismaking` (was: Kom kennismaken)  
-**Paginatitel kennismaken:** blijft warm → `Kom kennismaken` (`KENNISMAKING_TITLE` in `lib/contact.ts`)
-
-**Contact-copy:** eyebrow "Vragen of langskomen", geen kennismaak-verwarring in lead  
-**Kennismaken:** alle body-tekst op tegelgrootte; donker expect-blok **binnen kolom** (niet full-bleed); `tel:+31621248107` fix voor bel-knop  
-**Kennismaken copy-fix:** "volgt binnenkort" niet afbreken → `volgt&nbsp;binnenkort`
-
-Bestanden: `lib/contact.ts`, `app/contact/`, `app/kennismaken/`
+**CTA-label overal:** `Plan kennismaking` (`lib/contact.ts`)
 
 ---
 
-## Coaching-pagina (afgerond deze sessie)
+## Zakelijk / Bedrijven-pagina — huidige staat
 
-- Tegel-chips **weggelaten** (dubbeling met tegels zelf)
-- Header: **"Twee trajecten."** groter + outline op "trajecten."
-- Extra spacing tussen subkop en tegels
-- Tegels: eyebrow + pill-link + pijl naar `/momentum` en `/impact`
-- **Momentum-tegel foto:** `foto-coaching-tegel-momentum-gesprek.png` + extra contrast filter
-- **Impact-tegel foto:** `foto-coaching-tegel-impact-gesprek.png` (≠ hero Impact)
-- **Footer coaching:** `footer-coaching-sessie.png` (nieuwe gespreksfoto), uitsnede `center 32%`
-- `/momentum` + `/impact`: Nav terug-link → **← Coaching** (`backHref="/coaching"`)
+`app/zakelijk/page.tsx` — **veel al gebouwd sinds oude handoff:**
 
----
+1. Hero — BEDRIJVEN BIJ STARK
+2. Business-case blok (€405/dag, Arbo Unie 2024)
+3. Drie tegels via `AanbodFeatureCard` + `zakelijk-tracks.ts` (Momentum voor teams, Impact voor re-integratie, Fundament voor starke teams)
+4. Catalogus-CTA: "Niet zeker welk programma past? Plan een gesprek."
+5. Startproces-blok (4 stappen) — `zakelijk-start-steps.ts`
+6. FAQ — `faq-zakelijk.ts` (check of nog verouderde Fundament-termen in staan)
+7. Footer kettlebells crop
 
-## Trainen-pagina (deze sessie)
+**Geen doorkliks** naar `/fundament-*` subpagina's (bewuste keuze).
 
-- Footer-foto: `footer-trainen.png` (kids-groep), uitsnede `center 14%` / mobiel `12%`
-- Nav terug blijft Home
+Fundament-subpagina's bestaan nog met oude copy — niet linken; later archiveren + redirects.
 
 ---
 
-## Homepage testimonials (deze sessie)
+## Video — besproken, nog niet gebouwd
 
-- **Renske:** dark portrait variant (`darkPortrait: true`) — zwart blok, contain, zoom
-- **Amanda:** dark portrait + cover + zoom getest (`imageCover`, `imageScale: 1.3`) — **check of dit blijft**
-- Carousel: klik op slide → volgende quote; namen/programma groter
-- Hero quote namen: tegelgrootte
+### Advies (juni 2026)
 
----
+| Video | Duur | Aanpak | Max MB |
+|-------|------|--------|--------|
+| Hero-clip | ~20s | Native `<video>` + Cloudinary, muted loop autoplay | **≤ 3 MB** (streef ~2 MB) |
+| Bedrijfsfilm | 1:12 | Click-to-play, lazy load, poster + play-knop | **≤ 15 MB** (streef 8–12 MB) |
 
-## Zakelijk / Bedrijven-pagina — STATUS & VOLGENDE STAP
+- **Niet** YouTube/Vimeo embed voor hero (traag, minder premium)
+- **Vimeo optioneel** alleen voor bedrijfsfilm als gemak > snelheid
+- Homepage hero gebruikt al Cloudinary: `components/HeroSection.tsx`
+- Wacht op: Cloudinary-URL's + poster-images vóór bouw
 
-### Beslissing (juni 2026)
-
-**Geen aparte subpagina's** voor de drie zakelijke tegels (voorlopig). Geen doorkliks. Eén landingspagina + gesprek = juiste B2B-route.
-
-### Huidige staat (`app/zakelijk/page.tsx`)
-
-1. Hero
-2. **Business-case blok** (introSection light) — €405/dag, bron Arbo Unie 2024, stakes vs payoff, CTA
-3. **Drie tegels** (geen links):
-   - **Momentum voor teams** (was Fundament preventief)
-   - **Impact voor re-integratie** (was Re-integreren)
-   - **Fundament voor starke teams** (was Starke teams — bewust "starke")
-4. Typisch STARK (featureTiles)
-5. FAQ — **NOG VEROUDERD** (noemt nog "Fundament", "preventief programma")
-6. Footer
-
-Data: `components/landing/landing-cards.ts` → `zakelijkCards`
-
-### Nog te doen op zakelijk (afgesproken, niet gebouwd)
-
-1. **FAQ updaten** naar nieuwe namen (Momentum voor teams / Impact voor re-integratie / Fundament voor starke teams)
-2. **Startproces-blok** toevoegen (3–4 stappen: gesprek → situatie → voorstel → start)
-3. **Keuzezin** onder tegelheader: "Niet zeker welk programma past? Plan een gesprek."
-4. Geen pill-links/pijltjes op tegels (die suggereren doorklik)
-
-### Fundament-subpagina's
-
-`/fundament-preventief`, `/fundament-reintegratie`, `/fundament-teamtraject` bestaan nog met oude namen/copy. **Niet linken** vanaf zakelijk. Later: hernoemen of archiveren + redirects.
+**Plaatsing bedrijfsfilm:** nog niet gekozen (homepage bij `#over` vs `/team`).
 
 ---
 
-## Overige fixes deze sessie
+## Nog open / backlog
 
-- Scroll jank mobile hero: `100svh`, GPU layers
-- Tegel borders: wit op foto-tegels, navy hairline op lichte tegels
-- Gray grid lines verwijderd uit featureTiles/optionRow
-- FAQ vragen/antwoorden tegelgrootte site-wide
-- Trainen FAQ: "Wat kost **een** lidmaatschap"
-- Impact tegel coaching: Startpakket-uitleg in "Wat erin zit"
-- Footer homepage: "Plan kennismakingsgesprek" tekst weg
-- 404: outline op "blessure", uppercase CTA
+- [ ] Video: hero-clip + bedrijfsfilm embedden (Cloudinary-URL's nodig)
+- [ ] Menu Training → Trainen (consistentie met pagina's; niet gedaan)
+- [ ] Zakelijk FAQ controleren op verouderde Fundament-copy
+- [ ] `landing-cards.ts`: contactformulier-links vs kennismaking-copy mismatch (bekend)
+- [ ] Fundament-subpagina's hernoemen/archiveren
+- [ ] Bookings koppelen aan `/kennismaken`
+- [ ] Testimonial-quotes invullen waar nog placeholder
 
 ---
 
@@ -126,28 +132,15 @@ Data: `components/landing/landing-cards.ts` → `zakelijkCards`
 
 | Onderdeel | Pad |
 |-----------|-----|
-| Zakelijk pagina | `app/zakelijk/page.tsx` |
-| Zakelijk tegels + coaching tegels | `components/landing/landing-cards.ts` |
-| Tegel component | `components/landing/LandingServiceCard.tsx` |
-| Zakelijk FAQ | `components/faq/faq-zakelijk.ts` |
-| Landings-styling | `app/landing.module.css` |
-| Nav (backHref) | `components/Nav.tsx` |
+| Bedrijven-pagina | `app/zakelijk/page.tsx` |
+| Zakelijke tegels | `components/aanbod/zakelijk-tracks.ts` |
+| Homepage aanbod | `components/aanbod/aanbod-tracks.ts` |
+| Mobiele nav | `components/Nav.tsx`, `Nav.module.css` |
+| Mobiele CTA globals | `app/globals.css`, `lib/stark-cta.ts` |
+| Hero video | `components/HeroSection.tsx` |
 | Contact constants | `lib/contact.ts` |
-| Testimonials data | `components/testimonials/testimonials-data.ts` |
-| Footer foto's | `components/Footer.tsx`, `Footer.module.css` |
-| Optical trim | `lib/displayTrim.ts` |
-
----
-
-## Nog niet gedaan (algemeen)
-
-- Zakelijk: FAQ + startproces + keuzezin (prioriteit)
-- Impact-pagina volledig herbouwen (ouder plan in git history)
-- Amanda dark portrait: bevestigen of terugdraaien
-- Fundament-subpagina's hernoemen/archiveren
-- Testimonial-quotes Erwin / Anne / Monique invullen
-- Bookings koppelen aan `/kennismaken`
-- Git commit + push (niet gedaan)
+| Landings-styling | `app/landing.module.css` |
+| Team hover | `app/team/TeamInteractiveGrid.tsx` |
 
 ---
 
@@ -166,32 +159,36 @@ Hard refresh: Cmd+Shift+R. Gebruik **127.0.0.1**, niet localhost.
 ## Prompt voor nieuwe chat (kopieer dit)
 
 ```
-STARK! Hardenberg website — vervolg bouwen (focus: pagina Bedrijven /zakelijk)
+STARK! Hardenberg website — vervolg
 
 Ik werk aan de STARK! Hardenberg website in `stark-site` (Next.js 14, App Router, CSS Modules).
 
 LEES EERST:
-- `stark-site/SESSION-HANDOFF.md` (volledige status)
+- `stark-site/SESSION-HANDOFF.md`
 - Parent-map: CLAUDE.md, CONTEXT.md, DESIGN-REGELS.md, SCHRIJF-REGELS.md
 
 Dev: `cd stark-site && npm run dev` → http://127.0.0.1:3456
 
-Design: navy #212431, off-white #F5F5F5, oranje #EA5C1F. Oswald + Work Sans. Geen em-dashes, geen AI-filler. Eén wijziging per stap, mobile-first.
+Git: main is up-to-date op GitHub (Netlify sync). Laatste deploy-commit: c73212b.
+Live: https://stark.roholt.nl
+Geen git commit/push tenzij ik vraag.
 
-Wat al staat op /zakelijk (niet opnieuw doen tenzij gevraagd):
-- Business-case blok onder hero: €405/dag (bron Arbo Unie 2024), stakes vs payoff, CTA
-- Drie tegels hernoemd: Momentum voor teams, Impact voor re-integratie, Fundament voor starke teams
-- Geen doorkliks naar subpagina's (bewuste keuze: één landingspagina + gesprek)
+Design: navy #212431, off-white #F5F5F5, oranje #EA5C1F. Geen em-dashes, geen AI-filler. Mobile-first. Eén wijziging per stap.
 
-VOLGENDE STAP — zakelijk pagina afmaken:
-1. FAQ updaten (faq-zakelijk.ts) naar nieuwe programmanamen — geen "Fundament" meer als preventief
-2. Startproces-blok toevoegen (3–4 stappen na tegels of vóór FAQ): gesprek → situatie in kaart → voorstel → start
-3. Keuzezin onder tegelheader: "Niet zeker welk programma past? Plan een gesprek."
-4. Geen pill-links op tegels
+RECENT AF (niet opnieuw doen tenzij gevraagd):
+- Mobiel menu: dubbele Home weg, CTA in mobileMenuFoot, typografie via starkCta
+- Publieke naam Bedrijven (menu + hero + homepage + contact); URL blijft /zakelijk
+- Mobiele CTA-padding site-breed; coaching/bedrijven intro-CTA's gestapeld tot 900px
+- Trainen tegelcijfers zonder schaduw; team hover; homepage over-CTA
 
-Regels: Geen git commit/push tenzij ik vraag. Geen aparte subpagina's voor zakelijke tegels.
+MOGELIJKE VOLGENDE STAPPEN (kies of vraag mij):
+1. Video embedden: hero ~20s + bedrijfsfilm 1:12 via Cloudinary (URL's + posters nodig)
+2. Zakelijk FAQ check + resterende copy-polish
+3. Menu "Training" → "Trainen"
+4. Fundament-subpagina's archiveren/redirects
+5. Anders — zie backlog in SESSION-HANDOFF.md
 
-Begin met: handoff lezen, dev-server checken, bevestigen dat je het snapt. Vraag waar ik wil starten.
+Begin met: handoff lezen, bevestigen dat je het snapt. Vraag wat ik nu wil.
 
 Mijn verzoek nu:
 [VUL HIER IN]
