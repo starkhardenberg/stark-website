@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import { impactFaq } from '@/components/faq/faq-impact'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
-import { getImpactPageTestimonials, heroQuoteEva } from '@/components/testimonials/testimonials-data'
+import { getImpactPageTestimonials, heroQuoteRenee } from '@/components/testimonials/testimonials-data'
 import { oswaldTrim } from '@/lib/displayTrim'
 import landing from '../landing.module.css'
 import styles from './impact.module.css'
@@ -52,7 +52,7 @@ export default function ImpactPage() {
             style={{ objectPosition: '50% 40%' }}
           />
         </div>
-        <Nav compact textMenu backHref="/coaching" backLabel="Coaching" />
+        <Nav compact textMenu />
         <div className={`${landing.heroContent} ${landing.heroContentLower}`}>
           <span className={landing.heroSlash} />
           <h1 className={landing.heroTitle}>
@@ -97,8 +97,8 @@ export default function ImpactPage() {
 
             <p className={styles.reintegratieNote}>
               Soms zetten we Impact in als re-integratietraject, voor wie is uitgevallen, bijvoorbeeld door een burn-out. Een werkgever of bedrijfsarts kan doorverwijzen.{' '}
-              <Link href="/fundament-reintegratie" className={styles.reintegratieLink}>
-                Lees meer over re-integratie
+              <Link href="/zakelijk" className={styles.reintegratieLink}>
+                Lees meer over bedrijven bij STARK!
               </Link>
             </p>
           </div>
@@ -183,7 +183,7 @@ export default function ImpactPage() {
         </div>
       </section>
 
-      <TestimonialsSection hero={heroQuoteEva} items={getImpactPageTestimonials()} />
+      <TestimonialsSection hero={heroQuoteRenee} items={getImpactPageTestimonials()} />
 
       <section className={landing.faqSection}>
         <div className={landing.faqInner}>

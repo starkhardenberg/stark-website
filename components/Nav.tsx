@@ -17,13 +17,8 @@ const NAV_TABS = [
 /** Paden die bij een dienst-tab horen (landingspagina + subpagina's). */
 const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
   coaching: ['/coaching', '/momentum', '/impact'],
-  trainen: ['/trainen', '/lidmaatschap-volwassenen', '/zilverfitness', '/kids-teens'],
-  bedrijven: [
-    '/zakelijk',
-    '/fundament-preventief',
-    '/fundament-reintegratie',
-    '/fundament-teamtraject',
-  ],
+  trainen: ['/trainen'],
+  bedrijven: ['/zakelijk'],
 }
 
 export default function Nav({

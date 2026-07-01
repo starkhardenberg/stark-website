@@ -2,25 +2,37 @@ import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './IntroSection.module.css'
+import type { ReactNode } from 'react'
 
-const manifestLines = [
+const manifestLines: { id: string; lead: ReactNode; rest: string }[] = [
   {
-    lead: 'Vaste gezichten, korte lijnen.',
+    id: 'gezichten',
+    lead: 'Vaste gezichten, korte lijntjes.',
     rest: 'Geen poespas.',
   },
   {
-    lead: 'Trainen, coachen, of een combinatie.',
-    rest: 'Jij bepaalt.',
+    id: 'trainen-coachen',
+    lead: (
+      <>
+        Trainen voor je lijf & coachen voor je richting:
+        <br />
+        waar sta je nu, waar wil je heen.
+      </>
+    ),
+    rest: 'Allebei kan ook. Jij bepaalt.',
   },
   {
+    id: 'werkt',
     lead: 'We doen wat werkt.',
     rest: 'Je krijgt een schop onder je kont én we houden je hand vast.',
   },
   {
+    id: 'sterk',
     lead: 'Sterk in lijf en hoofd.',
     rest: 'Klaar voor wat er op je pad komt.',
   },
   {
+    id: 'gesprek',
     lead: 'Het begint met een gesprek.',
     rest: 'Eerst elkaar leren kennen, dan kijken we verder.',
   },
@@ -39,7 +51,7 @@ export default function IntroSection() {
           <div className={styles.copyCol}>
             <ul className={styles.lines}>
               {manifestLines.map((line) => (
-                <li key={line.lead} className={styles.line}>
+                <li key={line.id} className={styles.line}>
                   <p className={styles.lineLead}>{line.lead}</p>
                   <p className={styles.lineRest}>{line.rest}</p>
                 </li>
@@ -49,9 +61,11 @@ export default function IntroSection() {
             <div className={`${styles.ctaRow} ${STARK_CTA_ROW}`}>
               <a href={hrefKennismaking} className={`${styles.cta} ${styles.ctaFilled} ${STARK_CTA}`}>
                 {CTA_KENNISMAKING_LABEL}
+                <span aria-hidden>→</span>
               </a>
               <a href="#aanbod" className={styles.cta}>
                 Bekijk de routes
+                <span aria-hidden>→</span>
               </a>
             </div>
           </div>

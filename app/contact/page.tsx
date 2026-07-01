@@ -30,14 +30,14 @@ const OWNERS = [
   {
     name: 'Engbert-Jan',
     role: 'Eigenaar, coach en trainer',
-    photo: '/images/team/engbert-jan.jpg',
-    objectPosition: '50% 34%',
+    photo: '/images/team/engbert-jan.png',
+    objectPosition: '50% 28%',
   },
   {
     name: 'Yvonne',
     role: 'Eigenaar, coach en trainer',
-    photo: '/images/team/yvonne-new.png',
-    objectPosition: '50% 24%',
+    photo: '/images/team/yvonne.png',
+    objectPosition: '50% 26%',
   },
 ] as const
 

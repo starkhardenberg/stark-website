@@ -3,12 +3,32 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import { momentumFaq } from '@/components/faq/faq-momentum'
-import LandingServiceCard from '@/components/landing/LandingServiceCard'
-import { momentumCards } from '@/components/landing/landing-cards'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getMomentumPageTestimonials, heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
 import { oswaldTrim } from '@/lib/displayTrim'
-import styles from '../landing.module.css'
+import landing from '../landing.module.css'
+import styles from './momentum.module.css'
+
+const MOMENTUM_STEPS = [
+  {
+    num: '01',
+    timing: 'Doorlopend',
+    title: 'Fysieke training',
+    desc: 'Twintig uur training op jouw niveau. Sterker worden in je lijf en tegelijk je mindset trainen op het moment dat het zwaar wordt. Tempo, groepsdruk en het gevoel dat je er niet alleen voor staat.',
+  },
+  {
+    num: '02',
+    timing: '5 sessies',
+    title: 'Groepscoaching',
+    desc: 'Tien uur groepscoaching in vijf sessies van twee uur. Patronen herkennen en doorbreken terwijl je traint. Niet praten over mindset op een stoel, oefenen onder druk.',
+  },
+  {
+    num: '03',
+    timing: 'Verspreid',
+    title: 'Challenges',
+    desc: 'Vijf mentale en fysieke challenges. Oefenen op het moment dat je normaal uitwijkt. Juist daar gebeurt de doorbraak.',
+  },
+] as const
 
 export const metadata = {
   title: 'Momentum — 10 weken groepsprogramma — STARK! Hardenberg',
@@ -18,81 +38,158 @@ export const metadata = {
 
 export default function MomentumPage() {
   return (
-    <main className={styles.main}>
-      <section className={`${styles.hero} ${styles.heroCoaching}`}>
-        <div className={styles.heroBg}>
+    <main className={landing.main}>
+      <section className={`${landing.hero} ${landing.heroCoaching}`}>
+        <div className={landing.heroBg}>
           <Image
             src="/images/foto-coaching-tegel-momentum.png"
             alt="Groep in gesprek tijdens Momentum bij STARK! Hardenberg"
             fill
-            className={`${styles.heroBgImg} ${styles.heroBgImgCoaching}`}
+            className={`${landing.heroBgImg} ${landing.heroBgImgClean}`}
             sizes="100vw"
             priority
             style={{ objectPosition: 'center 35%' }}
           />
         </div>
-        <Nav backHref="/coaching" backLabel="Coaching" />
-        <div className={styles.heroContent}>
-          <span className={styles.heroSlash} />
-          <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
-            <span className={styles.heroLead}>MOMENTUM</span>
-            <span className={styles.heroPunch}>BIJ STARK</span>
+        <Nav />
+        <div className={`${landing.heroContent} ${landing.heroContentLower}`}>
+          <span className={landing.heroSlash} />
+          <h1 className={`${landing.heroTitle} ${landing.heroTitleCompact}`}>
+            <span className={landing.heroLead}>MOMENTUM</span>
+            <span className={landing.heroPunch}>BIJ STARK</span>
           </h1>
-          <p className={styles.heroSub}>
+          <p className={`${landing.heroSub} ${styles.heroSubNavy}`}>
             10 weken waarin je lijf en hoofd samen trainen, zodat je eindelijk voor elkaar krijgt wat er voor
             jou toe doet.
           </p>
         </div>
-        <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
+        <div className={`${landing.heroBar} ${landing.heroBarHidden}`} />
       </section>
 
-      <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
-        <span className={styles.label}>10-weken groepsprogramma</span>
-        <h2 className={`${styles.title} ${styles.titleHero}`} style={oswaldTrim('Stop')}>
-          Stop met <span className={styles.titleHeroOutline}>stoppen</span>
-        </h2>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced}`}>
-          {momentumCards.map((card, i) => (
-            <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
-          ))}
+      <section
+        className={`${landing.introSection} ${landing.introSectionLight}`}
+        aria-label="Voor wie Momentum is"
+      >
+        <div className={landing.introRow}>
+          <div className={landing.introHead}>
+            <p className={landing.introLabel}>Herken je dit?</p>
+            <h2 className={landing.introStatement}>Je kent dit patroon.</h2>
+          </div>
+          <div className={landing.introBody}>
+            <div className={landing.introCols}>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit speelt er.</p>
+                <ul className={landing.introColList}>
+                  <li>Je begint vol goede moed. Halverwege valt de energie weg.</li>
+                  <li>Je weet wat je zou moeten doen. Op het moment zelf gebeurt het niet.</li>
+                  <li>Alleen sporten of alleen nadenken heeft het nog niet opgelost.</li>
+                </ul>
+              </div>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit wil je nu.</p>
+                <ul className={landing.introColList}>
+                  <li>Een vaste groep van max. 10 mensen die dezelfde weg lopen.</li>
+                  <li>Oefenen als het zwaar wordt, niet achteraf praten over mindset.</li>
+                  <li>Tien weken structuur waarin je lijf en hoofd het samen doen.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className={`${styles.split} ${styles.splitStatement}`}>
-        <div className={styles.splitContent} data-num="01">
-          <div className={styles.splitInner}>
-            <span className={styles.label}>Zo werkt het</span>
-            <h2 className={styles.title} style={oswaldTrim('TYPISCH')}>TYPISCH MOMENTUM</h2>
-            <ul className={styles.featureTiles}>
-              <li>
-                <span>Je weet het wel. Je doet het net niet. Dat ligt niet aan jou — je brein trekt je terug naar vertrouwd.</span>
-              </li>
-              <li>
-                <span>Niet praten over mindset op een stoel. Oefenen onder druk, op het moment dat het zwaar wordt.</span>
-              </li>
-              <li>
-                <span>20 uur training, 10 uur groepscoaching en 5 challenges — mentaal én fysiek.</span>
-              </li>
-              <li>
-                <span>Max. 10 personen. Een groep die je scherp houdt en meetrekt als het tegenzit.</span>
-              </li>
-              <li>
-                <span>Je herkent het stemmetje dat je tegenhoudt en leert door te zetten in plaats van uit te wijken.</span>
-              </li>
-              <li>
-                <span>Je hoeft geen topsporter te zijn. Wel klaar om te beginnen.</span>
-              </li>
+      <section
+        className={`${landing.section} ${landing.sectionWithOrangeBottom}`}
+        aria-label="Wat Momentum doet"
+      >
+        <div className={styles.valueGrid}>
+          <div className={styles.valueText}>
+            <span className={landing.label}>Wat het doet</span>
+            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Stop')}>
+              Stop met <span className={landing.titleHeroOutline}>stoppen</span>
+            </h2>
+            <p className={styles.rippleIntro}>
+              Het patroon is vertrouwd. Je brein trekt je terug naar wat je kent zodra het spannend wordt.
+            </p>
+            <p className={styles.valueClose}>
+              Momentum is tien weken waarin je dat doorbreekt. In je lijf, met een groep naast je.
+            </p>
+          </div>
+          <div className={styles.valueRipple}>
+            <ul className={styles.ripple}>
+              <li>Je weet het wel.</li>
+              <li>Je doet het net niet.</li>
+              <li>Tot het zwaar wordt.</li>
+              <li>Dan wijk je uit.</li>
             </ul>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section
+        className={`${landing.section} ${landing.sectionWithOrangeBottom} ${landing.sectionLight} ${styles.opbouwLight}`}
+      >
+        <div className={styles.trajectGrid}>
+          <div className={styles.trajectMedia}>
+            <Image
+              src="/images/foto-coaching-samen.jpg"
+              alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg"
+              fill
+              className={styles.trajectMediaImg}
+              sizes="(min-width: 860px) 40vw, 100vw"
+              style={{ objectPosition: 'center 40%' }}
+            />
+          </div>
+          <div className={styles.trajectMain}>
+            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
+              Eén programma.
+              <br />
+              <span className={landing.titleHeroOutline}>De opbouw</span>
+            </h2>
+            <p className={styles.trajectIntro}>
+              Alles zit erin. Training, groepscoaching en challenges lopen de tien weken samen op.
+            </p>
+            <div className={styles.timeline}>
+              {MOMENTUM_STEPS.map((step) => (
+                <div key={step.num} className={styles.timelineItem}>
+                  <span className={styles.timelineNum}>
+                    {step.num} <span className={styles.timelineTiming}>{step.timing}</span>
+                  </span>
+                  <h3 className={styles.timelineTitle}>{step.title}</h3>
+                  <p className={styles.timelineDesc}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.hours}>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>20</span>
+                <span className={styles.hoursLabel}>uur fysieke training</span>
+              </div>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>10</span>
+                <span className={styles.hoursLabel}>uur groepscoaching</span>
+              </div>
+              <div className={styles.hoursItem}>
+                <span className={styles.hoursNum}>5</span>
+                <span className={styles.hoursLabel}>mentale en fysieke challenges</span>
+              </div>
+            </div>
+            <p className={styles.hoursNote}>
+              Tien weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <TestimonialsSection hero={heroQuoteRebekka} items={getMomentumPageTestimonials()} />
 
-      <section className={styles.faqSection}>
-        <div className={styles.faqInner}>
-          <span className={styles.label}>Wat je nog wilt weten</span>
-          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+      <section className={landing.faqSection}>
+        <div className={landing.faqInner}>
+          <span className={landing.label}>Wat je nog wilt weten</span>
+          <h2 className={landing.title} style={oswaldTrim('Goede')}>
+            Goede vragen
+          </h2>
           <FaqList items={momentumFaq} />
         </div>
       </section>
@@ -104,7 +201,7 @@ export default function MomentumPage() {
         ctaTitle={
           <>
             Klaar om te stoppen met{' '}
-            <span className={styles.titleHeroOutline} style={{ whiteSpace: 'nowrap' }}>
+            <span className={landing.titleHeroOutline} style={{ whiteSpace: 'nowrap' }}>
               stoppen?
             </span>
           </>

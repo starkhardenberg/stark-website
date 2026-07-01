@@ -25,6 +25,8 @@ export type HeroQuote = {
   objectPosition?: string
   /** Per-foto inzoom (overschrijft de gedeelde transform). 1 = geen zoom. */
   imageScale?: number
+  /** Verticale verschuiving i.p.v. de standaard translateY op .heroImg (bv. '4%'). */
+  imageTranslateY?: string
   /** Focuspunt voor de inzoom, bv. 'center 30%'. */
   imageScaleOrigin?: string
   /** Studioshot op zwart: blok wordt donker, foto volledig in beeld (contain),
@@ -33,6 +35,10 @@ export type HeroQuote = {
   /** Foto het blok laten vullen (object-fit: cover) i.p.v. contain. Handig bij
    *  een donkere (geen pure zwart-fond) foto die je toch in het dark-blok wilt. */
   imageCover?: boolean
+  /** Foto volledig in beeld (contain), zelfde blokmaat als cover — geen crop op gezicht. */
+  imageContain?: boolean
+  /** Staande portretfoto: geen standaard translateY, crop op bovenste derde. */
+  portraitCrop?: boolean
 }
 
 export const heroQuoteAmanda: HeroQuote = {
@@ -41,11 +47,6 @@ export const heroQuoteAmanda: HeroQuote = {
   context: 'Deelnemer Momentum (de vrouwen editie, voorheen Camp Leone)',
   image: '/images/foto-vrouw-lachen.jpg',
   imageAlt: 'Amanda, deelnemer Momentum bij STARK! Hardenberg',
-  darkPortrait: true,
-  imageCover: true,
-  objectPosition: '62% 16%',
-  imageScale: 1.3,
-  imageScaleOrigin: '62% 16%',
 }
 
 /** Alle testimonials — één bron voor homepage, Momentum en Impact. */
@@ -299,7 +300,6 @@ export const heroQuoteRenske: HeroQuote = {
   context: 'Groepstraining',
   image: '/images/foto-trainen-quotes-renske.jpg',
   imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
-  darkPortrait: true,
 }
 
 const TRAINEN_PAGE_HERO_ID = 'renske-1'
@@ -325,13 +325,13 @@ export const heroQuoteRebekka: HeroQuote = {
   name: 'Rebekka',
   context: 'Momentum traject',
   image: '/images/foto-momentum-quotes-hero.png',
-  imageAlt: 'Deelnemer met battle rope tijdens training bij STARK! Hardenberg',
-  imageMirror: true,
-  objectPosition: 'center 38%',
+  imageAlt: 'Rebekka tijdens sledpull-training bij STARK! Hardenberg',
+  imageBw: true,
+  objectPosition: 'center 42%',
 }
 
 /** Momentum-pagina: hero Rebekka + carousel (Sandra zit op homepage). */
-export const momentumPageCarouselIds = ['gerlinde-1', 'annemarie-1'] as const
+export const momentumPageCarouselIds = ['gerlinde-1', 'annemarie-1', 'stephanie-1'] as const
 
 export function getMomentumPageTestimonials(): Testimonial[] {
   return getTestimonialsByIds(momentumPageCarouselIds)
@@ -346,9 +346,29 @@ export const heroQuoteEva: HeroQuote = {
   objectPosition: 'center 38%',
 }
 
-/** Impact-pagina: alle Impact-quotes behalve homepage-keuzes (Hilda) en Eva (hero). */
+export const heroQuoteRenee: HeroQuote = {
+  text: 'Ik kreeg af en toe een liefdevolle schop onder mijn kont die niemand me eerder durfde te geven.',
+  name: 'Renee',
+  context: 'Impact traject',
+  image: '/images/foto-impact-quotes-renee.png',
+  imageAlt: 'Renee met weerstandsband tijdens training bij STARK! Hardenberg',
+  imageBw: true,
+  objectPosition: '48% 14%',
+  imageScale: 1.08,
+  imageScaleOrigin: '48% 15%',
+  imageTranslateY: '0',
+}
+
+/** Impact-pagina carousel: zes quotes, 3 vrouwen / 3 mannen (hero = Renee, homepage = Hilda). */
+export const impactPageCarouselIds = [
+  'eva-1',
+  'erwin-1',
+  'marije-1',
+  'mark-1',
+  'anne-1',
+  'geert-willem-1',
+] as const
+
 export function getImpactPageTestimonials(): Testimonial[] {
-  return getTestimonialsByCategory('impact').filter(
-    (item) => item.id !== 'hilda-1' && item.id !== 'eva-1',
-  )
+  return getTestimonialsByIds(impactPageCarouselIds)
 }

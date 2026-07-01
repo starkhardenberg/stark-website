@@ -30,7 +30,7 @@ export default function CoachingPage() {
             className={`${styles.heroBgImg} ${styles.heroBgImgCoaching}`}
             sizes="100vw"
             priority
-            style={{ objectPosition: '55% 38%' }}
+            style={{ objectPosition: '62% 42%' }}
           />
         </div>
         <Nav />

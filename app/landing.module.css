@@ -73,27 +73,9 @@
   z-index: 0;
 }
 
-.heroBg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(33, 36, 49, 0.52) 0%,
-    rgba(33, 36, 49, 0.58) 38%,
-    rgba(33, 36, 49, 0.92) 100%
-  );
-  filter: brightness(0.7);
-  z-index: 1;
-}
-
+.heroBg::before,
 .heroBg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(120% 90% at 20% 82%, rgba(33, 36, 49, 0.5) 0%, rgba(33, 36, 49, 0) 60%);
-  pointer-events: none;
-  z-index: 1;
+  content: none;
 }
 
 .heroBgImg {
@@ -114,21 +96,9 @@
   filter: grayscale(1) brightness(0.66) contrast(1.05);
 }
 
-/* Trainen, coaching, zakelijk: foto iets lichter en zichtbaarder */
-.heroBg:has(.heroBgImgTrainen)::before,
-.heroBg:has(.heroBgImgCoaching)::before {
-  background: linear-gradient(
-    180deg,
-    rgba(33, 36, 49, 0.36) 0%,
-    rgba(33, 36, 49, 0.44) 38%,
-    rgba(33, 36, 49, 0.84) 100%
-  );
-  filter: brightness(0.88);
-}
-
-.heroBg:has(.heroBgImgTrainen)::after,
-.heroBg:has(.heroBgImgCoaching)::after {
-  background: radial-gradient(120% 90% at 20% 82%, rgba(33, 36, 49, 0.32) 0%, rgba(33, 36, 49, 0) 60%);
+/* Geen overlay, geen dim — schone B&W hero (Momentum). */
+.heroBgImgClean {
+  filter: grayscale(1) contrast(1.05);
 }
 
 /* Coaching-hero: meer lucht onder de titel voor rust */
@@ -1856,20 +1826,6 @@ a.resultItem {
   .hero {
     min-height: 78svh;
     min-height: 78dvh;
-  }
-
-  .heroBg::before {
-    background:
-      linear-gradient(90deg, rgba(33, 36, 49, 0.95) 0%, rgba(33, 36, 49, 0.78) 38%, rgba(33, 36, 49, 0.3) 70%, rgba(33, 36, 49, 0.55) 100%),
-      linear-gradient(180deg, rgba(33, 36, 49, 0.45) 0%, rgba(33, 36, 49, 0) 30%, rgba(33, 36, 49, 0.55) 100%);
-  }
-
-  .heroBg:has(.heroBgImgTrainen)::before,
-  .heroBg:has(.heroBgImgCoaching)::before {
-    background:
-      linear-gradient(90deg, rgba(33, 36, 49, 0.82) 0%, rgba(33, 36, 49, 0.58) 36%, rgba(33, 36, 49, 0.18) 68%, rgba(33, 36, 49, 0.42) 100%),
-      linear-gradient(180deg, rgba(33, 36, 49, 0.28) 0%, rgba(33, 36, 49, 0) 28%, rgba(33, 36, 49, 0.46) 100%);
-    filter: brightness(0.94);
   }
 
   .heroBgImg {

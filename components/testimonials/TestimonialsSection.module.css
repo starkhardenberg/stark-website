@@ -50,19 +50,32 @@
   padding: clamp(56px, 7vw, 80px) 0 clamp(64px, 8vw, 88px);
 }
 
-.sectionTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(40px, 9vw, 68px);
-  letter-spacing: var(--display-tracking);
-  line-height: var(--display-leading);
+.sectionIntro {
+  margin-bottom: clamp(36px, 6vw, 48px);
+}
+
+.sectionEyebrow {
+  margin: 0 0 clamp(14px, 2vw, 18px);
+  margin-left: 1px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
-  margin: 0 0 clamp(24px, 4vw, 40px);
-  /* optical alignment: trim Oswald-"W" left side bearing (0.027em) en tel de
-     1px fotorand mee, zodat de zichtbare W-rand exact parallel loopt aan de foto */
-  margin-left: calc(1px - 0.027em);
-  max-width: 100%;
+}
+
+.sectionHeading {
+  margin: 0;
+  margin-left: 1px;
+  max-width: 11ch;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 96px);
+  letter-spacing: var(--display-tracking);
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--off);
 }
 
 .heroQuote {
@@ -95,6 +108,24 @@
 
 .heroImgBw {
   filter: grayscale(1) contrast(1.04);
+}
+
+/* Volledige foto in beeld, zelfde blok als Amanda — geen crop die gezicht wegsnijdt. */
+.heroImgWrapContain .heroImg {
+  object-fit: contain;
+  object-position: center center;
+  transform: none;
+}
+
+/* Staande portretfoto: zelfde verhouding als bron (682×1024), geen cover-crop op desktop. */
+.heroImgWrapPortrait {
+  aspect-ratio: 2 / 3;
+}
+
+.heroImgWrapPortrait .heroImg {
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: none;
 }
 
 .heroContent {
@@ -193,12 +224,13 @@
     padding: 104px 48px 80px;
   }
 
-  .innerCarousel {
-    padding: 72px 0 88px;
+  .sectionHeading {
+    max-width: 9ch;
+    font-size: clamp(48px, 5.5vw, 88px);
   }
 
-  .sectionTitle {
-    margin-bottom: 48px;
+  .innerCarousel {
+    padding: 72px 0 88px;
   }
 
   .heroQuote {
@@ -214,10 +246,30 @@
     background: #1a1c28;
   }
 
+  .heroImgWrapPortrait {
+    flex: 0 0 auto;
+    width: min(40%, 340px);
+    aspect-ratio: 2 / 3;
+    align-self: center;
+    height: auto;
+  }
+
   .heroImg {
     object-position: center 20%;
     transform: translateY(-3%) scale(1);
     transform-origin: center 30%;
+  }
+
+  .heroImgWrapPortrait .heroImg {
+    object-fit: cover;
+    object-position: 50% 50%;
+    transform: none;
+  }
+
+  .heroImgWrapContain .heroImg {
+    object-fit: contain;
+    object-position: center center;
+    transform: none;
   }
 
   .heroImgMirror {
@@ -241,6 +293,10 @@
 @media (prefers-reduced-motion: reduce) {
   .heroImg,
   .heroImgMirror {
+    transform: none;
+  }
+
+  .heroImgWrapPortrait .heroImg {
     transform: none;
   }
 

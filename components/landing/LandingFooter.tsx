@@ -3,6 +3,7 @@ import { ADDRESS, CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking,
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
+import PhotoCredit from '@/components/PhotoCredit'
 import styles from './LandingFooter.module.css'
 
 type LandingFooterProps = {
@@ -55,7 +56,10 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
       </div>
 
       <div className={styles.meta}>
-        <p>&copy; {new Date().getFullYear()} STARK! Hardenberg</p>
+        <div className={styles.metaStart}>
+          <p>&copy; {new Date().getFullYear()} STARK! Hardenberg</p>
+          <PhotoCredit className={styles.photoCredit} />
+        </div>
         <Link href="/" className={styles.homeLink}>
           Terug naar home
         </Link>

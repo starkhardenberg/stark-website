@@ -11,7 +11,7 @@
 .inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  align-items: start;
+  align-items: stretch;
   gap: clamp(28px, 5vw, 56px);
   max-width: 1200px;
   margin: 0 auto;
@@ -21,7 +21,45 @@
 .colEnd {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+}
+
+.colHead {
+  display: flex;
+  flex-direction: column;
   gap: clamp(14px, 2.4vw, 20px);
+}
+
+.colFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: clamp(14px, 2.4vw, 20px);
+}
+
+.colStart .colFoot {
+  margin-top: auto;
+}
+
+.colEnd:not(:has(.colMid)) .colFoot {
+  margin-top: auto;
+}
+
+.colFoot .meta {
+  margin-top: 0;
+}
+
+.colMid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 0;
+}
+
+.colMid .actions {
+  margin-top: 0;
 }
 
 .colEnd {
@@ -62,11 +100,16 @@
   margin: 0;
   max-width: none;
   font-family: var(--font-quote), var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.75vw, 18px);
-  font-weight: 500;
-  line-height: 1.55;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.45;
   letter-spacing: 0.015em;
-  color: rgba(245, 245, 245, 0.88);
+  color: var(--off);
+}
+
+.leadEmphasis {
+  color: var(--orange);
+  font-weight: 700;
 }
 
 .actions {
@@ -209,6 +252,27 @@
   color: rgba(245, 245, 245, 0.28);
 }
 
+.photoCredit {
+  margin-top: 6px;
+}
+
+.bottomBrandStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-height: 100%;
+}
+
+.bottomBrandStack .photoCredit {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.bottomBrandStack .photoCredit {
+  margin-top: 8px;
+}
+
 /* ── Prominente afsluit-CTA: één afsluitbeeld met CTA eroverheen ── */
 .footerCta {
   margin-top: 0;
@@ -240,16 +304,7 @@
 }
 
 .ctaHeroScrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(33, 36, 49, 0.25) 0%,
-      rgba(33, 36, 49, 0.5) 52%,
-      rgba(33, 36, 49, 0.94) 100%
-    ),
-    linear-gradient(90deg, rgba(33, 36, 49, 0.72) 0%, rgba(33, 36, 49, 0.18) 58%, transparent 100%);
+  display: none;
 }
 
 .ctaHeroContent {
@@ -309,7 +364,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: stretch;
   gap: clamp(18px, 3vw, 32px);
 }
 
@@ -343,6 +398,7 @@
 .bottomBar .contact {
   align-items: flex-end;
   text-align: right;
+  margin-top: auto;
 }
 
 @media (max-width: 640px) {
@@ -353,6 +409,7 @@
   .bottomBar .contact {
     align-items: flex-start;
     text-align: left;
+    margin-top: 0;
   }
 }
 
@@ -404,47 +461,66 @@
 }
 
 .photoFade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--navy) 0%,
-    rgba(33, 36, 49, 0.92) 14%,
-    rgba(33, 36, 49, 0.55) 32%,
-    rgba(33, 36, 49, 0.18) 52%,
-    transparent 72%
-  );
-  pointer-events: none;
-}
-
-.footer:not(.footerPhotoFirst) .photoFade {
-  background: linear-gradient(
-    to bottom,
-    var(--navy) 0%,
-    rgba(33, 36, 49, 0.35) 6%,
-    rgba(33, 36, 49, 0.08) 14%,
-    transparent 26%
-  );
-}
-
-.footerPhotoFirst .photoFade {
-  background: linear-gradient(
-    to top,
-    var(--navy) 0%,
-    rgba(33, 36, 49, 0.92) 14%,
-    rgba(33, 36, 49, 0.55) 32%,
-    rgba(33, 36, 49, 0.18) 52%,
-    transparent 72%
-  );
+  display: none;
 }
 
 .footerPhotoFirst .content {
   padding-top: clamp(40px, 6vw, 56px);
 }
 
+@media (min-width: 769px) {
+  .colEnd .colFoot .contact {
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.55;
+  }
+
+  .bottomBar .contact {
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.55;
+  }
+}
+
 @media (max-width: 768px) {
   .inner {
     grid-template-columns: 1fr;
+  }
+
+  .colStart .colFoot,
+  .colEnd:not(:has(.colMid)) .colFoot {
+    margin-top: 0;
+  }
+
+  .colFoot {
+    padding-top: 0;
+  }
+
+  .colMid {
+    flex: 0;
+    align-items: center;
+    padding: clamp(14px, 2.4vw, 20px) 0;
+  }
+
+  .colStart,
+  .colEnd {
+    align-items: center;
+    text-align: center;
+  }
+
+  .colEnd {
+    max-width: none;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .contact {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactRow {
+    justify-content: center;
   }
 
   .photoWrap:not(.photoWrapZakelijk) {
@@ -552,29 +628,12 @@
   color: rgba(33, 36, 49, 0.28);
 }
 
+.footerLight .photoCredit {
+  color: rgba(33, 36, 49, 0.45);
+}
+
 .footerLight .photoWrap {
   background: var(--off);
-}
-
-.footerLight:not(.footerPhotoFirst) .photoFade {
-  background: linear-gradient(
-    to bottom,
-    var(--off) 0%,
-    rgba(245, 245, 245, 0.35) 6%,
-    rgba(245, 245, 245, 0.08) 14%,
-    transparent 26%
-  );
-}
-
-.footerLight.footerPhotoFirst .photoFade {
-  background: linear-gradient(
-    to top,
-    var(--off) 0%,
-    rgba(245, 245, 245, 0.92) 14%,
-    rgba(245, 245, 245, 0.55) 32%,
-    rgba(245, 245, 245, 0.18) 52%,
-    transparent 72%
-  );
 }
 
 /* ── Harde snede: foto → navy, copy vlak navy, oranje lijn ertussen ── */
@@ -587,21 +646,22 @@
   background: var(--navy);
 }
 
-.footerSolid.footerPhotoFirst .photoFade {
-  background: linear-gradient(
-    to top,
-    var(--navy) 0%,
-    var(--navy) 10%,
-    rgba(33, 36, 49, 0.55) 32%,
-    rgba(33, 36, 49, 0.12) 58%,
-    transparent 100%
-  );
-}
-
 .footerSolid.footerPhotoFirst .content {
   background: var(--navy);
   border-top: 1px solid var(--orange);
   padding-top: clamp(40px, 6vw, 56px);
+}
+
+/* Geen foto: naadloos navy (team na EJ+Yvonne-sectie) */
+.footerPhotoless {
+  margin-top: 0;
+  background: var(--navy);
+}
+
+.footerPhotoless .content {
+  background: var(--navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: clamp(64px, 9vw, 96px);
 }
 
 /* ── Gradient variant: foto eindigt in navy → content fade navy → off-white ── */
@@ -612,18 +672,6 @@
 
 .footerGradient .photoWrap {
   background: var(--navy);
-}
-
-/* Foto loopt onderaan door in navy (naadloos met sectie erboven + gradient) */
-.footerGradient.footerPhotoFirst .photoFade {
-  background: linear-gradient(
-    to top,
-    var(--navy) 0%,
-    rgba(33, 36, 49, 0.96) 14%,
-    rgba(33, 36, 49, 0.68) 32%,
-    rgba(33, 36, 49, 0.22) 62%,
-    transparent 100%
-  );
 }
 
 /* Gradient zit in content: navy bovenaan → off-white onderaan */
@@ -646,15 +694,6 @@
       var(--off) 92%,
       var(--off) 100%
     );
-}
-
-.footerGradient:not(.footerPhotoFirst) .photoFade {
-  background: linear-gradient(
-    to bottom,
-    var(--navy) 0%,
-    rgba(33, 36, 49, 0.5) 35%,
-    transparent 70%
-  );
 }
 
 .footerGradient:not(.footerPhotoFirst) .content {
@@ -716,6 +755,10 @@
   color: rgba(33, 36, 49, 0.28);
 }
 
+.footerGradient .photoCredit {
+  color: rgba(15, 17, 24, 0.58);
+}
+
 /* ── Warm gradient test: off-white → oranje (homepage) ── */
 .footerGradientWarm {
   margin-top: 0;
@@ -724,17 +767,6 @@
 
 .footerGradientWarm .photoWrap {
   background: var(--off);
-}
-
-.footerGradientWarm.footerPhotoFirst .photoFade {
-  background: linear-gradient(
-    to top,
-    var(--off) 0%,
-    rgba(245, 245, 245, 0.97) 16%,
-    rgba(245, 245, 245, 0.62) 34%,
-    rgba(245, 245, 245, 0.16) 58%,
-    transparent 100%
-  );
 }
 
 .footerGradientWarm.footerPhotoFirst .content {
@@ -799,4 +831,8 @@
 
 .footerGradientWarm .metaSep {
   color: rgba(33, 36, 49, 0.28);
+}
+
+.footerGradientWarm .photoCredit {
+  color: rgba(33, 36, 49, 0.52);
 }

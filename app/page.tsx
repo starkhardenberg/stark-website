@@ -1,5 +1,6 @@
 import HeroSection from '@/components/HeroSection'
 import IntroSection from '@/components/IntroSection'
+import FilmSection from '@/components/FilmSection'
 import AanbodSection from '@/components/AanbodSection'
 import OverSection from '@/components/OverSection'
 import ResultatenSection from '@/components/ResultatenSection'
@@ -11,9 +12,10 @@ export default function Home() {
       <HeroSection />
       <IntroSection />
       <AanbodSection />
+      <FilmSection />
       <OverSection />
       <ResultatenSection />
-      <Footer photoFirst photoSet="home" brandPrefix="BIJ" />
+      <Footer photoless brandPrefix="BIJ" />
     </>
   )
 }

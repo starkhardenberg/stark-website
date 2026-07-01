@@ -3,6 +3,7 @@ import { CTA_KENNISMAKING_LABEL, ADDRESS, mailtoInfo, hrefKennismaking } from '@
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
+import PhotoCredit from '@/components/PhotoCredit'
 import styles from './Footer.module.css'
 
 const year = new Date().getFullYear()
@@ -10,6 +11,8 @@ const year = new Date().getFullYear()
 type FooterProps = {
   /** Foto boven, tekst onder. */
   photoFirst?: boolean
+  /** Geen footerfoto — alleen copy (bijv. teampagina na een fotosectie). */
+  photoless?: boolean
   /** home = homepage-foto, landing = groepsles, coaching = coachingsessie, trainen = sled/straps. Standaard: landing bij photoFirst, anders home. */
   photoSet?: 'home' | 'landing' | 'coaching' | 'trainen' | 'zakelijk'
   /** solid = harde snede navy + oranje lijn (standaard), light = off-white, gradient = navy → off-white, gradient-warm = off-white → oranje (test), dark = navy zonder solid-snede. */
@@ -59,6 +62,7 @@ const ZAKELIJK_PHOTO = {
 
 export default function Footer({
   photoFirst = false,
+  photoless = false,
   photoSet,
   tone = 'solid',
   ctaless = false,
@@ -164,15 +168,18 @@ export default function Footer({
 
       <div className={styles.ctaBottom}>
         <div className={`${styles.bottomBar} ${styles.bottomBarFlush}`}>
-          <div className={styles.bottomBrand}>
-            <span className={styles.brandSmall}>STARK!</span>
-            <span className={styles.meta}>
-              &copy; {year} Hardenberg
-              <span className={styles.metaSep} aria-hidden>
-                ·
+          <div className={styles.bottomBrandStack}>
+            <div className={styles.bottomBrand}>
+              <span className={styles.brandSmall}>STARK!</span>
+              <span className={styles.meta}>
+                &copy; {year} Hardenberg
+                <span className={styles.metaSep} aria-hidden>
+                  ·
+                </span>
+                Opgericht 2013
               </span>
-              Opgericht 2013
-            </span>
+            </div>
+            <PhotoCredit className={styles.photoCredit} />
           </div>
           {contactBlock}
         </div>
@@ -184,36 +191,43 @@ export default function Footer({
       <div className={styles.content}>
         <div className={styles.inner}>
           <div className={styles.colStart}>
-            <p className={styles.welcome}>Wees welkom.</p>
-            <p className={styles.brand}>
-              {brandPrefix ? (
-                <>
-                  <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
-                </>
-              ) : null}
-              STARK!
-            </p>
-            <p className={styles.meta}>
-              &copy; {year} STARK! Hardenberg
-              <span className={styles.metaSep} aria-hidden>
-                ·
-              </span>
-              Opgericht 2013
-            </p>
+            <div className={styles.colHead}>
+              <p className={styles.welcome}>Wees welkom</p>
+              <p className={styles.brand}>
+                {brandPrefix ? (
+                  <>
+                    <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
+                  </>
+                ) : null}
+                STARK!
+              </p>
+            </div>
+            <div className={styles.colFoot}>
+              <p className={styles.meta}>
+                &copy; {year} STARK! Hardenberg
+                <span className={styles.metaSep} aria-hidden>
+                  ·
+                </span>
+                Opgericht 2013
+              </p>
+              <PhotoCredit className={styles.photoCredit} />
+            </div>
           </div>
 
           <div className={styles.colEnd}>
             {!ctaless ? (
               <>
-                <p className={styles.lead}>
-                  Klaar om sterker te worden in lijf en hoofd?
-                </p>
-
-                {actionsBlock}
+                <div className={styles.colHead}>
+                  <p className={styles.lead}>
+                    Klaar om <span className={styles.leadEmphasis}>sterker</span> te worden in{' '}
+                    <span className={styles.leadEmphasis}>lijf en hoofd</span>?
+                  </p>
+                </div>
+                <div className={styles.colMid}>{actionsBlock}</div>
               </>
             ) : null}
 
-            {contactBlock}
+            <div className={styles.colFoot}>{contactBlock}</div>
           </div>
         </div>
       </div>
@@ -234,6 +248,14 @@ export default function Footer({
     return (
       <footer className={`${styles.footer} ${styles.footerCta} ${toneClass}`}>
         {prominentBody}
+      </footer>
+    )
+  }
+
+  if (photoless) {
+    return (
+      <footer className={`${styles.footer} ${styles.footerPhotoless} ${toneClass}`}>
+        {content}
       </footer>
     )
   }

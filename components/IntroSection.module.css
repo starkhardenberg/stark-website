@@ -80,7 +80,7 @@
 
 .lineRest {
   margin: 0;
-  max-width: 42ch;
+  max-width: 52ch;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 400;
@@ -99,6 +99,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   padding: 12px 18px;
   border: 1px solid rgba(33, 36, 49, 0.22);
   font-family: var(--font-body), sans-serif;
@@ -157,12 +158,12 @@
   }
 
   .manifest {
-    grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
-    gap: clamp(40px, 5vw, 80px);
+    grid-template-columns: minmax(220px, 28%) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 72px);
   }
 
   .headingCol {
-    padding-right: clamp(24px, 3vw, 40px);
+    padding-right: clamp(16px, 2vw, 28px);
   }
 
   .heading {
@@ -171,6 +172,10 @@
   }
 
   .copyCol {
-    padding-left: clamp(8px, 1vw, 16px);
+    padding-left: 0;
+  }
+
+  .lineRest {
+    max-width: none;
   }
 }
