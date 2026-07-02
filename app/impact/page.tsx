@@ -32,7 +32,7 @@ const IMPACT_STEPS = [
 ] as const
 
 export const metadata = {
-  title: 'Impact — 12 weken individueel traject — STARK! Hardenberg',
+  title: 'Impact — 12 weken individueel traject — STARK Hardenberg',
   description:
     'Twaalf weken waarin je stappen zet die ertoe doen. Fysiek, mentaal, of allebei, met één vaste coach aan je zijde.',
 }
@@ -44,7 +44,7 @@ export default function ImpactPage() {
         <div className={landing.heroBg}>
           <Image
             src="/images/foto-coaching-tegel-impact.png"
-            alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg"
+            alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK Hardenberg"
             fill
             className={`${landing.heroBgImg} ${landing.heroBgImgCoaching}`}
             sizes="100vw"
@@ -98,7 +98,7 @@ export default function ImpactPage() {
             <p className={styles.reintegratieNote}>
               Soms zetten we Impact in als re-integratietraject, voor wie is uitgevallen, bijvoorbeeld door een burn-out. Een werkgever of bedrijfsarts kan doorverwijzen.{' '}
               <Link href="/zakelijk" className={styles.reintegratieLink}>
-                Lees meer over bedrijven bij STARK!
+                Lees meer over bedrijven bij STARK
               </Link>
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function ImpactPage() {
           <div className={styles.trajectMedia}>
             <Image
               src="/images/foto-coaching-samen.jpg"
-              alt="Coachingmoment tijdens een Impact-traject bij STARK! Hardenberg"
+              alt="Coachingmoment tijdens een Impact-traject bij STARK Hardenberg"
               fill
               className={styles.trajectMediaImg}
               sizes="(min-width: 860px) 40vw, 100vw"

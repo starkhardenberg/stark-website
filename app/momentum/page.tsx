@@ -1,10 +1,15 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import { momentumFaq } from '@/components/faq/faq-momentum'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getMomentumPageTestimonials, heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
+import { hrefKennismaking } from '@/lib/contact'
+import {
+  MOMENTUM_NEXT_START_HEADLINE,
+} from '@/lib/momentum-dates'
 import { oswaldTrim } from '@/lib/displayTrim'
 import landing from '../landing.module.css'
 import styles from './momentum.module.css'
@@ -14,7 +19,7 @@ const MOMENTUM_STEPS = [
     num: '01',
     timing: 'Doorlopend',
     title: 'Fysieke training',
-    desc: 'Twintig uur training op jouw niveau. Sterker worden in je lijf en tegelijk je mindset trainen op het moment dat het zwaar wordt. Tempo, groepsdruk en het gevoel dat je er niet alleen voor staat.',
+    desc: 'Twintig uur training op jouw niveau. Sterker worden in je lijf en tegelijk je mindset trainen als het je uitdaagt. Tempo, groepsdruk en het gevoel dat je er niet alleen voor staat.',
   },
   {
     num: '02',
@@ -30,8 +35,18 @@ const MOMENTUM_STEPS = [
   },
 ] as const
 
+const MOMENTUM_START_STEP = {
+  num: '04',
+  timing: MOMENTUM_NEXT_START_HEADLINE,
+  title: 'Start',
+} as const
+
+function getMomentumProgramSteps() {
+  return [...MOMENTUM_STEPS, MOMENTUM_START_STEP]
+}
+
 export const metadata = {
-  title: 'Momentum — 10 weken groepsprogramma — STARK! Hardenberg',
+  title: 'Momentum — 10 weken groepsprogramma — STARK Hardenberg',
   description:
     'Tien weken samen verder dan alleen. Fysieke training plus groepscoaching in een vaste kleine groep van maximaal tien mensen.',
 }
@@ -43,7 +58,7 @@ export default function MomentumPage() {
         <div className={landing.heroBg}>
           <Image
             src="/images/foto-coaching-tegel-momentum.png"
-            alt="Groep in gesprek tijdens Momentum bij STARK! Hardenberg"
+            alt="Groep in gesprek tijdens Momentum bij STARK Hardenberg"
             fill
             className={`${landing.heroBgImg} ${landing.heroBgImgClean}`}
             sizes="100vw"
@@ -58,8 +73,8 @@ export default function MomentumPage() {
             <span className={landing.heroLead}>MOMENTUM</span>
             <span className={landing.heroPunch}>BIJ STARK</span>
           </h1>
-          <p className={`${landing.heroSub} ${styles.heroSubNavy}`}>
-            10 weken waarin je lijf en hoofd samen trainen, zodat je eindelijk voor elkaar krijgt wat er voor
+          <p className={`${landing.heroSub} ${landing.heroSubNavy}`}>
+            Tien weken waarin je lijf en hoofd samen trainen, zodat je eindelijk voor elkaar krijgt wat er voor
             jou toe doet.
           </p>
         </div>
@@ -89,7 +104,6 @@ export default function MomentumPage() {
                 <p className={landing.introColLabel}>Dit wil je nu.</p>
                 <ul className={landing.introColList}>
                   <li>Een vaste groep van max. 10 mensen die dezelfde weg lopen.</li>
-                  <li>Oefenen als het zwaar wordt, niet achteraf praten over mindset.</li>
                   <li>Tien weken structuur waarin je lijf en hoofd het samen doen.</li>
                 </ul>
               </div>
@@ -133,7 +147,7 @@ export default function MomentumPage() {
           <div className={styles.trajectMedia}>
             <Image
               src="/images/foto-coaching-samen.jpg"
-              alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg"
+              alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK Hardenberg"
               fill
               className={styles.trajectMediaImg}
               sizes="(min-width: 860px) 40vw, 100vw"
@@ -144,45 +158,100 @@ export default function MomentumPage() {
             <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
               Eén programma.
               <br />
-              <span className={landing.titleHeroOutline}>De opbouw</span>
+              <span className={landing.titleHeroOutline}>Wat erin zit</span>
             </h2>
             <p className={styles.trajectIntro}>
-              Alles zit erin. Training, groepscoaching en challenges lopen de tien weken samen op.
+              Training, coaching en challenges. Tien weken, één lijn.
             </p>
+
+            <div className={styles.proofBlock}>
+              <p className={styles.proofEyebrow}>In cijfers</p>
+              <div className={styles.hours}>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>20</span>
+                  <span className={styles.hoursLabel}>uur fysieke training</span>
+                </div>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>10</span>
+                  <span className={styles.hoursLabel}>uur groepscoaching</span>
+                </div>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>5</span>
+                  <span className={styles.hoursLabel}>mentale en fysieke challenges</span>
+                </div>
+              </div>
+            </div>
+
             <div className={styles.timeline}>
-              {MOMENTUM_STEPS.map((step) => (
+              {getMomentumProgramSteps().map((step) => (
                 <div key={step.num} className={styles.timelineItem}>
                   <span className={styles.timelineNum}>
-                    {step.num} <span className={styles.timelineTiming}>{step.timing}</span>
+                    {step.num}{' '}
+                    <span
+                      className={`${styles.timelineTiming}${
+                        step.num === '04' ? ` ${styles.timelineTimingDate}` : ''
+                      }`}
+                    >
+                      {step.timing}
+                    </span>
                   </span>
                   <h3 className={styles.timelineTitle}>{step.title}</h3>
-                  <p className={styles.timelineDesc}>{step.desc}</p>
+                  {step.num === '04' ? (
+                    <p className={styles.timelineDesc}>
+                      <Link href={hrefKennismaking} className={styles.timelineLink}>
+                        Plan een kennismaking
+                      </Link>
+                      . Samen kijken we of dit past bij wat je zoekt. Na het gesprek weet je wat je wilt.
+                      Doe je mee, dan begin je op die startdatum, met jou erbij maximaal 10 mensen.
+                    </p>
+                  ) : (
+                    <p className={styles.timelineDesc}>{step.desc}</p>
+                  )}
                 </div>
               ))}
             </div>
-
-            <div className={styles.hours}>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>20</span>
-                <span className={styles.hoursLabel}>uur fysieke training</span>
-              </div>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>10</span>
-                <span className={styles.hoursLabel}>uur groepscoaching</span>
-              </div>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>5</span>
-                <span className={styles.hoursLabel}>mentale en fysieke challenges</span>
-              </div>
-            </div>
-            <p className={styles.hoursNote}>
-              Tien weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma.
-            </p>
           </div>
         </div>
       </section>
 
       <TestimonialsSection hero={heroQuoteRebekka} items={getMomentumPageTestimonials()} />
+
+      <section
+        className={`${landing.introSection} ${landing.introSectionLight} ${styles.fitFilter}`}
+        aria-label="Voor wie Momentum past"
+      >
+        <div className={landing.introRow}>
+          <div className={landing.introHead}>
+            <p className={landing.introLabel}>Eerlijk is eerlijk</p>
+            <h2 className={landing.introStatement}>Voor wie dit werkt.</h2>
+          </div>
+          <div className={landing.introBody}>
+            <div className={landing.introCols}>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit is iets voor jou als</p>
+                <ul className={landing.introColList}>
+                  <li>Je weet wat je zou moeten doen. Op het moment zelf gebeurt het net niet.</li>
+                  <li>Je wilt tien weken echt committen, met een vaste groep naast je.</li>
+                  <li>Je hebt genoeg schema&apos;s en goede voornemens gehad.</li>
+                </ul>
+              </div>
+              <div className={styles.fitFilterColAlt}>
+                <p className={styles.fitFilterColLabel}>Kies iets anders als</p>
+                <ul className={styles.fitFilterColList}>
+                  <li>Je zoekt alleen een trainingsschema of losse lessen.</li>
+                  <li>Je wilt 1-op-1, geen groep.</li>
+                  <li>Je kunt de komende tien weken de sessies niet vrijmaken.</li>
+                  <li>Je bent nu nog niet toe aan tien weken doorzetten.</li>
+                </ul>
+              </div>
+            </div>
+            <p className={styles.fitFilterClose}>
+              Twijfel je? Dat zoeken we samen uit in de{' '}
+              <Link href={hrefKennismaking}>kennismaking</Link>. Vrijblijvend.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className={landing.faqSection}>
         <div className={landing.faqInner}>

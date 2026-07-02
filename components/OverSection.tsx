@@ -21,7 +21,7 @@ export default function OverSection() {
             </p>
             <p className={styles.body}>
               Onze trainers zijn intern opgeleid: theorie, stage, opdrachten en feedback. Zodat ze de
-              STARK! trainingsaanpak volledig eigen hebben gemaakt.
+              STARK trainingsaanpak volledig eigen hebben gemaakt.
             </p>
             <p className={styles.body}>
               Het draait om jou en jouw doel. Daarom houden we de lijntjes kort en checken we

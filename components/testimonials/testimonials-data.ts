@@ -46,7 +46,7 @@ export const heroQuoteAmanda: HeroQuote = {
   name: 'Amanda',
   context: 'Deelnemer Momentum (de vrouwen editie, voorheen Camp Leone)',
   image: '/images/foto-vrouw-lachen.jpg',
-  imageAlt: 'Amanda, deelnemer Momentum bij STARK! Hardenberg',
+  imageAlt: 'Amanda, deelnemer Momentum bij STARK Hardenberg',
 }
 
 /** Alle testimonials — één bron voor homepage, Momentum en Impact. */
@@ -299,7 +299,7 @@ export const heroQuoteRenske: HeroQuote = {
   name: 'Renske',
   context: 'Groepstraining',
   image: '/images/foto-trainen-quotes-renske.jpg',
-  imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
+  imageAlt: 'Renske tijdens groepstraining bij STARK Hardenberg',
 }
 
 const TRAINEN_PAGE_HERO_ID = 'renske-1'
@@ -325,7 +325,7 @@ export const heroQuoteRebekka: HeroQuote = {
   name: 'Rebekka',
   context: 'Momentum traject',
   image: '/images/foto-momentum-quotes-hero.png',
-  imageAlt: 'Rebekka tijdens sledpull-training bij STARK! Hardenberg',
+  imageAlt: 'Rebekka tijdens sledpull-training bij STARK Hardenberg',
   imageBw: true,
   objectPosition: 'center 42%',
 }
@@ -351,7 +351,7 @@ export const heroQuoteRenee: HeroQuote = {
   name: 'Renee',
   context: 'Impact traject',
   image: '/images/foto-impact-quotes-renee.png',
-  imageAlt: 'Renee met weerstandsband tijdens training bij STARK! Hardenberg',
+  imageAlt: 'Renee met weerstandsband tijdens training bij STARK Hardenberg',
   imageBw: true,
   objectPosition: '48% 14%',
   imageScale: 1.08,

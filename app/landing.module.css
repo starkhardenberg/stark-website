@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   STARK! — Industrial landing page system
+   STARK — Industrial landing page system
    Direction B: Hyrox / Nike Training
    ═══════════════════════════════════════ */
 
@@ -204,6 +204,15 @@
 .heroSub strong {
   color: var(--off);
   font-weight: 600;
+}
+
+/* Lichte hero-foto: ondertitel navy i.p.v. wit */
+.heroSub.heroSubNavy {
+  color: var(--navy);
+}
+
+.heroSub.heroSubNavy strong {
+  color: var(--navy);
 }
 
 .heroList {

@@ -14,7 +14,7 @@ import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
-  title: 'Coaching — STARK! Hardenberg',
+  title: 'Coaching — STARK Hardenberg',
   description: 'Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar.',
 }
 
@@ -25,7 +25,7 @@ export default function CoachingPage() {
         <div className={styles.heroBg}>
           <Image
             src="/images/foto-coaching-hero-flipchart.png"
-            alt="Coachinggesprek met scherpe vragen bij STARK! Hardenberg"
+            alt="Coachinggesprek met scherpe vragen bij STARK Hardenberg"
             fill
             className={`${styles.heroBgImg} ${styles.heroBgImgCoaching}`}
             sizes="100vw"

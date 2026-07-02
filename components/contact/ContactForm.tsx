@@ -146,7 +146,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
 
       {vraagtNaamVia && (
         <div className={`${styles.field} ${styles.fieldNested}`}>
-          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK!?</label>
+          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK?</label>
           <input
             id="ontdekt_via_naam"
             name="ontdekt_via_naam"

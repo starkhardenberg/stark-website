@@ -12,7 +12,7 @@ export const trainenFaq = [
   {
     question: 'Wat is het Startpakket en is dat verplicht?',
     answer:
-      'Het Startpakket is vier sessies van een uur, volledig 1-op-1. We doen een nulmeting en je leert bewegen zoals dat bij STARK! hoort. Iedereen vanaf 16 jaar start hier, dat is verplicht voordat je in de groep meedoet.',
+      'Het Startpakket is vier sessies van een uur, volledig 1-op-1. We doen een nulmeting en je leert bewegen zoals dat bij STARK hoort. Iedereen vanaf 16 jaar start hier, dat is verplicht voordat je in de groep meedoet.',
   },
   {
     question: 'Hoe lang duurt een les en zijn het vaste momenten?',

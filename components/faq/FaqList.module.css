@@ -97,6 +97,20 @@
   color: rgba(245, 245, 245, 0.7);
 }
 
+.answer a {
+  color: var(--orange);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 107, 0, 0.45);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.answer a:hover {
+  color: var(--off);
+  text-decoration-color: var(--off);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .answerWrap,
   .indicator,

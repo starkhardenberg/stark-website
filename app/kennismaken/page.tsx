@@ -8,7 +8,7 @@ import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './kennismaken.module.css'
 
 export const metadata: Metadata = {
-  title: 'Kom kennismaken — STARK! Hardenberg',
+  title: 'Kom kennismaken — STARK Hardenberg',
   description:
     'Vrijblijvend kennismakingsgesprek van ongeveer 1 uur. Gratis. We kijken samen wat bij je past.',
 }

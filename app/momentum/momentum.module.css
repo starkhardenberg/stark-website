@@ -1,12 +1,80 @@
-.heroSubNavy {
+/* Eerlijke filter — tussen testimonials en FAQ */
+.fitFilterColAlt {
+  margin: 0;
+  padding: clamp(18px, 2.5vw, 26px) clamp(18px, 2.5vw, 24px);
+  padding-left: clamp(20px, 2.5vw, 26px);
+  border-left: 2px solid rgba(234, 92, 31, 0.32);
+  background: var(--navy);
+}
+
+.fitFilterColLabel {
+  display: block;
+  margin: 0 0 7px;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(245, 245, 245, 0.88);
+}
+
+.fitFilterColList {
+  margin: 0;
+  padding: 0;
+  max-width: 42ch;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 18px);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.68);
+}
+
+.fitFilterColList li {
+  margin: 0;
+  padding: 0 0 0 1.35em;
+  position: relative;
+}
+
+.fitFilterColList li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0.12em;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.fitFilterClose {
+  margin: 0;
+  max-width: 44ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.7vw, 18px);
+  line-height: 1.6;
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.fitFilterClose a {
   color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.fitFilterClose a:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
 }
 
 .trajectIntro {
   margin: 0 0 clamp(28px, 4vw, 40px);
   max-width: none;
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.6;
+  font-size: clamp(17px, 2.1vw, 20px);
+  line-height: 1.65;
   color: rgba(245, 245, 245, 0.68);
 }
 
@@ -16,6 +84,7 @@
 
 .opbouwLight .timeline {
   border-left-color: rgba(234, 92, 31, 0.5);
+  border-top-color: rgba(234, 92, 31, 0.45);
 }
 
 .opbouwLight .timelineItem {
@@ -27,23 +96,55 @@
 }
 
 .opbouwLight .timelineDesc {
-  color: rgba(33, 36, 49, 0.64);
+  color: rgba(33, 36, 49, 0.78);
 }
 
 .opbouwLight .timelineTiming {
-  color: rgba(33, 36, 49, 0.42);
+  color: rgba(33, 36, 49, 0.55);
 }
 
 .opbouwLight .hours {
-  border-top-color: rgba(234, 92, 31, 0.45);
+  border-top: none;
 }
 
 .opbouwLight .hoursLabel {
-  color: rgba(33, 36, 49, 0.74);
+  color: rgba(33, 36, 49, 0.85);
 }
 
-.opbouwLight .hoursNote {
-  color: rgba(33, 36, 49, 0.52);
+.proofBlock {
+  margin-top: clamp(24px, 3.5vw, 36px);
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(234, 92, 31, 0.45);
+  max-width: 640px;
+}
+
+.proofEyebrow {
+  margin: 0 0 clamp(16px, 2.5vw, 20px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.timelineLink {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.timelineLink:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+
+.timelineTimingDate {
+  color: var(--navy);
+  font-weight: 700;
 }
 
 .trajectGrid {
@@ -157,50 +258,39 @@
 
 .timelineTiming {
   margin-left: 8px;
-  color: rgba(245, 245, 245, 0.4);
+  font-weight: 600;
+  color: rgba(245, 245, 245, 0.55);
 }
 
 .hours {
-  margin-top: clamp(32px, 5vw, 48px);
-  padding-top: clamp(24px, 3.5vw, 32px);
-  border-top: 1px solid rgba(234, 92, 31, 0.35);
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(16px, 2.5vw, 22px);
-  max-width: 640px;
+  gap: clamp(20px, 3vw, 28px);
 }
 
 .hoursItem {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
 .hoursNum {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(56px, 9vw, 96px);
-  line-height: 0.9;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
-  min-width: 1.6em;
+  font-size: clamp(52px, 8vw, 80px);
+  line-height: 0.92;
+  color: var(--navy);
+  letter-spacing: -0.02em;
 }
 
 .hoursLabel {
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(14px, 1.7vw, 16px);
+  font-size: clamp(16px, 1.9vw, 18px);
+  font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(245, 245, 245, 0.72);
-}
-
-.hoursNote {
-  margin: clamp(16px, 2.5vw, 22px) 0 0;
-  max-width: none;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(13px, 1.5vw, 15px);
-  line-height: 1.55;
-  color: rgba(245, 245, 245, 0.5);
+  line-height: 1.45;
+  color: rgba(33, 36, 49, 0.85);
 }
 
 @media (min-width: 640px) {
@@ -208,17 +298,14 @@
     grid-template-columns: repeat(3, 1fr);
     gap: clamp(20px, 3vw, 32px);
   }
-
-  .hoursItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
 }
 
 .timeline {
   display: flex;
   flex-direction: column;
+  margin-top: clamp(28px, 4vw, 40px);
+  padding-top: clamp(24px, 3.5vw, 32px);
+  border-top: 1px solid rgba(234, 92, 31, 0.35);
   border-left: 2px solid rgba(234, 92, 31, 0.35);
   padding-left: clamp(20px, 3vw, 28px);
   max-width: 640px;
@@ -248,29 +335,30 @@
 
 .timelineNum {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: clamp(13px, 1.5vw, 15px);
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--orange);
 }
 
 .timelineTitle {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(20px, 2.8vw, 26px);
+  font-size: clamp(22px, 3vw, 28px);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--off);
-  line-height: 1.05;
+  line-height: 1.08;
 }
 
 .timelineDesc {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: rgba(245, 245, 245, 0.62);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2.1vw, 20px);
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.72);
 }

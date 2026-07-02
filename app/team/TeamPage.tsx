@@ -15,7 +15,7 @@ export default function TeamPage() {
         <div className={styles.heroBg}>
           <Image
             src="/images/team/hero-kettlebells.png"
-            alt="Kettlebells op de planken in de STARK! gym"
+            alt="Kettlebells op de planken in de STARK gym"
             fill
             className={styles.heroBgImg}
             sizes="100vw"
@@ -27,7 +27,7 @@ export default function TeamPage() {
           <span className={styles.heroSlash} aria-hidden />
           <h1 className={styles.heroTitle}>
             <span className={`${styles.heroLead} ${styles.heroLeadSmaller}`}>Wi&apos;j bint</span>
-            <span className={styles.heroPunch}>STARK!</span>
+            <span className={styles.heroPunch}>STARK</span>
           </h1>
           <p className={styles.heroSub}>Een team van 11 mensen. Eén aanpak.</p>
         </div>
@@ -61,12 +61,12 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className={styles.groupBand} aria-label="Het STARK! team">
+      <section className={styles.groupBand} aria-label="Het STARK team">
         <div className={styles.groupBandInner}>
           <div className={styles.groupBandMedia}>
             <Image
               src="/images/team-home.jpg"
-              alt="Het STARK! team, lachend voor het logo in zwart-wit"
+              alt="Het STARK team, lachend voor het logo in zwart-wit"
               fill
               className={styles.groupBandImg}
               sizes="100vw"
@@ -141,10 +141,10 @@ export default function TeamPage() {
               Sterkste Vrouw.
             </p>
             <p className={styles.originBody}>
-              Inmiddels runnen we STARK! samen, als eigenaren en als partners thuis.
+              Inmiddels runnen we STARK samen, als eigenaren en als partners thuis.
             </p>
             <p className={styles.originBody}>
-              Eind 2020 lieten we de CrossFit-naam los en gingen we verder als STARK! Het karakter
+              Eind 2020 lieten we de CrossFit-naam los en gingen we verder als STARK. Het karakter
               bleef, de naam paste beter bij ons.
             </p>
             <p className={styles.originBody}>

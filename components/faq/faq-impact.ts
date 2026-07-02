@@ -7,7 +7,7 @@ export const impactFaq = [
   {
     question: 'Moet ik al lid zijn om Impact te volgen?',
     answer:
-      'Nee. Impact begint met het startpakket en sluit aan op het trainen bij STARK!. In een kennismaking kijken we samen wat voor jou logisch is.',
+      'Nee. Impact begint met het startpakket en sluit aan op het trainen bij STARK. In een kennismaking kijken we samen wat voor jou logisch is.',
   },
   {
     question: 'Hoe lang duurt Impact en wat zit erin?',

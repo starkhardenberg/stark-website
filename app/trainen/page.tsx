@@ -14,7 +14,7 @@ import { oswaldTrim } from '@/lib/displayTrim'
 import styles from '../landing.module.css'
 
 export const metadata = {
-  title: 'Trainen — STARK! Hardenberg',
+  title: 'Trainen — STARK Hardenberg',
   description:
     'Groepslessen met coaching voor volwassenen, ZilverFitness en Kids & Teens. Start waar jij staat, met techniek en veiligheid voorop.',
 }
@@ -26,7 +26,7 @@ export default function TrainenPage() {
         <div className={styles.heroBg}>
           <Image
             src="/images/foto-trainen-landingspagina.png"
-            alt="Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg"
+            alt="Deelnemer tijdens een squat in de groepsles bij STARK Hardenberg"
             fill
             className={`${styles.heroBgImg} ${styles.heroBgImgTrainen} ${styles.heroBgImgTrainenLanding}`}
             sizes="100vw"

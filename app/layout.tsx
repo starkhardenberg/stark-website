@@ -17,10 +17,10 @@ const barlow = Barlow({
 })
 
 export const metadata: Metadata = {
-  title: 'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
-  description: 'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
+  title: 'STARK Hardenberg — Sterker worden. In lijf en hoofd.',
+  description: 'STARK Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
   openGraph: {
-    title: 'STARK! Hardenberg',
+    title: 'STARK Hardenberg',
     description: 'Coaching, bedrijven en trainen. Hardenberg.',
     locale: 'nl_NL',
     type: 'website',

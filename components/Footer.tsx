@@ -26,7 +26,7 @@ type FooterProps = {
   ctaLabel?: string
   /** Eigen achtergrondfoto voor de prominente afsluit-CTA (anders de photoSet-foto). */
   ctaImage?: string
-  /** Woord vóór het outline-woordmerk in de standaard-footer, bijv. "BIJ" → "BIJ STARK!". */
+  /** Woord vóór het outline-woordmerk in de standaard-footer, bijv. "BIJ" → "BIJ STARK". */
   brandPrefix?: string
 }
 
@@ -170,7 +170,7 @@ export default function Footer({
         <div className={`${styles.bottomBar} ${styles.bottomBarFlush}`}>
           <div className={styles.bottomBrandStack}>
             <div className={styles.bottomBrand}>
-              <span className={styles.brandSmall}>STARK!</span>
+              <span className={styles.brandSmall}>STARK</span>
               <span className={styles.meta}>
                 &copy; {year} Hardenberg
                 <span className={styles.metaSep} aria-hidden>
@@ -199,12 +199,12 @@ export default function Footer({
                     <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
                   </>
                 ) : null}
-                STARK!
+                STARK
               </p>
             </div>
             <div className={styles.colFoot}>
               <p className={styles.meta}>
-                &copy; {year} STARK! Hardenberg
+                &copy; {year} STARK Hardenberg
                 <span className={styles.metaSep} aria-hidden>
                   ·
                 </span>

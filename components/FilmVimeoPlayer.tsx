@@ -57,7 +57,7 @@ export default function FilmVimeoPlayer({ src }: Props) {
     <iframe
       ref={iframeRef}
       src={src}
-      title="Bedrijfsfilm STARK! Hardenberg"
+      title="Bedrijfsfilm STARK Hardenberg"
       className={styles.player}
       loading="lazy"
       allow="fullscreen; picture-in-picture; encrypted-media"

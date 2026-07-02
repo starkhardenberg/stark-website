@@ -17,9 +17,9 @@ import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = {
-  title: 'Contact — STARK! Hardenberg',
+  title: 'Contact — STARK Hardenberg',
   description:
-    'Adres, route, telefoon en e-mail. Stel je vraag via het formulier. Je spreekt altijd een mens bij STARK! Hardenberg.',
+    'Adres, route, telefoon en e-mail. Stel je vraag via het formulier. Je spreekt altijd een mens bij STARK Hardenberg.',
 }
 
 type PageProps = {
@@ -114,7 +114,7 @@ export default function ContactPage({ searchParams }: PageProps) {
 
           <div className={styles.mapWrap}>
             <iframe
-              title="STARK! Hardenberg op Google Maps"
+              title="STARK Hardenberg op Google Maps"
               src={ADDRESS.mapsEmbed}
               className={styles.map}
               loading="lazy"

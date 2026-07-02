@@ -10,7 +10,7 @@ export default function FilmSection() {
   if (!vimeoSrc) return null
 
   return (
-    <section className={styles.film} aria-label="Bedrijfsfilm STARK! Hardenberg">
+    <section className={styles.film} aria-label="Bedrijfsfilm STARK Hardenberg">
       <div className={styles.playerWrap}>
         <FilmVimeoPlayer src={vimeoSrc} />
       </div>

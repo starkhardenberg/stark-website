@@ -1,11 +1,11 @@
 'use client'
 
-import { useId, useState } from 'react'
+import { useId, useState, type ReactNode } from 'react'
 import styles from './FaqList.module.css'
 
 export type FaqItem = {
   question: string
-  answer: string
+  answer: ReactNode
 }
 
 type FaqListProps = {
@@ -50,7 +50,7 @@ export default function FaqList({ items }: FaqListProps) {
             </button>
             <div id={answerId} className={styles.answerWrap} role="region" aria-hidden={!isOpen}>
               <div className={styles.answerInner}>
-                <p className={styles.answer}>{item.answer}</p>
+                <div className={styles.answer}>{item.answer}</div>
               </div>
             </div>
           </div>

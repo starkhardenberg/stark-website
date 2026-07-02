@@ -47,14 +47,14 @@ export type ContactOntdekt =
   | 'doorverwijzing'
   | 'anders'
 
-/** Bij deze keuze is een naam verplicht (wie bij STARK!) */
+/** Bij deze keuze is een naam verplicht (wie bij STARK) */
 export const CONTACT_ONTDEKT_VIA_LID: ContactOntdekt = 'via-lid'
 
 /** Bij deze keuze is toelichting verplicht */
 export const CONTACT_ONTDEKT_ANDERS: ContactOntdekt = 'anders'
 
 export const CONTACT_ONTDEKT_OPTIONS: { value: ContactOntdekt; label: string }[] = [
-  { value: 'via-lid', label: 'Via iemand die bij STARK! traint' },
+  { value: 'via-lid', label: 'Via iemand die bij STARK traint' },
   { value: 'via-kennis', label: 'Via vriend(in) of familie' },
   { value: 'google', label: 'Google of online zoeken' },
   { value: 'social', label: 'Social media (Instagram, Facebook, etc.)' },

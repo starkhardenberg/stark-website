@@ -40,7 +40,7 @@ const manifestLines: { id: string; lead: ReactNode; rest: string }[] = [
 
 export default function IntroSection() {
   return (
-    <section className={styles.intro} aria-label="Introductie STARK!">
+    <section className={styles.intro} aria-label="Introductie STARK">
       <div className={styles.inner}>
         <div className={styles.manifest}>
           <div className={styles.headingCol}>
