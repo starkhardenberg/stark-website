@@ -14,8 +14,11 @@ export const HERO_VIDEO_POSTER =
   process.env.NEXT_PUBLIC_HERO_VIDEO_POSTER?.trim() ??
   'https://res.cloudinary.com/zvwcoygn/video/upload/so_0/Stark_Hero_uo91kd.jpg'
 
+/** Hero HQ op Vimeo; env var overschrijft voor andere omgevingen. */
+const VIMEO_HERO_DEFAULT_ID = '1205831605'
+
 export const VIMEO_HERO_VIDEO_ID =
-  process.env.NEXT_PUBLIC_VIMEO_HERO_ID?.trim() ?? ''
+  process.env.NEXT_PUBLIC_VIMEO_HERO_ID?.trim() || VIMEO_HERO_DEFAULT_ID
 
 /** Beeldverhouding bronvideo op Vimeo, bijv. "16/9" of "2.39" */
 export function heroVideoAspect(): number {

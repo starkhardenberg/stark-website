@@ -2,8 +2,11 @@
  * Bedrijfsfilm (homepage, onder intro). Vul het video-ID in of zet
  * NEXT_PUBLIC_VIMEO_FILM_ID in .env.development / Netlify env vars.
  */
+/** Zwart-wit bedrijfsfilm op Vimeo; env var overschrijft voor andere omgevingen. */
+const VIMEO_FILM_DEFAULT_ID = '1205831517'
+
 export const VIMEO_FILM_VIDEO_ID =
-  process.env.NEXT_PUBLIC_VIMEO_FILM_ID?.trim() ?? ''
+  process.env.NEXT_PUBLIC_VIMEO_FILM_ID?.trim() || VIMEO_FILM_DEFAULT_ID
 
 /** Startvolume bedrijfsfilm 0–1 (default 0.72). Geen autoplay. */
 export function vimeoFilmDefaultVolume(): number {
