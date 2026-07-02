@@ -6,6 +6,7 @@ import FaqList from '@/components/faq/FaqList'
 import { impactFaq } from '@/components/faq/faq-impact'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getImpactPageTestimonials, heroQuoteRenee } from '@/components/testimonials/testimonials-data'
+import { hrefKennismaking } from '@/lib/contact'
 import { oswaldTrim } from '@/lib/displayTrim'
 import landing from '../landing.module.css'
 import styles from './impact.module.css'
@@ -13,15 +14,15 @@ import styles from './impact.module.css'
 const IMPACT_STEPS = [
   {
     num: '01',
-    timing: 'Vanaf week 1',
-    title: 'Wekelijkse coaching',
-    desc: 'Elke week een uur 1-op-1, apart van de groep. Over wat er speelt, wat werkt en wat niet. Eén vaste coach, het hele traject.',
-  },
-  {
-    num: '02',
     timing: 'Eerste 2 weken',
     title: 'Het startpakket',
     desc: 'Vier 1-op-1 sessies. We brengen in kaart wat goed werkt in je lijf en wat niet, en je leert de basisbewegingen onder de knie te krijgen.',
+  },
+  {
+    num: '02',
+    timing: 'Vanaf week 1',
+    title: 'Wekelijkse coaching',
+    desc: 'Elke week een uur 1-op-1, apart van de groep. Over wat er speelt, wat werkt en wat niet. Eén vaste coach, het hele traject.',
   },
   {
     num: '03',
@@ -30,6 +31,16 @@ const IMPACT_STEPS = [
     desc: 'Twee keer per week trainen in een vaste groep. Iedereen loopt hetzelfde Impact-traject. Geen anonieme zaal, niemand is een nummer.',
   },
 ] as const
+
+const IMPACT_START_STEP = {
+  num: '04',
+  timing: 'Wanneer het past',
+  title: 'Start',
+} as const
+
+function getImpactProgramSteps() {
+  return [...IMPACT_STEPS, IMPACT_START_STEP]
+}
 
 export const metadata = {
   title: 'Impact — 12 weken individueel traject — STARK Hardenberg',
@@ -133,62 +144,123 @@ export default function ImpactPage() {
         </div>
       </section>
 
-      <section className={`${landing.section} ${landing.sectionWithOrangeBottom} ${landing.sectionLight} ${styles.opbouwLight}`}>
+      <section
+        className={`${landing.section} ${landing.sectionWithOrangeBottom} ${landing.sectionLight} ${styles.opbouwLight}`}
+        aria-label="Wat erin zit"
+      >
         <div className={styles.trajectGrid}>
           <div className={styles.trajectMedia}>
             <Image
-              src="/images/foto-coaching-samen.jpg"
-              alt="Coachingmoment tijdens een Impact-traject bij STARK Hardenberg"
+              src="/images/foto-coaching-tegel-impact-gesprek.png"
+              alt="Coach corrigeert de vorm bij een oefening tijdens Impact bij STARK Hardenberg"
               fill
               className={styles.trajectMediaImg}
               sizes="(min-width: 860px) 40vw, 100vw"
+              style={{ objectPosition: 'center 42%' }}
             />
           </div>
           <div className={styles.trajectMain}>
             <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
-              Eén traject.<br />
-              <span className={landing.titleHeroOutline}>De opbouw</span>
+              Eén traject.
+              <br />
+              <span className={landing.titleHeroOutline}>Wat erin zit</span>
             </h2>
             <p className={styles.trajectIntro}>
-              Alles zit erin. Coaching, startpakket en training lopen het hele traject samen op.
+              Startpakket, wekelijkse coaching en groepstraining. Twaalf weken, één lijn.
             </p>
+
+            <div className={styles.proofBlock}>
+              <p className={styles.proofEyebrow}>In cijfers</p>
+              <div className={styles.hours}>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>24</span>
+                  <span className={styles.hoursLabel}>uur groepstraining</span>
+                </div>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>4</span>
+                  <span className={styles.hoursLabel}>uur individuele training</span>
+                </div>
+                <div className={styles.hoursItem}>
+                  <span className={styles.hoursNum}>12</span>
+                  <span className={styles.hoursLabel}>uur persoonlijke coaching</span>
+                </div>
+              </div>
+              <p className={styles.hoursNote}>
+                Dat is wat we tellen. Geen strak weekschema dat je moet bijbenen.
+              </p>
+            </div>
+
             <div className={styles.timeline}>
-              {IMPACT_STEPS.map((step) => (
+              {getImpactProgramSteps().map((step) => (
                 <div key={step.num} className={styles.timelineItem}>
                   <span className={styles.timelineNum}>
-                    {step.num} <span className={styles.timelineTiming}>{step.timing}</span>
+                    {step.num}{' '}
+                    <span className={styles.timelineTiming}>{step.timing}</span>
                   </span>
                   <h3 className={styles.timelineTitle}>{step.title}</h3>
-                  <p className={styles.timelineDesc}>{step.desc}</p>
+                  {step.num === '04' ? (
+                    <p className={styles.timelineDesc}>
+                      <Link href={hrefKennismaking} className={styles.timelineLink}>
+                        Plan een kennismaking
+                      </Link>
+                      . Samen kijken we waar je staat en of Impact bij je past. Geen vaste startdatum: je
+                      stapt in wanneer het klopt.
+                    </p>
+                  ) : (
+                    <p className={styles.timelineDesc}>{step.desc}</p>
+                  )}
                 </div>
               ))}
             </div>
-
-            <div className={styles.hours}>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>24</span>
-                <span className={styles.hoursLabel}>uur groepstraining</span>
-              </div>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>4</span>
-                <span className={styles.hoursLabel}>uur individuele training</span>
-              </div>
-              <div className={styles.hoursItem}>
-                <span className={styles.hoursNum}>12</span>
-                <span className={styles.hoursLabel}>uur persoonlijke coaching</span>
-              </div>
-            </div>
-            <p className={styles.hoursNote}>Dat is wat we tellen. Geen strak weekschema dat je moet bijbenen.</p>
           </div>
         </div>
       </section>
 
       <TestimonialsSection hero={heroQuoteRenee} items={getImpactPageTestimonials()} />
 
+      <section
+        className={`${landing.introSection} ${landing.introSectionLight} ${styles.fitFilter}`}
+        aria-label="Voor wie Impact past"
+      >
+        <div className={landing.introRow}>
+          <div className={landing.introHead}>
+            <p className={landing.introLabel}>Eerlijk is eerlijk</p>
+            <h2 className={landing.introStatement}>Voor wie dit werkt.</h2>
+          </div>
+          <div className={landing.introBody}>
+            <div className={landing.introCols}>
+              <div className={landing.introCol}>
+                <p className={landing.introColLabel}>Dit is iets voor jou als</p>
+                <ul className={landing.introColList}>
+                  <li>Je maximale persoonlijke aandacht wilt, met één vaste coach het hele traject.</li>
+                  <li>Er iets speelt in je lijf, hoofd of beide, dat om meer vraagt dan alleen sporten.</li>
+                  <li>Je twaalf weken echt wilt committen, niet half of tussen door.</li>
+                </ul>
+              </div>
+              <div className={styles.fitFilterColAlt}>
+                <p className={styles.fitFilterColLabel}>Kies iets anders als</p>
+                <ul className={styles.fitFilterColList}>
+                  <li>Je een groepsprogramma zoekt met vaste startdata.</li>
+                  <li>Je alleen wilt trainen, zonder coaching.</li>
+                  <li>Je de komende twaalf weken de sessies niet kunt vrijmaken.</li>
+                  <li>Je nu nog niet toe bent aan twaalf weken doorzetten.</li>
+                </ul>
+              </div>
+            </div>
+            <p className={styles.fitFilterClose}>
+              Twijfel je? Dat zoeken we samen uit in de{' '}
+              <Link href={hrefKennismaking}>kennismaking</Link>. Vrijblijvend.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className={landing.faqSection}>
         <div className={landing.faqInner}>
           <span className={landing.label}>Wat je nog wilt weten</span>
-          <h2 className={landing.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+          <h2 className={landing.title} style={oswaldTrim('Goede')}>
+            Goede vragen
+          </h2>
           <FaqList items={impactFaq} />
         </div>
       </section>

@@ -15,6 +15,8 @@
     "open:home": "open http://127.0.0.1:3456/",
     "open:home-trainen": "open http://127.0.0.1:3456/#trainen",
     "open:trainen": "open http://127.0.0.1:3456/trainen",
+    "open:impact": "open http://127.0.0.1:3456/impact",
+    "open:momentum": "open http://127.0.0.1:3456/momentum",
     "open:coaching": "open http://127.0.0.1:3456/coaching",
     "open:zakelijk": "open http://127.0.0.1:3456/zakelijk",
     "open:team": "open http://127.0.0.1:3456/team",

@@ -13,6 +13,8 @@ type Props = {
   items: Testimonial[]
   /** Smaller hero-quoteblok, meer inspringend links/rechts (subtieler). */
   narrow?: boolean
+  /** Hero + carousel in één navy-blok (lichte kaartjes op donkere achtergrond). */
+  unifiedDark?: boolean
 }
 
 function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
@@ -68,18 +70,49 @@ export default function TestimonialsSection({
   hero,
   items,
   narrow = false,
+  unifiedDark = false,
 }: Props) {
   if (!hero && items.length === 0) return null
+
+  const innerHeroClass = [
+    styles.innerHero,
+    narrow ? styles.innerHeroNarrow : '',
+    unifiedDark ? styles.innerHeroUnified : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const sectionIntro = hero ? (
+    <div className={styles.sectionIntro}>
+      <p className={styles.sectionEyebrow}>{title}</p>
+      <h2 className={styles.sectionHeading}>{heading}</h2>
+    </div>
+  ) : null
+
+  if (unifiedDark) {
+    return (
+      <section className={`${styles.section} ${styles.sectionUnified}`} id={id}>
+        {hero ? (
+          <div className={innerHeroClass}>
+            {sectionIntro}
+            <HeroQuoteBlock hero={hero} />
+          </div>
+        ) : null}
+        {items.length > 0 ? (
+          <div className={styles.innerCarouselUnified}>
+            <RotatingTestimonials items={items} cardTone="light" />
+          </div>
+        ) : null}
+      </section>
+    )
+  }
 
   return (
     <>
       {hero ? (
         <section className={`${styles.section} ${styles.sectionHero}`} id={id}>
-          <div className={`${styles.innerHero}${narrow ? ` ${styles.innerHeroNarrow}` : ''}`}>
-            <div className={styles.sectionIntro}>
-              <p className={styles.sectionEyebrow}>{title}</p>
-              <h2 className={styles.sectionHeading}>{heading}</h2>
-            </div>
+          <div className={innerHeroClass}>
+            {sectionIntro}
             <HeroQuoteBlock hero={hero} />
           </div>
         </section>

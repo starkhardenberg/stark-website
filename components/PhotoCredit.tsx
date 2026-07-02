@@ -1,4 +1,4 @@
-import { PHOTO_CREDIT, VIDEO_CREDIT } from '@/lib/photo-credit'
+import { BEELDEN_CREDIT, PHOTO_CREDIT, VIDEO_CREDIT } from '@/lib/photo-credit'
 import styles from './PhotoCredit.module.css'
 
 type PhotoCreditProps = {
@@ -8,6 +8,9 @@ type PhotoCreditProps = {
 export default function PhotoCredit({ className }: PhotoCreditProps) {
   return (
     <div className={[styles.group, className].filter(Boolean).join(' ')}>
+      <p className={styles.credit}>
+        {BEELDEN_CREDIT.label}: {BEELDEN_CREDIT.text}
+      </p>
       <p className={styles.credit}>
         {PHOTO_CREDIT.label}:{' '}
         <a

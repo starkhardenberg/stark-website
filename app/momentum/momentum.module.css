@@ -70,6 +70,11 @@
   text-decoration-color: var(--orange);
 }
 
+/* Fit-filter: effen off-white na navy testimonials (geen oranje gradient) */
+.fitFilterPlain {
+  background: var(--off);
+}
+
 .trajectIntro {
   margin: 0 0 clamp(28px, 4vw, 40px);
   max-width: none;

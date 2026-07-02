@@ -105,6 +105,7 @@ export default function MomentumPage() {
                 <ul className={landing.introColList}>
                   <li>Een vaste groep van max. 10 mensen die dezelfde weg lopen.</li>
                   <li>Tien weken structuur waarin je lijf en hoofd het samen doen.</li>
+                  <li>Dat het deze keer wel lukt.</li>
                 </ul>
               </div>
             </div>
@@ -123,10 +124,12 @@ export default function MomentumPage() {
               Stop met <span className={landing.titleHeroOutline}>stoppen</span>
             </h2>
             <p className={styles.rippleIntro}>
-              Het patroon is vertrouwd. Je brein trekt je terug naar wat je kent zodra het spannend wordt.
+              Je begint. Je stopt. Je begint opnieuw.
             </p>
             <p className={styles.valueClose}>
-              Momentum is tien weken waarin je dat doorbreekt. In je lijf, met een groep naast je.
+              Als het ertoe doet, is er iets dat je tegenhoudt. En dus doe je het niet. Momentum maakt dat
+              zichtbaar en leert je het doorbreken. In een groep en met coaches die je scherp houden op de
+              momenten dat je liever even weg zou lopen.
             </p>
           </div>
           <div className={styles.valueRipple}>
@@ -214,10 +217,14 @@ export default function MomentumPage() {
         </div>
       </section>
 
-      <TestimonialsSection hero={heroQuoteRebekka} items={getMomentumPageTestimonials()} />
+      <TestimonialsSection
+        hero={heroQuoteRebekka}
+        items={getMomentumPageTestimonials()}
+        unifiedDark
+      />
 
       <section
-        className={`${landing.introSection} ${landing.introSectionLight} ${styles.fitFilter}`}
+        className={`${landing.introSection} ${landing.introSectionLight} ${styles.fitFilterPlain}`}
         aria-label="Voor wie Momentum past"
       >
         <div className={landing.introRow}>
@@ -240,8 +247,11 @@ export default function MomentumPage() {
                 <ul className={styles.fitFilterColList}>
                   <li>Je zoekt alleen een trainingsschema of losse lessen.</li>
                   <li>Je wilt 1-op-1, geen groep.</li>
-                  <li>Je kunt de komende tien weken de sessies niet vrijmaken.</li>
-                  <li>Je bent nu nog niet toe aan tien weken doorzetten.</li>
+                  <li>
+                    Je weet al dat je niet bij alle groepscoachingsessies van die tien weken aanwezig kunt zijn.
+                    Daarvoor plannen we geen inhaalmomenten.
+                  </li>
+                  <li>Je wilt flexibel blijven: losse sessies, geen vaste groep, geen vaste start.</li>
                 </ul>
               </div>
             </div>

@@ -13,6 +13,29 @@
   border-bottom: none;
 }
 
+.sectionUnified {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.innerHeroUnified {
+  padding-bottom: clamp(28px, 4vw, 40px);
+}
+
+.innerCarouselUnified {
+  padding: clamp(8px, 1.5vw, 16px) 0 clamp(64px, 8vw, 88px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 900px) {
+  .innerHeroUnified {
+    padding-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .innerCarouselUnified {
+    padding-bottom: 88px;
+  }
+}
+
 .innerHero {
   padding: clamp(88px, 11vw, 120px) 24px clamp(64px, 8vw, 88px);
 }
