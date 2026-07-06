@@ -185,6 +185,13 @@ export const allTestimonials: TestimonialEntry[] = [
     category: 'momentum',
   },
   {
+    id: 'vera-1',
+    text: 'Ik heb mijn vertrouwen in mijn lichaam na lange tijd teruggevonden. Ik sport weer met plezier, ontmoet inspirerende mensen en voel me sterker dan ooit. Een ervaring waar ik erg dankbaar voor ben.',
+    name: 'Vera',
+    context: 'Momentum traject',
+    category: 'momentum',
+  },
+  {
     id: 'matthijs-1',
     text: "Het woord 'proberen' ken ik niet meer, ik doe het gewoon.",
     name: 'Matthijs',
@@ -331,7 +338,7 @@ export const heroQuoteRebekka: HeroQuote = {
 }
 
 /** Momentum-pagina: hero Rebekka + carousel (Sandra zit op homepage). */
-export const momentumPageCarouselIds = ['gerlinde-1', 'annemarie-1', 'stephanie-1'] as const
+export const momentumPageCarouselIds = ['gerlinde-1', 'annemarie-1', 'stephanie-1', 'vera-1'] as const
 
 export function getMomentumPageTestimonials(): Testimonial[] {
   return getTestimonialsByIds(momentumPageCarouselIds)
