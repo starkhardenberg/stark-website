@@ -13,14 +13,15 @@ import {
   PHONE_CALL,
   PHONE_WHATSAPP,
 } from '@/lib/contact'
+import { pageMetadata } from '@/lib/open-graph'
 import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './contact.module.css'
 
-export const metadata: Metadata = {
-  title: 'Contact — STARK Hardenberg',
-  description:
-    'Adres, route, telefoon en e-mail. Stel je vraag via het formulier. Je spreekt altijd een mens bij STARK Hardenberg.',
-}
+export const metadata: Metadata = pageMetadata(
+  'contact',
+  'Contact — STARK! Hardenberg',
+  'Adres, route, telefoon en e-mail. Stel je vraag via het formulier. Je spreekt altijd een mens bij STARK! Hardenberg.',
+)
 
 type PageProps = {
   searchParams?: { onderwerp?: string }
@@ -114,7 +115,7 @@ export default function ContactPage({ searchParams }: PageProps) {
 
           <div className={styles.mapWrap}>
             <iframe
-              title="STARK Hardenberg op Google Maps"
+              title="STARK! Hardenberg op Google Maps"
               src={ADDRESS.mapsEmbed}
               className={styles.map}
               loading="lazy"
@@ -136,6 +137,11 @@ export default function ContactPage({ searchParams }: PageProps) {
               <br />
               <Link href={hrefKennismaking} className={styles.ownersLink}>
                 Ga naar Kom kennismaken
+              </Link>
+            </p>
+            <p className={styles.ownersNote}>
+              <Link href="/team" className={styles.ownersLink}>
+                Ontmoet het hele team
               </Link>
             </p>
           </div>

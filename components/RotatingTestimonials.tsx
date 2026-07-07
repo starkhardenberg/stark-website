@@ -16,6 +16,8 @@ const INTERVAL_MS = 5500
 type Props = {
   items: Testimonial[]
   cardTone?: 'light' | 'dark'
+  /** Meerekenen van een hero-quote vóór de carrousel (off-by-one fix). */
+  quoteOffset?: number
 }
 
 function slideScrollLeft(viewport: HTMLDivElement, slide: HTMLDivElement) {
@@ -26,7 +28,7 @@ function slideScrollLeft(viewport: HTMLDivElement, slide: HTMLDivElement) {
   return Math.max(0, Math.min(slideCenter - viewport.clientWidth / 2, maxLeft))
 }
 
-export default function RotatingTestimonials({ items, cardTone = 'light' }: Props) {
+export default function RotatingTestimonials({ items, cardTone = 'light', quoteOffset = 0 }: Props) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [inView, setInView] = useState(false)
@@ -39,6 +41,7 @@ export default function RotatingTestimonials({ items, cardTone = 'light' }: Prop
   const programmaticTimer = useRef<number | null>(null)
 
   const total = items.length
+  const totalWithOffset = total + quoteOffset
 
   indexRef.current = index
 
@@ -265,7 +268,7 @@ export default function RotatingTestimonials({ items, cardTone = 'light' }: Prop
             onClick={() => goTo(i)}
           >
             <span className={styles.srOnly}>
-              {item.name}, testimonial {i + 1} van {total}
+              {item.name}, testimonial {i + 1 + quoteOffset} van {totalWithOffset}
             </span>
           </button>
         ))}

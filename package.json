@@ -9,12 +9,14 @@
     "dev:clean": "npm run clean && npm run dev",
     "dev:auto": "next dev -H 127.0.0.1 -p 3456",
     "build": "next build",
+    "generate:og": "npm run build && node scripts/generate-og.mjs",
+    "compress:images": "python3 scripts/compress-images.py",
     "start": "next start",
     "start:3456": "next start -p 3456",
     "open:site": "open http://127.0.0.1:3456/#aanbod",
     "open:home": "open http://127.0.0.1:3456/",
     "open:home-trainen": "open http://127.0.0.1:3456/#trainen",
-    "open:trainen": "open http://127.0.0.1:3456/trainen",
+    "open:trainen": "open http://127.0.0.1:3456/trainen#rooster",
     "open:impact": "open http://127.0.0.1:3456/impact",
     "open:momentum": "open http://127.0.0.1:3456/momentum",
     "open:coaching": "open http://127.0.0.1:3456/coaching",
@@ -23,7 +25,8 @@
     "open:404": "open http://127.0.0.1:3456/pagina-bestaat-niet",
     "open:resultaten": "open http://127.0.0.1:3456/#resultaten",
     "open:contact": "open http://127.0.0.1:3456/contact",
-    "open:kennismaken": "open http://127.0.0.1:3456/kennismaken"
+    "open:kennismaken": "open http://127.0.0.1:3456/kennismaken",
+    "open:og": "open http://127.0.0.1:3456/og-preview.html"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

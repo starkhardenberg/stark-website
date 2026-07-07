@@ -1,9 +1,8 @@
 import Nav from './Nav'
-import HeroBackgroundVideo from './HeroBackgroundVideo'
-import HeroVimeoBackground from './HeroVimeoBackground'
+import HeroAdaptiveBackground from './HeroAdaptiveBackground'
 import {
+  HERO_VIDEO_MOBILE_URL,
   HERO_VIDEO_POSTER,
-  HERO_VIDEO_URL,
   VIMEO_HERO_VIDEO_ID,
   heroVideoAspect,
   heroVideoStartSeconds,
@@ -21,24 +20,21 @@ export default function HeroSection() {
   return (
     <main className={styles.hero}>
       <div className={styles.bg} aria-hidden="true">
-        {vimeoSrc ? (
-          <HeroVimeoBackground
-            src={vimeoSrc}
-            poster={HERO_VIDEO_POSTER}
-            videoAspect={heroVideoAspect()}
-            startSeconds={heroVideoStartSeconds()}
-            coverBoost={heroVimeoCoverBoost()}
-            clipOverride={heroVimeoClipPercent()}
-          />
-        ) : HERO_VIDEO_URL ? (
-          <HeroBackgroundVideo src={HERO_VIDEO_URL} poster={HERO_VIDEO_POSTER} />
-        ) : (
-          <img
-            src={HERO_VIDEO_POSTER}
-            alt=""
-            className={styles.posterFallback}
-          />
-        )}
+        <HeroAdaptiveBackground
+          poster={HERO_VIDEO_POSTER}
+          mobileSrc={HERO_VIDEO_MOBILE_URL}
+          vimeo={
+            vimeoSrc
+              ? {
+                  src: vimeoSrc,
+                  videoAspect: heroVideoAspect(),
+                  startSeconds: heroVideoStartSeconds(),
+                  coverBoost: heroVimeoCoverBoost(),
+                  clipOverride: heroVimeoClipPercent(),
+                }
+              : null
+          }
+        />
       </div>
 
       <Nav />
@@ -46,11 +42,14 @@ export default function HeroSection() {
       <section className={styles.stage}>
         <div className={styles.copy}>
           <h1 className={styles.headline}>
-            <span className={`${styles.line} ${styles.lead}`}>Wij</span>
-            <span className={`${styles.line} ${styles.lead}`}>bouwen</span>
-            <span className={`${styles.line} ${styles.punch}`}>starke</span>
+            <span className={`${styles.line} ${styles.lead}`}>Wij</span>{' '}
+            <span className={`${styles.line} ${styles.lead}`}>bouwen</span>{' '}
+            <span className={`${styles.line} ${styles.punch}`}>starke</span>{' '}
             <span className={`${styles.line} ${styles.punch}`}>mensen.</span>
           </h1>
+          <p className={styles.sub}>
+            Trainen voor je lijf. Coachen voor je kop.
+          </p>
         </div>
       </section>
     </main>

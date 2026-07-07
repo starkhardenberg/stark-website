@@ -5,10 +5,10 @@ export default function NotFound() {
   return (
     <main className={styles.page}>
       <header className={styles.nav}>
-        <a href="/" aria-label="STARK home">
+        <a href="/" aria-label="STARK! home">
           <Image
             src="/images/stark_logo_wit.png"
-            alt="STARK"
+            alt="STARK!"
             width={200}
             height={64}
             priority
@@ -37,7 +37,7 @@ export default function NotFound() {
       </div>
 
       <div className={styles.anchorShell}>
-        <span>STARK Hardenberg</span>
+        <span>STARK! Hardenberg</span>
         <div className={styles.anchor} aria-hidden="true" />
         <span>Nijverheidsstraat 15c</span>
       </div>

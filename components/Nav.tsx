@@ -10,6 +10,7 @@ import styles from './Nav.module.css'
 const NAV_TABS = [
   { id: 'trainen', label: 'Training', href: '/trainen' },
   { id: 'coaching', label: 'Coaching', href: '/coaching' },
+  { id: 'team', label: 'Wie wij zijn', href: '/team' },
   { id: 'bedrijven', label: 'Bedrijven', href: '/zakelijk' },
   { id: 'contact', label: 'Contact', href: hrefContactAlgemeen, isContact: true },
 ] as const
@@ -18,6 +19,7 @@ const NAV_TABS = [
 const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
   coaching: ['/coaching', '/momentum', '/impact'],
   trainen: ['/trainen'],
+  team: ['/team'],
   bedrijven: ['/zakelijk'],
 }
 

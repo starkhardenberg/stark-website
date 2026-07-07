@@ -3,7 +3,9 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import { momentumFaq } from '@/components/faq/faq-momentum'
+import ContentQuoteBlock from '@/components/ContentQuoteBlock'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getMomentumPageTestimonials, heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
 import { hrefKennismaking } from '@/lib/contact'
@@ -11,6 +13,7 @@ import {
   MOMENTUM_NEXT_START_HEADLINE,
 } from '@/lib/momentum-dates'
 import { oswaldTrim } from '@/lib/displayTrim'
+import { pageMetadata } from '@/lib/open-graph'
 import landing from '../landing.module.css'
 import styles from './momentum.module.css'
 
@@ -45,11 +48,11 @@ function getMomentumProgramSteps() {
   return [...MOMENTUM_STEPS, MOMENTUM_START_STEP]
 }
 
-export const metadata = {
-  title: 'Momentum — 10 weken groepsprogramma — STARK Hardenberg',
-  description:
-    'Tien weken samen verder dan alleen. Fysieke training plus groepscoaching in een vaste kleine groep van maximaal tien mensen.',
-}
+export const metadata = pageMetadata(
+  'momentum',
+  'Momentum — 10 weken groepsprogramma — STARK! Hardenberg',
+  'Tien weken samen verder dan alleen. Fysieke training plus groepscoaching in een vaste kleine groep van maximaal tien mensen.',
+)
 
 export default function MomentumPage() {
   return (
@@ -58,7 +61,7 @@ export default function MomentumPage() {
         <div className={landing.heroBg}>
           <Image
             src="/images/foto-coaching-tegel-momentum.png"
-            alt="Groep in gesprek tijdens Momentum bij STARK Hardenberg"
+            alt="Groep in gesprek tijdens Momentum bij STARK! Hardenberg"
             fill
             className={`${landing.heroBgImg} ${landing.heroBgImgClean}`}
             sizes="100vw"
@@ -70,8 +73,8 @@ export default function MomentumPage() {
         <div className={`${landing.heroContent} ${landing.heroContentLower}`}>
           <span className={landing.heroSlash} />
           <h1 className={`${landing.heroTitle} ${landing.heroTitleCompact}`}>
-            <span className={landing.heroLead}>MOMENTUM</span>
-            <span className={landing.heroPunch}>BIJ STARK</span>
+            <span className={landing.heroLead}>MOMENTUM</span>{' '}
+            <span className={landing.heroPunch}>BIJ STARK!</span>
           </h1>
           <p className={`${landing.heroSub} ${landing.heroSubNavy}`}>
             Tien weken waarin je lijf en hoofd samen trainen, zodat je eindelijk voor elkaar krijgt wat er voor
@@ -150,7 +153,7 @@ export default function MomentumPage() {
           <div className={styles.trajectMedia}>
             <Image
               src="/images/foto-coaching-samen.jpg"
-              alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK Hardenberg"
+              alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg"
               fill
               className={styles.trajectMediaImg}
               sizes="(min-width: 860px) 40vw, 100vw"
@@ -161,6 +164,7 @@ export default function MomentumPage() {
             <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
               Eén programma.
               <br />
+              {' '}
               <span className={landing.titleHeroOutline}>Wat erin zit</span>
             </h2>
             <p className={styles.trajectIntro}>
@@ -217,10 +221,19 @@ export default function MomentumPage() {
         </div>
       </section>
 
+      <ContentQuoteBlock title="Wat het kost">
+        <p>
+          Coaching bij STARK! is een serieuze investering in jezelf. Wat het precies is, hangt af van
+          het traject dat bij je past. Dat hoor je in het kennismakingsgesprek, ruim voordat je iets
+          beslist en zonder druk. Geen verrassingen achteraf.
+        </p>
+      </ContentQuoteBlock>
+
       <TestimonialsSection
         hero={heroQuoteRebekka}
         items={getMomentumPageTestimonials()}
         unifiedDark
+        heroQuoteOffset={1}
       />
 
       <section
@@ -237,7 +250,7 @@ export default function MomentumPage() {
               <div className={landing.introCol}>
                 <p className={landing.introColLabel}>Dit is iets voor jou als</p>
                 <ul className={landing.introColList}>
-                  <li>Je weet wat je zou moeten doen. Op het moment zelf gebeurt het net niet.</li>
+                  <li>In je hoofd is het duidelijk. Als het erop aankomt, schuif je het weer voor je uit.</li>
                   <li>Je wilt tien weken echt committen, met een vaste groep naast je.</li>
                   <li>Je hebt genoeg schema&apos;s en goede voornemens gehad.</li>
                 </ul>
@@ -245,8 +258,13 @@ export default function MomentumPage() {
               <div className={styles.fitFilterColAlt}>
                 <p className={styles.fitFilterColLabel}>Kies iets anders als</p>
                 <ul className={styles.fitFilterColList}>
-                  <li>Je zoekt alleen een trainingsschema of losse lessen.</li>
-                  <li>Je wilt 1-op-1, geen groep.</li>
+                  <li>
+                    Je zoekt alleen een trainingsschema of{' '}
+                    <Link href="/trainen">losse lessen</Link>.
+                  </li>
+                  <li>
+                    Je wilt <Link href="/coaching">1-op-1</Link>, geen groep.
+                  </li>
                   <li>
                     Je weet al dat je niet bij alle groepscoachingsessies van die tien weken aanwezig kunt zijn.
                     Daarvoor plannen we geen inhaalmomenten.
@@ -270,6 +288,7 @@ export default function MomentumPage() {
             Goede vragen
           </h2>
           <FaqList items={momentumFaq} />
+          <FaqJsonLd items={momentumFaq} />
         </div>
       </section>
 

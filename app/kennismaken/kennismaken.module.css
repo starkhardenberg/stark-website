@@ -43,6 +43,13 @@
   color: var(--navy);
 }
 
+.titleSentence {
+  text-transform: none;
+  font-size: clamp(28px, 6.5vw, 46px);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
 .lead {
   margin: 0;
   font-size: clamp(16px, 2vw, 18px);
@@ -93,6 +100,18 @@
   top: 0.1em;
   font-weight: 700;
   color: var(--orange);
+}
+
+.expectLink {
+  color: var(--navy);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(33, 36, 49, 0.2);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.expectLink:hover {
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
 .actions {

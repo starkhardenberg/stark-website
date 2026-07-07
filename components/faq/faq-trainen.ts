@@ -2,7 +2,7 @@ export const trainenFaq = [
   {
     question: 'Moet ik al fit zijn om te starten, en wat als ik iets niet goed kan of een blessure heb?',
     answer:
-      'Nee, je hoeft niet fit te zijn. Iedereen start op eigen niveau en we passen oefeningen aan waar nodig. Met een blessure of beperking kijken we samen wat wél kan en bouwen we veilig op. Bij ons train je altijd veilig én intensief: techniek is nooit een belemmering om voluit te gaan.',
+      'Nee, je hoeft niet fit te zijn. Iedereen start op eigen niveau en we passen oefeningen aan waar nodig. Met een blessure of beperking kijken we samen wat wel kan en bouwen we veilig op. Bij ons train je altijd veilig en intensief. Techniek is nooit een belemmering om voluit te gaan.',
   },
   {
     question: 'Hoe ziet een training eruit en waar werk je aan?',
@@ -12,7 +12,7 @@ export const trainenFaq = [
   {
     question: 'Wat is het Startpakket en is dat verplicht?',
     answer:
-      'Het Startpakket is vier sessies van een uur, volledig 1-op-1. We doen een nulmeting en je leert bewegen zoals dat bij STARK hoort. Iedereen vanaf 16 jaar start hier, dat is verplicht voordat je in de groep meedoet.',
+      'Vier sessies van een uur, volledig 1-op-1. We doen een nulmeting en je leert bewegen zoals dat bij STARK! hoort. Wat het kost hoor je in het kennismakingsgesprek. Iedereen vanaf 16 jaar start hier, na het kennismakingsgesprek. Hierboven lees je hoe de route loopt.',
   },
   {
     question: 'Hoe lang duurt een les en zijn het vaste momenten?',
@@ -32,11 +32,11 @@ export const trainenFaq = [
   {
     question: 'Wat kost een lidmaatschap en wat zit erin?',
     answer:
-      'We snappen dat je wilt weten wat het kost. Eerlijk: dat hangt af van wat bij jou past, en dat weten we pas als we elkaar gesproken hebben. Een beetje als vragen wat een vakantie kost, dat ligt aan waar je heen wilt, hoe je er heen wilt en wat je er wilt doen. ;) Daarom vertellen we je er alles over in een kennismakingsgesprek.',
+      'Wij zijn niet de goedkoopste van de regio, en dat is bewust: je betaalt voor begeleiding bij elke training. Wat het precies kost hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
   },
   {
     question: 'Kan ik eerst een proefles doen?',
     answer:
-      'Ja. Een proefles is een uur, gratis en vrijblijvend. Je ervaart hoe een les voelt en of de sfeer bij je past. In het kennismakingsgesprek kun je dit aangeven en dan gaan we het plannen.',
+      'Ja. Een proefles is een uur, gratis en vrijblijvend. We plannen die na het kennismakingsgesprek, zodat je eerst weet of STARK! bij je past. Hierboven lees je de volgorde.',
   },
 ] as const

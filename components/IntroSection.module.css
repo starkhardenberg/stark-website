@@ -53,24 +53,51 @@
   min-width: 0;
 }
 
-.lines {
-  list-style: none;
+.positioning {
   margin: 0;
-  padding: 0;
+  max-width: 52ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(17px, 2vw, 18px);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--navy);
+}
+
+.bodyBlock {
   display: flex;
   flex-direction: column;
-  gap: clamp(22px, 3.5vw, 32px);
+  gap: clamp(16px, 2.5vw, 20px);
 }
 
-.line {
+.body {
   margin: 0;
+  max-width: 52ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(16px, 1.85vw, 18px);
+  font-weight: 400;
+  line-height: 1.68;
+  color: #3a3a3a;
+}
+
+.inlineLink {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.inlineLink:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+
+.signature {
+  margin: 0;
+  max-width: 38ch;
   padding: 0 0 0 clamp(18px, 2.5vw, 24px);
   border-left: 2px solid var(--orange);
-}
-
-.lineLead {
-  margin: 0 0 6px;
-  max-width: 38ch;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(17px, 2vw, 20px);
   font-weight: 600;
@@ -78,7 +105,7 @@
   color: var(--navy);
 }
 
-.lineRest {
+.breadth {
   margin: 0;
   max-width: 52ch;
   font-family: var(--font-body), sans-serif;
@@ -175,7 +202,9 @@
     padding-left: 0;
   }
 
-  .lineRest {
+  .body,
+  .signature,
+  .breadth {
     max-width: none;
   }
 }

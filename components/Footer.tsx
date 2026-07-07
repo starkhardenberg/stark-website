@@ -8,6 +8,8 @@ import styles from './Footer.module.css'
 
 const year = new Date().getFullYear()
 
+const DEFAULT_BRAND_PREFIX = "Wi'j bint"
+
 type FooterProps = {
   /** Foto boven, tekst onder. */
   photoFirst?: boolean
@@ -26,8 +28,12 @@ type FooterProps = {
   ctaLabel?: string
   /** Eigen achtergrondfoto voor de prominente afsluit-CTA (anders de photoSet-foto). */
   ctaImage?: string
-  /** Woord vóór het outline-woordmerk in de standaard-footer, bijv. "BIJ" → "BIJ STARK". */
+  /** Woord vóór het outline-woordmerk in de standaard-footer, standaard dialect: "Wi'j bint STARK!" */
   brandPrefix?: string
+  /** Standaard uit. Zet op true voor "Wees welkom" boven het woordmerk. */
+  showWelcome?: boolean
+  /** Vervangt de standaard lead rechts in de footer (bijv. dialect per pagina). */
+  lead?: ReactNode
 }
 
 const HOME_PHOTO = {
@@ -70,7 +76,9 @@ export default function Footer({
   ctaLead,
   ctaLabel,
   ctaImage,
-  brandPrefix,
+  brandPrefix = DEFAULT_BRAND_PREFIX,
+  showWelcome = false,
+  lead,
 }: FooterProps) {
   const hasProminentCta = Boolean(ctaTitle)
   const resolvedPhotoSet = photoSet ?? (photoFirst ? 'landing' : 'home')
@@ -170,7 +178,9 @@ export default function Footer({
         <div className={`${styles.bottomBar} ${styles.bottomBarFlush}`}>
           <div className={styles.bottomBrandStack}>
             <div className={styles.bottomBrand}>
-              <span className={styles.brandSmall}>STARK</span>
+              <p className={styles.brandSmall}>
+                <span className={styles.brandSmallPrefix}>{DEFAULT_BRAND_PREFIX}</span> STARK!
+              </p>
               <span className={styles.meta}>
                 &copy; {year} Hardenberg
                 <span className={styles.metaSep} aria-hidden>
@@ -192,19 +202,19 @@ export default function Footer({
         <div className={styles.inner}>
           <div className={styles.colStart}>
             <div className={styles.colHead}>
-              <p className={styles.welcome}>Wees welkom</p>
+              {showWelcome ? <p className={styles.welcome}>Wees welkom</p> : null}
               <p className={styles.brand}>
                 {brandPrefix ? (
                   <>
                     <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
                   </>
                 ) : null}
-                STARK
+                STARK!
               </p>
             </div>
             <div className={styles.colFoot}>
               <p className={styles.meta}>
-                &copy; {year} STARK Hardenberg
+                &copy; {year} STARK! Hardenberg
                 <span className={styles.metaSep} aria-hidden>
                   ·
                 </span>
@@ -218,10 +228,14 @@ export default function Footer({
             {!ctaless ? (
               <>
                 <div className={styles.colHead}>
-                  <p className={styles.lead}>
-                    Klaar om <span className={styles.leadEmphasis}>sterker</span> te worden in{' '}
-                    <span className={styles.leadEmphasis}>lijf en hoofd</span>?
-                  </p>
+                  {lead ? (
+                    <p className={styles.lead}>{lead}</p>
+                  ) : (
+                    <p className={styles.lead}>
+                      Klaar om <span className={styles.leadEmphasis}>sterker</span> te worden in{' '}
+                      <span className={styles.leadEmphasis}>lijf en hoofd</span>?
+                    </p>
+                  )}
                 </div>
                 <div className={styles.colMid}>{actionsBlock}</div>
               </>

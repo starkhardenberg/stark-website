@@ -3,11 +3,14 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import { impactFaq } from '@/components/faq/faq-impact'
+import ContentQuoteBlock from '@/components/ContentQuoteBlock'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getImpactPageTestimonials, heroQuoteRenee } from '@/components/testimonials/testimonials-data'
 import { hrefKennismaking } from '@/lib/contact'
 import { oswaldTrim } from '@/lib/displayTrim'
+import { pageMetadata } from '@/lib/open-graph'
 import landing from '../landing.module.css'
 import styles from './impact.module.css'
 
@@ -42,11 +45,11 @@ function getImpactProgramSteps() {
   return [...IMPACT_STEPS, IMPACT_START_STEP]
 }
 
-export const metadata = {
-  title: 'Impact — 12 weken individueel traject — STARK Hardenberg',
-  description:
-    'Twaalf weken waarin je stappen zet die ertoe doen. Fysiek, mentaal, of allebei, met één vaste coach aan je zijde.',
-}
+export const metadata = pageMetadata(
+  'impact',
+  'Impact — 12 weken individueel traject — STARK! Hardenberg',
+  'Twaalf weken waarin je stappen zet die ertoe doen. Fysiek, mentaal, of allebei, met één vaste coach aan je zijde.',
+)
 
 export default function ImpactPage() {
   return (
@@ -55,7 +58,7 @@ export default function ImpactPage() {
         <div className={landing.heroBg}>
           <Image
             src="/images/foto-coaching-tegel-impact.png"
-            alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK Hardenberg"
+            alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg"
             fill
             className={`${landing.heroBgImg} ${landing.heroBgImgCoaching}`}
             sizes="100vw"
@@ -63,12 +66,12 @@ export default function ImpactPage() {
             style={{ objectPosition: '50% 40%' }}
           />
         </div>
-        <Nav compact textMenu />
+        <Nav />
         <div className={`${landing.heroContent} ${landing.heroContentLower}`}>
           <span className={landing.heroSlash} />
           <h1 className={landing.heroTitle}>
-            <span className={landing.heroLead}>IMPACT</span>
-            <span className={landing.heroPunch}>BIJ STARK</span>
+            <span className={landing.heroLead}>IMPACT</span>{' '}
+            <span className={landing.heroPunch}>BIJ STARK!</span>
           </h1>
           <p className={landing.heroSub}>
             Een persoonlijk traject van twaalf weken. Training en coaching, op jou afgestemd.
@@ -109,7 +112,7 @@ export default function ImpactPage() {
             <p className={styles.reintegratieNote}>
               Soms zetten we Impact in als re-integratietraject, voor wie is uitgevallen, bijvoorbeeld door een burn-out. Een werkgever of bedrijfsarts kan doorverwijzen.{' '}
               <Link href="/zakelijk" className={styles.reintegratieLink}>
-                Lees meer over bedrijven bij STARK
+                Lees meer over bedrijven bij STARK!
               </Link>
             </p>
           </div>
@@ -152,7 +155,7 @@ export default function ImpactPage() {
           <div className={styles.trajectMedia}>
             <Image
               src="/images/foto-coaching-tegel-impact-gesprek.png"
-              alt="Coach corrigeert de vorm bij een oefening tijdens Impact bij STARK Hardenberg"
+              alt="Coach corrigeert de vorm bij een oefening tijdens Impact bij STARK! Hardenberg"
               fill
               className={styles.trajectMediaImg}
               sizes="(min-width: 860px) 40vw, 100vw"
@@ -163,6 +166,7 @@ export default function ImpactPage() {
             <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
               Eén traject.
               <br />
+              {' '}
               <span className={landing.titleHeroOutline}>Wat erin zit</span>
             </h2>
             <p className={styles.trajectIntro}>
@@ -216,7 +220,20 @@ export default function ImpactPage() {
         </div>
       </section>
 
-      <TestimonialsSection hero={heroQuoteRenee} items={getImpactPageTestimonials()} />
+      <ContentQuoteBlock title="Impact+">
+        <p>
+          Na je traject sta je er niet alleen voor. Met Impact+ blijf je een jaar aangesloten: elke drie
+          weken groepscoaching, opdrachten voor thuis en één live dag per jaar, rond het thema dat er
+          voor jou toe doet: gezond gewicht, ondernemen of persoonlijk leiderschap. Zo houd je vast wat
+          je hebt opgebouwd.
+        </p>
+      </ContentQuoteBlock>
+
+      <TestimonialsSection
+        hero={heroQuoteRenee}
+        items={getImpactPageTestimonials()}
+        heroQuoteOffset={1}
+      />
 
       <section
         className={`${landing.introSection} ${landing.introSectionLight} ${styles.fitFilter}`}
@@ -240,8 +257,12 @@ export default function ImpactPage() {
               <div className={styles.fitFilterColAlt}>
                 <p className={styles.fitFilterColLabel}>Kies iets anders als</p>
                 <ul className={styles.fitFilterColList}>
-                  <li>Je een groepsprogramma zoekt met vaste startdata.</li>
-                  <li>Je alleen wilt trainen, zonder coaching.</li>
+                  <li>
+                    Je een <Link href="/momentum">groepsprogramma</Link> zoekt met vaste startdata.
+                  </li>
+                  <li>
+                    Je alleen wilt <Link href="/trainen">trainen</Link>, zonder coaching.
+                  </li>
                   <li>Je de komende twaalf weken de sessies niet kunt vrijmaken.</li>
                   <li>Je nu nog niet toe bent aan twaalf weken doorzetten.</li>
                 </ul>
@@ -262,6 +283,7 @@ export default function ImpactPage() {
             Goede vragen
           </h2>
           <FaqList items={impactFaq} />
+          <FaqJsonLd items={impactFaq} />
         </div>
       </section>
 

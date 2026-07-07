@@ -589,6 +589,20 @@
   max-width: 52ch;
 }
 
+.originInlineLink {
+  color: rgba(245, 245, 245, 0.88);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 245, 245, 0.28);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.originInlineLink:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+
 .originQuotes {
   display: flex;
   flex-direction: column;

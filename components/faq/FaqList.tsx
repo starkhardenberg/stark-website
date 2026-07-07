@@ -6,6 +6,8 @@ import styles from './FaqList.module.css'
 export type FaqItem = {
   question: string
   answer: ReactNode
+  /** Platte tekst voor JSON-LD als answer JSX is (links e.d.). */
+  schemaAnswer?: string
 }
 
 type FaqListProps = {

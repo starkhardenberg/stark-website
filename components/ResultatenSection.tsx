@@ -8,6 +8,8 @@ export default function ResultatenSection() {
       hero={heroQuoteAmanda}
       items={getHomepageTestimonials()}
       narrow
+      heroQuoteOffset={1}
+      showGoogleReviews
     />
   )
 }

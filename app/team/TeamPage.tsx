@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
@@ -15,7 +16,7 @@ export default function TeamPage() {
         <div className={styles.heroBg}>
           <Image
             src="/images/team/hero-kettlebells.png"
-            alt="Kettlebells op de planken in de STARK gym"
+            alt="Kettlebells op de planken in de STARK! gym"
             fill
             className={styles.heroBgImg}
             sizes="100vw"
@@ -26,8 +27,8 @@ export default function TeamPage() {
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} aria-hidden />
           <h1 className={styles.heroTitle}>
-            <span className={`${styles.heroLead} ${styles.heroLeadSmaller}`}>Wi&apos;j bint</span>
-            <span className={styles.heroPunch}>STARK</span>
+            <span className={`${styles.heroLead} ${styles.heroLeadSmaller}`}>Wi&apos;j bint</span>{' '}
+            <span className={styles.heroPunch}>STARK!</span>
           </h1>
           <p className={styles.heroSub}>Een team van 11 mensen. Eén aanpak.</p>
         </div>
@@ -61,12 +62,12 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className={styles.groupBand} aria-label="Het STARK team">
+      <section className={styles.groupBand} aria-label="Het STARK! team">
         <div className={styles.groupBandInner}>
           <div className={styles.groupBandMedia}>
             <Image
               src="/images/team-home.jpg"
-              alt="Het STARK team, lachend voor het logo in zwart-wit"
+              alt="Het STARK! team, lachend voor het logo in zwart-wit"
               fill
               className={styles.groupBandImg}
               sizes="100vw"
@@ -141,16 +142,19 @@ export default function TeamPage() {
               Sterkste Vrouw.
             </p>
             <p className={styles.originBody}>
-              Inmiddels runnen we STARK samen, als eigenaren en als partners thuis.
+              Inmiddels runnen we STARK! samen, als eigenaren en als partners thuis.
             </p>
             <p className={styles.originBody}>
-              Eind 2020 lieten we de CrossFit-naam los en gingen we verder als STARK. Het karakter
+              Eind 2020 lieten we de CrossFit-naam los en gingen we verder als STARK! Het karakter
               bleef, de naam paste beter bij ons.
             </p>
             <p className={styles.originBody}>
-              In 2021 startten we met onze eerste coachingstrajecten. Sindsdien hebben we ruim 200
-              mensen geholpen om voor elkaar te krijgen wat ze zelf belangrijk vinden. Mensen die
-              iets te winnen hadden.
+              In 2021 startten we met onze eerste{' '}
+              <Link href="/coaching" className={styles.originInlineLink}>
+                coachingstrajecten
+              </Link>
+              . Sindsdien hebben we ruim 200 mensen geholpen om voor elkaar te krijgen wat ze zelf
+              belangrijk vinden. Mensen die iets te winnen hadden.
             </p>
             <p className={styles.originBody}>
               Tot begin 2024 deden we dat met z&apos;n tweeën. Toen zijn we een team gaan bouwen.
@@ -160,8 +164,8 @@ export default function TeamPage() {
               langer alleen van ons tweeën af.
             </p>
             <p className={styles.originBody}>
-              Begin 2025 verhuisden we naar een pand dat ongeveer drie keer zo groot is. Meer
-              ruimte voor training, voor groepen en voor alles wat we de komende jaren willen
+              Begin 2025 verhuisden we naar een pand dat ongeveer drie keer zo groot is. Meer ruimte
+              voor <Link href="/trainen" className={styles.originInlineLink}>training</Link>, voor groepen en voor alles wat we de komende jaren willen
               opbouwen.
             </p>
             <p className={styles.originBody}>
@@ -192,7 +196,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <Footer photoless brandPrefix="BIJ" />
+      <Footer photoless lead="Wi'j stoat veur oe kloar." />
     </main>
   )
 }

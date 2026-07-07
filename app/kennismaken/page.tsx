@@ -3,19 +3,22 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
-import { KENNISMAKING_TITLE, hrefContactAlgemeen, PHONE_CALL } from '@/lib/contact'
+import { hrefContactAlgemeen, PHONE_CALL } from '@/lib/contact'
+import { pageMetadata } from '@/lib/open-graph'
 import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './kennismaken.module.css'
 
-export const metadata: Metadata = {
-  title: 'Kom kennismaken — STARK Hardenberg',
-  description:
-    'Vrijblijvend kennismakingsgesprek van ongeveer 1 uur. Gratis. We kijken samen wat bij je past.',
-}
+export const metadata: Metadata = pageMetadata(
+  'kennismaken',
+  'Kom kennismaken — STARK! Hardenberg',
+  'Vrijblijvend kennismakingsgesprek van ongeveer 1 uur. Gratis. Loop binnen of plan een moment. We kijken samen wat voor jou het beste past.',
+)
+
+const PAGE_TITLE = 'Eerst een kop koffie en praten en dan pas verder.'
 
 const EXPECT = [
   'Ongeveer 1 uur, vrijblijvend en gratis.',
-  'We leren elkaar kennen en kijken wat bij je past: trainen, coaching of iets anders.',
+  'We leren elkaar kennen en kijken wat bij je past.',
   'Geen verplichtingen. Wel een eerlijk gesprek.',
 ] as const
 
@@ -27,19 +30,35 @@ export default function KennismakenPage() {
       <div className={styles.shell}>
         <header className={styles.hero}>
           <p className={styles.eyebrow}>Kennismaken</p>
-          <h1 className={styles.title} style={oswaldTrim(KENNISMAKING_TITLE)}>{KENNISMAKING_TITLE}</h1>
+          <h1 className={`${styles.title} ${styles.titleSentence}`} style={oswaldTrim(PAGE_TITLE)}>
+            {PAGE_TITLE}
+          </h1>
           <p className={styles.lead}>
-            Een uur vrijblijvend praten. We kijken samen wat het beste bij je past — trainen,
-            coaching, of eerst even oriënteren.
+            Loop gerust binnen. Is er tijd, dan gaan we meteen zitten. Zo niet, plannen we een moment
+            dat past. Een uur, vrijblijvend en gratis. We kijken samen wat voor jou het beste past.
           </p>
         </header>
 
         <section className={styles.expect} aria-label="Wat je kunt verwachten">
           <h2 className={styles.expectTitle}>Wat je kunt verwachten</h2>
           <ul className={styles.expectList}>
-            {EXPECT.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
+            <li>{EXPECT[0]}</li>
+            <li>
+              {EXPECT[1]}:{' '}
+              <Link href="/trainen" className={styles.expectLink}>
+                trainen
+              </Link>
+              ,{' '}
+              <Link href="/coaching" className={styles.expectLink}>
+                coaching
+              </Link>{' '}
+              of{' '}
+              <Link href="/zakelijk" className={styles.expectLink}>
+                bedrijven
+              </Link>
+              .
+            </li>
+            <li>{EXPECT[2]}</li>
           </ul>
         </section>
 

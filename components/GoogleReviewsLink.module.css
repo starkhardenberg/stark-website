@@ -1,0 +1,45 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: clamp(8px, 1.5vw, 16px) auto 0;
+  padding: 0 clamp(24px, 8vw, 48px);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(14px, 1.6vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.linkLight {
+  color: rgba(33, 36, 49, 0.58);
+}
+
+.linkLight:hover,
+.linkLight:focus-visible {
+  color: var(--navy);
+}
+
+.linkDark {
+  color: rgba(245, 245, 245, 0.55);
+}
+
+.linkDark:hover,
+.linkDark:focus-visible {
+  color: var(--off);
+}
+
+.star {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.arrow {
+  opacity: 0.7;
+}
+
+.link:hover .arrow,
+.link:focus-visible .arrow {
+  opacity: 1;
+}

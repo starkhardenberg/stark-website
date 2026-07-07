@@ -5,18 +5,23 @@ import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import { coachingFaq } from '@/components/faq/faq-coaching'
+import ContentQuoteBlock from '@/components/ContentQuoteBlock'
+import quoteStyles from '@/components/ContentQuoteBlock.module.css'
 import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { coachingCards } from '@/components/landing/landing-cards'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import { oswaldTrim } from '@/lib/displayTrim'
+import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
-export const metadata = {
-  title: 'Coaching — STARK Hardenberg',
-  description: 'Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar.',
-}
+export const metadata = pageMetadata(
+  'coaching',
+  'Coaching — STARK! Hardenberg',
+  'Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar.',
+)
 
 export default function CoachingPage() {
   return (
@@ -25,7 +30,7 @@ export default function CoachingPage() {
         <div className={styles.heroBg}>
           <Image
             src="/images/foto-coaching-hero-flipchart.png"
-            alt="Coachinggesprek met scherpe vragen bij STARK Hardenberg"
+            alt="Coachinggesprek met scherpe vragen bij STARK! Hardenberg"
             fill
             className={`${styles.heroBgImg} ${styles.heroBgImgCoaching}`}
             sizes="100vw"
@@ -37,8 +42,8 @@ export default function CoachingPage() {
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
-            <span className={styles.heroLead}>COACHING</span>
-            <span className={styles.heroPunch}>BIJ STARK</span>
+            <span className={styles.heroLead}>COACHING</span>{' '}
+            <span className={styles.heroPunch}>BIJ STARK!</span>
           </h1>
           <p className={styles.heroSub}>
             Een helder hoofd. Een lijf dat aankan wat je vraagt.
@@ -67,7 +72,12 @@ export default function CoachingPage() {
                 <p className={styles.introColLabel}>Jouw traject, jouw focus.</p>
                 <ul className={styles.introColList}>
                   <li>Jij bepaalt waar we op inzetten. Je lijf, je hoofd, of allebei.</li>
-                  <li>Training én coaching in één traject. Geen losse gesprekken, geen losse workouts.</li>
+                  <li>
+                    <Link href="/trainen" className={styles.introPrologueSourceLink}>
+                      Training
+                    </Link>{' '}
+                    én coaching in één traject. Geen losse gesprekken, geen losse workouts.
+                  </li>
                   <li>Iemand die hardop zegt wat jij liever niet benoemt. En zo patronen doorbreekt.</li>
                   <li>Verandering die blijft als het traject klaar is.</li>
                 </ul>
@@ -132,15 +142,36 @@ export default function CoachingPage() {
         </div>
       </div>
 
+      <ContentQuoteBlock title="Wat het kost">
+        <p>
+          Coaching bij STARK! is een serieuze investering in jezelf. Wat het precies is, hangt af van
+          het traject dat bij je past. Dat hoor je in het kennismakingsgesprek, ruim voordat je iets
+          beslist en zonder druk. Geen verrassingen achteraf.
+        </p>
+      </ContentQuoteBlock>
+
+      <ContentQuoteBlock title="Impact+">
+        <p>
+          Na je traject sta je er niet alleen voor. Met{' '}
+          <Link href="/impact" className={quoteStyles.inlineLink}>
+            Impact+
+          </Link>{' '}
+          blijf je een jaar aangesloten: elke drie weken groepscoaching, opdrachten voor thuis en één
+          live dag per jaar, rond het thema dat er voor jou toe doet: gezond gewicht, ondernemen of
+          persoonlijk leiderschap. Zo houd je vast wat je hebt opgebouwd.
+        </p>
+      </ContentQuoteBlock>
+
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
           <span className={styles.label}>Wat je nog wilt weten</span>
           <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
           <FaqList items={coachingFaq} />
+          <FaqJsonLd items={coachingFaq} />
         </div>
       </section>
 
-      <Footer photoFirst photoSet="coaching" brandPrefix="BIJ" />
+      <Footer photoFirst photoSet="coaching" />
     </main>
   )
 }

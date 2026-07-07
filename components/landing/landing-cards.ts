@@ -1,12 +1,12 @@
 import type { LandingServiceCardData } from './LandingServiceCard'
-import { hrefTrainen, hrefWhatsAppKennismaking } from '@/lib/contact'
+import { hrefContactAlgemeen, hrefTrainen, hrefWhatsAppKennismaking } from '@/lib/contact'
 import { MOMENTUM_COACHING_START_LINE } from '@/lib/momentum-dates'
 
 export const trainenCards: LandingServiceCardData[] = [
   {
     title: 'Volwassenen (vanaf 16 jaar)',
     image: 'foto-trainen-landingspagina.png',
-    imageAlt: 'Volwassenen tijdens een groepsles bij STARK Hardenberg',
+    imageAlt: 'Volwassenen tijdens een groepsles bij STARK! Hardenberg',
     objectPosition: '85% center',
     menu: [
       {
@@ -32,8 +32,8 @@ export const trainenCards: LandingServiceCardData[] = [
           'Plan een kennismaking via ',
           { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
           ' of het ',
-          { href: hrefTrainen, label: 'contactformulier' },
-          '. Iedereen start met het Startpakket: een nulmeting van je lijf en een basiscursus trainen bij STARK. Daarna word je lid.',
+          { href: hrefContactAlgemeen, label: 'contactformulier' },
+          '. Iedereen start met het Startpakket: een nulmeting van je lijf en een basiscursus trainen bij STARK! Daarna word je lid.',
         ],
       },
     ],
@@ -41,7 +41,7 @@ export const trainenCards: LandingServiceCardData[] = [
   {
     title: 'ZilverFitness (vanaf 55 jaar)',
     image: 'foto-vrouw-55-lachen.jpg',
-    imageAlt: 'ZilverFitness deelnemer bij STARK Hardenberg',
+    imageAlt: 'ZilverFitness deelnemer bij STARK! Hardenberg',
     objectPosition: 'center 10%',
     menu: [
       {
@@ -66,7 +66,7 @@ export const trainenCards: LandingServiceCardData[] = [
   {
     title: 'Kids en Teens (5 - 16 jaar)',
     image: 'foto-kids-coaches-v3.png',
-    imageAlt: 'Twee coaches in gesprek met kinderen bij STARK Hardenberg',
+    imageAlt: 'Twee coaches in gesprek met kinderen bij STARK! Hardenberg',
     objectPosition: 'center 35%',
     kidsImage: true,
     menu: [
@@ -88,7 +88,7 @@ export const trainenCards: LandingServiceCardData[] = [
           'Stuur ons een berichtje via ',
           { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
           ' of het ',
-          { href: hrefTrainen, label: 'contactformulier' },
+          { href: hrefContactAlgemeen, label: 'contactformulier' },
           '. Neem je kind mee, kom kennismaken en direct proberen. Twee proeflessen zijn gratis en daarna beslis je.',
         ],
       },
@@ -100,7 +100,7 @@ export const momentumCards: LandingServiceCardData[] = [
   {
     title: 'Fysieke training',
     image: 'foto-coaching-samen.jpg',
-    imageAlt: 'Deelnemer midden in een zware oefening tijdens Momentum bij STARK Hardenberg',
+    imageAlt: 'Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg',
     objectPosition: 'center 40%',
     menu: [
       {
@@ -120,7 +120,7 @@ export const momentumCards: LandingServiceCardData[] = [
   {
     title: 'Groepscoaching',
     image: 'foto-coaching-moment.jpg',
-    imageAlt: 'Coachingsmoment tijdens Momentum bij STARK Hardenberg',
+    imageAlt: 'Coachingsmoment tijdens Momentum bij STARK! Hardenberg',
     objectPosition: 'center 24%',
     inverted: true,
     menu: [
@@ -137,7 +137,7 @@ export const momentumCards: LandingServiceCardData[] = [
   {
     title: 'Challenges',
     image: 'foto-coaching-tegel-momentum.png',
-    imageAlt: 'Groep in gesprek tijdens Momentum bij STARK Hardenberg',
+    imageAlt: 'Groep in gesprek tijdens Momentum bij STARK! Hardenberg',
     objectPosition: 'center 35%',
     menu: [
       {
@@ -160,7 +160,7 @@ export const impactCards: LandingServiceCardData[] = [
   {
     title: 'Startpakket',
     image: 'foto-coaching-moment.jpg',
-    imageAlt: 'Coachingsmoment bij STARK Hardenberg',
+    imageAlt: 'Coachingsmoment bij STARK! Hardenberg',
     objectPosition: 'center 24%',
     menu: [
       {
@@ -180,7 +180,7 @@ export const impactCards: LandingServiceCardData[] = [
   {
     title: 'Training in kleine groep',
     image: 'foto-vrouw-kettlebell.jpg',
-    imageAlt: 'Vrouw met kettlebell bij STARK Hardenberg',
+    imageAlt: 'Vrouw met kettlebell bij STARK! Hardenberg',
     objectPosition: 'center center',
     inverted: true,
     menu: [
@@ -197,7 +197,7 @@ export const impactCards: LandingServiceCardData[] = [
   {
     title: 'Persoonlijke coaching',
     image: 'foto-coaching-tegel-impact.png',
-    imageAlt: 'Schrijven en reflecteren tijdens een coachingsessie bij STARK Hardenberg',
+    imageAlt: 'Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg',
     objectPosition: '50% 40%',
     menu: [
       {
@@ -221,7 +221,7 @@ export const coachingCards: LandingServiceCardData[] = [
     title: 'Momentum',
     eyebrow: 'Traject in de groep · 10 weken',
     image: 'foto-coaching-tegel-momentum-gesprek.png',
-    imageAlt: 'Groep in gesprek tijdens coaching bij STARK Hardenberg',
+    imageAlt: 'Groep in gesprek tijdens coaching bij STARK! Hardenberg',
     objectPosition: 'center 30%',
     imageFilter: 'grayscale(1) contrast(1.22) brightness(0.9)',
     detailHref: '/momentum',
@@ -254,7 +254,7 @@ export const coachingCards: LandingServiceCardData[] = [
     title: 'Impact',
     eyebrow: 'Traject 1-op-1 · 12 weken',
     image: 'foto-coaching-tegel-impact-gesprek.png',
-    imageAlt: 'Coach corrigeert de vorm bij een kettlebell-oefening bij STARK Hardenberg',
+    imageAlt: 'Coach corrigeert de vorm bij een kettlebell-oefening bij STARK! Hardenberg',
     objectPosition: '52% 38%',
     imageFilter: 'grayscale(1) contrast(1.22) brightness(0.9)',
     detailHref: '/impact',
@@ -267,7 +267,7 @@ export const coachingCards: LandingServiceCardData[] = [
       },
       {
         label: 'Zo werkt het',
-        text: '12 weken, doorlopende instroom. Max. 5 per training, plus elk week een uur 1-op-1 coaching apart van de groep.',
+        text: '12 weken, doorlopende instroom. Max. 5 per training, plus elke week een uur 1-op-1 coaching apart van de groep.',
       },
       {
         label: 'Wat zit erin',
@@ -287,10 +287,10 @@ export const coachingCards: LandingServiceCardData[] = [
 
 export const zakelijkCards: LandingServiceCardData[] = [
   {
-    title: 'Momentum voor teams',
+    title: 'Momentum @ Werk',
     eyebrow: 'Preventief · in de groep',
     image: 'foto-fundament-tegel.png',
-    imageAlt: 'Momentum voor teams bij STARK Hardenberg',
+    imageAlt: 'Momentum @ Werk bij STARK! Hardenberg',
     objectPosition: 'center center',
     menu: [
       {
@@ -299,7 +299,11 @@ export const zakelijkCards: LandingServiceCardData[] = [
       },
       {
         label: 'Zo werkt het',
-        text: 'Hetzelfde Momentum dat we particulier draaien, nu voor je medewerkers. Trainen en coaching in één.',
+        parts: [
+          'Hetzelfde ',
+          { href: '/momentum', label: 'Momentum' },
+          ' dat we particulier draaien, nu voor je medewerkers. Trainen en coaching in één.',
+        ],
       },
       {
         label: 'Wat erin zit',
@@ -315,7 +319,7 @@ export const zakelijkCards: LandingServiceCardData[] = [
     title: 'Impact voor re-integratie',
     eyebrow: 'Herstel · 1-op-1 + groep',
     image: 'foto-reintegratie-tegel.png',
-    imageAlt: 'Impact voor re-integratie bij STARK Hardenberg',
+    imageAlt: 'Impact voor re-integratie bij STARK! Hardenberg',
     objectPosition: 'center center',
     inverted: true,
     menu: [
@@ -325,7 +329,11 @@ export const zakelijkCards: LandingServiceCardData[] = [
       },
       {
         label: 'Zo werkt het',
-        text: 'Ons Impact-traject, ingezet voor terugkeer naar werk. Lijf en hoofd pak je samen aan, geen quick fix.',
+        parts: [
+          'Ons ',
+          { href: '/impact', label: 'Impact' },
+          '-traject, ingezet voor terugkeer naar werk. Lijf en hoofd pak je samen aan, geen quick fix.',
+        ],
       },
       {
         label: 'Wat erin zit',
@@ -341,7 +349,7 @@ export const zakelijkCards: LandingServiceCardData[] = [
     title: 'Fundament voor starke teams',
     eyebrow: 'Maatwerk',
     image: 'foto-teamtraject-tegel.png',
-    imageAlt: 'Fundament voor starke teams bij STARK Hardenberg',
+    imageAlt: 'Fundament voor starke teams bij STARK! Hardenberg',
     objectPosition: 'center center',
     menu: [
       {

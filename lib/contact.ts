@@ -47,14 +47,14 @@ export type ContactOntdekt =
   | 'doorverwijzing'
   | 'anders'
 
-/** Bij deze keuze is een naam verplicht (wie bij STARK) */
+/** Bij deze keuze is een naam verplicht (wie bij STARK!) */
 export const CONTACT_ONTDEKT_VIA_LID: ContactOntdekt = 'via-lid'
 
 /** Bij deze keuze is toelichting verplicht */
 export const CONTACT_ONTDEKT_ANDERS: ContactOntdekt = 'anders'
 
 export const CONTACT_ONTDEKT_OPTIONS: { value: ContactOntdekt; label: string }[] = [
-  { value: 'via-lid', label: 'Via iemand die bij STARK traint' },
+  { value: 'via-lid', label: 'Via iemand die bij STARK! traint' },
   { value: 'via-kennis', label: 'Via vriend(in) of familie' },
   { value: 'google', label: 'Google of online zoeken' },
   { value: 'social', label: 'Social media (Instagram, Facebook, etc.)' },
@@ -97,11 +97,11 @@ export const mailtoInfo = 'mailto:info@starkhardenberg.nl'
 
 export const ADDRESS = {
   street: 'Nijverheidsstraat 15c',
-  city: '7772 AJ Hardenberg',
+  city: '7772 TP Hardenberg',
   display: 'Nijverheidsstraat 15c, Hardenberg',
   maps: 'https://www.google.com/maps/search/?api=1&query=Nijverheidsstraat+15c,+Hardenberg,+Nederland',
   mapsEmbed:
-    'https://maps.google.com/maps?q=Nijverheidsstraat+15c,+7772+AJ+Hardenberg,+Nederland&hl=nl&z=16&output=embed',
+    'https://maps.google.com/maps?q=Nijverheidsstraat+15c,+7772+TP+Hardenberg,+Nederland&hl=nl&z=16&output=embed',
 } as const
 
 /** @deprecated Gebruik hrefKennismaking */

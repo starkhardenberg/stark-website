@@ -4,11 +4,17 @@
  * Standaard: Vimeo background embed (NEXT_PUBLIC_VIMEO_HERO_ID) — streamt in volle
  * kwaliteit vanaf Vimeo, geen bestand op de site.
  *
- * Optioneel: native MP4 via NEXT_PUBLIC_HERO_VIDEO_URL (alleen als je bewust
- * van Vimeo af wilt).
+ * Optioneel: native MP4 via NEXT_PUBLIC_HERO_VIDEO_URL / NEXT_PUBLIC_HERO_VIDEO_MOBILE_URL.
+ * Touch-devices krijgen standaard de mobiele MP4 (Vimeo iframe-autoplay faalt op iOS).
  */
 export const HERO_VIDEO_URL =
   process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() ?? ''
+
+/** Lichtere MP4 voor touch-devices; Vimeo iframe-autoplay faalt daar vaak (iOS Safari). */
+export const HERO_VIDEO_MOBILE_URL =
+  process.env.NEXT_PUBLIC_HERO_VIDEO_MOBILE_URL?.trim() ||
+  HERO_VIDEO_URL ||
+  'https://res.cloudinary.com/zvwcoygn/video/upload/q_auto:eco,f_auto,w_960/Stark_Hero_uo91kd.mp4'
 
 export const HERO_VIDEO_POSTER =
   process.env.NEXT_PUBLIC_HERO_VIDEO_POSTER?.trim() ??

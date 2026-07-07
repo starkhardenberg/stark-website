@@ -85,7 +85,8 @@
 }
 
 .heroBgImgTrainen {
-  filter: grayscale(0.06) brightness(0.78) contrast(1.04);
+  object-fit: cover;
+  filter: none;
 }
 
 .heroBgImgTrainenLanding {
@@ -440,6 +441,25 @@
   color: #0a0a0a;
 }
 
+.featureTiles .inlineLink {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: #0a0a0a;
+  text-decoration: underline;
+  text-decoration-color: rgba(10, 10, 10, 0.22);
+  text-underline-offset: 4px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.featureTiles .inlineLink:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
+}
+
 @media (min-width: 760px) {
   .featureTiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -605,6 +625,16 @@
 
 .introLayoutZakelijk {
   --intro-col-gap: clamp(28px, 4vw, 48px);
+}
+
+.zakelijkFitBlock {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.zakelijkFitBlock > div {
+  max-width: none;
 }
 
 .introPrologueBridgeCol {

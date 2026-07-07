@@ -44,9 +44,9 @@ export type HeroQuote = {
 export const heroQuoteAmanda: HeroQuote = {
   text: 'Ik heb echt geleerd rust te nemen en naar mijn lichaam te luisteren in plaats van door te denderen en grip verliezen.',
   name: 'Amanda',
-  context: 'Deelnemer Momentum (de vrouwen editie, voorheen Camp Leone)',
+  context: 'Amanda, Momentum',
   image: '/images/foto-vrouw-lachen.jpg',
-  imageAlt: 'Amanda, deelnemer Momentum bij STARK Hardenberg',
+  imageAlt: 'Amanda, deelnemer Momentum bij STARK! Hardenberg',
 }
 
 /** Alle testimonials — één bron voor homepage, Momentum en Impact. */
@@ -200,21 +200,21 @@ export const allTestimonials: TestimonialEntry[] = [
   },
   {
     id: 'richard-1',
-    text: 'STARK bouwt geen lichamen, STARK bouwt doorzetters.',
+    text: 'STARK! bouwt geen lichamen, STARK! bouwt doorzetters.',
     name: 'Richard',
     context: 'Groepstraining',
     category: 'groepstraining',
   },
   {
     id: 'yara-1',
-    text: 'Bij STARK voel ik me sterk en blij! Ik heb nieuwe vriendjes en het is altijd heel gezellig!',
+    text: 'Bij STARK! voel ik me sterk en blij! Ik heb nieuwe vriendjes en het is altijd heel gezellig!',
     name: 'Yara',
     context: 'Kids',
     category: 'kids',
   },
   {
     id: 'jaloe-1',
-    text: 'Bij STARK leer ik mijn grenzen te verleggen en hierdoor word ik de sterke versie van mezelf.',
+    text: 'Bij STARK! leer ik mijn grenzen te verleggen en hierdoor word ik de sterke versie van mezelf.',
     name: 'Jaloe',
     context: 'Teens',
     category: 'teens',
@@ -305,8 +305,10 @@ export const heroQuoteRenske: HeroQuote = {
   text: 'Je lijf kan zoveel meer dan je denkt. Je mag het even niet weten, de trainer geeft je de ruimte en helpt je om weer door te gaan.',
   name: 'Renske',
   context: 'Groepstraining',
-  image: '/images/foto-trainen-quotes-renske.jpg',
-  imageAlt: 'Renske tijdens groepstraining bij STARK Hardenberg',
+  image: '/images/foto-trainen-quotes-renske.png',
+  imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
+  imageBw: true,
+  objectPosition: 'center 40%',
 }
 
 const TRAINEN_PAGE_HERO_ID = 'renske-1'
@@ -332,7 +334,7 @@ export const heroQuoteRebekka: HeroQuote = {
   name: 'Rebekka',
   context: 'Momentum traject',
   image: '/images/foto-momentum-quotes-hero.png',
-  imageAlt: 'Rebekka tijdens sledpull-training bij STARK Hardenberg',
+  imageAlt: 'Rebekka tijdens sledpull-training bij STARK! Hardenberg',
   imageBw: true,
   objectPosition: 'center 42%',
 }
@@ -358,7 +360,7 @@ export const heroQuoteRenee: HeroQuote = {
   name: 'Renee',
   context: 'Impact traject',
   image: '/images/foto-impact-quotes-renee.png',
-  imageAlt: 'Renee met weerstandsband tijdens training bij STARK Hardenberg',
+  imageAlt: 'Renee met weerstandsband tijdens training bij STARK! Hardenberg',
   imageBw: true,
   objectPosition: '48% 14%',
   imageScale: 1.08,

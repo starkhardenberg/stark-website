@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG-preview — STARK!</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: #212431;
+        color: #f5f5f5;
+        font-family: system-ui, -apple-system, sans-serif;
+        padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 48px);
+      }
+
+      .inner {
+        width: min(100%, 920px);
+        margin: 0 auto;
+      }
+
+      .label {
+        margin: 0 0 12px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #ea5c1f;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(32px, 6vw, 48px);
+        font-weight: 700;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        margin: 0 0 32px;
+        max-width: 52ch;
+        font-size: 17px;
+        line-height: 1.6;
+        color: #4f5d75;
+      }
+
+      .frame {
+        margin: 0;
+        border: 1px solid rgba(245, 245, 245, 0.12);
+        background: #161820;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .note {
+        margin: 18px 0 0;
+        font-size: 14px;
+        color: #4f5d75;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="inner">
+      <p class="label">Link-preview</p>
+      <h1>Zo ziet een gedeelde link eruit</h1>
+      <p class="lead">
+        WhatsApp, LinkedIn en andere apps halen deze afbeelding op. Bezoekers gaan
+        naar de echte pagina, niet naar dit scherm.
+      </p>
+
+      <figure class="frame">
+        <img
+          src="/images/og-stark-card.png"
+          alt="STARK! Open Graph-kaart"
+          width="1200"
+          height="630"
+        />
+      </figure>
+
+      <p class="note">
+        Bestand voor platforms:
+        <code>/images/og-stark-card.png</code>
+      </p>
+    </div>
+  </body>
+</html>

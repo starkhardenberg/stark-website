@@ -1,0 +1,66 @@
+.page {
+  min-height: 100svh;
+  background: var(--navy);
+  color: var(--off);
+  padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 48px);
+}
+
+.inner {
+  width: min(100%, 920px);
+  margin: 0 auto;
+}
+
+.label {
+  margin: 0 0 12px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.title {
+  margin: 0 0 14px;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+}
+
+.lead {
+  margin: 0 0 32px;
+  max-width: 52ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.frame {
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(245, 245, 245, 0.12);
+  background: #161820;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.note {
+  margin: 18px 0 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  color: var(--off);
+}

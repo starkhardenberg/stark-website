@@ -3,6 +3,7 @@ import Image from 'next/image'
 import RotatingTestimonials, { type Testimonial } from '../RotatingTestimonials'
 import type { HeroQuote } from './testimonials-data'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
+import GoogleReviewsLink from '../GoogleReviewsLink'
 import styles from './TestimonialsSection.module.css'
 
 type Props = {
@@ -15,6 +16,10 @@ type Props = {
   narrow?: boolean
   /** Hero + carousel in één navy-blok (lichte kaartjes op donkere achtergrond). */
   unifiedDark?: boolean
+  /** Eén hero-quote vóór de carrousel meerekenen in de teller. */
+  heroQuoteOffset?: number
+  /** Statische Google-reviewlink onder de carrousel. */
+  showGoogleReviews?: boolean
 }
 
 function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
@@ -71,6 +76,8 @@ export default function TestimonialsSection({
   items,
   narrow = false,
   unifiedDark = false,
+  heroQuoteOffset = 0,
+  showGoogleReviews = false,
 }: Props) {
   if (!hero && items.length === 0) return null
 
@@ -100,7 +107,8 @@ export default function TestimonialsSection({
         ) : null}
         {items.length > 0 ? (
           <div className={styles.innerCarouselUnified}>
-            <RotatingTestimonials items={items} cardTone="light" />
+            <RotatingTestimonials items={items} cardTone="light" quoteOffset={heroQuoteOffset} />
+            {showGoogleReviews ? <GoogleReviewsLink tone="dark" /> : null}
           </div>
         ) : null}
       </section>
@@ -121,7 +129,8 @@ export default function TestimonialsSection({
       {items.length > 0 ? (
         <section className={`${styles.section} ${styles.sectionLight} ${styles.sectionCarousel}`}>
           <div className={styles.innerCarousel}>
-            <RotatingTestimonials items={items} cardTone="dark" />
+            <RotatingTestimonials items={items} cardTone="dark" quoteOffset={heroQuoteOffset} />
+            {showGoogleReviews ? <GoogleReviewsLink tone="light" /> : null}
           </div>
         </section>
       ) : null}

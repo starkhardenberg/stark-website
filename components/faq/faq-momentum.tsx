@@ -19,13 +19,18 @@ export const momentumFaq: FaqItem[] = [
       'Dat is precies waar Momentum over gaat. We werken met de patronen waardoor je afhaakt, in een groep die je vasthoudt.',
   },
   {
-    question: 'Moet ik al lid zijn bij STARK?',
+    question: 'Moet ik al lid zijn bij STARK!?',
     answer:
       'Nee. Momentum kun je volgen zonder lid te zijn. In een kennismaking bespreken we waar je staat en wat je nodig hebt.',
   },
   {
+    question: 'Is Momentum voor iedereen?',
+    answer:
+      'Ja. Momentum draait meestal als gemengde groep. Soms starten we een editie voor een specifieke groep. Op deze pagina zie je altijd wanneer de volgende groep start en voor wie die is.',
+  },
+  {
     question: 'Wat zijn kosten, locatie en startdatum?',
-    answer: `${MOMENTUM_NEXT_START_LABEL} Trainen en coaching bij STARK in Hardenberg. Kosten en tijdsinvestering per week bespreken we concreet in de kennismaking.`,
+    answer: `${MOMENTUM_NEXT_START_LABEL} Trainen en coaching bij STARK! in Hardenberg. Wat het kost hoor je in het kennismakingsgesprek. Hierboven lees je wat je ervoor terugkrijgt.`,
   },
   {
     question: 'Kan mijn werkgever dit regelen of vergoeden?',
@@ -37,5 +42,7 @@ export const momentumFaq: FaqItem[] = [
         werk kan bijdragen, stuur ons een bericht dan denken we mee.
       </>
     ),
+    schemaAnswer:
+      'Dat kan. Sommige werkgevers zetten Momentum in via de arbodienst of een vitaliteitsbudget. Wil je het voor een heel team, kijk dan op Momentum @ Werk. Wil je zelf meedoen en denk je dat je werk kan bijdragen, stuur ons een bericht dan denken we mee.',
   },
 ]

@@ -1,6 +1,6 @@
 export const BEELDEN_CREDIT = {
   label: 'Alle beelden',
-  text: 'echte STARK-mensen',
+  text: 'echte STARK!-mensen',
 } as const
 
 export const PHOTO_CREDIT = {

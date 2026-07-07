@@ -57,7 +57,7 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
 
       <div className={styles.meta}>
         <div className={styles.metaStart}>
-          <p>&copy; {new Date().getFullYear()} STARK Hardenberg</p>
+          <p>&copy; {new Date().getFullYear()} STARK! Hardenberg</p>
           <PhotoCredit className={styles.photoCredit} />
         </div>
         <Link href="/" className={styles.homeLink}>

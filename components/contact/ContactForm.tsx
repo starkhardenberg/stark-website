@@ -125,53 +125,6 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="ontdekt">Hoe heb je ons ontdekt?</label>
-        <select
-          id="ontdekt"
-          name="ontdekt"
-          required
-          value={ontdekt}
-          onChange={(e) => setOntdekt(e.target.value as ContactOntdekt | '')}
-        >
-          <option value="" disabled>
-            Kies een optie
-          </option>
-          {CONTACT_ONTDEKT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {vraagtNaamVia && (
-        <div className={`${styles.field} ${styles.fieldNested}`}>
-          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK?</label>
-          <input
-            id="ontdekt_via_naam"
-            name="ontdekt_via_naam"
-            type="text"
-            required
-            autoComplete="name"
-            placeholder="Voornaam en achternaam"
-          />
-        </div>
-      )}
-
-      {vraagtAndersToelichting && (
-        <div className={`${styles.field} ${styles.fieldNested}`}>
-          <label htmlFor="ontdekt_anders">Hoe precies?</label>
-          <input
-            id="ontdekt_anders"
-            name="ontdekt_anders"
-            type="text"
-            required
-            placeholder="Bijv. via een flyer, podcast of buurthuis"
-          />
-        </div>
-      )}
-
-      <div className={styles.field}>
         <label htmlFor="onderwerp">Waar ben je naar op zoek?</label>
         <select
           id="onderwerp"
@@ -194,6 +147,50 @@ export default function ContactForm({ initialOnderwerp }: Props) {
         </label>
         <textarea id="bericht" name="bericht" rows={4} />
       </div>
+
+      <div className={styles.field}>
+        <label htmlFor="ontdekt">
+          Hoe heb je ons ontdekt? <span className={styles.optional}>(optioneel)</span>
+        </label>
+        <select
+          id="ontdekt"
+          name="ontdekt"
+          value={ontdekt}
+          onChange={(e) => setOntdekt(e.target.value as ContactOntdekt | '')}
+        >
+          <option value="">Kies een optie</option>
+          {CONTACT_ONTDEKT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {vraagtNaamVia && (
+        <div className={`${styles.field} ${styles.fieldNested}`}>
+          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK!?</label>
+          <input
+            id="ontdekt_via_naam"
+            name="ontdekt_via_naam"
+            type="text"
+            autoComplete="name"
+            placeholder="Voornaam en achternaam"
+          />
+        </div>
+      )}
+
+      {vraagtAndersToelichting && (
+        <div className={`${styles.field} ${styles.fieldNested}`}>
+          <label htmlFor="ontdekt_anders">Hoe precies?</label>
+          <input
+            id="ontdekt_anders"
+            name="ontdekt_anders"
+            type="text"
+            placeholder="Bijv. via een flyer, podcast of buurthuis"
+          />
+        </div>
+      )}
 
       <p className={styles.privacy}>
         We gebruiken je gegevens alleen om contact met je op te nemen.
