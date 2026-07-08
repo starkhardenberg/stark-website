@@ -1,20 +1,39 @@
 import Nav from './Nav'
 import HeroAdaptiveBackground from './HeroAdaptiveBackground'
 import {
-  HERO_VIDEO_DESKTOP_URL,
+  HERO_VIDEO_DESKTOP_FALLBACK_URL,
   HERO_VIDEO_MOBILE_URL,
   HERO_VIDEO_POSTER,
+  VIMEO_HERO_VIDEO_ID,
+  heroVideoAspect,
+  heroVimeoClipPercent,
+  heroVimeoCoverBoost,
+  vimeoHeroEmbedUrl,
 } from '@/lib/hero-video'
 import styles from './HeroSection.module.css'
 
 export default function HeroSection() {
+  const vimeoSrc = VIMEO_HERO_VIDEO_ID
+    ? vimeoHeroEmbedUrl(VIMEO_HERO_VIDEO_ID)
+    : null
+
   return (
     <main className={styles.hero}>
       <div className={styles.bg} aria-hidden="true">
         <HeroAdaptiveBackground
           poster={HERO_VIDEO_POSTER}
-          desktopSrc={HERO_VIDEO_DESKTOP_URL}
           mobileSrc={HERO_VIDEO_MOBILE_URL}
+          desktopFallbackSrc={HERO_VIDEO_DESKTOP_FALLBACK_URL}
+          vimeo={
+            vimeoSrc
+              ? {
+                  src: vimeoSrc,
+                  videoAspect: heroVideoAspect(),
+                  coverBoost: heroVimeoCoverBoost(),
+                  clipOverride: heroVimeoClipPercent(),
+                }
+              : null
+          }
         />
       </div>
 

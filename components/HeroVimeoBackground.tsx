@@ -7,18 +7,10 @@ type Props = {
   src: string
   poster: string
   videoAspect: number
-  startSeconds?: number
   focusX?: number
   coverBoost?: number
   clipOverride?: number | null
-}
-
-type VimeoPlayerInstance = {
-  play: () => Promise<void>
-  ready: () => Promise<void>
-  setCurrentTime: (seconds: number) => Promise<number>
-  on: (event: string, callback: (data?: { seconds: number; duration: number }) => void) => void
-  destroy: () => void
+  onPlaybackFailed?: () => void
 }
 
 type Layout = {
@@ -28,6 +20,7 @@ type Layout = {
 }
 
 const DESKTOP_BREAKPOINT = 900
+const PLAYBACK_FAIL_MS = 6000
 
 function cropPerEdge(containerW: number, clipOverride?: number | null): number {
   if (clipOverride != null) return clipOverride
@@ -69,41 +62,19 @@ function coverLayout(
   return { width, height, cropPct }
 }
 
-function loadVimeoPlayer(): Promise<void> {
-  if ((window as Window & { Vimeo?: { Player: unknown } }).Vimeo?.Player) {
-    return Promise.resolve()
-  }
-
-  return new Promise((resolve, reject) => {
-    const existing = document.querySelector('script[data-vimeo-player]')
-    if (existing) {
-      existing.addEventListener('load', () => resolve(), { once: true })
-      return
-    }
-
-    const script = document.createElement('script')
-    script.src = 'https://player.vimeo.com/api/player.js'
-    script.async = true
-    script.dataset.vimeoPlayer = 'true'
-    script.onload = () => resolve()
-    script.onerror = () => reject(new Error('Vimeo player script failed'))
-    document.head.appendChild(script)
-  })
-}
-
 export default function HeroVimeoBackground({
   src,
   poster,
   videoAspect,
-  startSeconds = 0,
   focusX = 0.78,
   coverBoost = 1,
   clipOverride = null,
+  onPlaybackFailed,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null)
-  const iframeRef = useRef<HTMLIFrameElement>(null)
   const [layout, setLayout] = useState<Layout | null>(null)
   const [playing, setPlaying] = useState(false)
+  const loadedRef = useRef(false)
 
   useLayoutEffect(() => {
     const el = wrapRef.current
@@ -132,54 +103,24 @@ export default function HeroVimeoBackground({
   }, [videoAspect, coverBoost, clipOverride])
 
   useEffect(() => {
-    const iframe = iframeRef.current
-    if (!iframe) return
+    loadedRef.current = false
+    setPlaying(false)
 
-    let player: VimeoPlayerInstance | null = null
-    let cancelled = false
-
-    const initPlayer = async () => {
-      try {
-        await loadVimeoPlayer()
-        if (cancelled) return
-
-        const Vimeo = (
-          window as Window & {
-            Vimeo?: { Player: new (element: HTMLIFrameElement) => VimeoPlayerInstance }
-          }
-        ).Vimeo
-        if (!Vimeo) return
-
-        player = new Vimeo.Player(iframe)
-        player.on('playing', () => setPlaying(true))
-
-        if (startSeconds > 0) {
-          player.on('timeupdate', (data) => {
-            if (!data?.duration || !data.seconds) return
-            if (data.duration - data.seconds < 0.35) {
-              void player?.setCurrentTime(startSeconds)
-            }
-          })
-        }
-
-        await player.ready()
-        if (startSeconds > 0) {
-          await player.setCurrentTime(startSeconds)
-        }
-        await player.play()
-      } catch {
-        /* autoplay kan door browser geblokkeerd worden; embed-autoplay vangt op */
-      }
-    }
-
-    void initPlayer()
+    const failTimer = onPlaybackFailed
+      ? setTimeout(() => {
+          if (!loadedRef.current) onPlaybackFailed()
+        }, PLAYBACK_FAIL_MS)
+      : undefined
 
     return () => {
-      cancelled = true
-      player?.destroy()
+      if (failTimer) clearTimeout(failTimer)
     }
-  }, [src, startSeconds])
+  }, [src, onPlaybackFailed])
 
+  const reveal = () => {
+    loadedRef.current = true
+    setPlaying(true)
+  }
   const focusPct = focusX * 100
 
   return (
@@ -191,7 +132,6 @@ export default function HeroVimeoBackground({
         fetchPriority="high"
       />
       <iframe
-        ref={iframeRef}
         src={src}
         title=""
         className={styles.vimeoIframe}
@@ -214,6 +154,8 @@ export default function HeroVimeoBackground({
         }
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
         referrerPolicy="strict-origin-when-cross-origin"
+        loading="eager"
+        onLoad={reveal}
       />
     </div>
   )

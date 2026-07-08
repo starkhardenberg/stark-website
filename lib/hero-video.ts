@@ -1,21 +1,22 @@
 /**
  * Hero-achtergrond (homepage).
  *
- * Native MP4 via Cloudinary — betrouwbaar op desktop én mobiel (Vimeo iframe-autoplay
- * faalt te vaak). Vimeo-ID blijft beschikbaar voor later/hergebruik (film-sectie).
+ * Desktop (fine pointer): Vimeo HQ background-embed.
+ * Touch/mobiel: native MP4 — iframe-autoplay faalt op iOS Safari.
+ * Desktop-fallback: zwaardere Cloudinary MP4 als Vimeo niet start.
  */
 export const HERO_VIDEO_URL =
   process.env.NEXT_PUBLIC_HERO_VIDEO_URL?.trim() ?? ''
 
-/** Desktop / fine pointer — hogere resolutie. */
-export const HERO_VIDEO_DESKTOP_URL =
-  HERO_VIDEO_URL ||
-  'https://res.cloudinary.com/zvwcoygn/video/upload/q_auto:good,f_auto,w_1920/Stark_Hero_uo91kd.mp4'
-
-/** Touch-devices — lichter bestand. */
+/** Touch — voldoende scherp op klein scherm, beperkt bestandsgrootte. */
 export const HERO_VIDEO_MOBILE_URL =
   process.env.NEXT_PUBLIC_HERO_VIDEO_MOBILE_URL?.trim() ||
-  'https://res.cloudinary.com/zvwcoygn/video/upload/q_auto:eco,f_auto,w_960/Stark_Hero_uo91kd.mp4'
+  'https://res.cloudinary.com/zvwcoygn/video/upload/q_auto:good,f_auto,w_1280/Stark_Hero_uo91kd.mp4'
+
+/** Alleen als Vimeo op desktop niet start — max kwaliteit uit Cloudinary. */
+export const HERO_VIDEO_DESKTOP_FALLBACK_URL =
+  HERO_VIDEO_URL ||
+  'https://res.cloudinary.com/zvwcoygn/video/upload/q_auto:best,f_auto,w_2560/Stark_Hero_uo91kd.mp4'
 
 export const HERO_VIDEO_POSTER =
   process.env.NEXT_PUBLIC_HERO_VIDEO_POSTER?.trim() ??
