@@ -12,12 +12,25 @@ export default function HeroBackgroundVideo({ src, poster }: Props) {
   const ref = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    ref.current?.play().catch(() => {})
-  }, [])
+    const video = ref.current
+    if (!video) return
+
+    const play = () => {
+      void video.play().catch(() => {})
+    }
+
+    play()
+    video.addEventListener('loadeddata', play)
+
+    return () => {
+      video.removeEventListener('loadeddata', play)
+    }
+  }, [src])
 
   return (
     <video
       ref={ref}
+      key={src}
       className={styles.heroVideo}
       src={src}
       poster={poster}
