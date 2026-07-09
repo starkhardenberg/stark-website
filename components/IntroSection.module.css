@@ -1,10 +1,10 @@
 .intro {
   padding: clamp(72px, 10vw, 112px) clamp(20px, 4vw, 48px);
-  border-top: 1px solid rgba(33, 36, 49, 0.1);
-  border-bottom: 1px solid rgba(33, 36, 49, 0.1);
   background:
     linear-gradient(105deg, rgba(234, 92, 31, 0.05) 0%, rgba(234, 92, 31, 0) 46%),
     var(--off);
+  border-top: 3px solid var(--orange);
+  border-bottom: 1px solid rgba(33, 36, 49, 0.1);
 }
 
 .inner {
@@ -16,7 +16,7 @@
 .manifest {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(36px, 6vw, 48px);
+  gap: clamp(40px, 6vw, 56px);
   align-items: start;
 }
 
@@ -46,37 +46,109 @@
   color: var(--navy);
 }
 
-.copyCol {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(32px, 5vw, 48px);
-  min-width: 0;
-}
-
 .positioning {
-  margin: 0;
-  max-width: 52ch;
+  margin: clamp(24px, 4vw, 32px) 0 0;
+  max-width: 36ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(17px, 2vw, 18px);
+  font-size: clamp(16px, 1.7vw, 18px);
   font-weight: 600;
   line-height: 1.55;
   color: var(--navy);
 }
 
-.bodyBlock {
+.copyCol {
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2.5vw, 20px);
+  gap: clamp(32px, 5vw, 44px);
+  min-width: 0;
 }
 
-.body {
+.regels {
+  list-style: none;
   margin: 0;
-  max-width: 52ch;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: regel;
+}
+
+.regel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(72px, 0.22fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 40px);
+  min-height: clamp(120px, 18vw, 168px);
+  padding: clamp(22px, 3.5vw, 32px) clamp(18px, 3vw, 28px);
+  background: var(--off);
+  border-bottom: 1px solid rgba(33, 36, 49, 0.1);
+  overflow: hidden;
+}
+
+.regel:first-child {
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.regel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(44%, 220px);
+  height: 3px;
+  background: var(--orange);
+}
+
+.regelAccent {
+  background: rgba(234, 92, 31, 0.08);
+}
+
+.regelAccent::after {
+  width: 100%;
+  max-width: none;
+}
+
+.regelNum {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 10vw, 96px);
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: var(--outline-stroke-display) var(--orange-deep);
+}
+
+.regelCopy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.regelLead {
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(20px, 3.6vw, 34px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: #0a0a0a;
+}
+
+.regelAccent .regelLead {
+  max-width: 28ch;
+}
+
+.regelRest {
+  margin: clamp(8px, 1.2vw, 12px) 0 0;
+  max-width: 48ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.85vw, 18px);
+  font-size: clamp(16px, 1.7vw, 18px);
   font-weight: 400;
-  line-height: 1.68;
-  color: #3a3a3a;
+  line-height: 1.6;
+  color: rgba(33, 36, 49, 0.62);
 }
 
 .inlineLink {
@@ -91,28 +163,6 @@
 .inlineLink:hover {
   color: var(--orange);
   text-decoration-color: var(--orange);
-}
-
-.signature {
-  margin: 0;
-  max-width: 38ch;
-  padding: 0 0 0 clamp(18px, 2.5vw, 24px);
-  border-left: 2px solid var(--orange);
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(17px, 2vw, 20px);
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--navy);
-}
-
-.breadth {
-  margin: 0;
-  max-width: 52ch;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.8vw, 17px);
-  font-weight: 400;
-  line-height: 1.65;
-  color: rgba(33, 36, 49, 0.62);
 }
 
 .ctaRow {
@@ -175,6 +225,10 @@
   .ctaFilled {
     text-transform: uppercase;
   }
+
+  .regel {
+    grid-template-columns: minmax(56px, 0.26fr) minmax(0, 1fr);
+  }
 }
 
 @media (min-width: 900px) {
@@ -185,12 +239,15 @@
   }
 
   .manifest {
-    grid-template-columns: minmax(220px, 28%) minmax(0, 1fr);
-    gap: clamp(40px, 5vw, 72px);
+    grid-template-columns: minmax(220px, 30%) minmax(0, 1fr);
+    gap: clamp(40px, 5vw, 80px);
   }
 
   .headingCol {
     padding-right: clamp(16px, 2vw, 28px);
+    position: sticky;
+    top: clamp(96px, 12vh, 120px);
+    align-self: start;
   }
 
   .heading {
@@ -198,13 +255,11 @@
     font-size: clamp(48px, 5.5vw, 88px);
   }
 
-  .copyCol {
-    padding-left: 0;
+  .positioning {
+    max-width: none;
   }
 
-  .body,
-  .signature,
-  .breadth {
-    max-width: none;
+  .regelLead {
+    max-width: 38ch;
   }
 }
