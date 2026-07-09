@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import type { Ref } from 'react'
 import trackStyles from '../TrackItem.module.css'
@@ -104,7 +104,7 @@ export default function TrainenBandLayout({
           <div className={trackStyles.photoVisual}>
             <div className={trackStyles.photoFrame}>
               <div className={trackStyles.singlePhoto}>
-                <Image
+                <StarkImage
                   src={`/images/${photo}`}
                   alt={photoAlt}
                   fill

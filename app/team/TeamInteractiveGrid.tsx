@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
 import PortraitFrame from './PortraitFrame'
 import { TEAM, col1, col2, col3 } from './team-members'
@@ -34,14 +34,17 @@ export default function TeamInteractiveGrid() {
                 <div
                   key={member.id}
                   className={`${styles.photoItem} ${itemClass(member.id)}`}
+                  data-stark-hover=""
                   onMouseEnter={() => setHoveredId(member.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
                   <div className={`${styles.photoMedia}${member.photoUnfiltered ? ` ${styles.photoMediaRaw}` : ''}`}>
-                    <Image
+                    <StarkImage
                       src={member.photo}
                       alt={member.name}
                       fill
+                      hoverColor
+                      unaltered={member.photoUnfiltered}
                       unoptimized={member.photoUnfiltered}
                       className={`${styles.photoImg}${member.photoUnfiltered ? ` ${styles.photoImgRaw}` : ''}`}
                       style={{ objectPosition: member.objectPosition }}

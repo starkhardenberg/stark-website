@@ -4,6 +4,7 @@ import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import PhotoCredit from '@/components/PhotoCredit'
+import { starkImgClass } from '@/components/StarkImage'
 import styles from './Footer.module.css'
 
 const year = new Date().getFullYear()
@@ -34,6 +35,8 @@ type FooterProps = {
   showWelcome?: boolean
   /** Vervangt de standaard lead rechts in de footer (bijv. dialect per pagina). */
   lead?: ReactNode
+  /** Verberg het woordmerk links (bijv. homepage met WijBintStark-band erboven). */
+  hideBrand?: boolean
 }
 
 const HOME_PHOTO = {
@@ -79,6 +82,7 @@ export default function Footer({
   brandPrefix = DEFAULT_BRAND_PREFIX,
   showWelcome = false,
   lead,
+  hideBrand = false,
 }: FooterProps) {
   const hasProminentCta = Boolean(ctaTitle)
   const resolvedPhotoSet = photoSet ?? (photoFirst ? 'landing' : 'home')
@@ -102,7 +106,7 @@ export default function Footer({
       <img
         src={photoAsset.src}
         alt=""
-        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}${isCoachingPhoto ? ` ${styles.photoCoaching}` : ''}${isTrainenPhoto ? ` ${styles.photoTrainen}` : ''}${isZakelijkPhoto ? ` ${styles.photoZakelijk}` : ''}`}
+        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}${isCoachingPhoto ? ` ${styles.photoCoaching}` : ''}${isTrainenPhoto ? ` ${styles.photoTrainen}` : ''}${isZakelijkPhoto ? ` ${styles.photoZakelijk}` : ''} ${starkImgClass}`}
         width={photoAsset.width}
         height={photoAsset.height}
         decoding="async"
@@ -159,7 +163,7 @@ export default function Footer({
           <img
             src={ctaImage ?? photoAsset.src}
             alt=""
-            className={styles.ctaHeroImg}
+            className={`${styles.ctaHeroImg} ${starkImgClass}`}
             width={photoAsset.width}
             height={photoAsset.height}
             decoding="async"
@@ -200,18 +204,20 @@ export default function Footer({
   const content = (
       <div className={styles.content}>
         <div className={styles.inner}>
-          <div className={styles.colStart}>
-            <div className={styles.colHead}>
-              {showWelcome ? <p className={styles.welcome}>Wees welkom</p> : null}
-              <p className={styles.brand}>
-                {brandPrefix ? (
-                  <>
-                    <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
-                  </>
-                ) : null}
-                STARK!
-              </p>
-            </div>
+          <div className={`${styles.colStart}${hideBrand ? ` ${styles.colStartMetaOnly}` : ''}`}>
+            {!hideBrand ? (
+              <div className={styles.colHead}>
+                {showWelcome ? <p className={styles.welcome}>Wees welkom</p> : null}
+                <p className={styles.brand}>
+                  {brandPrefix ? (
+                    <>
+                      <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
+                    </>
+                  ) : null}
+                  STARK!
+                </p>
+              </div>
+            ) : null}
             <div className={styles.colFoot}>
               <p className={styles.meta}>
                 &copy; {year} STARK! Hardenberg

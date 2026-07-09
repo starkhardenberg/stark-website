@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA } from '@/lib/stark-cta'
@@ -33,21 +33,22 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
     <>
       <div className={styles.root}>
         <div className={styles.track} ref={trackRef}>
-          {options.map((opt, idx) => {
-            const isBw = opt.grayscale ?? idx % 2 === 1
+          {options.map((opt) => {
             return opt.href ? (
               <Link
                 key={opt.title}
                 href={opt.href}
                 className={styles.card}
+                data-stark-hover=""
                 aria-label={`Meer info over ${opt.title}`}
               >
                 <div className={styles.imgWrap}>
-                  <Image
+                  <StarkImage
                     src={`/images/${opt.photo}`}
                     alt={opt.photoAlt}
                     fill
-                    className={`${styles.img} ${isBw ? styles.imgBw : ''}`}
+                    hoverColor
+                    className={styles.img}
                     sizes="(min-width: 900px) 180px, 52vw"
                     style={{ objectPosition: opt.objectPosition ?? 'center' }}
                   />
@@ -61,15 +62,17 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
               <button
                 key={opt.title}
                 className={styles.card}
-                onClick={() => setSelected({ ...opt, grayscale: isBw })}
+                data-stark-hover=""
+                onClick={() => setSelected(opt)}
                 aria-label={`Meer info over ${opt.title}`}
               >
                 <div className={styles.imgWrap}>
-                  <Image
+                  <StarkImage
                     src={`/images/${opt.photo}`}
                     alt={opt.photoAlt}
                     fill
-                    className={`${styles.img} ${isBw ? styles.imgBw : ''}`}
+                    hoverColor
+                    className={styles.img}
                     sizes="(min-width: 900px) 180px, 52vw"
                     style={{ objectPosition: opt.objectPosition ?? 'center' }}
                   />
@@ -100,11 +103,11 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
         <div className={styles.modalBackdrop} onClick={() => setSelected(null)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalImg}>
-              <Image
+              <StarkImage
                 src={`/images/${selected.photo}`}
                 alt={selected.photoAlt}
                 fill
-                className={`${styles.modalImgEl} ${selected.grayscale ? styles.modalImgBw : ''}`}
+                className={styles.modalImgEl}
                 sizes="(min-width: 900px) 480px, 100vw"
               />
             </div>

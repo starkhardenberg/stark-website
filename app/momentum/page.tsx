@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -58,7 +58,7 @@ export default function MomentumPage() {
     <main className={landing.main}>
       <section className={`${landing.hero} ${landing.heroCoaching}`}>
         <div className={landing.heroBg}>
-          <Image
+          <StarkImage
             src="/images/foto-coaching-tegel-momentum.png"
             alt="Groep in gesprek tijdens Momentum bij STARK! Hardenberg"
             fill
@@ -150,7 +150,7 @@ export default function MomentumPage() {
       >
         <div className={styles.trajectGrid}>
           <div className={styles.trajectMedia}>
-            <Image
+            <StarkImage
               src="/images/foto-coaching-samen.jpg"
               alt="Deelnemer midden in een zware oefening tijdens Momentum bij STARK! Hardenberg"
               fill

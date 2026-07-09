@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import ContactForm from '@/components/contact/ContactForm'
@@ -152,7 +152,7 @@ export default function ContactPage({ searchParams }: PageProps) {
             {OWNERS.map((owner) => (
               <figure key={owner.name} className={styles.ownerCard}>
                 <div className={styles.ownerPhoto}>
-                  <Image
+                  <StarkImage
                     src={owner.photo}
                     alt={owner.name}
                     fill

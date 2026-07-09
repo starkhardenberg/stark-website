@@ -137,7 +137,7 @@
 }
 
 .heroImgBw {
-  filter: grayscale(1) contrast(1.04);
+  object-fit: cover;
 }
 
 /* Volledige foto in beeld, zelfde blok als Amanda — geen crop die gezicht wegsnijdt. */

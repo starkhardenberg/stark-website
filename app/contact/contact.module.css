@@ -248,7 +248,6 @@
 
 .ownerImg {
   object-fit: cover;
-  filter: grayscale(0.15) contrast(1.04);
 }
 
 .ownerCaption {

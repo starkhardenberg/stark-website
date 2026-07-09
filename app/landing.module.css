@@ -81,12 +81,10 @@
 .heroBgImg {
   object-fit: cover;
   object-position: 56% center;
-  filter: grayscale(0.35) brightness(0.3) contrast(1.08);
 }
 
 .heroBgImgTrainen {
   object-fit: cover;
-  filter: none;
 }
 
 .heroBgImgTrainenLanding {
@@ -94,12 +92,11 @@
 }
 
 .heroBgImgCoaching {
-  filter: grayscale(1) brightness(0.66) contrast(1.05);
+  object-fit: cover;
 }
 
-/* Geen overlay, geen dim — schone B&W hero (Momentum). */
 .heroBgImgClean {
-  filter: grayscale(1) contrast(1.05);
+  object-fit: cover;
 }
 
 /* Coaching-hero: meer lucht onder de titel voor rust */
@@ -1623,11 +1620,10 @@ a.resultItem {
 
 .resultMediaImg {
   object-fit: cover;
-  filter: grayscale(1) contrast(1.04);
 }
 
 .resultMediaImgKids {
-  filter: grayscale(1) contrast(1.04);
+  object-fit: cover;
 }
 
 /* ── Lichte tegelvariant (alleen onder .resultGridLight, bv. trainen):

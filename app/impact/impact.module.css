@@ -175,7 +175,6 @@
 .trajectMediaImg {
   object-fit: cover;
   object-position: 50% 40%;
-  filter: grayscale(1) contrast(1.04);
 }
 
 @media (min-width: 860px) {

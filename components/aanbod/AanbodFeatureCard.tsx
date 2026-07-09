@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { CSSProperties, KeyboardEvent, MouseEvent } from 'react'
@@ -28,9 +28,6 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
   if (track.photoScale) {
     imageStyle.transform = `scale(${track.photoScale})`
     imageStyle.transformOrigin = track.photoScaleOrigin ?? 'center'
-  }
-  if (track.photoGrayscale) {
-    imageStyle.filter = 'grayscale(1) contrast(1.04)'
   }
 
   const openLanding = () => {
@@ -64,10 +61,11 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
       onKeyDown={handleCardKeyDown}
     >
       <div className={styles.media}>
-        <Image
+        <StarkImage
           src={`/images/${track.photo}`}
           alt={track.photoAlt}
           fill
+          hoverColor={Boolean(landingHref)}
           className={styles.image}
           sizes="(min-width: 900px) 33vw, 100vw"
           style={Object.keys(imageStyle).length ? imageStyle : undefined}

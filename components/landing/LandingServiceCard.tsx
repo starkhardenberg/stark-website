@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import StarkArrow from '@/components/icons/StarkArrow'
 import styles from '@/app/landing.module.css'
 
@@ -64,17 +64,14 @@ export default function LandingServiceCard({
   return (
     <div className={cardClassName}>
       <div className={styles.resultMedia}>
-        <Image
+        <StarkImage
           src={`/images/${image}`}
           alt={imageAlt}
           fill
+          hoverColor={clickable}
           className={`${styles.resultMediaImg}${kidsImage ? ` ${styles.resultMediaImgKids}` : ''}`}
           sizes="(min-width: 900px) 33vw, 100vw"
-          style={
-            objectPosition || imageFilter
-              ? { ...(objectPosition ? { objectPosition } : {}), ...(imageFilter ? { filter: imageFilter } : {}) }
-              : undefined
-          }
+          style={objectPosition ? { objectPosition } : undefined}
         />
         {num ? (
           <span className={styles.mediaIndex} aria-hidden>

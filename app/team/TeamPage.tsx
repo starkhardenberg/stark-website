@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Nav from '@/components/Nav'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Footer from '@/components/Footer'
 import TeamInteractiveGrid from './TeamInteractiveGrid'
 import GroupPhotoFrame from './GroupPhotoFrame'
@@ -14,7 +14,7 @@ export default function TeamPage() {
       {/* Hero */}
       <section className={`${styles.hero} ${styles.heroTeam}`}>
         <div className={styles.heroBg}>
-          <Image
+          <StarkImage
             src="/images/team/hero-kettlebells.png"
             alt="Kettlebells op de planken in de STARK! gym"
             fill
@@ -65,7 +65,7 @@ export default function TeamPage() {
       <section className={styles.groupBand} aria-label="Het STARK! team">
         <div className={styles.groupBandInner}>
           <div className={styles.groupBandMedia}>
-            <Image
+            <StarkImage
               src="/images/team-home.jpg"
               alt="Het STARK! team, lachend voor het logo in zwart-wit"
               fill
@@ -116,7 +116,7 @@ export default function TeamPage() {
       <section className={styles.originSection} aria-labelledby="origin-heading">
         <div className={styles.originLayout}>
           <div className={styles.originMedia} aria-label="Engbert-Jan en Yvonne">
-            <Image
+            <StarkImage
               src="/images/team/engbert-jan-yvonne-samen.png"
               alt="Engbert-Jan en Yvonne lachen samen voor een zwarte achtergrond"
               fill

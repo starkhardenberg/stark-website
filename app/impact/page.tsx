@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -55,7 +55,7 @@ export default function ImpactPage() {
     <main className={landing.main}>
       <section className={`${landing.hero} ${landing.heroCoaching}`}>
         <div className={landing.heroBg}>
-          <Image
+          <StarkImage
             src="/images/foto-coaching-tegel-impact.png"
             alt="Schrijven en reflecteren tijdens een coachingsessie bij STARK! Hardenberg"
             fill
@@ -152,7 +152,7 @@ export default function ImpactPage() {
       >
         <div className={styles.trajectGrid}>
           <div className={styles.trajectMedia}>
-            <Image
+            <StarkImage
               src="/images/foto-coaching-tegel-impact-gesprek.png"
               alt="Coach corrigeert de vorm bij een oefening tijdens Impact bij STARK! Hardenberg"
               fill

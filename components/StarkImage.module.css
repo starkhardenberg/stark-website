@@ -1,0 +1,40 @@
+.fillWrap {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.inlineWrap {
+  display: block;
+  line-height: 0;
+}
+
+.img {
+  filter: grayscale(1) contrast(1.15) brightness(1.02);
+}
+
+.imgUnaltered {
+  filter: none;
+}
+
+@media (hover: hover) and (min-width: 900px) {
+  .hoverColor .img {
+    transition: filter 300ms ease;
+  }
+
+  .hoverColor:hover .img,
+  :global([data-stark-hover]:hover) .hoverColor .img {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoverColor .img {
+    transition: none;
+  }
+
+  .hoverColor:hover .img {
+    filter: grayscale(1) contrast(1.15) brightness(1.02);
+  }
+}

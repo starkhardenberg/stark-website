@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -30,7 +30,7 @@ export default function TrainenPage() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image
+          <StarkImage
             src="/images/foto-trainen-landingspagina.png"
             alt="Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg"
             fill

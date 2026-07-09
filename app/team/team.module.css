@@ -32,7 +32,6 @@
 .heroBgImg {
   object-fit: cover;
   object-position: 62% 58%;
-  filter: grayscale(1) brightness(0.66) contrast(1.05);
 }
 
 .heroTeam .heroContent {
@@ -189,7 +188,6 @@
 .photoImg {
   object-fit: cover;
   transition: transform 0.4s ease;
-  filter: grayscale(0.12);
   border-radius: 1px;
 }
 
@@ -787,9 +785,7 @@
 
 .groupBandImg {
   object-fit: cover;
-  /* Bovenkant anker: gezichten lager in kader, buik mag onder uit beeld */
   object-position: 50% 18%;
-  filter: contrast(1.06) brightness(0.94);
 }
 
 .creditInner {

@@ -397,7 +397,6 @@
 .singlePhotoImg {
   object-fit: cover;
   object-position: center 42%;
-  filter: grayscale(0.12) contrast(1.05);
 }
 
 /*
@@ -421,7 +420,7 @@
 }
 
 .light .singlePhotoImg {
-  filter: grayscale(0.06) contrast(1.03);
+  object-fit: cover;
 }
 
 .light .desc {

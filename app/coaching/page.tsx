@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
@@ -27,7 +27,7 @@ export default function CoachingPage() {
     <main className={styles.main}>
       <section className={`${styles.hero} ${styles.heroCoaching}`}>
         <div className={styles.heroBg}>
-          <Image
+          <StarkImage
             src="/images/foto-coaching-hero-flipchart.png"
             alt="Coachinggesprek met scherpe vragen bij STARK! Hardenberg"
             fill

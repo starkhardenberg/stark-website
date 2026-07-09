@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import Image from 'next/image'
+import StarkImage from '@/components/StarkImage'
 import RotatingTestimonials, { type Testimonial } from '../RotatingTestimonials'
 import type { HeroQuote } from './testimonials-data'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
@@ -46,12 +46,13 @@ function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
         className={`${styles.heroImgWrap}${hero.portraitCrop ? ` ${styles.heroImgWrapPortrait}` : ''}${hero.imageContain ? ` ${styles.heroImgWrapContain}` : ''}`}
         aria-hidden="true"
       >
-        <Image
+        <StarkImage
           src={hero.image}
           alt={hero.imageAlt ?? ''}
           fill
+          unaltered={hero.imageBw || hero.darkPortrait}
           sizes="(min-width: 900px) 50vw, 100vw"
-          className={`${styles.heroImg}${hero.imageMirror ? ` ${styles.heroImgMirror}` : ''}${hero.imageBw ? ` ${styles.heroImgBw}` : ''}`}
+          className={`${styles.heroImg}${hero.imageMirror ? ` ${styles.heroImgMirror}` : ''}`}
           style={Object.keys(imgStyle).length ? imgStyle : undefined}
         />
       </div>

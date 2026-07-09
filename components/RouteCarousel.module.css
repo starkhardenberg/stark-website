@@ -34,11 +34,10 @@
 
 .img {
   object-fit: cover;
-  filter: grayscale(0.12) contrast(1.05);
 }
 
 .imgBw {
-  filter: grayscale(1) contrast(1.05);
+  object-fit: cover;
 }
 
 .overlay {
@@ -146,11 +145,10 @@
 
 .modalImgEl {
   object-fit: cover;
-  filter: grayscale(0.1) contrast(1.04);
 }
 
 .modalImgBw {
-  filter: grayscale(1) contrast(1.04);
+  object-fit: cover;
 }
 
 .modalBody {

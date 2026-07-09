@@ -41,6 +41,10 @@
   margin-top: auto;
 }
 
+.colStartMetaOnly .colFoot {
+  margin-top: 0;
+}
+
 .colEnd:not(:has(.colMid)) .colFoot {
   margin-top: auto;
 }
@@ -300,7 +304,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center 38%;
-  filter: grayscale(1) contrast(1.05) brightness(0.92);
 }
 
 .ctaHeroScrim {
@@ -434,7 +437,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center 72%;
-  filter: grayscale(1) contrast(1.04);
 }
 
 .photoHome {
@@ -667,7 +669,11 @@
 .footerPhotoless .content {
   background: var(--navy);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: clamp(64px, 9vw, 96px);
+  padding-top: clamp(40px, 6vw, 64px);
+}
+
+.footerPhotoless:has(.colStartMetaOnly) .content {
+  padding-top: clamp(32px, 5vw, 48px);
 }
 
 /* ── Gradient variant: foto eindigt in navy → content fade navy → off-white ── */
