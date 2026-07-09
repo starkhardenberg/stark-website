@@ -848,7 +848,7 @@
   line-height: 1.55;
   font-weight: 500;
   color: rgba(33, 36, 49, 0.62);
-  max-width: 28ch;
+  max-width: 44ch;
   white-space: normal;
 }
 
@@ -910,6 +910,11 @@
   .creditTitlePlayful {
     font-size: clamp(34px, 3.4vw, 56px);
     max-width: 12ch;
+  }
+
+  .creditSubtitle {
+    max-width: none;
+    white-space: nowrap;
   }
 
   .creditBody {
