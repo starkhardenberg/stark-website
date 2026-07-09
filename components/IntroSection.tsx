@@ -2,7 +2,6 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
-import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './IntroSection.module.css'
 
 type Regel = {
@@ -54,7 +53,7 @@ export default function IntroSection() {
         <div className={styles.manifest}>
           <div className={styles.headingCol}>
             <p className={styles.label}>Wi&apos;j bint STARK!</p>
-            <h2 className={styles.heading} style={oswaldTrim('Zo')}>
+            <h2 className={styles.heading}>
               Zo werken wij.
             </h2>
             <p className={styles.positioning}>
