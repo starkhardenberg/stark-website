@@ -13,7 +13,6 @@ import LandingServiceCard from '@/components/landing/LandingServiceCard'
 import { coachingCards } from '@/components/landing/landing-cards'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
-import { oswaldTrim } from '@/lib/displayTrim'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -99,7 +98,7 @@ export default function CoachingPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom} ${styles.sectionCatalog}`}>
         <div className={styles.catalogHead}>
-          <h2 className={styles.title} style={oswaldTrim('Twee')}>
+          <h2 className={styles.title}>
             Twee <span className={styles.titleAccentOutline}>trajecten.</span>
           </h2>
           <p className={styles.catalogIntro}>
@@ -117,7 +116,7 @@ export default function CoachingPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Waar wij voor staan</span>
-            <h2 className={styles.title} style={oswaldTrim('ZO')}>ZO COACHEN WIJ</h2>
+            <h2 className={styles.title}>ZO COACHEN WIJ</h2>
             <ul className={styles.featureTiles}>
               <li>
                 <span>Lijf en hoofd trainen we samen, nooit los van elkaar.</span>
@@ -165,7 +164,7 @@ export default function CoachingPage() {
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
           <span className={styles.label}>Wat je nog wilt weten</span>
-          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+          <h2 className={styles.title}>Goede vragen</h2>
           <FaqList items={coachingFaq} />
           <FaqJsonLd items={coachingFaq} />
         </div>

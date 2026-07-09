@@ -12,7 +12,6 @@ import { hrefKennismaking } from '@/lib/contact'
 import {
   MOMENTUM_NEXT_START_HEADLINE,
 } from '@/lib/momentum-dates'
-import { oswaldTrim } from '@/lib/displayTrim'
 import { pageMetadata } from '@/lib/open-graph'
 import landing from '../landing.module.css'
 import styles from './momentum.module.css'
@@ -123,7 +122,7 @@ export default function MomentumPage() {
         <div className={styles.valueGrid}>
           <div className={styles.valueText}>
             <span className={landing.label}>Wat het doet</span>
-            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Stop')}>
+            <h2 className={`${landing.title} ${landing.titleHero}`}>
               Stop met <span className={landing.titleHeroOutline}>stoppen</span>
             </h2>
             <p className={styles.rippleIntro}>
@@ -161,7 +160,7 @@ export default function MomentumPage() {
             />
           </div>
           <div className={styles.trajectMain}>
-            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
+            <h2 className={`${landing.title} ${landing.titleHero}`}>
               Eén programma.
               <br />
               {' '}
@@ -284,7 +283,7 @@ export default function MomentumPage() {
       <section className={landing.faqSection}>
         <div className={landing.faqInner}>
           <span className={landing.label}>Wat je nog wilt weten</span>
-          <h2 className={landing.title} style={oswaldTrim('Goede')}>
+          <h2 className={landing.title}>
             Goede vragen
           </h2>
           <FaqList items={momentumFaq} />

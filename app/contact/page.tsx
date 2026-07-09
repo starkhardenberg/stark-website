@@ -14,7 +14,6 @@ import {
   PHONE_WHATSAPP,
 } from '@/lib/contact'
 import { pageMetadata } from '@/lib/open-graph'
-import { oswaldTrim } from '@/lib/displayTrim'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = pageMetadata(
@@ -52,7 +51,11 @@ export default function ContactPage({ searchParams }: PageProps) {
       <div className={styles.shell}>
         <header className={styles.intro}>
           <p className={styles.eyebrow}>Vragen of langskomen</p>
-          <h1 className={styles.title} style={oswaldTrim('Zo')}>Zo bereik je ons</h1>
+          <h1 className={styles.title}>
+            Zo bereik
+            <br />
+            je ons
+          </h1>
           <p className={styles.lead}>
             Een vraag, of wil je gewoon even langskomen? Bel, mail of vul het formulier in. Je
             spreekt altijd een mens.

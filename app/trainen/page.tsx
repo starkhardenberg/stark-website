@@ -16,7 +16,6 @@ import {
   heroQuoteRenske,
 } from '@/components/testimonials/testimonials-data'
 import { hrefKennismaking } from '@/lib/contact'
-import { oswaldTrim } from '@/lib/displayTrim'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -56,7 +55,7 @@ export default function TrainenPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
         <span className={styles.label}>Welke groep past bij jou?</span>
-        <h2 className={`${styles.title} ${styles.titleHero}`} style={oswaldTrim('Iedereen')}>
+        <h2 className={`${styles.title} ${styles.titleHero}`}>
           Iedereen is <span className={styles.titleHeroOutline}>STARK!</span>
         </h2>
         <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridSpaced} ${styles.resultGridLight}`}>
@@ -70,7 +69,11 @@ export default function TrainenPage() {
         <div className={styles.splitContent} data-num="01">
           <div className={styles.splitInner}>
             <span className={styles.label}>Waar wij voor staan</span>
-            <h2 className={styles.title} style={oswaldTrim('MEER')}>MEER DAN EEN SPORTSCHOOL</h2>
+            <h2 className={styles.title}>
+              MEER DAN
+              <br />
+              EEN SPORTSCHOOL
+            </h2>
             <ul className={styles.featureTiles}>
               <li>
                 <span>Je start waar jij staat, op je eigen niveau.</span>
@@ -160,7 +163,7 @@ export default function TrainenPage() {
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
           <span className={styles.label}>Wat je nog wilt weten</span>
-          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+          <h2 className={styles.title}>Goede vragen</h2>
           <FaqList items={trainenFaq} />
           <FaqJsonLd items={trainenFaq} />
         </div>

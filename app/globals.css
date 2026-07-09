@@ -15,6 +15,7 @@
   /* Typografie */
   --stark-h1: clamp(3rem, 8vw, 7rem);
   --stark-h2: clamp(2rem, 5vw, 4rem);
+  --stark-hero: clamp(4rem, 14vw, 9rem);
   --stark-eyebrow-tracking: 0.15em;
   --display-tracking: -0.02em;
   --display-leading: 0.95;

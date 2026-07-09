@@ -27,23 +27,24 @@
 
 .eyebrow {
   margin: 0 0 12px;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--stark-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .title {
   margin: 0 0 16px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(36px, 8vw, 56px);
-  line-height: 0.95;
+  font-weight: 400;
+  font-size: var(--stark-h1);
+  line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--off);
-  white-space: nowrap;
+  text-wrap: balance;
+  white-space: normal;
 }
 
 .lead {
@@ -77,9 +78,10 @@
 .infoTitle {
   margin: 0 0 16px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.06em;
+  font-weight: 400;
+  font-size: var(--stark-h2);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
   text-transform: uppercase;
   color: var(--off);
 }
@@ -191,11 +193,13 @@
 .ownersTitle {
   margin: 0 0 12px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(24px, 4vw, 32px);
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  font-size: var(--stark-h2);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
   text-transform: uppercase;
   color: var(--off);
+  text-wrap: balance;
 }
 
 .ownersLead {
@@ -291,12 +295,13 @@
 .formTitle {
   margin: 0 0 10px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(22px, 4.5vw, 28px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: var(--stark-h2);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--navy);
+  text-wrap: balance;
 }
 
 .formLead {

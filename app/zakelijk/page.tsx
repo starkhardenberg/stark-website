@@ -15,7 +15,6 @@ import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import { hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
-import { oswaldTrim } from '@/lib/displayTrim'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -153,7 +152,7 @@ export default function ZakelijkPage() {
 
       <section className={`${styles.section} ${styles.sectionWithOrangeBottom}`}>
         <div className={styles.catalogHead}>
-          <h2 className={`${styles.title} ${styles.titleHero}`} style={oswaldTrim('Welk')}>
+          <h2 className={`${styles.title} ${styles.titleHero}`}>
             Welk aanbod <span className={styles.titleHeroOutline}>past</span>
           </h2>
           <p className={styles.catalogIntro}>
@@ -185,7 +184,7 @@ export default function ZakelijkPage() {
         aria-label="Zo starten we samen"
       >
         <p className={styles.introLabel}>Zo starten we</p>
-        <h2 className={styles.processTitle} style={oswaldTrim('Van')}>
+        <h2 className={styles.processTitle}>
           Van gesprek naar <span className={styles.processTitleOutline}>start</span>
         </h2>
         <p className={styles.processIntro}>
@@ -207,7 +206,7 @@ export default function ZakelijkPage() {
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
           <span className={styles.label}>Wat je nog wilt weten</span>
-          <h2 className={styles.title} style={oswaldTrim('Goede')}>Goede vragen</h2>
+          <h2 className={styles.title}>Goede vragen</h2>
           <FaqList items={zakelijkFaq} />
           <FaqJsonLd items={zakelijkFaq} />
         </div>

@@ -25,29 +25,40 @@
 
 .eyebrow {
   margin: 0 0 12px;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--stark-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .title {
   margin: 0 0 16px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(40px, 9vw, 64px);
-  line-height: 0.94;
+  font-weight: 400;
+  font-size: var(--stark-h1);
+  line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--navy);
+  text-wrap: balance;
 }
 
 .titleSentence {
   text-transform: none;
-  font-size: clamp(28px, 6.5vw, 46px);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
+  font-size: var(--stark-h2);
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+}
+
+.expectTitle {
+  margin: 0 0 18px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: var(--stark-h2);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: uppercase;
 }
 
 .lead {
@@ -65,15 +76,6 @@
   color: var(--off);
   border-top: 2px solid var(--orange);
   box-sizing: border-box;
-}
-
-.expectTitle {
-  margin: 0 0 18px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .expectList {

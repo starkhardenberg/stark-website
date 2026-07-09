@@ -14,18 +14,17 @@
 
 .sectionTitle {
   margin: 0 0 clamp(28px, 5vw, 44px);
-  /* optical alignment: trim Oswald-"O" left side bearing (0.049em) zodat de
-     zichtbare rand van de O exact op de padding-lijn valt */
-  margin-left: -0.049em;
   width: 100%;
+  max-width: none;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(48px, 14vw, 132px);
-  line-height: 0.92;
+  font-weight: 400;
+  font-size: var(--stark-h1);
+  line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   text-align: left;
   color: var(--off);
+  text-wrap: balance;
 }
 
 .sectionTitleOutline {
@@ -42,9 +41,6 @@
 
 .sectionIntro p {
   margin: 0;
-  /* optical alignment: trim Barlow-"D" left side bearing (0.094em) zodat de
-     zichtbare rand van de D op exact dezelfde lijn valt als de "O" hierboven */
-  margin-left: -0.094em;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(16px, 1.9vw, 19px);
   line-height: 1.6;

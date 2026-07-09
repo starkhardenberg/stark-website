@@ -85,26 +85,27 @@
 
 .sectionEyebrow {
   margin: 0 0 clamp(14px, 2vw, 18px);
-  margin-left: 1px;
+  margin-left: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--stark-eyebrow-tracking);
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .sectionHeading {
   margin: 0;
-  margin-left: 1px;
+  margin-left: 0;
   max-width: 11ch;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(40px, 9vw, 96px);
+  font-weight: 400;
+  font-size: var(--stark-h1);
   letter-spacing: var(--display-tracking);
-  line-height: 0.92;
+  line-height: var(--display-leading);
   text-transform: uppercase;
   color: var(--off);
+  text-wrap: balance;
 }
 
 .heroQuote {
@@ -255,7 +256,6 @@
 
   .sectionHeading {
     max-width: 9ch;
-    font-size: clamp(48px, 5.5vw, 88px);
   }
 
   .innerCarousel {

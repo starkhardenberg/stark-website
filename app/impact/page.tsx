@@ -9,7 +9,6 @@ import ContentQuoteBlock from '@/components/ContentQuoteBlock'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { getImpactPageTestimonials, heroQuoteRenee } from '@/components/testimonials/testimonials-data'
 import { hrefKennismaking } from '@/lib/contact'
-import { oswaldTrim } from '@/lib/displayTrim'
 import { pageMetadata } from '@/lib/open-graph'
 import landing from '../landing.module.css'
 import styles from './impact.module.css'
@@ -126,7 +125,7 @@ export default function ImpactPage() {
         <div className={styles.valueGrid}>
           <div className={styles.valueText}>
             <span className={landing.label}>Wat het doet</span>
-            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Daarom')}>
+            <h2 className={`${landing.title} ${landing.titleHero}`}>
               Daarom heet het <span className={landing.titleHeroOutline}>Impact</span>
             </h2>
             <p className={styles.rippleIntro}>
@@ -163,7 +162,7 @@ export default function ImpactPage() {
             />
           </div>
           <div className={styles.trajectMain}>
-            <h2 className={`${landing.title} ${landing.titleHero}`} style={oswaldTrim('Eén')}>
+            <h2 className={`${landing.title} ${landing.titleHero}`}>
               Eén traject.
               <br />
               {' '}
@@ -279,7 +278,7 @@ export default function ImpactPage() {
       <section className={landing.faqSection}>
         <div className={landing.faqInner}>
           <span className={landing.label}>Wat je nog wilt weten</span>
-          <h2 className={landing.title} style={oswaldTrim('Goede')}>
+          <h2 className={landing.title}>
             Goede vragen
           </h2>
           <FaqList items={impactFaq} />

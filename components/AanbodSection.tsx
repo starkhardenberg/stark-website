@@ -11,7 +11,9 @@ export default function AanbodSection() {
     <section className={styles.aanbod} id="aanbod">
       <div className={styles.inner}>
         <h2 className={styles.sectionTitle}>
-          Ons <span className={styles.sectionTitleOutline}>aanbod</span>
+          Ons
+          <br />
+          <span className={styles.sectionTitleOutline}>aanbod</span>
         </h2>
         <div className={styles.sectionIntro}>
           <p>
