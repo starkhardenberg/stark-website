@@ -4,6 +4,7 @@ import FilmSection from '@/components/FilmSection'
 import AanbodSection from '@/components/AanbodSection'
 import OverSection from '@/components/OverSection'
 import ResultatenSection from '@/components/ResultatenSection'
+import WijBintStark from '@/components/WijBintStark'
 import Footer from '@/components/Footer'
 import { pageMetadata } from '@/lib/open-graph'
 
@@ -22,6 +23,7 @@ export default function Home() {
       <FilmSection />
       <OverSection />
       <ResultatenSection />
+      <WijBintStark size="hero" />
       <Footer photoless />
     </>
   )

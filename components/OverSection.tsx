@@ -1,4 +1,5 @@
 import styles from './OverSection.module.css'
+import WijBintStark from '@/components/WijBintStark'
 
 export default function OverSection() {
   return (
@@ -37,6 +38,10 @@ export default function OverSection() {
               Ontmoet het hele team
               <span className={styles.teamCtaArrow} aria-hidden>→</span>
             </a>
+
+            <div className={styles.stampWrap}>
+              <WijBintStark size="stamp" />
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,73 @@
+.mark {
+  display: inline-block;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: uppercase;
+}
+
+.exclaim {
+  color: var(--stark-accent);
+}
+
+/* ── Hero: paginabreed, afsluitende band ── */
+.heroBand {
+  background: var(--stark-black);
+  color: var(--stark-white);
+  border-top: var(--stark-section-border);
+  padding: clamp(56px, 10vw, 120px) clamp(16px, 3vw, 40px);
+  overflow: hidden;
+}
+
+.heroInner {
+  width: 100%;
+  max-width: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  margin: 0;
+  transform: rotate(-2deg);
+  transform-origin: center center;
+}
+
+.hero .mark {
+  font-size: clamp(3.25rem, 16.5vw, 11rem);
+  white-space: nowrap;
+}
+
+/* ── Stamp: klein, sectie-afsluiter ── */
+.stamp {
+  margin: 0;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
+.stamp .mark {
+  font-size: clamp(1.35rem, 3.8vw, 2.15rem);
+  color: var(--stark-black);
+}
+
+@media (max-width: 519px) {
+  .hero .mark {
+    font-size: clamp(2.75rem, 14.5vw, 4.5rem);
+    white-space: normal;
+    text-align: center;
+    max-width: 12ch;
+  }
+
+  .hero {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .stamp {
+    transform: rotate(-2deg);
+  }
+}
