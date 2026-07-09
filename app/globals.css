@@ -1,18 +1,36 @@
 :root {
-  --navy: #212431;
-  --off: #F5F5F5;
-  --orange: #EA5C1F;
+  /* ── STARK design tokens (Prompt 0) ── */
+  --stark-black: #111111;
+  --stark-white: #F7F5F2;
+  --stark-accent: #EA5C1F;
+  --stark-grey: #8A8A8A;
+
+  /* Legacy aliases — bestaande componenten blijven werken */
+  --navy: var(--stark-black);
+  --off: var(--stark-white);
+  --orange: var(--stark-accent);
   --orange-deep: #C44715;
-  --slate: #4F5D75;
-  --display-tracking: -0.005em;
-  --display-leading: 0.94;
+  --slate: var(--stark-grey);
+
+  /* Typografie */
+  --stark-h1: clamp(3rem, 8vw, 7rem);
+  --stark-h2: clamp(2rem, 5vw, 4rem);
+  --stark-eyebrow-tracking: 0.15em;
+  --display-tracking: -0.02em;
+  --display-leading: 0.95;
+
   /* Outline-tekst: hero + tegelcijfers vs overige titels/accents */
   --outline-stroke-hero: 2.5px;
   --outline-stroke-display: 1.45px;
+
+  /* Vormtaal */
+  --stark-radius: 0;
+  --stark-section-border: 4px solid var(--stark-black);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
+  border-radius: var(--stark-radius);
 }
 
 html, body {
@@ -25,8 +43,8 @@ html {
 }
 
 body {
-  background: var(--navy);
-  color: var(--off);
+  background: var(--stark-black);
+  color: var(--stark-white);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -34,9 +52,45 @@ body {
   overflow-x: hidden;
 }
 
+/* Display type-scale — tokens klaar voor Prompt 2 */
+.stark-h1,
+h1.stark-display {
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--stark-h1);
+  font-weight: 400;
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+}
+
+.stark-h2,
+h2.stark-display {
+  font-family: var(--font-display), sans-serif;
+  font-size: var(--stark-h2);
+  font-weight: 400;
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+}
+
+.stark-eyebrow {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--stark-eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--stark-grey);
+}
+
+.stark-section-rule {
+  border: none;
+  border-top: var(--stark-section-border);
+  margin: 0;
+}
+
 ::selection {
-  background: var(--orange);
-  color: var(--off);
+  background: var(--stark-accent);
+  color: var(--stark-white);
 }
 
 a {

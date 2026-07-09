@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Barlow, Oswald } from 'next/font/google'
+import { Archivo_Black, Barlow } from 'next/font/google'
 import StructuredData from '@/components/StructuredData'
 import { openGraphByPage, OG_IMAGE } from '@/lib/open-graph'
 import { buildLocalBusinessJsonLd } from '@/lib/json-ld'
 import { getSiteRobots, getSiteUrl } from '@/lib/site-seo'
 import './globals.css'
 
-const oswald = Oswald({
+const archivoBlack = Archivo_Black({
   subsets: ['latin'],
-  weight: ['600', '700'],
+  weight: '400',
   variable: '--font-display',
   display: 'swap',
 })
@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl" className={`${oswald.variable} ${barlow.variable}`}>
+    <html lang="nl" className={`${archivoBlack.variable} ${barlow.variable}`}>
       <head>
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
