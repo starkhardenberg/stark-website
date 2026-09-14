@@ -4,39 +4,55 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking } from '@/lib/contact'
-import { STARK_CTA, STARK_CTA_NAV } from '@/lib/stark-cta'
+import { STARK_CTA, STARK_CTA_NAV, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './Nav.module.css'
 
 const NAV_TABS = [
   { id: 'trainen', label: 'Training', href: '/trainen' },
   { id: 'coaching', label: 'Coaching', href: '/coaching' },
+  { id: 'zakelijk', label: 'Zakelijk', href: '/zakelijk' },
   { id: 'team', label: 'Wie wij zijn', href: '/team' },
-  { id: 'bedrijven', label: 'Bedrijven', href: '/zakelijk' },
   { id: 'contact', label: 'Contact', href: hrefContactAlgemeen, isContact: true },
 ] as const
 
-/** Paden die bij een dienst-tab horen (landingspagina + subpagina's). */
+/** Paden die een dienst-tab actief maken.
+ *  Subpagina's (Momentum, Impact) bewust níet: daar liegt een omhooggeklapte
+ *  hoofdtab over waar je bent. Terug via ← Home of de tab zelf. */
 const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
-  coaching: ['/coaching', '/momentum', '/impact'],
+  coaching: ['/coaching'],
   trainen: ['/trainen'],
+  zakelijk: ['/zakelijk'],
   team: ['/team'],
-  bedrijven: ['/zakelijk'],
 }
 
 export default function Nav({
   variant = 'dark',
   compact = false,
   hideBurger = false,
+  hideTabs = false,
   textMenu = false,
   backHref = '/',
   backLabel = 'Home',
+  align = 'end',
+  deep = false,
+  ctaLabel = CTA_KENNISMAKING_LABEL,
+  ctaHref = hrefKennismaking,
 }: {
   variant?: 'dark' | 'light'
   compact?: boolean
   hideBurger?: boolean
+  /** Verberg de desktop-tabrij (subpagina's: Home + CTA + burger blijven) */
+  hideTabs?: boolean
   textMenu?: boolean
   backHref?: string
   backLabel?: string
+  /** end = CTA/menu rechts (standaard); start = links */
+  align?: 'start' | 'end'
+  /** Homepage-hero: CTA lager in het videobeeld */
+  deep?: boolean
+  /** Override standaard "Plan kennismaking" (bijv. zakelijk: Plan een gesprek) */
+  ctaLabel?: string
+  ctaHref?: string
 }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -108,8 +124,8 @@ export default function Nav({
               })}
             </div>
             <div className={styles.mobileMenuFoot}>
-              <a href={hrefKennismaking} className={`${styles.mobileCta} ${STARK_CTA}`} onClick={() => setOpen(false)}>
-                {CTA_KENNISMAKING_LABEL}
+              <a href={ctaHref} className={`${styles.mobileCta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} onClick={() => setOpen(false)}>
+                {ctaLabel}
               </a>
             </div>
           </nav>,
@@ -120,7 +136,7 @@ export default function Nav({
   return (
     <>
       <header
-        className={`${styles.nav} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''}`}
+        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''}`}
       >
         {showBack ? (
           <a href={backHref} className={styles.home} aria-label={`Terug naar ${backLabel}`}>
@@ -132,26 +148,28 @@ export default function Nav({
         <div className={styles.right}>
           {!compact ? (
             <>
-              <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_NAV}`}>{CTA_KENNISMAKING_LABEL}</a>
+              <a href={ctaHref} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_NAV} ${STARK_CTA_PRIMARY}`}>{ctaLabel}</a>
 
-              <nav className={styles.tabBar} aria-label="Hoofdmenu">
-                <ul className={styles.tabList}>
-                  {NAV_TABS.map((tab) => {
-                    const active = isTabActive(tab)
-                    return (
-                      <li key={tab.id} className={active ? styles.tabItemActive : styles.tabItem}>
-                        <a
-                          href={tab.href}
-                          className={styles.tabLink}
-                          aria-current={active ? 'page' : undefined}
-                        >
-                          {tab.label}
-                        </a>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </nav>
+              {!hideTabs ? (
+                <nav className={styles.tabBar} aria-label="Hoofdmenu">
+                  <ul className={styles.tabList}>
+                    {NAV_TABS.map((tab) => {
+                      const active = isTabActive(tab)
+                      return (
+                        <li key={tab.id} className={active ? styles.tabItemActive : styles.tabItem}>
+                          <a
+                            href={tab.href}
+                            className={styles.tabLink}
+                            aria-current={active ? 'page' : undefined}
+                          >
+                            {tab.label}
+                          </a>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </nav>
+              ) : null}
             </>
           ) : null}
 

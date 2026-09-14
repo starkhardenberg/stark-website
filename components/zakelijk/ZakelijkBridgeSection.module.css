@@ -1,0 +1,33 @@
+.metaLouder {
+  font-size: clamp(16px, 1.7vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(33, 36, 49, 0.72);
+}
+
+.bridgeLead {
+  margin: 0;
+  max-width: 36ch;
+  text-align: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(19px, 2.2vw, 22px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--navy);
+}
+
+.bridgeLeadLine,
+.bridgeLeadPunch {
+  display: block;
+}
+
+.bridgeLeadPunch {
+  margin-top: 0.35em;
+  font-weight: 700;
+}
+
+.closeNote {
+  max-width: 46ch;
+  font-weight: 600;
+  color: var(--navy);
+}

@@ -10,6 +10,30 @@
   pointer-events: none;
 }
 
+/* Homepage-hero: CTA in het videobeeld, niet op de rand */
+.nav.navDeep {
+  padding-top: clamp(40px, calc(12vh - 2cm), 80px);
+}
+
+.nav.navDeep .home {
+  top: clamp(40px, calc(12vh - 2cm), 80px);
+}
+
+.navAlignStart {
+  justify-content: flex-start;
+}
+
+.navAlignStart .right {
+  justify-content: flex-start;
+  max-width: none;
+}
+
+.navAlignStart .home {
+  /* Terug-link niet over CTA; alleen relevant op subpagina's */
+  position: static;
+  margin-right: 16px;
+}
+
 .navMenuOpen {
   z-index: 200;
 }
@@ -33,7 +57,7 @@
 }
 
 .home:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .navLight .home {
@@ -41,7 +65,7 @@
 }
 
 .navLight .home:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .navMenuOpen .home {
@@ -117,15 +141,15 @@
   padding: 10px 16px 12px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(245, 245, 245, 0.62);
+  color: rgba(245, 245, 245, 0.88);
   background: rgba(33, 36, 49, 0.55);
   border: 1px solid rgba(245, 245, 245, 0.1);
   border-bottom: none;
-  border-radius: 6px 6px 0 0;
+  border-radius: 0;
   transform: translateY(0);
   transition:
     color 0.2s ease,
@@ -164,7 +188,7 @@
   right: 0;
   height: 3px;
   background: var(--orange);
-  border-radius: 6px 6px 0 0;
+  border-radius: 0;
 }
 
 .tabItemActive .tabLink:hover {
@@ -218,7 +242,7 @@
 }
 
 .menuText:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .navLight .menuText {
@@ -226,7 +250,7 @@
 }
 
 .navLight .menuText:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .navMenuOpen .menuText {
@@ -304,7 +328,7 @@
 }
 
 .mobileMenuLinks a:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .mobileMenuFoot {
@@ -332,11 +356,11 @@
 }
 
 .mobileNavBack:hover {
-  color: var(--orange) !important;
+  color: var(--stark-white) !important;
 }
 
 .mobileTabActive {
-  color: var(--orange) !important;
+  color: var(--stark-white) !important;
 }
 
 .mobileCta {
@@ -387,10 +411,27 @@
     left: 48px;
   }
 
+  /* Ná .nav-padding: anders wint desktop .nav en blijft CTA op de rand */
+  .nav.navDeep {
+    padding-top: clamp(64px, calc(18vh - 2cm), 124px);
+  }
+
+  .nav.navDeep .home {
+    top: clamp(64px, calc(18vh - 2cm), 124px);
+  }
+
   .right {
     flex-direction: column;
     align-items: flex-end;
     gap: 44px;
+  }
+
+  .navAlignStart .right {
+    align-items: flex-start;
+  }
+
+  .navAlignStart .tabList {
+    border-bottom-color: rgba(245, 245, 245, 0.14);
   }
 
   .tabBar {

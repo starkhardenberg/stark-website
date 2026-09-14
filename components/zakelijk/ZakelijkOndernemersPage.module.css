@@ -1,0 +1,44 @@
+.heroDivert {
+  margin: 0;
+  padding: clamp(14px, 2.5vw, 22px) clamp(20px, 4vw, 48px) 0;
+  background: var(--off);
+  text-align: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(33, 36, 49, 0.55);
+}
+
+.heroDivertLink {
+  color: rgba(33, 36, 49, 0.72);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.heroDivertLink:hover,
+.heroDivertLink:focus-visible {
+  color: var(--navy);
+}
+
+.heroDivertLink:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.routeCta {
+  margin-top: clamp(16px, 2.5vw, 24px);
+  align-self: flex-start;
+}
+
+.inlineCta {
+  margin-top: clamp(20px, 3vw, 28px);
+}
+
+.closeBand {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
