@@ -29,8 +29,8 @@ function BookButton({ className = '' }: { className?: string }) {
 }
 
 /**
- * Vast koppatroon voor dienstenpagina's: nummer met streepje, titel in Oswald.
- * Links de kop, rechts de inhoud. Op mobiel onder elkaar.
+ * Vast koppatroon: cijfer in de marge, titel en inhoud op één linkerrand.
+ * Op mobiel staat het cijfer boven de titel.
  */
 function Section({
   number,
@@ -103,11 +103,11 @@ export default function DienstPage() {
             Doen wat je die dag had bedacht, zonder jezelf tekort te doen
             <span className={styles.dot}>.</span>
           </li>
-          <li className={styles.sceneOpen}>Of wat jij voor elkaar wilt krijgen.</li>
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
           <p>
-            En je weet ook heel goed wat er moet gebeuren. Afvallen. Aankomen. Stoppen met roken.
+            Of wat jij voor elkaar wilt krijgen. En je weet ook heel goed wat er moet gebeuren.
+            Afvallen. Aankomen. Stoppen met roken.
             Structuur in je dag. Afspraken met jezelf die je nakomt. Kennis genoeg.
           </p>
           <p>
@@ -120,10 +120,7 @@ export default function DienstPage() {
             meer van je vraagt dan je gewend bent.
           </p>
         </div>
-        <p className={styles.close}>
-          <span>Dit keer lukt het.</span>
-          <span className={styles.closeAccent}>En blijft het lukken.</span>
-        </p>
+        <p className={`${styles.close} ${styles.closeAccent}`}>Dit keer lukt het.</p>
       </Section>
 
       <Section number="02" title="Hoe het werkt" tone="dark">

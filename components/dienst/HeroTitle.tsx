@@ -14,21 +14,7 @@ export default function HeroTitle() {
     if (!title) return
 
     const measure = () => {
-      const photo = title.closest('header')?.querySelector('img')?.parentElement
-      if (!photo) return
-      const photoBox = photo.getBoundingClientRect()
-      const letters = title.querySelectorAll('span')
-      let count = 0
-      for (const letter of letters) {
-        const box = letter.getBoundingClientRect()
-        const fullyOnPhoto =
-          box.left >= photoBox.left - 1 &&
-          box.right <= photoBox.right - 1 &&
-          box.top >= photoBox.top - 1 &&
-          box.bottom <= photoBox.bottom + 1
-        if (!fullyOnPhoto) break
-        count += 1
-      }
+      const count = window.matchMedia('(min-width: 800px)').matches ? 2 : 0
       setOutlineCount((current) => (current === count ? current : count))
     }
 
