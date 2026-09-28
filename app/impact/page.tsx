@@ -1,13 +1,12 @@
-import ServiceDetailPage from '@/components/service-detail/ServiceDetailPage'
-import { impactDetail } from '@/components/coaching/coaching-detail-pages'
+import ImpactPage from '@/components/dienst/ImpactPage'
 import { pageMetadata } from '@/lib/open-graph'
 
 export const metadata = pageMetadata(
   'impact',
-  'Impact — 12 weken individueel traject — STARK! Hardenberg',
-  'Twaalf weken waarin je stappen zet die ertoe doen. Fysiek, mentaal, of allebei, met één vaste coach aan je zijde.',
+  'Impact · 12 weken één op één coachen en trainen in Hardenberg · STARK!',
+  'Twaalf weken één op één met je eigen coach. Elke week een gesprek, twee keer per week trainen in een kleine groep. Start zonder wachtlijst.',
 )
 
-export default function ImpactPage() {
-  return <ServiceDetailPage page={impactDetail} />
+export default function Page() {
+  return <ImpactPage />
 }

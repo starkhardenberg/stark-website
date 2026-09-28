@@ -243,6 +243,11 @@
   color: var(--orange);
 }
 
+.sceneOpen {
+  font-size: 0.75em;
+  color: var(--muted);
+}
+
 .introProse {
   margin-top: clamp(44px, 6vw, 64px);
 }

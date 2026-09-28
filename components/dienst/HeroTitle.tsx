@@ -3,9 +3,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import styles from './DienstPage.module.css'
 
-const WORD = 'Momentum'
-
-export default function HeroTitle() {
+export default function HeroTitle({ word = 'Momentum' }: { word?: string }) {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const [outlineCount, setOutlineCount] = useState(0)
 
@@ -31,7 +29,7 @@ export default function HeroTitle() {
 
   return (
     <h1 ref={titleRef} className={styles.heroTitle}>
-      {WORD.split('').map((char, index) => (
+      {word.split('').map((char, index) => (
         <span key={index} className={index < outlineCount ? styles.heroTitleOutline : undefined}>
           {char}
         </span>
