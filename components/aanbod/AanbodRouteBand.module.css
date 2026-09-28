@@ -1,0 +1,216 @@
+.band {
+  border-top: var(--stark-section-border);
+  width: 100%;
+}
+
+.bandInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(28px, 4vw, 40px);
+  align-items: center;
+  padding: clamp(48px, 8vw, 88px) clamp(22px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+.media {
+  position: relative;
+  min-width: 0;
+}
+
+.num {
+  position: absolute;
+  z-index: 0;
+  bottom: clamp(-12px, -2vw, 8px);
+  left: clamp(-8px, -1.5vw, 12px);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(96px, 22vw, 240px);
+  line-height: 0.82;
+  letter-spacing: var(--display-tracking);
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px rgba(247, 245, 242, 0.22);
+  pointer-events: none;
+  user-select: none;
+}
+
+.bandPhotoRight .num {
+  left: auto;
+  right: clamp(-8px, -1.5vw, 12px);
+}
+
+.mediaFrame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(14px, 2vw, 20px);
+  min-width: 0;
+  max-width: 42ch;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 5.5vw, var(--stark-h2));
+  line-height: var(--display-leading);
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.summary {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.72);
+}
+
+.highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+}
+
+.highlights li {
+  position: relative;
+  padding-left: 1.1em;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  line-height: 1.55;
+  color: rgba(245, 245, 245, 0.62);
+}
+
+.highlights li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--stark-grey);
+  font-weight: 600;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: clamp(2px, 0.5vw, 6px);
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  color: var(--off);
+  transition: color 0.18s ease;
+}
+
+.link:hover {
+  color: var(--stark-grey);
+}
+
+.linkArrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+
+.link:hover .linkArrow {
+  transform: translateX(3px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--stark-white);
+  outline-offset: 3px;
+}
+
+/* Intensiteit: route 3 iets zwaarder in hiërarchie */
+.band:nth-child(3) .name {
+  font-size: clamp(2.15rem, 5.8vw, calc(var(--stark-h2) * 1.06));
+}
+
+.band:nth-child(3) .summary {
+  font-weight: 500;
+  color: rgba(245, 245, 245, 0.82);
+}
+
+.band:nth-child(3) .highlights li {
+  color: rgba(245, 245, 245, 0.72);
+}
+
+@media (min-width: 900px) {
+  .bandInner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(40px, 5vw, 72px);
+    padding-inline: 48px;
+  }
+
+  .bandPhotoLeft .media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .bandPhotoLeft .copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bandPhotoRight .media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bandPhotoRight .copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .mediaFrame {
+    aspect-ratio: 5 / 4;
+    min-height: clamp(280px, 28vw, 400px);
+  }
+
+  .num {
+    font-size: clamp(140px, 18vw, 280px);
+  }
+}
+
+@media (max-width: 899px) {
+  .num {
+    font-size: clamp(72px, 28vw, 140px);
+    bottom: auto;
+    top: clamp(8px, 2vw, 16px);
+    left: clamp(4px, 1vw, 12px);
+  }
+
+  .bandPhotoRight .num {
+    left: auto;
+    right: clamp(4px, 1vw, 12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link:hover .linkArrow {
+    transform: none;
+  }
+}

@@ -3,9 +3,9 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid #ffffff;
-  background: var(--navy);
+  border-radius: 0;
+  border: 1px solid rgba(247, 245, 242, 0.2);
+  background: var(--stark-black);
   cursor: pointer;
 }
 
@@ -14,13 +14,13 @@
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--stark-white);
   outline-offset: 4px;
 }
 
 .cardLight {
-  background: #f5f5f5;
-  border-color: rgba(33, 36, 49, 0.18);
+  background: var(--stark-white);
+  border-color: rgba(247, 245, 242, 0.35);
 }
 
 .media {
@@ -31,7 +31,7 @@
   max-height: calc(clamp(260px, 32vw, 380px) + 4cm);
   overflow: hidden;
   flex-shrink: 0;
-  border-radius: 14px 14px 0 0;
+  border-radius: 0;
 }
 
 .image {
@@ -58,6 +58,7 @@
   text-transform: uppercase;
   color: var(--off);
   text-shadow: 0 2px 18px rgba(33, 36, 49, 0.72);
+  white-space: pre-line;
 }
 
 .mediaSubLabel {
@@ -72,7 +73,7 @@
 }
 
 .mediaSubLabelAccent {
-  color: var(--orange);
+  color: var(--stark-grey);
   text-shadow:
     0 2px 16px rgba(33, 36, 49, 0.88),
     0 0 24px rgba(33, 36, 49, 0.55);
@@ -87,11 +88,11 @@
   min-height: 0;
   margin-top: clamp(14px, 2vw, 22px);
   padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 28px) calc(clamp(24px, 3vw, 32px) + 0.5cm);
-  background: var(--navy);
+  background: var(--stark-black);
 }
 
 .cardLight .panel {
-  background: #f5f5f5;
+  background: var(--stark-white);
 }
 
 .panelInner {
@@ -117,7 +118,7 @@
 }
 
 .cardLight .index {
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange-deep);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange);
 }
 
 .panelContent {
@@ -137,7 +138,7 @@
 
 .paragraph {
   margin: 0;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.78);
 }
@@ -153,7 +154,7 @@
   gap: 6px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--orange);
+  color: var(--stark-grey);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
@@ -171,15 +172,15 @@
 }
 
 .readMore:hover {
-  color: var(--orange-deep);
+  color: var(--stark-white);
 }
 
 .cardLight .readMore {
-  color: var(--orange-deep);
+  color: var(--stark-black);
 }
 
 .cardLight .readMore:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .eyebrow {
@@ -190,11 +191,11 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--orange-deep);
+  color: var(--stark-white);
 }
 
 .card:not(.cardLight) .eyebrow {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .cardBusinessContext.cardLight .eyebrowNeutral {
@@ -210,7 +211,7 @@
   line-height: 0.94;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--stark-black);
 }
 
 .card:not(.cardLight) .panelTitle {
@@ -247,11 +248,11 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange-deep);
+  color: var(--stark-white);
 }
 
 .card:not(.cardLight) .menuRow dt {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .menuRow dt::before {
@@ -276,13 +277,48 @@
   margin: 0;
   padding-left: 22px;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(10, 10, 10, 0.72);
 }
 
+.cardLight .menuRow dt {
+  color: var(--navy);
+}
+
 .card:not(.cardLight) .menuRow dd {
   color: rgba(245, 245, 245, 0.72);
+}
+
+.menuBullets {
+  margin: 0;
+  padding-left: 1.1em;
+}
+
+.menuBullets li + li {
+  margin-top: 0.35em;
+}
+
+.menuInlineLink {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+  text-underline-offset: 3px;
+}
+
+.menuInlineLink:hover {
+  color: var(--stark-grey);
+  text-decoration-color: rgba(17, 17, 17, 0.35);
+}
+
+.card:not(.cardLight) .menuInlineLink {
+  color: var(--off);
+  text-decoration-color: rgba(245, 245, 245, 0.35);
+}
+
+.card:not(.cardLight) .menuInlineLink:hover {
+  color: var(--stark-grey);
 }
 
 @media (min-width: 900px) {

@@ -1,13 +1,11 @@
 import type { Metadata } from 'next'
 import StarkImage from '@/components/StarkImage'
-import Link from 'next/link'
 import Nav from '@/components/Nav'
 import ContactForm from '@/components/contact/ContactForm'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import {
   ADDRESS,
-  hrefKennismaking,
   mailtoInfo,
   parseOnderwerp,
   PHONE_CALL,
@@ -26,21 +24,6 @@ type PageProps = {
   searchParams?: { onderwerp?: string }
 }
 
-const OWNERS = [
-  {
-    name: 'Engbert-Jan',
-    role: 'Eigenaar, coach en trainer',
-    photo: '/images/team/engbert-jan.png',
-    objectPosition: '50% 28%',
-  },
-  {
-    name: 'Yvonne',
-    role: 'Eigenaar, coach en trainer',
-    photo: '/images/team/yvonne.png',
-    objectPosition: '50% 26%',
-  },
-] as const
-
 export default function ContactPage({ searchParams }: PageProps) {
   const initialOnderwerp = parseOnderwerp(searchParams?.onderwerp)
 
@@ -50,15 +33,10 @@ export default function ContactPage({ searchParams }: PageProps) {
 
       <div className={styles.shell}>
         <header className={styles.intro}>
-          <p className={styles.eyebrow}>Vragen of langskomen</p>
-          <h1 className={styles.title}>
-            Zo bereik
-            <br />
-            je ons
-          </h1>
+          <h1 className={styles.title}>Zo bereik je ons</h1>
           <p className={styles.lead}>
-            Een vraag, of wil je gewoon even langskomen? Bel, mail of vul het formulier in. Je
-            spreekt altijd een mens.
+            Een vraag? Vul het formulier hieronder in, of bel, app of mail ons. Je spreekt altijd
+            met een mens.
           </p>
         </header>
 
@@ -132,42 +110,26 @@ export default function ContactPage({ searchParams }: PageProps) {
           <div className={styles.ownersCopy}>
             <h2 className={styles.ownersTitle}>We staan voor je klaar</h2>
             <p className={styles.ownersLead}>
-              Of je nu belt, mailt of langskomt: we helpen je graag verder. Vrijblijvend, eerlijk en
+              Of je nu belt, appt of mailt: we helpen je graag verder. Vrijblijvend, eerlijk en
               in je eigen tempo.
             </p>
-            <p className={styles.ownersNote}>
-              Liever meteen een kennismaking plannen?
-              <br />
-              <Link href={hrefKennismaking} className={styles.ownersLink}>
-                Ga naar Kom kennismaken
-              </Link>
-            </p>
-            <p className={styles.ownersNote}>
-              <Link href="/team" className={styles.ownersLink}>
-                Ontmoet het hele team
-              </Link>
-            </p>
           </div>
-          <div className={styles.ownerGrid}>
-            {OWNERS.map((owner) => (
-              <figure key={owner.name} className={styles.ownerCard}>
-                <div className={styles.ownerPhoto}>
-                  <StarkImage
-                    src={owner.photo}
-                    alt={owner.name}
-                    fill
-                    sizes="(min-width: 900px) 220px, 45vw"
-                    className={styles.ownerImg}
-                    style={{ objectPosition: owner.objectPosition }}
-                  />
-                </div>
-                <figcaption className={styles.ownerCaption}>
-                  <span className={styles.ownerName}>{owner.name}</span>
-                  <span className={styles.ownerRole}>{owner.role}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <figure className={styles.ownerCard}>
+            <div className={styles.ownerPhoto}>
+              <StarkImage
+                src="/images/team/engbert-jan-yvonne-samen.png"
+                alt="Engbert-Jan en Yvonne lachen samen"
+                fill
+                unaltered
+                sizes="(min-width: 720px) 480px, 100vw"
+                className={styles.ownerImg}
+              />
+            </div>
+            <figcaption className={styles.ownerCaption}>
+              <span className={styles.ownerName}>Engbert-Jan en Yvonne</span>
+              <span className={styles.ownerRole}>Eigenaren, coaches en trainers</span>
+            </figcaption>
+          </figure>
         </section>
       </div>
     </main>

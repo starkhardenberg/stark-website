@@ -3,6 +3,9 @@ export const BEELDEN_CREDIT = {
   text: 'echte STARK!-mensen',
 } as const
 
+/** Volledige bijschrift onder eerste homepage-foto (Prompt 9). */
+export const BEELDEN_CAPTION_SUFFIX = "Geen stockfoto's."
+
 export const PHOTO_CREDIT = {
   label: 'Fotografie',
   name: 'donkerfotografie',

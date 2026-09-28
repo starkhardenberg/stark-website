@@ -112,14 +112,27 @@
   bottom: 16%;
 }
 
+/* Lange titel (zakelijk): onder de nav in de flow, niet eroverheen */
+.heroTall .heroContent,
+.heroTall.heroCoaching .heroContent {
+  position: relative;
+  bottom: auto;
+  margin-top: auto;
+  padding-bottom: clamp(28px, 7vh, 72px);
+}
+
 /* Zakelijk-hero: tekst iets lager (meer lucht boven) — alleen bij standaard-hoogte */
 .heroCoaching:not(.heroTall) .heroContentSink {
   bottom: 10%;
 }
 
-/* Impact-hero: tekst + lijn lager zodat de foto meer ademruimte krijgt */
+/* Zakelijk-hero: titel onder het menu, zakkend naar de onderkant */
 .heroCoaching .heroContentLower {
-  bottom: 7%;
+  position: relative;
+  bottom: auto;
+  margin-top: auto;
+  padding-top: clamp(72px, 12vh, 136px);
+  padding-bottom: clamp(24px, 5vh, 48px);
 }
 
 /* Orange slash bar at bottom of hero */
@@ -162,6 +175,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.07em;
+  min-width: 0;
+  max-width: 100%;
   font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: clamp(96px, calc(17vw * 1.11), 244px);
@@ -180,7 +195,7 @@
   display: block;
   color: transparent;
   -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
-  font-size: 0.58em;
+  font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -194,6 +209,8 @@
 
 .heroPunch {
   display: block;
+  min-width: 0;
+  max-width: 100%;
   font-size: 1.1em;
   text-transform: uppercase;
   letter-spacing: -0.025em;
@@ -644,7 +661,7 @@
   margin: 0 0 clamp(8px, 1.6vw, 16px);
   max-width: 58ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.62);
 }
@@ -721,7 +738,7 @@
 .introPrologueBridge {
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.6;
 }
 
@@ -839,7 +856,7 @@
   margin: 0 auto clamp(18px, 2.5vw, 24px);
   max-width: 28ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.9vw, 19px);
+  font-size: var(--stark-body);
   font-weight: 600;
   line-height: 1.5;
   color: rgba(245, 245, 245, 0.88);
@@ -879,7 +896,7 @@
   margin: 0 0 clamp(36px, 5vw, 52px);
   max-width: 52ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(33, 36, 49, 0.72);
 }
@@ -926,7 +943,7 @@
   margin: 0;
   max-width: 36ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.62;
   color: rgba(33, 36, 49, 0.72);
 }
@@ -1001,7 +1018,7 @@
   margin: 0;
   max-width: 42ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   font-weight: 400;
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.62);
@@ -1020,7 +1037,7 @@
   flex-direction: column;
   gap: clamp(14px, 2vw, 18px);
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   font-weight: 400;
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.62);
@@ -1231,7 +1248,7 @@
 
 .body {
   font-family: var(--font-body), sans-serif;
-  font-size: 16px;
+  font-size: var(--stark-body);
   line-height: 1.75;
   color: rgba(245, 245, 245, 0.68);
   margin-bottom: 16px;
@@ -1423,7 +1440,7 @@ a.resultItem {
 
 .resultText {
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.65;
   color: rgba(245, 245, 245, 0.55);
 }
@@ -1441,7 +1458,7 @@ a.resultItem {
 
 .resultGridPhotos .resultItemStatic .resultText {
   flex: 1;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.7;
   max-width: 42ch;
 }
@@ -1513,7 +1530,7 @@ a.resultItem {
   margin: 0;
   padding-left: 22px;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.62;
   color: rgba(245, 245, 245, 0.72);
 }
@@ -1683,7 +1700,7 @@ a.resultItem {
   letter-spacing: -0.02em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--stark-white);
+  -webkit-text-stroke: var(--outline-stroke-hero) var(--orange);
   filter: drop-shadow(0 1px 7px rgba(0, 0, 0, 0.6));
   pointer-events: none;
 }
@@ -1746,7 +1763,7 @@ a.resultItem {
   left: auto;
   right: clamp(12px, 1.8vw, 20px);
   bottom: clamp(12px, 1.8vw, 20px);
-  -webkit-text-stroke-color: var(--stark-white);
+  -webkit-text-stroke-color: var(--orange);
   filter: none;
 }
 

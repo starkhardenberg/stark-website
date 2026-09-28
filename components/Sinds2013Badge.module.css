@@ -1,0 +1,89 @@
+.badge {
+  position: absolute;
+  z-index: 3;
+  right: clamp(12px, 3vw, 40px);
+  bottom: clamp(20px, 5vh, 56px);
+  width: clamp(88px, 14vw, 132px);
+  height: clamp(88px, 14vw, 132px);
+  transform: rotate(8deg);
+  transform-origin: center center;
+  filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.disc {
+  fill: var(--stark-white);
+  stroke: var(--stark-black);
+  stroke-width: 2;
+}
+
+.ringText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--stark-black);
+}
+
+.mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Breedte zo dat de hoge ! (viewBox 32×88) binnen de disc blijft */
+  width: clamp(22px, 3.4vw, 30px) !important;
+  height: auto !important;
+  max-height: 48%;
+  color: var(--stark-accent);
+  transform: translate(-50%, -52%);
+}
+
+/* Zelfde sticker, kleiner, hangt aan de hoek van een vlak. */
+.badge.badgeBlock {
+  right: -42px;
+  bottom: -34px;
+  width: 128px;
+  height: 128px;
+  transform: rotate(8deg);
+}
+
+@media (max-width: 899px) {
+  .badge.badgeBlock {
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    transform: rotate(6deg);
+  }
+}
+
+@media (max-width: 519px) {
+  .badge {
+    width: clamp(76px, 22vw, 96px);
+    height: clamp(76px, 22vw, 96px);
+    right: clamp(8px, 2.5vw, 20px);
+    bottom: clamp(16px, 4vh, 36px);
+    transform: rotate(6deg);
+  }
+
+  .ringText {
+    font-size: 7.5px;
+    letter-spacing: 0.12em;
+  }
+
+  .mark {
+    width: clamp(18px, 5.5vw, 24px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transform: rotate(8deg);
+  }
+}

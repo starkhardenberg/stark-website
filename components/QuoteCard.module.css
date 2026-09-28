@@ -2,11 +2,11 @@
   margin: 0;
   width: fit-content;
   max-width: min(88vw, 320px);
-  padding: 12px 14px 11px;
-  border: 1px solid rgba(33, 36, 49, 0.1);
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 16px 18px 14px;
+  border: 1px solid rgba(33, 36, 49, 0.12);
+  border-radius: 0;
+  background: var(--stark-white);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,23 +14,16 @@
 }
 
 .cardActive {
-  border-color: rgba(234, 92, 31, 0.4);
-  box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(234, 92, 31, 0.1);
+  border-color: var(--stark-accent);
 }
 
 .cardDark {
-  background: var(--navy);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 28px rgba(33, 36, 49, 0.22);
+  background: var(--stark-black);
+  border-color: rgba(247, 245, 242, 0.14);
 }
 
 .cardDark.cardActive {
-  border-color: rgba(234, 92, 31, 0.65);
-  box-shadow:
-    0 16px 44px rgba(33, 36, 49, 0.36),
-    0 0 0 1px rgba(234, 92, 31, 0.2);
+  border-color: var(--stark-accent);
 }
 
 .cardDark .quote p {
@@ -53,10 +46,10 @@
 .quote p {
   font-family: var(--font-quote), var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: clamp(18px, 2.2vw, 22px);
+  font-size: var(--stark-quote);
   line-height: 1.4;
   letter-spacing: 0.01em;
-  color: var(--navy);
+  color: var(--stark-black);
   margin: 0;
   text-wrap: pretty;
 }
@@ -85,7 +78,7 @@
   font-size: 15px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--stark-black);
 }
 
 .context {

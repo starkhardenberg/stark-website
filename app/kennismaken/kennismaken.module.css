@@ -1,207 +1,166 @@
 .page {
+  position: relative;
   min-height: 100svh;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
-  background: var(--off);
+  background: var(--navy);
   color: var(--navy);
   font-family: var(--font-body), sans-serif;
 }
 
-.shell {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px) 0;
+.photo {
+  position: relative;
+  height: clamp(168px, 26vh, 220px);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.photoImg {
+  object-fit: cover;
+  object-position: 68% 32%;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  flex: 1;
   box-sizing: border-box;
+  padding: 28px 22px 48px;
+  background: var(--off);
 }
 
-.shell:last-of-type {
-  padding-bottom: clamp(80px, 12vw, 120px);
-}
-
-.hero {
-  margin-bottom: clamp(36px, 5vw, 48px);
-}
-
-.eyebrow {
-  margin: 0 0 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--stark-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--stark-grey);
+.copy {
+  position: relative;
+  max-width: 36rem;
 }
 
 .title {
-  margin: 0 0 16px;
-  font-family: var(--font-display), sans-serif;
+  margin: 0;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
-  font-size: var(--stark-h1);
-  line-height: var(--display-leading);
+  font-size: clamp(40px, 11vw, 56px);
+  line-height: 0.92;
   letter-spacing: var(--display-tracking);
-  text-transform: uppercase;
   color: var(--navy);
-  text-wrap: balance;
 }
 
-.titleSentence {
-  text-transform: none;
-  font-size: var(--stark-h2);
-  line-height: var(--display-leading);
-  letter-spacing: var(--display-tracking);
+.titleLine {
+  display: block;
 }
 
-.expectTitle {
-  margin: 0 0 18px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 400;
-  font-size: var(--stark-h2);
-  letter-spacing: var(--display-tracking);
-  line-height: var(--display-leading);
-  text-transform: uppercase;
+.fact {
+  margin: clamp(16px, 2.4vw, 24px) 0 0;
+  max-width: 32ch;
+  font-size: var(--stark-body);
+  line-height: 1.55;
+  color: rgba(24, 26, 24, 0.78);
 }
 
-.lead {
-  margin: 0;
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.6;
-  color: rgba(33, 36, 49, 0.72);
-}
-
-.expect {
-  width: 100%;
-  margin: 0 0 clamp(36px, 5vw, 48px);
-  padding: clamp(28px, 4vw, 40px);
-  background: var(--navy);
-  color: var(--off);
-  border-top: 2px solid var(--orange);
-  box-sizing: border-box;
-}
-
-.expectList {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.expectList li {
-  position: relative;
-  padding-left: 1.35em;
-  font-size: clamp(16px, 1.7vw, 18px);
-  line-height: 1.6;
-  color: rgba(245, 245, 245, 0.82);
-}
-
-.expectList li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  top: 0.1em;
-  font-weight: 700;
-  color: var(--orange);
-}
-
-.expectLink {
-  color: var(--navy);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(33, 36, 49, 0.2);
-  transition: border-color 0.18s ease, color 0.18s ease;
-}
-
-.expectLink:hover {
-  color: var(--orange);
-  border-color: var(--orange);
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: clamp(8px, 2vw, 16px);
-}
-
-.bookingNote {
-  margin: 0;
-  font-size: clamp(16px, 1.7vw, 18px);
-  line-height: 1.6;
-  color: rgba(33, 36, 49, 0.62);
-  max-width: 42ch;
-}
-
-.actionRow {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.primaryBtn,
-.secondaryBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 24px;
+.agenda {
+  margin-top: clamp(24px, 3vw, 32px);
+  padding: 16px 28px;
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition:
-    background 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease;
+  letter-spacing: 0.12em;
 }
 
-.primaryBtn {
-  background: var(--orange);
-  color: var(--off);
+.note,
+.exitLink {
+  font-size: var(--stark-body);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(24, 26, 24, 0.78);
 }
 
-.primaryBtn:hover {
-  background: var(--orange-deep);
+.note {
+  margin: 14px 0 0;
+  font-style: italic;
 }
 
-.secondaryBtn {
-  border: 1px solid rgba(33, 36, 49, 0.22);
-  color: var(--navy);
+.exit {
+  margin: clamp(28px, 4vh, 40px) 0 0;
 }
 
-.secondaryBtn:hover {
-  border-color: var(--orange);
+.exitLink {
+  font-family: var(--font-body), sans-serif;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(24, 26, 24, 0.35);
+}
+
+.exitLink:hover {
   color: var(--orange);
+  text-decoration-color: var(--orange);
 }
 
-.btnIcon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+@media (max-width: 899px) {
+  .agenda {
+    width: 100%;
+  }
+
+  .copy {
+    padding-bottom: 116px;
+  }
 }
 
-.alt {
-  margin: 8px 0 0;
-  font-size: clamp(16px, 1.7vw, 18px);
-  line-height: 1.6;
-  color: rgba(33, 36, 49, 0.55);
-}
+@media (min-width: 900px) {
+  .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42vw;
+    height: auto;
+  }
 
-.altLink {
-  color: var(--navy);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(33, 36, 49, 0.2);
-  transition: border-color 0.18s ease, color 0.18s ease;
-}
+  .photo::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, rgba(24, 26, 24, 0.88), rgba(24, 26, 24, 0));
+    pointer-events: none;
+  }
 
-.altLink:hover {
-  color: var(--orange);
-  border-color: var(--orange);
-}
+  .photoImg {
+    object-position: 96% 34%;
+  }
 
-@media (min-width: 560px) {
-  .actionRow {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .stage {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 42vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: none;
+    padding: 0 32px;
+    background: transparent;
+    border: none;
+  }
+
+  .copy {
+    width: min-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 40px 40px 44px 32px;
+    background: var(--off);
+  }
+
+  .title {
+    font-size: clamp(46px, 5vw, 76px);
+  }
+
+  .titleLine {
+    white-space: nowrap;
   }
 }

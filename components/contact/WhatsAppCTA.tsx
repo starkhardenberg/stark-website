@@ -4,6 +4,7 @@ import {
 } from '@/lib/contact'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
+import { STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
 import styles from './WhatsAppCTA.module.css'
 
 type Props = {
@@ -32,7 +33,7 @@ export default function WhatsAppCTA({ variant = 'panel' }: Props) {
             {PHONE_WHATSAPP.display}
           </p>
         </div>
-        <WhatsAppLink className={styles.stripBtn}>
+        <WhatsAppLink className={`${styles.stripBtn} ${STARK_CTA_WHATSAPP}`}>
           <WhatsAppIcon className={styles.stripBtnIcon} />
           <span>Stuur een WhatsApp</span>
         </WhatsAppLink>
@@ -64,7 +65,7 @@ export default function WhatsAppCTA({ variant = 'panel' }: Props) {
         <span className={styles.previewLabel}>Je bericht staat al klaar</span>
         {WHATSAPP_KENNISMAKING_MESSAGE}
       </blockquote>
-      <WhatsAppLink className={styles.btn}>
+      <WhatsAppLink className={`${styles.btn} ${STARK_CTA_WHATSAPP}`}>
         <WhatsAppIcon className={styles.btnIcon} />
         <span>Stuur een WhatsApp</span>
       </WhatsAppLink>

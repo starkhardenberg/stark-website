@@ -4,7 +4,7 @@ import { useRef, useState } from 'react'
 import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
-import { STARK_CTA } from '@/lib/stark-cta'
+import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './RouteCarousel.module.css'
 
 export interface RouteOption {
@@ -114,7 +114,7 @@ export default function RouteCarousel({ options, light }: { options: RouteOption
             <div className={styles.modalBody}>
               <p className={styles.modalTitle}>{selected.title}</p>
               <p className={styles.modalDesc}>{selected.desc}</p>
-              <a className={`${styles.modalCta} ${STARK_CTA}`} href={hrefKennismaking} onClick={() => setSelected(null)}>
+              <a className={`${styles.modalCta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} href={hrefKennismaking} onClick={() => setSelected(null)}>
                 {CTA_KENNISMAKING_LABEL}
               </a>
             </div>

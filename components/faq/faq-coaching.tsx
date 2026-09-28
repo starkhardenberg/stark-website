@@ -5,7 +5,7 @@ export const coachingFaq: FaqItem[] = [
   {
     question: 'Wanneer heb je wat aan coaching?',
     answer:
-      'Als je weet wat je zou moeten veranderen, maar het op de momenten die tellen niet lukt. Als sporten of praten op zich het nog niet heeft opgelost. En als je bereid bent eerlijk te kijken naar wat je doet en wat je overslaat. Twijfel je? Dat bespreken we in het kennismakingsgesprek.',
+      'Als er iets niet werkt, en je weet wat je zou moeten doen maar het lukt niet op de momenten die tellen. En juist als het wél werkt: coaching helpt je daar meer van te doen, zodat het sneller gaat en het resultaat groter wordt. Twijfel je of het bij je past? Dat bespreken we in het kennismakingsgesprek.',
   },
   {
     question: 'Wat is het verschil tussen Momentum en Impact?',

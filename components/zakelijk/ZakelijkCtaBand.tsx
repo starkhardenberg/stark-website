@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
-import { hrefZakelijk } from '@/lib/contact'
+import { hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import startStyles from '@/components/coaching/CoachingStartSection.module.css'
 
@@ -23,7 +23,7 @@ export default function ZakelijkCtaBand({ lead, className }: Props) {
       {lead ? <p className={`starkSectionMeta ${startStyles.lead}`}>{lead}</p> : null}
       <div className={`${startStyles.ctaRow} ${STARK_CTA_ROW}`}>
         <a
-          href={hrefZakelijk}
+          href={hrefKennismaking}
           className={`${startStyles.cta} ${startStyles.ctaFilled} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
         >
           Plan een gesprek
@@ -41,7 +41,7 @@ export default function ZakelijkCtaBand({ lead, className }: Props) {
 export function ZakelijkPlanLink({ className }: { className?: string }) {
   return (
     <a
-      href={hrefZakelijk}
+      href={hrefKennismaking}
       className={`${startStyles.cta} ${startStyles.ctaFilled} ${STARK_CTA} ${STARK_CTA_PRIMARY}${className ? ` ${className}` : ''}`}
     >
       Plan een gesprek

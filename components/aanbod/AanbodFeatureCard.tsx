@@ -4,9 +4,14 @@ import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { CSSProperties, KeyboardEvent, MouseEvent } from 'react'
+import type { MenuLink } from '@/components/landing/LandingServiceCard'
 import type { AanbodTrack } from './aanbod-tracks'
 import StarkArrow from '@/components/icons/StarkArrow'
 import styles from './AanbodFeatureCard.module.css'
+
+function isMenuLink(part: string | MenuLink): part is MenuLink {
+  return typeof part !== 'string'
+}
 
 type AanbodFeatureCardProps = {
   track: AanbodTrack
@@ -15,7 +20,7 @@ type AanbodFeatureCardProps = {
 export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
   const router = useRouter()
   const mediaLabel =
-    track.mediaLabel ?? (track.id === 'trainen' ? 'TRAINING' : track.cat.toUpperCase())
+    track.mediaLabel ?? track.cat.toUpperCase()
   const paragraphs = (track.desc ?? '')
     .split(/\n\n/)
     .map((s) => s.trim())
@@ -65,7 +70,7 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
           src={`/images/${track.photo}`}
           alt={track.photoAlt}
           fill
-          hoverColor={Boolean(landingHref)}
+          hoverColor={track.photoHoverColor ?? Boolean(landingHref)}
           className={styles.image}
           sizes="(min-width: 900px) 33vw, 100vw"
           style={Object.keys(imageStyle).length ? imageStyle : undefined}
@@ -108,7 +113,68 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
                   {track.menu!.map((row) => (
                     <div key={row.label} className={styles.menuRow}>
                       <dt>{row.label}</dt>
-                      <dd>{row.text}</dd>
+                      <dd>
+                        {row.bullets ? (
+                          <ul className={styles.menuBullets}>
+                            {row.bullets.map((bullet) => (
+                              <li key={bullet}>{bullet}</li>
+                            ))}
+                          </ul>
+                        ) : row.parts ? (
+                          row.parts.map((part, i) =>
+                            isMenuLink(part) ? (
+                              part.external ? (
+                                <a
+                                  key={i}
+                                  href={part.href}
+                                  className={styles.menuInlineLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {part.label}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={i}
+                                  href={part.href}
+                                  className={styles.menuInlineLink}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {part.label}
+                                </Link>
+                              )
+                            ) : (
+                              <span key={i}>{part}</span>
+                            ),
+                          )
+                        ) : (
+                          <>
+                            {row.text
+                              ? row.text.split('\n').map((line, lineIndex) => (
+                                  <span key={lineIndex}>
+                                    {lineIndex > 0 ? <br /> : null}
+                                    {line}
+                                  </span>
+                                ))
+                              : null}
+                            {row.link ? (
+                              <>
+                                {row.text ? ' ' : null}
+                                <a
+                                  href={row.link.href}
+                                  className={styles.menuInlineLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  {row.link.label}
+                                </a>
+                              </>
+                            ) : null}
+                          </>
+                        )}
+                      </dd>
                     </div>
                   ))}
                 </dl>

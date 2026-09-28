@@ -60,9 +60,9 @@ export const openGraphByPage = {
       'Preventie die meetbaar is. Minder verzuim, sterkere medewerkers. Momentum @ Werk vanaf vijf deelnemers. Eerlijk over wat past.',
   },
   momentum: {
-    title: 'Momentum bij STARK! — 10 weken in de groep',
+    title: 'Momentum · 10 weken trainen en coachen in Hardenberg · STARK!',
     description:
-      'Tien weken in de groep. Training, groepscoaching en challenges. Max. 10 mensen. Hardenberg.',
+      '10 weken trainen en coachen in een kleine groep in Hardenberg. Voor wie weet wat er moet gebeuren en het steeds ziet wegzakken. € 1.000, vaste start.',
   },
   impact: {
     title: 'Impact bij STARK! — 12 weken 1-op-1',
@@ -72,7 +72,7 @@ export const openGraphByPage = {
   team: {
     title: 'Team STARK! Hardenberg — trainers sinds 2013',
     description:
-      'Elf mensen, één aanpak. Trainers die zelf als lid begonnen. Ruim 200 mensen geholpen. Maak kennis met het team achter STARK!',
+      'Elf mensen, één aanpak. Acht trainers, twee eigenaren en Tineke. Trainers die zelf als lid begonnen. Maak kennis met het team achter STARK!',
   },
   kennismaken: {
     title: 'Kennismaken bij STARK! — gratis gesprek',
@@ -80,7 +80,7 @@ export const openGraphByPage = {
       'Loop binnen of plan een moment. Ongeveer een uur, vrijblijvend en gratis. We kijken samen wat voor jou het beste past.',
   },
   contact: {
-    title: 'Contact STARK! Hardenberg — bel, mail, langskomen',
+    title: 'Contact STARK! Hardenberg — bel, app of mail',
     description:
       'Adres in Hardenberg, telefoon, WhatsApp en formulier. Je spreekt altijd een mens. Vragen over trainen, coaching of bedrijven? Stuur gerust.',
   },

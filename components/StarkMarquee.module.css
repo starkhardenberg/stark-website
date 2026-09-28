@@ -1,0 +1,55 @@
+.band {
+  width: 100%;
+  background: var(--stark-black);
+  border-top: var(--stark-section-border);
+  overflow: hidden;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: starkMarquee 40s linear infinite;
+  will-change: transform;
+}
+
+.phrase {
+  flex-shrink: 0;
+  padding: clamp(14px, 2.4vw, 22px) clamp(20px, 3vw, 32px);
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.75rem, 4.8vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: var(--outline-stroke-display) var(--stark-white);
+}
+
+@keyframes starkMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .phrase[aria-hidden='true'] {
+    display: none;
+  }
+}

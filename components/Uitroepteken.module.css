@@ -1,0 +1,36 @@
+.bullet {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  flex-shrink: 0;
+  color: var(--stark-accent);
+  vertical-align: -0.08em;
+}
+
+.background {
+  position: absolute;
+  z-index: 0;
+  right: -18%;
+  top: 50%;
+  width: auto;
+  height: clamp(360px, 72%, 680px);
+  transform: translateY(-42%);
+  color: var(--stark-black);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 899px) {
+  .background {
+    right: -28%;
+    height: clamp(280px, 65%, 520px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .background {
+    right: -12%;
+    height: clamp(420px, 78%, 760px);
+  }
+}

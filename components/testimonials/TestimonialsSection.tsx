@@ -1,9 +1,11 @@
 import type { CSSProperties } from 'react'
 import StarkImage from '@/components/StarkImage'
-import RotatingTestimonials, { type Testimonial } from '../RotatingTestimonials'
 import type { HeroQuote } from './testimonials-data'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
 import GoogleReviewsLink from '../GoogleReviewsLink'
+import RotatingTestimonials from '../RotatingTestimonials'
+import type { Testimonial } from './types'
+import { STARK_GRAIN } from '@/lib/stark-grain'
 import styles from './TestimonialsSection.module.css'
 
 type Props = {
@@ -14,12 +16,18 @@ type Props = {
   items: Testimonial[]
   /** Smaller hero-quoteblok, meer inspringend links/rechts (subtieler). */
   narrow?: boolean
-  /** Hero + carousel in één navy-blok (lichte kaartjes op donkere achtergrond). */
+  /** Hero + carousel in één donker blok. */
   unifiedDark?: boolean
   /** Eén hero-quote vóór de carrousel meerekenen in de teller. */
   heroQuoteOffset?: number
   /** Statische Google-reviewlink onder de carrousel. */
   showGoogleReviews?: boolean
+  /** Kop links, in lijn met de ondernemerspagina. */
+  alignStart?: boolean
+  /** Crème sectie, voor het licht-donker ritme. */
+  light?: boolean
+  /** Zelfde linkerlijn als intro / hoe we werken / hoe het begint. */
+  spine?: boolean
 }
 
 function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
@@ -79,6 +87,9 @@ export default function TestimonialsSection({
   unifiedDark = false,
   heroQuoteOffset = 0,
   showGoogleReviews = false,
+  alignStart = false,
+  light = false,
+  spine = false,
 }: Props) {
   if (!hero && items.length === 0) return null
 
@@ -86,20 +97,28 @@ export default function TestimonialsSection({
     styles.innerHero,
     narrow ? styles.innerHeroNarrow : '',
     unifiedDark ? styles.innerHeroUnified : '',
+    unifiedDark && items.length === 0 ? styles.innerHeroUnifiedSolo : '',
+    alignStart ? styles.innerHeroStart : '',
+    spine ? styles.innerHeroSpine : '',
   ]
     .filter(Boolean)
     .join(' ')
 
   const sectionIntro = hero ? (
     <div className={styles.sectionIntro}>
-      <p className={styles.sectionEyebrow}>{title}</p>
       <h2 className={styles.sectionHeading}>{heading}</h2>
+      <p className={`starkSectionMeta ${light ? '' : 'starkSectionMetaOnDark'} ${styles.sectionMeta}`}>{title}</p>
     </div>
   ) : null
 
-  if (unifiedDark) {
+  if (unifiedDark || light) {
     return (
-      <section className={`${styles.section} ${styles.sectionUnified}`} id={id}>
+      <section
+        className={`${styles.section} ${light ? styles.sectionLight : styles.sectionUnified} ${
+          light ? '' : STARK_GRAIN
+        }`}
+        id={id}
+      >
         {hero ? (
           <div className={innerHeroClass}>
             {sectionIntro}
@@ -119,7 +138,7 @@ export default function TestimonialsSection({
   return (
     <>
       {hero ? (
-        <section className={`${styles.section} ${styles.sectionHero}`} id={id}>
+        <section className={`${styles.section} ${styles.sectionHero} ${STARK_GRAIN}`} id={id}>
           <div className={innerHeroClass}>
             {sectionIntro}
             <HeroQuoteBlock hero={hero} />

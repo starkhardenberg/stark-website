@@ -43,7 +43,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.3) 50%, transparent 72%);
+  background: rgba(10, 10, 10, 0.55);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -68,7 +68,7 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
   opacity: 1;
   transform: translateY(0);
   display: block;
@@ -96,8 +96,8 @@
 }
 
 .btn:hover {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--stark-white);
 }
 
 .navLight .btn {
@@ -107,8 +107,8 @@
 }
 
 .navLight .btn:hover {
-  background: var(--orange);
-  border-color: var(--orange);
+  background: var(--stark-black);
+  border-color: var(--stark-black);
   color: #F5F5F5;
 }
 
@@ -225,7 +225,7 @@
 }
 
 .modalClose:hover {
-  background: var(--orange);
+  background: var(--stark-black);
 }
 
 @media (min-width: 900px) {

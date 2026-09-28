@@ -1,43 +1,28 @@
 import Nav from './Nav'
+import Sinds2013Badge from './Sinds2013Badge'
 import HeroAdaptiveBackground from './HeroAdaptiveBackground'
 import {
-  HERO_VIDEO_DESKTOP_FALLBACK_URL,
+  HERO_VIDEO_DESKTOP_URL,
   HERO_VIDEO_MOBILE_URL,
   HERO_VIDEO_POSTER,
-  VIMEO_HERO_VIDEO_ID,
-  heroVideoAspect,
-  heroVimeoClipPercent,
-  heroVimeoCoverBoost,
-  vimeoHeroEmbedUrl,
 } from '@/lib/hero-video'
+import { STARK_GRAIN } from '@/lib/stark-grain'
 import styles from './HeroSection.module.css'
 
 export default function HeroSection() {
-  const vimeoSrc = VIMEO_HERO_VIDEO_ID
-    ? vimeoHeroEmbedUrl(VIMEO_HERO_VIDEO_ID)
-    : null
-
   return (
-    <main className={styles.hero}>
+    <main className={`${styles.hero} ${STARK_GRAIN}`}>
       <div className={styles.bg} aria-hidden="true">
         <HeroAdaptiveBackground
           poster={HERO_VIDEO_POSTER}
           mobileSrc={HERO_VIDEO_MOBILE_URL}
-          desktopFallbackSrc={HERO_VIDEO_DESKTOP_FALLBACK_URL}
-          vimeo={
-            vimeoSrc
-              ? {
-                  src: vimeoSrc,
-                  videoAspect: heroVideoAspect(),
-                  coverBoost: heroVimeoCoverBoost(),
-                  clipOverride: heroVimeoClipPercent(),
-                }
-              : null
-          }
+          desktopSrc={HERO_VIDEO_DESKTOP_URL}
         />
       </div>
 
-      <Nav />
+      <Nav deep />
+
+      <Sinds2013Badge />
 
       <section className={styles.stage}>
         <div className={styles.copy}>
@@ -45,10 +30,10 @@ export default function HeroSection() {
             <span className={`${styles.line} ${styles.lead}`}>Wij</span>{' '}
             <span className={`${styles.line} ${styles.lead}`}>bouwen</span>{' '}
             <span className={`${styles.line} ${styles.punch}`}>starke</span>{' '}
-            <span className={`${styles.line} ${styles.punch}`}>mensen.</span>
+            <span className={`${styles.line} ${styles.punch}`}>mensen</span>
           </h1>
           <p className={styles.sub}>
-            Trainen voor je lijf. Coachen voor je kop.
+            Trainen voor je lijf. Coachen voor je kop
           </p>
         </div>
       </section>

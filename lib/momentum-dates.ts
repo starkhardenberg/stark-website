@@ -1,5 +1,5 @@
 /** Actuele Momentum-startdatum — één plek bijwerken bij nieuwe groep. */
-export const MOMENTUM_NEXT_START = 'vrijdag 4 september 2026'
+export const MOMENTUM_NEXT_START = 'vrijdag 13 november 2026'
 
 export const MOMENTUM_NEXT_START_HEADLINE =
   MOMENTUM_NEXT_START.charAt(0).toUpperCase() + MOMENTUM_NEXT_START.slice(1)

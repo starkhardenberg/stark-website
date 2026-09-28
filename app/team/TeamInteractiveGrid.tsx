@@ -20,9 +20,10 @@ export default function TeamInteractiveGrid() {
   return (
     <section className={styles.teamSection} aria-labelledby="team-grid-heading">
       <div className={styles.teamSectionInner}>
-        <p id="team-grid-heading" className={styles.teamEyebrow}>
-          Ken je ze?
-        </p>
+        <h2 id="team-grid-heading" className={styles.teamGridTitle}>
+          <span className={styles.teamGridTitleLine}>Je loopt ze hier</span>
+          <span className={styles.teamGridTitleLine}>tegen het lijf</span>
+        </h2>
         <div className={styles.teamLayout}>
           <div className={styles.photoGrid}>
           {columns.map((col, colIdx) => (

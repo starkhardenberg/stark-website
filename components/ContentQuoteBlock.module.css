@@ -46,7 +46,7 @@
 
 .body {
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.6vw, 17px);
+  font-size: var(--stark-body);
   line-height: 1.65;
   color: rgba(33, 36, 49, 0.88);
 }
@@ -92,7 +92,7 @@
   content: '–';
   position: absolute;
   left: 0;
-  color: var(--orange, #ea5c1f);
+  color: var(--stark-black);
   font-weight: 600;
 }
 
@@ -106,8 +106,8 @@
 }
 
 .inlineLink:hover {
-  color: var(--orange, #ea5c1f);
-  text-decoration-color: var(--orange, #ea5c1f);
+  color: var(--stark-black);
+  text-decoration-color: var(--stark-black);
 }
 
 .sectionDark .inlineLink {
@@ -116,8 +116,8 @@
 }
 
 .sectionDark .inlineLink:hover {
-  color: var(--orange, #ea5c1f);
-  text-decoration-color: var(--orange, #ea5c1f);
+  color: var(--stark-black);
+  text-decoration-color: var(--stark-black);
 }
 
 .listLabel {

@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   background: var(--navy);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: var(--stark-section-border);
 }
 
 .sectionLight {
@@ -21,17 +21,62 @@
   padding-bottom: clamp(28px, 4vw, 40px);
 }
 
+.innerHeroUnifiedSolo {
+  padding-bottom: clamp(64px, 8vw, 88px);
+}
+
 .innerCarouselUnified {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: clamp(8px, 1.5vw, 16px) 0 clamp(64px, 8vw, 88px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+}
+
+.posterStack {
+  width: 100%;
+  background: var(--navy);
+}
+
+.reviewsStrip {
+  border-top: var(--stark-section-border);
+  display: flex;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 48px) clamp(22px, 4vw, 48px) clamp(56px, 8vw, 80px);
+  box-sizing: border-box;
+}
+
+.reviewsStrip a {
+  margin: 0;
+  padding: 0;
+}
+
+.sectionGrid {
+  border-top: 1px solid rgba(33, 36, 49, 0.1);
+}
+
+.innerGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 5vw, 56px);
+  padding: clamp(56px, 7vw, 80px) clamp(22px, 4vw, 48px) clamp(64px, 8vw, 88px);
+  box-sizing: border-box;
+}
+
+.innerGridUnified {
+  border-top: var(--stark-section-border);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 900px) {
   .innerHeroUnified {
     padding-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .innerHeroUnifiedSolo {
+    padding-bottom: clamp(72px, 8vw, 96px);
   }
 
   .innerCarouselUnified {
@@ -44,28 +89,53 @@
 }
 
 
-.sectionHero .heroQuote {
-  margin-bottom: 0;
+.sectionLight .sectionHeading {
+  color: var(--navy);
 }
 
-.sectionHero .heroContent {
+.sectionLight .heroQuote {
+  background: var(--navy);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.sectionLight .heroContent {
+  background: var(--navy);
+}
+
+.sectionLight .heroCite {
+  border-top-color: rgba(247, 245, 242, 0.2);
+}
+
+.sectionHero .heroContent,
+.sectionUnified .heroContent {
   background: var(--off);
 }
 
-.sectionHero .heroText p {
+.sectionHero .heroText p,
+.sectionUnified .heroText p {
   color: var(--navy);
 }
 
-.sectionHero .heroCite {
-  border-top-color: var(--orange);
+.sectionHero .heroCite,
+.sectionUnified .heroCite {
+  border-top-color: var(--stark-grey);
 }
 
-.sectionHero .heroName {
+.sectionHero .heroName,
+.sectionUnified .heroName {
   color: var(--navy);
 }
 
-.sectionHero .heroContext {
+.sectionHero .heroContext,
+.sectionUnified .heroContext {
   color: rgba(33, 36, 49, 0.55);
+}
+
+.sectionHero .heroText p::before,
+.sectionHero .heroText p::after,
+.sectionUnified .heroText p::before,
+.sectionUnified .heroText p::after {
+  color: var(--orange);
 }
 
 .sectionCarousel {
@@ -83,29 +153,44 @@
   margin-bottom: clamp(36px, 6vw, 48px);
 }
 
-.sectionEyebrow {
-  margin: 0 0 clamp(14px, 2vw, 18px);
-  margin-left: 0;
-  font-family: var(--font-body), sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--stark-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--stark-grey);
-}
-
 .sectionHeading {
   margin: 0;
   margin-left: 0;
   max-width: 11ch;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
-  font-size: var(--stark-h1);
-  letter-spacing: var(--display-tracking);
+  font-size: var(--stark-section-statement);
+  letter-spacing: -0.02em;
   line-height: var(--display-leading);
   text-transform: uppercase;
   color: var(--off);
   text-wrap: balance;
+}
+
+.sectionMeta {
+  max-width: 40ch;
+}
+
+/* Unified-variant: kop gecentreerd, in lijn met de Bronz-koppen op de landingspagina's */
+.innerHeroUnified .sectionIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.innerHeroUnified .sectionHeading {
+  max-width: none;
+}
+
+.innerHeroStart .sectionIntro {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.innerHeroStart .sectionHeading {
+  max-width: none;
+  white-space: nowrap;
 }
 
 .heroQuote {
@@ -121,19 +206,16 @@
   width: 100%;
   aspect-ratio: 5 / 6;
   overflow: hidden;
-  background: #1a1c28;
+  background: var(--stark-black);
 }
 
 .heroImg {
   object-fit: cover;
   object-position: center 22%;
-  transform: translateY(-4%) scale(1);
-  transform-origin: center 32%;
-  filter: contrast(1.04) saturate(1.06);
 }
 
 .heroImgMirror {
-  transform: translateY(-4%) scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .heroImgBw {
@@ -182,12 +264,12 @@
 
 .heroText p::before {
   content: '\201C';
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .heroText p::after {
   content: '\201D';
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .heroCite {
@@ -195,13 +277,13 @@
   flex-direction: column;
   gap: 3px;
   padding-top: 20px;
-  border-top: 1.5px solid var(--orange);
+  border-top: 1.5px solid var(--stark-black);
 }
 
 .heroName {
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--off);
@@ -258,8 +340,8 @@
     max-width: 9ch;
   }
 
-  .innerCarousel {
-    padding: 72px 0 88px;
+  .innerGrid {
+    padding-inline: 48px;
   }
 
   .heroQuote {
@@ -272,7 +354,7 @@
     aspect-ratio: unset;
     align-self: stretch;
     min-height: 0;
-    background: #1a1c28;
+    background: var(--stark-black);
   }
 
   .heroImgWrapPortrait {
@@ -285,8 +367,6 @@
 
   .heroImg {
     object-position: center 20%;
-    transform: translateY(-3%) scale(1);
-    transform-origin: center 30%;
   }
 
   .heroImgWrapPortrait .heroImg {
@@ -302,7 +382,7 @@
   }
 
   .heroImgMirror {
-    transform: translateY(-3%) scaleX(-1);
+    transform: scaleX(-1);
   }
 
   .heroContent {
@@ -319,12 +399,15 @@
   padding-right: clamp(24px, 6vw, 76px);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .heroImg,
-  .heroImgMirror {
-    transform: none;
-  }
+/* Zelfde linkerlijn als introRoom + workSpine op de ondernemerspagina. */
+.innerHeroSpine {
+  padding-left: calc(
+    clamp(22px, 4vw, 64px) + clamp(28px, 3.2vw, 48px) + clamp(22px, 4vw, 64px) +
+      clamp(18px, 3vw, 28px)
+  );
+}
 
+@media (prefers-reduced-motion: reduce) {
   .heroImgWrapPortrait .heroImg {
     transform: none;
   }

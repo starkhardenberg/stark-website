@@ -23,7 +23,7 @@ export default function ZakelijkBridgeSection() {
   return (
     <section className={introStyles.intro} aria-label="Leiderschap op drie lagen">
       <div className={introStyles.inner}>
-        <header className={introStyles.banner}>
+        <header className={`${introStyles.banner} ${introStyles.bannerToRegels}`}>
           <h2 className={`${introStyles.quote} ${introStyles.quoteLoud}`}>
             <span className={introStyles.quoteLine}>Leiderschap begint</span>
             <span className={introStyles.quoteLine}>bij jezelf</span>

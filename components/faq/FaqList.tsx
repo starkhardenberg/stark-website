@@ -12,28 +12,24 @@ export type FaqItem = {
 
 type FaqListProps = {
   items: readonly FaqItem[]
+  /** Standaard donker (landingspagina's). Light = off-achtergrond. */
+  tone?: 'dark' | 'light'
+  /** Index die bij laden open staat. Standaard alles dicht. */
+  initialOpen?: number | null
 }
 
-export default function FaqList({ items }: FaqListProps) {
+export default function FaqList({ items, tone = 'dark', initialOpen = null }: FaqListProps) {
   const baseId = useId()
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set())
+  const [openIndex, setOpenIndex] = useState<number | null>(initialOpen)
 
   function toggle(index: number) {
-    setOpenItems((current) => {
-      const next = new Set(current)
-      if (next.has(index)) {
-        next.delete(index)
-      } else {
-        next.add(index)
-      }
-      return next
-    })
+    setOpenIndex((current) => (current === index ? null : index))
   }
 
   return (
-    <div className={styles.list}>
+    <div className={`${styles.list}${tone === 'light' ? ` ${styles.listLight}` : ''}`}>
       {items.map((item, index) => {
-        const isOpen = openItems.has(index)
+        const isOpen = openIndex === index
         const answerId = `${baseId}-answer-${index}`
 
         return (

@@ -1,21 +1,17 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import FaqList from '@/components/faq/FaqList'
-import FaqJsonLd from '@/components/FaqJsonLd'
-import ContentQuoteBlock from '@/components/ContentQuoteBlock'
 import AanbodFeatureCard from '@/components/aanbod/AanbodFeatureCard'
 import aanbodStyles from '@/components/AanbodSection.module.css'
+import quoteStyles from '@/components/ContentQuoteBlock.module.css'
 import introStyles from '@/components/IntroSection.module.css'
-import { zakelijkOndernemersFaq } from '@/components/faq/faq-zakelijk-ondernemers'
 import { zakelijkSoloRoutes } from '@/components/zakelijk/zakelijk-solo-routes'
-import ZakelijkCtaBand, {
-  ZakelijkImpactLink,
-} from '@/components/zakelijk/ZakelijkCtaBand'
-import { hrefZakelijk } from '@/lib/contact'
-import { STARK_GRAIN } from '@/lib/stark-grain'
+import HoeHetBegintSection from '@/components/zakelijk/HoeHetBegintSection'
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
+import { heroQuotePatrick } from '@/components/testimonials/testimonials-data'
+import { hrefKennismaking } from '@/lib/contact'
+import IntroClose from '@/components/IntroClose'
 import pageStyles from '@/components/zakelijk/ZakelijkOndernemersPage.module.css'
 import styles from '../landing.module.css'
 
@@ -26,22 +22,11 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const LAYERS = [
-  {
-    id: '01',
-    lead: 'Jij',
-    rest: 'wilt een bedrijf waar je trots op bent. Het besluit dat al maanden ligt, ligt er nog steeds. Jij bent de enige hier zonder baas.',
-  },
-  {
-    id: '02',
-    lead: 'Je leidinggevende',
-    rest: 'wil een team dat draait. Hij wacht met dat ene gesprek op een moment van zekerheid. Die zekerheid blijft uit.',
-  },
-  {
-    id: '03',
-    lead: 'Je mensen',
-    rest: 'willen bijdragen aan iets dat groter is dan hun eigen taak. Als het druk wordt, of als het over hen gaat, springt hun hoofd ertussen.',
-  },
+const INTRO_BEATS = [
+  { id: '01', text: 'Afspraken die verwateren.' },
+  { id: '02', text: 'Werk dat twee keer gedaan wordt.' },
+  { id: '03', text: 'Wachten tot iemand anders iets besluit.' },
+  { id: '04', text: 'Niet weten waar je aan toe bent.' },
 ] as const
 
 /**
@@ -51,7 +36,7 @@ const LAYERS = [
 export default function ZakelijkV2Page() {
   return (
     <main className={styles.main}>
-      <section className={`${styles.hero} ${styles.heroTall} ${styles.heroCoaching} ${styles.heroReadable}`}>
+      <section className={`${styles.hero} ${styles.heroCoaching} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage
             src="/images/foto-zakelijk-hero-sled.png"
@@ -63,193 +48,177 @@ export default function ZakelijkV2Page() {
             style={{ objectPosition: '58% 42%' }}
           />
         </div>
-        <Nav deep ctaLabel="Plan een gesprek" ctaHref={hrefZakelijk} />
-        <div className={styles.heroContent}>
+        <Nav deep ctaLabel="Plan een gesprek" ctaHref={hrefKennismaking} />
+        <div className={`${styles.heroContent} ${styles.heroContentLower}`}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
-            <span className={styles.heroLead}>Als jouw werk</span>{' '}
-            <span className={styles.heroPunch}>zwaar wordt</span>
+            <span className={styles.heroLead}>Sterker in lijf</span>{' '}
+            <span className={styles.heroPunch}>en werk</span>
           </h1>
-          <p className={styles.heroSub}>Dan begint ons werk.</p>
+          <p className={styles.heroSub}>Begint bij ons</p>
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
 
-      <p className={pageStyles.heroDivert}>
-        Werk je bij een organisatie met HR en meerdere afdelingen?{' '}
-        <Link href="/zakelijk/duurzame-inzetbaarheid" className={pageStyles.heroDivertLink}>
-          Naar duurzame inzetbaarheid
-        </Link>
-      </p>
-
-      <ContentQuoteBlock title="Je weet wat je te doen hebt">
-        <p>Er is altijd iets wat je moet doen voor wat je echt wilt.</p>
-        <p>
-          Bellen voor nieuwe klanten. Het gesprek voeren dat al maanden op je lijst staat. Iemand
-          aanspreken die je liever met rust laat. Zelf blijven trainen terwijl je agenda vol zit.
-        </p>
-        <p>
-          Je doet die dingen voor wat eronder ligt. Een bedrijf dat groeit. Een team dat draait.
-          Een lijf dat het over tien jaar nog doet.
-        </p>
-        <p>
-          En dan wordt het lastig. Het loopt anders, het valt tegen, iemand heeft er een mening
-          over. Dan doe je wat je altijd doet. Uitstellen of afraffelen. Wegkijken of eroverheen
-          walsen. Terugtrekken of alles overnemen.
-        </p>
-        <p>
-          Je weet precies wat er te doen is. Het gat zit tussen wat je belangrijk vindt en wat dat
-          op een moeilijk moment van je vraagt.
-        </p>
-        <p>
-          <strong>Daar zit ons werk.</strong>
-        </p>
-      </ContentQuoteBlock>
-
-      <section className={introStyles.intro} aria-label="Dat gat zit op drie plekken">
-        <div className={introStyles.inner}>
-          <header className={introStyles.banner}>
-            <h2 className={`${introStyles.quote} ${introStyles.quoteLoud}`}>
-              <span className={introStyles.quoteLine}>Dat gat zit</span>
-              <span className={introStyles.quoteLine}>op drie plekken</span>
+      <section
+        className={`${quoteStyles.section} ${quoteStyles.sectionLight} ${pageStyles.introRoom} ${pageStyles.introPad}`}
+        aria-label="Vitaliteit begint niet bij de medewerker"
+      >
+        <div className={pageStyles.introMeasure}>
+          <header className={`${pageStyles.introHead} ${pageStyles.introAlignStart}`}>
+            <h2 className={introStyles.quote}>
+              <span className={introStyles.quoteLine}>
+                Vitaliteit begint <span className={introStyles.quoteMark}>niet</span>
+              </span>
+              <span className={introStyles.quoteLine}>bij de medewerker</span>
             </h2>
-            <p className={`starkSectionMeta ${introStyles.positioning}`}>
-              En het is elke keer hetzelfde
-            </p>
           </header>
-          <div className={introStyles.copyCol}>
-            <ol className={introStyles.regels}>
-              {LAYERS.map((layer) => (
-                <li key={layer.id} className={introStyles.regel}>
-                  <span className={introStyles.regelNum} aria-hidden>
-                    {layer.id}
-                  </span>
-                  <div className={introStyles.regelCopy}>
-                    <p className={introStyles.regelLead}>{layer.lead}</p>
-                    <p className={introStyles.regelRest}>{layer.rest}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className={introStyles.note}>
-              Jullie willen alle drie hetzelfde. Jullie weten alleen van elkaar niet dat de ander
-              dat ook wil.
-            </p>
+
+          <div className={`${quoteStyles.inner} ${pageStyles.introInner} ${pageStyles.introAlignStart}`}>
+            <div className={quoteStyles.body}>
+              <p className={pageStyles.introGraf}>
+                In de meeste bedrijven is vitaliteit een sportabonnement, een workshop of een cursus
+                stressmanagement. Wij beginnen een laag lager. Wat mensen in hun werk energie kost,
+                zit meestal in hoe het werk loopt.
+              </p>
+              <p className={pageStyles.introGraf}>
+                Dat kost geld. Werk dat twee keer gedaan wordt, betaal je twee keer. Een besluit
+                dat blijft liggen, is omzet die blijft liggen.
+              </p>
+              <p className={pageStyles.introGraf}>
+                Dat ontstaat in hoe er wordt geleid en samengewerkt. Dat is exact het gebied waar
+                wij werken, met de eigenaar, het MT en de teamleiders. Mensen die verantwoordelijk
+                zijn voor anderen en daar sterker in willen worden.
+              </p>
+              <p className={pageStyles.introGraf}>
+                Als die laag staat, landt ook het aanbod om je mensen sterker en fitter te maken.
+              </p>
+            </div>
+          </div>
+
+          <ol className={`${introStyles.regels} ${pageStyles.introRegels} ${pageStyles.introAlignStart}`}>
+            {INTRO_BEATS.map((beat) => (
+              <li key={beat.id} className={introStyles.regel}>
+                <span className={introStyles.regelNum} aria-hidden>
+                  {beat.id}
+                </span>
+                <div className={introStyles.regelCopy}>
+                  <p className={introStyles.regelLead}>{beat.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className={pageStyles.introCloseFlush}>
+            <IntroClose
+              wrap
+              afterCopy
+              align="start"
+              wide
+              line1="Het regent van boven naar beneden"
+              line2="Dus beginnen we bij jou, niet andersom"
+            />
           </div>
         </div>
       </section>
 
-      <ContentQuoteBlock title="Van boven naar beneden">
-        <p>Het regent van boven naar beneden. Daarvoor moet er boven wel iets vallen.</p>
-        <p>
-          Daarom begint het bij jou. Werk je alleen, dan is dat het hele verhaal. Heb je mensen, dan
-          komen zij erbij zodra jij staat.
-        </p>
-        <p>
-          <strong>Die volgorde ligt vast.</strong>
-        </p>
-      </ContentQuoteBlock>
+      <section
+        className={`${quoteStyles.section} ${quoteStyles.sectionDark} ${pageStyles.work} ${pageStyles.introRoom}`}
+        aria-label="Hoe we werken"
+      >
+        <div className={pageStyles.workSpine}>
+          <header className={pageStyles.workHead}>
+            <h2 className={introStyles.quote}>
+              <span className={introStyles.quoteLine}>Hoe we werken</span>
+            </h2>
+          </header>
 
-      <ContentQuoteBlock title="Waarom je bij ons traint" tone="dark">
-        <p>Praten over hoe je reageert onder druk is iets anders dan het zien gebeuren.</p>
-        <p>
-          Bij ons sta je op de vloer. Elke keer kom je op het punt waar je liever stopt. Daar komt
-          je patroon vanzelf boven. Je gaat harder om er vanaf te zijn, je zakt af, je praat het
-          goed, of je gaat gewoon door. Precies wat je op je werk doet, alleen zie je het hier
-          gebeuren.
-        </p>
-        <p>
-          En je wordt er sterker van. Meer energie, meer kracht. Kiezen kost wat, en wie leeg is
-          laat het lopen.
-        </p>
-        <p>
-          <strong>Wij trainen wat je doet als het zwaar wordt.</strong>
-        </p>
-      </ContentQuoteBlock>
+          <div className={`${quoteStyles.inner} ${pageStyles.introInner}`}>
+            <p className={pageStyles.workLead}>
+              Bij STARK! leer je zo te leiden dat je mensen weten wat er moet gebeuren, het toezeggen
+              en het ook daadwerkelijk doen.
+            </p>
+
+            <div className={pageStyles.workBeats}>
+            <article className={pageStyles.workBeat}>
+              <h3 className={pageStyles.workBeatTitle}>Wat die week speelde</h3>
+              <p className={pageStyles.introGraf}>
+                In de coaching leggen we bloot wat er nu gebeurt en wat dat kost. We werken met wat
+                die week speelde. Iemand die niet heeft gedaan wat beloofd was. Iemand die nog steeds
+                niet is aangesproken op wat er niet werkt. Werk dat weer bij dezelfde persoon
+                terechtkomt. Sommige mensen lopen hard, anderen minder.
+              </p>
+              <p className={pageStyles.introGraf}>
+                <span className={pageStyles.workMark}>Dat maken we zichtbaar.</span>
+              </p>
+            </article>
+
+            <article className={pageStyles.workBeat}>
+              <h3 className={pageStyles.workBeatTitle}>Mensen die de afspraken nakomen</h3>
+              <p className={pageStyles.introGraf}>
+                Zichtbaar maken is nodig, alleen niet genoeg. We zetten op scherp wat er niet werkt,
+                en maken daar afspraken over. Vervolgens leren mensen te doen wat nodig is om die
+                afspraken na te komen. Ook als er druk op de ketel staat, en ook als het iets is wat
+                ze nog nooit gedaan hebben. Komt iemand zijn afspraak niet na, dan wordt dat gezegd.
+                En hij leert dat aan te nemen zonder het persoonlijk te maken, en het recht te zetten.
+                Pas dan komt in beweging wat stilstond.
+              </p>
+              <p className={pageStyles.introGraf}>
+                <span className={pageStyles.workMark}>
+                  Dat is het verschil tussen een bedrijf dat afspraken maakt en een bedrijf dat ze
+                  nakomt.
+                </span>
+              </p>
+            </article>
+
+            <article className={pageStyles.workBeat}>
+              <h3 className={pageStyles.workBeatTitle}>In de trainingszaal toets je het</h3>
+              <p className={pageStyles.introGraf}>
+                Wat we in de coaching bespreken, oefen je in de training. Als je intensief traint is
+                binnen tien seconden zichtbaar wat je doet als het zwaar wordt: doorzetten, inhouden,
+                wegkijken, of precies dat ene setje meer. Datzelfde laat je maandagochtend op kantoor
+                zien. Daarom trainen we. Om te oefenen met wie je bent als het spannend wordt. Fitter
+                worden hoort erbij.
+              </p>
+              <p className={pageStyles.introGraf}>
+                <span className={pageStyles.workMark}>
+                  Op kantoor duurt het maanden voordat iemand het benoemt.
+                </span>
+              </p>
+            </article>
+          </div>
+        </div>
+        </div>
+      </section>
 
       <section
-        id="routes"
-        className={`${styles.section} ${styles.sectionBlack} ${styles.sectionWithOrangeBottom} ${STARK_GRAIN}`}
-        aria-label="Waar we beginnen hangt af van wie er meedoet"
+        id="ingangen"
+        className={`${styles.section} ${styles.sectionLight}`}
+        aria-label="Alleen jij, of jij en je mensen"
       >
         <h2
-          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleCentered} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionIntroCentered}`}
+          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${aanbodStyles.sectionTitleCentered} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionIntroCentered}`}
         >
-          <span className={aanbodStyles.titleLine}>Waar we beginnen</span>
-          <span className={aanbodStyles.titleLine}>hangt af van wie er meedoet</span>
+          <span className={aanbodStyles.titleLine}>Alleen jij</span>
+          <span className={aanbodStyles.titleLine}>of jij en je mensen</span>
         </h2>
         <div className={`${aanbodStyles.cardsAndCta} ${aanbodStyles.cardsAndCtaCentered}`}>
-          {zakelijkSoloRoutes.map((track) => (
-            <AanbodFeatureCard key={track.id} track={track} />
-          ))}
+          {zakelijkSoloRoutes
+            .filter((track) => track.id !== 'momentum-at-werk')
+            .map((track) => (
+              <AanbodFeatureCard key={track.id} track={track} />
+            ))}
         </div>
       </section>
 
-      <ContentQuoteBlock title="Als er iemand in je team vastzit" id="impact">
-        <p>
-          Iemand die vastloopt of thuis zit kan niet wachten op een traject voor het hele team.
-        </p>
-        <p>
-          Twaalf weken, één op één. Twee keer per week trainen in een kleine groep, elke week een
-          coachgesprek. Voor wie dreigt uit te vallen en voor wie terugkomt na verzuim.
-        </p>
-        <p>
-          Dit doen we al jaren. In de helft van de gevallen betaalt de werkgever mee of volledig,
-          vaak al voordat er verzuim is. Dat is het goedkoopste moment.
-        </p>
-        <div className={pageStyles.inlineCta}>
-          <ZakelijkImpactLink />
-        </div>
-      </ContentQuoteBlock>
+      <HoeHetBegintSection costLine="In het gesprek rekenen we uit wat het je nu kost dat het blijft liggen." />
 
-      <ContentQuoteBlock title="Waar wij nee op zeggen">
-        <p>Je mensen laten repareren terwijl je zelf toekijkt.</p>
-        <p>Een teamuitje.</p>
-        <p>Iemand die al in een burn-out zit. Die hoort bij een arts.</p>
-        <p>
-          En blijkt het probleem in je rooster te zitten, in je bezetting, of in een besluit dat
-          jij al twee jaar voor je uit schuift — dan zeggen we dat, en verkopen we je niets.
-        </p>
-      </ContentQuoteBlock>
-
-      <ContentQuoteBlock title="Zo beginnen we">
-        <p>
-          <strong>Eén gesprek.</strong> We rekenen samen uit wat het je nu kost dat het blijft
-          liggen. Dat bedrag krijg je mee, ook als je verder niets met ons doet.
-        </p>
-        <p>
-          <strong>De diagnose.</strong> Twee dagdelen bij jou op locatie. Ik spreek jou, ik spreek
-          je mensen, ik kijk naar je cijfers. Je krijgt één A4: wat ik aantrof, wat de cijfers
-          zeggen, en wat ik voorstel.
-        </p>
-        <p>
-          <strong>Het voorstel.</strong> Op basis van wat we aantroffen.
-        </p>
-      </ContentQuoteBlock>
-
-      <section className={`${styles.section} ${styles.sectionLight}`}>
-        <ZakelijkCtaBand className={pageStyles.closeBand} />
-      </section>
-
-      <section className={`${styles.faqSection} ${styles.faqSectionLight}`}>
-        <header className={styles.sectionQuoteHead}>
-          <h2 className={styles.sectionQuote}>
-            <span className={styles.sectionQuoteLine}>Goede vragen</span>
-          </h2>
-          <p className={`starkSectionMeta ${styles.sectionQuoteMeta}`}>
-            Wat je nog wilt weten
-          </p>
-        </header>
-        <div className={styles.faqInner}>
-          <FaqList items={zakelijkOndernemersFaq} tone="light" />
-          <FaqJsonLd items={zakelijkOndernemersFaq} />
-        </div>
-      </section>
+      <TestimonialsSection hero={heroQuotePatrick} items={[]} narrow alignStart light spine />
 
       <Footer
-        photoFirst
-        photoSet="zakelijk"
+        photoless
         hideBrand
+        accentRule
         statement="Koffie en verder praten?"
         statementMeta="Gratis gesprek · ~1 uur"
       />

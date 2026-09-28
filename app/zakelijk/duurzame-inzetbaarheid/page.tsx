@@ -3,7 +3,7 @@ import Link from 'next/link'
 import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import { hrefZakelijk } from '@/lib/contact'
+import { hrefKennismaking } from '@/lib/contact'
 import styles from '../../landing.module.css'
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function DuurzameInzetbaarheidPage() {
             <span className={styles.heroLead}>STERK IN LIJF</span>{' '}
             <span className={styles.heroPunch}>EN HOOFD</span>
           </h1>
-          <p className={styles.heroSub}>Duurzame inzetbaarheid, één afdeling tegelijk.</p>
+          <p className={styles.heroSub}>Duurzame inzetbaarheid, één afdeling tegelijk</p>
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
@@ -47,7 +47,7 @@ export default function DuurzameInzetbaarheidPage() {
           gesprek, of ga terug naar de ondernemersroute.
         </p>
         <p style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem' }}>
-          <Link href={hrefZakelijk} style={{ fontWeight: 700, color: 'var(--orange)' }}>
+          <Link href={hrefKennismaking} style={{ fontWeight: 700, color: 'var(--orange)' }}>
             Plan een gesprek →
           </Link>
           <Link href="/zakelijk-v2" style={{ fontWeight: 600, color: 'var(--navy)' }}>

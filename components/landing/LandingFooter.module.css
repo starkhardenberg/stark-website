@@ -1,6 +1,6 @@
 .footer {
   background: var(--navy);
-  border-top: 1px solid rgba(234, 92, 31, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: clamp(36px, 6vw, 52px) clamp(22px, 4vw, 64px) clamp(28px, 4vw, 40px);
 }
 
@@ -20,7 +20,7 @@
   margin: 0 0 clamp(24px, 3.5vw, 32px);
   max-width: 52ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(14px, 1.5vw, 16px);
+  font-size: var(--stark-body);
   font-weight: 500;
   line-height: 1.55;
   color: rgba(245, 245, 245, 0.62);
@@ -33,15 +33,15 @@
 }
 
 .contactLink:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .contactLink .sep {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .contactLink:hover .sep {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .contactText {
@@ -50,7 +50,7 @@
 
 .sep {
   margin: 0 0.55em;
-  color: var(--orange);
+  color: var(--stark-grey);
   font-weight: 600;
 }
 
@@ -68,7 +68,7 @@
   gap: 10px;
   padding: 14px 22px;
   background: var(--orange);
-  border: 1px solid var(--orange);
+  border: 1px solid var(--stark-black);
   color: var(--off);
   font-family: var(--font-body), sans-serif;
   font-size: 12px;
@@ -107,8 +107,8 @@
 }
 
 .ctaWhatsapp:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--stark-grey);
+  color: var(--stark-grey);
   transform: translateY(-1px);
 }
 
@@ -159,7 +159,7 @@
 }
 
 .homeLink:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 @media (min-width: 760px) {

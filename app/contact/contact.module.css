@@ -1,14 +1,8 @@
 .page {
-  --navy: #212431;
-  --off: #f5f5f5;
-  --orange: #ea5c1f;
-  --orange-deep: #c44715;
-  --slate: #4f5d75;
-
   min-height: 100svh;
   min-height: 100dvh;
   overflow-x: hidden;
-  background-color: var(--navy);
+  background-color: var(--stark-black);
   color: var(--off);
   font-family: var(--font-body), sans-serif;
 }
@@ -17,40 +11,32 @@
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px) clamp(72px, 10vw, 112px);
+  padding: clamp(80px, 11vw, 132px) clamp(20px, 4vw, 48px) clamp(72px, 10vw, 112px);
   box-sizing: border-box;
 }
 
 .intro {
+  width: fit-content;
+  max-width: 100%;
   margin-bottom: clamp(40px, 6vw, 56px);
-}
-
-.eyebrow {
-  margin: 0 0 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--stark-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--stark-grey);
 }
 
 .title {
   margin: 0 0 16px;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
-  font-size: var(--stark-h1);
+  font-size: clamp(34px, 6.2vw, 76px);
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   color: var(--off);
-  text-wrap: balance;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .lead {
   margin: 0;
-  max-width: 42ch;
-  font-size: clamp(16px, 2vw, 18px);
+  max-width: none;
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.72);
 }
@@ -72,12 +58,12 @@
   padding: clamp(22px, 3vw, 28px);
   background: rgba(245, 245, 245, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 2px solid var(--orange);
+  border-top: 2px solid var(--stark-black);
 }
 
 .infoTitle {
   margin: 0 0 16px;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: var(--stark-h2);
   letter-spacing: var(--display-tracking);
@@ -119,7 +105,7 @@
 
 .infoList a:hover,
 .whatsAppInline:hover {
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .whatsAppInline {
@@ -158,8 +144,8 @@
 }
 
 .routeBtn:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--stark-grey);
+  color: var(--stark-grey);
 }
 
 .mapWrap {
@@ -169,7 +155,7 @@
   min-height: 220px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #1a1c28;
+  background: var(--stark-black);
 }
 
 .map {
@@ -192,7 +178,7 @@
 
 .ownersTitle {
   margin: 0 0 12px;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: var(--stark-h2);
   letter-spacing: var(--display-tracking);
@@ -204,34 +190,10 @@
 
 .ownersLead {
   margin: 0 0 14px;
-  font-size: 16px;
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: rgba(245, 245, 245, 0.68);
   max-width: 42ch;
-}
-
-.ownersNote {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.55;
-  color: rgba(245, 245, 245, 0.5);
-}
-
-.ownersLink {
-  color: var(--orange);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(234, 92, 31, 0.35);
-  transition: border-color 0.18s ease;
-}
-
-.ownersLink:hover {
-  border-color: var(--orange);
-}
-
-.ownerGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
 }
 
 .ownerCard {
@@ -240,14 +202,14 @@
 
 .ownerPhoto {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1024 / 682;
   overflow: hidden;
-  background: #1a1c28;
+  background: var(--stark-black);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .ownerImg {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .ownerCaption {
@@ -258,8 +220,8 @@
 }
 
 .ownerName {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -280,11 +242,10 @@
 
 .formCard {
   padding: clamp(28px, 4vw, 36px);
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid rgba(33, 36, 49, 0.1);
-  border-top: 4px solid var(--orange);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  background: var(--off);
+  border-radius: 0;
+  border: 1px solid rgba(24, 26, 24, 0.1);
+  border-top: 4px solid var(--stark-black);
 }
 
 .formHead {
@@ -293,7 +254,7 @@
 
 .formTitle {
   margin: 0 0 10px;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: var(--stark-h2);
   line-height: var(--display-leading);
@@ -305,7 +266,7 @@
 
 .formLead {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--stark-body);
   line-height: 1.55;
   color: var(--slate);
 }
@@ -317,15 +278,11 @@
 
   .owners {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    align-items: start;
+    align-items: center;
   }
 }
 
 @media (min-width: 900px) {
-  .ownerGrid {
-    gap: 18px;
-  }
-
   .mapWrap {
     aspect-ratio: 21 / 9;
   }

@@ -1,15 +1,64 @@
 import type { ReactNode } from 'react'
 import { CTA_KENNISMAKING_LABEL, ADDRESS, mailtoInfo, hrefKennismaking } from '@/lib/contact'
-import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
+import { STARK_CTA, STARK_CTA_ROW, STARK_CTA_PRIMARY, STARK_EXCLAIM } from '@/lib/stark-cta'
+import { STARK_GRAIN } from '@/lib/stark-grain'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import PhotoCredit from '@/components/PhotoCredit'
-import { starkImgClass } from '@/components/StarkImage'
+import StarkImage from '@/components/StarkImage'
+import { BEELDEN_CREDIT, PHOTO_CREDIT, VIDEO_CREDIT } from '@/lib/photo-credit'
 import styles from './Footer.module.css'
 
 const year = new Date().getFullYear()
 
 const DEFAULT_BRAND_PREFIX = "Wi'j bint"
+
+function FooterLegalStrip() {
+  return (
+    <p className={styles.legalStripText}>
+      <span>
+        &copy; {year} STARK! Hardenberg
+      </span>
+      <span className={styles.legalSep} aria-hidden>
+        {' '}
+        ·{' '}
+      </span>
+      <span>Opgericht 2013</span>
+      <span className={styles.legalSep} aria-hidden>
+        {' '}
+        ·{' '}
+      </span>
+      <span>
+        {BEELDEN_CREDIT.label}: {BEELDEN_CREDIT.text}
+      </span>
+      <span className={styles.legalSep} aria-hidden>
+        {' '}
+        ·{' '}
+      </span>
+      <span>
+        {PHOTO_CREDIT.label}:{' '}
+        <a
+          href={PHOTO_CREDIT.instagramUrl}
+          className={styles.legalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {PHOTO_CREDIT.name}
+        </a>
+      </span>
+      <span className={styles.legalSep} aria-hidden>
+        {' '}
+        ·{' '}
+      </span>
+      <span>
+        {VIDEO_CREDIT.label}:{' '}
+        <a href={VIDEO_CREDIT.url} className={styles.legalLink} target="_blank" rel="noopener noreferrer">
+          {VIDEO_CREDIT.name}
+        </a>
+      </span>
+    </p>
+  )
+}
 
 type FooterProps = {
   /** Foto boven, tekst onder. */
@@ -37,6 +86,12 @@ type FooterProps = {
   lead?: ReactNode
   /** Verberg het woordmerk links (bijv. homepage met WijBintStark-band erboven). */
   hideBrand?: boolean
+  /** Bronz-afsluiter (homepage focused). Vervangt de lead als die gezet is. */
+  statement?: string
+  /** Korte meta onder de Bronz-statement. */
+  statementMeta?: string
+  /** Oranje snede boven de closer, ook zonder foto. */
+  accentRule?: boolean
 }
 
 const HOME_PHOTO = {
@@ -64,9 +119,9 @@ const TRAINEN_PHOTO = {
 } as const
 
 const ZAKELIJK_PHOTO = {
-  src: '/images/footer-kettlebells.png',
+  src: '/images/footer-zakelijk.jpg',
   width: 1024,
-  height: 682,
+  height: 683,
 } as const
 
 export default function Footer({
@@ -83,6 +138,9 @@ export default function Footer({
   showWelcome = false,
   lead,
   hideBrand = false,
+  statement,
+  statementMeta,
+  accentRule = false,
 }: FooterProps) {
   const hasProminentCta = Boolean(ctaTitle)
   const resolvedPhotoSet = photoSet ?? (photoFirst ? 'landing' : 'home')
@@ -102,14 +160,15 @@ export default function Footer({
   const isZakelijkPhoto = resolvedPhotoSet === 'zakelijk'
 
   const photo = (
-    <div className={`${styles.photoWrap}${isZakelijkPhoto ? ` ${styles.photoWrapZakelijk}` : ''}`}>
-      <img
+    <div
+      className={`${styles.photoWrap}${isZakelijkPhoto ? ` ${styles.photoWrapZakelijk}` : ''}${isTrainenPhoto ? ` ${styles.photoWrapTrainen}` : ''}${isCoachingPhoto ? ` ${styles.photoWrapCoaching}` : ''}`}
+    >
+      <StarkImage
         src={photoAsset.src}
         alt=""
-        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}${isCoachingPhoto ? ` ${styles.photoCoaching}` : ''}${isTrainenPhoto ? ` ${styles.photoTrainen}` : ''}${isZakelijkPhoto ? ` ${styles.photoZakelijk}` : ''} ${starkImgClass}`}
-        width={photoAsset.width}
-        height={photoAsset.height}
-        decoding="async"
+        fill
+        className={`${styles.photo} ${isHomePhoto ? styles.photoHome : ''}${isCoachingPhoto ? ` ${styles.photoCoaching}` : ''}${isTrainenPhoto ? ` ${styles.photoTrainen}` : ''}${isZakelijkPhoto ? ` ${styles.photoZakelijk}` : ''}`}
+        sizes="100vw"
       />
       <div className={styles.photoFade} aria-hidden />
     </div>
@@ -117,7 +176,7 @@ export default function Footer({
 
   const actionsBlock = (
     <div className={`${styles.actions} ${STARK_CTA_ROW}`}>
-      <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA}`}>
+      <a href={hrefKennismaking} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}>
         {CTA_KENNISMAKING_LABEL}
         <span aria-hidden>→</span>
       </a>
@@ -160,13 +219,12 @@ export default function Footer({
     <>
       <div className={styles.ctaHero}>
         <div className={styles.ctaHeroBg} aria-hidden>
-          <img
+          <StarkImage
             src={ctaImage ?? photoAsset.src}
             alt=""
-            className={`${styles.ctaHeroImg} ${starkImgClass}`}
-            width={photoAsset.width}
-            height={photoAsset.height}
-            decoding="async"
+            fill
+            className={styles.ctaHeroImg}
+            sizes="100vw"
           />
           <div className={styles.ctaHeroScrim} />
         </div>
@@ -183,7 +241,7 @@ export default function Footer({
           <div className={styles.bottomBrandStack}>
             <div className={styles.bottomBrand}>
               <p className={styles.brandSmall}>
-                <span className={styles.brandSmallPrefix}>{DEFAULT_BRAND_PREFIX}</span> STARK!
+                <span className={styles.brandSmallPrefix}>{DEFAULT_BRAND_PREFIX}</span> STARK<span className={STARK_EXCLAIM}>!</span>
               </p>
               <span className={styles.meta}>
                 &copy; {year} Hardenberg
@@ -201,23 +259,62 @@ export default function Footer({
     </>
   )
 
+  const defaultLead = (
+    <p className={styles.lead}>
+      Klaar om <span className={styles.leadEmphasis}>sterker</span> te worden in{' '}
+      <span className={styles.leadEmphasis}>lijf en hoofd</span>?
+    </p>
+  )
+
+  const focusedHead = statement ? (
+    <div className={styles.focusedHead}>
+      <h2 className={styles.statement}>{statement}</h2>
+      {statementMeta ? (
+        <p
+          className={`starkSectionMeta${tone === 'light' ? '' : ' starkSectionMetaOnDark'} ${styles.statementMeta}`}
+        >
+          {statementMeta}
+        </p>
+      ) : null}
+    </div>
+  ) : (
+    <div className={styles.focusedHead}>
+      {lead ? <p className={styles.lead}>{lead}</p> : defaultLead}
+    </div>
+  )
+
+  const contentFocused = (
+    <div className={`${styles.content} ${styles.contentFocused}`}>
+      <div className={styles.innerFocused}>
+        {!ctaless ? (
+          <>
+            {focusedHead}
+            {actionsBlock}
+          </>
+        ) : null}
+        {contactBlock}
+      </div>
+      <div className={styles.legalStrip}>
+        <FooterLegalStrip />
+      </div>
+    </div>
+  )
+
   const content = (
       <div className={styles.content}>
         <div className={styles.inner}>
-          <div className={`${styles.colStart}${hideBrand ? ` ${styles.colStartMetaOnly}` : ''}`}>
-            {!hideBrand ? (
-              <div className={styles.colHead}>
-                {showWelcome ? <p className={styles.welcome}>Wees welkom</p> : null}
-                <p className={styles.brand}>
-                  {brandPrefix ? (
-                    <>
-                      <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
-                    </>
-                  ) : null}
-                  STARK!
-                </p>
-              </div>
-            ) : null}
+          <div className={styles.colStart}>
+            <div className={styles.colHead}>
+              {showWelcome ? <p className={styles.welcome}>Wees welkom</p> : null}
+              <p className={styles.brand}>
+                {brandPrefix ? (
+                  <>
+                    <span className={styles.brandPrefix}>{brandPrefix}</span>{' '}
+                  </>
+                ) : null}
+                STARK<span className={STARK_EXCLAIM}>!</span>
+              </p>
+            </div>
             <div className={styles.colFoot}>
               <p className={styles.meta}>
                 &copy; {year} STARK! Hardenberg
@@ -234,14 +331,7 @@ export default function Footer({
             {!ctaless ? (
               <>
                 <div className={styles.colHead}>
-                  {lead ? (
-                    <p className={styles.lead}>{lead}</p>
-                  ) : (
-                    <p className={styles.lead}>
-                      Klaar om <span className={styles.leadEmphasis}>sterker</span> te worden in{' '}
-                      <span className={styles.leadEmphasis}>lijf en hoofd</span>?
-                    </p>
-                  )}
+                  {lead ? <p className={styles.lead}>{lead}</p> : defaultLead}
                 </div>
                 <div className={styles.colMid}>{actionsBlock}</div>
               </>
@@ -266,7 +356,7 @@ export default function Footer({
 
   if (hasProminentCta) {
     return (
-      <footer className={`${styles.footer} ${styles.footerCta} ${toneClass}`}>
+      <footer className={`${styles.footer} ${styles.footerCta} ${toneClass} ${STARK_GRAIN}`}>
         {prominentBody}
       </footer>
     )
@@ -274,24 +364,30 @@ export default function Footer({
 
   if (photoless) {
     return (
-      <footer className={`${styles.footer} ${styles.footerPhotoless} ${toneClass}`}>
-        {content}
+      <footer
+        className={`${styles.footer} ${styles.footerPhotoless} ${toneClass} ${
+          accentRule ? styles.footerAccentRule : ''
+        } ${STARK_GRAIN}`}
+      >
+        {hideBrand ? contentFocused : content}
       </footer>
     )
   }
 
+  const body = hideBrand || statement ? contentFocused : content
+
   return (
     <footer
-      className={`${styles.footer} ${photoFirst ? styles.footerPhotoFirst : ''} ${toneClass}`}
+      className={`${styles.footer} ${photoFirst ? styles.footerPhotoFirst : ''} ${toneClass} ${STARK_GRAIN}`}
     >
       {photoFirst ? (
         <>
           {photo}
-          {content}
+          {body}
         </>
       ) : (
         <>
-          {content}
+          {body}
           {photo}
         </>
       )}

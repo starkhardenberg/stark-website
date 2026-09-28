@@ -1,0 +1,33 @@
+.caption {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: clamp(12px, 2vw, 16px) 0 0;
+  padding: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: var(--stark-eyebrow-tracking);
+  text-transform: uppercase;
+  color: rgba(247, 245, 242, 0.68);
+}
+
+.rule {
+  flex-shrink: 0;
+  width: 20px;
+  height: 2px;
+  margin-top: 0.55em;
+  background: var(--stark-accent);
+}
+
+@media (min-width: 900px) {
+  .caption {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  .rule {
+    width: 24px;
+  }
+}

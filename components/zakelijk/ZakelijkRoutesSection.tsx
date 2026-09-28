@@ -2,7 +2,7 @@ import Link from 'next/link'
 import AanbodFeatureCard from '@/components/aanbod/AanbodFeatureCard'
 import aanbodStyles from '@/components/AanbodSection.module.css'
 import StarkArrow from '@/components/icons/StarkArrow'
-import { hrefZakelijk } from '@/lib/contact'
+import { hrefKennismaking } from '@/lib/contact'
 import { STARK_GRAIN } from '@/lib/stark-grain'
 import { zakelijkRouteTracks } from './zakelijk-route-tracks'
 import landingStyles from '@/app/landing.module.css'
@@ -45,7 +45,7 @@ export default function ZakelijkRoutesSection() {
             Impact is voor medewerkers die moeten terugkomen, of dreigen uit te vallen. Geen
             groepsprogramma. Persoonlijk, intensief, onder één dak.
           </p>
-          <Link href={hrefZakelijk} className={styles.impactCta}>
+          <Link href={hrefKennismaking} className={styles.impactCta}>
             Plan een gesprek
             <StarkArrow className={styles.impactCtaArrow} />
           </Link>

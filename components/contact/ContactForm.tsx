@@ -72,7 +72,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
   if (status === 'success') {
     return (
       <div className={styles.success} role="status">
-        <p className={styles.successTitle}>Bedankt.</p>
+        <p className={styles.successTitle}>Bedankt</p>
         <p className={styles.successText}>
           We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen?{' '}
           {PHONE_CALL.display}.
@@ -91,7 +91,7 @@ export default function ContactForm({ initialOnderwerp }: Props) {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
-      className={`${styles.form} ${styles.wrap}`}
+      className={styles.form}
     >
       <input type="hidden" name="form-name" value="contact" />
 

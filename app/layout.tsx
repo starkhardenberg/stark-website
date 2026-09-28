@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
-import { Archivo_Black, Barlow } from 'next/font/google'
+import localFont from 'next/font/local'
+import { Barlow, Oswald } from 'next/font/google'
 import StructuredData from '@/components/StructuredData'
 import { openGraphByPage, OG_IMAGE } from '@/lib/open-graph'
 import { buildLocalBusinessJsonLd } from '@/lib/json-ld'
 import { getSiteRobots, getSiteUrl } from '@/lib/site-seo'
 import './globals.css'
 
-const archivoBlack = Archivo_Black({
+const oswald = Oswald({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['600', '700'],
   variable: '--font-display',
   display: 'swap',
 })
@@ -16,7 +17,25 @@ const archivoBlack = Archivo_Black({
 const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
   variable: '--font-body',
+  display: 'swap',
+})
+
+const bronz = localFont({
+  src: [
+    {
+      path: '../public/fonts/MAINFILE-BronzSansSerif-DisplayFont/Web-TT Bronz.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/MAINFILE-BronzSansSerif-DisplayFont/Web-TT Bronz.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-bronz',
   display: 'swap',
 })
 
@@ -52,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl" className={`${archivoBlack.variable} ${barlow.variable}`}>
+    <html lang="nl" className={`${oswald.variable} ${barlow.variable} ${bronz.variable}`}>
       <head>
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />

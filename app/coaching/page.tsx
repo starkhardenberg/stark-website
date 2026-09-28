@@ -1,18 +1,20 @@
-import Link from 'next/link'
-import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
-import { STARK_CTA, STARK_CTA_ROW } from '@/lib/stark-cta'
 import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import { coachingFaq } from '@/components/faq/faq-coaching'
-import ContentQuoteBlock from '@/components/ContentQuoteBlock'
-import quoteStyles from '@/components/ContentQuoteBlock.module.css'
-import LandingServiceCard from '@/components/landing/LandingServiceCard'
-import { coachingCards } from '@/components/landing/landing-cards'
-import WhatsAppLink from '@/components/contact/WhatsAppLink'
-import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
+import AanbodFeatureCard from '@/components/aanbod/AanbodFeatureCard'
+import aanbodStyles from '@/components/AanbodSection.module.css'
+import CoachingIntroSection from '@/components/coaching/CoachingIntroSection'
+import CoachingStartSection from '@/components/coaching/CoachingStartSection'
+import CoachingMethodSection from '@/components/coaching/CoachingMethodSection'
+import { coachingTracks } from '@/components/coaching/coaching-tracks'
+import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
+import {
+  getCoachingPageCarouselTestimonials,
+  heroQuoteRebekka,
+} from '@/components/testimonials/testimonials-data'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -25,7 +27,7 @@ export const metadata = pageMetadata(
 export default function CoachingPage() {
   return (
     <main className={styles.main}>
-      <section className={`${styles.hero} ${styles.heroCoaching}`}>
+      <section className={`${styles.hero} ${styles.heroCoaching} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage
             src="/images/foto-coaching-hero-flipchart.png"
@@ -37,140 +39,66 @@ export default function CoachingPage() {
             style={{ objectPosition: '62% 42%' }}
           />
         </div>
-        <Nav />
+        <Nav deep />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
             <span className={styles.heroLead}>COACHING</span>{' '}
             <span className={styles.heroPunch}>BIJ STARK!</span>
           </h1>
-          <p className={styles.heroSub}>
-            Een helder hoofd. Een lijf dat aankan wat je vraagt.
-          </p>
+          <p className={styles.heroSub}>Stop met proberen</p>
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
 
-      <section className={`${styles.introSection} ${styles.introSectionLight}`} aria-label="Wat coaching is">
-        <div className={styles.introRow}>
-          <div className={styles.introHead}>
-            <p className={styles.introLabel}>Stap voor stap, echt resultaat</p>
-            <h2 className={styles.introStatement}>Klaar met aanmodderen.</h2>
-          </div>
-          <div className={styles.introBody}>
-            <div className={styles.introCols}>
-              <div className={styles.introCol}>
-                <p className={styles.introColLabel}>Dit herken je. En het irriteert je ook.</p>
-                <ul className={styles.introColList}>
-                  <li>Je weet wat je wilt veranderen, maar blijft hangen in uitstel, twijfel of oude patronen.</li>
-                  <li>Je weet en je voelt het: als ik zo doorga, verandert er niets.</li>
-                  <li>Je bent bereid eerlijk te kijken naar wat je doet, en wat je overslaat.</li>
-                </ul>
-              </div>
-              <div className={styles.introCol}>
-                <p className={styles.introColLabel}>Jouw traject, jouw focus.</p>
-                <ul className={styles.introColList}>
-                  <li>Jij bepaalt waar we op inzetten. Je lijf, je hoofd, of allebei.</li>
-                  <li>
-                    <Link href="/trainen" className={styles.introPrologueSourceLink}>
-                      Training
-                    </Link>{' '}
-                    én coaching in één traject. Geen losse gesprekken, geen losse workouts.
-                  </li>
-                  <li>Iemand die hardop zegt wat jij liever niet benoemt. En zo patronen doorbreekt.</li>
-                  <li>Verandering die blijft als het traject klaar is.</li>
-                </ul>
-              </div>
-            </div>
+      <CoachingIntroSection />
 
-            <div className={`${styles.introCtaRow} ${STARK_CTA_ROW}`}>
-              <Link href={hrefKennismaking} className={`${styles.introCta} ${styles.introCtaFilled} ${STARK_CTA}`}>
-                {CTA_KENNISMAKING_LABEL}
-              </Link>
-              <WhatsAppLink className={`${styles.introCta} ${STARK_CTA}`}>
-                <WhatsAppIcon className={styles.introCtaIcon} />
-                <span>Stuur een WhatsApp</span>
-              </WhatsAppLink>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CoachingMethodSection />
 
-      <section className={`${styles.section} ${styles.sectionWithOrangeBottom} ${styles.sectionCatalog}`}>
-        <div className={styles.catalogHead}>
-          <h2 className={styles.title}>
-            Twee <span className={styles.titleAccentOutline}>trajecten.</span>
-          </h2>
-          <p className={styles.catalogIntro}>
-            Samen sterker in een groep, of alle aandacht voor jou alleen.
-          </p>
-        </div>
-        <div className={`${styles.resultGrid} ${styles.resultGridPhotos} ${styles.resultGridTwo} ${styles.resultGridSpaced}`}>
-          {coachingCards.map((card, i) => (
-            <LandingServiceCard key={card.title} {...card} num={String(i + 1).padStart(2, '0')} />
+      <section id="trajecten" className={`${styles.section} ${styles.sectionLight}`}>
+        <h2
+          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${aanbodStyles.sectionTitleCentered} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionIntroCentered}`}
+        >
+          <span className={aanbodStyles.titleLine}>Welk traject</span>
+          <span className={aanbodStyles.titleLine}>past bij jou?</span>
+        </h2>
+        <div className={`${aanbodStyles.cardsAndCta} ${aanbodStyles.cardsAndCtaCentered}`}>
+          {coachingTracks.map((track) => (
+            <AanbodFeatureCard key={track.id} track={track} />
           ))}
         </div>
+        <CoachingStartSection />
       </section>
 
-      <div className={`${styles.split} ${styles.splitStatement}`}>
-        <div className={styles.splitContent} data-num="01">
-          <div className={styles.splitInner}>
-            <span className={styles.label}>Waar wij voor staan</span>
-            <h2 className={styles.title}>ZO COACHEN WIJ</h2>
-            <ul className={styles.featureTiles}>
-              <li>
-                <span>Lijf en hoofd trainen we samen, nooit los van elkaar.</span>
-              </li>
-              <li>
-                <span>We werken aan wie je bent, niet alleen aan wat je doet.</span>
-              </li>
-              <li>
-                <span>We benoemen wat jij liever overslaat.</span>
-              </li>
-              <li>
-                <span>Streng waar nodig, warm waar het kan.</span>
-              </li>
-              <li>
-                <span>Coaches die je verhaal kennen en bijhouden.</span>
-              </li>
-              <li>
-                <span>Verandering die blijft, ook als het traject klaar is.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <TestimonialsSection
+        hero={heroQuoteRebekka}
+        items={getCoachingPageCarouselTestimonials()}
+        narrow
+        unifiedDark
+      />
 
-      <ContentQuoteBlock title="Wat het kost">
-        <p>
-          Coaching bij STARK! is een serieuze investering in jezelf. Wat het precies is, hangt af van
-          het traject dat bij je past. Dat hoor je in het kennismakingsgesprek, ruim voordat je iets
-          beslist en zonder druk. Geen verrassingen achteraf.
-        </p>
-      </ContentQuoteBlock>
-
-      <ContentQuoteBlock title="Impact+">
-        <p>
-          Na je traject sta je er niet alleen voor. Met{' '}
-          <Link href="/impact" className={quoteStyles.inlineLink}>
-            Impact+
-          </Link>{' '}
-          blijf je een jaar aangesloten: elke drie weken groepscoaching, opdrachten voor thuis en één
-          live dag per jaar, rond het thema dat er voor jou toe doet: gezond gewicht, ondernemen of
-          persoonlijk leiderschap. Zo houd je vast wat je hebt opgebouwd.
-        </p>
-      </ContentQuoteBlock>
-
-      <section className={styles.faqSection}>
+      <section className={`${styles.faqSection} ${styles.faqSectionLight}`}>
+        <header className={styles.sectionQuoteHead}>
+          <h2 className={styles.sectionQuote}>
+            <span className={styles.sectionQuoteLine}>Goede vragen</span>
+          </h2>
+          <p className={`starkSectionMeta ${styles.sectionQuoteMeta}`}>
+            Wat je nog wilt weten
+          </p>
+        </header>
         <div className={styles.faqInner}>
-          <span className={styles.label}>Wat je nog wilt weten</span>
-          <h2 className={styles.title}>Goede vragen</h2>
-          <FaqList items={coachingFaq} />
+          <FaqList items={coachingFaq} tone="light" />
           <FaqJsonLd items={coachingFaq} />
         </div>
       </section>
 
-      <Footer photoFirst photoSet="coaching" />
+      <Footer
+        photoFirst
+        photoSet="coaching"
+        hideBrand
+        statement="Koffie en verder praten?"
+        statementMeta="Gratis gesprek · ~1 uur"
+      />
     </main>
   )
 }

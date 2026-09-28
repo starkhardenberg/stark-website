@@ -1,33 +1,3 @@
-.heroDivert {
-  margin: 0;
-  padding: clamp(14px, 2.5vw, 22px) clamp(20px, 4vw, 48px) 0;
-  background: var(--off);
-  text-align: center;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(13px, 1.4vw, 15px);
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(33, 36, 49, 0.55);
-}
-
-.heroDivertLink {
-  color: rgba(33, 36, 49, 0.72);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
-.heroDivertLink:hover,
-.heroDivertLink:focus-visible {
-  color: var(--navy);
-}
-
-.heroDivertLink:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 3px;
-}
-
 .routeCta {
   margin-top: clamp(16px, 2.5vw, 24px);
   align-self: flex-start;
@@ -41,4 +11,285 @@
   border-top: none;
   margin-top: 0;
   padding-top: 0;
+}
+
+/* Intro: lopende tekst 65 tekens / ~620px, regels iets breder */
+.introHead {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  padding: 0 calc(clamp(22px, 4vw, 64px) + clamp(18px, 3vw, 28px));
+  box-sizing: border-box;
+}
+
+/* Langer dan coaching/trainen: iets kleiner op mobiel zodat 2 regels blijven */
+.introHead h2 {
+  font-size: clamp(22px, 5.4vw, 64px);
+  align-items: flex-start;
+  text-align: left;
+}
+
+.introHead h2 span {
+  white-space: nowrap;
+  max-width: none;
+}
+
+/* Extra tab links; kolombreedte volgt de titel */
+.introRoom {
+  padding-left: calc(clamp(22px, 4vw, 64px) + clamp(28px, 3.2vw, 48px));
+}
+
+.introPad {
+  padding-top: clamp(80px, 11vw, 124px);
+}
+
+.introMeasure {
+  display: grid;
+  grid-template-columns: min-content;
+  justify-content: start;
+  width: max-content;
+  max-width: 100%;
+  margin-left: calc(clamp(22px, 4vw, 64px) + clamp(18px, 3vw, 28px));
+}
+
+.introMeasure .introHead {
+  width: max-content;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 0 clamp(36px, 5vw, 56px);
+}
+
+.introMeasure .introHead h2 {
+  width: max-content;
+  max-width: 100%;
+}
+
+.introInner {
+  max-width: 620px;
+}
+
+.introAlignStart.introHead,
+.introAlignStart.introInner,
+.introAlignStart.introRegels {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.introMeasure .introInner,
+.introMeasure .introRegels,
+.introMeasure .introCloseFlush {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.introMeasure .introRegels {
+  margin-block: 1.5lh;
+}
+
+.introMeasure .introRegels li {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.introCloseFlush {
+  max-width: none;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+
+.introInner p.introGraf {
+  margin: 0 0 0.55lh;
+  font-size: var(--stark-body);
+  line-height: 1.65;
+}
+
+.introInner p.introGraf:last-child {
+  margin-bottom: 0;
+}
+
+.introRegels {
+  max-width: 820px;
+  margin: 1.5lh auto;
+  padding: 0 clamp(22px, 4vw, 64px);
+}
+
+/* Hoe we werken */
+.work {
+  background: var(--stark-black);
+  padding-top: clamp(96px, 14vw, 168px);
+}
+
+.workSpine {
+  margin-left: calc(clamp(22px, 4vw, 64px) + clamp(18px, 3vw, 28px));
+  max-width: 800px;
+}
+
+/* Beats vullen de rest van de sectie, copy blijft op 800px. */
+.work .workSpine {
+  max-width: none;
+  margin-right: calc(-1 * clamp(22px, 4vw, 64px));
+}
+
+.workHead {
+  width: auto;
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  padding: 0;
+}
+
+.workHead h2 {
+  color: var(--off);
+  align-items: flex-start;
+  text-align: left;
+}
+
+.workHead h2 span {
+  white-space: nowrap;
+  max-width: none;
+}
+
+.workSpine .introInner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.work .introInner p.workLead {
+  max-width: 800px;
+  margin: 0 0 1.5lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(21px, 2.4vw, 26px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--off);
+}
+
+.workBeats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.workBeat {
+  padding: clamp(28px, 4.5vw, 44px) clamp(22px, 4vw, 64px) clamp(28px, 4.5vw, 44px) 0;
+  border-top: 1px solid rgba(245, 245, 245, 0.14);
+}
+
+.work .workBeat p {
+  max-width: 800px;
+}
+
+.workBeat:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.workBeatTitle {
+  margin: 0 0 0.7lh;
+  max-width: 16ch;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.2vw, 32px);
+  line-height: 0.98;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: rgba(247, 245, 242, 0.55);
+  transition: color 0.2s ease;
+}
+
+.workBeatTitle::after {
+  content: '';
+  display: block;
+  width: 2.6em;
+  height: 3px;
+  margin-top: 0.38em;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+
+.workBeat:hover .workBeatTitle,
+.workBeat:focus-within .workBeatTitle {
+  color: var(--off);
+}
+
+.workBeat:hover .workBeatTitle::after,
+.workBeat:focus-within .workBeatTitle::after {
+  transform: scaleX(1);
+}
+
+.workMark {
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.workBeat:hover .workMark,
+.workBeat:focus-within .workMark {
+  color: var(--orange);
+}
+
+@media (max-width: 720px) {
+  .work .introInner p.workLead {
+    font-size: clamp(18px, 4.8vw, 21px);
+  }
+}
+
+@media (hover: none) {
+  .workBeatTitle {
+    color: var(--off);
+  }
+
+  .workBeatTitle::after {
+    transform: scaleX(1);
+  }
+
+  .workMark {
+    color: var(--orange);
+  }
+}
+
+/* Hoe het begint */
+.start {
+  background: var(--stark-black);
+}
+
+.start .introInner p.startHighlight {
+  margin: 0.6lh 0 1.5lh;
+  font-size: var(--stark-body);
+  font-weight: 600;
+  line-height: 1.65;
+  color: var(--orange);
+}
+
+.startCta {
+  margin: 2lh 0 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.start .startCta {
+  justify-content: flex-start;
+}
+
+.startCta a {
+  font-size: 13px;
+  padding: 14px 24px;
+}
+
+.start .startCtaOutline {
+  color: var(--off);
+  border-color: rgba(245, 245, 245, 0.35);
+}
+
+.start .startCtaOutline:hover,
+.start .startCtaOutline:focus-visible {
+  border-color: var(--stark-grey);
+  color: var(--stark-grey);
 }

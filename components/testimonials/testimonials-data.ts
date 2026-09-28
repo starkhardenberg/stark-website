@@ -1,4 +1,4 @@
-import type { Testimonial } from '../RotatingTestimonials'
+import type { Testimonial } from './types'
 
 export type TestimonialCategory =
   | 'impact'
@@ -7,6 +7,7 @@ export type TestimonialCategory =
   | 'kids'
   | 'teens'
   | 'zilverfitness'
+  | 'zakelijk'
 
 export type TestimonialEntry = Testimonial & {
   category: TestimonialCategory
@@ -268,6 +269,13 @@ export const allTestimonials: TestimonialEntry[] = [
     context: 'Groepstraining',
     category: 'groepstraining',
   },
+  {
+    id: 'patrick-overmaat-1',
+    text: 'Hard werken konden we al. STARK! heeft ons geleerd om ook onder druk sterk te blijven staan.',
+    name: 'Patrick',
+    context: 'Eigenaar Overmaat Industrial Solutions',
+    category: 'zakelijk',
+  },
 ]
 
 /**
@@ -301,13 +309,25 @@ export function getHomepageTestimonials(): Testimonial[] {
   return getTestimonialsByIds(homepageTestimonialIds)
 }
 
+export const heroQuotePatrick: HeroQuote = {
+  text: 'Hard werken konden we al. STARK! heeft ons geleerd om ook onder druk sterk te blijven staan.',
+  name: 'Patrick',
+  context: 'Eigenaar Overmaat Industrial Solutions',
+  image: '/images/foto-quote-overmaat-jas.jpg',
+  imageAlt: 'Overmaat-jas in de trainingszaal van STARK! Hardenberg',
+  imageBw: true,
+  imageCover: true,
+  objectPosition: '58% 42%',
+  imageTranslateY: '0',
+  imageScale: 1,
+}
+
 export const heroQuoteRenske: HeroQuote = {
   text: 'Je lijf kan zoveel meer dan je denkt. Je mag het even niet weten, de trainer geeft je de ruimte en helpt je om weer door te gaan.',
   name: 'Renske',
   context: 'Groepstraining',
   image: '/images/foto-trainen-quotes-renske.png',
   imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
-  imageBw: true,
   objectPosition: 'center 40%',
 }
 
@@ -333,10 +353,10 @@ export const heroQuoteRebekka: HeroQuote = {
   text: 'De combinatie van sporten en coaching zorgt voor directe feedback tijdens het sporten: wat doe ik als het zwaar wordt?',
   name: 'Rebekka',
   context: 'Momentum traject',
-  image: '/images/foto-momentum-quotes-hero.png',
+  image: '/images/foto-coaching-quotes-rebekka.jpg',
   imageAlt: 'Rebekka tijdens sledpull-training bij STARK! Hardenberg',
   imageBw: true,
-  objectPosition: 'center 42%',
+  objectPosition: 'center 55%',
 }
 
 /** Momentum-pagina: hero Rebekka + carousel (Sandra zit op homepage). */
@@ -380,4 +400,19 @@ export const impactPageCarouselIds = [
 
 export function getImpactPageTestimonials(): Testimonial[] {
   return getTestimonialsByIds(impactPageCarouselIds)
+}
+
+/** Coaching-landing: mix Momentum + Impact (hero = Rebekka). */
+export const coachingPageCarouselIds = [
+  'gerlinde-1',
+  'eva-1',
+  'annemarie-1',
+  'erwin-1',
+  'stephanie-1',
+  'mark-1',
+] as const
+
+export function getCoachingPageCarouselTestimonials(): Testimonial[] {
+  const onHomepage = new Set<string>(homepageTestimonialIds)
+  return getTestimonialsByIds(coachingPageCarouselIds).filter((item) => !onHomepage.has(item.id))
 }

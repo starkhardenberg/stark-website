@@ -1,0 +1,319 @@
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 50svh;
+  height: 50dvh;
+  min-height: 240px;
+  overflow: hidden;
+}
+
+/* Dienst-hero: hoofdstuk, niet de poster van de landing en niet de tegel. */
+.headerChapter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 64svh;
+  height: 64dvh;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.chapterPhoto {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(15, 17, 24, 0.22);
+}
+
+.chapterCopy {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  max-width: 920px;
+  padding: 0 22px clamp(28px, 5vh, 52px);
+}
+
+.kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.78);
+}
+
+.chapterTitle {
+  margin: 0;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(56px, 9vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.chapterLine {
+  margin: 14px 0 0;
+  max-width: 22em;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.35;
+  color: var(--off);
+}
+
+.headerBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.headerImage {
+  object-fit: cover;
+}
+
+.headerOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(12px, 2vw, 24px);
+  padding: clamp(16px, 2.5vw, 28px) clamp(16px, 3vw, 32px);
+  pointer-events: none;
+}
+
+.headerCopy {
+  min-width: 0;
+  max-width: calc(100% - 5.5rem);
+}
+
+.eyebrow {
+  display: block;
+  margin: 0.45em 0 0;
+  color: rgba(245, 245, 245, 0.78);
+  text-shadow: 0 2px 14px rgba(33, 36, 49, 0.72);
+}
+
+.headerOverlay .index {
+  position: static;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.scan {
+  background: var(--stark-black);
+  padding: clamp(40px, 6vw, 72px) clamp(22px, 4vw, 64px);
+}
+
+.column {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.lead {
+  margin: 0 0 2lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(21px, 2.4vw, 26px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--off);
+}
+
+.blockList {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  cursor: default;
+}
+
+.blockList .block {
+  margin: 0 0 2lh;
+  padding: 0;
+  border: none;
+}
+
+.blockList .block:last-child {
+  margin-bottom: 0;
+}
+
+.band {
+  position: relative;
+  height: 32svh;
+  height: 32dvh;
+  min-height: 160px;
+  overflow: hidden;
+}
+
+.bandImage {
+  object-fit: cover;
+}
+
+.close {
+  background: var(--stark-black);
+  padding: clamp(40px, 6vw, 64px) clamp(22px, 4vw, 64px) 0;
+}
+
+.closeFrame {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.closeSlot {
+  position: relative;
+  width: 100%;
+  height: 22svh;
+  height: 22dvh;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.closeImage {
+  object-fit: cover;
+}
+
+.depth {
+  background: var(--off);
+  padding: clamp(48px, 7vw, 80px) clamp(22px, 4vw, 64px);
+}
+
+.depth .column p.graf {
+  margin: 0 0 1.5lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(33, 36, 49, 0.88);
+}
+
+.depth .column p.graf:last-child {
+  margin-bottom: 0;
+}
+
+.depthNote {
+  margin: 0 0 1.5lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(33, 36, 49, 0.52);
+}
+
+.depthTitle {
+  margin: 0 0 1.5lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(21px, 2.4vw, 26px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.depthHeading {
+  margin: 2lh 0 1lh;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.brief {
+  padding: clamp(24px, 3.5vw, 36px) 0 0;
+  border-top: 1px solid rgba(33, 36, 49, 0.14);
+}
+
+.depthList {
+  margin-top: 0.4lh;
+}
+
+.depthList .block dt {
+  color: var(--navy);
+}
+
+.blockList .block dd p {
+  margin: 0 0 1lh;
+}
+
+.blockList .block dd p:last-child {
+  margin-bottom: 0;
+}
+
+.backWrap {
+  background: var(--stark-black);
+  padding: 0 clamp(22px, 4vw, 64px) clamp(40px, 6vw, 56px);
+}
+
+.backWrap .column {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.back {
+  display: inline-block;
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.38);
+  text-decoration: none;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: var(--stark-grey);
+}
+
+@media (min-width: 900px) {
+  .headerChapter {
+    height: 70svh;
+    height: 70dvh;
+  }
+
+  .chapterCopy {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (max-width: 720px) {
+  .header {
+    height: 42svh;
+    height: 42dvh;
+  }
+
+  .headerChapter {
+    height: 62svh;
+    height: 62dvh;
+    min-height: 0;
+  }
+
+  .lead {
+    font-size: clamp(18px, 4.8vw, 21px);
+  }
+
+  .band {
+    height: 28svh;
+    height: 28dvh;
+  }
+}

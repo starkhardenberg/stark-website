@@ -26,19 +26,27 @@
   cursor: pointer;
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.4;
   color: var(--off);
   transition: color 0.15s ease;
 }
 
-.question:hover {
-  color: rgba(245, 245, 245, 0.92);
+@media (hover: hover) {
+  .question:hover,
+  .question:hover .indicator {
+    color: var(--orange);
+  }
 }
 
 .question:focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--stark-white);
   outline-offset: 4px;
+}
+
+.itemOpen .question,
+.itemOpen .indicator {
+  color: var(--orange);
 }
 
 .itemOpen .question {
@@ -46,7 +54,7 @@
 }
 
 .itemOpen {
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--stark-black);
   padding-left: 16px;
   margin-left: -19px;
 }
@@ -59,15 +67,15 @@
 .indicator {
   flex-shrink: 0;
   display: inline-block;
-  width: 18px;
+  width: 1.15em;
   font-family: var(--font-body), sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1;
-  color: var(--orange);
+  color: var(--off);
   transform: rotate(0deg);
   transform-origin: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.15s ease;
 }
 
 .itemOpen .indicator {
@@ -92,13 +100,13 @@
   margin: 0;
   padding: 0 0 20px;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.7vw, 18px);
+  font-size: var(--stark-body);
   line-height: 1.65;
   color: rgba(245, 245, 245, 0.7);
 }
 
 .answer a {
-  color: var(--orange);
+  color: var(--stark-grey);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-color: rgba(255, 107, 0, 0.45);
@@ -109,6 +117,88 @@
 .answer a:hover {
   color: var(--off);
   text-decoration-color: var(--off);
+}
+
+/* Light tone: editorial, aansluitend op intro/start (geen UI-kit look) */
+.listLight {
+  margin-top: 0;
+}
+
+.listLight .item {
+  border-top-color: rgba(33, 36, 49, 0.1);
+}
+
+.listLight .item:last-child {
+  border-bottom-color: rgba(33, 36, 49, 0.1);
+}
+
+.listLight .question {
+  align-items: center;
+  padding: 26px 0;
+  font-weight: 400;
+  color: var(--stark-black);
+}
+
+.listLight .questionText {
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.15;
+  letter-spacing: var(--display-tracking);
+}
+
+@media (hover: hover) {
+  .listLight .question:hover,
+  .listLight .question:hover .indicator {
+    color: var(--orange);
+  }
+}
+
+.listLight .question:focus-visible {
+  outline-color: var(--stark-black);
+}
+
+.listLight .itemOpen {
+  border-left: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.listLight .itemOpen .question,
+.listLight .itemOpen .indicator {
+  color: var(--orange);
+}
+
+.listLight .itemOpen .question {
+  padding-bottom: 10px;
+}
+
+.listLight .indicator {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--stark-black);
+}
+
+.listLight .itemOpen .indicator {
+  color: var(--orange);
+}
+
+.listLight .answer {
+  padding-bottom: 22px;
+  font-size: var(--stark-body);
+  line-height: 1.7;
+  color: rgba(33, 36, 49, 0.62);
+}
+
+.listLight .answer a {
+  color: var(--stark-black);
+  font-weight: 600;
+  text-decoration-color: rgba(234, 92, 31, 0.4);
+}
+
+.listLight .answer a:hover {
+  color: var(--orange);
+  text-decoration-color: var(--orange);
 }
 
 @media (prefers-reduced-motion: reduce) {

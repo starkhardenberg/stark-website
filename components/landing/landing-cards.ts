@@ -1,5 +1,5 @@
 import type { LandingServiceCardData } from './LandingServiceCard'
-import { hrefContactAlgemeen, hrefTrainen, hrefWhatsAppKennismaking } from '@/lib/contact'
+import { hrefKennismaking, hrefWhatsAppKennismaking } from '@/lib/contact'
 import { MOMENTUM_COACHING_START_LINE } from '@/lib/momentum-dates'
 
 export const trainenCards: LandingServiceCardData[] = [
@@ -31,8 +31,8 @@ export const trainenCards: LandingServiceCardData[] = [
         parts: [
           'Plan een kennismaking via ',
           { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
-          ' of het ',
-          { href: hrefContactAlgemeen, label: 'contactformulier' },
+          ' of op de ',
+          { href: hrefKennismaking, label: 'kennismakingspagina' },
           '. Iedereen start met het Startpakket: een nulmeting van je lijf en een basiscursus trainen bij STARK! Daarna word je lid.',
         ],
       },
@@ -87,8 +87,8 @@ export const trainenCards: LandingServiceCardData[] = [
         parts: [
           'Stuur ons een berichtje via ',
           { href: hrefWhatsAppKennismaking, label: 'WhatsApp', external: true },
-          ' of het ',
-          { href: hrefContactAlgemeen, label: 'contactformulier' },
+          ' of plan een ',
+          { href: hrefKennismaking, label: 'kennismaking' },
           '. Neem je kind mee, kom kennismaken en direct proberen. Twee proeflessen zijn gratis en daarna beslis je.',
         ],
       },
@@ -109,7 +109,7 @@ export const momentumCards: LandingServiceCardData[] = [
       },
       {
         label: 'Zo werkt het',
-        text: '10 weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma. Coaching gebeurt in de groep.',
+        text: '10 weken, vaste start en vaste eindstreep. Een vaste groep van 5 tot 12 mensen, geen instroom halverwege. Coaching gebeurt in de groep.',
       },
       {
         label: 'Wat zit erin',
@@ -234,7 +234,7 @@ export const coachingCards: LandingServiceCardData[] = [
       },
       {
         label: 'Zo werkt het',
-        text: '10 weken, vaste startdata. Max. 10 deelnemers, iedereen loopt hetzelfde programma. Coaching gebeurt in de groep.',
+        text: '10 weken, vaste start en vaste eindstreep. Een vaste groep van 5 tot 12 mensen, geen instroom halverwege. Coaching gebeurt in de groep.',
       },
       {
         label: 'Wat zit erin',
@@ -307,7 +307,7 @@ export const zakelijkCards: LandingServiceCardData[] = [
       },
       {
         label: 'Wat erin zit',
-        text: '10 weken. 20 trainingen, 10 uur groepscoaching, 5 challenges. Max. 10 per groep.',
+        text: '10 weken. 20 trainingen, 10 uur groepscoaching, 5 challenges. 5 tot 12 per groep.',
       },
       {
         label: 'Starten',

@@ -33,7 +33,7 @@
 
 .back:hover {
   opacity: 1;
-  color: var(--orange);
+  color: var(--stark-grey);
 }
 
 .navCta {
@@ -80,7 +80,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
   margin-bottom: 10px;
 }
 
@@ -129,7 +129,7 @@
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 40px;
-  color: var(--orange);
+  color: var(--stark-grey);
   line-height: 1;
 }
 
@@ -170,7 +170,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
   margin-bottom: 10px;
 }
 
@@ -186,7 +186,7 @@
 
 .body {
   font-family: var(--font-body), sans-serif;
-  font-size: 16px;
+  font-size: var(--stark-body);
   line-height: 1.7;
   color: rgba(245, 245, 245, 0.7);
   margin-bottom: 14px;
@@ -218,7 +218,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
   margin-bottom: 6px;
 }
 
@@ -278,7 +278,7 @@
 
 .priceItem {
   padding: 18px 20px;
-  border-left: 3px solid var(--orange);
+  border-left: 3px solid var(--stark-black);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -301,7 +301,7 @@
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 28px;
-  color: var(--orange);
+  color: var(--stark-grey);
   margin-top: 6px;
 }
 

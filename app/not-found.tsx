@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
+import { STARK_GRAIN } from '@/lib/stark-grain'
 import styles from './not-found.module.css'
 
 export default function NotFound() {
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${STARK_GRAIN}`}>
       <header className={styles.nav}>
         <a href="/" aria-label="STARK! home">
           <Image
@@ -26,11 +28,11 @@ export default function NotFound() {
         </h1>
 
         <p className={styles.sub}>
-          Niks aan de hand, even terug naar de basis.
+          Niks aan de hand, even terug naar de basis
         </p>
 
         <div className={styles.ctas}>
-          <a className={styles.btnPrimary} href="/">
+          <a className={`${styles.btnPrimary} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} href="/">
             Terug naar home
           </a>
         </div>

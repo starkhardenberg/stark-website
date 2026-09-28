@@ -17,6 +17,8 @@ export type AanbodTrack = {
   photoScaleOrigin?: string
   /** Zwart-wit filter op de foto (zakelijk-tegels) */
   photoGrayscale?: boolean
+  /** Foto kleurt bij hover. Standaard aan als er een landing-link is. */
+  photoHoverColor?: boolean
   /** Label op de foto; overschrijft cat.toUpperCase() */
   mediaLabel?: string
   /** Tweede regel onder mediaLabel op de foto, bv. 'VOOR TEAMS' */
@@ -36,6 +38,10 @@ export type AanbodTrack = {
   cta?: string
   ctaHref?: string
   light?: boolean
+  /** Eén zin voor editorial route-band (homepage) */
+  summary?: string
+  /** Scanbare punten onder de hook (homepage bands) */
+  highlights?: string[]
 }
 
 export const aanbodTracks: AanbodTrack[] = [
@@ -49,6 +55,12 @@ export const aanbodTracks: AanbodTrack[] = [
     introLabel: 'TRAINING',
     readMoreHref: '/trainen',
     readMoreLabel: 'Lees meer over trainen',
+    summary:
+      'Functioneel trainen op jouw niveau. Laagdrempelig. Je hoeft alleen te beginnen.',
+    highlights: [
+      'Afwisselende workouts op jouw niveau en tempo',
+      'Trainer naast je in de groep, ook als je lijf even tegenwerkt',
+    ],
     desc:
       'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan.\n\nBij STARK! draait functioneel trainen om jou: om jouw lijf, jouw niveau en jouw leven. Voor wie jong is, vroeger jong was en alles daartussenin.\n\nJe wordt fit door simpelweg te starten.',
     cta: CTA_KENNISMAKING_LABEL,
@@ -67,6 +79,13 @@ export const aanbodTracks: AanbodTrack[] = [
     introLabel: 'Coaching bij STARK!',
     readMoreHref: '/coaching',
     readMoreLabel: 'Lees meer over coaching',
+    summary:
+      'Trajecten die lijf en hoofd verbinden. Meer commitment, meer diepgang.',
+    highlights: [
+      'Lijf en hoofd in één traject',
+      'In een groep of één-op-één',
+      'Coaches die jouw patronen herkennen',
+    ],
     desc:
       'Een helder hoofd. Een lijf dat aankan wat je vraagt. Afspraken met jezelf die je nakomt.\n\nLijf en hoofd versterken elkaar. Daar werken onze coachingstrajecten aan. Of in een groep of één-op-één, met coaches die jouw patronen herkennen.\n\nJe bouwt iets op wat je voor altijd meeneemt, ook na het traject.',
     cta: CTA_KENNISMAKING_LABEL,
@@ -76,16 +95,23 @@ export const aanbodTracks: AanbodTrack[] = [
   {
     id: 'bedrijven',
     num: '03',
-    cat: 'Bedrijven',
+    cat: 'Zakelijk',
     photo: 'foto-trainen-battle-rope.png',
     photoAlt:
       'Team in actie: battle ropes tijdens training bij STARK! Hardenberg, zwart-wit, kracht en samenwerking',
     photoObjectPosition: 'center 16%',
-    introLabel: 'Bedrijven bij STARK!',
-    readMoreHref: '/zakelijk',
-    readMoreLabel: 'Lees meer over bedrijven',
+    introLabel: 'Zakelijk bij STARK!',
+    readMoreHref: '/zakelijk-v2',
+    readMoreLabel: 'Lees meer over zakelijk',
+    summary:
+      'Sterke teams onder druk. Het meest intensieve traject, maatwerk op de werkvloer.',
+    highlights: [
+      'Fysiek sterk én mentaal weerbaar op de werkvloer',
+      'Voor re-integratie, druk op het werk of teams die vastlopen',
+      'Maatwerk voor mens, team en bedrijf',
+    ],
     desc:
-      'Starke mensen. Starke teams. Een bedrijf dat kan dealen met druk en uitdagingen.\n\nWe maken je mensen fysiek sterk en bouwen aan hun mentale weerbaarheid. Voor medewerkers die willen re-integreren, voor mensen die sterk willen blijven onder druk, of voor teams die klem zitten.\n\nEen fundament dat staat voor iedereen: mens, team en bedrijf.',
+      'In de meeste bedrijven is vitaliteit een sportabonnement met korting. Wij beginnen een laag lager: bij hoe jij leidt.\n\nWat er in het leiderschap blijft liggen, zie je terug bij je mensen op de werkvloer. Dat bepaalt of ze hun werk gedaan krijgen, met energie en met plezier, of niet.\n\nVoor je medewerkers is er Momentum @ Werk. Tien weken om stevig te staan, met een sterk lijf en rust in de kop.',
     cta: CTA_KENNISMAKING_LABEL,
     ctaHref: hrefKennismaking,
     light: true,

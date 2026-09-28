@@ -78,7 +78,7 @@ export const PHONE_WHATSAPP = {
   wa: '31613308012',
 } as const
 
-export const WHATSAPP_KENNISMAKING_MESSAGE = 'Dag! Ik wil graag kennismaken.'
+export const WHATSAPP_KENNISMAKING_MESSAGE = 'Hoi! Ik wil graag kennismaken bij STARK!'
 
 /** Web-URL (desktop + fallback op mobiel) */
 export function whatsappUrl(message: string = WHATSAPP_KENNISMAKING_MESSAGE): string {
@@ -91,6 +91,10 @@ export function whatsappDeepLink(message: string = WHATSAPP_KENNISMAKING_MESSAGE
 }
 
 export const hrefWhatsAppKennismaking = whatsappUrl()
+
+/** Proef op de Som-aanmelding. Later vervangen door Bookings-URL. */
+export const PROEF_OP_DE_SOM_MESSAGE = 'Ik wil meedoen op 5 november.'
+export const hrefProefOpDeSom = whatsappUrl(PROEF_OP_DE_SOM_MESSAGE)
 
 /** Direct mail/telefoon in footer (geen formulier) */
 export const mailtoInfo = 'mailto:info@starkhardenberg.nl'

@@ -60,7 +60,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--stark-grey);
   margin: 0 0 32px;
 }
 
@@ -79,7 +79,7 @@
 .headingOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-display) var(--orange);
+  -webkit-text-stroke: var(--outline-stroke-display) var(--stark-black);
 }
 
 .sub {
@@ -106,7 +106,7 @@
   font-weight: 500;
   font-size: 26px;
   text-transform: uppercase;
-  border-radius: 3px;
+  border-radius: 0;
   transition: background 0.18s;
 }
 
