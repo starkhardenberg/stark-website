@@ -6,10 +6,12 @@ import styles from './DienstPage.module.css'
 export default function HeroTitle({
   word = 'Momentum',
   breakBefore,
+  className,
 }: {
   word?: string
   /** Breek vóór deze tekst, nooit midden in een woord. Zonder prop blijft de titel één regel. */
   breakBefore?: string
+  className?: string
 }) {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const [outlineCount, setOutlineCount] = useState(0)
@@ -39,7 +41,9 @@ export default function HeroTitle({
   return (
     <h1
       ref={titleRef}
-      className={breakIndex > 0 ? `${styles.heroTitle} ${styles.heroTitleBreak}` : styles.heroTitle}
+      className={[styles.heroTitle, breakIndex > 0 ? styles.heroTitleBreak : '', className]
+        .filter(Boolean)
+        .join(' ')}
     >
       {word.split('').map((char, index) => {
         if (breakIndex > 0 && index === breakIndex - 1 && char === ' ') {

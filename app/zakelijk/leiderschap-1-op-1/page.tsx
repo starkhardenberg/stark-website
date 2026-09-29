@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import ServiceDetailPage from '@/components/service-detail/ServiceDetailPage'
-import { leiderschapDetail } from '@/components/zakelijk/zakelijk-detail-pages'
+import LeiderschapPage from '@/components/dienst/LeiderschapPage'
+import { L1O1_META } from '@/components/dienst/leiderschap-1-op-1'
+import { getSiteRobots } from '@/lib/site-seo'
 
 export const metadata: Metadata = {
-  title: 'Leiderschap 1 op 1 — STARK! Hardenberg',
-  description: '1-op-1 leiderschapstraject bij STARK! Hardenberg. Vanaf een kwartaal.',
-  robots: { index: false, follow: false },
+  title: L1O1_META.title,
+  description: L1O1_META.description,
+  robots: getSiteRobots(),
 }
 
-export default function LeiderschapPage() {
-  return <ServiceDetailPage page={leiderschapDetail} />
+export default function Page() {
+  return <LeiderschapPage />
 }

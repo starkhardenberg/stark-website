@@ -68,6 +68,10 @@
   line-height: 1;
 }
 
+.heroTitleLong {
+  font-size: clamp(36px, 11cqi, 64px);
+}
+
 .heroTitleOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -593,6 +597,10 @@
   .heroTitle.heroTitleBreak {
     font-size: clamp(88px, 9vw, 132px);
     line-height: 0.94;
+  }
+
+  .heroTitle.heroTitleBreak.heroTitleLong {
+    font-size: clamp(72px, 7.4vw, 104px);
   }
 
   .proofText {

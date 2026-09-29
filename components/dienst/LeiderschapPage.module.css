@@ -1,0 +1,61 @@
+.sheet {
+  margin-top: 28px;
+  padding: 28px 22px 24px;
+  border: 1px solid var(--line);
+}
+
+.sheetHeading {
+  margin: 0 0 8px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.itemLabel {
+  margin: 22px 0 6px;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.itemText,
+.sheetFooter {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.sheetFooter {
+  margin-top: 28px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.actions a,
+.actions button {
+  margin-top: 0;
+}
+
+@media (min-width: 800px) {
+  .sheet {
+    padding: 36px 32px 32px;
+  }
+
+  .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

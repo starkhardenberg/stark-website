@@ -1,4 +1,5 @@
 import type { AanbodTrack } from '@/components/aanbod/aanbod-tracks'
+import { L1O1_TEGEL } from '@/components/dienst/leiderschap-1-op-1'
 
 /** Drie ingangen op /zakelijk-v2. Zelfde tegelcomponent als trainen/coaching. */
 export const zakelijkSoloRoutes: AanbodTrack[] = [
@@ -11,23 +12,10 @@ export const zakelijkSoloRoutes: AanbodTrack[] = [
     photoAlt: 'Solo training bij STARK! Hardenberg',
     photoObjectPosition: 'center 28%',
     photoHoverColor: false,
-    eyebrow: '1-op-1 · Vanaf een kwartaal',
+    eyebrow: L1O1_TEGEL.eyebrow,
     readMoreHref: '/zakelijk/leiderschap-1-op-1',
     readMoreLabel: 'Lees verder',
-    menu: [
-      {
-        label: 'Past bij jou als',
-        text: 'Eigenaar, directeur, MT-lid of teamleider. Die ene beslissing die steeds blijft liggen, dat gesprek dat er niet komt, of het loopt weer eens zo dat je het zelf maar weer oplost.',
-      },
-      {
-        label: 'Zo werkt het',
-        text: 'Wekelijks een uur in gesprek over wat er die week speelde. Daarnaast train je wekelijks bij ons. Instappen kan vanaf een kwartaal.',
-      },
-      {
-        label: 'Wat zit erin',
-        text: 'Je ziet wat je laat liggen, en je leert het diezelfde week recht te zetten. Hoe sneller je corrigeert, hoe sneller je het effect merkt. Elke drie maanden zetten we in een langere sessie de komende periode op scherp.',
-      },
-    ],
+    menu: L1O1_TEGEL.menu,
   },
   {
     id: 'jaartraject',
