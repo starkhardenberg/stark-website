@@ -9,7 +9,7 @@ import styles from './Nav.module.css'
 
 const ZAKELIJK_LINKS = [
   { label: 'Ondernemers', href: '/zakelijk-v2' },
-  { label: 'Werknemers', href: '/zakelijk/momentum-at-werk' },
+  { label: 'Medewerkers', href: '/zakelijk/duurzame-inzetbaarheid' },
 ] as const
 
 const NAV_TABS = [

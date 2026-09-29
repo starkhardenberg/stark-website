@@ -11,6 +11,16 @@ const nextConfig = {
         destination: '/kennismaken',
         permanent: false,
       },
+      {
+        source: '/zakelijk/momentum-at-werk',
+        destination: '/zakelijk/duurzame-inzetbaarheid',
+        permanent: true,
+      },
+      {
+        source: '/zakelijk/jaartraject',
+        destination: '/zakelijk/traject',
+        permanent: true,
+      },
     ]
   },
   /**

@@ -37,10 +37,9 @@ export default function ImpactPage() {
             <img className={styles.heroPhoto} src={IMPACT_HERO.image} alt={IMPACT_HERO.alt} />
           </div>
           <div className={styles.heroCopy}>
-            <div className={styles.heroStack}>
+            <div className={`${styles.heroStack} ${styles.heroStackImpact}`}>
               <HeroTitle word={IMPACT_HERO.word} />
               <p className={styles.heroLine}>{IMPACT_HERO.line}</p>
-              <BookButton />
             </div>
           </div>
         </div>
@@ -161,11 +160,11 @@ export default function ImpactPage() {
         <BookButton className={styles.buttonSection} />
       </Section>
 
-      <Section number="05" title="Goede vragen">
-        <FaqList tone="light" initialOpen={0} items={IMPACT_FAQ} />
+      <Section number="05" title="Goede vragen" tone="dark">
+        <FaqList tone="dark" initialOpen={0} items={IMPACT_FAQ} />
       </Section>
 
-      <Section number="06" title="Het begint met een gesprek" tone="dark">
+      <Section number="06" title="Het begint met een gesprek">
         <div className={styles.prose}>
           <p>{IMPACT_SLOT}</p>
         </div>

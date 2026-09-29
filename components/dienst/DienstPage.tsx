@@ -33,7 +33,6 @@ export default function DienstPage() {
             <div className={styles.heroStack}>
               <HeroTitle />
               <p className={styles.heroLine}>Stop met stoppen</p>
-              <BookButton />
             </div>
           </div>
         </div>
@@ -216,11 +215,11 @@ export default function DienstPage() {
         <BookButton className={styles.buttonSection} />
       </Section>
 
-      <Section number="05" title="Goede vragen">
-        <FaqList tone="light" initialOpen={0} items={MOMENTUM_FAQ} />
+      <Section number="05" title="Goede vragen" tone="dark">
+        <FaqList tone="dark" initialOpen={0} items={MOMENTUM_FAQ} />
       </Section>
 
-      <Section number="06" title="Het begint met een gesprek" tone="dark">
+      <Section number="06" title="Het begint met een gesprek">
         <div className={styles.prose}>
           <p>
             Een kennismaking van een uur met Anne of Els. Wat wil je voor elkaar krijgen, en waar liep

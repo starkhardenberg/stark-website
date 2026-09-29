@@ -39,7 +39,7 @@ export const zakelijkSoloRoutes: AanbodTrack[] = [
     photoObjectPosition: 'center 40%',
     photoHoverColor: false,
     eyebrow: 'Team',
-    readMoreHref: '/zakelijk/jaartraject',
+    readMoreHref: '/zakelijk/traject',
     readMoreLabel: 'Lees verder',
     menu: [
       {
@@ -67,7 +67,7 @@ export const zakelijkSoloRoutes: AanbodTrack[] = [
     photoObjectPosition: 'center center',
     photoHoverColor: false,
     eyebrow: 'Groep · 10 weken',
-    readMoreHref: '/zakelijk/momentum-at-werk',
+    readMoreHref: '/zakelijk/duurzame-inzetbaarheid',
     readMoreLabel: 'Lees verder',
     menu: [
       {

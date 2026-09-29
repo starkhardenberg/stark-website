@@ -37,7 +37,7 @@ export function Section({
         <div className={styles.sec}>
           <div className={styles.secLead}>
             <span className={styles.num} aria-hidden="true">
-              {number}
+              <span className={styles.numInk}>{number}</span>
             </span>
             <h2 className={styles.h2}>{title}</h2>
           </div>
