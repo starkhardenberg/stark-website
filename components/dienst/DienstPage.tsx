@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, Section } from './DienstParts'
+import { BookButton, QuoteBlock, Section, createPageRhythm } from './DienstParts'
 import {
   MOMENTUM_FAQ,
   MOMENTUM_QUOTE,
@@ -15,6 +15,17 @@ import {
 import styles from './DienstPage.module.css'
 
 export default function DienstPage() {
+  let section = 0
+  const num = () => String(++section).padStart(2, '0')
+  const { tone, footerTone } = createPageRhythm()
+  const introTone = tone()
+  const worksTone = tone()
+  const eerlijkTone = tone()
+  const quoteTone = tone()
+  const praktischTone = tone()
+  const faqTone = tone()
+  const slotTone = tone()
+
   return (
     <main className={styles.page}>
       <FaqJsonLd items={MOMENTUM_FAQ} />
@@ -29,7 +40,7 @@ export default function DienstPage() {
               alt="Groepstraining in de zaal bij STARK! Hardenberg"
             />
           </div>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
               <HeroTitle />
               <p className={styles.heroLine}>Stop met stoppen</p>
@@ -38,7 +49,7 @@ export default function DienstPage() {
         </div>
       </header>
 
-      <Section number="01" title="Je weet donders goed wat je wilt:">
+      <Section number={num()} title="Je weet donders goed wat je wilt:" tone={introTone}>
         <ul className={styles.scenes}>
           <li>
             Uitgerust wakker worden<span className={styles.dot}>.</span>
@@ -76,7 +87,7 @@ export default function DienstPage() {
         <p className={`${styles.close} ${styles.closeAccent}`}>Dit keer lukt het.</p>
       </Section>
 
-      <Section number="02" title="Hoe het werkt" tone="dark">
+      <Section number={num()} title="Hoe het werkt" tone={worksTone}>
         <div className={styles.parts}>
           <div className={styles.part}>
             <h3 className={styles.partTitle}>Trainen</h3>
@@ -132,7 +143,7 @@ export default function DienstPage() {
         </div>
       </Section>
 
-      <Section number="03" title="Eerlijk is eerlijk">
+      <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
         <div className={styles.prose}>
           <p>
             <strong>Je komt.</strong> Twee keer per week, ook op de avond dat je jezelf hoort zeggen dat
@@ -171,25 +182,19 @@ export default function DienstPage() {
         </div>
       </Section>
 
-      <section className={styles.proof} aria-label="Ervaring van een deelnemer">
-        <div className={styles.proofGrid}>
-          <div className={styles.proofPhotoWrap}>
-            <img className={styles.proofPhoto} src={MOMENTUM_QUOTE.image} alt={MOMENTUM_QUOTE.alt} />
-          </div>
-          <figure className={styles.proofText}>
-            <blockquote className={styles.quote}>“{MOMENTUM_QUOTE.text}”</blockquote>
-            <figcaption className={styles.cite}>
-              {MOMENTUM_QUOTE.name} · {MOMENTUM_QUOTE.role}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <QuoteBlock
+        tone={quoteTone}
+        image={MOMENTUM_QUOTE.image}
+        alt={MOMENTUM_QUOTE.alt}
+        text={MOMENTUM_QUOTE.text}
+        name={MOMENTUM_QUOTE.name}
+        role={MOMENTUM_QUOTE.role}
+      />
 
-      <Section number="04" title="Praktisch">
+      <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
           <div className={styles.group}>
             <h3 className={styles.h3}>Tijden</h3>
-            <p className={styles.note}>Elke groep, tien weken lang</p>
             <ul className={styles.list}>
               {MOMENTUM_SCHEDULE.map((slot) => (
                 <li key={slot.when}>
@@ -197,11 +202,11 @@ export default function DienstPage() {
                 </li>
               ))}
             </ul>
+            <p className={styles.note}>Elke groep, tien weken lang</p>
             <p className={styles.note}>{MOMENTUM_SCHEDULE_NOTE}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Startdata</h3>
-            <p className={styles.note}>Vaste start, vaste eindstreep</p>
             <ul className={styles.list}>
               {MOMENTUM_STARTS.map((item) => (
                 <li key={item.start}>
@@ -212,14 +217,14 @@ export default function DienstPage() {
             </ul>
           </div>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonTiles} />
       </Section>
 
-      <Section number="05" title="Goede vragen" tone="dark">
-        <FaqList tone="dark" initialOpen={0} items={MOMENTUM_FAQ} />
+      <Section number={num()} title="Goede vragen" tone={faqTone}>
+        <FaqList tone={faqTone} items={MOMENTUM_FAQ} />
       </Section>
 
-      <Section number="06" title="Het begint met een gesprek">
+      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
         <div className={styles.prose}>
           <p>
             Een kennismaking van een uur met Anne of Els. Wat wil je voor elkaar krijgen, en waar liep
@@ -227,11 +232,11 @@ export default function DienstPage() {
             Ook dat is een uitkomst.
           </p>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonSlot} />
         <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
-      <Footer photoless ctaless tone="dark" />
+      <Footer photoless ctaless tone={footerTone()} />
     </main>
   )
 }

@@ -29,9 +29,8 @@ export const MAW_INTRO = {
     'Na een drukke week is er thuis nog energie over',
     'Collega’s van verschillende afdelingen kennen elkaar van de trainingsvloer',
   ],
-  sceneOpen: 'Of wat er in jouw mensen zit.',
   prose: [
-    'In een nieuwe machine investeer je zonder te twijfelen. Hij moet aankunnen wat er gevraagd wordt. Voor je mensen geldt hetzelfde. In bijna elk bedrijf zit veel dat er nu nog niet uitkomt.',
+    'Of wat er in jouw mensen zit. In een nieuwe machine investeer je zonder te twijfelen. Hij moet aankunnen wat er gevraagd wordt. Voor je mensen geldt hetzelfde. In bijna elk bedrijf zit veel dat er nu nog niet uitkomt.',
     'Het werk wordt uitdagender, en er wordt veel van je mensen gevraagd. Wie sterk is in zijn lijf en in zijn hoofd, gaat daar beter mee om. Met werkdruk, met stress, met een maandag die anders loopt dan gepland.',
   ],
   proseStrong: 'Momentum @ Werk is tien weken, voor vijf tot tien collega’s uit je bedrijf.',
@@ -150,8 +149,8 @@ export const MAW_OPZET = [
   'In werktijd of in eigen tijd: dat bepalen jullie zelf',
 ] as const
 
+/** Stappen na de kennismaking. De kennismaking zelf staat in het slot. */
 export const MAW_VERLOOP = [
-  'Kennismaking met Yvonne en Engbert-Jan',
   'Samen bedenken we hoe je mensen meegaan',
   'Je krijgt een offerte',
   'We plannen de tijden',

@@ -32,8 +32,6 @@ export const L1O1_INTRO = {
     'Je geeft werk uit handen, en het komt goed',
     'Op vrijdag heb je gedaan wat je maandag van plan was',
   ],
-  /** Leeg: de zin staat nu als brug aan het begin van de broodtekst. */
-  sceneOpen: '',
   prose: [
     'Of wat jij als leider wilt bereiken. Je bent eigenaar, directeur, MT-lid of teamleider. Het werk loopt, en je weet dat er nog een stap in zit. In jezelf, en in hoe je je mensen meekrijgt.',
     'Leiderschap 1 op 1 draait om wat je in je werk voor elkaar krijgt. De beslissingen die je neemt en of je eraan vasthoudt. Je plek in het team. Hoe je mensen meekrijgt.',

@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, Section } from './DienstParts'
+import { BookButton, QuoteBlock, Section, createPageRhythm } from './DienstParts'
 import {
   IMPACT_AFSLUITER,
   IMPACT_ANDERS,
@@ -26,6 +26,17 @@ import {
 import styles from './DienstPage.module.css'
 
 export default function ImpactPage() {
+  let section = 0
+  const num = () => String(++section).padStart(2, '0')
+  const { tone, footerTone } = createPageRhythm()
+  const introTone = tone()
+  const worksTone = tone()
+  const eerlijkTone = tone()
+  const quoteTone = tone()
+  const praktischTone = tone()
+  const faqTone = tone()
+  const slotTone = tone()
+
   return (
     <main className={styles.page}>
       <FaqJsonLd items={IMPACT_FAQ} />
@@ -36,8 +47,8 @@ export default function ImpactPage() {
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={IMPACT_HERO.image} alt={IMPACT_HERO.alt} />
           </div>
-          <div className={styles.heroCopy}>
-            <div className={`${styles.heroStack} ${styles.heroStackImpact}`}>
+          <div className={styles.heroCopy} data-hero-copy="">
+            <div className={styles.heroStack}>
               <HeroTitle word={IMPACT_HERO.word} />
               <p className={styles.heroLine}>{IMPACT_HERO.line}</p>
             </div>
@@ -45,7 +56,7 @@ export default function ImpactPage() {
         </div>
       </header>
 
-      <Section number="01" title={IMPACT_INTRO.title}>
+      <Section number={num()} title={IMPACT_INTRO.title} tone={introTone}>
         <ul className={styles.scenes}>
           {IMPACT_INTRO.scenes.map((line) => (
             <li key={line}>
@@ -53,7 +64,6 @@ export default function ImpactPage() {
               <span className={styles.dot}>.</span>
             </li>
           ))}
-          <li className={styles.sceneOpen}>{IMPACT_INTRO.sceneOpen}</li>
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
           {IMPACT_INTRO.prose.map((paragraph) => (
@@ -69,7 +79,7 @@ export default function ImpactPage() {
         </p>
       </Section>
 
-      <Section number="02" title="Hoe het werkt" tone="dark">
+      <Section number={num()} title="Hoe het werkt" tone={worksTone}>
         <div className={styles.parts}>
           {IMPACT_PARTS.map((part) => (
             <div className={styles.part} key={part.title}>
@@ -90,7 +100,7 @@ export default function ImpactPage() {
         </div>
       </Section>
 
-      <Section number="03" title="Eerlijk is eerlijk">
+      <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
         <div className={styles.prose}>
           {IMPACT_EERLIJK.map((item) => (
             <p key={item.strong}>
@@ -120,25 +130,19 @@ export default function ImpactPage() {
         </div>
       </Section>
 
-      <section className={styles.proof} aria-label="Ervaring van een deelnemer">
-        <div className={styles.proofGrid}>
-          <div className={styles.proofPhotoWrap}>
-            <img className={styles.proofPhoto} src={IMPACT_QUOTE.image} alt={IMPACT_QUOTE.alt} />
-          </div>
-          <figure className={styles.proofText}>
-            <blockquote className={styles.quote}>“{IMPACT_QUOTE.text}”</blockquote>
-            <figcaption className={styles.cite}>
-              {IMPACT_QUOTE.name} · {IMPACT_QUOTE.role}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <QuoteBlock
+        tone={quoteTone}
+        image={IMPACT_QUOTE.image}
+        alt={IMPACT_QUOTE.alt}
+        text={IMPACT_QUOTE.text}
+        name={IMPACT_QUOTE.name}
+        role={IMPACT_QUOTE.role}
+      />
 
-      <Section number="04" title="Praktisch">
+      <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
           <div className={styles.group}>
             <h3 className={styles.h3}>Trainingstijden</h3>
-            <p className={styles.note}>{IMPACT_SCHEDULE_NOTE}</p>
             <ul className={styles.list}>
               {IMPACT_SCHEDULE.map((slot) => (
                 <li key={slot}>
@@ -146,33 +150,34 @@ export default function ImpactPage() {
                 </li>
               ))}
             </ul>
+            <p className={styles.note}>{IMPACT_SCHEDULE_NOTE}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Starten</h3>
-            <p className={styles.note}>{IMPACT_START_NOTE}</p>
             <ul className={styles.list}>
               {IMPACT_START.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <p className={styles.note}>{IMPACT_START_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonTiles} />
       </Section>
 
-      <Section number="05" title="Goede vragen" tone="dark">
-        <FaqList tone="dark" initialOpen={0} items={IMPACT_FAQ} />
+      <Section number={num()} title="Goede vragen" tone={faqTone}>
+        <FaqList tone={faqTone} items={IMPACT_FAQ} />
       </Section>
 
-      <Section number="06" title="Het begint met een gesprek">
+      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
         <div className={styles.prose}>
           <p>{IMPACT_SLOT}</p>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonSlot} />
         <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
-      <Footer photoless ctaless tone="dark" />
+      <Footer photoless ctaless tone={footerTone()} />
     </main>
   )
 }

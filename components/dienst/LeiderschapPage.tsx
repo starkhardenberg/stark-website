@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, Section } from './DienstParts'
+import { BookButton, KennismakingSteps, QuoteBlock, Section, createPageRhythm } from './DienstParts'
 import WerkgeverBlok from './WerkgeverBlok'
 import {
   L1O1_AFSLUITER,
@@ -37,6 +37,16 @@ import styles from './DienstPage.module.css'
 export default function LeiderschapPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
+  const { tone, footerTone } = createPageRhythm()
+  const introTone = tone()
+  const worksTone = tone()
+  const vraagtTone = tone()
+  const quoteTone = tone()
+  const voorbeeldTone = tone()
+  const praktischTone = tone()
+  const werkgeverTone = tone()
+  const faqTone = tone()
+  const slotTone = tone()
 
   return (
     <main className={styles.page}>
@@ -48,7 +58,7 @@ export default function LeiderschapPage() {
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={L1O1_HERO.image} alt={L1O1_HERO.alt} />
           </div>
-          <div className={`${styles.heroCopy} ${styles.heroCopyRoom}`}>
+          <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
               <HeroTitle
                 word={L1O1_HERO.word}
@@ -61,7 +71,7 @@ export default function LeiderschapPage() {
         </div>
       </header>
 
-      <Section number={num()} title={L1O1_INTRO.title}>
+      <Section number={num()} title={L1O1_INTRO.title} tone={introTone}>
         <ul className={styles.scenes}>
           {L1O1_INTRO.scenes.map((line) => (
             <li key={line}>
@@ -69,7 +79,6 @@ export default function LeiderschapPage() {
               <span className={styles.dot}>.</span>
             </li>
           ))}
-          <li className={styles.sceneOpen}>{L1O1_INTRO.sceneOpen}</li>
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
           {L1O1_INTRO.prose.map((paragraph) => (
@@ -85,7 +94,7 @@ export default function LeiderschapPage() {
         </p>
       </Section>
 
-      <Section number={num()} title="Hoe het werkt" tone="dark">
+      <Section number={num()} title="Hoe het werkt" tone={worksTone}>
         <div className={styles.parts}>
           {L1O1_PARTS.map((part) => (
             <div className={styles.part} key={part.title}>
@@ -106,7 +115,7 @@ export default function LeiderschapPage() {
         </div>
       </Section>
 
-      <Section number={num()} title={L1O1_VRAAGT_TITLE}>
+      <Section number={num()} title={L1O1_VRAAGT_TITLE} tone={vraagtTone}>
         <div className={styles.prose}>
           {L1O1_VRAAGT.map((item) => (
             <p key={item.strong}>
@@ -136,22 +145,18 @@ export default function LeiderschapPage() {
         </div>
       </Section>
 
-      <section className={styles.proof} aria-label="Ervaring van een deelnemer">
-        <div className={styles.proofGrid}>
-          <div className={`${styles.proofPhotoWrap} ${styles.proofPhotoPortrait}`}>
-            <img className={styles.proofPhoto} src={L1O1_QUOTE.image} alt={L1O1_QUOTE.alt} />
-          </div>
-          <figure className={styles.proofText}>
-            <blockquote className={styles.quote}>“{L1O1_QUOTE.text}”</blockquote>
-            <figcaption className={styles.cite}>
-              {L1O1_QUOTE.name} · {L1O1_QUOTE.role}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <QuoteBlock
+        tone={quoteTone}
+        image={L1O1_QUOTE.image}
+        alt={L1O1_QUOTE.alt}
+        text={L1O1_QUOTE.text}
+        name={L1O1_QUOTE.name}
+        role={L1O1_QUOTE.role}
+        portrait
+      />
 
       {L1O1_VOORBEELD.show ? (
-        <Section number={num()} title={L1O1_VOORBEELD.title}>
+        <Section number={num()} title={L1O1_VOORBEELD.title} tone={voorbeeldTone}>
           <div className={styles.prose}>
             <p>
               <strong>{L1O1_VOORBEELD.wie}</strong>
@@ -163,7 +168,7 @@ export default function LeiderschapPage() {
         </Section>
       ) : null}
 
-      <Section number={num()} title="Praktisch">
+      <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
           <div className={styles.group}>
             <h3 className={styles.h3}>Zo ziet het eruit</h3>
@@ -175,7 +180,6 @@ export default function LeiderschapPage() {
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Trainingstijden</h3>
-            <p className={styles.note}>{L1O1_SCHEDULE_NOTE}</p>
             <ul className={styles.list}>
               {L1O1_SCHEDULE.map((slot) => (
                 <li key={slot}>
@@ -183,45 +187,38 @@ export default function LeiderschapPage() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className={styles.group}>
-            <h3 className={styles.h3}>Zo verloopt het</h3>
-            <p className={styles.note}>{L1O1_VERLOOP_NOTE}</p>
-            <ul className={styles.list}>
-              {L1O1_VERLOOP.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <p className={styles.note}>{L1O1_SCHEDULE_NOTE}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>{L1O1_DAARNA_TITLE}</h3>
-            <p className={styles.note}>{L1O1_DAARNA_NOTE}</p>
             <ul className={styles.list}>
               {L1O1_DAARNA.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <p className={styles.note}>{L1O1_DAARNA_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonTiles} />
       </Section>
 
-      <Section number={num()} title={L1O1_WERKGEVER.title}>
+      <Section number={num()} title={L1O1_WERKGEVER.title} tone={werkgeverTone}>
         <div className={styles.prose}>
           <p>{L1O1_WERKGEVER.intro}</p>
         </div>
         <WerkgeverBlok />
       </Section>
 
-      <Section number={num()} title="Goede vragen" tone="dark">
-        <FaqList tone="dark" initialOpen={0} items={L1O1_FAQ} />
+      <Section number={num()} title="Goede vragen" tone={faqTone}>
+        <FaqList tone={faqTone} items={L1O1_FAQ} />
       </Section>
 
-      <Section number={num()} title="Het begint met een gesprek">
+      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
         <div className={styles.prose}>
           <p>{L1O1_SLOT}</p>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <KennismakingSteps steps={L1O1_VERLOOP} note={L1O1_VERLOOP_NOTE} />
+        <BookButton className={styles.buttonSlot} />
         <div className={styles.prose}>
           <p>
             {L1O1_PROEF.text}{' '}
@@ -238,7 +235,7 @@ export default function LeiderschapPage() {
         <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
-      <Footer photoless ctaless tone="dark" />
+      <Footer photoless ctaless tone={footerTone()} />
     </main>
   )
 }

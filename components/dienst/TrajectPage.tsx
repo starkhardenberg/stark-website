@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, Section } from './DienstParts'
+import { BookButton, KennismakingSteps, QuoteBlock, Section, createPageRhythm } from './DienstParts'
 import {
   TRAJECT_AFSLUITER,
   TRAJECT_ANDERS,
@@ -32,11 +32,20 @@ import {
   TRAJECT_WELK_TEAM,
 } from './zakelijk-traject'
 import styles from './DienstPage.module.css'
-import pageStyles from './TrajectPage.module.css'
 
 export default function TrajectPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
+  const { tone, footerTone } = createPageRhythm()
+  const introTone = tone()
+  const worksTone = tone()
+  const samenTone = tone()
+  const vraagtTone = tone()
+  const quoteTone = tone()
+  const voorbeeldTone = tone()
+  const praktischTone = tone()
+  const faqTone = tone()
+  const slotTone = tone()
 
   return (
     <main className={styles.page}>
@@ -48,7 +57,7 @@ export default function TrajectPage() {
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={TRAJECT_HERO.image} alt={TRAJECT_HERO.alt} />
           </div>
-          <div className={`${styles.heroCopy} ${styles.heroCopyRoom}`}>
+          <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
               <HeroTitle
                 word={TRAJECT_HERO.word}
@@ -61,7 +70,7 @@ export default function TrajectPage() {
         </div>
       </header>
 
-      <Section number={num()} title={TRAJECT_INTRO.title}>
+      <Section number={num()} title={TRAJECT_INTRO.title} tone={introTone}>
         <ul className={styles.scenes}>
           {TRAJECT_INTRO.scenes.map((line) => (
             <li key={line}>
@@ -69,7 +78,6 @@ export default function TrajectPage() {
               <span className={styles.dot}>.</span>
             </li>
           ))}
-          <li className={styles.sceneOpen}>{TRAJECT_INTRO.sceneOpen}</li>
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
           {TRAJECT_INTRO.prose.map((paragraph) => (
@@ -85,7 +93,7 @@ export default function TrajectPage() {
         </p>
       </Section>
 
-      <Section number={num()} title="Hoe het werkt" tone="dark">
+      <Section number={num()} title="Hoe het werkt" tone={worksTone}>
         <div className={styles.parts}>
           {TRAJECT_PARTS.map((part) => (
             <div className={styles.part} key={part.title}>
@@ -106,7 +114,7 @@ export default function TrajectPage() {
         </div>
       </Section>
 
-      <Section number={num()} title={TRAJECT_SAMEN.title}>
+      <Section number={num()} title={TRAJECT_SAMEN.title} tone={samenTone}>
         <div className={styles.prose}>
           {TRAJECT_SAMEN.items.map((item) => (
             <p key={item.strong}>
@@ -120,7 +128,7 @@ export default function TrajectPage() {
         </p>
       </Section>
 
-      <Section number={num()} title={TRAJECT_VRAAGT_TITLE}>
+      <Section number={num()} title={TRAJECT_VRAAGT_TITLE} tone={vraagtTone}>
         <div className={styles.prose}>
           {TRAJECT_VRAAGT.map((item) => (
             <p key={item.strong}>
@@ -156,22 +164,19 @@ export default function TrajectPage() {
         </div>
       </Section>
 
-      <section className={styles.proof} aria-label="Citaat">
-        <div className={styles.proofGrid}>
-          <div className={`${styles.proofPhotoWrap} ${styles.proofPhotoPortrait}`}>
-            <img className={styles.proofPhoto} src={TRAJECT_QUOTE.image} alt={TRAJECT_QUOTE.alt} />
-          </div>
-          <figure className={styles.proofText}>
-            <blockquote className={styles.quote}>“{TRAJECT_QUOTE.text}”</blockquote>
-            <figcaption className={styles.cite}>
-              {TRAJECT_QUOTE.role ? `${TRAJECT_QUOTE.name} · ${TRAJECT_QUOTE.role}` : TRAJECT_QUOTE.name}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      <QuoteBlock
+        tone={quoteTone}
+        image={TRAJECT_QUOTE.image}
+        alt={TRAJECT_QUOTE.alt}
+        text={TRAJECT_QUOTE.text}
+        name={TRAJECT_QUOTE.name}
+        role={TRAJECT_QUOTE.role}
+        portrait
+        label="Citaat"
+      />
 
       {TRAJECT_VOORBEELD.show ? (
-        <Section number={num()} title={TRAJECT_VOORBEELD.title}>
+        <Section number={num()} title={TRAJECT_VOORBEELD.title} tone={voorbeeldTone}>
           <div className={styles.prose}>
             <p>
               <strong>{TRAJECT_VOORBEELD.wie}</strong>
@@ -183,7 +188,7 @@ export default function TrajectPage() {
         </Section>
       ) : null}
 
-      <Section number={num()} title="Praktisch">
+      <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
           <div className={styles.group}>
             <h3 className={styles.h3}>Zo ziet het eruit</h3>
@@ -195,15 +200,6 @@ export default function TrajectPage() {
             <p className={styles.note}>{TRAJECT_OPZET_NOTE}</p>
           </div>
           <div className={styles.group}>
-            <h3 className={styles.h3}>Zo verloopt het</h3>
-            <ol className={`${styles.list} ${pageStyles.steps}`}>
-              {TRAJECT_VERLOOP.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
-            <p className={styles.note}>{TRAJECT_VERLOOP_NOTE}</p>
-          </div>
-          <div className={styles.group}>
             <h3 className={styles.h3}>{TRAJECT_DAARNA_TITLE}</h3>
             <ul className={styles.list}>
               {TRAJECT_DAARNA.map((item) => (
@@ -213,18 +209,19 @@ export default function TrajectPage() {
             <p className={styles.note}>{TRAJECT_DAARNA_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <BookButton className={styles.buttonTiles} />
       </Section>
 
-      <Section number={num()} title="Goede vragen" tone="dark">
-        <FaqList tone="dark" initialOpen={0} items={TRAJECT_FAQ} />
+      <Section number={num()} title="Goede vragen" tone={faqTone}>
+        <FaqList tone={faqTone} items={TRAJECT_FAQ} />
       </Section>
 
-      <Section number={num()} title="Het begint met een gesprek">
+      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
         <div className={styles.prose}>
           <p>{TRAJECT_SLOT}</p>
         </div>
-        <BookButton className={styles.buttonSection} />
+        <KennismakingSteps steps={TRAJECT_VERLOOP} note={TRAJECT_VERLOOP_NOTE} />
+        <BookButton className={styles.buttonSlot} />
         <div className={styles.prose}>
           <p>
             {TRAJECT_PROEF.text}{' '}
@@ -241,7 +238,7 @@ export default function TrajectPage() {
         <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
-      <Footer photoless ctaless tone="dark" />
+      <Footer photoless ctaless tone={footerTone()} />
     </main>
   )
 }

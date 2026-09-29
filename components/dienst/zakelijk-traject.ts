@@ -31,8 +31,6 @@ export const TRAJECT_INTRO = {
     'Het team pakt een klus op zonder dat jij erbovenop zit',
     'Loopt het anders dan gepland, dan schakelt het team samen',
   ],
-  /** Leeg: de zin staat nu als brug aan het begin van de broodtekst. */
-  sceneOpen: '',
   prose: [
     'Of wat jij voor je team wilt bereiken. Je bent eigenaar of directeur. Je weet waar je met je bedrijf naartoe wilt. Nu wil je dat je team die stap met je zet. Dat ze weten wat er moet gebeuren, het toezeggen en het ook doen.',
     'Een afspraak nakomen, ook als het uitkomt om het niet te doen. Zeggen wat je ziet, op het moment dat het speelt. Horen wat iemand over je werk zegt, en het werk aanpassen. Dat zijn vaardigheden. Een team kan ze samen oefenen.',

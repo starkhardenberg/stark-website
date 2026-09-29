@@ -20,9 +20,8 @@ export const IMPACT_INTRO = {
     'Je zorgt voor iedereen. Nu wil je ook iets voor jezelf',
     'Je bent moe van het doorgaan en wilt je energie terug',
   ],
-  sceneOpen: 'Of waar jij naartoe wilt.',
   prose: [
-    'Misschien gaat het prima en weet je dat er nog een stap in zit. Misschien loop je al een tijd op je tandvlees. Of je wilt eindelijk iets aanpakken wat je al jaren bij je draagt. Waar je ook staat: Impact begint bij jou.',
+    'Of waar jij naartoe wilt. Misschien gaat het prima en weet je dat er nog een stap in zit. Misschien loop je al een tijd op je tandvlees. Of je wilt eindelijk iets aanpakken wat je al jaren bij je draagt. Waar je ook staat: Impact begint bij jou.',
   ],
   proseStrong: 'Impact is twaalf weken één op één.',
   proseAfterStrong:

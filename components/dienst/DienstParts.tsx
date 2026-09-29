@@ -17,6 +17,25 @@ export function BookButton({ className = '' }: { className?: string }) {
 }
 
 /**
+ * Hero is donker, dus de eerste tel is licht. Daarna om en om.
+ * Quote en een verborgen voorbeeldblok tellen mee. De footer is de andere kleur dan de laatste tel.
+ */
+export function createPageRhythm() {
+  let beat = 0
+  let last: 'light' | 'dark' = 'dark'
+
+  const tone = (): 'light' | 'dark' => {
+    beat += 1
+    last = beat % 2 === 1 ? 'light' : 'dark'
+    return last
+  }
+
+  const footerTone = (): 'light' | 'dark' => (last === 'light' ? 'dark' : 'light')
+
+  return { tone, footerTone }
+}
+
+/**
  * Vast koppatroon: cijfer in de marge, titel en inhoud op één linkerrand.
  * Op mobiel staat het cijfer boven de titel.
  */
@@ -36,7 +55,7 @@ export function Section({
       <div className={styles.wrap}>
         <div className={styles.sec}>
           <div className={styles.secLead}>
-            <span className={styles.num} aria-hidden="true">
+            <span className={styles.num} data-num={number} aria-hidden="true">
               <span className={styles.numInk}>{number}</span>
             </span>
             <h2 className={styles.h2}>{title}</h2>
@@ -45,5 +64,65 @@ export function Section({
         </div>
       </div>
     </section>
+  )
+}
+
+export function QuoteBlock({
+  tone,
+  image,
+  alt,
+  text,
+  name,
+  role,
+  portrait = false,
+  label = 'Ervaring van een deelnemer',
+}: {
+  tone: 'light' | 'dark'
+  image: string
+  alt: string
+  text: string
+  name: string
+  role?: string
+  portrait?: boolean
+  label?: string
+}) {
+  const cite = role ? `${name} · ${role}` : name
+
+  return (
+    <section
+      className={tone === 'light' ? `${styles.proof} ${styles.proofLight}` : styles.proof}
+      aria-label={label}
+    >
+      <div className={styles.proofGrid}>
+        <div className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}`}>
+          <img className={styles.proofPhoto} src={image} alt={alt} />
+        </div>
+        <figure className={styles.proofText}>
+          <blockquote className={styles.quote}>{text}</blockquote>
+          <figcaption className={styles.cite}>{cite}</figcaption>
+        </figure>
+      </div>
+    </section>
+  )
+}
+
+/** Stappen na de kennismaking, in het slot. */
+export function KennismakingSteps({
+  steps,
+  note,
+}: {
+  steps: readonly string[]
+  note: string
+}) {
+  return (
+    <div className={styles.sub}>
+      <h3 className={styles.h3}>Na de kennismaking</h3>
+      <ol className={`${styles.list} ${styles.steps}`}>
+        {steps.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+      <p className={styles.note}>{note}</p>
+    </div>
   )
 }
