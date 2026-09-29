@@ -174,7 +174,6 @@ export default function ImpactPage() {
           <p>{IMPACT_SLOT}</p>
         </div>
         <BookButton className={styles.buttonSlot} />
-        <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

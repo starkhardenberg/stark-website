@@ -233,7 +233,9 @@ export default function DienstPage() {
           </p>
         </div>
         <BookButton className={styles.buttonSlot} />
-        <p className={styles.dialect}>Kom moar op!</p>
+        <p className={styles.dialect}>
+          Kom moar op<span className={styles.dialectBang}>!</span>
+        </p>
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

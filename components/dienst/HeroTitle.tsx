@@ -15,6 +15,7 @@ function fitHeroTitle(title: HTMLHeadingElement) {
     title.style.removeProperty('--hero-hang')
     title.style.removeProperty('font-size')
     copy?.style.removeProperty('padding-top')
+    copy?.style.removeProperty('justify-content')
     return 0
   }
   const line = title.querySelector<HTMLElement>('[data-hero-line="1"]')
@@ -47,19 +48,34 @@ function fitHeroTitle(title: HTMLHeadingElement) {
   return 2
 }
 
-/** Houd de titel onder het menu. Daarbinnen blijft het blok gecentreerd in het zwarte vlak. */
+const NAV_GAP = 48
+
+/**
+ * Houd de titel onder het menu. Past hij gecentreerd al, dan blijft dat zo.
+ * Anders komt het blok vast onder het menu te staan: padding op een gecentreerde
+ * kolom schuift de titel maar half zo ver.
+ */
 function clearNav(title: HTMLElement, copy: HTMLElement | null) {
   if (!copy) return
   const nav = title.closest('header')?.querySelector('nav')
   const stack = title.parentElement
   if (!nav || !stack) return
-  copy.style.paddingTop = '32px'
+
+  copy.style.removeProperty('justify-content')
+  copy.style.removeProperty('padding-top')
+
+  const shortfall = () =>
+    nav.getBoundingClientRect().bottom + NAV_GAP - stack.getBoundingClientRect().top
+
+  if (shortfall() <= 1) return
+
+  copy.style.justifyContent = 'flex-start'
   let guard = 0
-  while (guard < 6) {
-    const overlap = nav.getBoundingClientRect().bottom + 16 - stack.getBoundingClientRect().top
-    if (overlap <= 1) break
-    const current = parseFloat(getComputedStyle(copy).paddingTop) || 32
-    copy.style.paddingTop = `${Math.round(current + overlap)}px`
+  while (guard < 4) {
+    const need = shortfall()
+    if (need <= 1) break
+    const current = parseFloat(getComputedStyle(copy).paddingTop) || 0
+    copy.style.paddingTop = `${Math.round(current + need)}px`
     guard += 1
   }
 }

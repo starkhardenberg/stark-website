@@ -885,7 +885,8 @@
 }
 
 .footerPhotoless.footerLight .brand,
-.footerPhotoless.footerLight .brandSmall {
+.footerPhotoless.footerLight .brandSmall,
+.footerPhotoless.footerLight .brandPrefix {
   color: var(--navy);
   -webkit-text-fill-color: var(--navy);
   -webkit-text-stroke: 0;
@@ -894,8 +895,21 @@
 .footerPhotoless.footerLight .meta,
 .footerPhotoless.footerLight .legalStripText,
 .footerPhotoless.footerLight .contact,
-.footerPhotoless.footerLight .photoCredit {
+.footerPhotoless.footerLight .photoCredit,
+.footerPhotoless.footerLight .photoCredit :global(p) {
   color: rgba(24, 26, 24, 0.72);
+}
+
+.footerPhotoless.footerLight .photoCredit :global(a) {
+  color: inherit;
+}
+
+.footerPhotoless.footerLight .photoCredit :global(a:hover) {
+  color: var(--stark-grey);
+}
+
+.footerPhotoless.footerLight .photoCredit :global(a:focus-visible) {
+  outline-color: var(--navy);
 }
 
 .footerPhotoless.footerLight .metaSep,
@@ -905,6 +919,10 @@
 
 .footerPhotoless.footerLight .contactLink {
   color: var(--navy);
+}
+
+.footerPhotoless.footerLight .contactLink:hover {
+  color: var(--stark-grey);
 }
 
 /* ── Gradient variant: foto eindigt in navy → content fade navy → off-white ── */

@@ -232,7 +232,6 @@ export default function LeiderschapPage() {
             </a>
           </p>
         </div>
-        <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

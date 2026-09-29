@@ -566,18 +566,27 @@
 
 /* ---------- slot ---------- */
 
-.dialect {
-  margin: 48px 0 0;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 500;
-  font-size: 22px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--muted);
+.buttonSlot:has(+ .dialect) {
+  margin-bottom: 28px;
 }
 
-.dark .dialect {
-  color: var(--muted-dark);
+.dialect {
+  margin: 0 0 12px;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(44px, 5.6vw, 76px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--navy);
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+
+.dialectBang {
+  color: var(--orange);
 }
 
 .steps {

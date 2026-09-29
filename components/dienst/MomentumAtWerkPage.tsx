@@ -194,7 +194,6 @@ export default function MomentumAtWerkPage() {
         </div>
         <KennismakingSteps steps={MAW_VERLOOP} note={MAW_VERLOOP_NOTE} />
         <BookButton className={styles.buttonSlot} />
-        <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

@@ -235,7 +235,6 @@ export default function TrajectPage() {
             </a>
           </p>
         </div>
-        <p className={styles.dialect}>Kom moar op!</p>
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />
