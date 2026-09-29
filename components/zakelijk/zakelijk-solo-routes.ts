@@ -1,5 +1,6 @@
 import type { AanbodTrack } from '@/components/aanbod/aanbod-tracks'
 import { L1O1_TEGEL } from '@/components/dienst/leiderschap-1-op-1'
+import { TRAJECT_TEGEL } from '@/components/dienst/zakelijk-traject'
 
 /** Drie ingangen op /zakelijk-v2. Zelfde tegelcomponent als trainen/coaching. */
 export const zakelijkSoloRoutes: AanbodTrack[] = [
@@ -26,23 +27,10 @@ export const zakelijkSoloRoutes: AanbodTrack[] = [
     photoAlt: 'Groepsgesprek bij STARK! Hardenberg',
     photoObjectPosition: 'center 40%',
     photoHoverColor: false,
-    eyebrow: 'Team',
+    eyebrow: TRAJECT_TEGEL.eyebrow,
     readMoreHref: '/zakelijk/traject',
     readMoreLabel: 'Lees verder',
-    menu: [
-      {
-        label: 'Past bij jou als',
-        text: 'Je wilt dat het team weet wat er moet gebeuren, het toezegt en het ook doet. En jij gaat er zelf in mee.',
-      },
-      {
-        label: 'Zo werkt het',
-        text: 'Wekelijks een gesprek met jou, en wekelijks met het team over wat er die week speelt. Daartussen opdrachten over dat werk. En jullie trainen samen.',
-      },
-      {
-        label: 'Wat zit erin',
-        text: 'Jullie zien wat er bleef liggen, en zetten het diezelfde week recht. In de training zien jullie elkaar als het zwaar wordt. We beginnen bij het MT, de teamleiders of kantoor, en werken vandaaruit naar de mensen op de vloer.',
-      },
-    ],
+    menu: TRAJECT_TEGEL.menu,
   },
   {
     id: 'momentum-at-werk',

@@ -32,9 +32,10 @@ export const L1O1_INTRO = {
     'Je geeft werk uit handen, en het komt goed',
     'Op vrijdag heb je gedaan wat je maandag van plan was',
   ],
-  sceneOpen: 'Of wat jij als leider wilt bereiken.',
+  /** Leeg: de zin staat nu als brug aan het begin van de broodtekst. */
+  sceneOpen: '',
   prose: [
-    'Je bent eigenaar, directeur, MT-lid of teamleider. Het werk loopt, en je weet dat er nog een stap in zit. In jezelf, en in hoe je je mensen meekrijgt.',
+    'Of wat jij als leider wilt bereiken. Je bent eigenaar, directeur, MT-lid of teamleider. Het werk loopt, en je weet dat er nog een stap in zit. In jezelf, en in hoe je je mensen meekrijgt.',
     'Leiderschap 1 op 1 draait om wat je in je werk voor elkaar krijgt. De beslissingen die je neemt en of je eraan vasthoudt. Je plek in het team. Hoe je mensen meekrijgt.',
   ],
   proseStrong: 'Leiderschap 1 op 1 is een eigen coach, elke week een gesprek en twee keer per week trainen.',
@@ -145,8 +146,8 @@ export const L1O1_OPZET = [
 export const L1O1_SCHEDULE = IMPACT_SCHEDULE
 export const L1O1_SCHEDULE_NOTE = 'Je kiest er twee per week'
 
+/** Stappen na de kennismaking. De kennismaking zelf staat in het slot. */
 export const L1O1_VERLOOP = [
-  'Kennismaking met Yvonne, Engbert-Jan of allebei',
   'Je krijgt een offerte',
   'Startgesprek: we leggen je richting vast. Betaalt je werkgever mee, dan zit je leidinggevende erbij',
   'Je kiest je twee trainingsmomenten',

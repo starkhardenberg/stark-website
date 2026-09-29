@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import ServiceDetailPage from '@/components/service-detail/ServiceDetailPage'
-import { jaartrajectDetail } from '@/components/zakelijk/zakelijk-detail-pages'
+import TrajectPage from '@/components/dienst/TrajectPage'
+import { TRAJECT_META } from '@/components/dienst/zakelijk-traject'
+import { getSiteRobots } from '@/lib/site-seo'
 
 export const metadata: Metadata = {
-  title: 'Zakelijk traject — STARK! Hardenberg',
-  description: 'Traject voor teams bij STARK! Hardenberg.',
-  robots: { index: false, follow: false },
+  title: TRAJECT_META.title,
+  description: TRAJECT_META.description,
+  robots: getSiteRobots(),
 }
 
-export default function JaartrajectPage() {
-  return <ServiceDetailPage page={jaartrajectDetail} />
+export default function Page() {
+  return <TrajectPage />
 }
