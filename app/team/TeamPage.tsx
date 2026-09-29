@@ -175,22 +175,6 @@ export default function TeamPage() {
               </li>
             </ol>
 
-            <div className={styles.originQuotes}>
-              <figure className={styles.originQuote}>
-                <blockquote className={styles.originQuoteText}>
-                  Het allermooiste is als mensen durven vertrouwen op mijn coaching en het lukt.
-                </blockquote>
-                <figcaption className={styles.originQuoteName}>Engbert-Jan</figcaption>
-              </figure>
-              <figure className={styles.originQuote}>
-                <blockquote className={styles.originQuoteText}>
-                  Niets is onmogelijk. Dat mensen te laten ervaren, zowel in hoofd als in hun lijf
-                  is goud!
-                </blockquote>
-                <figcaption className={styles.originQuoteName}>Yvonne</figcaption>
-              </figure>
-            </div>
-
         </div>
       </section>
 

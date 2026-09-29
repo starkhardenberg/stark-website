@@ -19,8 +19,8 @@
   /* Bronz sectie-statements (intro-quote, aanbod, team, resultaten) */
   --stark-section-statement: clamp(40px, 7vw, 80px);
   /* Broodtekst en quotes: één leesmaat */
-  --stark-body: clamp(16px, 1.75vw, 18px);
-  --stark-quote: clamp(16px, 1.75vw, 18px);
+  --stark-body: clamp(17px, 1.75vw, 19px);
+  --stark-quote: clamp(17px, 1.75vw, 19px);
   --stark-eyebrow-tracking: 0.15em;
   --display-tracking: -0.02em;
   --display-leading: 0.95;

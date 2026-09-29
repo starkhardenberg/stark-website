@@ -397,7 +397,7 @@
 
 .memberRole {
   font-family: var(--font-body), sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -590,6 +590,8 @@
 
 .originClose .originBody {
   color: var(--off);
+  font-size: clamp(19px, 2.05vw, 23px);
+  line-height: 1.5;
 }
 
 .originInlineLink {
@@ -606,66 +608,19 @@
   text-decoration-color: var(--orange);
 }
 
-.originQuotes {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(22px, 3vw, 28px);
-  margin: clamp(40px, 6vw, 64px) 0 0;
-  padding-top: 0;
-  max-width: 68ch;
-}
-
-.originQuoteText {
-  margin: 0 0 10px;
-  font-family: var(--font-quote), var(--font-body), sans-serif;
-  font-size: var(--stark-quote);
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1.65;
-  color: rgba(247, 245, 242, 0.88);
-}
-
-.originQuoteText::before {
-  content: '\201C';
-}
-
-.originQuoteText::after {
-  content: '\201D';
-}
-
-.originQuoteName {
-  font-family: var(--font-display), sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(247, 245, 242, 0.55);
-}
-
-.originQuote {
-  margin: 0;
-}
-
 @media (min-width: 900px) {
   .originBeat {
     grid-template-columns: 5.75rem minmax(0, 68ch);
     column-gap: clamp(20px, 3vw, 36px);
+    align-items: start;
+  }
+
+  .originYear {
+    padding-top: 0.26em;
   }
 
   .originClose .originBody {
     grid-column: 2;
-  }
-
-  .originQuotes {
-    flex-direction: row;
-    gap: clamp(28px, 4vw, 48px);
-    max-width: calc(5.75rem + clamp(20px, 3vw, 36px) + 68ch);
-    margin-left: calc(5.75rem + clamp(20px, 3vw, 36px));
-  }
-
-  .originQuote {
-    flex: 1;
-    max-width: 34ch;
   }
 }
 
@@ -802,6 +757,12 @@
   color: var(--stark-grey);
   filter: drop-shadow(0 0 12px rgba(247, 245, 242, 0.14));
   transform-origin: center;
+  transition: color 0.18s ease, filter 0.18s ease;
+}
+
+.groupBandMedia:hover .groupBandFrameWrap {
+  color: var(--orange);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--orange) 70%, transparent));
 }
 
 .groupBandImg {
@@ -922,7 +883,12 @@
   }
 
   .photoItem:hover .photoFrameWrap,
-  .photoItem.active .photoFrameWrap {
+  .photoItem.active .photoFrameWrap,
+  .groupBandMedia:hover .groupBandFrameWrap {
     filter: none;
+  }
+
+  .groupBandFrameWrap {
+    transition: color 0.01s ease;
   }
 }

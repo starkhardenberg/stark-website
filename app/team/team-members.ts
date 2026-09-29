@@ -10,7 +10,7 @@ export type TeamMember = {
 }
 
 export const TEAM: TeamMember[] = [
-  { id: 1, name: 'Engbert-Jan', role: 'Eigenaar, coach en trainer', photo: '/images/team/engbert-jan.png', objectPosition: '50% 32%', quote: 'Laten we niet praten over excuses maar over stappen.' },
+  { id: 1, name: 'Engbert-Jan', role: 'Eigenaar, coach en trainer', photo: '/images/team/engbert-jan.png', objectPosition: '50% 32%', quote: 'Excuses en resultaten passen niet in dezelfde hand.' },
   { id: 2, name: 'Yvonne', role: 'Eigenaar, coach en trainer', photo: '/images/team/anne.png', objectPosition: '50% 32%', quote: 'Je begint door te beginnen.' },
   { id: 3, name: 'Anne', role: 'Trainer', photo: '/images/team/yvonne.png', objectPosition: '50% 30%', quote: 'Comfort staat groei in de weg. Ga het oncomfortabele aan en groei!' },
   { id: 4, name: 'Els', role: 'Trainer', photo: '/images/team/els.jpg', objectPosition: '50% 34%', quote: 'Alleen ben je STARK!, samen zijn we STARKER.' },
