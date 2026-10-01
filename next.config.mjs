@@ -21,6 +21,21 @@ const nextConfig = {
         destination: '/zakelijk/traject',
         permanent: true,
       },
+      {
+        source: '/zakelijk-v2',
+        destination: '/zakelijk',
+        permanent: true,
+      },
+      {
+        source: '/zakelijk/ondernemers',
+        destination: '/zakelijk',
+        permanent: true,
+      },
+      {
+        source: '/zakelijk/werkgevers',
+        destination: '/zakelijk/duurzame-inzetbaarheid',
+        permanent: true,
+      },
     ]
   },
   /**

@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, KennismakingSteps, QuoteBlock, Section, createPageRhythm } from './DienstParts'
+import { BookButton, KennismakingSteps, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   TRAJECT_AFSLUITER,
   TRAJECT_ANDERS,
@@ -14,8 +14,6 @@ import {
   TRAJECT_FAQ,
   TRAJECT_HERO,
   TRAJECT_INTRO,
-  TRAJECT_KRIJGT,
-  TRAJECT_KRIJGT_NOTE,
   TRAJECT_OPZET,
   TRAJECT_OPZET_NOTE,
   TRAJECT_PARTS,
@@ -52,7 +50,7 @@ export default function TrajectPage() {
       <FaqJsonLd items={TRAJECT_FAQ} />
 
       <header className={styles.hero}>
-        <Nav />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={TRAJECT_HERO.image} alt={TRAJECT_HERO.alt} />
@@ -103,15 +101,6 @@ export default function TrajectPage() {
           ))}
         </div>
         <p className={styles.afsluiter}>{TRAJECT_AFSLUITER}</p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Wat je krijgt</h3>
-          <ul className={styles.list}>
-            {TRAJECT_KRIJGT.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className={styles.note}>{TRAJECT_KRIJGT_NOTE}</p>
-        </div>
       </Section>
 
       <Section number={num()} title={TRAJECT_SAMEN.title} tone={samenTone}>
@@ -129,39 +118,47 @@ export default function TrajectPage() {
       </Section>
 
       <Section number={num()} title={TRAJECT_VRAAGT_TITLE} tone={vraagtTone}>
-        <div className={styles.prose}>
-          {TRAJECT_VRAAGT.map((item) => (
-            <p key={item.strong}>
-              <strong>{item.strong}</strong> {item.text}
-            </p>
-          ))}
-        </div>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>{TRAJECT_WELK_TEAM.title}</h3>
-          <div className={styles.prose}>
-            <p>{TRAJECT_WELK_TEAM.text}</p>
-          </div>
-        </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>{TRAJECT_VRAAGT_CLOSE.text}</span>
-          <span className={styles.closeAccent}>{TRAJECT_VRAAGT_CLOSE.accent}</span>
-        </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Soms past iets anders beter</h3>
-          <ul className={styles.list}>
-            {TRAJECT_ANDERS.map((item) => (
-              <li key={item.before}>
-                {item.before}
-                {item.link ? (
-                  <Link href={item.link[1]} className={styles.link}>
-                    {item.link[0]}
-                  </Link>
-                ) : null}
-                {item.after}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SplitAside
+          main={
+            <>
+              <div className={styles.prose}>
+                {TRAJECT_VRAAGT.map((item) => (
+                  <p key={item.strong}>
+                    <strong>{item.strong}</strong> {item.text}
+                  </p>
+                ))}
+              </div>
+              <div className={styles.sub}>
+                <h3 className={styles.h3}>{TRAJECT_WELK_TEAM.title}</h3>
+                <div className={styles.prose}>
+                  <p>{TRAJECT_WELK_TEAM.text}</p>
+                </div>
+              </div>
+              <p className={`${styles.close} ${styles.closeTight}`}>
+                <span>{TRAJECT_VRAAGT_CLOSE.text}</span>
+                <span className={styles.closeAccent}>{TRAJECT_VRAAGT_CLOSE.accent}</span>
+              </p>
+            </>
+          }
+          aside={
+            <div className={styles.sub}>
+              <h3 className={styles.h3}>Soms past iets anders beter</h3>
+              <ul className={styles.list}>
+                {TRAJECT_ANDERS.map((item) => (
+                  <li key={item.before}>
+                    {item.before}
+                    {item.link ? (
+                      <Link href={item.link[1]} className={styles.link}>
+                        {item.link[0]}
+                      </Link>
+                    ) : null}
+                    {item.after}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          }
+        />
       </Section>
 
       <QuoteBlock
@@ -221,19 +218,19 @@ export default function TrajectPage() {
           <p>{TRAJECT_SLOT}</p>
         </div>
         <KennismakingSteps steps={TRAJECT_VERLOOP} note={TRAJECT_VERLOOP_NOTE} />
-        <BookButton className={styles.buttonSlot} />
         <div className={styles.prose}>
-          <p>
-            {TRAJECT_PROEF.text}{' '}
-            <a
-              href={TRAJECT_PROEF.href}
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {TRAJECT_PROEF.linkLabel}
-            </a>
-          </p>
+          <p>{TRAJECT_PROEF.text}</p>
+        </div>
+        <div className={styles.buttonPair}>
+          <BookButton className={styles.buttonPairItem} />
+          <a
+            href={TRAJECT_PROEF.href}
+            className={`${styles.button} ${styles.buttonGhost} ${styles.buttonPairItem}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {TRAJECT_PROEF.linkLabel}
+          </a>
         </div>
       </Section>
 

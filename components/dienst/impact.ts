@@ -48,16 +48,6 @@ export const IMPACT_PARTS = [
 export const IMPACT_AFSLUITER =
   'Eerst bouwen we je basis op, fysiek en mentaal. Met energie en kracht in je lijf zet je stappen die nu nog groot lijken.'
 
-export const IMPACT_KRIJGT = [
-  'Twaalf weken met een vaste coach: Yvonne of Engbert-Jan',
-  'Elke week een gesprek van een uur, één op één',
-  'Twee trainingen per week in een kleine groep, op momenten die jij kiest',
-  'Een nulmeting bij de start en een eindmeting na twaalf weken',
-  'Je start zodra het jou en ons uitkomt. Er is geen wachtlijst',
-] as const
-
-export const IMPACT_KRIJGT_NOTE = 'Wat je vertelt, blijft tussen jou en je coach.'
-
 export const IMPACT_EERLIJK = [
   { strong: 'Je komt.', text: 'Twee keer per week, ook als je werk of je hoofd iets anders zegt. Juist die keer telt.' },
   { strong: 'Je zegt hoe het echt gaat.', text: 'Ook als iets niet gelukt is. Daar begint het werk.' },
@@ -94,7 +84,7 @@ export const IMPACT_SCHEDULE = [
 ] as const
 export const IMPACT_SCHEDULE_NOTE = 'Je kiest er twee per week'
 
-export const IMPACT_START = ['Je start zodra het jou en ons uitkomt', 'Twaalf weken, van nulmeting tot eindmeting'] as const
+export const IMPACT_START = ['Je start zodra het jou en ons uitkomt'] as const
 export const IMPACT_START_NOTE = 'Zonder wachtlijst'
 
 export const IMPACT_FAQ = [

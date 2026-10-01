@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, KennismakingSteps, QuoteBlock, Section, createPageRhythm } from './DienstParts'
+import { BookButton, KennismakingSteps, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import WerkgeverBlok from './WerkgeverBlok'
 import {
   L1O1_AFSLUITER,
@@ -15,8 +15,6 @@ import {
   L1O1_FAQ,
   L1O1_HERO,
   L1O1_INTRO,
-  L1O1_KRIJGT,
-  L1O1_KRIJGT_NOTE,
   L1O1_OPZET,
   L1O1_PARTS,
   L1O1_PROEF,
@@ -53,7 +51,7 @@ export default function LeiderschapPage() {
       <FaqJsonLd items={L1O1_FAQ} />
 
       <header className={styles.hero}>
-        <Nav />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={L1O1_HERO.image} alt={L1O1_HERO.alt} />
@@ -104,45 +102,44 @@ export default function LeiderschapPage() {
           ))}
         </div>
         <p className={styles.afsluiter}>{L1O1_AFSLUITER}</p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Wat je krijgt</h3>
-          <ul className={styles.list}>
-            {L1O1_KRIJGT.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className={styles.note}>{L1O1_KRIJGT_NOTE}</p>
-        </div>
       </Section>
 
       <Section number={num()} title={L1O1_VRAAGT_TITLE} tone={vraagtTone}>
-        <div className={styles.prose}>
-          {L1O1_VRAAGT.map((item) => (
-            <p key={item.strong}>
-              <strong>{item.strong}</strong> {item.text}
-            </p>
-          ))}
-        </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>{L1O1_VRAAGT_CLOSE.text}</span>
-          <span className={styles.closeAccent}>{L1O1_VRAAGT_CLOSE.accent}</span>
-        </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Soms past iets anders beter</h3>
-          <ul className={styles.list}>
-            {L1O1_ANDERS.map((item) => (
-              <li key={item.before}>
-                {item.before}
-                {item.link ? (
-                  <Link href={item.link[1]} className={styles.link}>
-                    {item.link[0]}
-                  </Link>
-                ) : null}
-                {item.after}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SplitAside
+          main={
+            <>
+              <div className={styles.prose}>
+                {L1O1_VRAAGT.map((item) => (
+                  <p key={item.strong}>
+                    <strong>{item.strong}</strong> {item.text}
+                  </p>
+                ))}
+              </div>
+              <p className={`${styles.close} ${styles.closeTight}`}>
+                <span>{L1O1_VRAAGT_CLOSE.text}</span>
+                <span className={styles.closeAccent}>{L1O1_VRAAGT_CLOSE.accent}</span>
+              </p>
+            </>
+          }
+          aside={
+            <div className={styles.sub}>
+              <h3 className={styles.h3}>Soms past iets anders beter</h3>
+              <ul className={styles.list}>
+                {L1O1_ANDERS.map((item) => (
+                  <li key={item.before}>
+                    {item.before}
+                    {item.link ? (
+                      <Link href={item.link[1]} className={styles.link}>
+                        {item.link[0]}
+                      </Link>
+                    ) : null}
+                    {item.after}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          }
+        />
       </Section>
 
       <QuoteBlock
@@ -218,19 +215,19 @@ export default function LeiderschapPage() {
           <p>{L1O1_SLOT}</p>
         </div>
         <KennismakingSteps steps={L1O1_VERLOOP} note={L1O1_VERLOOP_NOTE} />
-        <BookButton className={styles.buttonSlot} />
         <div className={styles.prose}>
-          <p>
-            {L1O1_PROEF.text}{' '}
-            <a
-              href={L1O1_PROEF.href}
-              className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {L1O1_PROEF.linkLabel}
-            </a>
-          </p>
+          <p>{L1O1_PROEF.text}</p>
+        </div>
+        <div className={styles.buttonPair}>
+          <BookButton className={styles.buttonPairItem} />
+          <a
+            href={L1O1_PROEF.href}
+            className={`${styles.button} ${styles.buttonGhost} ${styles.buttonPairItem}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {L1O1_PROEF.linkLabel}
+          </a>
         </div>
       </Section>
 

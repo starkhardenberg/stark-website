@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, KennismakingSteps, QuoteBlock, Section, createPageRhythm } from './DienstParts'
+import { BookButton, KennismakingSteps, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   MAW_AFSLUITER,
   MAW_ANDERS,
@@ -12,8 +12,6 @@ import {
   MAW_FAQ,
   MAW_HERO,
   MAW_INTRO,
-  MAW_KRIJGT,
-  MAW_KRIJGT_NOTE,
   MAW_OPZET,
   MAW_PARTS,
   MAW_QUOTE,
@@ -44,7 +42,7 @@ export default function MomentumAtWerkPage() {
       <FaqJsonLd items={MAW_FAQ} />
 
       <header className={styles.hero}>
-        <Nav />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <img className={styles.heroPhoto} src={MAW_HERO.image} alt={MAW_HERO.alt} />
@@ -91,45 +89,44 @@ export default function MomentumAtWerkPage() {
           ))}
         </div>
         <p className={styles.afsluiter}>{MAW_AFSLUITER}</p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Wat je krijgt</h3>
-          <ul className={styles.list}>
-            {MAW_KRIJGT.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className={styles.note}>{MAW_KRIJGT_NOTE}</p>
-        </div>
       </Section>
 
       <Section number={num()} title="Wie er meedoet" tone={wieTone}>
-        <div className={styles.prose}>
-          {MAW_WIE.map((item) => (
-            <p key={item.strong}>
-              <strong>{item.strong}</strong> {item.text}
-            </p>
-          ))}
-        </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>{MAW_WIE_CLOSE.text}</span>
-          <span className={styles.closeAccent}>{MAW_WIE_CLOSE.accent}</span>
-        </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Soms past iets anders beter</h3>
-          <ul className={styles.list}>
-            {MAW_ANDERS.map((item) => (
-              <li key={item.before}>
-                {item.before}
-                {item.link ? (
-                  <Link href={item.link[1]} className={styles.link}>
-                    {item.link[0]}
-                  </Link>
-                ) : null}
-                {item.after}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SplitAside
+          main={
+            <>
+              <div className={styles.prose}>
+                {MAW_WIE.map((item) => (
+                  <p key={item.strong}>
+                    <strong>{item.strong}</strong> {item.text}
+                  </p>
+                ))}
+              </div>
+              <p className={`${styles.close} ${styles.closeTight}`}>
+                <span>{MAW_WIE_CLOSE.text}</span>
+                <span className={styles.closeAccent}>{MAW_WIE_CLOSE.accent}</span>
+              </p>
+            </>
+          }
+          aside={
+            <div className={styles.sub}>
+              <h3 className={styles.h3}>Soms past iets anders beter</h3>
+              <ul className={styles.list}>
+                {MAW_ANDERS.map((item) => (
+                  <li key={item.before}>
+                    {item.before}
+                    {item.link ? (
+                      <Link href={item.link[1]} className={styles.link}>
+                        {item.link[0]}
+                      </Link>
+                    ) : null}
+                    {item.after}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          }
+        />
       </Section>
 
       <QuoteBlock

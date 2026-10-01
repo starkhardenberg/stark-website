@@ -63,16 +63,6 @@ export const L1O1_PARTS = [
 export const L1O1_AFSLUITER =
   'In het gesprek bepaal je wat je anders gaat doen. In de training doe je het. Elke week opnieuw.'
 
-export const L1O1_KRIJGT = [
-  'Een vaste coach: Yvonne of Engbert-Jan',
-  'Elke week een gesprek van een uur, één op één',
-  'Twee trainingen per week in een kleine groep, op momenten die jij kiest',
-  'Een startgesprek waarin we je richting vastleggen',
-  'Je start zodra het jou en ons uitkomt. Er is geen wachtlijst',
-] as const
-
-export const L1O1_KRIJGT_NOTE = 'Wat je in de coaching vertelt, blijft tussen jou en je coach.'
-
 /* ---------- 03 ---------- */
 
 export const L1O1_VRAAGT_TITLE = 'Wat het van je vraagt'
@@ -136,8 +126,6 @@ export const L1O1_VOORBEELD = {
 
 export const L1O1_OPZET = [
   'Vanaf een kwartaal, in de praktijk meestal een half jaar of een jaar',
-  'Elke week een uur coaching met je vaste coach',
-  'Twee keer per week trainen bij STARK! in Hardenberg',
 ] as const
 
 /** Zelfde momenten als Impact. */

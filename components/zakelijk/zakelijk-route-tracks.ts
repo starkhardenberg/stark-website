@@ -12,7 +12,7 @@ export const zakelijkRouteTracks: AanbodTrack[] = [
     photoObjectPosition: 'center 28%',
     photoHoverColor: false,
     eyebrow: 'Eigenaar / directeur',
-    readMoreHref: '/zakelijk/ondernemers',
+    readMoreHref: '/zakelijk',
     readMoreLabel: 'Voor ondernemers',
     light: true,
     menu: [
@@ -48,7 +48,7 @@ export const zakelijkRouteTracks: AanbodTrack[] = [
     photoObjectPosition: 'center 40%',
     photoHoverColor: false,
     eyebrow: 'Organisatie met HR',
-    readMoreHref: '/zakelijk/werkgevers',
+    readMoreHref: '/zakelijk/duurzame-inzetbaarheid',
     readMoreLabel: 'Voor werkgevers',
     light: true,
     menu: [

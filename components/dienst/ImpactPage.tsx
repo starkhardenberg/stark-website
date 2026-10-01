@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, QuoteBlock, Section, createPageRhythm } from './DienstParts'
+import { BookButton, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   IMPACT_AFSLUITER,
   IMPACT_ANDERS,
@@ -13,8 +13,6 @@ import {
   IMPACT_FAQ,
   IMPACT_HERO,
   IMPACT_INTRO,
-  IMPACT_KRIJGT,
-  IMPACT_KRIJGT_NOTE,
   IMPACT_PARTS,
   IMPACT_QUOTE,
   IMPACT_SCHEDULE,
@@ -89,45 +87,44 @@ export default function ImpactPage() {
           ))}
         </div>
         <p className={styles.afsluiter}>{IMPACT_AFSLUITER}</p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Wat je krijgt</h3>
-          <ul className={styles.list}>
-            {IMPACT_KRIJGT.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className={styles.note}>{IMPACT_KRIJGT_NOTE}</p>
-        </div>
       </Section>
 
       <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
-        <div className={styles.prose}>
-          {IMPACT_EERLIJK.map((item) => (
-            <p key={item.strong}>
-              <strong>{item.strong}</strong> {item.text}
-            </p>
-          ))}
-        </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>{IMPACT_EERLIJK_CLOSE.text}</span>
-          <span className={styles.closeAccent}>{IMPACT_EERLIJK_CLOSE.accent}</span>
-        </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Soms past iets anders beter</h3>
-          <ul className={styles.list}>
-            {IMPACT_ANDERS.map((item) => (
-              <li key={item.before}>
-                {item.before}
-                {item.link ? (
-                  <Link href={item.link[1]} className={styles.link}>
-                    {item.link[0]}
-                  </Link>
-                ) : null}
-                {item.after}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SplitAside
+          main={
+            <>
+              <div className={styles.prose}>
+                {IMPACT_EERLIJK.map((item) => (
+                  <p key={item.strong}>
+                    <strong>{item.strong}</strong> {item.text}
+                  </p>
+                ))}
+              </div>
+              <p className={`${styles.close} ${styles.closeTight}`}>
+                <span>{IMPACT_EERLIJK_CLOSE.text}</span>
+                <span className={styles.closeAccent}>{IMPACT_EERLIJK_CLOSE.accent}</span>
+              </p>
+            </>
+          }
+          aside={
+            <div className={styles.sub}>
+              <h3 className={styles.h3}>Soms past iets anders beter</h3>
+              <ul className={styles.list}>
+                {IMPACT_ANDERS.map((item) => (
+                  <li key={item.before}>
+                    {item.before}
+                    {item.link ? (
+                      <Link href={item.link[1]} className={styles.link}>
+                        {item.link[0]}
+                      </Link>
+                    ) : null}
+                    {item.after}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          }
+        />
       </Section>
 
       <QuoteBlock

@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, QuoteBlock, Section, createPageRhythm } from './DienstParts'
+import { BookButton, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   MOMENTUM_FAQ,
   MOMENTUM_QUOTE,
@@ -130,56 +130,53 @@ export default function DienstPage() {
           En je wordt sterker en fitter door het trainen. Dat heb je nodig, want volhouden kost energie.
           Wie om zes uur &apos;s avonds leeg op de bank ploft, komt er niet meer af.
         </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Wat je krijgt</h3>
-          <ul className={styles.list}>
-            <li>15 trainingen van een uur: de ene week twee, de andere week één</li>
-            <li>5 coachingsessies van 2 uur, om de week, elk met een fysieke challenge</li>
-            <li>Uit elke coaching één opdracht, die je thuis doet en tussendoor met de groep bespreekt</li>
-            <li>Een groep van 5 tot 10 mensen. Vaste start, vaste eindstreep, niemand stroomt halverwege in</li>
-            <li>Anne en Els begeleiden je van de eerste tot de laatste week</li>
-          </ul>
-          <p className={styles.note}>Samen uit, samen thuis.</p>
-        </div>
       </Section>
 
       <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
-        <div className={styles.prose}>
-          <p>
-            <strong>Je komt.</strong> Twee keer per week, ook op de avond dat je jezelf hoort zeggen dat
-            één keer overslaan niet uitmaakt. Juist op die avond maak je het verschil.
-          </p>
-          <p>
-            <strong>Je doet je opdracht</strong> en de acties die eruit voortkomen. Iets waar je tot nu
-            toe liever voor wegliep. Wat je moet doen wist je al. Nu doe je het.
-          </p>
-          <p>
-            <strong>Je zegt het als het niet gelukt is.</strong> Dan praten we erover, want daar zit de
-            winst. We rekenen je er niet op af. We willen dat je verder komt. Wat er in de groep gezegd
-            wordt, blijft in de groep.
-          </p>
-        </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>Jij zet de stappen.</span>
-          <span className={styles.closeAccent}>Wij lopen naast je.</span>
-        </p>
-        <div className={styles.sub}>
-          <h3 className={styles.h3}>Soms past iets anders beter</h3>
-          <ul className={styles.list}>
-            <li>
-              Wil je alleen fitter worden en verder niets veranderen? Word dan lid. Dat is goedkoper en
-              het werkt.
-            </li>
-            <li>Zoek je een schema of tips en trucs? Dan past personal training beter.</li>
-            <li>
-              Zit je in een burn-out of ben je onder behandeling? Dan werken we liever{' '}
-              <Link href="/impact" className={styles.link}>
-                1-op-1
-              </Link>{' '}
-              met je, zodat we met gerichte aandacht aan de slag kunnen.
-            </li>
-          </ul>
-        </div>
+        <SplitAside
+          main={
+            <>
+              <div className={styles.prose}>
+                <p>
+                  <strong>Je komt.</strong> Twee keer per week, ook op de avond dat je jezelf hoort zeggen dat
+                  één keer overslaan niet uitmaakt. Juist op die avond maak je het verschil.
+                </p>
+                <p>
+                  <strong>Je doet je opdracht</strong> en de acties die eruit voortkomen. Iets waar je tot nu
+                  toe liever voor wegliep. Wat je moet doen wist je al. Nu doe je het.
+                </p>
+                <p>
+                  <strong>Je zegt het als het niet gelukt is.</strong> Dan praten we erover, want daar zit de
+                  winst. We rekenen je er niet op af. We willen dat je verder komt. Wat er in de groep gezegd
+                  wordt, blijft in de groep.
+                </p>
+              </div>
+              <p className={`${styles.close} ${styles.closeTight}`}>
+                <span>Jij zet de stappen.</span>
+                <span className={styles.closeAccent}>Wij lopen naast je.</span>
+              </p>
+            </>
+          }
+          aside={
+            <div className={styles.sub}>
+              <h3 className={styles.h3}>Soms past iets anders beter</h3>
+              <ul className={styles.list}>
+                <li>
+                  Wil je alleen fitter worden en verder niets veranderen? Word dan lid. Dat is goedkoper en
+                  het werkt.
+                </li>
+                <li>Zoek je een schema of tips en trucs? Dan past personal training beter.</li>
+                <li>
+                  Zit je in een burn-out of ben je onder behandeling? Dan werken we liever{' '}
+                  <Link href="/impact" className={styles.link}>
+                    1-op-1
+                  </Link>{' '}
+                  met je, zodat we met gerichte aandacht aan de slag kunnen.
+                </li>
+              </ul>
+            </div>
+          }
+        />
       </Section>
 
       <QuoteBlock
@@ -204,6 +201,14 @@ export default function DienstPage() {
             </ul>
             <p className={styles.note}>Elke groep, tien weken lang</p>
             <p className={styles.note}>{MOMENTUM_SCHEDULE_NOTE}</p>
+          </div>
+          <div className={styles.group}>
+            <h3 className={styles.h3}>De groep</h3>
+            <ul className={styles.list}>
+              <li>Een groep van 5 tot 10 mensen. Vaste start, vaste eindstreep, niemand stroomt halverwege in</li>
+              <li>Anne en Els begeleiden je van de eerste tot de laatste week</li>
+            </ul>
+            <p className={styles.note}>Samen uit, samen thuis.</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Startdata</h3>

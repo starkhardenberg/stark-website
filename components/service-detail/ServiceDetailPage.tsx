@@ -183,7 +183,7 @@ export default function ServiceDetailPage({ page }: { page: ServiceDetailContent
         </div>
       ) : null}
 
-      <HoeHetBegintSection proefGraf={page.proefGraf} />
+      <HoeHetBegintSection />
 
       <div className={styles.backWrap}>
         <div className={styles.column}>

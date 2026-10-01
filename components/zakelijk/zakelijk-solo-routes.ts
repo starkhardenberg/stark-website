@@ -2,7 +2,7 @@ import type { AanbodTrack } from '@/components/aanbod/aanbod-tracks'
 import { L1O1_TEGEL } from '@/components/dienst/leiderschap-1-op-1'
 import { TRAJECT_TEGEL } from '@/components/dienst/zakelijk-traject'
 
-/** Drie ingangen op /zakelijk-v2. Zelfde tegelcomponent als trainen/coaching. */
+/** Drie ingangen op /zakelijk. Zelfde tegelcomponent als trainen/coaching. */
 export const zakelijkSoloRoutes: AanbodTrack[] = [
   {
     id: 'leiderschap-1-op-1',

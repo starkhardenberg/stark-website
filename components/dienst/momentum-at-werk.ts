@@ -64,16 +64,6 @@ export const MAW_PARTS = [
 export const MAW_AFSLUITER =
   'Tien weken samen trainen en coachen. Je mensen staan daarna steviger, in hun lijf en in hun hoofd, ook als het werk veel van ze vraagt.'
 
-export const MAW_KRIJGT = [
-  'Vijftien trainingen van een uur met Mark, Anne en Els',
-  'Vijf coachingsessies van twee uur met Yvonne, elk met een fysieke uitdaging',
-  'Na elke sessie een opdracht voor de eigen werkweek',
-  'Een intake met een persoonlijk fysiek doel, een nulmeting en een eindmeting door Anne en Els',
-  'Een rapport en een gesprek over wat het heeft opgeleverd',
-] as const
-
-export const MAW_KRIJGT_NOTE = 'Alles vindt plaats bij STARK! in Hardenberg.'
-
 /* ---------- 03 ---------- */
 
 export const MAW_WIE = [

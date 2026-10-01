@@ -101,7 +101,7 @@ export const aanbodTracks: AanbodTrack[] = [
       'Team in actie: battle ropes tijdens training bij STARK! Hardenberg, zwart-wit, kracht en samenwerking',
     photoObjectPosition: 'center 16%',
     introLabel: 'Zakelijk bij STARK!',
-    readMoreHref: '/zakelijk-v2',
+    readMoreHref: '/zakelijk',
     readMoreLabel: 'Lees meer over zakelijk',
     summary:
       'Sterke teams onder druk. Het meest intensieve traject, maatwerk op de werkvloer.',

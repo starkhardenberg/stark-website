@@ -3,7 +3,7 @@ import { hrefKennismaking } from '@/lib/contact'
 import type { ServiceDetailContent } from '@/components/service-detail/types'
 
 const ZAKELIJK_BACK = {
-  backHref: '/zakelijk-v2',
+  backHref: '/zakelijk',
   backLabel: 'Terug naar zakelijk',
   navCtaLabel: 'Plan een gesprek',
   navCtaHref: hrefKennismaking,

@@ -106,6 +106,25 @@ export function QuoteBlock({
   )
 }
 
+/**
+ * Verhaal links, zijweg rechts in een cirkel.
+ * Op een smal scherm staat de zijweg eronder, zonder cirkel die de tekst knelt.
+ */
+export function SplitAside({
+  main,
+  aside,
+}: {
+  main: ReactNode
+  aside: ReactNode
+}) {
+  return (
+    <div className={styles.split}>
+      <div className={styles.splitMain}>{main}</div>
+      <div className={styles.splitAside}>{aside}</div>
+    </div>
+  )
+}
+
 /** Stappen na de kennismaking, in het slot. */
 export function KennismakingSteps({
   steps,

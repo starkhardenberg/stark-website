@@ -66,16 +66,6 @@ export const TRAJECT_PARTS = [
 export const TRAJECT_AFSLUITER =
   'In de coaching bepalen jullie wat je anders gaat doen. In de training en in het werk doen jullie het. Elke week opnieuw.'
 
-export const TRAJECT_KRIJGT = [
-  'Elke week een uur teamcoaching, met Yvonne, Engbert-Jan of allebei',
-  'Elke week een opdracht voor het team, over het werk van die week',
-  'Voor jou elke week een uur coaching 1 op 1 met je vaste coach',
-  'Het eerste kwartaal twee keer per week samen trainen, in eigen lessen met Anne, Els en Mark',
-  'Elk kwartaal een evaluatiegesprek met jou',
-] as const
-
-export const TRAJECT_KRIJGT_NOTE = 'Alles vindt plaats bij STARK! in Hardenberg.'
-
 /* ---------- 03 ---------- */
 
 /** Drie redenen, elk met een vetgedrukte kop en een korte tekst. */
@@ -170,9 +160,6 @@ export const TRAJECT_VOORBEELD = {
 
 export const TRAJECT_OPZET = [
   'Een half jaar tot een jaar. Je tekent voor de hele looptijd',
-  'Elke week een uur teamcoaching bij STARK! in Hardenberg',
-  'Elke week een uur coaching 1 op 1 voor jou',
-  'Het eerste kwartaal twee keer per week samen trainen, in eigen lessen',
   'Elk kwartaal een evaluatiegesprek met jou',
 ] as const
 

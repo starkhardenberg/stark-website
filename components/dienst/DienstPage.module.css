@@ -137,6 +137,36 @@
   margin-bottom: 48px;
 }
 
+.buttonPair {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.buttonPair .button {
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0;
+  min-height: 76px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: normal;
+}
+
+.buttonGhost {
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
 /* ---------- sectiepatroon ---------- */
 
 .light,
@@ -272,7 +302,7 @@
 
 .scenes {
   list-style: none;
-  margin: 0;
+  margin: clamp(28px, 4vw, 44px) 0 0;
   padding: 0;
   max-width: 640px;
   border-top: 1px solid var(--line);
@@ -389,6 +419,70 @@
 
 .sub {
   margin-top: clamp(40px, 5vw, 56px);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.splitMain .close {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.splitAside {
+  max-width: 320px;
+}
+
+.splitAside .sub {
+  margin-top: 6px;
+}
+
+.splitAside .sub::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.splitAside .h3 {
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.splitAside .list {
+  gap: 0;
+  max-width: none;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.splitAside .list li {
+  padding: 14px 0 0;
+}
+
+.splitAside .list li::before {
+  display: none;
+}
+
+.splitAside .list li + li {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.dark .splitAside .h3,
+.dark .splitAside .list li + li {
+  border-color: var(--line-dark);
 }
 
 .list {
@@ -697,9 +791,34 @@
     grid-row: 2;
   }
 
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(220px, 300px);
+    column-gap: 72px;
+    align-items: start;
+  }
+
+  .splitAside {
+    padding-top: 4px;
+  }
+
   .buttonSlot {
     margin-top: 64px;
     margin-bottom: 64px;
+  }
+
+  .buttonPair {
+    flex-direction: row;
+    align-items: stretch;
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  .buttonPair .button {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    min-height: 52px;
   }
 
   .groups {

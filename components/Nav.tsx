@@ -8,7 +8,7 @@ import { STARK_CTA, STARK_CTA_NAV, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './Nav.module.css'
 
 const ZAKELIJK_LINKS = [
-  { label: 'Ondernemers', href: '/zakelijk-v2' },
+  { label: 'Ondernemers', href: '/zakelijk' },
   { label: 'Medewerkers', href: '/zakelijk/duurzame-inzetbaarheid' },
 ] as const
 
