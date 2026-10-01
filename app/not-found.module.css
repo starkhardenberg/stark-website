@@ -14,8 +14,8 @@
   left: 50%;
   bottom: -0.06em;
   transform: translateX(-50%);
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(280px, 72vw, 840px);
   line-height: 1;
   color: transparent;
@@ -35,8 +35,8 @@
 }
 
 .logo {
-  height: 60px;
-  width: auto;
+  height: 104px;
+  width: 104px;
 }
 
 .content {
@@ -56,7 +56,7 @@
 
 .label {
   font-family: var(--font-body), sans-serif;
-  font-size: 22px;
+  font-size: clamp(32px, 3.6vw, 42px);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -65,21 +65,16 @@
 }
 
 .heading {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(4rem, 14.4vw, 7.6rem);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(44px, 8.4vw, 92px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
   margin: 0 0 32px;
   color: var(--off);
   text-wrap: balance;
-  max-width: 14em;
-}
-
-.headingOutline {
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-display) var(--stark-black);
+  max-width: 12ch;
 }
 
 .sub {
@@ -151,7 +146,7 @@
   }
 
   .heading {
-    max-width: 15em;
+    max-width: 14ch;
   }
 
   .anchorShell {

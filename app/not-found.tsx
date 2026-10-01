@@ -9,10 +9,10 @@ export default function NotFound() {
       <header className={styles.nav}>
         <a href="/" aria-label="STARK! home">
           <Image
-            src="/images/stark_logo_wit.png"
+            src="/images/stark_logo_cirkel_wit.png"
             alt="STARK!"
-            width={200}
-            height={64}
+            width={756}
+            height={756}
             priority
             className={styles.logo}
           />
@@ -23,8 +23,7 @@ export default function NotFound() {
         <p className={styles.label}>404</p>
 
         <h1 className={styles.heading}>
-          Deze pagina heeft een{' '}
-          <span className={styles.headingOutline}>blessure</span>
+          Deze pagina heeft een blessure
         </h1>
 
         <p className={styles.sub}>
