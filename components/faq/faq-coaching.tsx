@@ -15,7 +15,7 @@ export const coachingFaq: FaqItem[] = [
   {
     question: 'Wat maakt jullie coaching anders dan die van anderen?',
     answer:
-      'Meestal weet je wel wat je moet doen om iets voor elkaar te krijgen. Dat het moeten doen moeilijk of oncomfortabel voelt, houdt je tegen om het echt te doen. Onze coaching richt zich op de shift in wie je bent op het moment dat je het doet. Wie je bent bepaalt namelijk wat je doet, en dat bepaalt je resultaat. Bij ons horen lijf en hoofd bij elkaar: training en coaching in één traject, met coaches die je patronen herkennen en je scherp houden op de vloer. Kleine groepen, korte lijntjes, en coaches die naast je staan.',
+      'Meestal weet je wel wat je moet doen om iets voor elkaar te krijgen. Dat het moeten doen moeilijk of oncomfortabel voelt, houdt je tegen om het echt te doen. Onze coaching begint daar waar je jezelf in de weg zit. Wie je bent bepaalt namelijk wat je doet, en dat bepaalt je resultaat. Bij ons horen lijf en hoofd bij elkaar: training en coaching in één traject, met coaches die je patronen herkennen en je scherp houden op de vloer. Kleine groepen, korte lijntjes, en coaches die naast je staan.',
   },
   {
     question: 'Wat gaan we doen tijdens een coaching sessie?',
@@ -28,9 +28,9 @@ export const coachingFaq: FaqItem[] = [
       'Kant-en-klare dieetplannen of maaltijdschema\'s horen niet bij hoe wij werken. Als voeding voor jou speelt, nemen we dat mee in je traject, op een manier die past bij je eigen leven en die jij kunt volhouden.',
   },
   {
-    question: 'Wat kost coaching en wat zit erin?',
+    question: 'Wat is de investering voor coaching, en wat zit erin?',
     answer:
-      'Coaching bij STARK! is een serieuze investering. Wat het precies kost hangt af van je traject. Dat hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
+      'Coaching bij STARK! is een serieuze investering. Die hangt af van je traject. Je hoort het in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
   },
   {
     question: 'Kan mijn werkgever dit vergoeden?',

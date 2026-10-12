@@ -4,10 +4,12 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, KennismakingSteps, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
+import { BookButton, CloseStamp, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import WerkgeverBlok from './WerkgeverBlok'
 import {
   L1O1_AFSLUITER,
+  L1O1_AFSTAND,
   L1O1_ANDERS,
   L1O1_DAARNA,
   L1O1_DAARNA_NOTE,
@@ -22,8 +24,6 @@ import {
   L1O1_SCHEDULE,
   L1O1_SCHEDULE_NOTE,
   L1O1_SLOT,
-  L1O1_VERLOOP,
-  L1O1_VERLOOP_NOTE,
   L1O1_VOORBEELD,
   L1O1_VRAAGT,
   L1O1_VRAAGT_CLOSE,
@@ -60,7 +60,8 @@ export default function LeiderschapPage() {
             <div className={styles.heroStack}>
               <HeroTitle
                 word={L1O1_HERO.word}
-                breakBefore="1 op 1"
+                breakBefore="1-op-1"
+                centerSecondLine
                 className={styles.heroTitleLong}
               />
               <p className={styles.heroLine}>{L1O1_HERO.line}</p>
@@ -73,7 +74,12 @@ export default function LeiderschapPage() {
         <ul className={styles.scenes}>
           {L1O1_INTRO.scenes.map((line) => (
             <li key={line}>
-              {line}
+              {line.split('\n').map((part, index) => (
+                <span key={part}>
+                  {index > 0 ? <br /> : null}
+                  {part}
+                </span>
+              ))}
               <span className={styles.dot}>.</span>
             </li>
           ))}
@@ -83,13 +89,10 @@ export default function LeiderschapPage() {
             <p key={paragraph}>{paragraph}</p>
           ))}
           <p>
-            <strong>{L1O1_INTRO.proseStrong}</strong> {L1O1_INTRO.proseAfterStrong}
+            {L1O1_INTRO.proseStrong} {L1O1_INTRO.proseAfterStrong}
           </p>
         </div>
-        <p className={styles.close}>
-          <span>{L1O1_INTRO.close}</span>
-          <span className={styles.closeAccent}>{L1O1_INTRO.closeAccent}</span>
-        </p>
+        <p className={styles.afsluiter}>{L1O1_INTRO.close}</p>
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -111,14 +114,11 @@ export default function LeiderschapPage() {
               <div className={styles.prose}>
                 {L1O1_VRAAGT.map((item) => (
                   <p key={item.strong}>
-                    <strong>{item.strong}</strong> {item.text}
+                    {item.strong} {item.text}
                   </p>
                 ))}
               </div>
-              <p className={`${styles.close} ${styles.closeTight}`}>
-                <span>{L1O1_VRAAGT_CLOSE.text}</span>
-                <span className={styles.closeAccent}>{L1O1_VRAAGT_CLOSE.accent}</span>
-              </p>
+              <CloseStamp lines={L1O1_VRAAGT_CLOSE} />
             </>
           }
           aside={
@@ -143,6 +143,7 @@ export default function LeiderschapPage() {
       </Section>
 
       <QuoteBlock
+        id="quote"
         tone={quoteTone}
         image={L1O1_QUOTE.image}
         alt={L1O1_QUOTE.alt}
@@ -150,6 +151,7 @@ export default function LeiderschapPage() {
         name={L1O1_QUOTE.name}
         role={L1O1_QUOTE.role}
         portrait
+        matchText
       />
 
       {L1O1_VOORBEELD.show ? (
@@ -174,6 +176,7 @@ export default function LeiderschapPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <p className={styles.groupClose}>{L1O1_AFSTAND}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Trainingstijden</h3>
@@ -184,7 +187,7 @@ export default function LeiderschapPage() {
                 </li>
               ))}
             </ul>
-            <p className={styles.note}>{L1O1_SCHEDULE_NOTE}</p>
+            <p className={styles.groupClose}>{L1O1_SCHEDULE_NOTE}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>{L1O1_DAARNA_TITLE}</h3>
@@ -193,7 +196,7 @@ export default function LeiderschapPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className={styles.note}>{L1O1_DAARNA_NOTE}</p>
+            <p className={styles.groupClose}>{L1O1_DAARNA_NOTE}</p>
           </div>
         </div>
         <BookButton className={styles.buttonTiles} />
@@ -210,19 +213,28 @@ export default function LeiderschapPage() {
         <FaqList tone={faqTone} items={L1O1_FAQ} />
       </Section>
 
-      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
+      <Section number={num()} title="Zo begin je" tone={slotTone}>
         <div className={styles.prose}>
-          <p>{L1O1_SLOT}</p>
+          <p>{L1O1_PROEF.lead}</p>
+          <ul className={`${styles.list} ${styles.proefPoints}`}>
+            {L1O1_PROEF.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+            <li>{L1O1_PROEF.practical}</li>
+          </ul>
+          <p>
+            {L1O1_SLOT.before}
+            <a className={`${styles.textLink} ${styles.textLinkBold}`} href={L1O1_SLOT.href} target="_blank" rel="noopener noreferrer">
+              {L1O1_SLOT.link}
+            </a>
+            {L1O1_SLOT.rest}
+          </p>
+          <p className={styles.proefDate}>{L1O1_PROEF.date}</p>
         </div>
-        <KennismakingSteps steps={L1O1_VERLOOP} note={L1O1_VERLOOP_NOTE} />
-        <div className={styles.prose}>
-          <p>{L1O1_PROEF.text}</p>
-        </div>
-        <div className={styles.buttonPair}>
-          <BookButton className={styles.buttonPairItem} />
+        <div className={styles.proefAction}>
           <a
             href={L1O1_PROEF.href}
-            className={`${styles.button} ${styles.buttonGhost} ${styles.buttonPairItem}`}
+            className={`${styles.button} ${styles.proefButton} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
             target="_blank"
             rel="noopener noreferrer"
           >

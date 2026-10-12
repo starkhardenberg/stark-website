@@ -1,16 +1,6 @@
-import TestimonialsSection from './testimonials/TestimonialsSection'
-import { getHomepageTestimonials, heroQuoteAmanda } from './testimonials/testimonials-data'
+import PortraitStories from './testimonials/PortraitStories'
+import { homepagePeople } from './testimonials/portrait-quotes'
 
 export default function ResultatenSection() {
-  return (
-    <TestimonialsSection
-      id="resultaten"
-      hero={heroQuoteAmanda}
-      items={getHomepageTestimonials()}
-      narrow
-      unifiedDark
-      heroQuoteOffset={1}
-      showGoogleReviews
-    />
-  )
+  return <PortraitStories id="resultaten" people={homepagePeople} showGoogleReviews />
 }

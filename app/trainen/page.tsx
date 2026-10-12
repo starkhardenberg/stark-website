@@ -9,11 +9,8 @@ import aanbodStyles from '@/components/AanbodSection.module.css'
 import TrainenIntroSection from '@/components/trainen/TrainenIntroSection'
 import TrainenStartSection from '@/components/trainen/TrainenStartSection'
 import { trainenGroupTracks } from '@/components/trainen/trainen-group-tracks'
-import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
-import {
-  getTrainenPageCarouselTestimonials,
-  heroQuoteRenske,
-} from '@/components/testimonials/testimonials-data'
+import PortraitStories from '@/components/testimonials/PortraitStories'
+import { trainenPeople } from '@/components/testimonials/portrait-quotes'
 import { STARK_GRAIN } from '@/lib/stark-grain'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
@@ -69,12 +66,7 @@ export default function TrainenPage() {
 
       <TrainenStartSection />
 
-      <TestimonialsSection
-        hero={heroQuoteRenske}
-        items={getTrainenPageCarouselTestimonials()}
-        narrow
-        unifiedDark
-      />
+      <PortraitStories people={trainenPeople} />
 
       <section className={`${styles.faqSection} ${styles.faqSectionLight}`}>
         <header className={styles.sectionQuoteHead}>
@@ -86,7 +78,7 @@ export default function TrainenPage() {
           </p>
         </header>
         <div className={styles.faqInner}>
-          <FaqList items={trainenFaq} tone="light" />
+          <FaqList items={trainenFaq} tone="light" variant="landing" />
           <FaqJsonLd items={trainenFaq} />
         </div>
       </section>

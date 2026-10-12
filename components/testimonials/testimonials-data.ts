@@ -159,7 +159,7 @@ export const allTestimonials: TestimonialEntry[] = [
   },
   {
     id: 'sandra-1',
-    text: 'Wie zit er nou op mij te wachten! Coaching helpt me om niet mee te gaan met die beperkende stem.',
+    text: 'Coaching helpt om niet mee te gaan met die beperkende stemmen in mijn hoofd.',
     name: 'Sandra',
     context: 'Momentum traject',
     category: 'momentum',
@@ -193,6 +193,27 @@ export const allTestimonials: TestimonialEntry[] = [
     category: 'momentum',
   },
   {
+    id: 'cora-1',
+    text: 'Je gewaardeerd voelen om wie je bent en om wat je op dat moment kunt geven — ook op de dagen waarop je even minder STARK bent.',
+    name: 'Cora',
+    context: 'Momentum traject',
+    category: 'momentum',
+  },
+  {
+    id: 'ineke-bouwhuis-1',
+    text: 'Ik wil altijd vooruit en ik leerde dat aanpassen geen zwakte is, maar onderdeel van sterker worden!',
+    name: 'Ineke Bouwhuis',
+    context: 'Momentum traject',
+    category: 'momentum',
+  },
+  {
+    id: 'ineke-lokker-1',
+    text: 'De coaching maakt dat ik nu echt prioriteiten stel en mijn gezin op de eerste plek komt.',
+    name: 'Ineke Lokker',
+    context: 'Impact traject',
+    category: 'impact',
+  },
+  {
     id: 'matthijs-1',
     text: "Het woord 'proberen' ken ik niet meer, ik doe het gewoon.",
     name: 'Matthijs',
@@ -217,6 +238,13 @@ export const allTestimonials: TestimonialEntry[] = [
     id: 'jaloe-1',
     text: 'Bij STARK! leer ik mijn grenzen te verleggen en hierdoor word ik de sterke versie van mezelf.',
     name: 'Jaloe',
+    context: 'Teens',
+    category: 'teens',
+  },
+  {
+    id: 'anne-stegeman-1',
+    text: 'Hard werken en toch lol hebben, dat kan dus!',
+    name: 'Anne',
     context: 'Teens',
     category: 'teens',
   },
@@ -326,9 +354,9 @@ export const heroQuoteRenske: HeroQuote = {
   text: 'Je lijf kan zoveel meer dan je denkt. Je mag het even niet weten, de trainer geeft je de ruimte en helpt je om weer door te gaan.',
   name: 'Renske',
   context: 'Groepstraining',
-  image: '/images/foto-trainen-quotes-renske.png',
-  imageAlt: 'Renske tijdens groepstraining bij STARK! Hardenberg',
-  objectPosition: 'center 40%',
+  image: '/images/quotes/renske.jpg',
+  imageAlt: 'Renske, zwart-witportret bij STARK! Hardenberg',
+  darkPortrait: true,
 }
 
 const TRAINEN_PAGE_HERO_ID = 'renske-1'

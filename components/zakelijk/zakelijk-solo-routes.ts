@@ -7,8 +7,8 @@ export const zakelijkSoloRoutes: AanbodTrack[] = [
   {
     id: 'leiderschap-1-op-1',
     num: '01',
-    cat: 'Leiderschap 1 op 1',
-    mediaLabel: 'Leiderschap\n1 op 1',
+    cat: 'Leiderschap 1-op-1',
+    mediaLabel: 'Leiderschap\n1-op-1',
     photo: 'foto-zakelijk-tegel-ondernemers-sled.jpg',
     photoAlt: 'Solo training bij STARK! Hardenberg',
     photoObjectPosition: 'center 28%',

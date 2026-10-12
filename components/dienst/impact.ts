@@ -6,7 +6,7 @@
 
 export const IMPACT_HERO = {
   word: 'Impact',
-  line: 'Nu gaat het over jou',
+  line: 'Alle aandacht voor jouw\u00A0situatie',
   image: '/images/foto-impact-hero.jpg',
   alt: 'Deelnemer traint met een sandbag bij STARK! Hardenberg',
 }
@@ -16,32 +16,31 @@ export const IMPACT_INTRO = {
   scenes: [
     'Op je vijftigste sterker zijn dan op je veertigste',
     'Die twintig kilo eraf, en er daarna ook af houden',
-    "'s Avonds nog puf hebben voor wat jij leuk vindt",
-    'Je zorgt voor iedereen. Nu wil je ook iets voor jezelf',
-    'Je bent moe van het doorgaan en wilt je energie terug',
+    "'s Avonds nog puf hebben voor wat jij dan wilt",
+    'Je zorgt voor iedereen. Nu start je met zorgen voor jezelf',
+    'Iets aanpakken wat je al jaren bij je draagt',
   ],
   prose: [
-    'Of waar jij naartoe wilt. Misschien gaat het prima en weet je dat er nog een stap in zit. Misschien loop je al een tijd op je tandvlees. Of je wilt eindelijk iets aanpakken wat je al jaren bij je draagt. Waar je ook staat: Impact begint bij jou.',
+    'Of iets anders wat je voor elkaar wilt krijgen. Misschien gaat het prima en weet je dat er nog een stap in zit. Misschien loop je al een tijd op je tandvlees. Of je wilt eindelijk iets aanpakken wat je al jaren bij je draagt. Waar je ook staat: Impact begint bij jou.',
   ],
   proseStrong: 'Impact is twaalf weken één op één.',
   proseAfterStrong:
     'Je eigen coach, elke week een gesprek, twee keer per week trainen. Alles draait om wat jij nodig hebt.',
-  close: 'Twaalf weken lang gaat het over jou.',
-  closeAccent: 'Daarna sta je stevig. In je lijf en in je hoofd, ook als het uitdagend wordt.',
+  close: '12 weken: je staat stevig, in je lijf en hoofd, ook als het uitdagend wordt.',
 }
 
 export const IMPACT_PARTS = [
   {
-    title: 'Gesprek',
-    text: 'Elke week zit je een uur met je vaste coach: Yvonne of Engbert-Jan. Wat speelt er, wat wil je dat er over twaalf weken anders is, en wat doe je deze week? Wat je vertelt, blijft tussen jullie.',
+    title: 'Coachingsgesprek',
+    text: 'Elke week zit je een uur met je vaste coach: Yvonne of Engbert\u2011Jan. Wat je vertelt, blijft tussen jullie. De momenten die je raken, of die je als druk ervaart, voelen niet fijn. Zonder dat je het doorhebt, schiet je dan in wat wij je angel noemen. Je angel is het oude verhaal over jezelf dat het dan als vanzelf overneemt. Het lijkt alsof het dan aan je werk ligt, of aan je gezin, of aan je lijf, of aan je eigen gedoe. Zo houdt de angel je op je plek. Wij leren je hem te zien, de angel eruit te halen, en zo te schakelen. Zodat je van daaruit de verantwoordelijkheid pakt en elke week doet wat je te doen hebt.',
   },
   {
     title: 'Trainen',
-    text: 'Twee keer per week train je in een kleine groep. Je kiest zelf twee van de vier vaste momenten. Elke training kom je op een punt waar je liever stopt. Daar zie je wat je doet. Harder gaan. Doorbijten. Niets zeggen. Afhaken. Dat doe je thuis en op je werk ook. Hier zie je het gebeuren, met je coach ernaast. Je hoeft nog geen sporter te zijn.',
+    text: 'Twee keer per week train je in een kleine groep. Je kiest zelf twee van de vier vaste momenten. Elke training kom je op een punt waar je liever stopt. Daar zie je wat je doet. Harder gaan. Doorbijten. Niets zeggen. Afhaken. Dat doe je thuis en op je werk ook. Hier zie je het gebeuren, met je coach ernaast. Je hoeft nog geen sporter te zijn. Iedereen kan meedoen.',
   },
   {
-    title: 'Meten',
-    text: 'Bij de start doe je een nulmeting, na twaalf weken een eindmeting. Dan zie je zwart op wit wat er veranderd is.',
+    title: 'Van punt A naar punt B',
+    text: 'Bij de start stellen we punt A vast: waar je nu staat. En punt B: waar je over twaalf weken wilt staan. De twaalf weken richten we zo in dat jij punt B realiseert. Aan het eind kijken we wat gelukt is, en wat je nieuwe punt B wordt. Soms is dat heel concreet. Zoveel kilo kwijt. Zoveel ochtenden uitgerust wakker worden. Soms is het minder hard te meten. Vaker voor jezelf opgekomen. Meer rust in alles. In ieder geval een resultaat dat er voor jou toe doet.',
   },
 ] as const
 
@@ -54,7 +53,7 @@ export const IMPACT_EERLIJK = [
   { strong: 'Je doet wat je afspreekt.', text: 'Elke week kies je zelf wat je gaat doen. En dat doe je dan ook.' },
 ] as const
 
-export const IMPACT_EERLIJK_CLOSE = { text: 'Twaalf weken, één coach.', accent: 'Alle aandacht voor jou.' }
+export const IMPACT_EERLIJK_CLOSE = ['12 weken, één coach.', 'Alle aandacht voor jou.'] as const
 
 /** Rijtje "Soms past iets anders beter". link = optioneel: [linktekst, href]. */
 export const IMPACT_ANDERS: { before: string; link?: [string, string]; after?: string }[] = [
@@ -62,7 +61,7 @@ export const IMPACT_ANDERS: { before: string; link?: [string, string]; after?: s
   { before: 'Werk je liever in een groep? Kijk dan naar ', link: ['Momentum', '/momentum'], after: '.' },
   {
     before: 'Draait je vraag om je resultaten als leider? Dan past ',
-    link: ['Leiderschap 1 op 1', '/zakelijk/leiderschap-1-op-1'],
+    link: ['Leiderschap 1-op-1', '/zakelijk/leiderschap-1-op-1'],
     after: '.',
   },
   { before: 'Stuurt iemand anders je, en wil je zelf eigenlijk niet? Kom dan terug als je er zelf voor kiest.' },
@@ -99,9 +98,9 @@ export const IMPACT_FAQ = [
       'Momentum doe je in een groep, met een vaste start en een vaste opbouw. Bij Impact heb je een eigen coach en draait alles om jouw situatie. Je start zodra het jou en ons uitkomt.',
   },
   {
-    question: 'Wat is het verschil met Leiderschap 1 op 1?',
+    question: 'Wat is het verschil met Leiderschap 1-op-1?',
     answer:
-      'Impact gaat over jou. Leiderschap 1 op 1 gaat over wat je als leider voor elkaar krijgt. Bij Impact draait het om jou als mens: je energie, je lijf, en wat je doet als het te veel wordt. Thuis en op je werk. Leiderschap 1 op 1 draait om je resultaten als leider: je doelen halen op een manier die werkbaar is, voor jou en voor je team. Daar is geen vaste route voor. Twijfel je? In het kennismakingsgesprek zoeken we het samen uit.',
+      'Impact gaat over jou. Leiderschap 1-op-1 gaat over wat je als leider voor elkaar krijgt. Bij Impact draait het om jou als mens: je energie, je lijf, en wat je doet als het te veel wordt. Thuis en op je werk. Leiderschap 1-op-1 draait om je resultaten als leider: je doelen halen op een manier die werkbaar is, voor jou en voor je team. Daar is geen vaste route voor. Twijfel je? In het kennismakingsgesprek zoeken we het samen uit.',
   },
   {
     question: 'Kan mijn werkgever meebetalen?',
@@ -121,9 +120,9 @@ export const IMPACT_FAQ = [
     answer: 'Dan zoeken we een ander moment. Dat kan een andere Impact-training zijn, of een training uit het gewone rooster.',
   },
   {
-    question: 'Wat kost Impact?',
+    question: 'Wat is de investering voor Impact?',
     answer:
-      'Impact is een serieuze investering. Wat het precies kost hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
+      'Impact is een serieuze investering. Die hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
   },
 ] as const
 

@@ -3,6 +3,63 @@ import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { BOOKINGS_URL } from './momentum'
 import styles from './DienstPage.module.css'
 
+/** Uitleg, kennismaken als zin, datumblok, dan de aanmeldknop. */
+export function ProefClose({
+  lead,
+  points,
+  date,
+  practical,
+  signupLabel,
+  signupHref,
+  gesprekBefore = '',
+  gesprekLink,
+  gesprekRest,
+  gesprekHref,
+}: {
+  lead: string
+  points: readonly string[]
+  date: string
+  practical: string
+  signupLabel: string
+  signupHref: string
+  gesprekBefore?: string
+  gesprekLink: string
+  gesprekRest: string
+  gesprekHref: string
+}) {
+  return (
+    <>
+      <div className={styles.prose}>
+        <p>{lead}</p>
+        <ul className={`${styles.list} ${styles.proefPoints}`}>
+          {points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+          <li>{practical}</li>
+        </ul>
+        <p>
+          {gesprekBefore}
+          <a className={`${styles.textLink} ${styles.textLinkBold}`} href={gesprekHref} target="_blank" rel="noopener noreferrer">
+            {gesprekLink}
+          </a>
+          {gesprekRest}
+        </p>
+        <p className={styles.proefDate}>{date}</p>
+      </div>
+      <div className={styles.proefAction}>
+        <a
+          href={signupHref}
+          className={`${styles.button} ${styles.proefButton} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {signupLabel}
+        </a>
+      </div>
+    </>
+  )
+}
+
 export function BookButton({ className = '' }: { className?: string }) {
   return (
     <a
@@ -53,7 +110,7 @@ export function Section({
   return (
     <section className={tone === 'dark' ? styles.dark : styles.light}>
       <div className={styles.wrap}>
-        <div className={styles.sec}>
+        <div className={styles.sec} data-num={number}>
           <div className={styles.secLead}>
             <span className={styles.num} data-num={number} aria-hidden="true">
               <span className={styles.numInk}>{number}</span>
@@ -67,6 +124,17 @@ export function Section({
   )
 }
 
+/** Korte klap onder een sectie. Woorden in de sectiekleur, oranje alleen in de boog. */
+export function CloseStamp({ lines }: { lines: readonly string[] }) {
+  return (
+    <p className={styles.close}>
+      {lines.map((line) => (
+        <span key={line}>{line}</span>
+      ))}
+    </p>
+  )
+}
+
 export function QuoteBlock({
   tone,
   image,
@@ -75,7 +143,10 @@ export function QuoteBlock({
   name,
   role,
   portrait = false,
+  matchText = false,
+  photoPosition,
   label = 'Ervaring van een deelnemer',
+  id,
 }: {
   tone: 'light' | 'dark'
   image: string
@@ -84,7 +155,12 @@ export function QuoteBlock({
   name: string
   role?: string
   portrait?: boolean
+  /** Op breed scherm de foto op de hoogte van de tekst ernaast croppen. */
+  matchText?: boolean
+  /** Waar de crop op blijft hangen, bijvoorbeeld het bord in een zaalfoto. */
+  photoPosition?: string
   label?: string
+  id?: string
 }) {
   const cite = role ? `${name} · ${role}` : name
 
@@ -92,10 +168,18 @@ export function QuoteBlock({
     <section
       className={tone === 'light' ? `${styles.proof} ${styles.proofLight}` : styles.proof}
       aria-label={label}
+      id={id}
     >
       <div className={styles.proofGrid}>
-        <div className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}`}>
-          <img className={styles.proofPhoto} src={image} alt={alt} />
+        <div
+          className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}${matchText ? ` ${styles.proofPhotoMatch}` : ''}`}
+        >
+          <img
+            className={styles.proofPhoto}
+            src={image}
+            alt={alt}
+            style={photoPosition ? { objectPosition: photoPosition } : undefined}
+          />
         </div>
         <figure className={styles.proofText}>
           <blockquote className={styles.quote}>{text}</blockquote>
@@ -107,8 +191,8 @@ export function QuoteBlock({
 }
 
 /**
- * Verhaal links, zijweg rechts in een cirkel.
- * Op een smal scherm staat de zijweg eronder, zonder cirkel die de tekst knelt.
+ * Verhaal links, de uitzondering rechts in een rustig blok.
+ * Op een smal scherm staat het blok eronder.
  */
 export function SplitAside({
   main,

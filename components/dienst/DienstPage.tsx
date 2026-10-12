@@ -4,12 +4,12 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import { BookButton, CloseStamp, Section, SplitAside, createPageRhythm } from './DienstParts'
+import DienstQuoteRoster from './DienstQuoteRoster'
+import { momentumPeople } from '@/components/testimonials/portrait-quotes'
 import {
   MOMENTUM_FAQ,
-  MOMENTUM_QUOTE,
   MOMENTUM_SCHEDULE,
-  MOMENTUM_SCHEDULE_NOTE,
   MOMENTUM_STARTS,
 } from './momentum'
 import styles from './DienstPage.module.css'
@@ -70,7 +70,7 @@ export default function DienstPage() {
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
           <p>
-            Of wat jij voor elkaar wilt krijgen. En je weet ook heel goed wat er moet gebeuren.
+            Of iets anders wat je voor elkaar wilt krijgen. En je weet ook heel goed wat er moet gebeuren om dat voor elkaar te krijgen.
             Afvallen. Aankomen. Stoppen met roken.
             Structuur in je dag. Afspraken met jezelf die je nakomt. Kennis genoeg.
           </p>
@@ -79,12 +79,12 @@ export default function DienstPage() {
             uitdagender dan je dacht. Daar blijft het meestal liggen.
           </p>
           <p>
-            <strong>Momentum is tien weken in een kleine groep.</strong> Trainen, coachen, challenges en
+            Momentum is tien weken in een kleine groep. Trainen, coachen, challenges en
             opdrachten. Zodat je elke week opnieuw doet wat je te doen hebt. Ook als het tegenvalt of
             meer van je vraagt dan je gewend bent.
           </p>
         </div>
-        <p className={`${styles.close} ${styles.closeAccent}`}>Dit keer lukt het.</p>
+        <CloseStamp lines={['Dit keer fiks je het']} />
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -94,8 +94,8 @@ export default function DienstPage() {
             <p>
               Elke training kom je op een punt waar je liever ophoudt. Daar zie je wat je doet. Harder
               gaan om er vanaf te zijn. Een slokje water voor wat extra rust. Het goedpraten. Of
-              doorgaan. Dat doe je thuis en op je werk ook. Hier zie je het gebeuren, in je eigen lijf,
-              met een coach ernaast. 15 keer in 10 weken. Je hoeft nog geen sporter te zijn.
+              met verstand op 0 gewoon maar dom door blijven gaan. Dat doe je thuis en op je werk ook. Hier zie je het gebeuren, in je eigen lijf,
+              met een coach ernaast. 15 keer in 10 weken. Je hoeft nog geen sporter te zijn. Iedereen kan meedoen.
             </p>
           </div>
           <div className={styles.part}>
@@ -112,49 +112,46 @@ export default function DienstPage() {
             <h3 className={styles.partTitle}>Challenge</h3>
             <p>
               In elke coachingsessie zit een challenge: een fysieke uitdaging die past bij het thema van
-              die sessie. Soms alleen, soms als groep. In de training komt het moment dat het zwaar wordt
-              vanzelf. In de challenge ga je er bewust mee aan de slag, en daarna bespreek je wat je
-              deed. Zo leer je jezelf kennen in situaties die jij uitdagend vindt.
+              die sessie. Soms alleen, soms als groep. Daar word je uitgedaagd en kom je jezelf tegen. Je
+              gaat er bewust mee aan de slag, en daarna bespreek je wat je deed. Zo leer je jezelf kennen
+              in uitdagende situaties, en leer je ermee omgaan op een manier die werkt.
             </p>
           </div>
           <div className={styles.part}>
-            <h3 className={styles.partTitle}>Opdracht</h3>
+            <h3 className={styles.partTitle}>Opdracht voor thuis</h3>
             <p>
-              Uit elke coaching komt een opdracht: iets waarmee je in je eigen week aan de slag gaat met
-              het thema van die sessie. Tussendoor bespreek je hem met de groep. Samen weet je meer dan
-              alleen.
+              Uit elke coaching komt een opdracht waarmee je thuis aan de slag gaat, in de weken tussen
+              de sessies. Je werkt aan het thema van die sessie. Tussendoor bespreek je hem met de groep.
+              Samen weet je meer dan alleen.
             </p>
           </div>
         </div>
         <p className={styles.afsluiter}>
-          En je wordt sterker en fitter door het trainen. Dat heb je nodig, want volhouden kost energie.
+          En je wordt sterker en fitter door het trainen. Dat heb je nodig, want iets volhouden wat nieuw voor je is, kost energie.
           Wie om zes uur &apos;s avonds leeg op de bank ploft, komt er niet meer af.
         </p>
       </Section>
 
-      <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
+      <Section number={num()} title="Wat we van je vragen" tone={eerlijkTone}>
         <SplitAside
           main={
             <>
               <div className={styles.prose}>
                 <p>
-                  <strong>Je komt.</strong> Twee keer per week, ook op de avond dat je jezelf hoort zeggen dat
+                  Je komt. Twee keer per week, ook op de avond dat je jezelf hoort zeggen dat
                   één keer overslaan niet uitmaakt. Juist op die avond maak je het verschil.
                 </p>
                 <p>
-                  <strong>Je doet je opdracht</strong> en de acties die eruit voortkomen. Iets waar je tot nu
+                  Je doet je opdracht en de acties die eruit voortkomen. Iets waar je tot nu
                   toe liever voor wegliep. Wat je moet doen wist je al. Nu doe je het.
                 </p>
                 <p>
-                  <strong>Je zegt het als het niet gelukt is.</strong> Dan praten we erover, want daar zit de
+                  Je zegt het als het niet gelukt is. Dan praten we erover, want daar zit de
                   winst. We rekenen je er niet op af. We willen dat je verder komt. Wat er in de groep gezegd
                   wordt, blijft in de groep.
                 </p>
               </div>
-              <p className={`${styles.close} ${styles.closeTight}`}>
-                <span>Jij zet de stappen.</span>
-                <span className={styles.closeAccent}>Wij lopen naast je.</span>
-              </p>
+              <CloseStamp lines={['Jij zet de stappen.', 'Wij lopen naast je.']} />
             </>
           }
           aside={
@@ -179,14 +176,7 @@ export default function DienstPage() {
         />
       </Section>
 
-      <QuoteBlock
-        tone={quoteTone}
-        image={MOMENTUM_QUOTE.image}
-        alt={MOMENTUM_QUOTE.alt}
-        text={MOMENTUM_QUOTE.text}
-        name={MOMENTUM_QUOTE.name}
-        role={MOMENTUM_QUOTE.role}
-      />
+      <DienstQuoteRoster tone={quoteTone} people={momentumPeople} />
 
       <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
@@ -196,19 +186,19 @@ export default function DienstPage() {
               {MOMENTUM_SCHEDULE.map((slot) => (
                 <li key={slot.when}>
                   <b>{slot.when}</b> · {slot.what}
+                  {'note' in slot ? <span className={styles.listLine}>{slot.note}</span> : null}
                 </li>
               ))}
             </ul>
-            <p className={styles.note}>Elke groep, tien weken lang</p>
-            <p className={styles.note}>{MOMENTUM_SCHEDULE_NOTE}</p>
+            <p className={styles.groupClose}>Elke groep, tien weken lang</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>De groep</h3>
             <ul className={styles.list}>
               <li>Een groep van 5 tot 10 mensen. Vaste start, vaste eindstreep, niemand stroomt halverwege in</li>
-              <li>Anne en Els begeleiden je van de eerste tot de laatste week</li>
+              <li>Onze coaches begeleiden je van de eerste tot de laatste week</li>
             </ul>
-            <p className={styles.note}>Samen uit, samen thuis.</p>
+            <p className={styles.groupClose}>Samen uit, samen thuis.</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Startdata</h3>
@@ -232,7 +222,7 @@ export default function DienstPage() {
       <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
         <div className={styles.prose}>
           <p>
-            Een kennismaking van een uur met Anne of Els. Wat wil je voor elkaar krijgen, en waar liep
+            Een kennismaking van een uur met één van onze coaches. Wat wil je voor elkaar krijgen, en waar liep
             het tot nu toe op vast? Past het, dan plannen we je start. Past het niet, dan zeggen we dat.
             Ook dat is een uitkomst.
           </p>

@@ -36,26 +36,12 @@
   margin-top: 28px;
 }
 
-.actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.actions a,
-.actions button {
-  margin-top: 0;
+.sheet .sheetCopy {
+  margin-top: 28px;
 }
 
 @media (min-width: 800px) {
   .sheet {
     padding: 36px 32px 32px;
-  }
-
-  .actions {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 }

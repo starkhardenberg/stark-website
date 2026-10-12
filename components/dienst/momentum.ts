@@ -8,10 +8,9 @@ export const MOMENTUM_SCHEDULE = [
   {
     when: 'Maandag, om en om',
     what: 'de ene week training (18.30–19.30), de andere week coachingsessie met challenge (18.30–20.30)',
+    note: 'De eerste coachingsessie is op de maandag direct na de start.',
   },
 ] as const
-
-export const MOMENTUM_SCHEDULE_NOTE = 'De eerste coachingsessie is op de maandag direct na de start.'
 
 export type DienstStart = {
   group: string
@@ -51,9 +50,9 @@ export const MOMENTUM_FAQ = [
     answer: 'Nee. Momentum is voor iedereen vanaf 16 jaar.',
   },
   {
-    question: 'Wat kost Momentum?',
+    question: 'Wat is de investering voor Momentum?',
     answer:
-      'Momentum is een serieuze investering. Wat het precies kost hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
+      'Momentum is een serieuze investering. Die hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
   },
   {
     question: 'Wat als ik een training mis?',

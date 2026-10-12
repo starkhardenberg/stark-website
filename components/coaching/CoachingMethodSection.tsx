@@ -115,7 +115,7 @@ export default function CoachingMethodSection() {
           </h2>
           <p className={styles.opener}>
             <span>Informatie is er genoeg. Daar ligt het niet aan.</span>
-            <span>Het verschil zit in wie je bent. Daar start onze coaching.</span>
+            <span>Daar waar je jezelf in de weg zit. Daar start onze coaching.</span>
           </p>
         </header>
 

@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, KennismakingSteps, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import { BookButton, CloseStamp, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   MAW_AFSLUITER,
   MAW_ANDERS,
@@ -49,7 +49,7 @@ export default function MomentumAtWerkPage() {
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
-              <HeroTitle word={MAW_HERO.word} breakBefore="@" />
+              <HeroTitle word={MAW_HERO.word} breakBefore="@" centerSecondLine />
               <p className={styles.heroLine}>{MAW_HERO.line}</p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function MomentumAtWerkPage() {
           {MAW_INTRO.scenes.map((line) => (
             <li key={line}>
               {line}
-              <span className={styles.dot}>.</span>
+              {/[.!?]["”']?$/.test(line) ? null : <span className={styles.dot}>.</span>}
             </li>
           ))}
         </ul>
@@ -70,13 +70,10 @@ export default function MomentumAtWerkPage() {
             <p key={paragraph}>{paragraph}</p>
           ))}
           <p>
-            <strong>{MAW_INTRO.proseStrong}</strong> {MAW_INTRO.proseAfterStrong}
+            {MAW_INTRO.proseStrong} {MAW_INTRO.proseAfterStrong}
           </p>
         </div>
-        <p className={styles.close}>
-          <span>{MAW_INTRO.close}</span>
-          <span className={styles.closeAccent}>{MAW_INTRO.closeAccent}</span>
-        </p>
+        <CloseStamp lines={MAW_INTRO.close} />
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -98,14 +95,11 @@ export default function MomentumAtWerkPage() {
               <div className={styles.prose}>
                 {MAW_WIE.map((item) => (
                   <p key={item.strong}>
-                    <strong>{item.strong}</strong> {item.text}
+                    {item.strong} {item.text}
                   </p>
                 ))}
               </div>
-              <p className={`${styles.close} ${styles.closeTight}`}>
-                <span>{MAW_WIE_CLOSE.text}</span>
-                <span className={styles.closeAccent}>{MAW_WIE_CLOSE.accent}</span>
-              </p>
+              <p className={styles.afsluiter}>{MAW_WIE_CLOSE}</p>
             </>
           }
           aside={
@@ -137,6 +131,7 @@ export default function MomentumAtWerkPage() {
         name={MAW_QUOTE.name}
         role={MAW_QUOTE.role}
         portrait
+        matchText
         label="Citaat"
       />
 
@@ -151,12 +146,9 @@ export default function MomentumAtWerkPage() {
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className={styles.note}>{MAW_TERUG.note}</p>
+          <p className={styles.listClose}>{MAW_TERUG.note}</p>
         </div>
-        <p className={`${styles.close} ${styles.closeTight}`}>
-          <span>{MAW_TERUG.close}</span>
-          <span className={styles.closeAccent}>{MAW_TERUG.closeAccent}</span>
-        </p>
+        <p className={styles.afsluiter}>{MAW_TERUG.close}</p>
       </Section>
 
       <Section number={num()} title="Praktisch" tone={praktischTone}>
@@ -189,7 +181,15 @@ export default function MomentumAtWerkPage() {
         <div className={styles.prose}>
           <p>{MAW_SLOT}</p>
         </div>
-        <KennismakingSteps steps={MAW_VERLOOP} note={MAW_VERLOOP_NOTE} />
+        <div className={`${styles.group} ${styles.stepsCard}`}>
+          <h3 className={styles.h3}>Na de kennismaking</h3>
+          <ol className={`${styles.list} ${styles.steps} ${styles.stepsStack}`}>
+            {MAW_VERLOOP.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+          <p className={styles.groupClose}>{MAW_VERLOOP_NOTE}</p>
+        </div>
         <BookButton className={styles.buttonSlot} />
       </Section>
 

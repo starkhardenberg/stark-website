@@ -14,7 +14,7 @@
 
 .question {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   width: 100%;
@@ -26,17 +26,10 @@
   cursor: pointer;
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
-  font-size: var(--stark-body);
-  line-height: 1.4;
+  font-size: clamp(21px, 2.15vw, 24px);
+  line-height: 1.35;
   color: var(--off);
   transition: color 0.15s ease;
-}
-
-@media (hover: hover) {
-  .question:hover,
-  .question:hover .indicator {
-    color: var(--orange);
-  }
 }
 
 .question:focus-visible {
@@ -65,13 +58,14 @@
 }
 
 .indicator {
-  flex-shrink: 0;
+  flex: 0 0 auto;
   display: inline-block;
-  width: 1.15em;
+  width: 1.35em;
   font-family: var(--font-body), sans-serif;
-  font-size: 22px;
+  font-size: 34px;
   font-weight: 700;
   line-height: 1;
+  text-align: center;
   color: var(--off);
   transform: rotate(0deg);
   transform-origin: center;
@@ -100,8 +94,8 @@
   margin: 0;
   padding: 0 0 20px;
   font-family: var(--font-body), sans-serif;
-  font-size: var(--stark-body);
-  line-height: 1.65;
+  font-size: clamp(18px, 1.9vw, 21px);
+  line-height: 1.6;
   color: rgba(245, 245, 245, 0.7);
 }
 
@@ -133,25 +127,22 @@
 }
 
 .listLight .question {
-  align-items: center;
-  padding: 26px 0;
-  font-weight: 400;
   color: var(--stark-black);
 }
 
-.listLight .questionText {
+/* Landingspagina's: Bronz. Diensten houden de grotere Barlow-vragen, ook op een lichte band. */
+.listLanding .question {
+  align-items: center;
+  padding: 26px 0;
+  font-weight: 400;
+}
+
+.listLanding .questionText {
   font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.15;
   letter-spacing: var(--display-tracking);
-}
-
-@media (hover: hover) {
-  .listLight .question:hover,
-  .listLight .question:hover .indicator {
-    color: var(--orange);
-  }
 }
 
 .listLight .question:focus-visible {
@@ -174,9 +165,11 @@
 }
 
 .listLight .indicator {
-  font-size: 24px;
-  font-weight: 600;
   color: var(--stark-black);
+}
+
+.listLanding .indicator {
+  font-size: 32px;
 }
 
 .listLight .itemOpen .indicator {
@@ -185,9 +178,12 @@
 
 .listLight .answer {
   padding-bottom: 22px;
+  color: rgba(33, 36, 49, 0.62);
+}
+
+.listLanding .answer {
   font-size: var(--stark-body);
   line-height: 1.7;
-  color: rgba(33, 36, 49, 0.62);
 }
 
 .listLight .answer a {
@@ -199,6 +195,26 @@
 .listLight .answer a:hover {
   color: var(--orange);
   text-decoration-color: var(--orange);
+}
+
+/* Eén vraag oranje: de open vraag, of de vraag onder de cursor. Nooit allebei. */
+@media (hover: hover) {
+  .list:hover .itemOpen:not(:hover) .question,
+  .list:hover .itemOpen:not(:hover) .indicator {
+    color: var(--off);
+  }
+
+  .listLight:hover .itemOpen:not(:hover) .question,
+  .listLight:hover .itemOpen:not(:hover) .indicator {
+    color: var(--stark-black);
+  }
+
+  .question:hover,
+  .question:hover .indicator,
+  .listLight .question:hover,
+  .listLight .question:hover .indicator {
+    color: var(--orange);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

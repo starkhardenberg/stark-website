@@ -11,10 +11,7 @@ import CoachingStartSection from '@/components/coaching/CoachingStartSection'
 import CoachingMethodSection from '@/components/coaching/CoachingMethodSection'
 import { coachingTracks } from '@/components/coaching/coaching-tracks'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
-import {
-  getCoachingPageCarouselTestimonials,
-  heroQuoteRebekka,
-} from '@/components/testimonials/testimonials-data'
+import { heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -70,12 +67,7 @@ export default function CoachingPage() {
         <CoachingStartSection />
       </section>
 
-      <TestimonialsSection
-        hero={heroQuoteRebekka}
-        items={getCoachingPageCarouselTestimonials()}
-        narrow
-        unifiedDark
-      />
+      <TestimonialsSection hero={heroQuoteRebekka} items={[]} narrow unifiedDark />
 
       <section className={`${styles.faqSection} ${styles.faqSectionLight}`}>
         <header className={styles.sectionQuoteHead}>
@@ -87,7 +79,7 @@ export default function CoachingPage() {
           </p>
         </header>
         <div className={styles.faqInner}>
-          <FaqList items={coachingFaq} tone="light" />
+          <FaqList items={coachingFaq} tone="light" variant="landing" />
           <FaqJsonLd items={coachingFaq} />
         </div>
       </section>

@@ -4,7 +4,9 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import { BookButton, CloseStamp, Section, SplitAside, createPageRhythm } from './DienstParts'
+import DienstQuoteRoster from './DienstQuoteRoster'
+import { impactPeople } from '@/components/testimonials/portrait-quotes'
 import {
   IMPACT_AFSLUITER,
   IMPACT_ANDERS,
@@ -14,7 +16,6 @@ import {
   IMPACT_HERO,
   IMPACT_INTRO,
   IMPACT_PARTS,
-  IMPACT_QUOTE,
   IMPACT_SCHEDULE,
   IMPACT_SCHEDULE_NOTE,
   IMPACT_SLOT,
@@ -68,13 +69,10 @@ export default function ImpactPage() {
             <p key={paragraph}>{paragraph}</p>
           ))}
           <p>
-            <strong>{IMPACT_INTRO.proseStrong}</strong> {IMPACT_INTRO.proseAfterStrong}
+            {IMPACT_INTRO.proseStrong} {IMPACT_INTRO.proseAfterStrong}
           </p>
         </div>
-        <p className={styles.close}>
-          <span>{IMPACT_INTRO.close}</span>
-          <span className={styles.closeAccent}>{IMPACT_INTRO.closeAccent}</span>
-        </p>
+        <p className={styles.afsluiter}>{IMPACT_INTRO.close}</p>
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -89,21 +87,18 @@ export default function ImpactPage() {
         <p className={styles.afsluiter}>{IMPACT_AFSLUITER}</p>
       </Section>
 
-      <Section number={num()} title="Eerlijk is eerlijk" tone={eerlijkTone}>
+      <Section number={num()} title="Wat we van je vragen" tone={eerlijkTone}>
         <SplitAside
           main={
             <>
               <div className={styles.prose}>
                 {IMPACT_EERLIJK.map((item) => (
                   <p key={item.strong}>
-                    <strong>{item.strong}</strong> {item.text}
+                    {item.strong} {item.text}
                   </p>
                 ))}
               </div>
-              <p className={`${styles.close} ${styles.closeTight}`}>
-                <span>{IMPACT_EERLIJK_CLOSE.text}</span>
-                <span className={styles.closeAccent}>{IMPACT_EERLIJK_CLOSE.accent}</span>
-              </p>
+              <CloseStamp lines={IMPACT_EERLIJK_CLOSE} />
             </>
           }
           aside={
@@ -127,14 +122,7 @@ export default function ImpactPage() {
         />
       </Section>
 
-      <QuoteBlock
-        tone={quoteTone}
-        image={IMPACT_QUOTE.image}
-        alt={IMPACT_QUOTE.alt}
-        text={IMPACT_QUOTE.text}
-        name={IMPACT_QUOTE.name}
-        role={IMPACT_QUOTE.role}
-      />
+      <DienstQuoteRoster tone={quoteTone} people={impactPeople} />
 
       <Section number={num()} title="Praktisch" tone={praktischTone}>
         <div className={styles.groups}>
@@ -147,7 +135,7 @@ export default function ImpactPage() {
                 </li>
               ))}
             </ul>
-            <p className={styles.note}>{IMPACT_SCHEDULE_NOTE}</p>
+            <p className={styles.groupClose}>{IMPACT_SCHEDULE_NOTE}</p>
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Starten</h3>
@@ -156,7 +144,7 @@ export default function ImpactPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className={styles.note}>{IMPACT_START_NOTE}</p>
+            <p className={styles.groupClose}>{IMPACT_START_NOTE}</p>
           </div>
         </div>
         <BookButton className={styles.buttonTiles} />

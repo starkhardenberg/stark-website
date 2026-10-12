@@ -81,26 +81,15 @@ export default function ZakelijkPage() {
 
           <div className={`${quoteStyles.inner} ${pageStyles.introInner} ${pageStyles.introAlignStart}`}>
             <div className={quoteStyles.body}>
-              {ZAKELIJK_INTRO.prose.map((paragraph) => (
-                <p key={paragraph} className={pageStyles.introGraf}>
-                  {paragraph}
+              <p className={pageStyles.introGraf}>{ZAKELIJK_INTRO.opener}</p>
+              {ZAKELIJK_INTRO.scenes.map((scene) => (
+                <p key={scene} className={pageStyles.introGraf}>
+                  {scene}
                 </p>
               ))}
+              <p className={`${pageStyles.introGraf} ${pageStyles.introAfter}`}>{ZAKELIJK_INTRO.after}</p>
             </div>
           </div>
-
-          <ol className={`${introStyles.regels} ${pageStyles.introRegels} ${pageStyles.introAlignStart}`}>
-            {ZAKELIJK_INTRO.beats.map((beat) => (
-              <li key={beat.id} className={introStyles.regel}>
-                <span className={introStyles.regelNum} aria-hidden>
-                  {beat.id}
-                </span>
-                <div className={introStyles.regelCopy}>
-                  <p className={introStyles.regelLead}>{beat.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
 
           <div className={pageStyles.introCloseFlush}>
             <IntroClose
@@ -150,7 +139,7 @@ export default function ZakelijkPage() {
         aria-label={`${ZAKELIJK_INGANGEN.titleLine1}, ${ZAKELIJK_INGANGEN.titleLine2}`}
       >
         <h2
-          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${aanbodStyles.sectionTitleCentered} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionIntroCentered}`}
+          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${pageStyles.ingangTitle}`}
         >
           <span className={aanbodStyles.titleLine}>{ZAKELIJK_INGANGEN.titleLine1}</span>
           <span className={aanbodStyles.titleLine}>{ZAKELIJK_INGANGEN.titleLine2}</span>

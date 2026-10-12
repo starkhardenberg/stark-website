@@ -12,13 +12,20 @@ export type FaqItem = {
 
 type FaqListProps = {
   items: readonly FaqItem[]
-  /** Standaard donker (landingspagina's). Light = off-achtergrond. */
+  /** Light = tekst op een lichte band. Dark = tekst op een donkere band. */
   tone?: 'dark' | 'light'
+  /** Landing = Bronz. Dienst = de grotere Barlow-vragen. */
+  variant?: 'landing' | 'dienst'
   /** Index die bij laden open staat. Standaard alles dicht. */
   initialOpen?: number | null
 }
 
-export default function FaqList({ items, tone = 'dark', initialOpen = null }: FaqListProps) {
+export default function FaqList({
+  items,
+  tone = 'dark',
+  variant = 'dienst',
+  initialOpen = null,
+}: FaqListProps) {
   const baseId = useId()
   const [openIndex, setOpenIndex] = useState<number | null>(initialOpen)
 
@@ -27,7 +34,11 @@ export default function FaqList({ items, tone = 'dark', initialOpen = null }: Fa
   }
 
   return (
-    <div className={`${styles.list}${tone === 'light' ? ` ${styles.listLight}` : ''}`}>
+    <div
+      className={`${styles.list}${tone === 'light' ? ` ${styles.listLight}` : ''}${
+        variant === 'landing' ? ` ${styles.listLanding}` : ''
+      }`}
+    >
       {items.map((item, index) => {
         const isOpen = openIndex === index
         const answerId = `${baseId}-answer-${index}`

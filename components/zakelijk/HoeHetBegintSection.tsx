@@ -19,25 +19,31 @@ export default function HoeHetBegintSection() {
 
         <div className={`${quoteStyles.inner} ${pageStyles.introInner}`}>
           <div className={quoteStyles.body}>
-            {ZAKELIJK_START.prose.map((paragraph) => (
-              <p key={paragraph} className={pageStyles.introGraf}>
-                {paragraph}
-              </p>
-            ))}
+            <p className={pageStyles.introGraf}>{ZAKELIJK_START.lead}</p>
+            <ul className={pageStyles.startPoints}>
+              {ZAKELIJK_START.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+              <li>{ZAKELIJK_START.practical}</li>
+            </ul>
+            <p className={pageStyles.introGraf}>
+              {ZAKELIJK_START.gesprekBefore}
+              <a
+                href={ZAKELIJK_START.kennismakingHref}
+                className={pageStyles.startGesprekLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ZAKELIJK_START.gesprekLink}
+              </a>
+              {ZAKELIJK_START.gesprekAfter}
+            </p>
             <p className={pageStyles.startHighlight}>{ZAKELIJK_START.highlight}</p>
           </div>
           <div className={`${introStyles.ctaRow} ${STARK_CTA_ROW} ${pageStyles.startCta}`}>
             <a
-              href={ZAKELIJK_START.kennismaking.href}
-              className={`${introStyles.cta} ${introStyles.ctaFilled} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {ZAKELIJK_START.kennismaking.label}
-            </a>
-            <a
               href={ZAKELIJK_START.proef.href}
-              className={`${introStyles.cta} ${STARK_CTA} ${pageStyles.startCtaOutline}`}
+              className={`${introStyles.cta} ${introStyles.ctaFilled} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
               target="_blank"
               rel="noopener noreferrer"
             >

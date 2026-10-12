@@ -6,7 +6,7 @@
  * Teksten hier aanpassen, niet in de opmaak.
  */
 
-import { BOOKINGS_URL } from '@/components/dienst/momentum'
+import { L1O1_PROEF, L1O1_SLOT } from '@/components/dienst/leiderschap-1-op-1'
 
 export const ZAKELIJK_META = {
   title: 'Leiderschap en teamcoaching in Hardenberg | Zakelijk | STARK!',
@@ -17,7 +17,7 @@ export const ZAKELIJK_META = {
 export const ZAKELIJK_HERO = {
   lead: 'Sterker in lijf',
   punch: 'en werk',
-  sub: 'Begint bij ons',
+  sub: 'Dat levert tijd,\u00A0geld\u00A0en\u00A0energie',
 }
 
 /* ---------- intro ---------- */
@@ -27,18 +27,15 @@ export const ZAKELIJK_INTRO = {
   titleLine1: 'Vitaliteit begint niet',
   titleMark: 'niet',
   titleLine2: 'bij de medewerker',
-  prose: [
-    'Vitaliteit is in veel bedrijven een sportabonnement, een workshop of een cursus stressmanagement. Wij beginnen een laag lager: bij hoe het werk loopt. Daar zit wat mensen energie geeft, of energie kost.',
-    'Hoe het werk loopt, zie je terug in tijd, geld en energie. Van iedereen, elke dag.',
-    'Dat begint bij hoe er wordt geleid en samengewerkt. Precies daar werken wij, met de eigenaar, het MT en de teamleiders. Mensen die verantwoordelijk zijn voor anderen en daar sterker in willen worden.',
-    'Is de leiding op orde, dan landt ook het aanbod om je mensen sterker en fitter te maken.',
+  opener:
+    'Vitaliteit is in veel bedrijven een sportabonnement, een workshop of een cursus stressmanagement. Wij beginnen een laag lager, bij hoe het werk loopt:',
+  scenes: [
+    'Maandagochtend, half negen. Je loopt binnen. De planning staat. Je teamleider heeft de twee open vragen van vrijdag al beantwoord, en zegt het als je koffie haalt.',
+    'Om tien uur zit je met je MT. Een afspraak die niet gehaald is, wordt genoemd, en er ligt meteen een nieuwe. Er wordt gelachen. Om elf uur ben je klaar. De rest van de ochtend is voor de klant die je al drie weken wilt bellen.',
+    'Woensdag ben je een dag weg. Je telefoon blijft rustig.',
   ],
-  beats: [
-    { id: '01', text: 'Afspraken die worden nagekomen.' },
-    { id: '02', text: 'Werk dat in één keer goed gaat.' },
-    { id: '03', text: 'Mensen die zelf besluiten nemen.' },
-    { id: '04', text: 'Weten waar je aan toe bent.' },
-  ],
+  after:
+    'Dat begint bij hoe er wordt geleid en samengewerkt. Precies daar werken wij, met de eigenaar, het MT, de teamleiders en het kantoor.',
   closeLine1: 'Het regent van boven naar beneden',
   closeLine2: 'Dus beginnen we bij jou, niet andersom',
 }
@@ -83,15 +80,17 @@ export const ZAKELIJK_INGANGEN = {
 /* ---------- hoe het begint ---------- */
 
 export const ZAKELIJK_START = {
-  title: 'Hoe het begint',
-  prose: [
-    'Een kennismakingsgesprek van een uur. Bij ons of bij jou op de zaak, kosteloos en vrijblijvend.',
-    'In het gesprek maken we samen zichtbaar wat het effect is van hoe het nu loopt.',
-    'Of kom een keer meedoen. De Proef op de Som is een middag met mensen die in hun werk iets te trekken hebben: eigenaren, directeuren, MT-leden, teamleiders. Je maakt mee hoe we werken, met coaching en training, precies zoals in een traject.',
-  ],
-  highlight: 'Donderdag 5 november, van 15.00 tot 18.00 uur. Inclusief soep en broodjes. Kosteloos.',
-  kennismaking: { label: 'Plan je kennismaking', href: BOOKINGS_URL },
+  title: 'Zo begin je',
+  lead: L1O1_PROEF.lead,
+  points: L1O1_PROEF.points,
+  highlight: L1O1_PROEF.date,
+  practical:
+    'Kom in kleding waarin je kunt bewegen. Iedereen kan meedoen, ongeacht hoe fit of sterk je bent. Neem je MT of je teamleiders mee.',
+  gesprekBefore: L1O1_SLOT.before,
+  gesprekLink: L1O1_SLOT.link,
+  gesprekAfter: L1O1_SLOT.rest,
   proef: { label: 'Meld je aan voor de Proef op de Som', href: 'https://proefopdesom.starkhardenberg.nl' },
+  kennismakingHref: L1O1_SLOT.href,
 }
 
 /* ---------- footer ---------- */
