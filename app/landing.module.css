@@ -1119,6 +1119,20 @@
 }
 
 @media (max-width: 899px) {
+  .heroContent {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .heroTitle,
+  .heroTitleCompact {
+    font-size: clamp(62px, calc((100vw - 88px) / 4.2), 84px);
+  }
+
+  .heroCoaching .heroContentLower {
+    padding-top: clamp(112px, 18vh, 160px);
+  }
+
   .introCta {
     text-transform: none;
   }

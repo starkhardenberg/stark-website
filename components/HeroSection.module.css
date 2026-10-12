@@ -91,6 +91,17 @@
   color: var(--off);
 }
 
+@media (max-width: 899px) {
+  .stage {
+    align-items: flex-end;
+    padding: 132px 32px 40px;
+  }
+
+  .headline {
+    font-size: clamp(62px, calc((100vw - 88px) / 4.2), 84px);
+  }
+}
+
 .line {
   display: block;
 }

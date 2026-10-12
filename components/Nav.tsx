@@ -67,6 +67,7 @@ export default function Nav({
   const [mounted, setMounted] = useState(false)
   const [zakelijkOpen, setZakelijkOpen] = useState(false)
   const zakelijkRef = useRef<HTMLLIElement>(null)
+  const mobileMenuRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -80,9 +81,10 @@ export default function Nav({
   useEffect(() => {
     if (!zakelijkOpen) return
     function onPointerDown(event: PointerEvent) {
-      if (!zakelijkRef.current?.contains(event.target as Node)) {
-        setZakelijkOpen(false)
-      }
+      const target = event.target as Node
+      if (zakelijkRef.current?.contains(target)) return
+      if (mobileMenuRef.current?.contains(target)) return
+      setZakelijkOpen(false)
     }
     function onKey(event: KeyboardEvent) {
       if (event.key === 'Escape') setZakelijkOpen(false)
@@ -128,16 +130,22 @@ export default function Nav({
 
   const showBack = pathname !== backHref
 
+  function closeMenuIfHere(href: string) {
+    const path = href.split(/[?#]/)[0]
+    if (pathname === path) setOpen(false)
+  }
+
   const mobileMenu =
     open && mounted
       ? createPortal(
           <nav
+            ref={mobileMenuRef}
             className={`${styles.mobileMenu}${compact ? ` ${styles.mobileMenuCompact}` : ''}`}
             aria-label="Mobiel menu"
           >
             <div className={styles.mobileMenuLinks}>
               {showBack ? (
-                <a href={backHref} className={styles.mobileNavBack} onClick={() => setOpen(false)}>
+                <a href={backHref} className={styles.mobileNavBack} onClick={() => closeMenuIfHere(backHref)}>
                   <span aria-hidden>←</span> {backLabel}
                 </a>
               ) : null}
@@ -164,7 +172,7 @@ export default function Nav({
                                   ? ` ${styles.mobileTabActive}`
                                   : ''
                               }`}
-                              onClick={() => setOpen(false)}
+                              onClick={() => closeMenuIfHere(child.href)}
                             >
                               {child.label}
                             </a>
@@ -180,7 +188,7 @@ export default function Nav({
                     href={tab.href}
                     className={active ? styles.mobileTabActive : undefined}
                     aria-current={active ? 'page' : undefined}
-                    onClick={() => setOpen(false)}
+                    onClick={() => closeMenuIfHere(tab.href)}
                   >
                     {tab.label}
                   </a>
@@ -189,7 +197,7 @@ export default function Nav({
             </div>
             {hideCta ? null : (
               <div className={styles.mobileMenuFoot}>
-                <a href={ctaHref} className={`${styles.mobileCta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} onClick={() => setOpen(false)}>
+                <a href={ctaHref} className={`${styles.mobileCta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} onClick={() => closeMenuIfHere(ctaHref)}>
                   {ctaLabel}
                 </a>
               </div>
