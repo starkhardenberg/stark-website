@@ -15,7 +15,7 @@ export const trainenGroupTracks: AanbodTrack[] = [
     menu: [
       {
         label: 'Voor wie',
-        text: 'Volwassenen vanaf 16 jaar. Beginner, al langer bezig, of ergens daartussen: je traint op eigen niveau in een vaste groep.',
+        text: 'Volwassenen vanaf 16 jaar. Sta je op nul, dan begin je daar. Ben je al fit en sterk, ook dan maken we het uitdagend voor je. Iedereen traint op zijn eigen niveau.',
       },
       {
         label: 'Doel',

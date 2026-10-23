@@ -399,12 +399,10 @@
   padding-right: clamp(24px, 6vw, 76px);
 }
 
-/* Zelfde linkerlijn als introRoom + workSpine op de ondernemerspagina. */
+/* Zelfde zijrand als de tekstblokken op de ondernemerspagina. */
 .innerHeroSpine {
-  padding-left: calc(
-    clamp(22px, 4vw, 64px) + clamp(28px, 3.2vw, 48px) + clamp(22px, 4vw, 64px) +
-      clamp(18px, 3vw, 28px)
-  );
+  padding-left: clamp(22px, 4vw, 64px);
+  padding-right: clamp(22px, 4vw, 64px);
 }
 
 @media (prefers-reduced-motion: reduce) {

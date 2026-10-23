@@ -1,6 +1,9 @@
 import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import FaqList from '@/components/faq/FaqList'
+import FaqJsonLd from '@/components/FaqJsonLd'
+import { Section } from '@/components/dienst/DienstParts'
 import AanbodFeatureCard from '@/components/aanbod/AanbodFeatureCard'
 import aanbodStyles from '@/components/AanbodSection.module.css'
 import quoteStyles from '@/components/ContentQuoteBlock.module.css'
@@ -11,15 +14,18 @@ import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { heroQuotePatrick } from '@/components/testimonials/testimonials-data'
 import IntroClose from '@/components/IntroClose'
 import {
+  ZAKELIJK_FAQ,
   ZAKELIJK_FOOTER,
   ZAKELIJK_HERO,
   ZAKELIJK_INGANGEN,
   ZAKELIJK_INTRO,
+  ZAKELIJK_JUMPS,
   ZAKELIJK_META,
   ZAKELIJK_WERK,
 } from '@/components/zakelijk/zakelijk-landing'
 import { pageMetadata } from '@/lib/open-graph'
 import pageStyles from '@/components/zakelijk/ZakelijkOndernemersPage.module.css'
+import dienstStyles from '@/components/dienst/DienstPage.module.css'
 import styles from '../landing.module.css'
 
 export const metadata = pageMetadata('zakelijk', ZAKELIJK_META.title, ZAKELIJK_META.description)
@@ -37,10 +43,9 @@ function LineWithMark({ line, mark }: { line: string; mark: string }) {
 }
 
 export default function ZakelijkPage() {
-  const { volgorde } = ZAKELIJK_INGANGEN
-
   return (
     <main className={styles.main}>
+      <FaqJsonLd items={ZAKELIJK_FAQ} />
       <section className={`${styles.hero} ${styles.heroCoaching} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage
@@ -56,6 +61,7 @@ export default function ZakelijkPage() {
         <Nav deep />
         <div className={`${styles.heroContent} ${styles.heroContentLower}`}>
           <span className={styles.heroSlash} />
+          <p className={styles.heroLabel}>{ZAKELIJK_HERO.label}</p>
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>
             <span className={styles.heroLead}>{ZAKELIJK_HERO.lead}</span>{' '}
             <span className={styles.heroPunch}>{ZAKELIJK_HERO.punch}</span>
@@ -64,6 +70,21 @@ export default function ZakelijkPage() {
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
+
+      <nav className={pageStyles.jumps} aria-label="Snel naar">
+        <p className={pageStyles.jumpsRow}>
+          {ZAKELIJK_JUMPS.map((item, index) => (
+            <span key={item.href} className={pageStyles.jumpItem}>
+              {index > 0 ? (
+                <span className={pageStyles.jumpDot} aria-hidden="true">
+                  ·
+                </span>
+              ) : null}
+              <a href={item.href}>{item.label}</a>
+            </span>
+          ))}
+        </p>
+      </nav>
 
       <section
         className={`${quoteStyles.section} ${quoteStyles.sectionLight} ${pageStyles.introRoom} ${pageStyles.introPad}`}
@@ -81,6 +102,7 @@ export default function ZakelijkPage() {
 
           <div className={`${quoteStyles.inner} ${pageStyles.introInner} ${pageStyles.introAlignStart}`}>
             <div className={quoteStyles.body}>
+              <p className={pageStyles.introGraf}>{ZAKELIJK_INTRO.purpose}</p>
               <p className={pageStyles.introGraf}>{ZAKELIJK_INTRO.opener}</p>
               {ZAKELIJK_INTRO.scenes.map((scene) => (
                 <p key={scene} className={pageStyles.introGraf}>
@@ -101,6 +123,16 @@ export default function ZakelijkPage() {
               line2={ZAKELIJK_INTRO.closeLine2}
             />
           </div>
+
+          <div className={`${quoteStyles.inner} ${pageStyles.introInner} ${pageStyles.introAlignStart}`}>
+            <div className={quoteStyles.body}>
+              {ZAKELIJK_INTRO.close.map((paragraph) => (
+                <p key={paragraph} className={pageStyles.introGraf}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -117,12 +149,20 @@ export default function ZakelijkPage() {
 
           <div className={`${quoteStyles.inner} ${pageStyles.introInner}`}>
             <p className={pageStyles.workLead}>{ZAKELIJK_WERK.lead}</p>
+            <p className={`${styles.heroLabel} ${pageStyles.workSteps}`}>
+              {ZAKELIJK_WERK.beats.map((beat) => beat.label).join(' · ')}
+            </p>
 
             <div className={pageStyles.workBeats}>
               {ZAKELIJK_WERK.beats.map((beat) => (
                 <article key={beat.title} className={pageStyles.workBeat}>
+                  <p className={styles.heroLabel}>{beat.label}</p>
                   <h3 className={pageStyles.workBeatTitle}>{beat.title}</h3>
-                  <p className={pageStyles.introGraf}>{beat.text}</p>
+                  {(Array.isArray(beat.text) ? beat.text : [beat.text]).map((paragraph) => (
+                    <p key={paragraph} className={pageStyles.introGraf}>
+                      {paragraph}
+                    </p>
+                  ))}
                   <p className={pageStyles.introGraf}>
                     <span className={pageStyles.workMark}>{beat.mark}</span>
                   </p>
@@ -135,7 +175,7 @@ export default function ZakelijkPage() {
 
       <section
         id="ingangen"
-        className={`${styles.section} ${styles.sectionLight}`}
+        className={`${styles.section} ${styles.sectionLight} ${pageStyles.ingangen}`}
         aria-label={`${ZAKELIJK_INGANGEN.titleLine1}, ${ZAKELIJK_INGANGEN.titleLine2}`}
       >
         <h2
@@ -144,19 +184,18 @@ export default function ZakelijkPage() {
           <span className={aanbodStyles.titleLine}>{ZAKELIJK_INGANGEN.titleLine1}</span>
           <span className={aanbodStyles.titleLine}>{ZAKELIJK_INGANGEN.titleLine2}</span>
         </h2>
-        <div className={`${aanbodStyles.cardsAndCta} ${aanbodStyles.cardsAndCtaCentered}`}>
-          {zakelijkSoloRoutes
-            .filter((track) => track.id !== 'momentum-at-werk')
-            .map((track) => (
-              <AanbodFeatureCard key={track.id} track={track} />
-            ))}
+        <div className={`${aanbodStyles.cardsAndCta} ${aanbodStyles.cardsAndCtaCentered} ${pageStyles.ingangGrid}`}>
+          {zakelijkSoloRoutes.map((track) => (
+            <AanbodFeatureCard key={track.id} track={track} />
+          ))}
         </div>
-        <p className={pageStyles.ingangVolgorde}>
-          {volgorde.before}
-          <a href={volgorde.link[1]}>{volgorde.link[0]}</a>
-          {volgorde.after}
-        </p>
       </section>
+
+      <div className={dienstStyles.page}>
+        <Section number="05" title="Goede vragen" tone="light">
+          <FaqList tone="light" items={ZAKELIJK_FAQ} />
+        </Section>
+      </div>
 
       <HoeHetBegintSection />
 

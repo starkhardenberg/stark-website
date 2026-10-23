@@ -1,21 +1,16 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePathname } from 'next/navigation'
 import { CTA_KENNISMAKING_LABEL, hrefContactAlgemeen, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_NAV, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './Nav.module.css'
 
-const ZAKELIJK_LINKS = [
-  { label: 'Ondernemers', href: '/zakelijk' },
-  { label: 'Medewerkers', href: '/zakelijk/duurzame-inzetbaarheid' },
-] as const
-
 const NAV_TABS = [
   { id: 'trainen', label: 'Training', href: '/trainen' },
   { id: 'coaching', label: 'Coaching', href: '/coaching' },
-  { id: 'zakelijk', label: 'Zakelijk', children: ZAKELIJK_LINKS },
+  { id: 'zakelijk', label: 'Zakelijk', href: '/zakelijk' },
   { id: 'team', label: 'Wie wij zijn', href: '/team' },
   { id: 'contact', label: 'Contact', href: hrefContactAlgemeen, isContact: true },
 ] as const
@@ -35,7 +30,6 @@ export default function Nav({
   compact = false,
   hideBurger = false,
   hideTabs = false,
-  textMenu = false,
   backHref = '/',
   backLabel = 'Home',
   align = 'end',
@@ -47,9 +41,8 @@ export default function Nav({
   variant?: 'dark' | 'light'
   compact?: boolean
   hideBurger?: boolean
-  /** Verberg de desktop-tabrij (subpagina's: Home + CTA + burger blijven) */
+  /** Verberg de desktop-tabrij (subpagina's: teruglink + CTA + Menu blijven) */
   hideTabs?: boolean
-  textMenu?: boolean
   backHref?: string
   backLabel?: string
   /** end = CTA/menu rechts (standaard); start = links */
@@ -65,9 +58,6 @@ export default function Nav({
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const [zakelijkOpen, setZakelijkOpen] = useState(false)
-  const zakelijkRef = useRef<HTMLLIElement>(null)
-  const mobileMenuRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -75,31 +65,7 @@ export default function Nav({
 
   useEffect(() => {
     setOpen(false)
-    setZakelijkOpen(false)
   }, [pathname])
-
-  useEffect(() => {
-    if (!zakelijkOpen) return
-    function onPointerDown(event: PointerEvent) {
-      const target = event.target as Node
-      if (zakelijkRef.current?.contains(target)) return
-      if (mobileMenuRef.current?.contains(target)) return
-      setZakelijkOpen(false)
-    }
-    function onKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') setZakelijkOpen(false)
-    }
-    document.addEventListener('pointerdown', onPointerDown)
-    document.addEventListener('keydown', onKey)
-    return () => {
-      document.removeEventListener('pointerdown', onPointerDown)
-      document.removeEventListener('keydown', onKey)
-    }
-  }, [zakelijkOpen])
-
-  useEffect(() => {
-    if (!open) setZakelijkOpen(false)
-  }, [open])
 
   useEffect(() => {
     if (!open) {
@@ -139,7 +105,6 @@ export default function Nav({
     open && mounted
       ? createPortal(
           <nav
-            ref={mobileMenuRef}
             className={`${styles.mobileMenu}${compact ? ` ${styles.mobileMenuCompact}` : ''}`}
             aria-label="Mobiel menu"
           >
@@ -151,37 +116,6 @@ export default function Nav({
               ) : null}
               {NAV_TABS.map((tab) => {
                 const active = isTabActive(tab)
-                if ('children' in tab && tab.children) {
-                  return (
-                    <div key={tab.id} className={styles.mobileSub}>
-                      <button
-                        type="button"
-                        className={`${styles.mobileParent}${active ? ` ${styles.mobileTabActive}` : ''}`}
-                        aria-expanded={zakelijkOpen}
-                        onClick={() => setZakelijkOpen((value) => !value)}
-                      >
-                        {tab.label}
-                      </button>
-                      {zakelijkOpen
-                        ? tab.children.map((child) => (
-                            <a
-                              key={child.href}
-                              href={child.href}
-                              className={`${styles.mobileChild}${
-                                pathname === child.href || pathname.startsWith(`${child.href}/`)
-                                  ? ` ${styles.mobileTabActive}`
-                                  : ''
-                              }`}
-                              onClick={() => closeMenuIfHere(child.href)}
-                            >
-                              {child.label}
-                            </a>
-                          ))
-                        : null}
-                    </div>
-                  )
-                }
-                if (!('href' in tab)) return null
                 return (
                   <a
                     key={tab.id}
@@ -231,45 +165,6 @@ export default function Nav({
                   <ul className={styles.tabList}>
                     {NAV_TABS.map((tab) => {
                       const active = isTabActive(tab)
-                      if ('children' in tab && tab.children) {
-                        return (
-                          <li
-                            key={tab.id}
-                            ref={zakelijkRef}
-                            className={`${active ? styles.tabItemActive : styles.tabItem} ${styles.tabItemHasMenu}${
-                              zakelijkOpen ? ` ${styles.tabItemHasMenuOpen}` : ''
-                            }`}
-                          >
-                            <button
-                              type="button"
-                              className={styles.tabLink}
-                              aria-expanded={zakelijkOpen}
-                              aria-haspopup="true"
-                              onClick={() => setZakelijkOpen((value) => !value)}
-                            >
-                              {tab.label}
-                            </button>
-                            <ul className={styles.tabFlyout}>
-                              {tab.children.map((child) => (
-                                <li key={child.href}>
-                                  <a
-                                    href={child.href}
-                                    className={
-                                      pathname === child.href || pathname.startsWith(`${child.href}/`)
-                                        ? styles.tabFlyoutLinkCurrent
-                                        : styles.tabFlyoutLink
-                                    }
-                                    aria-current={pathname === child.href ? 'page' : undefined}
-                                  >
-                                    {child.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        )
-                      }
-                      if (!('href' in tab)) return null
                       return (
                         <li key={tab.id} className={active ? styles.tabItemActive : styles.tabItem}>
                           <a
@@ -288,26 +183,15 @@ export default function Nav({
             </>
           ) : null}
 
-          {textMenu ? (
+          {!hideBurger ? (
             <button
-              className={styles.menuText}
+              className={`${styles.menuText}${compact ? ` ${styles.menuTextAlways}` : ''}`}
               aria-label={open ? 'Menu sluiten' : 'Menu openen'}
               aria-expanded={open}
               onClick={() => setOpen(!open)}
               type="button"
             >
               {open ? 'Sluiten' : 'Menu'}
-            </button>
-          ) : !hideBurger ? (
-            <button
-              className={`${styles.burger}${compact ? ` ${styles.burgerAlways}` : ''}`}
-              aria-label={open ? 'Menu sluiten' : 'Menu openen'}
-              aria-expanded={open}
-              onClick={() => setOpen(!open)}
-              type="button"
-            >
-              <span className={open ? styles.barTopOpen : styles.barTop} />
-              <span className={open ? styles.barBotOpen : styles.barBot} />
             </button>
           ) : null}
         </div>

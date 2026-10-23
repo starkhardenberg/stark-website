@@ -34,22 +34,17 @@
   max-width: none;
 }
 
-/* Extra tab links; kolombreedte volgt de titel */
-.introRoom {
-  padding-left: calc(clamp(22px, 4vw, 64px) + clamp(28px, 3.2vw, 48px));
-}
-
 .introPad {
   padding-top: clamp(80px, 11vw, 124px);
 }
 
 .introMeasure {
   display: grid;
-  grid-template-columns: min-content;
+  grid-template-columns: minmax(0, 1fr);
   justify-content: start;
-  width: max-content;
-  max-width: 100%;
-  margin-left: calc(clamp(22px, 4vw, 64px) + clamp(18px, 3vw, 28px));
+  width: 100%;
+  max-width: 800px;
+  margin-left: 0;
 }
 
 .introMeasure .introHead {
@@ -102,6 +97,11 @@
   box-sizing: border-box;
 }
 
+/* De tweede slotregel is langer dan de kolom. Zelfde letter, maar hij mag breken. */
+.introMeasure .introCloseFlush span {
+  white-space: normal;
+}
+
 .introInner p.introGraf {
   margin: 0 0 0.55lh;
   font-size: var(--stark-body);
@@ -129,14 +129,12 @@
 }
 
 .workSpine {
-  margin-left: calc(clamp(22px, 4vw, 64px) + clamp(18px, 3vw, 28px));
+  margin-left: 0;
   max-width: 800px;
 }
 
-/* Beats vullen de rest van de sectie, copy blijft op 800px. */
 .work .workSpine {
-  max-width: none;
-  margin-right: calc(-1 * clamp(22px, 4vw, 64px));
+  margin-right: 0;
 }
 
 .workHead {
@@ -163,13 +161,20 @@
 }
 
 .work .introInner p.workLead {
-  max-width: 800px;
-  margin: 0 0 1.5lh;
+  max-width: 100%;
+  margin: 0 0 0.45lh;
   font-family: var(--font-body), sans-serif;
   font-size: clamp(21px, 2.4vw, 26px);
   font-weight: 600;
   line-height: 1.4;
   color: var(--off);
+}
+
+.work .workSteps {
+  margin: 0 0 1.5lh;
+  white-space: nowrap;
+  /* Zelfde label, iets kleiner zodra de regel anders breekt. */
+  font-size: clamp(10px, 2.65vw, 12px);
 }
 
 .workBeats {
@@ -180,7 +185,7 @@
 
 .workBeat {
   container-type: inline-size;
-  padding: clamp(28px, 4.5vw, 44px) clamp(22px, 4vw, 64px) clamp(28px, 4.5vw, 44px) 0;
+  padding: clamp(28px, 4.5vw, 44px) 0;
   border-top: 1px solid rgba(245, 245, 245, 0.14);
 }
 
@@ -257,25 +262,26 @@
   white-space: normal;
 }
 
-.body ul.startPoints {
+.start .startPoints {
   display: grid;
-  gap: 0.7lh;
-  margin: 0.15lh 0 0.7lh;
+  gap: 1.15lh;
+  margin: 0.35lh 0 0.9lh;
+  padding: 0;
+  list-style: none;
 }
 
-.body ul.startPoints li {
+.start .startPoints li {
   margin: 0;
-  padding-left: 34px;
+  padding-left: 0;
 }
 
-.body ul.startPoints li::before {
-  content: '';
-  top: 0.45em;
-  width: 9px;
-  height: 9px;
-  background: var(--orange);
-  color: transparent;
-  font-weight: 400;
+.start .startPoints li::before {
+  content: none;
+}
+
+.startPointLead {
+  color: var(--off);
+  font-weight: 600;
 }
 
 .start .introInner p.startHighlight {
@@ -289,7 +295,7 @@
 }
 
 .startCta {
-  margin: 28px 0 0;
+  margin: 48px 0 0;
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
@@ -324,29 +330,6 @@ h2.ingangTitle {
 
 h2.ingangTitle span {
   white-space: nowrap;
-}
-
-.ingangVolgorde {
-  margin: 28px auto 0;
-  max-width: 36rem;
-  padding: 0 22px;
-  text-align: center;
-  font-family: var(--font-body), sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: rgba(33, 36, 49, 0.62);
-}
-
-.ingangVolgorde a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: rgba(33, 36, 49, 0.28);
-  text-underline-offset: 3px;
-}
-
-.ingangVolgorde a:hover {
-  color: var(--navy);
 }
 
 .startGesprekLink {
@@ -390,5 +373,66 @@ h2.ingangTitle span {
     flex: 1 1 0;
     width: auto;
     min-width: 0;
+  }
+}
+
+/* Snelkoppelingen direct onder de hero. Tekstlinks, geen knoppen. */
+.jumps {
+  background: var(--off);
+  padding: 26px clamp(22px, 4vw, 64px) 6px;
+}
+
+.jumpsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  max-width: 800px;
+  margin: 0;
+}
+
+.jumpItem {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.jumpItem a {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.jumpItem a:hover,
+.jumpItem a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+.jumpDot {
+  margin: 0 0.55em;
+  color: rgba(33, 36, 49, 0.38);
+}
+
+@media (max-width: 520px) {
+  .jumpItem a {
+    font-size: 13px;
+  }
+
+  .jumpDot {
+    margin: 0 0.4em;
+  }
+}
+
+.ingangen article {
+  scroll-margin-top: 96px;
+}
+
+@media (min-width: 900px) {
+  .ingangen .ingangGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

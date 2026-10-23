@@ -54,7 +54,7 @@ export default function CoachingPage() {
 
       <section id="trajecten" className={`${styles.section} ${styles.sectionLight}`}>
         <h2
-          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${aanbodStyles.sectionTitleCentered} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionIntroCentered}`}
+          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionTitleOnLight} ${aanbodStyles.sectionIntro}`}
         >
           <span className={aanbodStyles.titleLine}>Welk traject</span>
           <span className={aanbodStyles.titleLine}>past bij jou?</span>

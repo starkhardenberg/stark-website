@@ -6,6 +6,9 @@ import { getSiteRobots } from '@/lib/site-seo'
 export const metadata: Metadata = {
   title: TRAJECT_META.title,
   description: TRAJECT_META.description,
+  alternates: {
+    canonical: '/zakelijk/draagkracht',
+  },
   robots: getSiteRobots(),
 }
 

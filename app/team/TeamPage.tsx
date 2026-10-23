@@ -32,7 +32,7 @@ export default function TeamPage() {
             <span className={`${styles.heroLead} ${styles.heroLeadSmaller}`}>Wi&apos;j bint</span>{' '}
             <span className={styles.heroPunch}>STARK!</span>
           </h1>
-          <p className={styles.heroSub}>Een team van 11 mensen. Eén aanpak</p>
+          <p className={styles.heroSub}>Wat ons bindt: mensen sterker maken</p>
         </div>
         <div className={`${styles.heroBar} ${styles.heroBarHidden}`} />
       </section>
@@ -79,7 +79,7 @@ export default function TeamPage() {
           </div>
           <div className={styles.groupCredit}>
             <h2 id="credit-heading" className={styles.groupCreditTitle}>
-              <span className={styles.groupCreditTitleLine}>Mooie</span>
+              <span className={styles.groupCreditTitleLine}>Mooie</span>{' '}
               <span className={styles.groupCreditTitleLine}>plaatjes hè?</span>
             </h2>
             <p className={`starkSectionMeta ${styles.groupCreditMeta}`}>

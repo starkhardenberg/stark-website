@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { STARK_GRAIN } from '@/lib/stark-grain'
 import styles from './CoachingMethodSection.module.css'
 
@@ -46,12 +46,16 @@ const CHAPTERS: Array<{ step: StepId; title: string; body: string | string[] }> 
 export default function CoachingMethodSection() {
   const [activeChapter, setActiveChapter] = useState(0)
   const chapterRefs = useRef<Array<HTMLDivElement | null>>([])
+  const chainRef = useRef<HTMLDivElement>(null)
   const activeRef = useRef(0)
+  const navLock = useRef(0)
+  const navTimer = useRef(0)
 
   useEffect(() => {
     let frame = 0
 
     const pickActive = () => {
+      if (performance.now() < navLock.current) return
       const nodes = chapterRefs.current
       if (!nodes.some(Boolean)) return
 
@@ -87,6 +91,7 @@ export default function CoachingMethodSection() {
     window.addEventListener('resize', onScrollOrResize)
     return () => {
       cancelAnimationFrame(frame)
+      window.clearTimeout(navTimer.current)
       window.removeEventListener('scroll', onScrollOrResize)
       window.removeEventListener('resize', onScrollOrResize)
     }
@@ -99,7 +104,21 @@ export default function CoachingMethodSection() {
     if (!el) return
     activeRef.current = i
     setActiveChapter(i)
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    const title = el.querySelector('h3') ?? el
+    const chain = chainRef.current
+    const chainVisible = !!chain && getComputedStyle(chain).display !== 'none'
+    const stickyTop = chainVisible ? Number.parseFloat(getComputedStyle(chain).top) || 0 : 0
+    const clearance = chainVisible ? stickyTop + chain.offsetHeight + 18 : 28
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const top = Math.max(0, window.scrollY + title.getBoundingClientRect().top - clearance)
+    const wait = reduce ? 40 : 900
+    navLock.current = performance.now() + wait
+    window.clearTimeout(navTimer.current)
+    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' })
+    navTimer.current = window.setTimeout(() => {
+      navLock.current = 0
+      window.dispatchEvent(new Event('scroll'))
+    }, wait + 40)
   }
 
   return (
@@ -120,9 +139,9 @@ export default function CoachingMethodSection() {
         </header>
 
         {/* Mobiel: sticky balk met de drie woorden; op desktop staan ze per rij naast hun tekst */}
-        <div className={styles.chain} role="tablist" aria-label="De driesprong">
+        <div ref={chainRef} className={styles.chain} role="tablist" aria-label="De driesprong">
           {STEPS.map((step, i) => (
-            <div key={step.id} style={{ display: 'contents' }}>
+            <Fragment key={step.id}>
               {i > 0 ? (
                 <span className={styles.chainArrow} aria-hidden>
                   →
@@ -141,7 +160,7 @@ export default function CoachingMethodSection() {
                 <span className={styles.chainWord}>{step.word}</span>
                 <span className={styles.chainNote}>{step.note}</span>
               </button>
-            </div>
+            </Fragment>
           ))}
         </div>
 

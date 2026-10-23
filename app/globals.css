@@ -86,7 +86,7 @@ h2.stark-display {
   letter-spacing: var(--stark-eyebrow-tracking);
   text-transform: uppercase;
   line-height: 1.5;
-  color: var(--stark-grey);
+  color: #3f3f3c;
 }
 
 /* Meta-regel onder sectiekop (homepage-patroon) */
@@ -98,11 +98,11 @@ h2.stark-display {
   letter-spacing: var(--stark-eyebrow-tracking);
   text-transform: uppercase;
   line-height: 1.5;
-  color: var(--stark-grey);
+  color: #3f3f3c;
 }
 
 .starkSectionMetaOnDark {
-  color: rgba(247, 245, 242, 0.55);
+  color: rgba(247, 245, 242, 0.82);
 }
 
 .stark-section-rule {
@@ -251,6 +251,11 @@ a {
     padding-inline: clamp(22px, 6vw, 32px) !important;
     line-height: 1.35 !important;
     white-space: normal;
+  }
+
+  /* WhatsApp naast de oranje knop: zelfde kapitalen en maat */
+  a.starkCta[href*="api.whatsapp.com"] {
+    text-transform: uppercase !important;
   }
 }
 

@@ -8,7 +8,11 @@ type WijBintStarkProps = {
 function Mark() {
   return (
     <span className={styles.mark}>
-      WI&apos;J BINT STARK<span className={styles.exclaim}>!</span>
+      <span className={styles.line}>WI&apos;J BINT</span>
+      <span className={styles.lineGap}> </span>
+      <span className={styles.line}>
+        STARK<span className={styles.exclaim}>!</span>
+      </span>
     </span>
   )
 }

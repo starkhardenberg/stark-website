@@ -55,9 +55,9 @@ export const openGraphByPage = {
       'Momentum en Impact: lijf en hoofd in één lijn. Eerst een gesprek, geen verrassingen achteraf. Hardenberg.',
   },
   zakelijk: {
-    title: 'Bedrijven bij STARK! — Momentum @ Werk',
+    title: 'STARK! Wark · Leiderschap en duurzame inzetbaarheid',
     description:
-      'Preventie die meetbaar is. Minder verzuim, sterkere medewerkers. Momentum @ Werk vanaf vijf deelnemers. Eerlijk over wat past.',
+      'Coaching en training voor bedrijven in Hardenberg. Leiderschap 1-op-1, Draagkracht voor jou en je team, en Momentum @ Werk voor je mensen.',
   },
   momentum: {
     title: 'Momentum · 10 weken trainen en coachen in Hardenberg · STARK!',

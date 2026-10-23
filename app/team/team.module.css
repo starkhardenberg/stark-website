@@ -673,6 +673,17 @@
   white-space: nowrap;
 }
 
+@media (max-width: 899px) {
+  .groupCreditTitle {
+    font-size: min(var(--stark-section-statement), 8.6vw);
+    white-space: nowrap;
+  }
+
+  .groupCreditTitleLine {
+    display: inline;
+  }
+}
+
 .groupCreditMeta {
   max-width: none;
 }

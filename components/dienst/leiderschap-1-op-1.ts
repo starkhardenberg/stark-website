@@ -89,8 +89,8 @@ export const L1O1_ANDERS: { before: string; link?: [string, string]; after?: str
     after: '.',
   },
   {
-    before: 'Wil je dat je team dezelfde stap zet als jij? Dan past het ',
-    link: ['zakelijk traject', '/zakelijk/traject'],
+    before: 'Wil je dat je team dezelfde stap zet als jij? Dan past ',
+    link: ['Draagkracht', '/zakelijk/draagkracht'],
     after: '. Daar zit je eigen coaching 1-op-1 al in.',
   },
   { before: 'Wil je alleen fitter en sterker worden? Word dan lid bij STARK!.' },
@@ -203,9 +203,9 @@ export const L1O1_FAQ = [
       'Leiderschap 1-op-1 gaat over wat je als leider voor elkaar krijgt. Impact gaat over jou als mens: je energie, je lijf, en wat je doet als het te veel wordt. Thuis en op je werk. De training ziet er hetzelfde uit. Het gesprek niet: bij Leiderschap kan het elke week of elke twee weken, en elk kwartaal is er een richtingsgesprek van drie uur. Twijfel je? In het kennismakingsgesprek zoeken we het samen uit.',
   },
   {
-    question: 'Wat is het verschil met het zakelijk traject?',
+    question: 'Wat is het verschil met Draagkracht?',
     answer:
-      'Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten. In het zakelijk traject zet je team dezelfde stap. Dat traject duurt een half jaar tot een jaar, met elke week teamcoaching. Je eigen coaching 1-op-1 zit daar al in.',
+      'Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten. In Draagkracht zet je team dezelfde stap. Dat traject duurt een half jaar tot een jaar, met elke week teamcoaching. Je eigen coaching 1-op-1 zit daar al in.',
   },
   {
     question: 'Kan mijn werkgever meebetalen?',
@@ -262,7 +262,7 @@ export const L1O1_PROEF = {
 
 /** Vervangt de huidige teksten van de tegel 'leiderschap-1-op-1'. Cursor neemt ze over. */
 export const L1O1_TEGEL = {
-  eyebrow: '1-op-1 · Vanaf een kwartaal',
+  eyebrow: 'Vanaf een kwartaal',
   menu: [
     {
       label: 'Past bij jou als',
@@ -270,7 +270,7 @@ export const L1O1_TEGEL = {
     },
     {
       label: 'Zo werkt het',
-      text: 'Elke week of elke twee weken een uur coaching met je vaste coach. Twee keer per week trainen bij ons in Hardenberg. Vanaf een kwartaal.',
+      text: 'Elke week of elke twee weken een uur coaching met je vaste coach. Twee keer per week trainen bij ons in Hardenberg.',
     },
     {
       label: 'Wat zit erin',

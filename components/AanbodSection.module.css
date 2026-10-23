@@ -217,6 +217,11 @@
 }
 
 @media (max-width: 899px) {
+  .sectionTitle.sectionIntro {
+    font-size: var(--stark-section-statement);
+    line-height: 0.94;
+  }
+
   .sectionCta {
     width: 100%;
     grid-template-columns: minmax(0, 1fr);

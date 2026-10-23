@@ -31,6 +31,7 @@ const quoteIds = [
   'sandra-1',
   'cora-1',
   'ineke-bouwhuis-1',
+  'danielle-nijman-1',
   'robbert-1',
   'renee-1',
   'ineke-lokker-1',
@@ -64,8 +65,8 @@ function withQuote(
 export const homepagePeople: PortraitPerson[] = [
   withQuote('richard', 'richard-1', '/images/quotes/richard.jpg'),
   withQuote('yara', 'yara-1', '/images/quotes/yara.jpg'),
-  withQuote('anne-stegeman', 'anne-stegeman-1', '/images/quotes/anne-stegeman.jpg'),
   withQuote('mieke', 'mieke-1', '/images/quotes/mieke.jpg'),
+  withQuote('erwin-de-weerd', 'erwin-1', '/images/quotes/erwin-de-weerd.jpg'),
   {
     id: 'amanda',
     name: heroQuoteAmanda.name,
@@ -75,9 +76,7 @@ export const homepagePeople: PortraitPerson[] = [
     studio: false,
     fit: 'contain',
   },
-  withQuote('erwin-de-weerd', 'erwin-1', '/images/quotes/erwin-de-weerd.jpg', {
-    name: 'Erwin de Weerd',
-  }),
+  withQuote('anne-stegeman', 'anne-stegeman-1', '/images/quotes/anne-stegeman.jpg'),
 ]
 
 /** Renske als eerste, daarna één per groep. */
@@ -102,6 +101,11 @@ export const momentumPeople: PortraitPerson[] = [
   withQuote('cora', 'cora-1', '/images/quotes/cora.jpg', { context: MOMENTUM_QUOTE.role }),
   withQuote('ineke-bouwhuis', 'ineke-bouwhuis-1', '/images/quotes/ineke-bouwhuis.jpg', {
     context: MOMENTUM_QUOTE.role,
+  }),
+  withQuote('danielle-nijman', 'danielle-nijman-1', '/images/quotes/danielle-nijman.jpg', {
+    name: 'Danielle',
+    context: MOMENTUM_QUOTE.role,
+    imagePosition: 'center top',
   }),
 ]
 

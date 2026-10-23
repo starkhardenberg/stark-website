@@ -185,6 +185,7 @@
 
 .eyebrow {
   display: inline-block;
+  max-width: 100%;
   margin: 0 0 clamp(10px, 1.4vw, 14px);
   font-family: var(--font-body), sans-serif;
   font-size: 12px;
@@ -196,6 +197,10 @@
 
 .card:not(.cardLight) .eyebrow {
   color: var(--stark-grey);
+}
+
+.eyebrowTail {
+  display: inline-block;
 }
 
 .cardBusinessContext.cardLight .eyebrowNeutral {

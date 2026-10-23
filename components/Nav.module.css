@@ -46,6 +46,8 @@
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
+  /* Zelfde regelhoogte als Menu, zodat de woorden op één lijn staan. Het tikvlak van Menu blijft 44px. */
+  min-height: 44px;
   gap: 6px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
@@ -303,13 +305,17 @@ button.tabLink {
   cursor: pointer;
   pointer-events: auto;
   flex-shrink: 0;
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 44px;
+  padding: 0 2px 0 8px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.62);
+  color: rgba(245, 245, 245, 0.92);
   transition: color 0.18s ease;
 }
 
@@ -318,7 +324,7 @@ button.tabLink {
 }
 
 .navLight .menuText {
-  color: rgba(33, 36, 49, 0.52);
+  color: rgba(33, 36, 49, 0.88);
 }
 
 .navLight .menuText:hover {
@@ -550,6 +556,14 @@ button.tabLink {
 
   .burger {
     display: none;
+  }
+
+  .menuText {
+    display: none;
+  }
+
+  .menuTextAlways {
+    display: inline-flex;
   }
 
   .mobileMenu {

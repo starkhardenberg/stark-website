@@ -56,7 +56,8 @@ export default function TrainenIntroSection() {
             <span className={`${styles.quoteLine} ${styles.quoteMark}`}>STARK!</span>
           </h2>
           <p className={`starkSectionMeta ${styles.positioning}`}>
-            Echt stark en fit · Voor jezelf, met elkaar · Sinds 2013
+            Echt stark en fit · Voor jezelf, met elkaar ·{' '}
+            <span className={styles.positioningTail}>Sinds 2013</span>
           </p>
         </header>
 
@@ -94,10 +95,6 @@ export default function TrainenIntroSection() {
               className={`${styles.cta} ${styles.ctaFilled} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
             >
               {CTA_KENNISMAKING_LABEL}
-              <span aria-hidden>→</span>
-            </a>
-            <a href="#groepen" className={styles.cta}>
-              Bekijk de groepen
               <span aria-hidden>→</span>
             </a>
           </div>

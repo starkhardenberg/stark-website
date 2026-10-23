@@ -18,7 +18,12 @@ const nextConfig = {
       },
       {
         source: '/zakelijk/jaartraject',
-        destination: '/zakelijk/traject',
+        destination: '/zakelijk/draagkracht',
+        permanent: true,
+      },
+      {
+        source: '/zakelijk/traject',
+        destination: '/zakelijk/draagkracht',
         permanent: true,
       },
       {

@@ -21,10 +21,17 @@ export default function HoeHetBegintSection() {
           <div className={quoteStyles.body}>
             <p className={pageStyles.introGraf}>{ZAKELIJK_START.lead}</p>
             <ul className={pageStyles.startPoints}>
-              {ZAKELIJK_START.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-              <li>{ZAKELIJK_START.practical}</li>
+              {[...ZAKELIJK_START.points, ZAKELIJK_START.practical].map((point) => {
+                const breakAt = point.indexOf('. ')
+                const lead = breakAt < 0 ? point : point.slice(0, breakAt + 1)
+                const rest = breakAt < 0 ? '' : point.slice(breakAt + 1)
+                return (
+                  <li key={point}>
+                    <span className={pageStyles.startPointLead}>{lead}</span>
+                    {rest}
+                  </li>
+                )
+              })}
             </ul>
             <p className={pageStyles.introGraf}>
               {ZAKELIJK_START.gesprekBefore}

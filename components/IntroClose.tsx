@@ -9,6 +9,7 @@ export default function IntroClose({
   align = 'center',
   wide = false,
   pair = false,
+  outline = 'first',
 }: {
   line1: string
   line2: string
@@ -18,6 +19,8 @@ export default function IntroClose({
   align?: 'center' | 'start'
   wide?: boolean
   pair?: boolean
+  /** Welke regel de outline krijgt. Standaard de eerste. */
+  outline?: 'first' | 'second'
 }) {
   return (
     <p
@@ -27,8 +30,8 @@ export default function IntroClose({
         pair ? ` ${styles.closePair}` : ''
       }`}
     >
-      <span className={`${styles.closeLine} ${styles.closeOutline}`}>{line1}</span>
-      <span className={`${styles.closeLine} ${styles.closeKeep}`}>{line2}</span>
+      <span className={`${styles.closeLine} ${outline === 'first' ? styles.closeOutline : ''}`}>{line1}</span>
+      <span className={`${styles.closeLine} ${styles.closeKeep} ${outline === 'second' ? styles.closeOutline : ''}`}>{line2}</span>
       {line3 ? <span className={styles.closeLine}>{line3}</span> : null}
     </p>
   )

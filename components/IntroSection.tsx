@@ -8,7 +8,7 @@ type Regel = {
   id: string
   lead: ReactNode
   /** Elke zin op een eigen regel */
-  rest?: string[]
+  rest?: ReactNode[]
   accent?: boolean
 }
 
@@ -37,7 +37,12 @@ const REGELS: Regel[] = [
     id: '04',
     lead: 'Ook je hoofd kun je trainen',
     rest: [
-      'Dat is coaching. Momentum in de groep, Impact één op één.',
+      <>
+        Dat is coaching.{' '}
+        <span className={styles.regelRestBreak}>
+          Momentum in de groep, Impact één op één.
+        </span>
+      </>,
       'Voor een resultaat dat ertoe doet.',
     ],
   },
@@ -85,8 +90,8 @@ export default function IntroSection() {
                   <p className={styles.regelLead}>{regel.lead}</p>
                     {regel.rest ? (
                       <p className={styles.regelRest}>
-                        {regel.rest.map((line) => (
-                          <span key={line} className={styles.regelRestLine}>
+                        {regel.rest.map((line, index) => (
+                          <span key={`${regel.id}-${index}`} className={styles.regelRestLine}>
                             {line}
                           </span>
                         ))}
@@ -99,6 +104,7 @@ export default function IntroSection() {
 
           <IntroClose
             align="start"
+            outline="second"
             line1="Een schop onder je kont"
             line2="terwijl we je hand vasthouden"
           />
@@ -108,7 +114,7 @@ export default function IntroSection() {
               {CTA_KENNISMAKING_LABEL}
               <span aria-hidden>→</span>
             </a>
-            <a href="#aanbod" className={styles.cta}>
+            <a href="#aanbod" className={`${styles.cta} ${styles.ctaRoutes}`}>
               Bekijk de routes
               <span aria-hidden>→</span>
             </a>

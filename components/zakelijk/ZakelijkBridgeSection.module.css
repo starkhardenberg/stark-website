@@ -2,7 +2,7 @@
   font-size: clamp(16px, 1.7vw, 19px);
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: rgba(33, 36, 49, 0.72);
+  color: #3f3f3c;
 }
 
 .bridgeLead {

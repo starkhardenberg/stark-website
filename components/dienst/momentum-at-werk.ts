@@ -85,8 +85,8 @@ export const MAW_WIE_CLOSE = '10 weken samen trainen, ieder met een eigen result
 /** Rijtje "Soms past iets anders beter". link = optioneel: [linktekst, href]. */
 export const MAW_ANDERS: { before: string; link?: [string, string]; after?: string }[] = [
   {
-    before: 'Wil je dat je leidinggevenden de volgende stap zetten? Dan past het ',
-    link: ['zakelijk traject', '/zakelijk/traject'],
+    before: 'Wil je dat je leidinggevenden de volgende stap zetten? Dan past ',
+    link: ['Draagkracht', '/zakelijk/draagkracht'],
     after: '.',
   },
   {

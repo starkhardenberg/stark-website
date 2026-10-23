@@ -11,8 +11,8 @@ export default function CoachingStartSection() {
     <div className={styles.band} aria-label="Zo begin je">
       <IntroClose
         pair
-        line1="Alles begint met een gesprek"
-        line2="Gratis, een uur. Past het niet, dan zeggen we dat"
+        line1="Klaar met cirkelen"
+        line2="Nu er dwars doorheen"
       />
       <div className={`${introStyles.ctaRow} ${introStyles.ctaRowProminent} ${STARK_CTA_ROW}`}>
         <a

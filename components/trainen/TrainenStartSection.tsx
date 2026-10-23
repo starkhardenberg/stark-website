@@ -27,8 +27,8 @@ export default function TrainenStartSection() {
       id: '02',
       lead: 'Het startpakket',
       rest: [
-        'Vier sessies. Techniek en je lijf leren kennen.',
-        'Daarna kun je veilig mee in elke training.',
+        'Vier keer 1-op-1. Jij de basis, wij leren je lijf kennen.',
+        'Zo weten we hoe we je in de groep begeleiden.',
       ],
     },
     {

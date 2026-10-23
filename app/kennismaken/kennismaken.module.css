@@ -52,8 +52,11 @@
 }
 
 .fact {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.4em;
   margin: clamp(16px, 2.4vw, 24px) 0 0;
-  max-width: 32ch;
+  max-width: none;
   font-size: var(--stark-body);
   line-height: 1.55;
   color: rgba(24, 26, 24, 0.78);
@@ -66,47 +69,53 @@
   letter-spacing: 0.12em;
 }
 
-.note,
-.exitLink {
+.note {
+  margin: 14px 0 0;
   font-size: var(--stark-body);
   font-weight: 400;
+  font-style: italic;
   line-height: 1.55;
   color: rgba(24, 26, 24, 0.78);
 }
 
-.note {
-  margin: 14px 0 0;
-  font-style: italic;
-}
-
-.exit {
-  margin: clamp(28px, 4vh, 40px) 0 0;
-}
-
-.exitLink {
-  font-family: var(--font-body), sans-serif;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  text-decoration-color: rgba(24, 26, 24, 0.35);
-}
-
-.exitLink:hover {
-  color: var(--orange);
-  text-decoration-color: var(--orange);
-}
-
 @media (max-width: 899px) {
+  .page {
+    min-height: auto;
+  }
+
+  .stage {
+    flex: none;
+    padding-bottom: 28px;
+  }
+
+  .photoImg {
+    object-position: 68% 0%;
+  }
+
   .agenda {
     width: 100%;
   }
 
   .copy {
-    padding-bottom: 116px;
+    padding-bottom: 0;
+  }
+
+  /* Helft op de foto, helft op het wit, rechts. */
+  .page .seamBadge.seamBadge {
+    width: 124px;
+    height: 124px;
+    top: -90px;
+    right: -8px;
+    bottom: auto;
   }
 }
 
 @media (min-width: 900px) {
+  .page .seamBadge.seamBadge {
+    width: 152px;
+    height: 152px;
+  }
+
   .photo {
     position: absolute;
     top: 0;

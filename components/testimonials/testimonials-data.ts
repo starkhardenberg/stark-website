@@ -207,6 +207,13 @@ export const allTestimonials: TestimonialEntry[] = [
     category: 'momentum',
   },
   {
+    id: 'danielle-nijman-1',
+    text: 'Ik leerde mijzelf te herkennen en sta nu weer volledig in mijn kracht.',
+    name: 'Danielle Nijman',
+    context: 'Momentum traject',
+    category: 'momentum',
+  },
+  {
     id: 'ineke-lokker-1',
     text: 'De coaching maakt dat ik nu echt prioriteiten stel en mijn gezin op de eerste plek komt.',
     name: 'Ineke Lokker',
@@ -243,7 +250,7 @@ export const allTestimonials: TestimonialEntry[] = [
   },
   {
     id: 'anne-stegeman-1',
-    text: 'Hard werken en toch lol hebben, dat kan dus!',
+    text: 'Het leukste bij STARK vind ik dat ik sterker word en dat ik nieuwe vrienden heb gemaakt.',
     name: 'Anne',
     context: 'Teens',
     category: 'teens',

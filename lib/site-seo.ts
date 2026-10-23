@@ -17,7 +17,7 @@ export const SITE_PATHS = [
   '/zakelijk',
   '/zakelijk/leiderschap-1-op-1',
   '/zakelijk/duurzame-inzetbaarheid',
-  '/zakelijk/traject',
+  '/zakelijk/draagkracht',
   '/momentum',
   '/impact',
   '/team',

@@ -177,7 +177,7 @@ p.positioning {
   font-size: clamp(16px, 1.7vw, 19px);
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: rgba(33, 36, 49, 0.72);
+  color: #3f3f3c;
 }
 
 .copyCol {
@@ -295,6 +295,12 @@ p.positioning {
 
 .regelRestLine {
   display: block;
+}
+
+@media (max-width: 899px) {
+  .regelRestBreak {
+    display: block;
+  }
 }
 
 .inlineLink {
@@ -415,12 +421,21 @@ button.inlineLink {
 }
 
 @media (max-width: 899px) {
+  .positioningTail {
+    display: block;
+    white-space: nowrap;
+  }
+
   .cta {
     text-transform: none;
   }
 
   .ctaFilled {
     text-transform: uppercase;
+  }
+
+  .ctaRoutes {
+    display: none;
   }
 
   .regel {

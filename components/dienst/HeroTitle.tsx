@@ -18,7 +18,7 @@ function fitHeroTitle(title: HTMLHeadingElement) {
   if (!desktop) {
     title.style.removeProperty('--hero-hang')
     title.style.removeProperty('font-size')
-    title.parentElement?.querySelector('p')?.style.removeProperty('transform')
+    stackParagraphs(title).forEach((sub) => sub.style.removeProperty('transform'))
     copy?.style.removeProperty('padding-top')
     copy?.style.removeProperty('justify-content')
     return 0
@@ -56,18 +56,24 @@ function fitHeroTitle(title: HTMLHeadingElement) {
   return 2
 }
 
-/** Subregel in het midden onder de hele titel, ook de letters die over de foto hangen. */
+function stackParagraphs(title: HTMLHeadingElement) {
+  return [...(title.parentElement?.querySelectorAll<HTMLElement>(':scope > p') ?? [])]
+}
+
+/** Label en subregel in het midden van de hele titel, ook de letters die over de foto hangen. */
 function centerSubline(title: HTMLHeadingElement) {
-  const sub = title.parentElement?.querySelector('p')
-  if (!sub) return
-  sub.style.transform = ''
+  const subs = stackParagraphs(title)
   const letters = [...title.querySelectorAll<HTMLElement>('[data-hero-line] > span')]
   if (!letters.length) return
   const left = Math.min(...letters.map((span) => span.getBoundingClientRect().left))
   const right = Math.max(...letters.map((span) => span.getBoundingClientRect().right))
-  const subBox = sub.getBoundingClientRect()
-  const shift = (left + right) / 2 - (subBox.left + subBox.width / 2)
-  sub.style.transform = `translateX(${Math.round(shift)}px)`
+  const mid = (left + right) / 2
+  subs.forEach((sub) => {
+    sub.style.transform = ''
+    const subBox = sub.getBoundingClientRect()
+    const shift = mid - (subBox.left + subBox.width / 2)
+    sub.style.transform = `translateX(${Math.round(shift)}px)`
+  })
 }
 
 const NAV_GAP = 48

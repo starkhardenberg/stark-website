@@ -31,30 +31,28 @@ function FooterLegalStrip() {
       <span>
         {BEELDEN_CREDIT.label}: {BEELDEN_CREDIT.text}
       </span>
-      <span className={styles.legalSep} aria-hidden>
-        {' '}
-        ·{' '}
-      </span>
-      <span>
-        {PHOTO_CREDIT.label}:{' '}
-        <a
-          href={PHOTO_CREDIT.instagramUrl}
-          className={styles.legalLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {PHOTO_CREDIT.name}
-        </a>
-      </span>
-      <span className={styles.legalSep} aria-hidden>
-        {' '}
-        ·{' '}
-      </span>
-      <span>
-        {VIDEO_CREDIT.label}:{' '}
-        <a href={VIDEO_CREDIT.url} className={styles.legalLink} target="_blank" rel="noopener noreferrer">
-          {VIDEO_CREDIT.name}
-        </a>
+      <span className={styles.legalCredits}>
+        <span className={styles.legalKeep}>
+          {PHOTO_CREDIT.label}:{' '}
+          <a
+            href={PHOTO_CREDIT.instagramUrl}
+            className={styles.legalLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {PHOTO_CREDIT.name}
+          </a>
+        </span>
+        <span className={styles.legalSep} aria-hidden>
+          {' '}
+          ·{' '}
+        </span>
+        <span className={styles.legalKeep}>
+          {VIDEO_CREDIT.label}:{' '}
+          <a href={VIDEO_CREDIT.url} className={styles.legalLink} target="_blank" rel="noopener noreferrer">
+            {VIDEO_CREDIT.name}
+          </a>
+        </span>
       </span>
     </p>
   )

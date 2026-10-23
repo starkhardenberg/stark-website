@@ -27,6 +27,7 @@ import {
   TRAJECT_VRAAGT_TITLE,
   TRAJECT_WELK_TEAM,
 } from './zakelijk-traject'
+import landingStyles from '@/app/landing.module.css'
 import styles from './DienstPage.module.css'
 
 export default function TrajectPage() {
@@ -55,11 +56,8 @@ export default function TrajectPage() {
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
-              <HeroTitle
-                word={TRAJECT_HERO.word}
-                breakBefore="traject"
-                className={styles.heroTitleLong}
-              />
+              <p className={landingStyles.heroLabel}>{TRAJECT_HERO.label}</p>
+              <HeroTitle word={TRAJECT_HERO.word} className={styles.heroTitleLong} />
               <p className={styles.heroLine}>{TRAJECT_HERO.line}</p>
             </div>
           </div>

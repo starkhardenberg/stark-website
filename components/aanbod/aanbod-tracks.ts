@@ -62,7 +62,7 @@ export const aanbodTracks: AanbodTrack[] = [
       'Trainer naast je in de groep, ook als je lijf even tegenwerkt',
     ],
     desc:
-      'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan.\n\nBij STARK! draait functioneel trainen om jou: om jouw lijf, jouw niveau en jouw leven. Voor wie jong is, vroeger jong was en alles daartussenin.\n\nJe wordt fit door simpelweg te starten.',
+      'Een sterker lijf. Meer energie. Vertrouwen in wat je aankan.\n\nBij STARK! draait functioneel trainen om jou: om jouw lijf, jouw niveau en jouw leven. Voor wie jong is, vroeger jong was en alles daartussenin.\n\nJe wordt sterk en fit door simpelweg te starten.',
     cta: CTA_KENNISMAKING_LABEL,
     ctaHref: hrefKennismaking,
     light: true,
@@ -102,7 +102,7 @@ export const aanbodTracks: AanbodTrack[] = [
     photoObjectPosition: 'center 16%',
     introLabel: 'Zakelijk bij STARK!',
     readMoreHref: '/zakelijk',
-    readMoreLabel: 'Lees meer over zakelijk',
+    readMoreLabel: 'Lees meer voor bedrijven',
     summary:
       'Sterke teams onder druk. Het meest intensieve traject, maatwerk op de werkvloer.',
     highlights: [

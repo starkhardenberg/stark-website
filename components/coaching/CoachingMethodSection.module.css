@@ -62,8 +62,8 @@
 /* ── Sticky driesprong: blijft in beeld, licht mee met het verhaal ── */
 .chain {
   position: sticky;
-  /* Onder de fixed nav (50px) blijven plakken */
-  top: 50px;
+  /* Geen vaste nav op deze pagina. top: 50 liet een strook van het vorige stuk boven de balk zien. */
+  top: 0;
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -94,17 +94,35 @@
   text-align: inherit;
 }
 
+/* Het hele vak is de knop, niet alleen de letters */
+.chain .chainStepButton {
+  align-self: stretch;
+  justify-content: center;
+  padding: 10px 12px 8px;
+  transition: background-color 0.25s ease;
+}
+
+.chain .chainStepButton:hover,
+.chain .chainStepButton:focus-visible {
+  background: rgba(247, 245, 242, 0.1);
+}
+
 .chainStepButton:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 6px;
 }
 
-.chainStepButton:hover .chainWord {
-  -webkit-text-stroke-color: rgba(245, 245, 245, 0.55);
+.chain .chainStepButton:hover .chainWord,
+.chain .chainStepButton:focus-visible .chainWord {
+  color: var(--off);
+  -webkit-text-fill-color: var(--off);
+  -webkit-text-stroke: 0;
+  border-bottom-color: var(--orange);
 }
 
-.chainStepButton.chainStepActive:hover .chainWord {
-  -webkit-text-stroke: 0;
+.chain .chainStepButton:hover .chainNote,
+.chain .chainStepButton:focus-visible .chainNote {
+  color: var(--orange);
 }
 
 .chainWord {
@@ -120,7 +138,7 @@
   -webkit-text-stroke: var(--outline-stroke-display) rgba(245, 245, 245, 0.32);
   padding-bottom: 6px;
   border-bottom: 3px solid transparent;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .chainStepActive .chainWord {
@@ -161,11 +179,12 @@
 }
 
 .chainArrow {
+  align-self: center;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: clamp(13px, 2.6vw, 30px);
   line-height: 1;
-  margin-top: 0.28em;
+  margin-top: 0;
   color: var(--orange);
 }
 
@@ -395,6 +414,17 @@
     display: grid;
     gap: 12px;
     max-width: 60ch;
+  }
+}
+
+@media (max-width: 899px) {
+  .method {
+    padding-top: 72px;
+  }
+
+  /* Titel dichter op de lijn. Het eerste blok houdt zijn eigen ruimte. */
+  .chapter:not(:first-child) {
+    padding-top: 32px;
   }
 }
 

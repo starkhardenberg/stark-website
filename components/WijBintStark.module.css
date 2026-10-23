@@ -33,7 +33,7 @@
 }
 
 .hero .mark {
-  font-size: clamp(2.75rem, 13.5vw, 8.5rem);
+  font-size: min(8.5rem, 10.6vw);
   white-space: nowrap;
   color: var(--stark-black);
 }
@@ -48,17 +48,30 @@
   color: var(--stark-black);
 }
 
-@media (max-width: 519px) {
-  .hero .mark {
-    font-size: clamp(2.25rem, 12vw, 3.75rem);
-    white-space: normal;
-    text-align: center;
-    max-width: 12ch;
+@media (max-width: 899px) {
+  .hero {
+    width: 100%;
   }
 
-  .hero {
+  .hero .mark {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    font-size: min(5.5rem, 15.2vw);
+    white-space: normal;
+    text-align: center;
+    line-height: 0.9;
+  }
+
+  .hero .line {
+    display: block;
+    max-width: 100%;
+  }
+
+  .hero .lineGap {
+    display: none;
   }
 }
 

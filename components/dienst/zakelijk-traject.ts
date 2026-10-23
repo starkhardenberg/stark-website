@@ -8,13 +8,14 @@
 import { L1O1_PROEF, L1O1_SLOT } from './leiderschap-1-op-1'
 
 export const TRAJECT_META = {
-  title: 'Teamcoaching in Hardenberg | Zakelijk traject | STARK!',
+  title: 'Teamcoaching in Hardenberg | Draagkracht | STARK!',
   description:
-    'Het zakelijk traject bij STARK! in Hardenberg: een half jaar tot een jaar teamcoaching, samen trainen en coaching 1-op-1 voor de eigenaar.',
+    'Draagkracht bij STARK! in Hardenberg: een half jaar tot een jaar teamcoaching, samen trainen en coaching 1-op-1 voor de eigenaar.',
 }
 
 export const TRAJECT_HERO = {
-  word: 'Zakelijk traject',
+  label: 'Leiderschap met je team',
+  word: 'Draagkracht',
   line: 'Jouw team zet de stap',
   image: '/images/foto-traject-hero.jpg',
   alt: 'Deelnemer in gesprek aan tafel bij STARK! Hardenberg, in het zonlicht, zwart-wit',
@@ -35,7 +36,7 @@ export const TRAJECT_INTRO = {
     'Of iets anders wat niet optimaal werkt in jouw team. Je bent eigenaar of directeur. Je weet waar je met je bedrijf naartoe wilt. Nu wil je dat je team die stap met je zet. Dat ze weten wat er moet gebeuren, het toezeggen en het ook doen.',
     'Een afspraak nakomen, ook als het uitkomt om het niet te doen. Zeggen wat je ziet, op het moment dat het speelt. Feedback krijgen en aanpassen wat moet. Dat zijn vaardigheden. Een team kan ze samen oefenen.',
   ],
-  proseStrong: 'Het zakelijk traject is een half jaar tot een jaar teamcoaching, met je eigen coaching 1-op-1 erbij.',
+  proseStrong: 'Draagkracht is een half jaar tot een jaar teamcoaching, met je eigen coaching 1-op-1 erbij.',
   proseAfterStrong:
     'Het team neemt de stap. En jij leert hoe je ze meeneemt. Elke week een gesprek met het team en een opdracht over het werk van die week. Het eerste kwartaal traint het team samen, en jij traint mee.',
   close: ['Jij zet de stap.', 'Je team zet hem met je mee.'],
@@ -175,7 +176,7 @@ export const TRAJECT_FAQ = [
   {
     question: 'Het gaat goed met mijn team. Is dit dan iets voor ons?',
     answer:
-      'Ja. Het zakelijk traject is voor teams die de volgende stap willen zetten. Het loopt, en je weet dat er nog iets in zit. Daar hoeft geen probleem voor te zijn.',
+      'Ja. Draagkracht is voor teams die de volgende stap willen zetten. Het loopt, en je weet dat er nog iets in zit. Daar hoeft geen probleem voor te zijn.',
   },
   {
     question: 'Waarom doe ik als eigenaar zelf mee?',
@@ -185,10 +186,10 @@ export const TRAJECT_FAQ = [
   {
     question: 'Wat is het verschil met Leiderschap 1-op-1?',
     answer:
-      'Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten als leider. In het zakelijk traject zet je team dezelfde stap. Je eigen coaching 1-op-1 zit daar al in. Trainen doe je in het traject samen met je team.',
+      'Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten als leider. In Draagkracht zet je team dezelfde stap. Je eigen coaching 1-op-1 zit daar al in. Trainen doe je in het traject samen met je team.',
   },
   {
-    question: 'Hoe lang duurt het zakelijk traject?',
+    question: 'Hoe lang duurt Draagkracht?',
     answer:
       'Een half jaar tot een jaar. Met een team werken we minimaal een half jaar, omdat het langer duurt voordat nieuw gedrag van de hele groep is. Welke looptijd past, bepalen we samen.',
   },
@@ -208,9 +209,9 @@ export const TRAJECT_FAQ = [
       'Elk kwartaal hebben we een evaluatiegesprek met jou. We kijken terug en bepalen het thema van het volgende kwartaal. En elke week zie je in de teamcoaching wat er van de afspraken is gedaan.',
   },
   {
-    question: 'Wat is de investering voor het zakelijk traject?',
+    question: 'Wat is de investering voor Draagkracht?',
     answer:
-      'Het zakelijk traject is een serieuze investering. Voor jouw bedrijf hoor je die in het kennismakingsgesprek, ruim voordat je iets beslist.',
+      'Draagkracht is een serieuze investering. Voor jouw bedrijf hoor je die in het kennismakingsgesprek, ruim voordat je iets beslist.',
   },
 ] as const
 
@@ -230,7 +231,7 @@ export const TRAJECT_PROEF = L1O1_PROEF
 
 /** Vervangt de huidige teksten van de tegel 'jaartraject'. Cursor neemt ze over. */
 export const TRAJECT_TEGEL = {
-  eyebrow: 'Team · Half jaar tot een jaar',
+  eyebrow: 'Een half jaar tot een jaar',
   menu: [
     {
       label: 'Past bij jou als',

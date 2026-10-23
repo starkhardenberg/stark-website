@@ -103,7 +103,17 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
                       track.businessContext ? ` ${styles.eyebrowNeutral}` : ''
                     }`}
                   >
-                    {track.eyebrow}
+                    {track.eyebrow.includes(' · ') ? (
+                      <>
+                        {track.eyebrow.slice(0, track.eyebrow.indexOf(' · '))}
+                        {' · '}
+                        <span className={styles.eyebrowTail}>
+                          {track.eyebrow.slice(track.eyebrow.indexOf(' · ') + 3)}
+                        </span>
+                      </>
+                    ) : (
+                      track.eyebrow
+                    )}
                   </span>
                 ) : null}
                 {track.panelTitle ? (
