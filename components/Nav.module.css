@@ -20,6 +20,18 @@
   top: clamp(40px, calc(12vh - 2cm), 80px);
 }
 
+/* Landingshero's, alleen mobiel: knop in het midden van het scherm. Desktop blijft rechts. */
+@media (max-width: 899px) {
+  .nav.navDeep .cta {
+    position: absolute;
+    left: 50%;
+    top: clamp(40px, calc(12vh - 2cm), 80px);
+    transform: translateX(-50%);
+    z-index: 2;
+    max-width: calc(100% - 12rem);
+  }
+}
+
 .navAlignStart {
   justify-content: flex-start;
 }
