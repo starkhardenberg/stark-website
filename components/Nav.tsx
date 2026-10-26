@@ -34,6 +34,8 @@ export default function Nav({
   backLabel = 'Home',
   align = 'end',
   deep = false,
+  photoBack = false,
+  heroBar = false,
   ctaLabel = CTA_KENNISMAKING_LABEL,
   ctaHref = hrefKennismaking,
   hideCta = false,
@@ -49,6 +51,10 @@ export default function Nav({
   align?: 'start' | 'end'
   /** Homepage-hero: CTA lager in het videobeeld */
   deep?: boolean
+  /** Teruglink op een foto: wit, met een donker vlak erachter */
+  photoBack?: boolean
+  /** Eigen donkere balk boven de hero, niet over de foto */
+  heroBar?: boolean
   /** Override standaard "Plan kennismaking" (bijv. zakelijk: Plan een gesprek) */
   ctaLabel?: string
   ctaHref?: string
@@ -144,10 +150,14 @@ export default function Nav({
   return (
     <>
       <header
-        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''}`}
+        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''}`}
       >
         {showBack ? (
-          <a href={backHref} className={styles.home} aria-label={`Terug naar ${backLabel}`}>
+          <a
+            href={backHref}
+            className={`${styles.home}${photoBack ? ` ${styles.homeOnPhoto}` : ''}`}
+            aria-label={`Terug naar ${backLabel}`}
+          >
             <span aria-hidden>←</span>
             {backLabel}
           </a>

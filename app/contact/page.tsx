@@ -50,7 +50,7 @@ export default function ContactPage({ searchParams }: PageProps) {
               <span className={styles.ownerRole}>Eigenaren, coaches en trainers</span>
             </figcaption>
           </figure>
-          <p className={styles.ownersLead}>Vrijblijvend, eerlijk en in je eigen tempo.</p>
+          <p className={styles.ownersLead}>Vrijblijvend, eerlijk.</p>
         </section>
 
         <section className={styles.formSection} aria-label="Contactformulier">

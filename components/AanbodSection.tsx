@@ -18,7 +18,7 @@ export default function AanbodSection() {
           <span className={`${styles.titleLine} ${styles.titleLineEen}`}>één adres</span>
         </h2>
         <p className={`starkSectionMeta starkSectionMetaOnDark ${styles.sectionIntro}`}>
-          Van een sterk lijf tot een sterke kop tot een sterk bedrijf
+          <span>Van een sterk lijf</span><span>tot een sterke kop</span><span>tot een sterk bedrijf</span>
         </p>
 
         <div className={styles.cardsAndCta}>

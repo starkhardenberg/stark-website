@@ -97,9 +97,10 @@
   box-sizing: border-box;
 }
 
-/* De tweede slotregel is langer dan de kolom. Zelfde letter, maar hij mag breken. */
+/* De slotregels zijn langer dan de kolom. Zelfde letter, maar ze mogen breken. */
 .introMeasure .introCloseFlush span {
   white-space: normal;
+  text-wrap: balance;
 }
 
 .introInner p.introGraf {
@@ -110,6 +111,201 @@
 
 .introInner p.introGraf:last-child {
   margin-bottom: 0;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0 0 clamp(40px, 6vw, 64px);
+  padding: 0 0 0 14px;
+  border-left: 1px solid var(--orange);
+  display: flex;
+  flex-direction: column;
+  gap: 1.35lh;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 4.6em minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+}
+
+/* Intro: één gedeelde tijdkolom, rechts tegen de tekst, op de basislijn van de eerste regel. */
+.introInner .timeline:not(.workLine) {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 1.35lh;
+}
+
+.introInner .timeline:not(.workLine) .timelineItem {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+}
+
+.timelineTime {
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--orange);
+}
+
+.introInner .timeline:not(.workLine) .timelineTime {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.introInner .timeline p.introGraf {
+  margin: 0;
+}
+
+.pivot {
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  padding: 0.55em 0;
+  border-top: 1px solid var(--stark-black);
+  border-bottom: 1px solid var(--stark-black);
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
+  font-size: clamp(26px, 3.6vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.pivotStrike {
+  text-decoration: line-through;
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+}
+
+.introInner p.claimStrong {
+  font-weight: 600;
+}
+
+.routesHead {
+  width: min(1180px, 100%);
+  margin: 0 auto clamp(36px, 5vw, 56px);
+}
+
+.routesHead .introCloseFlush span {
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.routesLead {
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  max-width: 36em;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--stark-grey);
+}
+
+.routesLeadLine + .routesLeadLine::before {
+  content: ' ';
+}
+
+@media (max-width: 899px) {
+  .routesLeadLine {
+    display: block;
+  }
+
+  .routesLeadLine + .routesLeadLine::before {
+    content: none;
+  }
+}
+
+.workLine {
+  margin: clamp(36px, 5vw, 56px) 0 0;
+}
+
+.workLine .timelineTime {
+  font-size: clamp(34px, 4.4vw, 48px);
+  line-height: 0.9;
+}
+
+/* De kolom is breed genoeg voor 10:00. Een enkel cijfer hoeft die ruimte op de telefoon niet. */
+@media (max-width: 899px) {
+  .workLine .timelineItem {
+    grid-template-columns: 1.15em minmax(0, 1fr);
+    column-gap: 14px;
+  }
+}
+
+.workKey {
+  margin: 0 0 0.28lh;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4.2vw, 40px);
+  line-height: 0.95;
+  letter-spacing: var(--display-tracking);
+  text-transform: uppercase;
+  color: var(--stark-black);
+  text-wrap: balance;
+}
+
+.workSub {
+  margin: 0 0 0.75lh;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.7vw, 18px);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--stark-grey);
+  text-wrap: balance;
+}
+
+.workText {
+  margin: 0 0 0.55lh;
+  max-width: 65ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  line-height: 1.65;
+  color: var(--navy);
+}
+
+.workText:last-child {
+  margin-bottom: 0;
+}
+
+.workMark {
+  font-style: italic;
+}
+
+.workRestart {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0.85lh 0 0;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--orange);
+}
+
+.workRestartMark {
+  width: 1.4em;
+  height: 1.4em;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.workRestartMark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .introAfter {
@@ -124,8 +320,8 @@
 
 /* Hoe we werken */
 .work {
-  background: var(--stark-black);
-  padding-top: clamp(96px, 14vw, 168px);
+  background: var(--off);
+  color: var(--navy);
 }
 
 .workSpine {
@@ -144,7 +340,7 @@
 }
 
 .workHead h2 {
-  color: var(--off);
+  color: var(--navy);
   align-items: flex-start;
   text-align: left;
 }
@@ -160,102 +356,17 @@
   margin: 0;
 }
 
-.work .introInner p.workLead {
-  max-width: 100%;
-  margin: 0 0 0.45lh;
-  font-family: var(--font-body), sans-serif;
-  font-size: clamp(21px, 2.4vw, 26px);
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--off);
-}
-
-.work .workSteps {
-  margin: 0 0 1.5lh;
-  white-space: nowrap;
-  /* Zelfde label, iets kleiner zodra de regel anders breekt. */
-  font-size: clamp(10px, 2.65vw, 12px);
-}
-
-.workBeats {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.workBeat {
-  container-type: inline-size;
-  padding: clamp(28px, 4.5vw, 44px) 0;
-  border-top: 1px solid rgba(245, 245, 245, 0.14);
-}
-
-.work .workBeat p {
-  max-width: 800px;
-}
-
-.workBeat:first-child {
-  padding-top: 0;
-  border-top: none;
-}
-
-.workBeatTitle {
-  margin: 0 0 0.7lh;
-  width: fit-content;
-  max-width: 100%;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: clamp(16px, 6.2cqi, 32px);
-  line-height: 0.98;
-  letter-spacing: var(--display-tracking);
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(247, 245, 242, 0.55);
-}
-
-.workBeat:hover .workBeatTitle,
-.workBeat:focus-within .workBeatTitle {
-  color: var(--orange);
-}
-
-.workMark {
-  font-weight: inherit;
-  font-style: inherit;
-  color: var(--off);
-}
-
-.work .workMark {
-  font-style: italic;
-}
-
-@media (max-width: 720px) {
-  .work .introInner p.workLead {
-    font-size: clamp(18px, 4.8vw, 21px);
-  }
-}
-
-@media (hover: none) {
-  .workBeatTitle {
-    color: var(--off);
-  }
-
-  .workMark {
-    color: var(--orange);
-  }
-
-  .work .workMark {
-    color: var(--off);
-  }
-}
-
 /* Hoe het begint */
 .start {
   background: var(--stark-black);
+  color: var(--off);
 }
 
 .start .workHead h2 {
   max-width: 11em;
   font-size: clamp(32px, 4.4vw, 52px);
   text-wrap: balance;
+  color: var(--off);
 }
 
 .start .workHead h2 span {
@@ -279,15 +390,82 @@
   content: none;
 }
 
+.startCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15lh;
+}
+
+.start .startCopy p {
+  margin: 0;
+}
+
 .startPointLead {
   color: var(--off);
   font-weight: 600;
 }
 
+.startFacts {
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding: 0;
+}
+
+.startFacts div {
+  margin: 0;
+  padding: clamp(13px, 1.8vw, 16px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.startFacts div:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.startFacts dt {
+  margin: 0 0 5px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stark-grey);
+}
+
+.startFacts dd {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--stark-body);
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.82);
+}
+
+.startAside {
+  margin: 16px 0 0;
+  text-align: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--stark-grey);
+}
+
+.startAside a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(138, 138, 138, 0.55);
+}
+
+.startAside a:hover,
+.startAside a:focus-visible {
+  color: var(--off);
+  text-decoration-color: var(--off);
+}
+
 .start .introInner p.startHighlight {
   margin: 0.6lh 0 0.7lh;
-  padding: 18px 20px;
-  background: #242624;
+  padding: 0 0 0 16px;
+  border-left: 2px solid var(--orange);
+  background: transparent;
   font-size: var(--stark-body);
   font-weight: 600;
   line-height: 1.65;
@@ -295,7 +473,7 @@
 }
 
 .startCta {
-  margin: 48px 0 0;
+  margin: clamp(28px, 4vw, 40px) 0 0;
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
@@ -337,7 +515,7 @@ h2.ingangTitle span {
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(245, 245, 245, 0.35);
+  text-decoration-color: rgba(247, 245, 242, 0.35);
 }
 
 .startGesprekLink:hover,
@@ -365,65 +543,14 @@ h2.ingangTitle span {
 
 @media (min-width: 900px) {
   .start .startCta {
-    flex-direction: row;
-    align-items: stretch;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .start .startCta a {
-    flex: 1 1 0;
-    width: auto;
-    min-width: 0;
-  }
-}
-
-/* Snelkoppelingen direct onder de hero. Tekstlinks, geen knoppen. */
-.jumps {
-  background: var(--off);
-  padding: 26px clamp(22px, 4vw, 64px) 6px;
-}
-
-.jumpsRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  max-width: 800px;
-  margin: 0;
-}
-
-.jumpItem {
-  display: inline-flex;
-  align-items: baseline;
-  white-space: nowrap;
-}
-
-.jumpItem a {
-  font-family: var(--font-body), sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--navy);
-  text-decoration: none;
-}
-
-.jumpItem a:hover,
-.jumpItem a:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
-}
-
-.jumpDot {
-  margin: 0 0.55em;
-  color: rgba(33, 36, 49, 0.38);
-}
-
-@media (max-width: 520px) {
-  .jumpItem a {
-    font-size: 13px;
-  }
-
-  .jumpDot {
-    margin: 0 0.4em;
+    flex: none;
+    width: 26rem;
+    max-width: 100%;
   }
 }
 

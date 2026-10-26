@@ -4,8 +4,8 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
-import { BookButton, CloseStamp, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import landingStyles from '@/app/landing.module.css'
+import { KennismakingClose, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import WerkgeverBlok from './WerkgeverBlok'
 import {
   L1O1_AFSLUITER,
@@ -19,11 +19,10 @@ import {
   L1O1_INTRO,
   L1O1_OPZET,
   L1O1_PARTS,
-  L1O1_PROEF,
   L1O1_QUOTE,
   L1O1_SCHEDULE,
   L1O1_SCHEDULE_NOTE,
-  L1O1_SLOT,
+  L1O1_START,
   L1O1_VOORBEELD,
   L1O1_VRAAGT,
   L1O1_VRAAGT_CLOSE,
@@ -40,24 +39,32 @@ export default function LeiderschapPage() {
   const worksTone = tone()
   const vraagtTone = tone()
   const quoteTone = tone()
-  const voorbeeldTone = tone()
+  const voorbeeldTone = L1O1_VOORBEELD.show ? tone() : 'light'
   const praktischTone = tone()
   const werkgeverTone = tone()
   const faqTone = tone()
   const slotTone = tone()
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${styles.zakelijk}`}>
       <FaqJsonLd items={L1O1_FAQ} />
 
       <header className={styles.hero}>
-        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img className={styles.heroPhoto} src={L1O1_HERO.image} alt={L1O1_HERO.alt} />
+            <picture>
+              <source media="(max-width: 767px)" srcSet={L1O1_HERO.imageMobile} />
+              <img
+                className={`${styles.heroPhoto} ${styles.heroPhotoFace}`}
+                src={L1O1_HERO.image}
+                alt={L1O1_HERO.alt}
+              />
+            </picture>
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
+              <p className={landingStyles.heroLabel}>{L1O1_HERO.eyebrow}</p>
               <HeroTitle
                 word={L1O1_HERO.word}
                 breakBefore="1-op-1"
@@ -118,7 +125,7 @@ export default function LeiderschapPage() {
                   </p>
                 ))}
               </div>
-              <CloseStamp lines={L1O1_VRAAGT_CLOSE} />
+              <p className={styles.afsluiter}>{L1O1_VRAAGT_CLOSE.join(' ')}</p>
             </>
           }
           aside={
@@ -151,6 +158,7 @@ export default function LeiderschapPage() {
         name={L1O1_QUOTE.name}
         role={L1O1_QUOTE.role}
         portrait
+        tight
         matchText
       />
 
@@ -199,7 +207,6 @@ export default function LeiderschapPage() {
             <p className={styles.groupClose}>{L1O1_DAARNA_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonTiles} />
       </Section>
 
       <Section number={num()} title={L1O1_WERKGEVER.title} tone={werkgeverTone}>
@@ -210,37 +217,11 @@ export default function LeiderschapPage() {
       </Section>
 
       <Section number={num()} title="Goede vragen" tone={faqTone}>
-        <FaqList tone={faqTone} items={L1O1_FAQ} />
+        <FaqList tone={faqTone} variant="dienst" items={L1O1_FAQ} />
       </Section>
 
       <Section number={num()} title="Zo begin je" tone={slotTone}>
-        <div className={styles.prose}>
-          <p>{L1O1_PROEF.lead}</p>
-          <ul className={`${styles.list} ${styles.proefPoints}`}>
-            {L1O1_PROEF.points.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-            <li>{L1O1_PROEF.practical}</li>
-          </ul>
-          <p>
-            {L1O1_SLOT.before}
-            <a className={`${styles.textLink} ${styles.textLinkBold}`} href={L1O1_SLOT.href} target="_blank" rel="noopener noreferrer">
-              {L1O1_SLOT.link}
-            </a>
-            {L1O1_SLOT.rest}
-          </p>
-          <p className={styles.proefDate}>{L1O1_PROEF.date}</p>
-        </div>
-        <div className={styles.proefAction}>
-          <a
-            href={L1O1_PROEF.href}
-            className={`${styles.button} ${styles.proefButton} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {L1O1_PROEF.linkLabel}
-          </a>
-        </div>
+        <KennismakingClose text={L1O1_START} />
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

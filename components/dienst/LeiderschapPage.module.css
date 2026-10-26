@@ -7,7 +7,7 @@
 .sheetHeading {
   margin: 0 0 8px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 22px;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -34,6 +34,7 @@
 
 .sheetFooter {
   margin-top: 28px;
+  overflow-wrap: anywhere;
 }
 
 .sheet .sheetCopy {

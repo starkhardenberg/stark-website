@@ -31,7 +31,7 @@
 
 .heroBgImg {
   object-fit: cover;
-  object-position: 62% 58%;
+  object-position: center 42%;
 }
 
 .heroTeam .heroContent {
@@ -439,7 +439,7 @@
 /* Desktop */
 @media (min-width: 900px) {
   .heroBgImg {
-    object-position: 58% 54%;
+    object-position: 38% 12%;
   }
 
   .heroContent {

@@ -115,6 +115,14 @@
   -webkit-text-stroke: var(--outline-stroke-display) var(--stark-black);
 }
 
+.closeOnDark {
+  color: var(--off);
+}
+
+.closeOnDark .closeOutline {
+  -webkit-text-stroke-color: var(--off);
+}
+
 .closeDisplayWrap .closeLine {
   white-space: normal;
   max-width: 18ch;

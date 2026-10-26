@@ -246,7 +246,7 @@
 .chapterTitle {
   margin: 0;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(22px, 3vw, 32px);
   line-height: 1;
   letter-spacing: var(--display-tracking);
@@ -414,6 +414,21 @@
     display: grid;
     gap: 12px;
     max-width: 60ch;
+  }
+}
+
+@media (max-width: 959px) {
+  /* Op de telefoon is de outline te dun. Inactief blijft gevuld, stiller dan de actieve stap. */
+  .chain .chainWord {
+    color: rgba(247, 245, 242, 0.72);
+    -webkit-text-fill-color: rgba(247, 245, 242, 0.72);
+    -webkit-text-stroke: 0;
+  }
+
+  .chain .chainStepActive .chainWord {
+    color: var(--off);
+    -webkit-text-fill-color: var(--off);
+    -webkit-text-stroke: 0;
   }
 }
 

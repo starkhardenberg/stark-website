@@ -8,6 +8,7 @@ export default function HoeHetBegintSection() {
   return (
     <section
       className={`${quoteStyles.section} ${quoteStyles.sectionDark} ${pageStyles.start} ${pageStyles.introRoom}`}
+      id="zo-begin-je"
       aria-label={ZAKELIJK_START.title}
     >
       <div className={pageStyles.workSpine}>
@@ -19,33 +20,24 @@ export default function HoeHetBegintSection() {
 
         <div className={`${quoteStyles.inner} ${pageStyles.introInner}`}>
           <div className={quoteStyles.body}>
-            <p className={pageStyles.introGraf}>{ZAKELIJK_START.lead}</p>
-            <ul className={pageStyles.startPoints}>
-              {[...ZAKELIJK_START.points, ZAKELIJK_START.practical].map((point) => {
-                const breakAt = point.indexOf('. ')
-                const lead = breakAt < 0 ? point : point.slice(0, breakAt + 1)
-                const rest = breakAt < 0 ? '' : point.slice(breakAt + 1)
-                return (
-                  <li key={point}>
-                    <span className={pageStyles.startPointLead}>{lead}</span>
-                    {rest}
-                  </li>
-                )
-              })}
-            </ul>
-            <p className={pageStyles.introGraf}>
-              {ZAKELIJK_START.gesprekBefore}
-              <a
-                href={ZAKELIJK_START.kennismakingHref}
-                className={pageStyles.startGesprekLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {ZAKELIJK_START.gesprekLink}
-              </a>
-              {ZAKELIJK_START.gesprekAfter}
-            </p>
-            <p className={pageStyles.startHighlight}>{ZAKELIJK_START.highlight}</p>
+            <div className={pageStyles.startCopy}>
+              {ZAKELIJK_START.paragraphs.map((paragraph) => (
+                <p key={paragraph.lead ?? paragraph.text}>
+                  {paragraph.lead ? (
+                    <span className={pageStyles.startPointLead}>{paragraph.lead}</span>
+                  ) : null}
+                  {paragraph.text}
+                </p>
+              ))}
+            </div>
+            <dl className={pageStyles.startFacts}>
+              {ZAKELIJK_START.facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
           <div className={`${introStyles.ctaRow} ${STARK_CTA_ROW} ${pageStyles.startCta}`}>
             <a
@@ -57,6 +49,17 @@ export default function HoeHetBegintSection() {
               {ZAKELIJK_START.proef.label}
             </a>
           </div>
+          <p className={pageStyles.startAside}>
+            {ZAKELIJK_START.asideBefore}
+            <a
+              href={ZAKELIJK_START.kennismakingHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {ZAKELIJK_START.asideLink}
+            </a>
+            {ZAKELIJK_START.asideAfter}
+          </p>
         </div>
       </div>
     </section>

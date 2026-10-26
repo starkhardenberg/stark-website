@@ -24,7 +24,7 @@
   margin: 0 0 14px;
   font-family: var(--font-display), sans-serif;
   font-size: clamp(32px, 6vw, 48px);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 0.95;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;

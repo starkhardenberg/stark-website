@@ -34,7 +34,7 @@ function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
   const imgStyle: CSSProperties = {}
   if (hero.imageContain) imgStyle.objectFit = 'contain'
   else if (hero.imageCover) imgStyle.objectFit = 'cover'
-  if (hero.objectPosition) imgStyle.objectPosition = hero.objectPosition
+  if (hero.objectPosition && !hero.image.includes('rebekka')) imgStyle.objectPosition = hero.objectPosition
   if (
     !hero.portraitCrop &&
     !hero.imageContain &&
@@ -51,7 +51,7 @@ function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
   return (
     <figure className={`${styles.heroQuote}${hero.darkPortrait ? ` ${styles.heroQuoteDark}` : ''}`}>
       <div
-        className={`${styles.heroImgWrap}${hero.portraitCrop ? ` ${styles.heroImgWrapPortrait}` : ''}${hero.imageContain ? ` ${styles.heroImgWrapContain}` : ''}`}
+        className={`${styles.heroImgWrap}${hero.portraitCrop ? ` ${styles.heroImgWrapPortrait}` : ''}${hero.imageContain ? ` ${styles.heroImgWrapContain}` : ''}${hero.image.includes('rebekka') ? ` ${styles.heroImgWrapRebekka}` : ''}`}
         aria-hidden="true"
       >
         <StarkImage

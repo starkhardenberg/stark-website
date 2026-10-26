@@ -10,7 +10,7 @@ export const coachingTracks: AanbodTrack[] = [
     mediaLabel: 'Momentum',
     photo: 'foto-coaching-tegel-momentum-gesprek.png',
     photoAlt: 'Groep in gesprek tijdens coaching bij STARK! Hardenberg',
-    photoObjectPosition: 'center 30%',
+    photoObjectPosition: '68% 30%',
     photoHoverColor: false,
     eyebrow: 'Traject in de groep · 10 weken',
     readMoreHref: '/momentum',

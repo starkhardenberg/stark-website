@@ -2124,6 +2124,17 @@ a.resultItem {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.faqSection:not(.faqSectionLight) {
+  background: var(--stark-black);
+}
+
+.faqSection:not(.faqSectionLight) .sectionQuote,
+.faqSection:not(.faqSectionLight) .sectionQuoteLine {
+  color: var(--off);
+  -webkit-text-fill-color: var(--off);
+  -webkit-text-stroke: 0;
+}
+
 .faqSectionLight {
   background: var(--off);
   border-bottom: 1px solid rgba(33, 36, 49, 0.1);

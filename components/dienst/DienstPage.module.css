@@ -37,6 +37,13 @@
   z-index: 20;
 }
 
+.zakelijk .hero > header {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+}
+
 .heroSplit {
   display: flex;
   flex-direction: column;
@@ -46,9 +53,13 @@
   container-type: inline-size;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  padding: 40px 40px 48px 28px;
+  align-items: center;
+  text-align: center;
+  padding: 40px 28px 48px;
+}
+
+.zakelijk .heroCopy {
+  padding-top: calc(40px * 2 / 3);
 }
 
 .heroTitle {
@@ -89,6 +100,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   text-align: center;
 }
 
@@ -103,10 +115,19 @@
   color: var(--off);
 }
 
+.zakelijk .heroLine {
+  font-size: clamp(18px, 4.4cqi, 26px);
+  color: rgba(245, 245, 245, 0.78);
+}
+
 .heroPhotoWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 2;
+}
+
+.heroPhotoWrap picture {
+  display: contents;
 }
 
 .heroPhoto {
@@ -118,13 +139,32 @@
   object-position: center center;
 }
 
+.heroPhotoFace {
+  object-position: 18% 46%;
+}
+
+.heroPhotoTraject {
+  object-position: 68% 36%;
+}
+
+.heroPhotoMaw {
+  object-position: 58% 34%;
+}
+
+.zakelijk .heroPhotoWrap {
+  min-height: 60vh;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
   min-height: 52px;
   margin-top: 22px;
   padding: 0 22px;
+  box-sizing: border-box;
   text-decoration: none;
 }
 
@@ -172,8 +212,38 @@
 }
 
 .buttonSlot {
-  margin-top: 48px;
-  margin-bottom: 48px;
+  margin-top: 28px;
+  margin-bottom: 0;
+}
+
+.slotNote {
+  margin: 14px 0 0;
+  max-width: 65ch;
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--stark-grey);
+}
+
+.slotNote a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.slotNote a:hover,
+.slotNote a:focus-visible {
+  color: var(--off);
+}
+
+.dark .slotNote a:hover,
+.dark .slotNote a:focus-visible {
+  color: var(--off);
+}
+
+.light .slotNote a:hover,
+.light .slotNote a:focus-visible {
+  color: var(--navy);
 }
 
 .buttonPair {
@@ -225,7 +295,7 @@
 
 .sec {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .secLead {
@@ -243,7 +313,7 @@
   background: var(--orange);
   color: inherit;
   font-family: var(--font-display), sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--num-mark);
   font-variant-numeric: tabular-nums;
   line-height: 1;
@@ -288,7 +358,7 @@
 }
 
 .num[data-num='04'] .numInk {
-  transform: translate(0.06em, 0.02em) rotate(6deg);
+  transform: translate(0.46em, 0.32em) rotate(var(--stamp-turn));
 }
 
 .num[data-num='05'] .numInk {
@@ -314,7 +384,7 @@
 .h2 {
   margin: 0;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: var(--num-size);
   line-height: 1.05;
   letter-spacing: 0.005em;
@@ -326,10 +396,22 @@
   margin-top: 28px;
 }
 
+.sec[data-num='01'] .secBody {
+  margin-top: 26px;
+}
+
+.sec[data-num='01'] .secBody > .scenes:first-child {
+  margin-top: 0;
+}
+
+.sec[data-num='01'] .secBody > .scenes:first-child > li:first-child {
+  padding-top: 0;
+}
+
 .h3 {
   margin: 0 0 14px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 22px;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -446,7 +528,7 @@
 .partTitle {
   margin: 0 0 8px;
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 22px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -459,6 +541,10 @@
   font-size: clamp(19px, 1.95vw, 21px);
   line-height: 1.6;
   color: var(--muted-dark);
+}
+
+.part p + p {
+  margin-top: 0.85em;
 }
 
 .afsluiter {
@@ -501,6 +587,18 @@
 
 .dark .splitAside {
   background: rgba(247, 245, 242, 0.06);
+}
+
+/* Zakelijke diensten: op licht alleen een lijn, op donker het paneel van Praktisch. */
+.zakelijk .light .splitAside,
+.zakelijk .light .group {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.zakelijk .dark .splitAside {
+  background: #242624;
+  border: none;
 }
 
 .splitAside .sub {
@@ -560,6 +658,14 @@
   width: 9px;
   height: 9px;
   background: var(--orange);
+}
+
+.list li:only-child {
+  padding-left: 0;
+}
+
+.list li:only-child::before {
+  content: none;
 }
 
 .proefPoints {
@@ -650,9 +756,36 @@
 }
 
 .proofPhotoPortrait {
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 4 / 5;
   min-height: 0;
   max-height: none;
+}
+
+.proofPhotoPortrait .proofPhoto {
+  object-position: center 18%;
+}
+
+/* Alleen Julia: de straat boven haar hoofd hoeft op de telefoon niet mee. */
+.proofPhotoTight {
+  aspect-ratio: 5 / 4;
+}
+
+.proofPhotoTight .proofPhoto {
+  object-position: center 92%;
+}
+
+/* Zaalfoto en ringfoto: op de telefoon niet hoger dan 45% van het scherm, bord in beeld. */
+@media (max-width: 799px) {
+  .proofPhotoHall {
+    aspect-ratio: auto;
+    height: 45vh;
+    max-height: 45vh;
+    min-height: 0;
+  }
+
+  .proofPhotoTight {
+    max-height: 45vh;
+  }
 }
 
 .proofPhoto {
@@ -679,10 +812,10 @@
 
 .quote {
   margin: 0;
-  max-width: 16ch;
+  max-width: 28ch;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(34px, 4.6vw, 60px);
+  font-size: 28px;
   line-height: 1.08;
   letter-spacing: 0.005em;
   text-transform: uppercase;
@@ -695,6 +828,15 @@
   font-weight: 700;
   font-size: 1.2em;
   line-height: 0.65;
+  color: var(--orange);
+}
+
+.quote::after {
+  content: '”';
+  margin-left: 0.06em;
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 0;
   color: var(--orange);
 }
 
@@ -795,7 +937,7 @@
   background: none;
   color: var(--orange);
   font-family: var(--font-display), sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
   line-height: 1.35;
 }
@@ -818,6 +960,10 @@
     z-index: 0;
   }
 
+  .heroPhotoMaw {
+    object-position: 46% 40%;
+  }
+
   .heroCopy {
     position: relative;
     z-index: 1;
@@ -827,6 +973,10 @@
     overflow: visible;
     padding: 32px 44px 44px 0;
     text-align: left;
+  }
+
+  .zakelijk .heroCopy {
+    padding-top: calc(32px * 2 / 3);
   }
 
   .heroStack {
@@ -879,6 +1029,10 @@
     max-width: 100%;
   }
 
+  .zakelijk .heroLine {
+    font-size: clamp(20px, 2.15vw, 32px);
+  }
+
   .page {
     --num-mark: 56px;
   }
@@ -898,6 +1052,12 @@
   .h2 {
     grid-column: 2;
     grid-row: 1;
+  }
+
+  /* Cijfer is hoger dan de kop en staat gecentreerd. Zonder dit zit er
+     extra lucht onder de kop van sectie 01, meer dan tussen de regels. */
+  .sec[data-num='01'] .h2 {
+    align-self: end;
   }
 
   .secBody {
@@ -995,12 +1155,25 @@
     object-position: center 58%;
   }
 
+  /* Zaalfoto, ringfoto en Julia: niet hoger dan de helft van het scherm. */
+  .proofPhotoHall,
+  .proofPhotoTight {
+    min-height: 0;
+    max-height: 50vh;
+    align-self: start;
+  }
+
   .heroTitle.heroTitleBreak {
     line-height: 0.94;
   }
 
   .proofText {
     padding: 72px 64px;
+  }
+
+  .quote {
+    max-width: 16ch;
+    font-size: clamp(34px, 4.6vw, 60px);
   }
 }
 

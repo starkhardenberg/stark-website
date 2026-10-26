@@ -6,7 +6,8 @@
  * Teksten hier aanpassen, niet in de opmaak.
  */
 
-import { L1O1_PROEF, L1O1_SLOT } from '@/components/dienst/leiderschap-1-op-1'
+import { L1O1_SLOT, PROEF_EDITION } from '@/components/dienst/leiderschap-1-op-1'
+import { ADDRESS } from '@/lib/contact'
 
 export const ZAKELIJK_META = {
   title: 'Leiderschap en inzetbaarheid in Hardenberg | STARK! Wark',
@@ -15,17 +16,10 @@ export const ZAKELIJK_META = {
 }
 
 export const ZAKELIJK_HERO = {
-  label: 'STARK! Wark',
-  lead: 'Sterker in lijf',
-  punch: 'en werk',
+  lead: 'STARK!',
+  punch: 'Wark',
   sub: 'Dat levert tijd,\u00A0geld\u00A0en\u00A0energie',
 }
-
-export const ZAKELIJK_JUMPS = [
-  { label: 'Leiderschap 1-op-1', href: '#leiderschap-1-op-1' },
-  { label: 'Draagkracht', href: '#jaartraject' },
-  { label: 'Momentum @ Werk', href: '#momentum-at-werk' },
-]
 
 /* ---------- intro ---------- */
 
@@ -34,23 +28,36 @@ export const ZAKELIJK_INTRO = {
   titleLine1: 'Vitaliteit begint niet',
   titleMark: 'niet',
   titleLine2: 'bij de medewerker',
-  purpose:
-    'STARK! Wark is ons werk met bedrijven. Ons doel: jullie halen de resultaten die je wilt halen, en iedereen in het bedrijf doet dat met energie en plezier.',
-  opener:
-    'Vitaliteit is in veel bedrijven een sportabonnement, een workshop of een cursus stressmanagement. Wij beginnen een laag lager, bij hoe het werk loopt:',
-  scenes: [
-    'Maandagochtend, half negen. Je loopt binnen. De planning is helder voor iedereen. Je teamleider heeft de twee open vragen van vrijdag al beantwoord, en zegt het als je koffie haalt.',
-    'Om tien uur zit je met je MT. Een afspraak die niet gehaald is, wordt genoemd, en er ligt meteen een nieuwe. Er wordt gelachen. Om elf uur ben je klaar. De rest van de ochtend is voor de klant die je al drie weken wilt bellen.',
-    'Woensdag ben je een dag weg. Je telefoon blijft rustig.',
+  scene: [
+    {
+      time: '8:30',
+      text: 'Maandagochtend. Je loopt binnen. De planning is helder voor iedereen. De twee open vragen van vrijdag zijn al beantwoord. Je hoort het van je teamleider als je koffie haalt.',
+    },
+    {
+      time: '10:00',
+      text: 'Je zit met je MT. Een afspraak die niet gehaald is, wordt genoemd, en er ligt meteen een nieuwe. Er wordt gelachen.',
+    },
+    {
+      time: '11:00',
+      text: 'Je bent klaar. De rest van de ochtend is voor de klant die je al drie weken wilt bellen.',
+    },
+    {
+      time: 'WOE',
+      text: 'Woensdag ben je een dag weg. Je telefoon blijft rustig.',
+    },
   ],
-  after:
-    'Dat begint bij hoe er wordt geleid en samengewerkt. Precies daar werken wij, met de eigenaar, het MT, de teamleiders en het kantoor.',
+  pivotBefore: "Zo'n week begint niet bij ",
+  pivotStrikes: ['een sportabonnement', 'een cursus stressmanagement', 'fruit op je werk'] as const,
+  pivotJoin: [', ', ' of ', '.'],
+  claim: [
+    'Bij STARK! leer je zo leiden dat je mensen weten wat er moet gebeuren, het toezeggen en het doen. Met plezier en energie, en zonder dat jij alles zelf doet.',
+    'Daarom starten wij op deze laag, bij hoe het werk loopt. Dat is STARK! Wark, ons werk met bedrijven. Dit komt terug op verschillende plekken in het bedrijf.',
+  ],
   closeLine1: 'Het regent van boven naar beneden',
-  closeLine2: 'Dus beginnen we bij jou, en nemen we je team mee',
-  close: [
-    'Wat de leiding doet, zie je terug op de vloer. Daarom begint het meeste resultaat bij leiderschap: bij jou, en bij je team.',
-    'Daarna nemen we de vloer mee met Momentum @ Werk. Medewerkers werken daar aan hetzelfde: afspraken maken, verantwoordelijkheid nemen en doen wat je zegt. En ze worden sterker, in hun lijf en in hun hoofd.',
-    'Momentum @ Werk kan ook los. Je mensen staan daarna steviger in hun werk. En wat bij de organisatie ligt, zoals het rooster of de bezetting, horen jullie al halverwege. Zo zie je waar de volgende stap ligt.',
+  closeLine2: 'Eerst jij.\nDan wie met je leidt.\nDan de vloer.',
+  routesLead: [
+    'Drie routes die op elkaar aansluiten',
+    'en los van elkaar kunnen draaien.',
   ],
 }
 
@@ -58,7 +65,11 @@ export const ZAKELIJK_INTRO = {
 
 export const ZAKELIJK_WERK = {
   title: 'Hoe we werken',
-  lead: 'Bij STARK! leer je zo te leiden dat je mensen weten wat er moet gebeuren, het toezeggen en het ook doen.',
+  opening: [
+    'In elk bedrijf wordt gewerkt zoals er gewerkt wordt. Dat is zo gegroeid, en zo is het de cultuur geworden. Een deel daarvan werkt. Een deel werkt tegen, en dat valt niemand meer op, omdat het normaal is. Zulke patronen doorbreken vraagt tijd en regelmaat. Daarom zien we je elke week, en daarom duurt een traject een langere tijd.',
+    'We werken met Straight Line Leadership: leiden zonder omwegen. Wij hebben dat vertaald naar vier stappen die elke week terugkomen.',
+  ],
+  restart: 'De week erna begint het opnieuw',
   beats: [
     {
       label: 'Zichtbaar maken',
@@ -77,9 +88,9 @@ export const ZAKELIJK_WERK = {
     },
     {
       label: 'Leiden',
-      title: 'Jij als eigenaar',
+      title: 'Jij als leider',
       text: [
-        'Ondernemen kun je. Je ziet kansen, je maakt keuzes en je bouwt een bedrijf. Leiden is de volgende stap. Je neemt je mensen mee in wat je met het bedrijf wilt, je laat zien wat dat van hen vraagt, en je leert ze dat te doen. Mensen die weten waar je heen wilt en wat hun deel daarin is, willen voor je rennen.',
+        'Leiden is zeggen waar je heen wilt, laten zien wat dat van je mensen vraagt, en ze leren dat te doen. Dat geldt voor de eigenaar, en net zo voor de teamleider op de vloer. Mensen die weten waar je heen wilt en wat hun deel daarin is, willen voor je rennen.',
         'Daarom heb je elke week een eigen gesprek. Daar gaat het over wat jij doet als een afspraak niet wordt nagekomen, wat je laat lopen, en waar je zelf in de weg zit. Wat je daar besluit, laat je de week erna zien aan je team.',
       ],
       mark: 'Leiden leer je door het te doen.',
@@ -133,15 +144,35 @@ export const ZAKELIJK_FAQ = [
 
 export const ZAKELIJK_START = {
   title: 'Zo begin je',
-  lead: 'Kom naar de Proef op de Som. Een middag bij STARK! in Hardenberg, met andere leiders uit de regio. Je ziet wat jouw manier van sturen doet met je bedrijf.',
-  points: L1O1_PROEF.points,
-  highlight: L1O1_PROEF.date,
-  practical:
-    'Kom in kleding waarin je kunt bewegen. Iedereen kan meedoen, ongeacht hoe fit of sterk je bent. Neem je MT of je teamleiders mee.',
-  gesprekBefore: L1O1_SLOT.before,
-  gesprekLink: L1O1_SLOT.link,
-  gesprekAfter: L1O1_SLOT.rest,
+  paragraphs: [
+    {
+      text: 'Kom naar de Proef op de Som. Een middag bij STARK! in Hardenberg, met andere leiders uit de regio. Je ziet wat jouw manier van sturen doet met je bedrijf.',
+    },
+    {
+      lead: 'Jij bent aan zet.',
+      text: ' Na een korte introductie werk je met de anderen aan een opdracht waarin je ook fysiek aan de slag gaat. Je ziet jezelf doen wat je op je eigen werkvloer ook doet. Wat werkt er in jouw manier van leidinggeven, en wat kost je tijd en dus geld? Daarna vertalen we dat door naar jouw bedrijf. Waar kun jij een stap zetten, en wat levert die op met dezelfde mensen en dezelfde middelen?',
+    },
+    {
+      lead: 'Je gaat naar huis met één heldere correctie in je manier van werken.',
+      text: ' Klein genoeg om maandag door te voeren en merkbaar in je werkdag. Je ontmoet leidinggevenden uit de regio die tegen dezelfde dingen aanlopen. Wil je daarna verder, dan plannen we een gesprek.',
+    },
+  ],
+  facts: [
+    { label: 'Wanneer', value: PROEF_EDITION.when },
+    { label: 'Waar', value: `STARK! Hardenberg, ${ADDRESS.street}` },
+    { label: 'Plaatsen', value: PROEF_EDITION.places },
+    { label: 'Kosten', value: 'Geen' },
+    {
+      label: 'Meenemen',
+      value:
+        'Je MT of je teamleiders. Kleding waarin je kunt bewegen; iedereen kan meedoen, ongeacht hoe fit of sterk je bent.',
+    },
+    { label: 'Erbij', value: PROEF_EDITION.included },
+  ],
   proef: { label: 'Meld je aan voor de Proef op de Som', href: 'https://proefopdesom.starkhardenberg.nl' },
+  asideBefore: 'Liever eerst een gesprek? ',
+  asideLink: 'Plan een kennismaking',
+  asideAfter: '.',
   kennismakingHref: L1O1_SLOT.href,
 }
 

@@ -4,7 +4,8 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, CloseStamp, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import landingStyles from '@/app/landing.module.css'
+import { KennismakingClose, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   MAW_AFSLUITER,
   MAW_ANDERS,
@@ -17,8 +18,6 @@ import {
   MAW_QUOTE,
   MAW_SLOT,
   MAW_TERUG,
-  MAW_VERLOOP,
-  MAW_VERLOOP_NOTE,
   MAW_WIE,
   MAW_WIE_CLOSE,
 } from './momentum-at-werk'
@@ -38,17 +37,18 @@ export default function MomentumAtWerkPage() {
   const slotTone = tone()
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${styles.zakelijk}`}>
       <FaqJsonLd items={MAW_FAQ} />
 
       <header className={styles.hero}>
-        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img className={styles.heroPhoto} src={MAW_HERO.image} alt={MAW_HERO.alt} />
+            <img className={`${styles.heroPhoto} ${styles.heroPhotoMaw}`} src={MAW_HERO.image} alt={MAW_HERO.alt} />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
+              <p className={landingStyles.heroLabel}>{MAW_HERO.label}</p>
               <HeroTitle word={MAW_HERO.word} breakBefore="@" centerSecondLine />
               <p className={styles.heroLine}>{MAW_HERO.line}</p>
             </div>
@@ -73,7 +73,7 @@ export default function MomentumAtWerkPage() {
             {MAW_INTRO.proseStrong} {MAW_INTRO.proseAfterStrong}
           </p>
         </div>
-        <CloseStamp lines={MAW_INTRO.close} />
+        <p className={styles.afsluiter}>{MAW_INTRO.close.join(' ')}</p>
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -81,7 +81,9 @@ export default function MomentumAtWerkPage() {
           {MAW_PARTS.map((part) => (
             <div className={styles.part} key={part.title}>
               <h3 className={styles.partTitle}>{part.title}</h3>
-              <p>{part.text}</p>
+              {(Array.isArray(part.text) ? part.text : [part.text]).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           ))}
         </div>
@@ -130,9 +132,12 @@ export default function MomentumAtWerkPage() {
         text={MAW_QUOTE.text}
         name={MAW_QUOTE.name}
         role={MAW_QUOTE.role}
-        portrait
+        portrait={MAW_QUOTE.layout === 'testimonial'}
+        tight={MAW_QUOTE.layout === 'testimonial'}
+        hall={MAW_QUOTE.layout === 'line'}
         matchText
-        label="Citaat"
+        photoPosition={MAW_QUOTE.layout === 'line' ? MAW_QUOTE.photoPosition : undefined}
+        label={MAW_QUOTE.layout === 'testimonial' ? 'Ervaring van een deelnemer' : 'Citaat'}
       />
 
       <Section number={num()} title={MAW_TERUG.title} tone={terugTone}>
@@ -170,27 +175,14 @@ export default function MomentumAtWerkPage() {
             </ul>
           </div>
         </div>
-        <BookButton className={styles.buttonTiles} />
       </Section>
 
       <Section number={num()} title="Goede vragen" tone={faqTone}>
-        <FaqList tone={faqTone} items={MAW_FAQ} />
+        <FaqList tone={faqTone} variant="dienst" items={MAW_FAQ} />
       </Section>
 
-      <Section number={num()} title="Het begint met een gesprek" tone={slotTone}>
-        <div className={styles.prose}>
-          <p>{MAW_SLOT}</p>
-        </div>
-        <div className={`${styles.group} ${styles.stepsCard}`}>
-          <h3 className={styles.h3}>Na de kennismaking</h3>
-          <ol className={`${styles.list} ${styles.steps} ${styles.stepsStack}`}>
-            {MAW_VERLOOP.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-          <p className={styles.groupClose}>{MAW_VERLOOP_NOTE}</p>
-        </div>
-        <BookButton className={styles.buttonSlot} />
+      <Section number={num()} title="Zo begin je" tone={slotTone}>
+        <KennismakingClose text={MAW_SLOT} />
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />

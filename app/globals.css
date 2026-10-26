@@ -59,11 +59,17 @@ body {
 }
 
 /* Display type-scale — tokens klaar voor Prompt 2 */
+h1,
+h2,
+h3 {
+  font-weight: 900;
+}
+
 .stark-h1,
 h1.stark-display {
   font-family: var(--font-display), sans-serif;
   font-size: var(--stark-h1);
-  font-weight: 400;
+  font-weight: 900;
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -73,7 +79,7 @@ h1.stark-display {
 h2.stark-display {
   font-family: var(--font-display), sans-serif;
   font-size: var(--stark-h2);
-  font-weight: 400;
+  font-weight: 900;
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -213,6 +219,20 @@ a {
 .starkCtaRow {
   width: 100%;
   max-width: 100%;
+}
+
+a.starkCtaPrimary:not(.starkCtaNav),
+button.starkCtaPrimary:not(.starkCtaNav) {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 900px) {
+  a.starkCtaPrimary:not(.starkCtaNav),
+  button.starkCtaPrimary:not(.starkCtaNav) {
+    width: 26rem;
+  }
 }
 
 @media (max-width: 899px) {

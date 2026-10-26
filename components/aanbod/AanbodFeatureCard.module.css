@@ -52,7 +52,7 @@
 .mediaLabel {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(30px, 6.5vw, 58px);
+  font-size: clamp(36px, 7.2vw, 68px);
   line-height: 0.92;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -64,7 +64,7 @@
 .mediaSubLabel {
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(16px, 2.8vw, 24px);
+  font-size: clamp(20px, 3.2vw, 28px);
   line-height: 0.95;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -108,7 +108,7 @@
   z-index: 2;
   font-family: var(--font-display), sans-serif;
   font-weight: 700;
-  font-size: clamp(46px, 7vw, 76px);
+  font-size: clamp(56px, 8vw, 88px);
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: transparent;
@@ -197,6 +197,10 @@
 
 .card:not(.cardLight) .eyebrow {
   color: var(--stark-grey);
+}
+
+.cardLight .eyebrow {
+  color: var(--navy);
 }
 
 .eyebrowTail {
@@ -334,6 +338,6 @@
   }
 
   .index {
-    font-size: clamp(52px, 5.5vw, 80px);
+    font-size: clamp(64px, 6.4vw, 96px);
   }
 }

@@ -94,16 +94,30 @@
 }
 
 .sectionLight .heroQuote {
-  background: var(--navy);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: transparent;
+  border-color: rgba(33, 36, 49, 0.12);
 }
 
 .sectionLight .heroContent {
-  background: var(--navy);
+  background: transparent;
+}
+
+.sectionLight .heroText p,
+.sectionLight .heroName {
+  color: var(--navy);
+}
+
+.sectionLight .heroContext {
+  color: rgba(33, 36, 49, 0.55);
 }
 
 .sectionLight .heroCite {
-  border-top-color: rgba(247, 245, 242, 0.2);
+  border-top-color: var(--stark-grey);
+}
+
+.sectionLight .heroText p::before,
+.sectionLight .heroText p::after {
+  color: var(--orange);
 }
 
 .sectionHero .heroContent,
@@ -240,6 +254,23 @@
   transform: none;
 }
 
+/* Rebekka: op de telefoon de lucht boven haar hoofd eraf, en een tik naar rechts. */
+.heroImgWrapRebekka .heroImg {
+  object-position: center 55%;
+}
+
+@media (max-width: 899px) {
+  .heroImgWrapRebekka {
+    aspect-ratio: 5 / 4;
+  }
+
+  .heroImgWrapRebekka .heroImg {
+    object-position: 48% 100%;
+    transform: translate(2%, 0);
+    transform-origin: center bottom;
+  }
+}
+
 .heroContent {
   padding: 36px 32px;
   display: flex;
@@ -372,6 +403,11 @@
   .heroImgWrapPortrait .heroImg {
     object-fit: cover;
     object-position: 50% 50%;
+    transform: none;
+  }
+
+  .heroImgWrapRebekka .heroImg {
+    object-position: center 55%;
     transform: none;
   }
 

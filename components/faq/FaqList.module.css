@@ -37,11 +37,6 @@
   outline-offset: 4px;
 }
 
-.itemOpen .question,
-.itemOpen .indicator {
-  color: var(--orange);
-}
-
 .itemOpen .question {
   padding-bottom: 12px;
 }
@@ -155,12 +150,8 @@
   margin-left: 0;
 }
 
-.listLight .itemOpen .question,
-.listLight .itemOpen .indicator {
-  color: var(--orange);
-}
-
 .listLight .itemOpen .question {
+  color: var(--stark-black);
   padding-bottom: 10px;
 }
 
@@ -170,10 +161,6 @@
 
 .listLanding .indicator {
   font-size: 32px;
-}
-
-.listLight .itemOpen .indicator {
-  color: var(--orange);
 }
 
 .listLight .answer {
@@ -197,8 +184,17 @@
   text-decoration-color: var(--orange);
 }
 
-/* Eén vraag oranje: de open vraag, of de vraag onder de cursor. Nooit allebei. */
-@media (hover: hover) {
+/* Oranje alleen zolang de muis op de vraag staat. Op een touchscreen geen hover. */
+@media (hover: hover) and (pointer: fine) {
+  .question:hover,
+  .question:hover .indicator,
+  .listLight .question:hover,
+  .listLight .itemOpen .question:hover,
+  .listLight .question:hover .indicator,
+  .listLight .itemOpen .question:hover .indicator {
+    color: var(--orange);
+  }
+
   .list:hover .itemOpen:not(:hover) .question,
   .list:hover .itemOpen:not(:hover) .indicator {
     color: var(--off);
@@ -207,13 +203,6 @@
   .listLight:hover .itemOpen:not(:hover) .question,
   .listLight:hover .itemOpen:not(:hover) .indicator {
     color: var(--stark-black);
-  }
-
-  .question:hover,
-  .question:hover .indicator,
-  .listLight .question:hover,
-  .listLight .question:hover .indicator {
-    color: var(--orange);
   }
 }
 

@@ -10,6 +10,7 @@ export default function IntroClose({
   wide = false,
   pair = false,
   outline = 'first',
+  tone = 'light',
 }: {
   line1: string
   line2: string
@@ -21,6 +22,8 @@ export default function IntroClose({
   pair?: boolean
   /** Welke regel de outline krijgt. Standaard de eerste. */
   outline?: 'first' | 'second'
+  /** Op een donkere sectie: lichte letters, outline in dezelfde lichte kleur. */
+  tone?: 'light' | 'dark'
 }) {
   return (
     <p
@@ -28,10 +31,17 @@ export default function IntroClose({
         afterCopy ? ` ${styles.closeAfterCopy}` : ''
       }${align === 'start' ? ` ${styles.closeStart}` : ''}${wide ? ` ${styles.closeWide}` : ''}${
         pair ? ` ${styles.closePair}` : ''
-      }`}
+      }${tone === 'dark' ? ` ${styles.closeOnDark}` : ''}`}
     >
       <span className={`${styles.closeLine} ${outline === 'first' ? styles.closeOutline : ''}`}>{line1}</span>
-      <span className={`${styles.closeLine} ${styles.closeKeep} ${outline === 'second' ? styles.closeOutline : ''}`}>{line2}</span>
+      {line2.split('\n').map((line) => (
+        <span
+          key={line}
+          className={`${styles.closeLine} ${styles.closeKeep} ${outline === 'second' ? styles.closeOutline : ''}`}
+        >
+          {line}
+        </span>
+      ))}
       {line3 ? <span className={styles.closeLine}>{line3}</span> : null}
     </p>
   )

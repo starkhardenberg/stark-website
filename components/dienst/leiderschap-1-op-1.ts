@@ -15,10 +15,12 @@ export const L1O1_META = {
 }
 
 export const L1O1_HERO = {
+  eyebrow: 'Alleen jij',
   word: 'Leiderschap 1-op-1',
   line: 'Jouw resultaten als leider',
-  image: '/images/foto-leiderschap-hero.jpg',
-  alt: 'Deelnemer in een opdrukpositie naast een kettlebell bij STARK! Hardenberg',
+  image: '/images/hero-leiderschap-1op1-desktop.jpg',
+  imageMobile: '/images/hero-leiderschap-1op1-mobiel.jpg',
+  alt: 'Deelnemer trekt een touw bij STARK! Hardenberg',
 }
 
 /* ---------- 01 ---------- */
@@ -47,8 +49,12 @@ export const L1O1_INTRO = {
 
 export const L1O1_PARTS = [
   {
+    title: 'Startgesprek',
+    text: 'Elk traject begint met een startgesprek. Daarin leggen we vast waar je in je werk naartoe wilt.',
+  },
+  {
     title: 'Coachingsgesprek',
-    text: 'Elke week of elke twee weken zit je een uur met je vaste coach: Yvonne of Engbert-Jan. Wat speelde er in je werk? Wat wil je bereiken, en wat doe je tot het volgende gesprek? Wat je bespreekt, zet je in je werk om in actie. Wat je vertelt, blijft tussen jullie. Elk traject begint met een startgesprek. Daarin leggen we vast waar je in je werk naartoe wilt. Betaalt je werkgever mee, dan bepalen we in overleg of je leidinggevende daarbij zit, en of en wanneer we terugkoppelen.',
+    text: 'Elke week of elke twee weken zit je een uur met je vaste coach: Yvonne of Engbert-Jan. Wat speelde er in je werk? Wat wil je bereiken, en wat doe je tot het volgende gesprek? Wat je bespreekt, zet je in je werk om in actie. Wat je vertelt, blijft tussen jullie.',
   },
   {
     title: 'Trainen',
@@ -236,12 +242,22 @@ export const L1O1_FAQ = [
 
 /* ---------- 08 ---------- */
 
+export const L1O1_START =
+  'Een uur met Engbert-Jan of Yvonne, bij jou of bij ons. We kijken wat je in je werk voor elkaar wilt krijgen en of dit traject daarbij past.'
+
 export const L1O1_SLOT = {
   before: 'Liever eerst ',
   link: 'kennismaken',
   rest: '? Een uur met Engbert-Jan of Yvonne of beide. Bij jou of bij ons.',
   href: 'https://kennismaken.starkhardenberg.nl',
 }
+
+/** Datum, tijd en plaatsen van de lopende Proef op de Som. Eén plek voor zakelijk en de dienstpagina. */
+export const PROEF_EDITION = {
+  when: 'Donderdag 5 november, 15.00 tot 18.00 uur',
+  places: 'Twaalf',
+  included: 'Soep en broodjes',
+} as const
 
 export const L1O1_PROEF = {
   lead: 'De Proef op de Som is een kleinschalig evenement voor leiders uit de regio Hardenberg dat plaatsvindt bij STARK!. Je ziet wat jouw manier van sturen doet met je bedrijf.',
@@ -251,7 +267,7 @@ export const L1O1_PROEF = {
     'Je gaat naar huis met één heldere correctie in je manier van werken. Klein genoeg om maandag door te voeren en merkbaar in je werkdag.',
     'Je ontmoet leidinggevenden uit de regio die tegen dezelfde dingen aanlopen. Wil je daarna verder, dan plannen we een gesprek. Deelname is kosteloos.',
   ],
-  date: 'Donderdag 5 november, 15.00 tot 18.00 uur. Soep en broodjes. Twaalf plaatsen.',
+  date: `${PROEF_EDITION.when}. ${PROEF_EDITION.included}. ${PROEF_EDITION.places} plaatsen.`,
   practical:
     'Kom in kleding waarin je kunt bewegen. Iedereen kan meedoen, ongeacht hoe fit of sterk je bent.',
   linkLabel: 'Meld je aan voor de Proef op de Som',

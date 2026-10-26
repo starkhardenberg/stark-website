@@ -14,7 +14,7 @@ export const TRAJECT_META = {
 }
 
 export const TRAJECT_HERO = {
-  label: 'Leiderschap met je team',
+  label: 'Jij en je team',
   word: 'Draagkracht',
   line: 'Jouw team zet de stap',
   image: '/images/foto-traject-hero.jpg',
@@ -25,6 +25,8 @@ export const TRAJECT_HERO = {
 
 export const TRAJECT_INTRO = {
   title: 'Wat wil jij dat je team voor elkaar krijgt?',
+  opening:
+    'Ondernemen kun je. Je ziet kansen, je maakt keuzes en je bouwt een bedrijf. Leiden is de volgende stap. Je neemt je mensen mee in wat je met het bedrijf wilt, je laat zien wat dat van hen vraagt, en je leert ze dat te doen. Mensen die weten waar je heen wilt en wat hun deel daarin is, willen voor je rennen.',
   scenes: [
     'Wat jullie maandag afspreken, is vrijdag gedaan',
     'Een collega zegt wat hij ziet, op het moment dat het speelt',
@@ -33,8 +35,8 @@ export const TRAJECT_INTRO = {
     'Loopt het anders dan gepland, dan schakelt het team samen',
   ],
   prose: [
-    'Of iets anders wat niet optimaal werkt in jouw team. Je bent eigenaar of directeur. Je weet waar je met je bedrijf naartoe wilt. Nu wil je dat je team die stap met je zet. Dat ze weten wat er moet gebeuren, het toezeggen en het ook doen.',
-    'Een afspraak nakomen, ook als het uitkomt om het niet te doen. Zeggen wat je ziet, op het moment dat het speelt. Feedback krijgen en aanpassen wat moet. Dat zijn vaardigheden. Een team kan ze samen oefenen.',
+    'Of iets anders wat niet optimaal werkt in jouw team. Nu wil je dat je team die stap met je zet. Dat ze weten wat er moet gebeuren, het toezeggen en het ook doen.',
+    'Een afspraak nakomen, of op tijd zeggen dat het anders wordt. Zeggen wat je ziet, op het moment dat het speelt. Feedback krijgen en aanpassen wat moet. Dat zijn vaardigheden. Een team kan ze samen oefenen.',
   ],
   proseStrong: 'Draagkracht is een half jaar tot een jaar teamcoaching, met je eigen coaching 1-op-1 erbij.',
   proseAfterStrong:
@@ -45,6 +47,10 @@ export const TRAJECT_INTRO = {
 /* ---------- 02 ---------- */
 
 export const TRAJECT_PARTS = [
+  {
+    title: 'Startgesprek',
+    text: 'Elk traject begint met een startgesprek met jou. Daarin leggen we vast waar je met je team naartoe wilt en met welk team we beginnen.',
+  },
   {
     title: 'Teamcoaching',
     text: 'Elke week zit het team een uur met Yvonne, Engbert-Jan of allebei, bij STARK! in Hardenberg. Jij zit erbij, als deel van het team. Wat speelde er deze week? Wat hadden jullie afgesproken, en wat is er gedaan? Wat pakken jullie de komende week op?',
@@ -85,7 +91,7 @@ export const TRAJECT_SAMEN = {
       text: 'Dat geeft je uithoudingsvermogen, energie en kracht. Voor je werkdag, en voor als je weer thuiskomt.',
     },
   ],
-  close: 'Na een kwartaal ligt de basis. Dan beslis je of je verder uitbouwt.',
+  close: 'Na een kwartaal ligt de basis. Dan beslis je of jullie blijven trainen.',
 }
 
 /* ---------- 04 ---------- */
@@ -131,13 +137,19 @@ export const TRAJECT_ANDERS: { before: string; link?: [string, string]; after?: 
 
 /* ---------- quote ---------- */
 
-/** Vertaling van een uitspraak van Dusan Djukich. */
+/**
+ * Tijdelijke invulling. Vervang dit hele object door een testimonial
+ * en zet layout op 'testimonial'. Dan krijgt het dezelfde opmaak als
+ * Julia op Leiderschap 1-op-1. Bij 'pand' blijft de zaalfoto staan.
+ */
 export const TRAJECT_QUOTE = {
+  layout: 'pand' as 'pand' | 'testimonial',
   text: 'Comfort is de duurste plek om te blijven.',
   name: 'Dusan Djukich',
   role: '',
   image: '/images/foto-traject-quote.jpg',
   alt: 'De zaal van STARK! Hardenberg met het bord "Wi’j bint STARK!" boven de sleds',
+  photoPosition: 'center 12%',
 }
 
 /* ---------- 05 ---------- */
@@ -159,7 +171,7 @@ export const TRAJECT_VOORBEELD = {
 
 export const TRAJECT_OPZET = [
   'Een half jaar tot een jaar. Je tekent voor de hele looptijd',
-  'Elk kwartaal een evaluatiegesprek met jou',
+  'Elk kwartaal een richtingsgesprek met jou',
 ] as const
 
 export const TRAJECT_OPZET_NOTE =
@@ -206,7 +218,7 @@ export const TRAJECT_FAQ = [
   {
     question: 'Hoe weet ik of het werkt?',
     answer:
-      'Elk kwartaal hebben we een evaluatiegesprek met jou. We kijken terug en bepalen het thema van het volgende kwartaal. En elke week zie je in de teamcoaching wat er van de afspraken is gedaan.',
+      'Elk kwartaal hebben we een richtingsgesprek met jou. We kijken terug en bepalen het thema van het volgende kwartaal. En elke week zie je in de teamcoaching wat er van de afspraken is gedaan.',
   },
   {
     question: 'Wat is de investering voor Draagkracht?',
@@ -216,6 +228,9 @@ export const TRAJECT_FAQ = [
 ] as const
 
 /* ---------- 08 ---------- */
+
+export const TRAJECT_START =
+  'Een uur met Engbert-Jan of Yvonne, bij jou of bij ons. We kijken waar je team staat en wat de eerste stap is.'
 
 export const TRAJECT_SLOT = {
   before: L1O1_SLOT.before,
@@ -239,7 +254,7 @@ export const TRAJECT_TEGEL = {
     },
     {
       label: 'Zo werkt het',
-      text: 'Een half jaar tot een jaar elke week teamcoaching, met een opdracht over het werk van die week. Jij hebt daarnaast je eigen coaching 1-op-1. Het eerste kwartaal traint het team samen.',
+      text: 'Elke week teamcoaching, met een opdracht over het werk van die week. Jij hebt daarnaast je eigen coaching 1-op-1. Het eerste kwartaal traint het team samen.',
     },
     {
       label: 'Wat zit erin',

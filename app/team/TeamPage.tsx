@@ -17,8 +17,8 @@ export default function TeamPage() {
       <section className={`${styles.hero} ${styles.heroTeam}`}>
         <div className={styles.heroBg}>
           <StarkImage
-            src="/images/team/hero-kettlebells.png"
-            alt="Kettlebells op de planken in de STARK! gym"
+            src="/images/team/hero-dumbbells.jpg"
+            alt="Halters op het rek in de zaal van STARK!"
             fill
             className={styles.heroBgImg}
             sizes="100vw"
@@ -94,7 +94,7 @@ export default function TeamPage() {
               mogelijk hield.
             </p>
             <p className={styles.groupCreditBody}>
-              Meer mooie plaatjes zien, check{' '}
+              Meer mooie plaatjes zien? Check{' '}
               <a
                 href={PHOTO_CREDIT.instagramUrl}
                 className={styles.groupCreditLink}
@@ -103,7 +103,7 @@ export default function TeamPage() {
               >
                 @{PHOTO_CREDIT.name}
               </a>
-              .
+              {' '}op Instagram.
             </p>
           </div>
         </div>

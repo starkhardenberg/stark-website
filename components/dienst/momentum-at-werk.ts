@@ -12,6 +12,7 @@ export const MAW_META = {
 }
 
 export const MAW_HERO = {
+  label: 'Je mensen',
   word: 'Momentum @ Werk',
   line: 'Jouw mensen: sterk in hun werk',
   image: '/images/foto-momentum-at-werk-hero.jpg',
@@ -43,6 +44,10 @@ export const MAW_INTRO = {
 
 export const MAW_PARTS = [
   {
+    title: 'Startgesprek',
+    text: 'Elk traject begint met een startgesprek met jou als opdrachtgever. Daarin spreken we af wat je wilt dat het je mensen oplevert, en hoe we ze meekrijgen.',
+  },
+  {
     title: 'Trainen',
     text: 'Vijftien trainingen van een uur, met Mark, Anne en Els. De ene week twee, de andere week één. Elke training komt er een moment waarop het zwaar wordt. Daar zie je wat iemand doet. Doorzetten, inhouden, afhaken. Dat doen je mensen op het werk ook. Hier zien ze het gebeuren, en oefenen ze iets anders. Niemand hoeft al sporter te zijn. Iedereen kan meedoen.',
   },
@@ -52,11 +57,14 @@ export const MAW_PARTS = [
   },
   {
     title: 'Het resultaat',
-    text: 'Bij de start kiest elke deelnemer één resultaat dat hij in tien weken op het werk boekt. Iets wat al een tijd blijft liggen, en dat verschil maakt in wat hij voor elkaar krijgt, of in het plezier in zijn werk. Een collega aanspreken op een afspraak. Een verbeteridee op tafel leggen. Een keer nee zeggen tegen extra werk. En hij kiest een fysiek doel. Sterker worden in een oefening, sneller worden, spiermassa opbouwen of werken aan een gezond gewicht. Na tien weken is allebei gehaald of niet. Zo simpel is het.',
+    text: [
+      'Bij de start kiest elke deelnemer één resultaat dat hij in tien weken op het werk boekt. Iets wat al een tijd blijft liggen, en dat verschil maakt in wat hij voor elkaar krijgt, of in het plezier in zijn werk. Een collega aanspreken op een afspraak. Een verbeteridee op tafel leggen. Een keer nee zeggen tegen extra werk.',
+      'En hij kiest een fysiek doel. Sterker worden in een oefening, sneller worden, spiermassa opbouwen of werken aan een gezond gewicht. Na tien weken is allebei gehaald of niet. Zo simpel is het.',
+    ],
   },
   {
-    title: 'Meten',
-    text: 'Voor de start is er een intake met onze coaches. Daarin bepalen we welk resultaat iemand op zijn werk wil oppakken, en welk fysiek resultaat hij wil halen. We doen een nulmeting: hoe hij zijn eigen werkvermogen inschat (de Work Ability Index). Na tien weken volgt een afsluitend gesprek. Daarin bespreken we wat er gehaald is, en leggen we dat vast. We meten de Work Ability Index opnieuw, zodat het verschil met de nulmeting zichtbaar is.',
+    title: 'Intake en meten',
+    text: 'Daarna is er een intake met elke deelnemer apart, met onze coaches. Daarin bepalen we welk resultaat iemand op zijn werk wil oppakken, en welk fysiek resultaat hij wil halen. We doen een nulmeting: hoe hij zijn eigen werkvermogen inschat (de Work Ability Index). Na tien weken volgt een afsluitend gesprek. Daarin bespreken we wat er gehaald is, en leggen we dat vast. We meten de Work Ability Index opnieuw, zodat het verschil met de nulmeting zichtbaar is.',
   },
 ] as const
 
@@ -80,7 +88,7 @@ export const MAW_WIE = [
   },
 ] as const
 
-export const MAW_WIE_CLOSE = '10 weken samen trainen, ieder met een eigen resultaat.'
+export const MAW_WIE_CLOSE = 'Ze doen mee omdat ze het zelf willen. Daarom werkt het.'
 
 /** Rijtje "Soms past iets anders beter". link = optioneel: [linktekst, href]. */
 export const MAW_ANDERS: { before: string; link?: [string, string]; after?: string }[] = [
@@ -102,12 +110,19 @@ export const MAW_ANDERS: { before: string; link?: [string, string]; after?: stri
 
 /* ---------- quote ---------- */
 
+/**
+ * Tijdelijke invulling. Vervang dit hele object en zet layout op 'testimonial'
+ * voor dezelfde opmaak als Julia op Leiderschap 1-op-1. Bij 'line' blijft de
+ * ringfoto staan, zonder naam eronder.
+ */
 export const MAW_QUOTE = {
-  text: 'Balans is niet iets wat je vindt, het is iets wat je creëert.',
-  name: 'Jana Kingsford',
+  layout: 'line' as 'line' | 'testimonial',
+  text: 'Wat je mensen aankunnen, kan je bedrijf aan.',
+  name: '',
   role: '',
   image: '/images/foto-momentum-at-werk-quote.jpg',
   alt: 'Door een turnring zie je het STARK!-bord in de zaal in Hardenberg',
+  photoPosition: 'center 46%',
 }
 
 /* ---------- 04 ---------- */
@@ -125,7 +140,7 @@ export const MAW_TERUG = {
     'Thema’s die bij de organisatie liggen, zoals het rooster of de bezetting. Die melden we al halverwege',
   ],
   note: 'Over één persoon koppelen we nooit iets terug. Ook niet als het goed gaat, en ook niet als je erom vraagt. Daardoor hebben je mensen er echt iets aan.',
-  close: 'Na 10 weken weet je wat het je mensen heeft opgeleverd.',
+  close: 'Na tien weken weet je wat het je mensen heeft opgeleverd.',
 }
 
 /* ---------- 05 Praktisch ---------- */
@@ -190,4 +205,4 @@ export const MAW_FAQ = [
 /* ---------- 07 ---------- */
 
 export const MAW_SLOT =
-  'Een kennismaking van een uur met Yvonne en Engbert-Jan. Bij ons in Hardenberg of bij jullie op de zaak. Wat wil je voor je mensen bereiken, en past Momentum @ Werk daarbij? Past het niet, dan zeggen we dat.'
+  'Een uur met Engbert-Jan of Yvonne, bij jou of bij ons. We kijken wat je mensen nodig hebben en wanneer een groep kan starten.'

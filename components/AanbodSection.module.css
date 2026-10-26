@@ -48,8 +48,16 @@
 .sectionIntro {
   margin-bottom: clamp(48px, 7vw, 72px);
   max-width: none;
+}
+
+/* De regel onder de kop. Niet op de kop zelf: trainen en coaching delen deze class voor de ruimte eronder. */
+.sectionIntro:not(.sectionTitle) {
   white-space: nowrap;
-  font-size: clamp(8.5px, 2.15vw, 14px);
+  font-size: 14px;
+}
+
+.sectionIntro:not(.sectionTitle) span + span::before {
+  content: ' ';
 }
 
 .sectionTitleCentered {
@@ -220,6 +228,20 @@
   .sectionTitle.sectionIntro {
     font-size: var(--stark-section-statement);
     line-height: 0.94;
+  }
+
+  .sectionIntro:not(.sectionTitle) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2em;
+    white-space: normal;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .sectionIntro:not(.sectionTitle) span + span::before {
+    content: none;
   }
 
   .sectionCta {

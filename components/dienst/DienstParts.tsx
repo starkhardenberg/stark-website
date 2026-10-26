@@ -60,6 +60,22 @@ export function ProefClose({
   )
 }
 
+/** Korte afsluiter op de zakelijke dienstenpagina's. De Proef blijft op /zakelijk. */
+export function KennismakingClose({ text }: { text: string }) {
+  return (
+    <>
+      <div className={styles.prose}>
+        <p>{text}</p>
+      </div>
+      <BookButton className={styles.buttonSlot} />
+      <p className={styles.slotNote}>
+        Eigenaar of directeur? Kom eerst naar de{' '}
+        <a href="/zakelijk#zo-begin-je">Proef op de Som</a>.
+      </p>
+    </>
+  )
+}
+
 export function BookButton({ className = '' }: { className?: string }) {
   return (
     <a
@@ -144,6 +160,8 @@ export function QuoteBlock({
   role,
   portrait = false,
   matchText = false,
+  tight = false,
+  hall = false,
   photoPosition,
   label = 'Ervaring van een deelnemer',
   id,
@@ -157,6 +175,10 @@ export function QuoteBlock({
   portrait?: boolean
   /** Op breed scherm de foto op de hoogte van de tekst ernaast croppen. */
   matchText?: boolean
+  /** Mobiel: kortere uitsnede, lege ruimte boven het hoofd eraf. */
+  tight?: boolean
+  /** Zaalfoto of ringfoto: op de telefoon maximaal 45vh, bord in beeld. */
+  hall?: boolean
   /** Waar de crop op blijft hangen, bijvoorbeeld het bord in een zaalfoto. */
   photoPosition?: string
   label?: string
@@ -172,7 +194,7 @@ export function QuoteBlock({
     >
       <div className={styles.proofGrid}>
         <div
-          className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}${matchText ? ` ${styles.proofPhotoMatch}` : ''}`}
+          className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}${tight ? ` ${styles.proofPhotoTight}` : ''}${hall ? ` ${styles.proofPhotoHall}` : ''}${matchText ? ` ${styles.proofPhotoMatch}` : ''}`}
         >
           <img
             className={styles.proofPhoto}
@@ -183,7 +205,7 @@ export function QuoteBlock({
         </div>
         <figure className={styles.proofText}>
           <blockquote className={styles.quote}>{text}</blockquote>
-          <figcaption className={styles.cite}>{cite}</figcaption>
+          {name ? <figcaption className={styles.cite}>{cite}</figcaption> : null}
         </figure>
       </div>
     </section>

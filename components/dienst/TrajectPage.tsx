@@ -4,7 +4,7 @@ import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
-import { BookButton, CloseStamp, ProefClose, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
+import { KennismakingClose, QuoteBlock, Section, SplitAside, createPageRhythm } from './DienstParts'
 import {
   TRAJECT_AFSLUITER,
   TRAJECT_ANDERS,
@@ -17,10 +17,9 @@ import {
   TRAJECT_OPZET,
   TRAJECT_OPZET_NOTE,
   TRAJECT_PARTS,
-  TRAJECT_PROEF,
   TRAJECT_QUOTE,
   TRAJECT_SAMEN,
-  TRAJECT_SLOT,
+  TRAJECT_START,
   TRAJECT_VOORBEELD,
   TRAJECT_VRAAGT,
   TRAJECT_VRAAGT_CLOSE,
@@ -45,14 +44,14 @@ export default function TrajectPage() {
   const slotTone = tone()
 
   return (
-    <main className={styles.page}>
+    <main className={`${styles.page} ${styles.zakelijk}`}>
       <FaqJsonLd items={TRAJECT_FAQ} />
 
       <header className={styles.hero}>
-        <Nav backHref="/zakelijk" backLabel="Zakelijk" />
+        <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img className={styles.heroPhoto} src={TRAJECT_HERO.image} alt={TRAJECT_HERO.alt} />
+            <img className={`${styles.heroPhoto} ${styles.heroPhotoTraject}`} src={TRAJECT_HERO.image} alt={TRAJECT_HERO.alt} />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
@@ -74,14 +73,14 @@ export default function TrajectPage() {
           ))}
         </ul>
         <div className={`${styles.prose} ${styles.introProse}`}>
-          {TRAJECT_INTRO.prose.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <p>{TRAJECT_INTRO.prose[0]}</p>
+          <p>{TRAJECT_INTRO.opening}</p>
+          <p>{TRAJECT_INTRO.prose[1]}</p>
           <p>
             {TRAJECT_INTRO.proseStrong} {TRAJECT_INTRO.proseAfterStrong}
           </p>
         </div>
-        <CloseStamp lines={TRAJECT_INTRO.close} />
+        <p className={styles.afsluiter}>{TRAJECT_INTRO.close.join(' ')}</p>
       </Section>
 
       <Section number={num()} title="Hoe het werkt" tone={worksTone}>
@@ -124,7 +123,7 @@ export default function TrajectPage() {
                   <p>{TRAJECT_WELK_TEAM.text}</p>
                 </div>
               </div>
-              <CloseStamp lines={TRAJECT_VRAAGT_CLOSE} />
+              <p className={styles.afsluiter}>{TRAJECT_VRAAGT_CLOSE.join(' ')}</p>
             </>
           }
           aside={
@@ -155,10 +154,12 @@ export default function TrajectPage() {
         text={TRAJECT_QUOTE.text}
         name={TRAJECT_QUOTE.name}
         role={TRAJECT_QUOTE.role}
-        portrait
+        portrait={TRAJECT_QUOTE.layout === 'testimonial'}
+        tight={TRAJECT_QUOTE.layout === 'testimonial'}
+        hall={TRAJECT_QUOTE.layout === 'pand'}
         matchText
-        photoPosition="center 12%"
-        label="Citaat"
+        photoPosition={TRAJECT_QUOTE.layout === 'pand' ? TRAJECT_QUOTE.photoPosition : undefined}
+        label={TRAJECT_QUOTE.layout === 'testimonial' ? 'Ervaring van een deelnemer' : 'Citaat'}
       />
 
       {TRAJECT_VOORBEELD.show ? (
@@ -193,26 +194,14 @@ export default function TrajectPage() {
             <p className={styles.groupClose}>{TRAJECT_DAARNA_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonTiles} />
       </Section>
 
       <Section number={num()} title="Goede vragen" tone={faqTone}>
-        <FaqList tone={faqTone} items={TRAJECT_FAQ} />
+        <FaqList tone={faqTone} variant="dienst" items={TRAJECT_FAQ} />
       </Section>
 
-      <Section number={num()} title="Proef op de Som" tone={slotTone}>
-        <ProefClose
-          lead={TRAJECT_PROEF.lead}
-          points={TRAJECT_PROEF.points}
-          date={TRAJECT_PROEF.date}
-          practical={TRAJECT_PROEF.practical}
-          signupLabel={TRAJECT_PROEF.linkLabel}
-          signupHref={TRAJECT_PROEF.href}
-          gesprekBefore={TRAJECT_SLOT.before}
-          gesprekLink={TRAJECT_SLOT.link}
-          gesprekRest={TRAJECT_SLOT.rest}
-          gesprekHref={TRAJECT_SLOT.href}
-        />
+      <Section number={num()} title="Zo begin je" tone={slotTone}>
+        <KennismakingClose text={TRAJECT_START} />
       </Section>
 
       <Footer photoless ctaless tone={footerTone()} />
