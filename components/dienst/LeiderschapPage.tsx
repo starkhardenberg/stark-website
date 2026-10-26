@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getImageProps } from 'next/image'
 import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
@@ -31,6 +32,36 @@ import {
 } from './leiderschap-1-op-1'
 import styles from './DienstPage.module.css'
 
+function LeiderschapHero() {
+  const imageProps = {
+    alt: L1O1_HERO.alt,
+    fill: true,
+    priority: true,
+    quality: 85,
+    sizes: '(max-width: 767px) 100vw, 56vw',
+  } as const
+  const { props: { srcSet: mobile } } = getImageProps({
+    ...imageProps,
+    src: L1O1_HERO.imageMobile,
+  })
+  const { props: { srcSet: desktop, ...rest } } = getImageProps({
+    ...imageProps,
+    src: L1O1_HERO.image,
+  })
+
+  return (
+    <picture>
+      <source media="(max-width: 767px)" srcSet={mobile} sizes={imageProps.sizes} />
+      <img
+        {...rest}
+        srcSet={desktop}
+        className={`${styles.heroPhoto} ${styles.heroPhotoFace}`}
+        alt={L1O1_HERO.alt}
+      />
+    </picture>
+  )
+}
+
 export default function LeiderschapPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
@@ -53,14 +84,7 @@ export default function LeiderschapPage() {
         <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <picture>
-              <source media="(max-width: 767px)" srcSet={L1O1_HERO.imageMobile} />
-              <img
-                className={`${styles.heroPhoto} ${styles.heroPhotoFace}`}
-                src={L1O1_HERO.image}
-                alt={L1O1_HERO.alt}
-              />
-            </picture>
+            <LeiderschapHero />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>

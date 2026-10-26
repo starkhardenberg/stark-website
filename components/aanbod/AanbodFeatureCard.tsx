@@ -2,8 +2,7 @@
 
 import StarkImage from '@/components/StarkImage'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import type { CSSProperties, KeyboardEvent, MouseEvent } from 'react'
+import type { CSSProperties } from 'react'
 import type { MenuLink } from '@/components/landing/LandingServiceCard'
 import type { AanbodTrack } from './aanbod-tracks'
 import StarkArrow from '@/components/icons/StarkArrow'
@@ -18,7 +17,6 @@ type AanbodFeatureCardProps = {
 }
 
 export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
-  const router = useRouter()
   const mediaLabel =
     track.mediaLabel ?? track.cat.toUpperCase()
   const paragraphs = (track.desc ?? '')
@@ -35,36 +33,22 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
     imageStyle.transformOrigin = track.photoScaleOrigin ?? 'center'
   }
 
-  const openLanding = () => {
-    if (!landingHref) return
-    router.push(landingHref)
-  }
-
-  const handleCardClick = (event: MouseEvent<HTMLElement>) => {
-    if (!landingHref) return
-    if ((event.target as HTMLElement).closest('a')) return
-    openLanding()
-  }
-
-  const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (!landingHref) return
-    if (event.key !== 'Enter' && event.key !== ' ') return
-    event.preventDefault()
-    openLanding()
-  }
+  const moreLabel = track.readMoreLabel ?? 'Lees meer'
+  const tileTitle = track.mediaSubLabel || track.panelTitle || track.cat
+  const tileName = `${tileTitle}, ${moreLabel}`
 
   return (
     <article
       id={track.id}
-      aria-label={track.readMoreLabel ?? track.cat}
       className={`${styles.card} ${track.light ? styles.cardLight : ''}${
         track.businessContext ? ` ${styles.cardBusinessContext}` : ''
-      }${landingHref ? '' : ` ${styles.cardStatic}`}`}
-      role={landingHref ? 'link' : undefined}
-      tabIndex={landingHref ? 0 : undefined}
-      onClick={handleCardClick}
-      onKeyDown={handleCardKeyDown}
+      }${landingHref ? ` ${styles.cardLinked}` : ` ${styles.cardStatic}`}`}
     >
+      {landingHref ? (
+        <Link href={landingHref} className={styles.cardLink}>
+          <span className={styles.cardLinkText}>{tileName}</span>
+        </Link>
+      ) : null}
       <div className={styles.media}>
         <StarkImage
           src={`/images/${track.photo}`}
@@ -199,8 +183,8 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
               </div>
             )}
             {track.readMoreHref ? (
-              <Link href={track.readMoreHref} className={styles.readMore}>
-                {track.readMoreLabel ?? 'Lees meer'}
+              <Link href={track.readMoreHref} className={styles.readMore} tabIndex={-1} aria-hidden="true">
+                {moreLabel}
                 <StarkArrow className={styles.readMoreArrow} />
               </Link>
             ) : null}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
@@ -34,10 +35,15 @@ export default function DienstPage() {
         <Nav />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img
+            <StarkImage
               className={styles.heroPhoto}
               src="/images/foto-momentum-zaal.jpg"
               alt="Groepstraining in de zaal bij STARK! Hardenberg"
+              fill
+              unaltered
+              priority
+              quality={85}
+              sizes="(min-width: 800px) 56vw, 100vw"
             />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">

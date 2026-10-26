@@ -1,5 +1,6 @@
 'use client'
 
+import StarkImage from '@/components/StarkImage'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
 import type { PortraitPerson } from '@/components/testimonials/portrait-quotes'
 import PortraitTile from '@/components/testimonials/PortraitTile'
@@ -26,10 +27,14 @@ export default function DienstQuoteRoster({
     >
       <div className={styles.proofGrid}>
         <div className={styles.proofPhotoWrap}>
-          <img
+          <StarkImage
             className={styles.proofPhoto}
             src={active.image}
             alt=""
+            fill
+            unaltered
+            quality={85}
+            sizes="(min-width: 800px) 40vw, 100vw"
             style={{ objectPosition: active.imagePosition ?? 'center 18%' }}
           />
         </div>

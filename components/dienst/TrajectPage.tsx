@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
@@ -51,7 +52,16 @@ export default function TrajectPage() {
         <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img className={`${styles.heroPhoto} ${styles.heroPhotoTraject}`} src={TRAJECT_HERO.image} alt={TRAJECT_HERO.alt} />
+            <StarkImage
+              className={`${styles.heroPhoto} ${styles.heroPhotoTraject}`}
+              src={TRAJECT_HERO.image}
+              alt={TRAJECT_HERO.alt}
+              fill
+              unaltered
+              priority
+              quality={85}
+              sizes="(min-width: 800px) 56vw, 100vw"
+            />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>

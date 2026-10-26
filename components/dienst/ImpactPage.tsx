@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
@@ -44,7 +45,16 @@ export default function ImpactPage() {
         <Nav />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
-            <img className={styles.heroPhoto} src={IMPACT_HERO.image} alt={IMPACT_HERO.alt} />
+            <StarkImage
+              className={styles.heroPhoto}
+              src={IMPACT_HERO.image}
+              alt={IMPACT_HERO.alt}
+              fill
+              unaltered
+              priority
+              quality={85}
+              sizes="(min-width: 800px) 56vw, 100vw"
+            />
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>

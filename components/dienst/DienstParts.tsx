@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import StarkImage from '@/components/StarkImage'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { BOOKINGS_URL } from './momentum'
 import styles from './DienstPage.module.css'
@@ -196,10 +197,14 @@ export function QuoteBlock({
         <div
           className={`${styles.proofPhotoWrap}${portrait ? ` ${styles.proofPhotoPortrait}` : ''}${tight ? ` ${styles.proofPhotoTight}` : ''}${hall ? ` ${styles.proofPhotoHall}` : ''}${matchText ? ` ${styles.proofPhotoMatch}` : ''}`}
         >
-          <img
+          <StarkImage
             className={styles.proofPhoto}
             src={image}
             alt={alt}
+            fill
+            unaltered
+            quality={85}
+            sizes="(min-width: 800px) 40vw, 100vw"
             style={photoPosition ? { objectPosition: photoPosition } : undefined}
           />
         </div>

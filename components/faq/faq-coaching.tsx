@@ -38,7 +38,7 @@ export const coachingFaq: FaqItem[] = [
       <>
         Dat kan. Sommige werkgevers zetten Impact of Momentum in via de arbodienst of een vitaliteitsbudget.
         Wil je het voor een heel team, kijk dan op{' '}
-        <Link href="/zakelijk#momentum-teams">Momentum @ Werk</Link>. Wil je zelf meedoen en denk je dat je
+        <Link href="/zakelijk/duurzame-inzetbaarheid">Momentum @ Werk</Link>. Wil je zelf meedoen en denk je dat je
         werk kan bijdragen, stuur ons een bericht dan denken we mee.
       </>
     ),
