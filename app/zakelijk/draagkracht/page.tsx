@@ -1,4 +1,5 @@
 import TrajectPage from '@/components/dienst/TrajectPage'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import { TRAJECT_META } from '@/components/dienst/zakelijk-traject'
 import { pageMetadata } from '@/lib/open-graph'
 
@@ -9,5 +10,14 @@ export const metadata = pageMetadata(
 )
 
 export default function Page() {
-  return <TrajectPage />
+  return (
+    <>
+      <ServiceJsonLd
+        name="Draagkracht"
+        description={TRAJECT_META.description}
+        path="/zakelijk/draagkracht"
+      />
+      <TrajectPage />
+    </>
+  )
 }

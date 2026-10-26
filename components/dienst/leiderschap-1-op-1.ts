@@ -252,9 +252,17 @@ export const L1O1_SLOT = {
   href: 'https://kennismaken.starkhardenberg.nl',
 }
 
-/** Datum, tijd en plaatsen van de lopende Proef op de Som. Eén plek voor zakelijk en de dienstpagina. */
+/** Data, tijd en plaatsen van de Proef op de Som. Eén plek voor zakelijk en de dienstpagina. */
 export const PROEF_EDITION = {
-  when: 'Donderdag 5 november, 15.00 tot 18.00 uur',
+  when: 'Donderdag, 15.00 tot 18.00 uur',
+  dates: [
+    '5 november 2026',
+    '4 februari 2027',
+    '13 mei 2027',
+    '2 september 2027',
+    '4 november 2027',
+    '3 februari 2028',
+  ],
   places: 'Twaalf',
   included: 'Soep en broodjes',
 } as const
@@ -267,7 +275,7 @@ export const L1O1_PROEF = {
     'Je gaat naar huis met één heldere correctie in je manier van werken. Klein genoeg om maandag door te voeren en merkbaar in je werkdag.',
     'Je ontmoet leidinggevenden uit de regio die tegen dezelfde dingen aanlopen. Wil je daarna verder, dan plannen we een gesprek. Deelname is kosteloos.',
   ],
-  date: `${PROEF_EDITION.when}. ${PROEF_EDITION.included}. ${PROEF_EDITION.places} plaatsen.`,
+  date: `${PROEF_EDITION.when}. ${PROEF_EDITION.dates.join(', ')}. ${PROEF_EDITION.included}. ${PROEF_EDITION.places} plaatsen.`,
   practical:
     'Kom in kleding waarin je kunt bewegen. Iedereen kan meedoen, ongeacht hoe fit of sterk je bent.',
   linkLabel: 'Meld je aan voor de Proef op de Som',

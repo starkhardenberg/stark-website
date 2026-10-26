@@ -1,3 +1,5 @@
+import StructuredData from '@/components/StructuredData'
+import { buildTeamJsonLd } from '@/lib/json-ld'
 import TeamPage from './TeamPage'
 import { pageMetadata } from '@/lib/open-graph'
 
@@ -8,5 +10,10 @@ export const metadata = pageMetadata(
 )
 
 export default function Page() {
-  return <TeamPage />
+  return (
+    <>
+      <StructuredData data={buildTeamJsonLd()} />
+      <TeamPage />
+    </>
+  )
 }

@@ -1,7 +1,16 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { STARK_GRAIN } from '@/lib/stark-grain'
+import { SITE_URL } from '@/lib/site-seo'
 import styles from './not-found.module.css'
+
+export const metadata: Metadata = {
+  title: 'Deze pagina heeft een blessure — STARK! Hardenberg',
+  description: 'Niks aan de hand. Terug naar STARK! Hardenberg.',
+  alternates: { canonical: SITE_URL },
+  robots: { index: false, follow: false },
+}
 
 export default function NotFound() {
   return (

@@ -5,8 +5,7 @@ import {
   STARK_OPENING_HOURS,
   STARK_POSTAL_CODE,
 } from '@/lib/business-info'
-import { GOOGLE_REVIEWS } from '@/lib/google-reviews'
-import { getSiteUrl } from '@/lib/site-seo'
+import { getSiteUrl, SITE_URL } from '@/lib/site-seo'
 
 const SCHEMA_DAY: Record<string, string> = {
   Monday: 'https://schema.org/Monday',
@@ -74,12 +73,54 @@ export function buildLocalBusinessJsonLd() {
       latitude: STARK_GEO.latitude,
       longitude: STARK_GEO.longitude,
     },
+    logo: `${SITE_URL}/images/stark_logo_cirkel_wit.png`,
     openingHoursSpecification: STARK_OPENING_HOURS.map((slot) => ({
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: SCHEMA_DAY[slot.dayOfWeek],
       opens: slot.opens,
       closes: slot.closes,
     })),
-    sameAs: [GOOGLE_REVIEWS.href],
+    sameAs: [
+      'https://www.instagram.com/starkhardenberg/',
+      'https://www.facebook.com/starkhardenberg/',
+    ],
+  }
+}
+
+const STARK_PROVIDER = {
+  '@type': 'ExerciseGym',
+  name: 'STARK! Hardenberg',
+  url: SITE_URL,
+} as const
+
+export function buildTeamJsonLd() {
+  const people = [
+    { name: 'Yvonne Alards' },
+    { name: 'Engbert-Jan Lubbelinkhof' },
+  ]
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': people.map((person) => ({
+      '@type': 'Person',
+      name: person.name,
+      jobTitle: 'Mede-eigenaar',
+      worksFor: STARK_PROVIDER,
+    })),
+  }
+}
+
+export function buildServiceJsonLd(name: string, description: string, path: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    description,
+    provider: STARK_PROVIDER,
+    areaServed: {
+      '@type': 'City',
+      name: 'Hardenberg',
+    },
+    url: `${SITE_URL}${path}`,
   }
 }

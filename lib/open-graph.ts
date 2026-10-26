@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { L1O1_META } from '@/components/dienst/leiderschap-1-op-1'
 import { MAW_META } from '@/components/dienst/momentum-at-werk'
 import { TRAJECT_META } from '@/components/dienst/zakelijk-traject'
-import { getSiteRobots, getSiteUrl } from '@/lib/site-seo'
+import { getSiteUrl, SITE_URL } from '@/lib/site-seo'
 
 /** Gedeelde OG-kaart (editorial split). Bron: app/opengraph-image.tsx → npm run generate:og */
 export const OG_IMAGE = {
@@ -29,13 +29,13 @@ function buildSocialMetadata(page: keyof typeof openGraphByPage) {
       type: 'website' as const,
       url,
       siteName: 'STARK! Hardenberg',
-      images: [OG_IMAGE],
+      images: [{ ...OG_IMAGE, url: `${SITE_URL}${OG_IMAGE.url}` }],
     },
     twitter: {
       card: 'summary_large_image' as const,
       title: og.title,
       description: og.description,
-      images: [OG_IMAGE.url],
+      images: [`${SITE_URL}${OG_IMAGE.url}`],
     },
   }
 }
@@ -126,9 +126,8 @@ export function pageMetadata(
     title,
     description,
     alternates: {
-      canonical: pagePathByKey[page],
+      canonical: getCanonicalUrl(pagePathByKey[page]),
     },
-    robots: getSiteRobots(),
     ...social,
   }
 }

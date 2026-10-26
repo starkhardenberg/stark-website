@@ -12,6 +12,7 @@ import CoachingMethodSection from '@/components/coaching/CoachingMethodSection'
 import { coachingTracks } from '@/components/coaching/coaching-tracks'
 import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -24,6 +25,11 @@ export const metadata = pageMetadata(
 export default function CoachingPage() {
   return (
     <main className={styles.main}>
+      <ServiceJsonLd
+        name="Coaching"
+        description="Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar."
+        path="/coaching"
+      />
       <section className={`${styles.hero} ${styles.heroCoaching} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage

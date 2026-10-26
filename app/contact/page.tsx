@@ -12,6 +12,7 @@ import {
   PHONE_WHATSAPP,
 } from '@/lib/contact'
 import { pageMetadata } from '@/lib/open-graph'
+import { STARK_CTA, STARK_CTA_PRIMARY, STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = pageMetadata(
@@ -32,25 +33,41 @@ export default function ContactPage({ searchParams }: PageProps) {
       <Nav />
 
       <section className={styles.hero} aria-labelledby="contact-hero-title">
-        <div className={styles.heroMedia}>
-          <StarkImage
-            src="/images/team/engbert-jan-yvonne-hero.jpg"
-            alt="Engbert-Jan en Yvonne lachen samen"
-            fill
-            unaltered
-            priority
-            quality={85}
-            sizes="100vw"
-            className={styles.heroImg}
-          />
-          <div className={styles.heroScrim} aria-hidden="true" />
-          <p className={styles.heroCredit}>Engbert-Jan en Yvonne · eigenaren, coaches en trainers</p>
-        </div>
-        <div className={styles.heroCopy}>
-          <h1 id="contact-hero-title" className={styles.heroTitle}>
-            We staan voor je klaar
-          </h1>
-          <p className={styles.heroSub}>Vrijblijvend, eerlijk.</p>
+        <div className={styles.heroFrame}>
+          <div className={styles.heroCopy}>
+            <h1 id="contact-hero-title" className={styles.heroTitle}>
+              We staan voor je klaar
+            </h1>
+            <p className={styles.heroSub}>Vrijblijvend en eerlijk.</p>
+            <div className={styles.heroActions}>
+              <a
+                href={PHONE_CALL.tel}
+                className={`${styles.heroAction} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
+              >
+                Bel Engbert-Jan
+              </a>
+              <a
+                href={`https://wa.me/${PHONE_WHATSAPP.wa}`}
+                className={`${styles.heroAction} ${STARK_CTA} ${STARK_CTA_WHATSAPP}`}
+              >
+                App Yvonne
+              </a>
+            </div>
+          </div>
+          <div className={styles.heroMedia}>
+            <div className={styles.heroPhoto}>
+              <StarkImage
+                src="/images/team/engbert-jan-yvonne-hero.jpg"
+                alt="Engbert-Jan en Yvonne lachen samen"
+                fill
+                unaltered
+                priority
+                quality={85}
+                sizes="100vw"
+                className={styles.heroImg}
+              />
+            </div>
+          </div>
         </div>
       </section>
 

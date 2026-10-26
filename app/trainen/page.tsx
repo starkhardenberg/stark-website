@@ -12,6 +12,7 @@ import { trainenGroupTracks } from '@/components/trainen/trainen-group-tracks'
 import PortraitStories from '@/components/testimonials/PortraitStories'
 import { trainenPeople } from '@/components/testimonials/portrait-quotes'
 import { STARK_GRAIN } from '@/lib/stark-grain'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import { pageMetadata } from '@/lib/open-graph'
 import styles from '../landing.module.css'
 
@@ -24,6 +25,11 @@ export const metadata = pageMetadata(
 export default function TrainenPage() {
   return (
     <main className={styles.main}>
+      <ServiceJsonLd
+        name="Trainen"
+        description="Sportschool in Hardenberg met krachttraining in kleine groepen en een coach naast je. Voor volwassenen, ZilverFitness en Kids & Teens."
+        path="/trainen"
+      />
       <section className={`${styles.hero} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage

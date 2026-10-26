@@ -158,7 +158,7 @@ export const ZAKELIJK_START = {
     },
   ],
   facts: [
-    { label: 'Wanneer', value: PROEF_EDITION.when },
+    { label: 'Wanneer', value: PROEF_EDITION.when, lines: PROEF_EDITION.dates },
     { label: 'Waar', value: `STARK! Hardenberg, ${ADDRESS.street}` },
     { label: 'Plaatsen', value: PROEF_EDITION.places },
     { label: 'Kosten', value: 'Geen' },

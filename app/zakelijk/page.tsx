@@ -20,6 +20,7 @@ import {
   ZAKELIJK_META,
   ZAKELIJK_WERK,
 } from '@/components/zakelijk/zakelijk-landing'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import { pageMetadata } from '@/lib/open-graph'
 import pageStyles from '@/components/zakelijk/ZakelijkOndernemersPage.module.css'
 import styles from '../landing.module.css'
@@ -42,6 +43,11 @@ export default function ZakelijkPage() {
   return (
     <main className={styles.main}>
       <FaqJsonLd items={ZAKELIJK_FAQ} />
+      <ServiceJsonLd
+        name="STARK! Wark"
+        description={ZAKELIJK_META.description}
+        path="/zakelijk"
+      />
       <section className={`${styles.hero} ${styles.heroCoaching} ${styles.heroReadable}`}>
         <div className={styles.heroBg}>
           <StarkImage

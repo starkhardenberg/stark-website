@@ -1,8 +1,19 @@
 import type { MetadataRoute } from 'next'
-import { getSiteUrl, isSiteProduction } from '@/lib/site-seo'
+import { isProductionDeploy, SITE_URL } from '@/lib/site-seo'
+
+const ALLOWED_BOTS = [
+  '*',
+  'GPTBot',
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'PerplexityBot',
+  'ClaudeBot',
+  'Google-Extended',
+  'Bingbot',
+] as const
 
 export default function robots(): MetadataRoute.Robots {
-  if (!isSiteProduction()) {
+  if (!isProductionDeploy()) {
     return {
       rules: {
         userAgent: '*',
@@ -12,10 +23,10 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules: {
-      userAgent: '*',
+    rules: ALLOWED_BOTS.map((userAgent) => ({
+      userAgent,
       allow: '/',
-    },
-    sitemap: `${getSiteUrl()}/sitemap.xml`,
+    })),
+    sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

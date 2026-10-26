@@ -34,7 +34,16 @@ export default function HoeHetBegintSection() {
               {ZAKELIJK_START.facts.map((fact) => (
                 <div key={fact.label}>
                   <dt>{fact.label}</dt>
-                  <dd>{fact.value}</dd>
+                  <dd>
+                    {fact.value}
+                    {'lines' in fact ? (
+                      <ul className={pageStyles.startDates}>
+                        {fact.lines.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </dd>
                 </div>
               ))}
             </dl>

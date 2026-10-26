@@ -439,6 +439,17 @@
   color: rgba(245, 245, 245, 0.82);
 }
 
+.startDates {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.startDates li {
+  margin: 0;
+  padding: 3px 0;
+}
+
 .startAside {
   margin: 16px 0 0;
   text-align: center;
