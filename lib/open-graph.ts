@@ -65,7 +65,7 @@ export const openGraphByPage = {
   momentum: {
     title: 'Momentum · 10 weken trainen en coachen in Hardenberg · STARK!',
     description:
-      '10 weken trainen en coachen in een kleine groep in Hardenberg. Voor wie weet wat er moet gebeuren en het steeds ziet wegzakken. € 1.000, vaste start.',
+      '10 weken trainen en coachen in een kleine groep in Hardenberg. Voor wie weet wat er moet gebeuren en het steeds ziet wegzakken. Vaste start, vaste eindstreep.',
   },
   impact: {
     title: 'Impact bij STARK! — 12 weken 1-op-1',

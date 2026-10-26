@@ -17,7 +17,7 @@ export const coachingFaq = [
   {
     question: 'Wat kost coaching en wat zit erin?',
     answer:
-      'Coaching bij STARK! begint bij €1.000 voor Momentum, tien weken in de groep. Een individueel traject kost meer. Hierboven lees je precies wat je daarvoor krijgt.',
+      'Dat hangt af van het traject dat bij je past. Wat het kost hoor je in het kennismakingsgesprek. Hierboven lees je precies wat je ervoor krijgt.',
   },
   {
     question: 'Past coaching ook als ik nog niet sport bij STARK!?',
