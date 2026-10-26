@@ -54,9 +54,10 @@ const nextConfig = {
       { source: '/category/losse-activiteiten/:slug(camp.*)', destination: '/momentum', permanent: true },
       { source: '/category/losse-activiteiten/:path*', destination: '/trainen', permanent: true },
       { source: '/losse-activiteiten', destination: '/trainen', permanent: true },
-      { source: '/ervaring-anoniem', destination: '/coaching', permanent: true },
-      { source: '/ervaring-loes', destination: '/coaching', permanent: true },
-      { source: '/:slug(ervaring-.*)', destination: '/trainen', permanent: true },
+      { source: '/ervaringen', destination: '/', permanent: true },
+      { source: '/ervaring-anoniem', destination: '/', permanent: true },
+      { source: '/ervaring-loes', destination: '/', permanent: true },
+      { source: '/:slug(ervaring-.*)', destination: '/', permanent: true },
       { source: '/author/:path*', destination: '/', permanent: true },
     ]
   },

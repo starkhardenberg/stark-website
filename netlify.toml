@@ -4,3 +4,469 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Staging-domein: dezelfde pagina op het definitieve domein.
+[[redirects]]
+  from = "/*"
+  to = "https://www.starkhardenberg.nl/:splat"
+  status = 301
+  force = true
+
+  [redirects.conditions]
+    Host = ["stark.roholt.nl"]
+
+# Oude WordPress-paden. Zowel met als zonder slash.
+[[redirects]]
+  from = "/contact/"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/lidmaatschap"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/lidmaatschap/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/lidmaatschap-v2"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/lidmaatschap-v2/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/losse-activiteiten"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/losse-activiteiten/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/losse-activiteiten-v2"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/losse-activiteiten-v2/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/een-op-een"
+  to = "/coaching"
+  status = 301
+
+[[redirects]]
+  from = "/een-op-een/"
+  to = "/coaching"
+  status = 301
+
+[[redirects]]
+  from = "/een-op-een-v2"
+  to = "/coaching"
+  status = 301
+
+[[redirects]]
+  from = "/een-op-een-v2/"
+  to = "/coaching"
+  status = 301
+
+[[redirects]]
+  from = "/afspraak-maken"
+  to = "/kennismaken"
+  status = 301
+
+[[redirects]]
+  from = "/afspraak-maken/"
+  to = "/kennismaken"
+  status = 301
+
+[[redirects]]
+  from = "/over-ons"
+  to = "/team"
+  status = 301
+
+[[redirects]]
+  from = "/over-ons/"
+  to = "/team"
+  status = 301
+
+[[redirects]]
+  from = "/over-ons-v2"
+  to = "/team"
+  status = 301
+
+[[redirects]]
+  from = "/over-ons-v2/"
+  to = "/team"
+  status = 301
+
+[[redirects]]
+  from = "/ervaringen"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaringen/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service/teens"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/teens/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/dagelijkse-work-outs"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/dagelijkse-work-outs/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/open-gym"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/open-gym/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/structuur-uur"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/structuur-uur/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/kids-en-pre-teens"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/kids-en-pre-teens/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/clinics"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/clinics/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/60-programma"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/60-programma/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/camp-leone"
+  to = "/momentum"
+  status = 301
+
+[[redirects]]
+  from = "/service/camp-leone/"
+  to = "/momentum"
+  status = 301
+
+[[redirects]]
+  from = "/service/fit-en-sterk-de-basis"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/fit-en-sterk-de-basis/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/kinderfeestjes"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service/kinderfeestjes/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service/voedingsadvies"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service/voedingsadvies/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service/een-op-een-persoonlijke-mentale-coaching"
+  to = "/impact"
+  status = 301
+
+[[redirects]]
+  from = "/service/een-op-een-persoonlijke-mentale-coaching/"
+  to = "/impact"
+  status = 301
+
+[[redirects]]
+  from = "/service/een-op-een-persoonlijke-fysieke-training"
+  to = "/impact"
+  status = 301
+
+[[redirects]]
+  from = "/service/een-op-een-persoonlijke-fysieke-training/"
+  to = "/impact"
+  status = 301
+
+[[redirects]]
+  from = "/service/assessments"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/service/assessments/"
+  to = "/trainen"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-loes"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-loes/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-mark"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-mark/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elsbeth-kelly-door-de-midden-hakken"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elsbeth-kelly-door-de-midden-hakken/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-petra"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-petra/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-mirian"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-mirian/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-brent"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-brent/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-jason"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-jason/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-els"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-els/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elin"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elin/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-anoniem"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-anoniem/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-harry"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-harry/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elja"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-elja/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-edwin"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-edwin/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-marianne"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-marianne/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-eva"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-eva/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-sharon"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-sharon/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-richard"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-richard/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-anne"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-anne/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-vince"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-vince/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-hanneke"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-hanneke/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-clarice"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/ervaring-clarice/"
+  to = "/"
+  status = 301
