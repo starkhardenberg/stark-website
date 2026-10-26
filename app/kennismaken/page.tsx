@@ -35,6 +35,7 @@ export default function KennismakenPage() {
         <div className={styles.copy}>
           <h1 className={styles.title}>
             <span className={styles.titleLine}>Plan een</span>
+            {' '}
             <span className={styles.titleLine}>kennismaking</span>
           </h1>
           <p className={styles.fact}>

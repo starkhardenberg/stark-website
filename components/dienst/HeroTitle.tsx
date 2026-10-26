@@ -198,6 +198,7 @@ export default function HeroTitle({
         .join(' ')}
     >
       <TitleLine text={line1} line={1} outlineCount={outlineCount} keyOffset={0} />
+      {line2 ? ' ' : null}
       {line2 ? <TitleLine text={line2} line={2} outlineCount={0} keyOffset={line1.length + 1} /> : null}
     </h1>
   )

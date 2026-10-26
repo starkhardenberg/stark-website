@@ -1,13 +1,12 @@
-import type { Metadata } from 'next'
 import MomentumAtWerkPage from '@/components/dienst/MomentumAtWerkPage'
 import { MAW_META } from '@/components/dienst/momentum-at-werk'
-import { getSiteRobots } from '@/lib/site-seo'
+import { pageMetadata } from '@/lib/open-graph'
 
-export const metadata: Metadata = {
-  title: MAW_META.title,
-  description: MAW_META.description,
-  robots: getSiteRobots(),
-}
+export const metadata = pageMetadata(
+  'duurzameInzetbaarheid',
+  MAW_META.title,
+  MAW_META.description,
+)
 
 export default function Page() {
   return <MomentumAtWerkPage />

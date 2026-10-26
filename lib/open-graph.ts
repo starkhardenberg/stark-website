@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { L1O1_META } from '@/components/dienst/leiderschap-1-op-1'
+import { MAW_META } from '@/components/dienst/momentum-at-werk'
+import { TRAJECT_META } from '@/components/dienst/zakelijk-traject'
 import { getSiteRobots, getSiteUrl } from '@/lib/site-seo'
 
 /** Gedeelde OG-kaart (editorial split). Bron: app/opengraph-image.tsx → npm run generate:og */
@@ -84,6 +87,18 @@ export const openGraphByPage = {
     description:
       'Adres in Hardenberg, telefoon, WhatsApp en formulier. Je spreekt altijd een mens. Vragen over trainen, coaching of bedrijven? Stuur gerust.',
   },
+  leiderschap: {
+    title: L1O1_META.title,
+    description: L1O1_META.description,
+  },
+  duurzameInzetbaarheid: {
+    title: MAW_META.title,
+    description: MAW_META.description,
+  },
+  draagkracht: {
+    title: TRAJECT_META.title,
+    description: TRAJECT_META.description,
+  },
 } as const satisfies Record<string, { title: string; description: string }>
 
 const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
@@ -96,6 +111,9 @@ const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
   team: '/team',
   kennismaken: '/kennismaken',
   contact: '/contact',
+  leiderschap: '/zakelijk/leiderschap-1-op-1',
+  duurzameInzetbaarheid: '/zakelijk/duurzame-inzetbaarheid',
+  draagkracht: '/zakelijk/draagkracht',
 }
 
 export function pageMetadata(
