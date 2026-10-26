@@ -17,8 +17,8 @@ import styles from '../landing.module.css'
 
 export const metadata = pageMetadata(
   'trainen',
-  'Trainen — STARK! Hardenberg',
-  'Groepslessen met coaching voor volwassenen, ZilverFitness en Kids & Teens. Start waar jij staat, met techniek en veiligheid voorop.',
+  'Krachttraining in Hardenberg | Trainen bij STARK!',
+  'Sportschool in Hardenberg met krachttraining in kleine groepen en een coach naast je. Voor volwassenen, ZilverFitness en Kids & Teens.',
 )
 
 export default function TrainenPage() {

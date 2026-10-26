@@ -45,7 +45,20 @@ export function buildLocalBusinessJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'ExerciseGym',
-    name: 'STARK!',
+    name: 'STARK! Hardenberg',
+    areaServed: [
+      'Hardenberg',
+      'Dedemsvaart',
+      'Gramsbergen',
+      'Bergentheim',
+      'Slagharen',
+      'Kloosterhaar',
+      'Ommen',
+      'Coevorden',
+    ].map((name) => ({
+      '@type': 'City',
+      name,
+    })),
     url: getSiteUrl(),
     telephone: PHONE_CALL.tel.replace('tel:', ''),
     email,

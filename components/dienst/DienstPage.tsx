@@ -168,7 +168,13 @@ export default function DienstPage() {
                   Wil je alleen fitter worden en verder niets veranderen? Word dan lid. Dat is goedkoper en
                   het werkt.
                 </li>
-                <li>Zoek je een schema of tips en trucs? Dan past personal training beter.</li>
+                <li>
+                  Werk je liever 1-op-1, met een eigen coach en alle aandacht voor jou? Dan past{' '}
+                  <Link href="/impact" className={styles.link}>
+                    Impact
+                  </Link>{' '}
+                  beter.
+                </li>
                 <li>
                   Zit je in een burn-out of ben je onder behandeling? Dan werken we liever{' '}
                   <Link href="/impact" className={styles.link}>

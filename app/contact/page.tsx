@@ -31,28 +31,30 @@ export default function ContactPage({ searchParams }: PageProps) {
     <main className={styles.page}>
       <Nav />
 
-      <div className={styles.shell}>
-        <section className={styles.owners} aria-label="Eigenaren">
-          <h1 className={styles.title}>We staan voor je klaar</h1>
-          <figure className={styles.ownerCard}>
-            <div className={styles.ownerPhoto}>
-              <StarkImage
-                src="/images/team/engbert-jan-yvonne-samen.png"
-                alt="Engbert-Jan en Yvonne lachen samen"
-                fill
-                unaltered
-                sizes="(min-width: 960px) 864px, 92vw"
-                className={styles.ownerImg}
-              />
-            </div>
-            <figcaption className={styles.ownerCaption}>
-              <span className={styles.ownerName}>Engbert-Jan en Yvonne</span>
-              <span className={styles.ownerRole}>Eigenaren, coaches en trainers</span>
-            </figcaption>
-          </figure>
-          <p className={styles.ownersLead}>Vrijblijvend, eerlijk.</p>
-        </section>
+      <section className={styles.hero} aria-labelledby="contact-hero-title">
+        <div className={styles.heroMedia}>
+          <StarkImage
+            src="/images/team/engbert-jan-yvonne-hero.jpg"
+            alt="Engbert-Jan en Yvonne lachen samen"
+            fill
+            unaltered
+            priority
+            quality={85}
+            sizes="100vw"
+            className={styles.heroImg}
+          />
+          <div className={styles.heroScrim} aria-hidden="true" />
+          <p className={styles.heroCredit}>Engbert-Jan en Yvonne · eigenaren, coaches en trainers</p>
+        </div>
+        <div className={styles.heroCopy}>
+          <h1 id="contact-hero-title" className={styles.heroTitle}>
+            We staan voor je klaar
+          </h1>
+          <p className={styles.heroSub}>Vrijblijvend, eerlijk.</p>
+        </div>
+      </section>
 
+      <div className={styles.shell}>
         <section className={styles.formSection} aria-label="Contactformulier">
           <div className={styles.formCard}>
             <header className={styles.formHead}>
@@ -94,6 +96,10 @@ export default function ContactPage({ searchParams }: PageProps) {
             {ADDRESS.street}
             <br />
             {ADDRESS.city}
+          </p>
+          <p className={styles.address}>
+            Onze leden komen uit de hele gemeente Hardenberg, zoals Dedemsvaart, Gramsbergen,
+            Bergentheim, Slagharen en Kloosterhaar, en uit Ommen en Coevorden.
           </p>
           <a
             href={ADDRESS.maps}

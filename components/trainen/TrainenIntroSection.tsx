@@ -31,7 +31,7 @@ const REGELS: Regel[] = [
     id: '03',
     lead: 'Functioneel sterk worden',
     rest: [
-      'Kracht en conditie voor je week.',
+      'Krachttraining en conditie voor je week.',
       'Tillen, bukken, spelen, de trap op.',
     ],
   },
