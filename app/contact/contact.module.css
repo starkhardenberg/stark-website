@@ -101,7 +101,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.45);
+  color: #888a88;
 }
 
 .infoList a,
@@ -235,7 +235,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.45);
+  color: #808280;
 }
 
 .formSection {
@@ -270,7 +270,7 @@
   margin: 0;
   font-size: var(--stark-body);
   line-height: 1.55;
-  color: var(--slate);
+  color: #707070;
 }
 
 @media (min-width: 900px) {

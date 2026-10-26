@@ -360,7 +360,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: rgba(245, 245, 245, 0.2);
+  color: #808280;
   flex-shrink: 0;
   width: 28px;
   transition: color 0.18s ease;
@@ -401,7 +401,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.28);
+  color: #808280;
   margin-top: 4px;
   transition: color 0.18s ease;
 }

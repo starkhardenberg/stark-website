@@ -303,11 +303,13 @@ p.positioning {
 
 .regelRestLine {
   display: block;
+  color: #6f7077;
 }
 
 @media (max-width: 899px) {
   .regelRestBreak {
     display: block;
+    color: #6f7077;
   }
 }
 
