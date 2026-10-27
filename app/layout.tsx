@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { headers } from 'next/headers'
 import localFont from 'next/font/local'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
 import BackToTop from '@/components/BackToTop'
@@ -38,17 +37,12 @@ const bronz = localFont({
   display: 'swap',
 })
 
-export function generateMetadata(): Metadata {
-  const headerList = headers()
-  const host = headerList.get('x-forwarded-host') ?? headerList.get('host')
-
-  return {
-    metadataBase: new URL(SITE_URL),
-    title: 'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
-    description:
-      'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
-    robots: getSiteRobots(host),
-  }
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: 'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
+  description:
+    'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
+  robots: getSiteRobots(),
 }
 
 export default function RootLayout({

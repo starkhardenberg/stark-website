@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { isIndexableRequest } from '@/lib/site-seo'
+import { isProductionDeploy } from '@/lib/site-seo'
 
-export function middleware(request: NextRequest) {
+export function middleware(_request: NextRequest) {
   const response = NextResponse.next()
-  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host')
 
-  if (!isIndexableRequest(host)) {
+  if (!isProductionDeploy()) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow')
   }
 
