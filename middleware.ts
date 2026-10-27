@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { isProductionDeploy } from '@/lib/site-seo'
 
+/** Alleen een header. Deze functie mag nooit redirecten of rewriten. */
 export function middleware(_request: NextRequest) {
   const response = NextResponse.next()
 
@@ -13,5 +14,5 @@ export function middleware(_request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|images/|fonts/).*)'],
+  matcher: ['/((?!_next/|favicon.ico|images/|fonts/|.*\\..*).*)'],
 }
