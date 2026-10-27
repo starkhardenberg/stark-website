@@ -89,13 +89,7 @@ export default function TrainenPage() {
         </div>
       </section>
 
-      <Footer
-        photoFirst
-        photoSet="trainen"
-        hideBrand
-        statement="Koffie en verder praten?"
-        statementMeta="Gratis gesprek · ~1 uur"
-      />
+      <Footer variant="dark" />
     </main>
   )
 }

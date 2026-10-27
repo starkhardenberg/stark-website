@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { STARK_GRAIN } from '@/lib/stark-grain'
 import { SITE_URL } from '@/lib/site-seo'
+import Footer from '@/components/Footer'
 import styles from './not-found.module.css'
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
+    <>
     <main className={`${styles.page} ${STARK_GRAIN}`}>
       <header className={styles.nav}>
         <a href="/" aria-label="STARK! home">
@@ -52,5 +54,7 @@ export default function NotFound() {
         <span>Nijverheidsstraat 15c</span>
       </div>
     </main>
+    <Footer variant="light" />
+    </>
   )
 }

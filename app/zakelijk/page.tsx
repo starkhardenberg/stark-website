@@ -14,7 +14,6 @@ import { heroQuotePatrick } from '@/components/testimonials/testimonials-data'
 import IntroClose from '@/components/IntroClose'
 import {
   ZAKELIJK_FAQ,
-  ZAKELIJK_FOOTER,
   ZAKELIJK_HERO,
   ZAKELIJK_INTRO,
   ZAKELIJK_META,
@@ -221,14 +220,7 @@ export default function ZakelijkPage() {
         </div>
       </section>
 
-      <Footer
-        photoless
-        hideBrand
-        accentRule
-        tone="light"
-        statement={ZAKELIJK_FOOTER.statement}
-        statementMeta={ZAKELIJK_FOOTER.statementMeta}
-      />
+      <Footer variant="light" />
     </main>
   )
 }

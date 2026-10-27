@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import localFont from 'next/font/local'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
+import BackToTop from '@/components/BackToTop'
 import { getSiteRobots, SITE_URL } from '@/lib/site-seo'
 import './globals.css'
 
@@ -61,7 +62,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <BackToTop />
+      </body>
     </html>
   )
 }

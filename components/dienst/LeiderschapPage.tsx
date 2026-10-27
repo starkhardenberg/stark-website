@@ -65,7 +65,7 @@ function LeiderschapHero() {
 export default function LeiderschapPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
-  const { tone, footerTone } = createPageRhythm()
+  const { tone } = createPageRhythm()
   const introTone = tone()
   const worksTone = tone()
   const vraagtTone = tone()
@@ -248,7 +248,7 @@ export default function LeiderschapPage() {
         <KennismakingClose text={L1O1_START} />
       </Section>
 
-      <Footer photoless ctaless tone={footerTone()} />
+      <Footer variant="light" />
     </main>
   )
 }

@@ -13,6 +13,7 @@ import {
 } from '@/lib/contact'
 import { pageMetadata } from '@/lib/open-graph'
 import { STARK_CTA, STARK_CTA_PRIMARY, STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
+import Footer from '@/components/Footer'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = pageMetadata(
@@ -29,6 +30,7 @@ export default function ContactPage({ searchParams }: PageProps) {
   const initialOnderwerp = parseOnderwerp(searchParams?.onderwerp)
 
   return (
+    <>
     <main className={styles.page}>
       <Nav />
 
@@ -141,5 +143,7 @@ export default function ContactPage({ searchParams }: PageProps) {
 
       </div>
     </main>
+    <Footer variant="dark" />
+    </>
   )
 }

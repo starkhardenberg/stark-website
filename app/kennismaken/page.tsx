@@ -4,6 +4,7 @@ import Sinds2013Badge from '@/components/Sinds2013Badge'
 import StarkImage from '@/components/StarkImage'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { pageMetadata } from '@/lib/open-graph'
+import Footer from '@/components/Footer'
 import styles from './kennismaken.module.css'
 
 const BOOKING_URL =
@@ -17,6 +18,7 @@ export const metadata: Metadata = pageMetadata(
 
 export default function KennismakenPage() {
   return (
+    <>
     <main className={styles.page}>
       <Nav hideCta />
 
@@ -54,5 +56,7 @@ export default function KennismakenPage() {
         </div>
       </div>
     </main>
+    <Footer variant="dark" />
+    </>
   )
 }

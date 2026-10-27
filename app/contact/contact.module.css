@@ -33,7 +33,6 @@
 }
 
 .heroMedia {
-  container-type: inline-size;
   width: 100%;
   background: #020202;
 }
@@ -41,13 +40,14 @@
 .heroPhoto {
   position: relative;
   width: 100%;
+  height: auto;
   aspect-ratio: 2048 / 1365;
   background: #020202;
 }
 
 .heroImg {
   object-fit: cover;
-  object-position: center 25%;
+  object-position: 50% 100%;
 }
 
 .heroCopy {
@@ -90,12 +90,24 @@
   width: 100%;
 }
 
-.heroAction {
+a.heroAction:global(.starkCta) {
+  box-sizing: border-box;
+  flex: none;
   width: 100%;
-  padding: 14px 22px;
-  font-size: 13px;
-  line-height: 1.2;
+  max-width: 100%;
+  padding: 14px 32px !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  border: 2px solid currentColor !important;
   white-space: nowrap;
+}
+
+a.heroAction:global(.starkCtaPrimary) {
+  border-color: var(--stark-accent) !important;
+}
+
+a.heroAction:global(.starkCtaPrimary):hover {
+  border-color: var(--orange-deep) !important;
 }
 
 .practical {
@@ -289,8 +301,9 @@
     width: auto;
   }
 
-  .heroAction {
-    width: auto;
+  a.heroAction:global(.starkCta) {
+    width: auto !important;
+    max-width: none;
   }
 }
 
@@ -319,12 +332,18 @@
   .heroFrame {
     grid-template-columns: 5fr 7fr;
     column-gap: 72px;
+    align-items: stretch;
     padding-left: 48px;
     padding-right: 48px;
   }
 
-  .heroPhoto {
-    aspect-ratio: auto;
-    height: calc(100cqi * 60vh / 54vw);
+  .heroCopy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .heroMedia {
+    align-self: center;
   }
 }

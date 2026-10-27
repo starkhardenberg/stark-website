@@ -180,12 +180,7 @@ export default function TeamPage() {
 
       <WijBintStark size="hero" />
 
-      <Footer
-        photoless
-        hideBrand
-        statement="Koffie en verder praten?"
-        statementMeta="Gratis gesprek · ~1 uur"
-      />
+      <Footer variant="dark" />
     </main>
   )
 }

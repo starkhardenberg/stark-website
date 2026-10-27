@@ -27,7 +27,7 @@ import styles from './DienstPage.module.css'
 export default function MomentumAtWerkPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
-  const { tone, footerTone } = createPageRhythm()
+  const { tone } = createPageRhythm()
   const introTone = tone()
   const worksTone = tone()
   const wieTone = tone()
@@ -195,7 +195,7 @@ export default function MomentumAtWerkPage() {
         <KennismakingClose text={MAW_SLOT} />
       </Section>
 
-      <Footer photoless ctaless tone={footerTone()} />
+      <Footer variant="light" />
     </main>
   )
 }

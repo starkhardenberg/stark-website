@@ -193,13 +193,7 @@ export default function ServiceDetailPage({ page }: { page: ServiceDetailContent
         </div>
       </div>
 
-      <Footer
-        photoFirst
-        photoSet={page.footerPhotoSet ?? 'zakelijk'}
-        hideBrand
-        statement="Koffie en verder praten?"
-        statementMeta="Gratis gesprek · ~1 uur"
-      />
+      <Footer variant="light" />
     </main>
   )
 }

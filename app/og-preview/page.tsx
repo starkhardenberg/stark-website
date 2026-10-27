@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Footer from '@/components/Footer'
 import styles from './og-preview.module.css'
 
 export const metadata: Metadata = {
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 
 export default function OgPreviewPage() {
   return (
+    <>
     <main className={styles.page}>
       <div className={styles.inner}>
         <p className={styles.label}>Link-preview</p>
@@ -33,5 +35,7 @@ export default function OgPreviewPage() {
         </p>
       </div>
     </main>
+    <Footer variant="light" />
+    </>
   )
 }

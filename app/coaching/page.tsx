@@ -90,13 +90,7 @@ export default function CoachingPage() {
         </div>
       </section>
 
-      <Footer
-        photoFirst
-        photoSet="coaching"
-        hideBrand
-        statement="Koffie en verder praten?"
-        statementMeta="Gratis gesprek · ~1 uur"
-      />
+      <Footer variant="dark" />
     </main>
   )
 }

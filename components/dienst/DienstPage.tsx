@@ -18,7 +18,7 @@ import styles from './DienstPage.module.css'
 export default function DienstPage() {
   let section = 0
   const num = () => String(++section).padStart(2, '0')
-  const { tone, footerTone } = createPageRhythm()
+  const { tone } = createPageRhythm()
   const introTone = tone()
   const worksTone = tone()
   const eerlijkTone = tone()
@@ -245,7 +245,7 @@ export default function DienstPage() {
         </p>
       </Section>
 
-      <Footer photoless ctaless tone={footerTone()} />
+      <Footer variant="dark" />
     </main>
   )
 }

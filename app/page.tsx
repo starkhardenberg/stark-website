@@ -27,12 +27,7 @@ export default function Home() {
       <OverSection />
       <ResultatenSection />
       <WijBintStark size="hero" />
-      <Footer
-        photoless
-        hideBrand
-        statement="Koffie en verder praten?"
-        statementMeta="Gratis gesprek · ~1 uur"
-      />
+      <Footer variant="dark" />
     </>
   )
 }
