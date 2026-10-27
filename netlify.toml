@@ -16,11 +16,8 @@
     Host = ["stark.roholt.nl"]
 
 # Oude WordPress-paden. Zowel met als zonder slash.
-[[redirects]]
-  from = "/contact/"
-  to = "/contact"
-  status = 301
-
+# /contact/ niet hierheen sturen: Netlify past een regel met slash ook toe
+# op /contact zelf, en dan wijst /contact naar /contact.
 [[redirects]]
   from = "/lidmaatschap"
   to = "/trainen"
