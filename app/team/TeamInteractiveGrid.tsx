@@ -75,7 +75,6 @@ export default function TeamInteractiveGrid() {
                 <p className={styles.memberQuote}>&ldquo;{capitalizeQuoteStart(member.quote)}&rdquo;</p>
                 {member.id === 2 ? (
                   <p className={styles.originBody}>
-                    Yvonne stond tweemaal in de finale van het NK Sterkste Vrouw van Nederland.{' '}
                     <a
                       href="https://www.destentor.nl/hardenberg/yvonne-46-wil-voorbeeld-zijn-voor-dochter-en-knokt-zich-van-sofa-naar-de-top-ik-ben-weer-happy~a32b1891/"
                       className={styles.originInlineLink}
@@ -102,7 +101,7 @@ export default function TeamInteractiveGrid() {
                     >
                       De Toren
                     </a>{' '}
-                    schreven erover.
+                    schreven over haar deelname aan het NK Sterkste Vrouw van Nederland.
                   </p>
                 ) : null}
               </div>
