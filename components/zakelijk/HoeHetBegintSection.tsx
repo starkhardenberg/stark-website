@@ -36,7 +36,7 @@ export default function HoeHetBegintSection() {
                   <dt>{fact.label}</dt>
                   <dd>
                     {fact.value}
-                    {'lines' in fact ? (
+                    {'lines' in fact && fact.lines ? (
                       <ul className={pageStyles.startDates}>
                         {fact.lines.map((line) => (
                           <li key={line}>{line}</li>
