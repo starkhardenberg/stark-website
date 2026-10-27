@@ -1,26 +1,26 @@
 'use client'
 
-import { useEffect, useState, type FormEvent } from 'react'
+import { Suspense, useEffect, useState, type FormEvent } from 'react'
+import { useSearchParams } from 'next/navigation'
 import {
   CONTACT_ONDERWERP_OPTIONS,
   CONTACT_ONTDEKT_ANDERS,
   CONTACT_ONTDEKT_VIA_LID,
   CONTACT_ONTDEKT_OPTIONS,
+  parseOnderwerp,
   PHONE_CALL,
   type ContactOnderwerp,
   type ContactOntdekt,
 } from '@/lib/contact'
 import styles from './ContactForm.module.css'
 
-type Props = {
-  initialOnderwerp: ContactOnderwerp
-}
-
 function encodeFormBody(data: Record<string, string>) {
   return new URLSearchParams(data).toString()
 }
 
-export default function ContactForm({ initialOnderwerp }: Props) {
+function ContactFormFields() {
+  const params = useSearchParams()
+  const initialOnderwerp = parseOnderwerp(params.get('onderwerp') ?? undefined)
   const [onderwerp, setOnderwerp] = useState<ContactOnderwerp>(initialOnderwerp)
   const [ontdekt, setOntdekt] = useState<ContactOntdekt | ''>('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
@@ -211,5 +211,13 @@ export default function ContactForm({ initialOnderwerp }: Props) {
         </a>
       </div>
     </form>
+  )
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense fallback={null}>
+      <ContactFormFields />
+    </Suspense>
   )
 }

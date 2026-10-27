@@ -4,13 +4,7 @@ import Nav from '@/components/Nav'
 import ContactForm from '@/components/contact/ContactForm'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
-import {
-  ADDRESS,
-  mailtoInfo,
-  parseOnderwerp,
-  PHONE_CALL,
-  PHONE_WHATSAPP,
-} from '@/lib/contact'
+import { ADDRESS, mailtoInfo, PHONE_CALL, PHONE_WHATSAPP } from '@/lib/contact'
 import { pageMetadata } from '@/lib/open-graph'
 import { STARK_CTA, STARK_CTA_PRIMARY, STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
 import Footer from '@/components/Footer'
@@ -22,13 +16,7 @@ export const metadata: Metadata = pageMetadata(
   'Adres, route, telefoon en e-mail. Stel je vraag via het formulier. Je spreekt altijd een mens bij STARK! Hardenberg.',
 )
 
-type PageProps = {
-  searchParams?: { onderwerp?: string }
-}
-
-export default function ContactPage({ searchParams }: PageProps) {
-  const initialOnderwerp = parseOnderwerp(searchParams?.onderwerp)
-
+export default function ContactPage() {
   return (
     <>
     <main className={styles.page}>
@@ -82,7 +70,7 @@ export default function ContactPage({ searchParams }: PageProps) {
                 Vul het formulier in. We nemen binnen uiterlijk 2 werkdagen contact met je op.
               </p>
             </header>
-            <ContactForm initialOnderwerp={initialOnderwerp} />
+            <ContactForm />
           </div>
         </section>
 
