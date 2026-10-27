@@ -43,6 +43,9 @@ export const metadata: Metadata = {
   description:
     'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
   robots: getSiteRobots(),
+  verification: {
+    google: 't7Z9FlmuP9N7mThKFn8PaWSBlS6w2Mj1b0HFGRgcUtg',
+  },
 }
 
 export default function RootLayout({
