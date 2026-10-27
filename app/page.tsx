@@ -6,8 +6,6 @@ import OverSection from '@/components/OverSection'
 import ResultatenSection from '@/components/ResultatenSection'
 import WijBintStark from '@/components/WijBintStark'
 import Footer from '@/components/Footer'
-import StructuredData from '@/components/StructuredData'
-import { buildLocalBusinessJsonLd } from '@/lib/json-ld'
 import { pageMetadata } from '@/lib/open-graph'
 
 export const metadata = pageMetadata(
@@ -19,7 +17,6 @@ export const metadata = pageMetadata(
 export default function Home() {
   return (
     <>
-      <StructuredData data={buildLocalBusinessJsonLd()} />
       <HeroSection />
       <IntroSection />
       <AanbodSection />

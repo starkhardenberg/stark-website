@@ -5,7 +5,7 @@ import {
   STARK_OPENING_HOURS,
   STARK_POSTAL_CODE,
 } from '@/lib/business-info'
-import { getSiteUrl, SITE_URL } from '@/lib/site-seo'
+import { SITE_URL } from '@/lib/site-seo'
 
 const SCHEMA_DAY: Record<string, string> = {
   Monday: 'https://schema.org/Monday',
@@ -38,27 +38,19 @@ export function buildFaqPageJsonLd(items: readonly FaqItem[]) {
   }
 }
 
-export function buildLocalBusinessJsonLd() {
+/** Zelfde zin als de description in de metadata van de root layout. */
+const HEALTH_CLUB_DESCRIPTION =
+  'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.'
+
+export function buildHealthClubJsonLd() {
   const email = mailtoInfo.replace('mailto:', '')
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'ExerciseGym',
+    '@type': 'HealthClub',
     name: 'STARK! Hardenberg',
-    areaServed: [
-      'Hardenberg',
-      'Dedemsvaart',
-      'Gramsbergen',
-      'Bergentheim',
-      'Slagharen',
-      'Kloosterhaar',
-      'Ommen',
-      'Coevorden',
-    ].map((name) => ({
-      '@type': 'City',
-      name,
-    })),
-    url: getSiteUrl(),
+    description: HEALTH_CLUB_DESCRIPTION,
+    url: SITE_URL,
     telephone: PHONE_CALL.tel.replace('tel:', ''),
     email,
     address: {
@@ -73,13 +65,16 @@ export function buildLocalBusinessJsonLd() {
       latitude: STARK_GEO.latitude,
       longitude: STARK_GEO.longitude,
     },
-    logo: `${SITE_URL}/images/stark_logo_cirkel_wit.png`,
     openingHoursSpecification: STARK_OPENING_HOURS.map((slot) => ({
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: SCHEMA_DAY[slot.dayOfWeek],
       opens: slot.opens,
       closes: slot.closes,
+      description: slot.description,
     })),
+    image: `${SITE_URL}/videos/hero-poster.jpg`,
+    foundingDate: '2013',
+    areaServed: 'Hardenberg en omgeving',
     sameAs: [
       'https://www.instagram.com/starkhardenberg/',
       'https://www.facebook.com/starkhardenberg/',
@@ -88,7 +83,7 @@ export function buildLocalBusinessJsonLd() {
 }
 
 const STARK_PROVIDER = {
-  '@type': 'ExerciseGym',
+  '@type': 'HealthClub',
   name: 'STARK! Hardenberg',
   url: SITE_URL,
 } as const

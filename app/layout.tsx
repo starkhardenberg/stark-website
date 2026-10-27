@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
 import BackToTop from '@/components/BackToTop'
+import HealthClubJsonLd from '@/components/HealthClubJsonLd'
 import { getSiteRobots, SITE_URL } from '@/lib/site-seo'
 import './globals.css'
 
@@ -60,6 +61,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i.vimeocdn.com" />
       </head>
       <body>
+        <HealthClubJsonLd />
         {children}
         <BackToTop />
       </body>
