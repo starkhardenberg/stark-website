@@ -70,7 +70,6 @@ export function buildHealthClubJsonLd() {
       dayOfWeek: SCHEMA_DAY[slot.dayOfWeek],
       opens: slot.opens,
       closes: slot.closes,
-      description: slot.description,
     })),
     image: `${SITE_URL}/videos/hero-poster.jpg`,
     foundingDate: '2013',
