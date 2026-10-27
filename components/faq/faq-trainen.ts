@@ -1,5 +1,15 @@
 export const trainenFaq = [
   {
+    question: 'Waar kan ik in Hardenberg krachttraining doen in een kleine groep met begeleiding?',
+    answer:
+      'Bij STARK! aan de Nijverheidsstraat 15c in Hardenberg train je in kleine groepen: maximaal twaalf bij Volwassenen en ZilverFitness, en maximaal vijftien bij Kids & Teens. Bij elke training is een coach aanwezig die meekijkt, bijstuurt en de oefening aanpast aan wat jij op dat moment aankunt. Je traint met zandzakken, sleetjes en kettlebells, met bewegingen die je in het dagelijks leven ook maakt. Leden komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden. Je kunt vrijblijvend een kennismakingsgesprek plannen via de website. Onze opgeleide trainers staan op de vloer en spreken je actief aan, je hoeft niet te wachten tot je zelf vraagt. En vraag vooral: jij voelt je lijf beter dan wij, dus we waarderen het enorm als je aangeeft wat er speelt. We letten mee op je techniek en houden je voortgang in de gaten. Een persoonlijk schema maken we niet, maar vanuit het Startpakket krijg je een gericht advies met oefeningen voor jouw aandachtspunten, waar je voor of na je training aan kunt werken.',
+  },
+  {
+    question: 'Ik wil sterker worden maar een gewone sportschool spreekt me niet aan, wat kan ik doen in de omgeving Hardenberg?',
+    answer:
+      'STARK! in Hardenberg is een sportschool met een andere opzet: kleine groepen, een vast tijdstip, en een coach die er bij elke training bij is. Je traint volgens een programma, in een groep die elkaar kent, met oefeningen die passen bij jouw niveau. Dat werkt voor mensen die eerder zijn afgehaakt bij een grote sportschool en voor mensen die nooit eerder hebben getraind.',
+  },
+  {
     question: 'Moet ik al fit zijn om te starten, en wat als ik iets niet goed kan of een blessure heb?',
     answer:
       'Nee, je hoeft niet fit te zijn. Iedereen start op eigen niveau en we passen oefeningen aan waar nodig. Met een blessure of beperking kijken we samen wat wel kan en bouwen we veilig op. Bij ons train je altijd veilig en intensief. Techniek is nooit een belemmering om voluit te gaan.',
@@ -18,16 +28,6 @@ export const trainenFaq = [
     question: 'Hoe lang duurt een les en zijn het vaste momenten?',
     answer:
       'Lessen voor volwassenen, Teens en ZilverFitness duren 60 minuten, Kids 45 minuten. We werken met een vast rooster in onze app: je meldt je aan voor de les waar je aan mee wilt doen.',
-  },
-  {
-    question: 'Hoeveel mensen zitten er in een les?',
-    answer:
-      'Bij volwassenen en ZilverFitness maximaal 12 mensen per les, bij Kids en Teens maximaal 15. Klein genoeg om je gezien en begeleid te voelen.',
-  },
-  {
-    question: 'Hoeveel begeleiding krijg ik op de vloer?',
-    answer:
-      'Onze opgeleide trainers staan op de vloer en spreken je actief aan, je hoeft niet te wachten tot je zelf vraagt. En vraag vooral: jij voelt je lijf beter dan wij, dus we waarderen het enorm als je aangeeft wat er speelt. We letten mee op je techniek en houden je voortgang in de gaten. Een persoonlijk schema maken we niet, maar vanuit het Startpakket krijg je een gericht advies met oefeningen voor jouw aandachtspunten, waar je voor of na je training aan kunt werken.',
   },
   {
     question: 'Wat is de investering voor een lidmaatschap, en wat zit erin?',

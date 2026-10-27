@@ -200,6 +200,12 @@ export const MAW_FAQ = [
     answer:
       'Momentum @ Werk is een serieuze investering. Die hoor je in het kennismakingsgesprek, ruim voordat je iets beslist. Hierboven lees je wat je ervoor terugkrijgt.',
   },
+  {
+    question:
+      'Hoe pak ik als werkgever verzuim en energie in mijn team aan zonder een standaard vitaliteitsprogramma?',
+    answer:
+      'STARK! in Hardenberg begint bij leiderschap. Als duidelijk is waar het bedrijf heen gaat en mensen weten wat dat van hen vraagt, verandert hoe ze werken. Vanuit die basis komt een programma als Momentum @ Werk, waarin medewerkers in kleine groepen werken aan kracht, herstel en wat hen tegenhoudt. STARK! ontvangt bedrijven uit Hardenberg op de eigen locatie aan de Nijverheidsstraat; een team dat uit de eigen kantooromgeving stapt, komt sneller in een andere stand. Bij bedrijven verder weg komt STARK! naar hun locatie toe. Per bedrijf wordt na een kennismakingsgesprek een traject op maat gemaakt.',
+  },
 ] as const
 
 /* ---------- 07 ---------- */

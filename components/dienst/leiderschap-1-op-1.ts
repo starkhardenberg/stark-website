@@ -204,14 +204,9 @@ export const L1O1_FAQ = [
       'Ja. Leiderschap 1-op-1 is voor wie de volgende stap wil zetten. Het loopt. Je weet dat er nog meer in zit. Daar hoeft geen probleem voor te zijn.',
   },
   {
-    question: 'Wat is het verschil met Impact?',
+    question: 'Wat is het verschil met Impact en Draagkracht?',
     answer:
-      'Leiderschap 1-op-1 gaat over wat je als leider voor elkaar krijgt. Impact gaat over jou als mens: je energie, je lijf, en wat je doet als het te veel wordt. Thuis en op je werk. De training ziet er hetzelfde uit. Het gesprek niet: bij Leiderschap kan het elke week of elke twee weken, en elk kwartaal is er een richtingsgesprek van drie uur. Twijfel je? In het kennismakingsgesprek zoeken we het samen uit.',
-  },
-  {
-    question: 'Wat is het verschil met Draagkracht?',
-    answer:
-      'Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten. In Draagkracht zet je team dezelfde stap. Dat traject duurt een half jaar tot een jaar, met elke week teamcoaching. Je eigen coaching 1-op-1 zit daar al in.',
+      'Leiderschap 1-op-1 gaat over wat je als leider voor elkaar krijgt. Impact gaat over jou als mens: je energie, je lijf, en wat je doet als het te veel wordt. Thuis en op je werk. De training ziet er hetzelfde uit. Het gesprek niet: bij Leiderschap kan het elke week of elke twee weken, en elk kwartaal is er een richtingsgesprek van drie uur. Twijfel je? In het kennismakingsgesprek zoeken we het samen uit. Bij Leiderschap 1-op-1 werk jij aan je eigen resultaten. In Draagkracht zet je team dezelfde stap. Dat traject duurt een half jaar tot een jaar, met elke week teamcoaching. Je eigen coaching 1-op-1 zit daar al in.',
   },
   {
     question: 'Kan mijn werkgever meebetalen?',
@@ -237,6 +232,11 @@ export const L1O1_FAQ = [
     question: 'Wat is de investering voor Leiderschap 1-op-1?',
     answer:
       'Leiderschap 1-op-1 is een serieuze investering. Die hangt af van de looptijd. Je hoort het in het kennismakingsgesprek, ruim voordat je iets beslist.',
+  },
+  {
+    question: 'Ik zoek leiderschapscoaching in de buurt, werken jullie ook buiten Hardenberg?',
+    answer:
+      'STARK! in Hardenberg begeleidt eigenaren, MT-leden en teamleiders, individueel en als team. Het gaat over je mensen meenemen in wat je met het bedrijf wilt en ze leren wat dat betekent en vraagt. De aanpak is gebaseerd op de methodiek van Straight Line Leadership, vertaald naar vier stappen: zichtbaar maken, afspreken, leiden en toetsen. Bedrijven uit Hardenberg komen naar onze locatie; een team dat uit de eigen kantooromgeving stapt, komt sneller in een andere stand. Daarbuiten werkt STARK! door heel Overijssel en verder op locatie. Elk kwartaal is er een kennismakingsmiddag voor directeuren, de Proef op de Som.',
   },
 ] as const
 

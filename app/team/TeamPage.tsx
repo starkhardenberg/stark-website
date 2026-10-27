@@ -39,6 +39,16 @@ export default function TeamPage() {
 
       <section className={introStyles.intro} aria-labelledby="team-intro-heading">
         <div className={introStyles.inner}>
+          <div className={styles.introCopy}>
+            <p className={styles.creditBody}>
+              STARK! Hardenberg werkt sinds 2013 aan kracht, bij mensen en bij bedrijven. Particulieren
+              trainen in kleine groepen met een coach erbij, of volgen een coachingstraject
+              rond wat hen tegenhoudt. Werkgevers schakelen STARK! in voor leiderschap, duurzame
+              inzetbaarheid en de energie in hun team. Bedrijven uit Hardenberg komen daarvoor naar de
+              Nijverheidsstraat 15c; bij bedrijven verder weg komt STARK! naar de eigen locatie. Leden
+              komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden.
+            </p>
+          </div>
           <header className={introStyles.banner}>
             <h2 id="team-intro-heading" className={introStyles.quote}>
               <span className={introStyles.quoteLine}>
@@ -174,6 +184,16 @@ export default function TeamPage() {
                 </p>
               </li>
             </ol>
+            <p className={`${styles.originBody} ${styles.originClose}`}>
+              STARK! Hardenberg is gevestigd aan de Nijverheidsstraat 15c in Hardenberg en is opgericht
+              in 2013. Het aanbod bestaat uit krachttraining in kleine groepen met een coach, persoonlijke
+              coaching en coachingstrajecten voor bedrijven. De training draait om samengestelde bewegingen
+              met zandzakken, sleetjes en kettlebells. De coaching gebruikt een eigen methodiek met vier
+              stappen: zichtbaar maken, afspreken, leiden en toetsen. Zakelijke trajecten met bedrijven uit
+              Hardenberg vinden plaats op de locatie van STARK!. Voor bedrijven buiten Hardenberg komt
+              STARK! desgewenst naar de eigen locatie van het bedrijf. Een kennismakingsgesprek is
+              vrijblijvend en kan via de website worden gepland.
+            </p>
 
         </div>
       </section>
