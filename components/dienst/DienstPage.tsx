@@ -8,6 +8,7 @@ import FaqJsonLd from '@/components/FaqJsonLd'
 import { BookButton, CloseStamp, Section, SplitAside, createPageRhythm } from './DienstParts'
 import DienstQuoteRoster from './DienstQuoteRoster'
 import { momentumPeople } from '@/components/testimonials/portrait-quotes'
+import { MOMENTUM_NEXT_START_HEADLINE } from '@/lib/momentum-dates'
 import {
   MOMENTUM_FAQ,
   MOMENTUM_SCHEDULE,
@@ -215,6 +216,10 @@ export default function DienstPage() {
           <div className={styles.group}>
             <h3 className={styles.h3}>Startdata</h3>
             <ul className={styles.list}>
+              <li>
+                <b>{MOMENTUM_NEXT_START_HEADLINE}</b>
+                <span className={styles.small}>eerstvolgende start</span>
+              </li>
               {MOMENTUM_STARTS.map((item) => (
                 <li key={item.start}>
                   <b>{item.start}</b> · {item.group}

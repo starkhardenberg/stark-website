@@ -173,7 +173,7 @@ export default function Footer({ variant }: { variant: 'light' | 'dark' }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Foto Marianne Donker
+                Foto&apos;s Marianne Donker
               </a>
             </span>
             <span>
