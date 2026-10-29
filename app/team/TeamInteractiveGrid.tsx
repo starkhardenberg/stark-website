@@ -7,12 +7,28 @@ import PortraitFrame from './PortraitFrame'
 import { TEAM, col1, col2, col3 } from './team-members'
 import styles from './team.module.css'
 
+function finePointerHover() {
+  return window.matchMedia('(hover: hover) and (pointer: fine)').matches
+}
+
 export default function TeamInteractiveGrid() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   const itemClass = (id: number) => {
     if (hoveredId === null) return ''
     return hoveredId === id ? styles.active : styles.inactive
+  }
+
+  const enter = (id: number) => {
+    if (finePointerHover()) setHoveredId(id)
+  }
+
+  const leave = () => {
+    if (finePointerHover()) setHoveredId(null)
+  }
+
+  const pick = (id: number) => {
+    setHoveredId(id)
   }
 
   const columns = [col1, col2, col3]
@@ -36,8 +52,9 @@ export default function TeamInteractiveGrid() {
                   key={member.id}
                   className={`${styles.photoItem} ${itemClass(member.id)}`}
                   data-stark-hover=""
-                  onMouseEnter={() => setHoveredId(member.id)}
-                  onMouseLeave={() => setHoveredId(null)}
+                  onMouseEnter={() => enter(member.id)}
+                  onMouseLeave={leave}
+                  onClick={() => pick(member.id)}
                 >
                   <div className={`${styles.photoMedia}${member.photoUnfiltered ? ` ${styles.photoMediaRaw}` : ''}`}>
                     <StarkImage
@@ -65,8 +82,9 @@ export default function TeamInteractiveGrid() {
             <div
               key={member.id}
               className={`${styles.nameItem} ${itemClass(member.id)}`}
-              onMouseEnter={() => setHoveredId(member.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              onMouseEnter={() => enter(member.id)}
+              onMouseLeave={leave}
+              onClick={() => pick(member.id)}
             >
               <span className={styles.nameNum}>{String(i + 1).padStart(2, '0')}</span>
               <div>

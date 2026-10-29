@@ -234,7 +234,6 @@
   height: 100%;
 }
 
-.photoItem:hover .photoFrameWrap,
 .photoItem.active .photoFrameWrap {
   color: var(--orange);
   filter: drop-shadow(0 0 12px color-mix(in srgb, var(--orange) 70%, transparent));
@@ -293,12 +292,10 @@
   object-fit: contain;
 }
 
-.photoItem:hover .photoImg,
 .photoItem.active .photoImg {
   transform: scale(1.04);
 }
 
-.photoItem:hover,
 .photoItem.active {
   transform: translateY(-7px) rotate(0deg) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -324,7 +321,6 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.photoItem:hover .photoName,
 .photoItem.active .photoName {
   opacity: 1;
   transform: translateY(0);
@@ -350,7 +346,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.nameItem:hover,
 .nameItem.active {
   padding-left: 8px;
 }
@@ -366,8 +361,7 @@
   transition: color 0.18s ease;
 }
 
-.nameItem.active .nameNum,
-.nameItem:hover .nameNum {
+.nameItem.active .nameNum {
   color: var(--stark-grey);
 }
 
@@ -386,8 +380,7 @@
   line-height: 1;
 }
 
-.nameItem.active .memberName,
-.nameItem:hover .memberName {
+.nameItem.active .memberName {
   color: var(--off);
 }
 
@@ -406,8 +399,7 @@
   transition: color 0.18s ease;
 }
 
-.nameItem.active .memberRole,
-.nameItem:hover .memberRole {
+.nameItem.active .memberRole {
   color: var(--stark-grey);
 }
 
@@ -426,14 +418,54 @@
   transition: color 0.18s ease, transform 0.18s ease;
 }
 
-.nameItem.active .memberQuote,
-.nameItem:hover .memberQuote {
+.nameItem.active .memberQuote {
   color: var(--orange);
   transform: translateX(2px);
 }
 
 .nameItem.inactive .memberQuote {
   color: rgba(245, 245, 245, 0.2);
+}
+
+/* Hover alleen met een muis. Op een telefoon blijft :hover plakken op de eerste tik. */
+@media (hover: hover) and (pointer: fine) {
+  .photoItem:hover .photoFrameWrap {
+    color: var(--orange);
+    filter: drop-shadow(0 0 12px color-mix(in srgb, var(--orange) 70%, transparent));
+  }
+
+  .photoItem:hover .photoImg {
+    transform: scale(1.04);
+  }
+
+  .photoItem:hover {
+    transform: translateY(-7px) rotate(0deg) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 4;
+  }
+
+  .photoItem:hover .photoName {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nameItem:hover {
+    padding-left: 8px;
+  }
+
+  .nameItem:hover .nameNum,
+  .nameItem:hover .memberRole {
+    color: var(--stark-grey);
+  }
+
+  .nameItem:hover .memberName {
+    color: var(--off);
+  }
+
+  .nameItem:hover .memberQuote {
+    color: var(--orange);
+    transform: translateX(2px);
+  }
 }
 
 /* Desktop */
@@ -508,7 +540,6 @@
     margin-top: -46px;
   }
 
-  .photoItem:hover,
   .photoItem.active {
     transform: translateY(-10px) rotate(0deg) scale(1.03);
     box-shadow: 0 26px 52px rgba(0, 0, 0, 0.46);
@@ -516,6 +547,13 @@
 
   .memberName {
     font-size: 28px;
+  }
+}
+
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  .photoItem:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.03);
+    box-shadow: 0 26px 52px rgba(0, 0, 0, 0.46);
   }
 }
 

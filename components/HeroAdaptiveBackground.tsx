@@ -1,8 +1,4 @@
-'use client'
-
-import { useLayoutEffect, useState } from 'react'
 import HeroBackgroundVideo from './HeroBackgroundVideo'
-import styles from './HeroSection.module.css'
 
 type Props = {
   poster: string
@@ -10,24 +6,7 @@ type Props = {
   desktopSrc: string
 }
 
-function prefersMobileHeroVideo(): boolean {
-  return window.matchMedia('(pointer: coarse)').matches
-}
-
-export default function HeroAdaptiveBackground({
-  poster,
-  mobileSrc,
-  desktopSrc,
-}: Props) {
-  const [src, setSrc] = useState<string | null>(null)
-
-  useLayoutEffect(() => {
-    setSrc(prefersMobileHeroVideo() ? mobileSrc : desktopSrc)
-  }, [mobileSrc, desktopSrc])
-
-  if (!src) {
-    return <img src={poster} alt="" className={styles.posterFallback} />
-  }
-
-  return <HeroBackgroundVideo src={src} poster={poster} />
+/** Video staat meteen in de HTML. Een latere wissel laat Safari een afspeelknop tekenen. */
+export default function HeroAdaptiveBackground({ poster, mobileSrc, desktopSrc }: Props) {
+  return <HeroBackgroundVideo poster={poster} mobileSrc={mobileSrc} desktopSrc={desktopSrc} />
 }
