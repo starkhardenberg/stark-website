@@ -39,16 +39,6 @@ export default function TeamPage() {
 
       <section className={introStyles.intro} aria-labelledby="team-intro-heading">
         <div className={introStyles.inner}>
-          <div className={styles.introCopy}>
-            <p className={styles.creditBody}>
-              STARK! Hardenberg werkt sinds 2013 aan kracht, bij mensen en bij bedrijven. Particulieren
-              trainen in kleine groepen met een coach erbij, of volgen een coachingstraject
-              rond wat hen tegenhoudt. Werkgevers schakelen STARK! in voor leiderschap, duurzame
-              inzetbaarheid en de energie in hun team. Bedrijven uit Hardenberg komen daarvoor naar de
-              Nijverheidsstraat 15c; bij bedrijven verder weg komt STARK! naar de eigen locatie. Leden
-              komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden.
-            </p>
-          </div>
           <header className={introStyles.banner}>
             <h2 id="team-intro-heading" className={introStyles.quote}>
               <span className={introStyles.quoteLine}>
@@ -61,6 +51,14 @@ export default function TeamPage() {
             </p>
           </header>
           <div className={styles.introCopy}>
+            <p className={styles.creditBody}>
+              STARK! Hardenberg werkt sinds 2013 aan kracht, bij mensen en bij bedrijven. Particulieren
+              trainen in kleine groepen met een coach erbij, of volgen een coachingstraject
+              rond wat hen tegenhoudt. Werkgevers schakelen STARK! in voor leiderschap, duurzame
+              inzetbaarheid en de energie in hun team. Bedrijven uit Hardenberg komen daarvoor naar de
+              Nijverheidsstraat 15c; bij bedrijven verder weg komt STARK! naar de eigen locatie. Leden
+              komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden.
+            </p>
             <p className={styles.creditBody}>
               Acht trainers die zelf als lid begonnen, de weg liepen die jij nu loopt, en daarna zijn
               opgeleid via een intensief intern opleidingstraject. Engbert-Jan en Yvonne als eigenaren
@@ -138,7 +136,34 @@ export default function TeamPage() {
                 <p className={styles.originBody}>
                   Yvonne stapte in 2017 als lid binnen. Ze ontdekte dat je niet sterk hoeft te zijn om
                   te beginnen. Het werk doen maakt je sterker. Twee keer stond ze in de finale van het NK
-                  Sterkste Vrouw.
+                  Sterkste Vrouw.{' '}
+                  <a
+                    href="https://www.destentor.nl/hardenberg/yvonne-46-wil-voorbeeld-zijn-voor-dochter-en-knokt-zich-van-sofa-naar-de-top-ik-ben-weer-happy~a32b1891/"
+                    className={styles.originInlineLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    De Stentor
+                  </a>
+                  ,{' '}
+                  <a
+                    href="https://www.oost.nl/nieuws/2258664/is-yvonne-uit-hardenberg-de-sterkste-van-nederland-eigenlijk-had-ik-er-helemaal-geen-zin-in"
+                    className={styles.originInlineLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    RTV Oost
+                  </a>{' '}
+                  en{' '}
+                  <a
+                    href="https://www.detoren.net/nieuws/hardenberg/82092/yvonne-alards-sterkste-vrouw-van-nederland"
+                    className={styles.originInlineLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    De Toren
+                  </a>{' '}
+                  schreven over haar deelname aan het NK Sterkste Vrouw van Nederland.
                 </p>
               </li>
               <li className={styles.originBeat}>

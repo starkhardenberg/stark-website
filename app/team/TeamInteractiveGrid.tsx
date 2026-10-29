@@ -91,37 +91,6 @@ export default function TeamInteractiveGrid() {
                 <div className={styles.memberName}>{member.name}</div>
                 <div className={styles.memberRole}>{member.role}</div>
                 <p className={styles.memberQuote}>&ldquo;{capitalizeQuoteStart(member.quote)}&rdquo;</p>
-                {member.id === 2 ? (
-                  <p className={styles.originBody}>
-                    <a
-                      href="https://www.destentor.nl/hardenberg/yvonne-46-wil-voorbeeld-zijn-voor-dochter-en-knokt-zich-van-sofa-naar-de-top-ik-ben-weer-happy~a32b1891/"
-                      className={styles.originInlineLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      De Stentor
-                    </a>
-                    ,{' '}
-                    <a
-                      href="https://www.oost.nl/nieuws/2258664/is-yvonne-uit-hardenberg-de-sterkste-van-nederland-eigenlijk-had-ik-er-helemaal-geen-zin-in"
-                      className={styles.originInlineLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      RTV Oost
-                    </a>{' '}
-                    en{' '}
-                    <a
-                      href="https://www.detoren.net/nieuws/hardenberg/82092/yvonne-alards-sterkste-vrouw-van-nederland"
-                      className={styles.originInlineLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      De Toren
-                    </a>{' '}
-                    schreven over haar deelname aan het NK Sterkste Vrouw van Nederland.
-                  </p>
-                ) : null}
               </div>
             </div>
           ))}
