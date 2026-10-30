@@ -10,13 +10,13 @@ const ALLOWED_BOTS = [
   'ClaudeBot',
   'Claude-SearchBot',
   'Claude-User',
+  'Google-Extended',
 ] as const
 
 const BLOCKED_BOTS = [
   'CCBot',
   'Bytespider',
   'Applebot-Extended',
-  'Google-Extended',
   'Meta-ExternalAgent',
   'Amazonbot',
   'Diffbot',
