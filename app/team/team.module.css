@@ -326,57 +326,6 @@
   transform: translateY(0);
 }
 
-/* Telefoon: gekozen portret blijft in zijn vak. Anders dekt het de buren af. */
-@media (max-width: 899px) {
-  .photoGrid,
-  .col {
-    gap: 12px;
-  }
-
-  .col .photoItem:nth-child(3n + 2),
-  .col .photoItem:nth-child(3n) {
-    margin-top: 0;
-  }
-
-  .col1 .photoItem:nth-child(1) { transform: rotate(-1.4deg); }
-  .col1 .photoItem:nth-child(2) { transform: rotate(1.2deg); }
-  .col1 .photoItem:nth-child(3) { transform: rotate(-1deg); }
-  .col1 .photoItem:nth-child(4) { transform: rotate(0.8deg); }
-
-  .col2 .photoItem:nth-child(1) { transform: rotate(1.3deg); }
-  .col2 .photoItem:nth-child(2) { transform: rotate(-1.4deg); }
-  .col2 .photoItem:nth-child(3) { transform: rotate(1deg); }
-  .col2 .photoItem:nth-child(4) { transform: rotate(-0.9deg); }
-
-  .col3 .photoItem:nth-child(1) { transform: rotate(-1.3deg); }
-  .col3 .photoItem:nth-child(2) { transform: rotate(1.5deg); }
-  .col3 .photoItem:nth-child(3) { transform: rotate(-1deg); }
-  .col3 .photoItem:nth-child(4) { transform: rotate(0.9deg); }
-
-  .photoItem.active {
-    z-index: auto;
-    box-shadow: none;
-  }
-
-  .photoItem.active .photoImg {
-    transform: none;
-  }
-
-  .photoItem.inactive .photoMedia::after {
-    background: transparent;
-  }
-
-  .nameItem.inactive .nameNum,
-  .nameItem.inactive .memberRole {
-    color: rgba(245, 245, 245, 0.55);
-  }
-
-  .nameItem.inactive .memberName,
-  .nameItem.inactive .memberQuote {
-    color: rgba(245, 245, 245, 0.72);
-  }
-}
-
 /* Name list */
 .nameList {
   display: flex;
@@ -605,6 +554,89 @@
   .photoItem:hover {
     transform: translateY(-10px) rotate(0deg) scale(1.03);
     box-shadow: 0 26px 52px rgba(0, 0, 0, 0.46);
+  }
+}
+
+/* Vinger: rechtop en op zijn kant. Geen draaiing en geen zoom, anders blijft Safari
+   op de foto hangen. De tekst blijft vrij van de knop omhoog. */
+@media (max-width: 899px), ((hover: none) and (pointer: coarse)) {
+  .photoGrid,
+  .photoItem {
+    overflow-anchor: none;
+    touch-action: manipulation;
+  }
+
+  .photoMedia,
+  .photoItem :global(img) {
+    pointer-events: none;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    transform: none;
+  }
+
+  .nameItem {
+    touch-action: manipulation;
+  }
+
+  .nameList {
+    padding-right: 64px;
+  }
+
+  .photoGrid,
+  .col {
+    gap: 12px;
+  }
+
+  .col2 {
+    margin-top: 34px;
+  }
+
+  .col3 {
+    margin-top: 62px;
+  }
+
+  .col .photoItem:nth-child(3n + 2),
+  .col .photoItem:nth-child(3n) {
+    margin-top: 0;
+  }
+
+  .col1 .photoItem:nth-child(1),
+  .col1 .photoItem:nth-child(2),
+  .col1 .photoItem:nth-child(3),
+  .col1 .photoItem:nth-child(4),
+  .col2 .photoItem:nth-child(1),
+  .col2 .photoItem:nth-child(2),
+  .col2 .photoItem:nth-child(3),
+  .col2 .photoItem:nth-child(4),
+  .col3 .photoItem:nth-child(1),
+  .col3 .photoItem:nth-child(2),
+  .col3 .photoItem:nth-child(3),
+  .col3 .photoItem:nth-child(4),
+  .photoItem.active,
+  .photoItem.active .photoImg,
+  .photoItem .photoName,
+  .photoItem.active .photoName,
+  .nameItem.active .memberQuote {
+    transform: none;
+  }
+
+  .photoItem.active {
+    z-index: auto;
+    box-shadow: none;
+  }
+
+  .photoItem.inactive .photoMedia::after {
+    background: transparent;
+  }
+
+  .nameItem.inactive .nameNum,
+  .nameItem.inactive .memberRole {
+    color: rgba(245, 245, 245, 0.55);
+  }
+
+  .nameItem.inactive .memberName,
+  .nameItem.inactive .memberQuote {
+    color: rgba(245, 245, 245, 0.72);
   }
 }
 
