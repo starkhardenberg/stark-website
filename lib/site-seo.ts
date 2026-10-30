@@ -6,6 +6,7 @@ export const SITE_URL = 'https://www.starkhardenberg.nl'
 export const SITE_PATHS = [
   '/',
   '/trainen',
+  '/drop-in',
   '/coaching',
   '/zakelijk',
   '/zakelijk/leiderschap-1-op-1',

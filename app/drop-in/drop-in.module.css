@@ -1,0 +1,71 @@
+.page {
+  min-height: 100svh;
+  min-height: 100dvh;
+  background: var(--off, #f5f5f5);
+  color: var(--navy, #212431);
+  font-family: var(--font-body), sans-serif;
+}
+
+.inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 72px) clamp(22px, 4vw, 48px) 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 900;
+  font-size: var(--stark-h2);
+  letter-spacing: var(--display-tracking);
+  line-height: var(--display-leading);
+  text-transform: uppercase;
+  color: var(--navy, #212431);
+}
+
+.lead {
+  margin: clamp(14px, 2vw, 18px) 0 0;
+  max-width: 16em;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--navy, #212431);
+}
+
+.body {
+  margin: clamp(16px, 2vw, 20px) 0 0;
+  max-width: 38ch;
+  font-size: var(--stark-body);
+  line-height: 1.6;
+  color: rgba(33, 36, 49, 0.88);
+}
+
+.place {
+  margin: 12px 0 0;
+  font-size: var(--stark-body);
+  line-height: 1.5;
+}
+
+.place a {
+  color: var(--navy, #212431);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(33, 36, 49, 0.22);
+  text-underline-offset: 3px;
+}
+
+.place a:hover {
+  text-decoration-color: rgba(33, 36, 49, 0.55);
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-height: 1180px;
+  margin-top: clamp(28px, 4vw, 40px);
+  border: 0;
+  background: #111;
+}

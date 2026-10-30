@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const backToTopCss = `
         .starkBackToTop {
@@ -37,6 +38,13 @@ const backToTopCss = `
           outline: 2px solid var(--orange);
           outline-offset: 3px;
         }
+        .starkBackToTop[data-quiet="true"],
+        .starkBackToTop[data-quiet="true"]:hover {
+          background: var(--stark-black);
+        }
+        .starkBackToTop[data-quiet="true"]:focus-visible {
+          outline-color: var(--stark-black);
+        }
         @media (min-width: 768px) {
           .starkBackToTop {
             right: 32px;
@@ -46,6 +54,8 @@ const backToTopCss = `
       `
 
 export default function BackToTop() {
+  const pathname = usePathname()
+  const quiet = pathname === '/drop-in'
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -73,6 +83,7 @@ export default function BackToTop() {
         tabIndex={visible ? 0 : -1}
         onClick={scrollToTop}
         data-visible={visible ? 'true' : 'false'}
+        data-quiet={quiet ? 'true' : 'false'}
       >
         <svg
           viewBox="0 0 24 24"

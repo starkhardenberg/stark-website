@@ -24,18 +24,20 @@ function ActLink({
   short,
   external,
   whatsapp,
+  accent = true,
 }: {
   href: string
   long: string
   short: string
   external?: boolean
   whatsapp?: boolean
+  accent?: boolean
 }) {
   const body = (
     <>
       <span className={styles.long}>{long}</span>
       <span className={styles.short}>{short}</span>
-      <span aria-hidden="true" style={{ color: 'var(--orange)' }}> →</span>
+      <span aria-hidden="true" style={accent ? { color: 'var(--orange)' } : undefined}> →</span>
     </>
   )
 
@@ -54,9 +56,16 @@ function ActLink({
   )
 }
 
-export default function Footer({ variant }: { variant: 'light' | 'dark' }) {
+export default function Footer({
+  variant,
+  accent = true,
+}: {
+  variant: 'light' | 'dark'
+  /** Drop-in: geen oranje pijl of stip. */
+  accent?: boolean
+}) {
   return (
-    <footer className={`${styles.footer} ${variant === 'dark' ? styles.dark : styles.light}`}>
+    <footer className={`${styles.footer} ${variant === 'dark' ? styles.dark : styles.light}${accent ? '' : ` ${styles.noAccent}`}`}>
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brand}>
@@ -74,7 +83,7 @@ export default function Footer({ variant }: { variant: 'light' | 'dark' }) {
                     position: 'absolute',
                     left: 0,
                     top: 0,
-                    color: 'var(--orange)',
+                    color: accent ? 'var(--orange)' : 'inherit',
                     clipPath: `inset(${BANG_CLIP.dot}% 0 0 0)`,
                   }}
                 >
@@ -115,6 +124,7 @@ export default function Footer({ variant }: { variant: 'light' | 'dark' }) {
                       long="Kennismakingsgesprek plannen"
                       short="Kennismaken"
                       external
+                      accent={accent}
                     />
                   </li>
                   <li>
@@ -123,10 +133,11 @@ export default function Footer({ variant }: { variant: 'light' | 'dark' }) {
                       long="Aanmelden Proef op de Som"
                       short="Proef op de Som"
                       external
+                      accent={accent}
                     />
                   </li>
                   <li>
-                    <ActLink href="" long="Stuur een WhatsApp" short="WhatsApp" whatsapp />
+                    <ActLink href="" long="Stuur een WhatsApp" short="WhatsApp" whatsapp accent={accent} />
                   </li>
                 </ul>
               </div>

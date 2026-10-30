@@ -54,6 +54,13 @@ export default function TrainenStartSection() {
             rooster
           </button>
           .
+          <span className={introStyles.regelRestLine}>
+            Plan een{' '}
+            <a href="/drop-in" className={introStyles.inlineLink}>
+              drop-in
+            </a>
+            : één of een paar losse lessen voor als je in de buurt bent.
+          </span>
         </>,
       ],
     },

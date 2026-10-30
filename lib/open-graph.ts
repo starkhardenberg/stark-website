@@ -52,6 +52,11 @@ export const openGraphByPage = {
     description:
       'Groepslessen met een trainer naast je. Geen hal vol apparaten. Prijs en route in het kennismakingsgesprek. Hardenberg.',
   },
+  dropIn: {
+    title: 'Drop-in bij STARK! Hardenberg',
+    description:
+      'Eén of een paar losse lessen voor als je in de buurt bent. Je hoeft geen lid te worden. Kies een les, betaal, en je staat op de lijst.',
+  },
   coaching: {
     title: 'Coaching bij STARK! — trajecten lijf en hoofd',
     description:
@@ -104,6 +109,7 @@ export const openGraphByPage = {
 const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
   home: '/',
   trainen: '/trainen',
+  dropIn: '/drop-in',
   coaching: '/coaching',
   zakelijk: '/zakelijk',
   momentum: '/momentum',

@@ -102,11 +102,23 @@
   color: var(--orange);
 }
 
+.noAccent .link:hover,
+.noAccent .credit:hover,
+.noAccent .toTop:hover {
+  color: inherit;
+}
+
 .link:focus-visible,
 .credit:focus-visible,
 .toTop:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 3px;
+}
+
+.noAccent .link:focus-visible,
+.noAccent .credit:focus-visible,
+.noAccent .toTop:focus-visible {
+  outline-color: currentColor;
 }
 
 .short {
