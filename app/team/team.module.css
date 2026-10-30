@@ -326,6 +326,57 @@
   transform: translateY(0);
 }
 
+/* Telefoon: gekozen portret blijft in zijn vak. Anders dekt het de buren af. */
+@media (max-width: 899px) {
+  .photoGrid,
+  .col {
+    gap: 12px;
+  }
+
+  .col .photoItem:nth-child(3n + 2),
+  .col .photoItem:nth-child(3n) {
+    margin-top: 0;
+  }
+
+  .col1 .photoItem:nth-child(1) { transform: rotate(-1.4deg); }
+  .col1 .photoItem:nth-child(2) { transform: rotate(1.2deg); }
+  .col1 .photoItem:nth-child(3) { transform: rotate(-1deg); }
+  .col1 .photoItem:nth-child(4) { transform: rotate(0.8deg); }
+
+  .col2 .photoItem:nth-child(1) { transform: rotate(1.3deg); }
+  .col2 .photoItem:nth-child(2) { transform: rotate(-1.4deg); }
+  .col2 .photoItem:nth-child(3) { transform: rotate(1deg); }
+  .col2 .photoItem:nth-child(4) { transform: rotate(-0.9deg); }
+
+  .col3 .photoItem:nth-child(1) { transform: rotate(-1.3deg); }
+  .col3 .photoItem:nth-child(2) { transform: rotate(1.5deg); }
+  .col3 .photoItem:nth-child(3) { transform: rotate(-1deg); }
+  .col3 .photoItem:nth-child(4) { transform: rotate(0.9deg); }
+
+  .photoItem.active {
+    z-index: auto;
+    box-shadow: none;
+  }
+
+  .photoItem.active .photoImg {
+    transform: none;
+  }
+
+  .photoItem.inactive .photoMedia::after {
+    background: transparent;
+  }
+
+  .nameItem.inactive .nameNum,
+  .nameItem.inactive .memberRole {
+    color: rgba(245, 245, 245, 0.55);
+  }
+
+  .nameItem.inactive .memberName,
+  .nameItem.inactive .memberQuote {
+    color: rgba(245, 245, 245, 0.72);
+  }
+}
+
 /* Name list */
 .nameList {
   display: flex;

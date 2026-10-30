@@ -28,7 +28,11 @@ export default function TeamInteractiveGrid() {
   }
 
   const pick = (id: number) => {
-    setHoveredId(id)
+    if (finePointerHover()) {
+      setHoveredId(id)
+      return
+    }
+    setHoveredId((current) => (current === id ? null : id))
   }
 
   const columns = [col1, col2, col3]
