@@ -9,10 +9,12 @@ export default function PortraitStories({
   id,
   people,
   showGoogleReviews = false,
+  showRoute = false,
 }: {
   id?: string
   people: readonly PortraitPerson[]
   showGoogleReviews?: boolean
+  showRoute?: boolean
 }) {
   return (
     <section className={`${styles.section} ${styles.sectionUnified} ${STARK_GRAIN}`} id={id}>
@@ -21,7 +23,7 @@ export default function PortraitStories({
           <h2 className={styles.sectionHeading}>Hun verhaal</h2>
           <p className={`starkSectionMeta starkSectionMetaOnDark ${styles.sectionMeta}`}>Wat mensen zeggen</p>
         </div>
-        <PortraitQuoteStage people={people} />
+        <PortraitQuoteStage people={people} showRoute={showRoute} />
       </div>
       {showGoogleReviews ? (
         <div className={stageStyles.reviews}>

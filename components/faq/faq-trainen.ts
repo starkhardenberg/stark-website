@@ -1,13 +1,13 @@
 export const trainenFaq = [
   {
-    question: 'Waar kan ik in Hardenberg krachttraining doen in een kleine groep met begeleiding?',
+    question: 'Train ik in een kleine groep, met een coach erbij?',
     answer:
-      'Bij STARK! aan de Nijverheidsstraat 15c in Hardenberg train je in kleine groepen: maximaal twaalf bij Volwassenen en ZilverFitness, en maximaal vijftien bij Kids & Teens. Bij elke training is een coach aanwezig die meekijkt, bijstuurt en de oefening aanpast aan wat jij op dat moment aankunt. Je traint met zandzakken, sleetjes en kettlebells, met bewegingen die je in het dagelijks leven ook maakt. Leden komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden. Je kunt vrijblijvend een kennismakingsgesprek plannen via de website. Onze opgeleide trainers staan op de vloer en spreken je actief aan, je hoeft niet te wachten tot je zelf vraagt. En vraag vooral: jij voelt je lijf beter dan wij, dus we waarderen het enorm als je aangeeft wat er speelt. We letten mee op je techniek en houden je voortgang in de gaten. Een persoonlijk schema maken we niet, maar vanuit het Startpakket krijg je een gericht advies met oefeningen voor jouw aandachtspunten, waar je voor of na je training aan kunt werken.',
+      'Ja. Volwassenen en ZilverFitness trainen met maximaal twaalf mensen. Kids & Teens met maximaal vijftien. Bij elke les is een coach. Die kijkt mee en past de oefening aan op wat jij aankunt.',
   },
   {
-    question: 'Ik wil sterker worden maar een gewone sportschool spreekt me niet aan, wat kan ik doen in de omgeving Hardenberg?',
+    question: 'Is dit een gewone sportschool?',
     answer:
-      'STARK! in Hardenberg is een sportschool met een andere opzet: kleine groepen, een vast tijdstip, en een coach die er bij elke training bij is. Je traint volgens een programma, in een groep die elkaar kent, met oefeningen die passen bij jouw niveau. Dat werkt voor mensen die eerder zijn afgehaakt bij een grote sportschool en voor mensen die nooit eerder hebben getraind.',
+      'Nee. Je meldt je aan voor een les op het rooster en traint volgens een programma, in een groep die elkaar kent. Dat past als een grote sportschool je niet ligt, en ook als je nog nooit hebt getraind.',
   },
   {
     question: 'Moet ik al fit zijn om te starten, en wat als ik iets niet goed kan of een blessure heb?',

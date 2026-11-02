@@ -121,7 +121,7 @@ export default function Footer({
                   <li>
                     <ActLink
                       href="https://kennismaken.starkhardenberg.nl"
-                      long="Kennismakingsgesprek plannen"
+                      long="Kennismaking plannen"
                       short="Kennismaken"
                       external
                       accent={accent}

@@ -9,12 +9,14 @@ export default function PortraitTile({
   active,
   onSelect,
   onLight = false,
+  showRoute = false,
 }: {
   person: PortraitPerson
   index: number
   active: boolean
   onSelect: () => void
   onLight?: boolean
+  showRoute?: boolean
 }) {
   return (
     <button
@@ -34,13 +36,17 @@ export default function PortraitTile({
             alt=""
             fill
             unaltered
+            unoptimized
             sizes="210px"
             className={styles.photoImg}
           />
         </span>
         <WobblyPortraitFrame index={index} />
       </span>
-      <span className={onLight ? `${styles.name} ${styles.nameOnLight}` : styles.name}>{person.name}</span>
+      <span className={onLight ? `${styles.name} ${styles.nameOnLight}` : styles.name}>
+        {person.name}
+        {showRoute && person.context ? <span className={styles.route}>{person.context}</span> : null}
+      </span>
     </button>
   )
 }

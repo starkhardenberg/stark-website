@@ -229,7 +229,7 @@ export default function DienstPage() {
             </ul>
           </div>
         </div>
-        <BookButton className={styles.buttonTiles} />
+        <BookButton className={`${styles.buttonTiles} ${styles.buttonWide}`} />
       </Section>
 
       <Section number={num()} title="Goede vragen" tone={faqTone}>

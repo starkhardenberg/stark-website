@@ -6,7 +6,7 @@
  * Teksten hier aanpassen, niet in de opmaak.
  */
 
-import { L1O1_SLOT, PROEF_EDITION } from '@/components/dienst/leiderschap-1-op-1'
+import { PROEF_EDITION, parseProefDate } from '@/components/dienst/leiderschap-1-op-1'
 import { ADDRESS } from '@/lib/contact'
 
 export const ZAKELIJK_META = {
@@ -30,7 +30,7 @@ export const ZAKELIJK_INTRO = {
   titleLine2: 'bij de medewerker',
   scene: [
     {
-      time: '8:30',
+      time: '08:30',
       text: 'Maandagochtend. Je loopt binnen. De planning is helder voor iedereen. De twee open vragen van vrijdag zijn al beantwoord. Je hoort het van je teamleider als je koffie haalt.',
     },
     {
@@ -120,9 +120,9 @@ export const ZAKELIJK_FAQ = [
       'Bij de Proef op de Som, een middag voor leiders uit de regio. Liever eerst een gesprek? Plan een kennismaking van een uur, bij jou of bij ons.',
   },
   {
-    question: 'Wat is het verschil tussen Leiderschap 1-op-1 en Draagkracht?',
+    question: 'Wat is het verschil tussen Leiderschap\u00A01\u2011op\u20111 en Draagkracht?',
     answer:
-      'Bij Leiderschap 1-op-1 zet jij de stap als leider. Bij Draagkracht zet je team die stap met je mee, en heb je daarnaast je eigen coaching 1-op-1.',
+      'Bij Leiderschap 1\u2011op\u20111 zet jij de stap als leider. Bij Draagkracht zet je team die stap met je mee, en heb je daarnaast je eigen coaching 1\u2011op\u20111.',
   },
   {
     question: 'Kan Momentum @ Werk ook los?',
@@ -142,38 +142,39 @@ export const ZAKELIJK_FAQ = [
 
 /* ---------- hoe het begint ---------- */
 
+const proefNext = parseProefDate(PROEF_EDITION.dates[0])
+const proefFollowing = PROEF_EDITION.dates[1] ?? ''
+
 export const ZAKELIJK_START = {
-  title: 'Zo begin je',
-  paragraphs: [
+  eyebrow: 'Zo begin je bij STARK! zakelijk',
+  title: 'De Proef op de Som',
+  introBefore:
+    'Eén middag met andere leiders uit de regio. Je ziet wat jouw manier van leidinggeven je bedrijf kost aan tijd en geld. ',
+  introStrong: 'Je gaat naar huis met één correctie die maandag al werkt.',
+  when: PROEF_EDITION.when,
+  where: `STARK! Hardenberg, ${ADDRESS.street}`,
+  includedLead: 'Met',
+  included: PROEF_EDITION.included,
+  places: PROEF_EDITION.places,
+  date: proefNext,
+  nextEdition: proefFollowing,
+  href: 'https://proefopdesom.starkhardenberg.nl',
+  button: `Meld je aan voor ${proefNext.buttonWhen}`,
+  columns: [
     {
-      text: 'Kom naar de Proef op de Som. Een middag bij STARK! in Hardenberg, met andere leiders uit de regio. Je ziet wat jouw manier van sturen doet met je bedrijf.',
+      label: 'Voor wie',
+      text: 'Eigenaren en directeuren. Neem je MT of je teamleiders mee.',
     },
     {
-      lead: 'Jij bent aan zet.',
-      text: ' Na een korte introductie werk je met de anderen aan een opdracht waarin je ook fysiek aan de slag gaat. Je ziet jezelf doen wat je op je eigen werkvloer ook doet. Wat werkt er in jouw manier van leidinggeven, en wat kost je tijd en dus geld? Daarna vertalen we dat door naar jouw bedrijf. Waar kun jij een stap zetten, en wat levert die op met dezelfde mensen en dezelfde middelen?',
+      label: 'Wat je doet',
+      text: 'Een korte introductie, dan een fysieke opdracht met je eigen mensen. Je ziet jezelf doen wat je op de werkvloer ook doet. Iedereen kan meedoen, hoe fit je ook bent.',
     },
     {
-      lead: 'Je gaat naar huis met één heldere correctie in je manier van werken.',
-      text: ' Klein genoeg om maandag door te voeren en merkbaar in je werkdag. Je ontmoet leidinggevenden uit de regio die tegen dezelfde dingen aanlopen. Wil je daarna verder, dan plannen we een gesprek.',
+      label: 'Wat het oplevert',
+      text: 'Eén heldere correctie in je manier van werken. Klein genoeg om maandag door te voeren, merkbaar in je werkdag.',
     },
   ],
-  facts: [
-    { label: 'Wanneer', value: PROEF_EDITION.when, lines: PROEF_EDITION.dates },
-    { label: 'Waar', value: `STARK! Hardenberg, ${ADDRESS.street}` },
-    { label: 'Plaatsen', value: PROEF_EDITION.places },
-    { label: 'Kosten', value: 'Geen' },
-    {
-      label: 'Meenemen',
-      value:
-        'Je MT of je teamleiders. Kleding waarin je kunt bewegen; iedereen kan meedoen, ongeacht hoe fit of sterk je bent.',
-    },
-    { label: 'Erbij', value: PROEF_EDITION.included },
-  ],
-  proef: { label: 'Meld je aan voor de Proef op de Som', href: 'https://proefopdesom.starkhardenberg.nl' },
-  asideBefore: 'Liever eerst een gesprek? ',
-  asideLink: 'Plan een kennismaking',
-  asideAfter: '.',
-  kennismakingHref: L1O1_SLOT.href,
+  meta: ['Kosteloos', 'Kleding waarin je kunt bewegen'],
 }
 
 /* ---------- footer ---------- */

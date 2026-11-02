@@ -279,11 +279,13 @@
 }
 
 .heroText {
+  display: grid;
   margin: 0;
   padding: 0;
 }
 
 .heroText p {
+  grid-area: 1 / 1;
   font-family: var(--font-quote), var(--font-body), sans-serif;
   font-weight: 600;
   font-size: clamp(24px, 3.8vw, 42px);

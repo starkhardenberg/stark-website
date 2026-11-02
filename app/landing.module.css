@@ -2186,3 +2186,17 @@ a.resultItem {
     font-size: clamp(80px, 13vw, 172px);
   }
 }
+
+/* iPad liggend, alleen Trainen: de titel stopt vóór het menu. */
+@media (min-width: 900px) and (max-width: 1399px) {
+  .hero:not(.heroCoaching) .heroTitle {
+    font-size: clamp(42px, calc((100vw - 696px) / 4.86), 160px);
+  }
+}
+
+/* iPad liggend, Coaching: BIJ STARK! stopt vóór het menu. */
+@media (min-width: 900px) and (max-width: 1399px) {
+  .heroCoaching:not(:has(.heroContentLower)) .heroTitle {
+    font-size: clamp(36px, calc((100vw - 696px) / 5.39), 160px);
+  }
+}

@@ -8,7 +8,13 @@ import { useQuoteRotation } from './useQuoteRotation'
 import sectionStyles from './TestimonialsSection.module.css'
 import styles from './PortraitQuoteStage.module.css'
 
-export default function PortraitQuoteStage({ people }: { people: readonly PortraitPerson[] }) {
+export default function PortraitQuoteStage({
+  people,
+  showRoute = false,
+}: {
+  people: readonly PortraitPerson[]
+  showRoute?: boolean
+}) {
   const { active, select, stageProps } = useQuoteRotation(people)
   const contain = active.fit === 'contain'
   const studio = !contain && active.studio !== false
@@ -18,10 +24,12 @@ export default function PortraitQuoteStage({ people }: { people: readonly Portra
       <figure className={`${sectionStyles.heroQuote}${studio ? ` ${sectionStyles.heroQuoteDark}` : ''}`}>
         <div className={sectionStyles.heroImgWrap} aria-hidden="true">
           <StarkImage
+            key={active.id}
             src={active.image}
             alt=""
             fill
             unaltered
+            unoptimized
             priority={active.id === people[0].id}
             sizes="(min-width: 900px) 48vw, 100vw"
             className={sectionStyles.heroImg}
@@ -36,7 +44,14 @@ export default function PortraitQuoteStage({ people }: { people: readonly Portra
         </div>
         <div className={sectionStyles.heroContent}>
           <blockquote className={sectionStyles.heroText}>
-            <p>{capitalizeQuoteStart(active.text)}</p>
+            {people.map((person) => {
+              const isActive = person.id === active.id
+              return (
+                <p key={person.id} aria-hidden={isActive ? undefined : true} className={isActive ? undefined : styles.quoteIdle}>
+                  {capitalizeQuoteStart(person.text)}
+                </p>
+              )
+            })}
           </blockquote>
           <figcaption className={sectionStyles.heroCite}>
             <span className={sectionStyles.heroName}>{active.name}</span>
@@ -53,6 +68,7 @@ export default function PortraitQuoteStage({ people }: { people: readonly Portra
               index={index}
               active={person.id === active.id}
               onSelect={() => select(person.id)}
+              showRoute={showRoute}
             />
           </li>
         ))}

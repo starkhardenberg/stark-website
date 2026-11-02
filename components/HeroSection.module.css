@@ -172,3 +172,14 @@
     font-size: clamp(80px, 13vw, 172px);
   }
 }
+
+/* iPad liggend: de titel stopt vóór het menu. */
+@media (min-width: 900px) and (max-width: 1399px) {
+  .headline {
+    font-size: clamp(48px, calc((100vw - 696px) / 4.2), 150px);
+  }
+
+  .copy {
+    max-width: calc(100vw - 696px);
+  }
+}

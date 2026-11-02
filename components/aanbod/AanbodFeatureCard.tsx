@@ -14,9 +14,11 @@ function isMenuLink(part: string | MenuLink): part is MenuLink {
 
 type AanbodFeatureCardProps = {
   track: AanbodTrack
+  /** Lange naam naast het cijfer, zodat die op een smalle tegel heel blijft. */
+  fitTitle?: boolean
 }
 
-export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
+export default function AanbodFeatureCard({ track, fitTitle = false }: AanbodFeatureCardProps) {
   const mediaLabel =
     track.mediaLabel ?? track.cat.toUpperCase()
   const paragraphs = (track.desc ?? '')
@@ -42,7 +44,9 @@ export default function AanbodFeatureCard({ track }: AanbodFeatureCardProps) {
       id={track.id}
       className={`${styles.card} ${track.light ? styles.cardLight : ''}${
         track.businessContext ? ` ${styles.cardBusinessContext}` : ''
-      }${landingHref ? ` ${styles.cardLinked}` : ` ${styles.cardStatic}`}`}
+      }${landingHref ? ` ${styles.cardLinked}` : ` ${styles.cardStatic}`}${
+        fitTitle ? ` ${styles.cardFitTitle}` : ''
+      }`}
     >
       {landingHref ? (
         <Link href={landingHref} className={styles.cardLink}>

@@ -18,7 +18,13 @@ function fitHeroTitle(title: HTMLHeadingElement) {
   if (!desktop) {
     title.style.removeProperty('--hero-hang')
     title.style.removeProperty('font-size')
-    stackParagraphs(title).forEach((sub) => sub.style.removeProperty('transform'))
+    stackParagraphs(title).forEach((sub) => {
+      sub.style.removeProperty('transform')
+      sub.style.removeProperty('text-align')
+      sub.style.removeProperty('width')
+      sub.style.removeProperty('max-width')
+      sub.style.removeProperty('margin-right')
+    })
     copy?.style.removeProperty('padding-top')
     copy?.style.removeProperty('justify-content')
     return 0
@@ -64,12 +70,42 @@ function stackParagraphs(title: HTMLHeadingElement) {
 function centerSubline(title: HTMLHeadingElement) {
   const subs = stackParagraphs(title)
   const letters = [...title.querySelectorAll<HTMLElement>('[data-hero-line] > span')]
+  subs.forEach((sub) => {
+    sub.style.removeProperty('transform')
+    sub.style.removeProperty('text-align')
+  })
   if (!letters.length) return
+
+  const inPanel =
+    title.hasAttribute('data-center-line') &&
+    window.matchMedia('(min-width: 800px) and (max-width: 1399px)').matches
   const left = Math.min(...letters.map((span) => span.getBoundingClientRect().left))
   const right = Math.max(...letters.map((span) => span.getBoundingClientRect().right))
   const mid = (left + right) / 2
+
+  if (inPanel) {
+    subs.forEach((sub) => {
+      sub.style.textAlign = 'center'
+      sub.style.width = 'max-content'
+      sub.style.maxWidth = '16em'
+      sub.style.marginRight = '0'
+      sub.style.transform = ''
+    })
+    subs.forEach((sub) => {
+      const subBox = sub.getBoundingClientRect()
+      const shift = mid - (subBox.left + subBox.width / 2)
+      sub.style.transform = `translateX(${Math.round(shift)}px)`
+    })
+    return
+  }
+
   subs.forEach((sub) => {
-    sub.style.transform = ''
+    sub.style.removeProperty('width')
+    sub.style.removeProperty('max-width')
+    sub.style.removeProperty('margin-right')
+  })
+
+  subs.forEach((sub) => {
     const subBox = sub.getBoundingClientRect()
     const shift = mid - (subBox.left + subBox.width / 2)
     sub.style.transform = `translateX(${Math.round(shift)}px)`
@@ -137,6 +173,7 @@ export default function HeroTitle({
   word = 'Momentum',
   breakBefore,
   centerSecondLine = false,
+  centerLineInPanel = false,
   className,
 }: {
   word?: string
@@ -144,6 +181,8 @@ export default function HeroTitle({
   breakBefore?: string
   /** Tweede regel in het midden onder de eerste, in plaats van rechts uitgelijnd. */
   centerSecondLine?: boolean
+  /** Op iPad de zin gecentreerd onder het woord, over foto en zwart heen. */
+  centerLineInPanel?: boolean
   className?: string
 }) {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -178,7 +217,7 @@ export default function HeroTitle({
       observer.disconnect()
       window.removeEventListener('resize', onResize)
     }
-  }, [word, breakBefore])
+  }, [word, breakBefore, centerLineInPanel])
 
   const breakIndex = breakBefore ? word.indexOf(breakBefore) : -1
   const hasBreak = breakIndex > 1 && word[breakIndex - 1] === ' '
@@ -188,6 +227,7 @@ export default function HeroTitle({
   return (
     <h1
       ref={titleRef}
+      data-center-line={centerLineInPanel ? '' : undefined}
       className={[
         styles.heroTitle,
         hasBreak ? styles.heroTitleBreak : '',

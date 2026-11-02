@@ -370,7 +370,21 @@
   color: var(--stark-grey);
 }
 
+/* Lange tegelnaam blijft heel naast het cijfer. */
+.cardFitTitle .media {
+  container-type: inline-size;
+}
+
 @media (min-width: 900px) {
+  .cardFitTitle .mediaLabelBlock {
+    max-width: calc(100% - 96px);
+  }
+
+  .cardFitTitle .mediaLabel {
+    font-size: clamp(26px, 11cqi, 68px);
+    white-space: nowrap;
+  }
+
   .media {
     aspect-ratio: 4 / 3;
     min-height: calc(clamp(260px, 17vw, 340px) + 4cm);

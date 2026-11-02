@@ -26,6 +26,21 @@ import styles from '../landing.module.css'
 
 export const metadata = pageMetadata('zakelijk', ZAKELIJK_META.title, ZAKELIJK_META.description)
 
+function ClockTime({ time }: { time: string }) {
+  return (
+    <span className={`${pageStyles.timelineTime} ${pageStyles.timelineClock}`}>
+      <span className={pageStyles.timeRead}>{time}</span>
+      <span aria-hidden="true">
+        {Array.from(time, (char, index) => (
+          <span key={index} className={char === ':' ? pageStyles.timeSep : pageStyles.timeDigit}>
+            {char}
+          </span>
+        ))}
+      </span>
+    </span>
+  )
+}
+
 function LineWithMark({ line, mark }: { line: string; mark: string }) {
   const at = line.indexOf(mark)
   if (at < 0) return line
@@ -90,7 +105,11 @@ export default function ZakelijkPage() {
               <ol className={pageStyles.timeline}>
                 {ZAKELIJK_INTRO.scene.map((beat) => (
                   <li key={beat.time} className={pageStyles.timelineItem}>
-                    <span className={pageStyles.timelineTime}>{beat.time}</span>
+                    {/^\d{2}:\d{2}$/.test(beat.time) ? (
+                      <ClockTime time={beat.time} />
+                    ) : (
+                      <span className={pageStyles.timelineTime}>{beat.time}</span>
+                    )}
                     <p className={pageStyles.introGraf}>{beat.text}</p>
                   </li>
                 ))}

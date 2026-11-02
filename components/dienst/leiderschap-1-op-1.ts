@@ -253,6 +253,39 @@ export const L1O1_SLOT = {
 }
 
 /** Data, tijd en plaatsen van de Proef op de Som. Eén plek voor zakelijk en de dienstpagina. */
+const PROEF_MONTH_SHORT: Record<string, string> = {
+  januari: 'jan',
+  februari: 'feb',
+  maart: 'mrt',
+  april: 'apr',
+  mei: 'mei',
+  juni: 'jun',
+  juli: 'jul',
+  augustus: 'aug',
+  september: 'sep',
+  oktober: 'okt',
+  november: 'nov',
+  december: 'dec',
+}
+
+export function parseProefDate(date: string) {
+  const match = /^(\d+)\s+(\S+)\s+(\d{4})$/.exec(date.trim())
+  if (!match) {
+    return { day: date, month: '', monthShort: '', year: '', full: date, buttonWhen: date, shortLabel: date }
+  }
+  const month = match[2]
+  const monthShort = PROEF_MONTH_SHORT[month.toLowerCase()] ?? month.slice(0, 3).toLowerCase()
+  return {
+    day: match[1],
+    month,
+    monthShort,
+    year: match[3],
+    full: date,
+    buttonWhen: `${match[1]} ${month}`,
+    shortLabel: `${match[1]} ${monthShort}`,
+  }
+}
+
 export const PROEF_EDITION = {
   when: 'Donderdag, 15.00 tot 18.00 uur',
   dates: [

@@ -52,12 +52,16 @@ export default function TeamPage() {
           </header>
           <div className={styles.introCopy}>
             <p className={styles.creditBody}>
-              STARK! Hardenberg werkt sinds 2013 aan kracht, bij mensen en bij bedrijven. Particulieren
-              trainen in kleine groepen met een coach erbij, of volgen een coachingstraject
-              rond wat hen tegenhoudt. Werkgevers schakelen STARK! in voor leiderschap, duurzame
-              inzetbaarheid en de energie in hun team. Bedrijven uit Hardenberg komen daarvoor naar de
-              Nijverheidsstraat 15c; bij bedrijven verder weg komt STARK! naar de eigen locatie. Leden
-              komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden.
+              STARK! Hardenberg werkt sinds 2013 aan kracht, bij mensen en bij bedrijven. Je traint in
+              een kleine groep, met een coach erbij, aan samengestelde bewegingen met zandzakken,
+              sleetjes en kettlebells. Of je volgt een coachingstraject rond wat je tegenhoudt. Daarin
+              werken we met vier stappen: zichtbaar maken, afspreken, leiden en toetsen.
+            </p>
+            <p className={styles.creditBody}>
+              Werkgevers schakelen ons in voor leiderschap, duurzame inzetbaarheid en de energie in hun
+              team. Bedrijven uit Hardenberg komen naar de Nijverheidsstraat 15c. Bij bedrijven verder
+              weg komen wij naar hen toe. Leden komen uit Hardenberg, Dedemsvaart, Ommen en Coevorden.
+              Een kennismaking is vrijblijvend. Die plan je via de site.
             </p>
             <p className={styles.creditBody}>
               Acht trainers die zelf als lid begonnen, de weg liepen die jij nu loopt, en daarna zijn
@@ -209,16 +213,6 @@ export default function TeamPage() {
                 </p>
               </li>
             </ol>
-            <p className={`${styles.originBody} ${styles.originClose}`}>
-              STARK! Hardenberg is gevestigd aan de Nijverheidsstraat 15c in Hardenberg en is opgericht
-              in 2013. Het aanbod bestaat uit krachttraining in kleine groepen met een coach, persoonlijke
-              coaching en coachingstrajecten voor bedrijven. De training draait om samengestelde bewegingen
-              met zandzakken, sleetjes en kettlebells. De coaching gebruikt een eigen methodiek met vier
-              stappen: zichtbaar maken, afspreken, leiden en toetsen. Zakelijke trajecten met bedrijven uit
-              Hardenberg vinden plaats op de locatie van STARK!. Voor bedrijven buiten Hardenberg komt
-              STARK! desgewenst naar de eigen locatie van het bedrijf. Een kennismakingsgesprek is
-              vrijblijvend en kan via de website worden gepland.
-            </p>
 
         </div>
       </section>

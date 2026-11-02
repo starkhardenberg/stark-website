@@ -65,14 +65,14 @@ export default function TrainenPage() {
         </h2>
         <div className={aanbodStyles.cardsAndCta}>
           {trainenGroupTracks.map((track) => (
-            <AanbodFeatureCard key={track.id} track={track} />
+            <AanbodFeatureCard key={track.id} track={track} fitTitle />
           ))}
         </div>
       </section>
 
       <TrainenStartSection />
 
-      <PortraitStories people={trainenPeople} />
+      <PortraitStories people={trainenPeople} showRoute />
 
       <section className={`${styles.faqSection} ${styles.faqSectionLight}`}>
         <header className={styles.sectionQuoteHead}>

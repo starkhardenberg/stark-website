@@ -1008,6 +1008,13 @@
   }
 }
 
+/* iPad liggend: Wi'j bint stopt vóór het menu. */
+@media (min-width: 900px) and (max-width: 1399px) {
+  .heroTitle {
+    font-size: clamp(48px, calc((100vw - 696px) / 3.78), 140px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .photoFrameWrap {
     transition: color 0.01s ease;

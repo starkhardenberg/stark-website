@@ -58,7 +58,7 @@ export default function ImpactPage() {
           </div>
           <div className={styles.heroCopy} data-hero-copy="">
             <div className={styles.heroStack}>
-              <HeroTitle word={IMPACT_HERO.word} />
+              <HeroTitle word={IMPACT_HERO.word} centerLineInPanel />
               <p className={styles.heroLine}>{IMPACT_HERO.line}</p>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function ImpactPage() {
             <p className={styles.groupClose}>{IMPACT_START_NOTE}</p>
           </div>
         </div>
-        <BookButton className={styles.buttonTiles} />
+        <BookButton className={`${styles.buttonTiles} ${styles.buttonWide}`} />
       </Section>
 
       <Section number={num()} title="Goede vragen" tone={faqTone}>

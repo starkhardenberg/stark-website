@@ -211,6 +211,11 @@
   margin-top: 40px;
 }
 
+a.button.buttonWide:global(.starkCtaPrimary) {
+  width: 100%;
+  max-width: none;
+}
+
 .buttonSlot {
   margin-top: 28px;
   margin-bottom: 0;

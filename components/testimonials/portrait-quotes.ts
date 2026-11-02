@@ -81,10 +81,11 @@ export const homepagePeople: PortraitPerson[] = [
 
 /** Renske als eerste, daarna één per groep. */
 export const trainenPeople: PortraitPerson[] = [
-  withQuote('renske', 'renske-1', '/images/quotes/renske.jpg'),
-  withQuote('matthijs', 'matthijs-1', '/images/quotes/matthijs.jpg'),
-  withQuote('elisa', 'elisa-1', '/images/quotes/elisa.jpg'),
-  withQuote('gerhard', 'gerhard-1', '/images/quotes/gerhard.jpg'),
+  withQuote('renske', 'renske-1', '/images/quotes/renske.jpg', { context: 'Volwassenen' }),
+  withQuote('matthijs', 'matthijs-1', '/images/quotes/matthijs.jpg', { context: 'Volwassenen' }),
+  withQuote('elisa', 'elisa-1', '/images/quotes/elisa.jpg', { context: 'Kids' }),
+  withQuote('anne-stegeman', 'anne-stegeman-1', '/images/quotes/anne-stegeman.jpg', { context: 'Teens' }),
+  withQuote('gerhard', 'gerhard-1', '/images/quotes/gerhard.jpg', { context: 'ZilverFitness' }),
 ]
 
 export const momentumPeople: PortraitPerson[] = [
