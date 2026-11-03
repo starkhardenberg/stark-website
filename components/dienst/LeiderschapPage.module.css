@@ -28,7 +28,7 @@
 .sheetFooter {
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: 17px;
+  font-size: var(--stark-body);
   line-height: 1.55;
 }
 

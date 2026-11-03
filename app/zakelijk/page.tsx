@@ -221,7 +221,7 @@ export default function ZakelijkPage() {
         </div>
       </section>
 
-      <HoeHetBegintSection />
+      <HoeHetBegintSection wide />
 
       <TestimonialsSection hero={heroQuotePatrick} items={[]} narrow alignStart spine light />
 

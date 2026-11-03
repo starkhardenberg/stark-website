@@ -1,25 +1,20 @@
 .page {
   min-height: 100svh;
   min-height: 100dvh;
-  background: var(--off, #f5f5f5);
-  color: var(--navy, #212431);
+  background: var(--stark-black);
+  color: var(--stark-white);
   font-family: var(--font-body), sans-serif;
 }
 
-/* Zelfde kolom als het witte Sportbit-blok eronder: 620px, gecentreerd. */
+/* Wit blok, zelfde kolom als het Sportbit-blok eronder: 620px, gecentreerd. */
 .inner {
   box-sizing: border-box;
   width: 100%;
   max-width: 620px;
-  margin: 0 auto;
-  padding: clamp(36px, 6vw, 72px) clamp(22px, 4vw, 32px) 0;
-}
-
-@media (min-width: 769px) {
-  .inner {
-    padding-left: 0;
-    padding-right: 0;
-  }
+  margin: clamp(28px, 4vw, 48px) auto 0;
+  padding: clamp(28px, 4vw, 40px);
+  background: #fff;
+  color: var(--stark-black);
 }
 
 .title {
@@ -73,7 +68,7 @@
   display: block;
   width: 100%;
   min-height: 1180px;
-  margin-top: clamp(28px, 4vw, 40px);
+  margin-top: clamp(20px, 3vw, 28px);
   border: 0;
   background: #111;
 }

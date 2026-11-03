@@ -279,7 +279,7 @@
 .sceneRest {
   max-width: 52ch;
   margin-top: clamp(12px, 1.8vw, 20px);
-  font-size: clamp(17px, 2vw, 21px);
+  font-size: var(--stark-body);
   color: rgba(33, 36, 49, 0.72);
 }
 

@@ -711,7 +711,6 @@
 
 .originClose .originBody {
   color: var(--off);
-  font-size: clamp(19px, 2.05vw, 23px);
   line-height: 1.5;
 }
 

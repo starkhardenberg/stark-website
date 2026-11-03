@@ -182,7 +182,7 @@
 
 .proefAction {
   max-width: 65ch;
-  font-size: clamp(19px, 1.95vw, 21px);
+  font-size: var(--stark-body);
 }
 
 .proefButton {
@@ -428,7 +428,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   gap: 18px;
   max-width: 65ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(19px, 1.95vw, 21px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: var(--muted);
 }
@@ -543,7 +543,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 .part p {
   margin: 0;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(19px, 1.95vw, 21px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: var(--muted-dark);
 }
@@ -559,7 +559,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   border-left: 2px solid var(--orange);
   font-family: var(--font-body), sans-serif;
   font-weight: 500;
-  font-size: clamp(19px, 1.95vw, 21px);
+  font-size: var(--stark-body);
   line-height: 1.6;
   color: var(--navy);
 }
@@ -621,7 +621,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 .splitAside .list {
   gap: 14px;
   max-width: none;
-  font-size: 18px;
+  font-size: var(--stark-body);
   line-height: 1.55;
   color: var(--muted);
 }
@@ -646,7 +646,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   padding: 0;
   max-width: 68ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(18px, 1.85vw, 20px);
+  font-size: var(--stark-body);
   line-height: 1.5;
 }
 
@@ -676,7 +676,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 .proefPoints {
   max-width: 65ch;
   gap: 18px;
-  font-size: clamp(19px, 1.95vw, 21px);
+  font-size: var(--stark-body);
   line-height: 1.6;
 }
 
@@ -698,7 +698,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 .note {
   margin: 0 0 14px;
   font-family: var(--font-body), sans-serif;
-  font-size: 17px;
+  font-size: var(--stark-body);
   font-style: italic;
   color: var(--muted);
 }
@@ -719,7 +719,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   margin: 28px 0 0;
   max-width: 68ch;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(18px, 1.85vw, 20px);
+  font-size: var(--stark-body);
   font-style: italic;
   line-height: 1.5;
   color: var(--muted);
@@ -896,7 +896,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   margin-top: auto;
   padding-top: 28px;
   font-family: var(--font-body), sans-serif;
-  font-size: clamp(18px, 1.85vw, 20px);
+  font-size: var(--stark-body);
   font-style: italic;
   line-height: 1.5;
 }

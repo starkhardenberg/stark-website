@@ -398,7 +398,7 @@ button.menuInlineLink {
   .media {
     aspect-ratio: 4 / 3;
     min-height: calc(clamp(260px, 17vw, 340px) + 4cm);
-    max-height: calc(clamp(290px, 18vw, 360px) + 4cm);
+    max-height: none;
   }
 
   .index {

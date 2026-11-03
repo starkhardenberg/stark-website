@@ -9,6 +9,26 @@
   text-align: center;
 }
 
+.bandOnDark {
+  border-top-color: rgba(245, 245, 245, 0.16);
+}
+
+.bandOnDark .ctaGhost {
+  color: var(--off);
+  border-color: rgba(245, 245, 245, 0.35);
+}
+
+.bandOnDark a:global(.starkCta).ctaGhost:not(:global(.starkCtaPrimary)) {
+  color: var(--off);
+  border-color: rgba(245, 245, 245, 0.35);
+}
+
+.bandOnDark .ctaGhost:hover,
+.bandOnDark a:global(.starkCta).ctaGhost:not(:global(.starkCtaPrimary)):hover {
+  color: var(--stark-grey);
+  border-color: var(--stark-grey);
+}
+
 .lead {
   margin: 0;
   max-width: 48ch;

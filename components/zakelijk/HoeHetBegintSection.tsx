@@ -9,14 +9,18 @@ function includedLine(lead: string, value: string) {
   return `${lead} ${sentence}`
 }
 
-export default function HoeHetBegintSection() {
+export default function HoeHetBegintSection({ wide = false }: { wide?: boolean }) {
   const { date } = ZAKELIJK_START
   const meta = ZAKELIJK_START.nextEdition
     ? [...ZAKELIJK_START.meta, `Volgende editie: ${ZAKELIJK_START.nextEdition}`]
     : [...ZAKELIJK_START.meta]
 
   return (
-    <section className={`${quoteStyles.section} ${pageStyles.start}`} id="zo-begin-je" aria-label={ZAKELIJK_START.title}>
+    <section
+      className={`${quoteStyles.section} ${pageStyles.start}${wide ? ` ${pageStyles.startWide}` : ''}`}
+      id="zo-begin-je"
+      aria-label={ZAKELIJK_START.title}
+    >
       <div className={pageStyles.startInner}>
         <p className={pageStyles.startEyebrow}>{ZAKELIJK_START.eyebrow}</p>
         <h2 className={pageStyles.startTitle}>{ZAKELIJK_START.title}</h2>
