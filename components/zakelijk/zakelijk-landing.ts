@@ -6,7 +6,7 @@
  * Teksten hier aanpassen, niet in de opmaak.
  */
 
-import { PROEF_EDITION, parseProefDate } from '@/components/dienst/leiderschap-1-op-1'
+import { PROEF_EDITION } from '@/components/dienst/leiderschap-1-op-1'
 import { ADDRESS } from '@/lib/contact'
 
 export const ZAKELIJK_META = {
@@ -142,38 +142,19 @@ export const ZAKELIJK_FAQ = [
 
 /* ---------- hoe het begint ---------- */
 
-const proefNext = parseProefDate(PROEF_EDITION.dates[0])
-const proefFollowing = PROEF_EDITION.dates[1] ?? ''
-
 export const ZAKELIJK_START = {
   eyebrow: 'Zo begin je bij STARK! zakelijk',
   title: 'De Proef op de Som',
   introBefore:
-    'Eén middag met andere leiders uit de regio. Je ziet wat jouw manier van leidinggeven je bedrijf kost aan tijd en geld. ',
+    'Eén middag voor eigenaren en directeuren uit de regio. Neem je MT of je teamleiders mee. Je ziet wat jouw manier van leidinggeven je bedrijf kost aan tijd en geld. ',
   introStrong: 'Je gaat naar huis met één correctie die maandag al werkt.',
-  when: PROEF_EDITION.when,
+  doing:
+    'Een korte introductie, dan een fysieke opdracht met je eigen mensen. Je ziet jezelf doen wat je op de werkvloer ook doet. Iedereen kan meedoen, hoe fit je ook bent.',
   where: `STARK! Hardenberg, ${ADDRESS.street}`,
   includedLead: 'Met',
   included: PROEF_EDITION.included,
   places: PROEF_EDITION.places,
-  date: proefNext,
-  nextEdition: proefFollowing,
   href: 'https://proefopdesom.starkhardenberg.nl',
-  button: `Meld je aan voor ${proefNext.buttonWhen}`,
-  columns: [
-    {
-      label: 'Voor wie',
-      text: 'Eigenaren en directeuren. Neem je MT of je teamleiders mee.',
-    },
-    {
-      label: 'Wat je doet',
-      text: 'Een korte introductie, dan een fysieke opdracht met je eigen mensen. Je ziet jezelf doen wat je op de werkvloer ook doet. Iedereen kan meedoen, hoe fit je ook bent.',
-    },
-    {
-      label: 'Wat het oplevert',
-      text: 'Eén heldere correctie in je manier van werken. Klein genoeg om maandag door te voeren, merkbaar in je werkdag.',
-    },
-  ],
   meta: ['Kosteloos', 'Kleding waarin je kunt bewegen'],
 }
 

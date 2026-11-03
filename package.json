@@ -9,6 +9,7 @@
     "dev:clean": "npm run clean && npm run dev",
     "dev:auto": "next dev -H 127.0.0.1 -p 3456",
     "build": "next build",
+    "test": "node --experimental-strip-types --test lib/editions.test.ts",
     "generate:og": "npm run build && node scripts/generate-og.mjs",
     "compress:images": "python3 scripts/compress-images.py",
     "start": "next start",

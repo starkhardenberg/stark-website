@@ -6,6 +6,7 @@
  * Teksten hier aanpassen, niet in de opmaak.
  */
 
+import { formatProefEdition, PROEF_EDITIONS } from '@/lib/editions'
 import { IMPACT_SCHEDULE } from './impact'
 
 export const L1O1_META = {
@@ -252,53 +253,15 @@ export const L1O1_SLOT = {
   href: 'https://kennismaken.starkhardenberg.nl',
 }
 
-/** Data, tijd en plaatsen van de Proef op de Som. Eén plek voor zakelijk en de dienstpagina. */
-const PROEF_MONTH_SHORT: Record<string, string> = {
-  januari: 'jan',
-  februari: 'feb',
-  maart: 'mrt',
-  april: 'apr',
-  mei: 'mei',
-  juni: 'jun',
-  juli: 'jul',
-  augustus: 'aug',
-  september: 'sep',
-  oktober: 'okt',
-  november: 'nov',
-  december: 'dec',
-}
-
-export function parseProefDate(date: string) {
-  const match = /^(\d+)\s+(\S+)\s+(\d{4})$/.exec(date.trim())
-  if (!match) {
-    return { day: date, month: '', monthShort: '', year: '', full: date, buttonWhen: date, shortLabel: date }
-  }
-  const month = match[2]
-  const monthShort = PROEF_MONTH_SHORT[month.toLowerCase()] ?? month.slice(0, 3).toLowerCase()
-  return {
-    day: match[1],
-    month,
-    monthShort,
-    year: match[3],
-    full: date,
-    buttonWhen: `${match[1]} ${month}`,
-    shortLabel: `${match[1]} ${monthShort}`,
-  }
-}
+/** Plaatsen en wat erbij zit. De data komen uit lib/editions.ts. */
+const proefLabels = PROEF_EDITIONS.map(formatProefEdition)
 
 export const PROEF_EDITION = {
-  when: 'Donderdag, 15.00 tot 18.00 uur',
-  dates: [
-    '5 november 2026',
-    '4 februari 2027',
-    '13 mei 2027',
-    '2 september 2027',
-    '4 november 2027',
-    '3 februari 2028',
-  ],
+  when: proefLabels[0]?.when ?? '',
+  dates: proefLabels.map((edition) => edition.full),
   places: 'Twaalf',
   included: 'Soep en broodjes',
-} as const
+}
 
 export const L1O1_PROEF = {
   lead: 'De Proef op de Som is een kleinschalig evenement voor leiders uit de regio Hardenberg dat plaatsvindt bij STARK!. Je ziet wat jouw manier van sturen doet met je bedrijf.',

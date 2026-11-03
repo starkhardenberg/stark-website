@@ -1,6 +1,8 @@
 import quoteStyles from '@/components/ContentQuoteBlock.module.css'
+import { ProefButton, ProefDate, ProefNext, ProefScheduleProvider, ProefWhen } from '@/components/zakelijk/ProefSchedule'
 import { ZAKELIJK_START } from '@/components/zakelijk/zakelijk-landing'
-import { STARK_CTA, STARK_CTA_PRIMARY, STARK_CTA_ROW } from '@/lib/stark-cta'
+import { proefScheduleAt } from '@/lib/editions'
+import { STARK_CTA_ROW } from '@/lib/stark-cta'
 import pageStyles from './ZakelijkOndernemersPage.module.css'
 
 function includedLine(lead: string, value: string) {
@@ -9,63 +11,65 @@ function includedLine(lead: string, value: string) {
   return `${lead} ${sentence}`
 }
 
+function ticketIncluded() {
+  const soup = includedLine(ZAKELIJK_START.includedLead, ZAKELIJK_START.included)
+  const clothing = ZAKELIJK_START.meta.find((item) => item.startsWith('Kleding')) ?? ''
+  const clothingSentence = /[.!?]$/.test(clothing) ? clothing : `${clothing}.`
+  return `${soup} ${clothingSentence}`
+}
+
 export default function HoeHetBegintSection({ wide = false }: { wide?: boolean }) {
-  const { date } = ZAKELIJK_START
-  const meta = ZAKELIJK_START.nextEdition
-    ? [...ZAKELIJK_START.meta, `Volgende editie: ${ZAKELIJK_START.nextEdition}`]
-    : [...ZAKELIJK_START.meta]
+  const initial = proefScheduleAt(new Date())
 
   return (
-    <section
-      className={`${quoteStyles.section} ${pageStyles.start}${wide ? ` ${pageStyles.startWide}` : ''}`}
-      id="zo-begin-je"
-      aria-label={ZAKELIJK_START.title}
-    >
-      <div className={pageStyles.startInner}>
-        <p className={pageStyles.startEyebrow}>{ZAKELIJK_START.eyebrow}</p>
-        <h2 className={pageStyles.startTitle}>{ZAKELIJK_START.title}</h2>
-        <p className={pageStyles.startLead}>
-          {ZAKELIJK_START.introBefore}
-          <strong>{ZAKELIJK_START.introStrong}</strong>
-        </p>
+    <ProefScheduleProvider initial={initial}>
+      <section
+        className={`${quoteStyles.section} ${pageStyles.start}${wide ? ` ${pageStyles.startWide}` : ''}`}
+        id="zo-begin-je"
+        aria-label={ZAKELIJK_START.title}
+      >
+        <div className={pageStyles.startInner}>
+          <div className={pageStyles.startDesk}>
+            <div className={pageStyles.deskCopy}>
+              <p className={pageStyles.startEyebrow}>{ZAKELIJK_START.eyebrow}</p>
+              <h2 className={`${pageStyles.startTitle} ${pageStyles.deskTitle}`}>
+                <span>De Proef</span>
+                <span>op de Som</span>
+              </h2>
+              <p className={pageStyles.deskLead}>
+                {ZAKELIJK_START.introBefore}
+                <strong>{ZAKELIJK_START.introStrong}</strong>
+              </p>
+              <div className={pageStyles.deskDo}>
+                <h3>Wat je doet</h3>
+                <p>{ZAKELIJK_START.doing}</p>
+              </div>
+            </div>
 
-        <div className={pageStyles.startWhenBlock}>
-          <p className={pageStyles.startDate}>
-            <span className={pageStyles.startDateMain}>{date.shortLabel}</span>
-            {date.year ? <span className={pageStyles.startDateYear}>{date.year}</span> : null}
-          </p>
-          <div className={pageStyles.startFacts}>
-            <p className={pageStyles.startWhen}>{ZAKELIJK_START.when}</p>
-            <p>{ZAKELIJK_START.where}</p>
-            <p>{includedLine(ZAKELIJK_START.includedLead, ZAKELIJK_START.included)}</p>
-            <p className={pageStyles.startPlaces}>
-              {ZAKELIJK_START.places} plaatsen
-            </p>
+            <aside className={pageStyles.ticket} aria-label="Praktisch">
+              <ProefDate beside />
+              <div className={pageStyles.ticketFacts}>
+                <ProefWhen />
+                <p>{ZAKELIJK_START.where}</p>
+                <p>{ticketIncluded()}</p>
+              </div>
+              <p className={pageStyles.ticketPrice}>
+                <span>{ZAKELIJK_START.meta[0]}</span>
+                <span className={pageStyles.ticketDot} aria-hidden="true">
+                  ·
+                </span>
+                <span>
+                  {ZAKELIJK_START.places} plaatsen
+                </span>
+              </p>
+              <div className={`${STARK_CTA_ROW} ${pageStyles.startCta} ${pageStyles.ticketCta}`}>
+                <ProefButton />
+              </div>
+              <ProefNext />
+            </aside>
           </div>
         </div>
-
-        <ul className={pageStyles.startColumns}>
-          {ZAKELIJK_START.columns.map((column) => (
-            <li key={column.label}>
-              <h3>{column.label}</h3>
-              <p>{column.text}</p>
-            </li>
-          ))}
-        </ul>
-
-        <div className={`${STARK_CTA_ROW} ${pageStyles.startCta}`}>
-          <a
-            href={ZAKELIJK_START.href}
-            className={`${STARK_CTA} ${STARK_CTA_PRIMARY}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {ZAKELIJK_START.button}
-          </a>
-        </div>
-
-        <p className={pageStyles.startMeta}>{meta.join(' · ')}</p>
-      </div>
-    </section>
+      </section>
+    </ProefScheduleProvider>
   )
 }
