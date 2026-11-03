@@ -6,12 +6,20 @@
   font-family: var(--font-body), sans-serif;
 }
 
+/* Zelfde kolom als het witte Sportbit-blok eronder: 620px, gecentreerd. */
 .inner {
   box-sizing: border-box;
   width: 100%;
-  max-width: 880px;
+  max-width: 620px;
   margin: 0 auto;
-  padding: clamp(36px, 6vw, 72px) clamp(22px, 4vw, 48px) 0;
+  padding: clamp(36px, 6vw, 72px) clamp(22px, 4vw, 32px) 0;
+}
+
+@media (min-width: 769px) {
+  .inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .title {
