@@ -32,6 +32,36 @@
   }
 }
 
+/* Momentum en Impact: midden zolang de foto de volle breedte heeft.
+   Vanaf 800 px splitst de hero, dan blijft de knop op het zwarte vlak. */
+@media (max-width: 799px) {
+  .nav.navCenterCta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 12px;
+  }
+
+  .nav.navCenterCta .home {
+    position: static;
+  }
+
+  .nav.navCenterCta .right {
+    display: contents;
+  }
+
+  .nav.navCenterCta .cta {
+    grid-column: 2;
+    justify-self: center;
+    max-width: calc(100% - 1rem);
+  }
+
+  .nav.navCenterCta .menuText {
+    grid-column: 3;
+    justify-self: end;
+  }
+}
+
 .navAlignStart {
   justify-content: flex-start;
 }
@@ -398,6 +428,34 @@ button.tabLink {
 
 .menuText:hover {
   color: var(--stark-grey);
+}
+
+/* Staande iPad en telefoon: Home en Menu leesbaar op de foto, kleiner dan de oranje knop. */
+@media (max-width: 899px) {
+  .home,
+  .menuText {
+    font-size: 17px;
+  }
+
+  .nav:not(.navLight):not(.navHeroBar) .home,
+  .nav:not(.navLight):not(.navHeroBar) .menuText {
+    color: rgba(245, 245, 245, 0.92);
+    background: rgba(24, 26, 24, 0.78);
+  }
+
+  .nav:not(.navLight):not(.navHeroBar) .home {
+    padding: 8px 12px 8px 10px;
+  }
+
+  .nav:not(.navLight):not(.navHeroBar) .menuText {
+    padding: 8px 12px;
+  }
+
+  .nav:not(.navLight):not(.navHeroBar) .home:hover,
+  .nav:not(.navLight):not(.navHeroBar) .menuText:hover {
+    color: var(--off);
+    background: rgba(24, 26, 24, 0.92);
+  }
 }
 
 .navLight .menuText {

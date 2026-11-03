@@ -1,13 +1,14 @@
 import StarkImage from '@/components/StarkImage'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import { trainenFaq } from '@/components/faq/faq-trainen'
 import AanbodFeatureCard from '@/components/aanbod/AanbodFeatureCard'
 import aanbodStyles from '@/components/AanbodSection.module.css'
 import TrainenIntroSection from '@/components/trainen/TrainenIntroSection'
 import TrainenStartSection from '@/components/trainen/TrainenStartSection'
+import TrainenRoosterProvider from '@/components/trainen/TrainenRoosterProvider'
+import TrainenFaq from '@/components/trainen/TrainenFaq'
 import { trainenGroupTracks } from '@/components/trainen/trainen-group-tracks'
 import PortraitStories from '@/components/testimonials/PortraitStories'
 import { trainenPeople } from '@/components/testimonials/portrait-quotes'
@@ -55,6 +56,7 @@ export default function TrainenPage() {
 
       <TrainenIntroSection />
 
+      <TrainenRoosterProvider>
       <section
         id="groepen"
         className={`${styles.section} ${styles.sectionBlack} ${styles.sectionWithOrangeBottom} ${STARK_GRAIN}`}
@@ -84,10 +86,11 @@ export default function TrainenPage() {
           </p>
         </header>
         <div className={styles.faqInner}>
-          <FaqList items={trainenFaq} tone="light" variant="landing" />
+          <TrainenFaq />
           <FaqJsonLd items={trainenFaq} />
         </div>
       </section>
+      </TrainenRoosterProvider>
 
       <Footer variant="dark" />
     </main>

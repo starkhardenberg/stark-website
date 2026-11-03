@@ -41,6 +41,7 @@ export const trainenGroupTracks: AanbodTrack[] = [
         ],
       },
     ],
+    roosterLinks: [{ label: 'Volwassenen', groupId: 'volwassenen' }],
   },
   {
     id: 'zilverfitness',
@@ -70,6 +71,7 @@ export const trainenGroupTracks: AanbodTrack[] = [
         link: { href: 'https://www.zilverfitness.nl', label: 'www.zilverfitness.nl' },
       },
     ],
+    roosterLinks: [{ label: 'ZilverFitness', groupId: 'zilverfitness' }],
   },
   {
     id: 'kids-teens',
@@ -78,7 +80,7 @@ export const trainenGroupTracks: AanbodTrack[] = [
     mediaLabel: 'Kids & Teens',
     photo: 'foto-kids-coaches-v3.png',
     photoAlt: 'Twee coaches in gesprek met kinderen bij STARK! Hardenberg',
-    photoObjectPosition: 'center 35%',
+    photoObjectPosition: 'center 26%',
     light: true,
     menu: [
       {
@@ -103,6 +105,10 @@ export const trainenGroupTracks: AanbodTrack[] = [
           '. Neem je kind mee, kom kennismaken en direct proberen. Twee proeflessen zijn gratis en daarna beslis je.',
         ],
       },
+    ],
+    roosterLinks: [
+      { label: 'Kids', groupId: 'kids' },
+      { label: 'Teens', groupId: 'teens' },
     ],
   },
 ]

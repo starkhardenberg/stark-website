@@ -34,6 +34,8 @@ export type AanbodTrack = {
   eyebrow?: string
   /** Gestructureerde tegel-inhoud i.p.v. desc-paragrafen */
   menu?: MenuRow[]
+  /** Opent het weekrooster op deze groep. Alleen zichtbaar binnen de trainpagina. */
+  roosterLinks?: { label: string; groupId: string }[]
   desc?: string
   cta?: string
   ctaHref?: string
@@ -51,7 +53,7 @@ export const aanbodTracks: AanbodTrack[] = [
     cat: 'Trainen',
     photo: 'foto-trainen-squat.png',
     photoAlt: 'Deelnemer tijdens een squat in de groepsles bij STARK! Hardenberg',
-    photoObjectPosition: 'center 78%',
+    photoObjectPosition: 'center 46%',
     introLabel: 'TRAINING',
     readMoreHref: '/trainen',
     readMoreLabel: 'Lees meer over trainen',

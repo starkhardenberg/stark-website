@@ -215,8 +215,8 @@ export const allTestimonials: TestimonialEntry[] = [
   },
   {
     id: 'ineke-lokker-1',
-    text: 'De coaching maakt dat ik nu echt prioriteiten stel en mijn gezin op de eerste plek komt.',
-    name: 'Ineke Lokker',
+    text: 'Door inzicht te krijgen in dat wat me elke keer tegenhoudt, sta ik steviger en voel ik me zekerder. Niet alleen in mijn werk, maar ook privé.',
+    name: 'Ineke',
     context: 'Impact traject',
     category: 'impact',
   },

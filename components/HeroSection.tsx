@@ -1,5 +1,5 @@
 import Nav from './Nav'
-import Sinds2013Badge from './Sinds2013Badge'
+import HeroBadgePin from './HeroBadgePin'
 import HeroAdaptiveBackground from './HeroAdaptiveBackground'
 import {
   HERO_VIDEO_DESKTOP_URL,
@@ -22,7 +22,7 @@ export default function HeroSection() {
 
       <Nav deep />
 
-      <Sinds2013Badge />
+      <HeroBadgePin />
 
       <section className={styles.stage}>
         <div className={styles.copy}>
@@ -32,7 +32,7 @@ export default function HeroSection() {
             <span className={`${styles.line} ${styles.punch}`}>starke</span>{' '}
             <span className={`${styles.line} ${styles.punch}`}>mensen</span>
           </h1>
-          <p className={styles.sub}>
+          <p className={styles.sub} data-hero-sub="">
             Trainen voor je lijf. Coachen voor je kop
           </p>
         </div>

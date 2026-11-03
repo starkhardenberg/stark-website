@@ -8,15 +8,16 @@ import styles from './TrainenRoosterModal.module.css'
 
 type Props = {
   open: boolean
+  groupId?: string
   onClose: () => void
 }
 
-export default function TrainenRoosterModal({ open, onClose }: Props) {
+export default function TrainenRoosterModal({ open, groupId, onClose }: Props) {
   const titleId = useId()
   const closeRef = useRef<HTMLButtonElement>(null)
   const [mounted, setMounted] = useState(false)
   const [activeGroupId, setActiveGroupId] = useState(
-    TRAINEN_ROOSTER_GROUPS[0]?.id ?? 'volwassenen',
+    groupId ?? TRAINEN_ROOSTER_GROUPS[0]?.id ?? 'volwassenen',
   )
   const activeGroup =
     TRAINEN_ROOSTER_GROUPS.find((group) => group.id === activeGroupId) ??
@@ -25,6 +26,11 @@ export default function TrainenRoosterModal({ open, onClose }: Props) {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (!open || !groupId) return
+    setActiveGroupId(groupId)
+  }, [open, groupId])
 
   useEffect(() => {
     if (!open) return

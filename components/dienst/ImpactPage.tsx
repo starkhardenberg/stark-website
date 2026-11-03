@@ -42,7 +42,7 @@ export default function ImpactPage() {
       <FaqJsonLd items={IMPACT_FAQ} />
 
       <header className={styles.hero}>
-        <Nav />
+        <Nav centerCta />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <StarkImage

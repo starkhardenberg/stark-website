@@ -228,8 +228,11 @@
 }
 
 .routesLead {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.35em;
   margin: clamp(28px, 4vw, 40px) 0 0;
-  max-width: 36em;
+  max-width: 40em;
   font-family: var(--font-body), sans-serif;
   font-size: var(--stark-body);
   font-weight: 400;
@@ -237,18 +240,9 @@
   color: var(--stark-grey);
 }
 
-.routesLeadLine + .routesLeadLine::before {
-  content: ' ';
-}
-
-@media (max-width: 899px) {
-  .routesLeadLine {
-    display: block;
-  }
-
-  .routesLeadLine + .routesLeadLine::before {
-    content: none;
-  }
+/* Elke zin blijft heel. Passen ze naast elkaar, dan is het één regel. */
+.routesLeadLine {
+  white-space: nowrap;
 }
 
 .workLine {

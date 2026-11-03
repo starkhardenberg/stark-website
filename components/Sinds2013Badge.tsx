@@ -23,6 +23,7 @@ export default function Sinds2013Badge({
       className={`${styles.badge} ${variant === 'block' ? styles.badgeBlock : ''} ${className ?? ''}`.trim()}
       aria-label="STARK! Hardenberg, sinds 2013"
       role="img"
+      {...(variant === 'hero' ? { 'data-hero-badge': '' } : {})}
     >
       <svg className={styles.ring} viewBox="0 0 120 120" aria-hidden focusable="false">
         <defs>

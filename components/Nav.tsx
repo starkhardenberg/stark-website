@@ -36,6 +36,7 @@ export default function Nav({
   deep = false,
   photoBack = false,
   heroBar = false,
+  centerCta = false,
   ctaLabel = CTA_KENNISMAKING_LABEL,
   ctaHref = hrefKennismaking,
   hideCta = false,
@@ -55,6 +56,8 @@ export default function Nav({
   photoBack?: boolean
   /** Eigen donkere balk boven de hero, niet over de foto */
   heroBar?: boolean
+  /** Foto over de volle breedte: knop in het midden. Vanaf de gesplitste hero blijft hij rechts. */
+  centerCta?: boolean
   /** Override standaard "Plan kennismaking" (bijv. zakelijk: Plan een gesprek) */
   ctaLabel?: string
   ctaHref?: string
@@ -150,7 +153,7 @@ export default function Nav({
   return (
     <>
       <header
-        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''}`}
+        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''} ${centerCta ? styles.navCenterCta : ''}`}
       >
         {showBack ? (
           <a

@@ -22,6 +22,7 @@ const quoteIds = [
   'richard-1',
   'yara-1',
   'anne-stegeman-1',
+  'joyce-1',
   'mieke-1',
   'renske-1',
   'matthijs-1',
@@ -76,7 +77,7 @@ export const homepagePeople: PortraitPerson[] = [
     studio: false,
     fit: 'contain',
   },
-  withQuote('anne-stegeman', 'anne-stegeman-1', '/images/quotes/anne-stegeman.jpg'),
+  withQuote('joyce', 'joyce-1', '/images/quotes/joyce-de-jong.jpg'),
 ]
 
 /** Renske als eerste, daarna één per groep. */

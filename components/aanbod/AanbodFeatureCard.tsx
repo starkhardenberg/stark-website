@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react'
 import type { MenuLink } from '@/components/landing/LandingServiceCard'
 import type { AanbodTrack } from './aanbod-tracks'
 import StarkArrow from '@/components/icons/StarkArrow'
+import { useTrainenRoosterOptional } from '@/components/trainen/TrainenRoosterContext'
 import styles from './AanbodFeatureCard.module.css'
 
 function isMenuLink(part: string | MenuLink): part is MenuLink {
@@ -19,6 +20,7 @@ type AanbodFeatureCardProps = {
 }
 
 export default function AanbodFeatureCard({ track, fitTitle = false }: AanbodFeatureCardProps) {
+  const rooster = useTrainenRoosterOptional()
   const mediaLabel =
     track.mediaLabel ?? track.cat.toUpperCase()
   const paragraphs = (track.desc ?? '')
@@ -175,6 +177,29 @@ export default function AanbodFeatureCard({ track, fitTitle = false }: AanbodFea
                       </dd>
                     </div>
                   ))}
+                  {track.roosterLinks && rooster ? (
+                    <div className={styles.menuRow}>
+                      <dt>Rooster</dt>
+                      <dd>
+                        {track.roosterLinks.map((item, index) => (
+                          <span key={item.groupId}>
+                            {index > 0 ? ' · ' : null}
+                            <button
+                              type="button"
+                              className={styles.menuInlineLink}
+                              onClick={(event) => {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                rooster.openRooster(item.groupId)
+                              }}
+                            >
+                              {item.label}
+                            </button>
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  ) : null}
                 </dl>
               </>
             ) : (

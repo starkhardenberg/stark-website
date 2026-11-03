@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import { CTA_KENNISMAKING_LABEL, hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_ROW, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
+import { useTrainenRooster } from './TrainenRoosterContext'
 import introStyles from '@/components/IntroSection.module.css'
-import TrainenRoosterModal from './TrainenRoosterModal'
 
 type Step = {
   id: string
@@ -15,7 +15,7 @@ type Step = {
 }
 
 export default function TrainenStartSection() {
-  const [roosterOpen, setRoosterOpen] = useState(false)
+  const { openRooster } = useTrainenRooster()
 
   const steps: Step[] = [
     {
@@ -46,21 +46,14 @@ export default function TrainenStartSection() {
         'We bieden trainingen voor verschillende groepen aan.',
         <>
           Zie ons{' '}
-          <button
-            type="button"
-            className={introStyles.inlineLink}
-            onClick={() => setRoosterOpen(true)}
-          >
+          <button type="button" className={introStyles.inlineLink} onClick={() => openRooster()}>
             rooster
           </button>
+          , of plan een{' '}
+          <a href="/drop-in" className={introStyles.inlineLink}>
+            drop-in
+          </a>
           .
-          <span className={introStyles.regelRestLine}>
-            Plan een{' '}
-            <a href="/drop-in" className={introStyles.inlineLink}>
-              drop-in
-            </a>
-            : één of een paar losse lessen voor als je in de buurt bent.
-          </span>
         </>,
       ],
     },
@@ -113,8 +106,6 @@ export default function TrainenStartSection() {
           </div>
         </div>
       </section>
-
-      <TrainenRoosterModal open={roosterOpen} onClose={() => setRoosterOpen(false)} />
     </>
   )
 }
