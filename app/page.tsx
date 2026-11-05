@@ -8,11 +8,14 @@ import WijBintStark from '@/components/WijBintStark'
 import Footer from '@/components/Footer'
 import { pageMetadata } from '@/lib/open-graph'
 
-export const metadata = pageMetadata(
-  'home',
-  'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
-  'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
-)
+export const metadata = {
+  ...pageMetadata(
+    'home',
+    'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
+    'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
+  ),
+  robots: { index: true, follow: true },
+}
 
 export default function Home() {
   return (
