@@ -17,9 +17,11 @@ type AanbodFeatureCardProps = {
   track: AanbodTrack
   /** Lange naam naast het cijfer, zodat die op een smalle tegel heel blijft. */
   fitTitle?: boolean
+  /** Zelfde tegel, op een crème sectie. De lichte rand van de andere pagina's verdwijnt daar. */
+  onLight?: boolean
 }
 
-export default function AanbodFeatureCard({ track, fitTitle = false }: AanbodFeatureCardProps) {
+export default function AanbodFeatureCard({ track, fitTitle = false, onLight = false }: AanbodFeatureCardProps) {
   const rooster = useTrainenRoosterOptional()
   const mediaLabel =
     track.mediaLabel ?? track.cat.toUpperCase()
@@ -48,7 +50,7 @@ export default function AanbodFeatureCard({ track, fitTitle = false }: AanbodFea
         track.businessContext ? ` ${styles.cardBusinessContext}` : ''
       }${landingHref ? ` ${styles.cardLinked}` : ` ${styles.cardStatic}`}${
         fitTitle ? ` ${styles.cardFitTitle}` : ''
-      }`}
+      }${onLight ? ` ${styles.cardOnLight}` : ''}`}
     >
       {landingHref ? (
         <Link href={landingHref} className={styles.cardLink}>

@@ -14,7 +14,6 @@ import TestimonialsSection from '@/components/testimonials/TestimonialsSection'
 import { heroQuoteRebekka } from '@/components/testimonials/testimonials-data'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
 import { pageMetadata } from '@/lib/open-graph'
-import { STARK_GRAIN } from '@/lib/stark-grain'
 import styles from '../landing.module.css'
 
 export const metadata = pageMetadata(
@@ -59,14 +58,16 @@ export default function CoachingPage() {
 
       <CoachingMethodSection />
 
-      <section id="trajecten" className={`${styles.section} ${styles.sectionBlack} ${STARK_GRAIN}`}>
-        <h2 className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionIntro}`}>
+      <section id="trajecten" className={`${styles.section} ${styles.sectionLight}`}>
+        <h2
+          className={`${aanbodStyles.sectionTitle} ${aanbodStyles.sectionIntro} ${aanbodStyles.sectionTitleOnLight}`}
+        >
           <span className={aanbodStyles.titleLine}>Welk traject</span>
           <span className={aanbodStyles.titleLine}>past bij jou?</span>
         </h2>
         <div className={`${aanbodStyles.cardsAndCta} ${aanbodStyles.cardsAndCtaCentered}`}>
           {coachingTracks.map((track) => (
-            <AanbodFeatureCard key={track.id} track={track} />
+            <AanbodFeatureCard key={track.id} track={track} onLight />
           ))}
         </div>
         <CoachingStartSection />

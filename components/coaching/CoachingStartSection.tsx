@@ -8,10 +8,9 @@ import styles from './CoachingStartSection.module.css'
 
 export default function CoachingStartSection() {
   return (
-    <div className={`${styles.band} ${styles.bandOnDark}`} aria-label="Zo begin je">
+    <div className={styles.close}>
       <IntroClose
         pair
-        tone="dark"
         line1="Klaar met cirkelen"
         line2="Nu er dwars doorheen"
       />
@@ -23,7 +22,7 @@ export default function CoachingStartSection() {
           {CTA_KENNISMAKING_LABEL}
           <span aria-hidden>→</span>
         </a>
-        <WhatsAppLink className={`${introStyles.cta} ${styles.ctaGhost} ${STARK_CTA}`}>
+        <WhatsAppLink className={`${introStyles.cta} ${STARK_CTA}`}>
           <WhatsAppIcon className={introStyles.ctaIcon} />
           <span>Stuur een WhatsApp</span>
         </WhatsAppLink>

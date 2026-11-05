@@ -2,9 +2,7 @@
   position: relative;
   /* Extra top-adem: de pijl uit de cirkel moet hier kunnen landen */
   padding: clamp(88px, 14vw, 140px) clamp(20px, 4vw, 48px) clamp(64px, 9vw, 104px);
-  /* Navy, geen zwart: onderscheidt zich van de zwarte trajecten-sectie eronder */
   background: var(--navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .inner {
