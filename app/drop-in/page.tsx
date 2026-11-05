@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import { ADDRESS } from '@/lib/contact'
 import { DROPIN_PLANNER_URL } from '@/lib/drop-in'
 import { pageMetadata } from '@/lib/open-graph'
+import { PlausiblePageEvent } from '@/components/PlausibleClickListener'
 import styles from './drop-in.module.css'
 
 export const metadata: Metadata = pageMetadata(
@@ -15,6 +16,7 @@ export const metadata: Metadata = pageMetadata(
 export default function DropInPage() {
   return (
     <>
+      <PlausiblePageEvent eventName="Drop-in" />
       <main className={styles.page}>
         <Nav backHref="/trainen" backLabel="Trainen" heroBar hideCta />
 

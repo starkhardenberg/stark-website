@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
+import Script from 'next/script'
 import BackToTop from '@/components/BackToTop'
 import HealthClubJsonLd from '@/components/HealthClubJsonLd'
+import PlausibleClickListener from '@/components/PlausibleClickListener'
 import { getSiteRobots, SITE_URL } from '@/lib/site-seo'
 import './globals.css'
 
@@ -59,8 +61,20 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
+        {/* Privacy-friendly analytics by Plausible */}
+        <Script src="https://plausible.io/js/pa-8xnaEf3E4IRLXqrkIge8j.js" strategy="afterInteractive" />
+        <Script
+          id="plausible-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+`,
+          }}
+        />
       </head>
       <body>
+        <PlausibleClickListener />
         <HealthClubJsonLd />
         {children}
         <BackToTop />

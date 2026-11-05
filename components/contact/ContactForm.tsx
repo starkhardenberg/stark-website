@@ -12,6 +12,7 @@ import {
   type ContactOnderwerp,
   type ContactOntdekt,
 } from '@/lib/contact'
+import { track } from '@/lib/plausible'
 import styles from './ContactForm.module.css'
 
 function encodeFormBody(data: Record<string, string>) {
@@ -60,6 +61,7 @@ function ContactFormFields() {
       })
 
       if (!res.ok) throw new Error('submit failed')
+      track('Contactformulier')
       setStatus('success')
       form.reset()
       setOnderwerp(initialOnderwerp)
