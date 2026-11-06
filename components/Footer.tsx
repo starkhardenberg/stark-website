@@ -113,6 +113,14 @@ export default function Footer({
                     </li>
                   ))}
                 </ul>
+                <p className={styles.legalLinks}>
+                  <a href="/privacy" className={styles.credit}>
+                    Privacy
+                  </a>
+                  <a href="/voorwaarden" className={styles.credit}>
+                    Voorwaarden
+                  </a>
+                </p>
               </div>
 
               <div className={styles.act}>

@@ -17,6 +17,8 @@ export const SITE_PATHS = [
   '/team',
   '/kennismaken',
   '/contact',
+  '/privacy',
+  '/voorwaarden',
 ] as const
 
 export type SitePagePath = (typeof SITE_PATHS)[number]

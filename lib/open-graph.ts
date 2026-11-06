@@ -92,6 +92,16 @@ export const openGraphByPage = {
     description:
       'Adres in Hardenberg, telefoon, WhatsApp en formulier. Je spreekt altijd een mens. Vragen over trainen, coaching of bedrijven? Stuur gerust.',
   },
+  privacy: {
+    title: 'Privacyverklaring — STARK! Hardenberg',
+    description:
+      'Welke gegevens STARK! verwerkt, waarvoor, hoe lang we ze bewaren en welke rechten je hebt.',
+  },
+  voorwaarden: {
+    title: 'Algemene voorwaarden — STARK! Hardenberg',
+    description:
+      'Afspraken voor lidmaatschap, coaching en trainen bij STARK! Hardenberg, plus de huisregels.',
+  },
   leiderschap: {
     title: L1O1_META.title,
     description: L1O1_META.description,
@@ -117,6 +127,8 @@ const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
   team: '/team',
   kennismaken: '/kennismaken',
   contact: '/contact',
+  privacy: '/privacy',
+  voorwaarden: '/voorwaarden',
   leiderschap: '/zakelijk/leiderschap-1-op-1',
   duurzameInzetbaarheid: '/zakelijk/duurzame-inzetbaarheid',
   draagkracht: '/zakelijk/draagkracht',

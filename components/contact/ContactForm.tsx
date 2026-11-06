@@ -195,7 +195,8 @@ function ContactFormFields() {
       )}
 
       <p className={styles.privacy}>
-        We gebruiken je gegevens alleen om contact met je op te nemen.
+        We gebruiken je gegevens alleen om contact met je op te nemen. Lees onze{' '}
+        <a href="/privacy">privacyverklaring</a>.
       </p>
 
       {status === 'error' && (
