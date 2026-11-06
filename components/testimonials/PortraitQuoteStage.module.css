@@ -8,10 +8,10 @@
   gap: clamp(28px, 4vw, 40px);
 }
 
-/* Alle quotes liggen op elkaar. Het blok blijft zo hoog als de langste,
-   anders wipt de band eronder bij elke wissel. */
+/* Inactieve quotes tellen niet mee. Op mobiel volgt het tekstblok de quote.
+   Op desktop bepaalt de foto de kaarthoogte, dus de band eronder blijft staan. */
 .quoteIdle {
-  visibility: hidden;
+  display: none;
 }
 
 .reviews {

@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import StarkImage from '@/components/StarkImage'
 import type { HeroQuote } from './testimonials-data'
 import { capitalizeQuoteStart } from '@/lib/capitalizeQuoteStart'
@@ -31,23 +30,6 @@ type Props = {
 }
 
 function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
-  const imgStyle: CSSProperties = {}
-  if (hero.imageContain) imgStyle.objectFit = 'contain'
-  else if (hero.imageCover) imgStyle.objectFit = 'cover'
-  if (hero.objectPosition && !hero.image.includes('rebekka')) imgStyle.objectPosition = hero.objectPosition
-  if (
-    !hero.portraitCrop &&
-    !hero.imageContain &&
-    (hero.imageMirror ||
-      hero.imageScale != null ||
-      hero.imageTranslateY != null)
-  ) {
-    const mirror = hero.imageMirror ? 'scaleX(-1) ' : ''
-    const ty = hero.imageTranslateY ?? '0'
-    const scale = hero.imageScale ?? 1
-    imgStyle.transform = `${mirror}translateY(${ty}) scale(${scale})`
-    imgStyle.transformOrigin = hero.imageScaleOrigin ?? 'center 30%'
-  }
   return (
     <figure className={`${styles.heroQuote}${hero.darkPortrait ? ` ${styles.heroQuoteDark}` : ''}`}>
       <div
@@ -61,7 +43,6 @@ function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
           unaltered={hero.imageBw || hero.darkPortrait}
           sizes="(min-width: 900px) 50vw, 100vw"
           className={`${styles.heroImg}${hero.imageMirror ? ` ${styles.heroImgMirror}` : ''}`}
-          style={Object.keys(imgStyle).length ? imgStyle : undefined}
         />
       </div>
       <div className={styles.heroContent}>

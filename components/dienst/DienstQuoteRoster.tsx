@@ -26,7 +26,7 @@ export default function DienstQuoteRoster({
       {...stageProps}
     >
       <div className={styles.proofGrid}>
-        <div className={styles.proofPhotoWrap}>
+        <div className={`${styles.proofPhotoWrap} ${styles.proofPhotoStory}`}>
           <StarkImage
             className={styles.proofPhoto}
             src={active.image}
@@ -35,7 +35,7 @@ export default function DienstQuoteRoster({
             unaltered
             quality={85}
             sizes="(min-width: 800px) 40vw, 100vw"
-            style={{ objectPosition: active.imagePosition ?? 'center 18%' }}
+            style={{ objectFit: 'cover', objectPosition: 'center top' }}
           />
         </div>
         <div>

@@ -219,14 +219,14 @@
 .heroImgWrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--stark-black);
 }
 
 .heroImg {
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center top;
 }
 
 .heroImgMirror {
@@ -237,45 +237,21 @@
   object-fit: cover;
 }
 
-/* Volledige foto in beeld, zelfde blok als Amanda — geen crop die gezicht wegsnijdt. */
-.heroImgWrapContain .heroImg {
-  object-fit: contain;
-  object-position: center center;
-  transform: none;
-}
-
-/* Staande portretfoto: zelfde verhouding als bron (682×1024), geen cover-crop op desktop. */
-.heroImgWrapPortrait {
-  aspect-ratio: 2 / 3;
-}
-
-.heroImgWrapPortrait .heroImg {
-  object-fit: cover;
-  object-position: 50% 50%;
-  transform: none;
-}
-
-/* Rebekka: op de telefoon de lucht boven haar hoofd eraf, en een tik naar rechts. */
+.heroImgWrapContain .heroImg,
+.heroImgWrapPortrait .heroImg,
 .heroImgWrapRebekka .heroImg {
-  object-position: center 55%;
-}
-
-@media (max-width: 899px) {
-  .heroImgWrapRebekka {
-    aspect-ratio: 5 / 4;
-  }
-
-  .heroImgWrapRebekka .heroImg {
-    object-position: 48% 100%;
-    transform: translate(2%, 0);
-    transform-origin: center bottom;
-  }
+  object-fit: cover;
+  object-position: center top;
+  transform: none;
 }
 
 .heroContent {
-  padding: 36px 32px;
+  height: auto;
+  min-height: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 20px;
 }
 
@@ -341,14 +317,9 @@
 }
 
 .heroQuoteDark .heroImg {
-  object-fit: contain;
-  object-position: center bottom;
-  /* lichte inzoom vanaf de onderkant + iets laten zakken: meer kopruimte boven,
-     onderkant valt net buiten beeld */
-  transform: translateY(7%) scale(1.1);
-  transform-origin: center bottom;
-  /* crush het studiozwart (~#030303) naar puur #000 zodat de fotorand exact
-     samenvalt met de zwarte blok-achtergrond → geen zichtbare naad */
+  object-fit: cover;
+  object-position: center top;
+  transform: none;
   filter: grayscale(1) contrast(1.12);
 }
 
@@ -383,40 +354,32 @@
     min-height: 400px;
   }
 
-  .heroImgWrap {
-    flex: 0 0 48%;
-    aspect-ratio: unset;
+  .heroImgWrap,
+  .heroImgWrapPortrait,
+  .heroImgWrapContain,
+  .heroImgWrapRebekka {
+    flex: 0 0 40%;
+    width: 40%;
+    aspect-ratio: auto;
     align-self: stretch;
+    height: auto;
     min-height: 0;
     background: var(--stark-black);
   }
 
-  .heroImgWrapPortrait {
-    flex: 0 0 auto;
-    width: min(40%, 340px);
-    aspect-ratio: 2 / 3;
-    align-self: center;
-    height: auto;
+  .heroImgWrap::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
   }
 
-  .heroImg {
-    object-position: center 20%;
-  }
-
-  .heroImgWrapPortrait .heroImg {
+  .heroImg,
+  .heroImgWrapPortrait .heroImg,
+  .heroImgWrapRebekka .heroImg,
+  .heroImgWrapContain .heroImg,
+  .heroQuoteDark .heroImg {
     object-fit: cover;
-    object-position: 50% 50%;
-    transform: none;
-  }
-
-  .heroImgWrapRebekka .heroImg {
-    object-position: center 55%;
-    transform: none;
-  }
-
-  .heroImgWrapContain .heroImg {
-    object-fit: contain;
-    object-position: center center;
+    object-position: center top;
     transform: none;
   }
 
@@ -425,7 +388,10 @@
   }
 
   .heroContent {
-    flex: 1;
+    flex: 1 1 auto;
+    align-self: stretch;
+    height: auto;
+    min-height: 0;
     padding: 56px 56px;
     justify-content: center;
   }

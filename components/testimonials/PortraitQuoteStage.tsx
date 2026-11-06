@@ -16,8 +16,7 @@ export default function PortraitQuoteStage({
   showRoute?: boolean
 }) {
   const { active, select, stageProps } = useQuoteRotation(people)
-  const contain = active.fit === 'contain'
-  const studio = !contain && active.studio !== false
+  const studio = active.studio !== false && active.fit !== 'contain'
 
   return (
     <div className={styles.stage} {...stageProps}>
@@ -33,13 +32,6 @@ export default function PortraitQuoteStage({
             priority={active.id === people[0].id}
             sizes="(min-width: 900px) 48vw, 100vw"
             className={sectionStyles.heroImg}
-            style={
-              contain
-                ? { objectFit: 'contain', objectPosition: 'center center', transform: 'none' }
-                : studio || !active.imagePosition
-                  ? undefined
-                  : { objectPosition: active.imagePosition }
-            }
           />
         </div>
         <div className={sectionStyles.heroContent}>

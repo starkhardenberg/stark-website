@@ -760,6 +760,13 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   background: #000;
 }
 
+.proofPhotoWrap.proofPhotoStory {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  min-height: 0;
+  max-height: none;
+}
+
 .proofPhotoPortrait {
   aspect-ratio: 4 / 5;
   min-height: 0;
@@ -1179,6 +1186,20 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   .quote {
     max-width: 16ch;
     font-size: clamp(34px, 4.6vw, 60px);
+  }
+
+  .proofPhotoWrap.proofPhotoStory {
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    align-self: stretch;
+  }
+
+  .proofPhotoWrap.proofPhotoStory::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
   }
 }
 
