@@ -58,11 +58,11 @@ export const zakelijkRouteTracks: AanbodTrack[] = [
       },
       {
         label: 'Zo werkt het',
-        text: 'We beginnen op één afdeling. Tien weken, een groep van vijf tot twaalf, meting bij de start en aan het eind.',
+        text: 'We beginnen op één afdeling. Tien weken, een groep van vijf tot tien, meting bij de start en aan het eind.',
       },
       {
         label: 'Wat zit erin',
-        text: 'Twee keer per week trainen, groepscoaching, en een geanonimiseerde groepsrapportage.',
+        text: 'Vijftien trainingen en vijf coachingsessies van twee uur, en een geanonimiseerde groepsrapportage.',
       },
       {
         label: 'Start',

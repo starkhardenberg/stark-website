@@ -39,7 +39,7 @@ export const MOMENTUM_FAQ = [
   {
     question: 'Wat als ik weer afhaak?',
     answer:
-      'Daar is Momentum op gebouwd. Het moment dat je wilt afhaken, is het moment waar we mee werken. En de groep rekent op je.',
+      'Daar is Momentum op gebouwd. Je leert wat je kunt doen op het moment dat je wilt afhaken. En de groep rekent op je.',
   },
   {
     question: 'Ik sport al een poos niet meer. Kan ik meedoen?',

@@ -23,11 +23,11 @@ export const coachingTracks: AanbodTrack[] = [
       },
       {
         label: 'Zo werkt het',
-        text: '10 weken, vaste start en vaste eindstreep. Een vaste groep van 5 tot 12 mensen, geen instroom halverwege. Coaching gebeurt in de groep.',
+        text: '10 weken, vaste start en vaste eindstreep. Een vaste groep van 5 tot 10 mensen, geen instroom halverwege. Coaching gebeurt in de groep.',
       },
       {
         label: 'Wat zit erin',
-        text: '20 trainingen op jouw niveau, 10 uur groepscoaching en 5 challenges. Elke week één ding dat gedaan moet zijn.',
+        text: '15 trainingen op jouw niveau, 10 uur groepscoaching en 5 challenges. Na elke coaching één opdracht die af moet zijn.',
       },
       {
         label: 'Start',

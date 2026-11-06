@@ -50,13 +50,13 @@ export const momentumAtWerkDetail: ServiceDetailContent = {
       label: 'Zo werkt het',
       text: [
         'Tien weken, twee keer per week trainen. Om de week is een van die twee een langere sessie waarin coaching en fysieke uitdaging samenvallen: wat je in je hoofd tegenkomt, kom je daar in je lijf tegen.',
-        'Vaste groep, vaste start, vaste eindstreep. Minimaal vijf deelnemers. Alles gebeurt bij ons in Hardenberg, dus het kost jou geen ruimte en geen organisatie.',
+        'Vaste groep, vaste start, vaste eindstreep. Vijf tot tien collega\'s. Alles gebeurt bij ons in Hardenberg, dus het kost jou geen ruimte en geen organisatie.',
       ],
     },
     {
       label: 'Wat zit erin',
       text: [
-        'Twintig trainingen, vijf groepssessies en een dagelijks incheckmoment. Iedere deelnemer benoemt bij de start één concrete situatie die hem energie kost — een echte situatie, geen thema.',
+        'Vijftien trainingen en vijf coachingsessies van twee uur en een dagelijks incheckmoment. Iedere deelnemer benoemt bij de start één concrete situatie die hem energie kost — een echte situatie, geen thema.',
         'Voor de start een individuele intake en nulmeting. Na tien weken dezelfde meting opnieuw.',
       ],
     },

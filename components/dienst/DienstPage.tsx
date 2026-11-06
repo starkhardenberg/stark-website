@@ -102,7 +102,7 @@ export default function DienstPage() {
               Elke training kom je op een punt waar je liever ophoudt. Daar zie je wat je doet. Harder
               gaan om er vanaf te zijn. Een slokje water voor wat extra rust. Het goedpraten. Of
               met verstand op 0 gewoon maar dom door blijven gaan. Dat doe je thuis en op je werk ook. Hier zie je het gebeuren, in je eigen lijf,
-              met een coach ernaast. 15 keer in 10 weken. Je hoeft nog geen sporter te zijn. Iedereen kan meedoen.
+              met een coach ernaast. 15 trainingen en 5 coachings in 10 weken. Je hoeft nog geen sporter te zijn. Iedereen kan meedoen.
             </p>
           </div>
           <div className={styles.part}>
