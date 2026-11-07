@@ -45,7 +45,7 @@ export const openGraphByPage = {
   home: {
     title: 'STARK! Hardenberg — trainen, coaching, bedrijven',
     description:
-      'Functioneel trainen met coaching op de vloer. Momentum, Impact en Momentum @ Werk. Geen poespas, wel resultaat. Hardenberg, sinds 2013.',
+      'Krachttraining, conditie en coaching in Hardenberg. Momentum, Impact en Momentum @ Werk. Sinds 2013.',
   },
   trainen: {
     title: 'Trainen bij STARK! — groepslessen met coaching',
