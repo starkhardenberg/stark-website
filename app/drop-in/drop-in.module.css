@@ -64,11 +64,87 @@
   text-decoration-color: rgba(33, 36, 49, 0.55);
 }
 
+.fallback {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 620px;
+  margin: 14px auto 0;
+  padding: 0 clamp(28px, 4vw, 40px);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(247, 245, 242, 0.72);
+}
+
+.fallback a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fallback a:hover {
+  color: var(--stark-white);
+}
+
+.frameWrap {
+  position: relative;
+  width: 100%;
+  margin-top: clamp(20px, 3vw, 28px);
+  background: #fff;
+}
+
 .frame {
   display: block;
+  position: relative;
+  z-index: 0;
   width: 100%;
   min-height: 1180px;
-  margin-top: clamp(20px, 3vw, 28px);
   border: 0;
-  background: #111;
+  background: #fff;
+}
+
+.loading {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  min-height: 1180px;
+  margin: 0;
+  background: #fff;
+}
+
+.loadingNote {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: min(70svh, 1180px);
+  padding: 24px;
+  font-size: var(--stark-body);
+  line-height: 1.4;
+  text-align: center;
+  color: var(--navy, #212431);
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid color-mix(in srgb, var(--orange) 28%, transparent);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: dropInSpin 0.8s linear infinite;
+}
+
+@keyframes dropInSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-color: var(--orange);
+  }
 }

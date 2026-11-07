@@ -3,6 +3,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { ADDRESS } from '@/lib/contact'
 import { DROPIN_PLANNER_URL } from '@/lib/drop-in'
+import DropInPlanner from './DropInPlanner'
 import { pageMetadata } from '@/lib/open-graph'
 import { PlausiblePageEvent } from '@/components/PlausibleClickListener'
 import styles from './drop-in.module.css'
@@ -35,12 +36,14 @@ export default function DropInPage() {
           </p>
         </section>
 
-        <iframe
-          className={styles.frame}
-          src={DROPIN_PLANNER_URL}
-          title="Drop-in planner"
-          allow="payment"
-        />
+        <p className={styles.fallback}>
+          Opent de planner niet?{' '}
+          <a href={DROPIN_PLANNER_URL} target="_blank" rel="noopener">
+            Open hem in een nieuw venster
+          </a>.
+        </p>
+
+        <DropInPlanner />
       </main>
       <Footer variant="dark" accent={false} />
     </>
