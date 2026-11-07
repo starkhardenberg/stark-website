@@ -12,7 +12,7 @@ export const metadata = {
   ...pageMetadata(
     'home',
     'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
-    'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.',
+    'Krachttraining en conditie in kleine groepen, en coaching in Hardenberg. Een coach naast je, sinds 2013. Plan een gratis kennismaking.',
   ),
   robots: { index: true, follow: true },
 }
