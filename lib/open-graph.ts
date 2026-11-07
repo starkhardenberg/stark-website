@@ -50,7 +50,7 @@ export const openGraphByPage = {
   trainen: {
     title: 'Trainen bij STARK! — groepslessen met coaching',
     description:
-      'Groepslessen met een trainer naast je. Geen hal vol apparaten. Prijs en route in het kennismakingsgesprek. Hardenberg.',
+      'Krachttraining en conditie in kleine groepen, met een coach naast je bij elke les. Hardenberg.',
   },
   dropIn: {
     title: 'Drop-in bij STARK! Hardenberg',
