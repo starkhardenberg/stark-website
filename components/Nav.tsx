@@ -25,6 +25,13 @@ const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
   team: ['/team'],
 }
 
+/** Bovenaan een wit vlak: witte labels hebben meteen de donkere balk nodig. */
+const SOLID_PATHS = new Set(['/privacy', '/voorwaarden', '/drop-in'])
+
+function needsSolid(pathname: string) {
+  return SOLID_PATHS.has(pathname)
+}
+
 export default function Nav({
   variant = 'dark',
   compact = false,
@@ -64,6 +71,8 @@ export default function Nav({
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const solid = needsSolid(pathname)
 
   useEffect(() => {
     setMounted(true)
@@ -72,6 +81,13 @@ export default function Nav({
   useEffect(() => {
     setOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     if (!open) {
@@ -101,7 +117,17 @@ export default function Nav({
   }
 
   const onHome = pathname === '/'
-  const showBack = pathname !== backHref
+  const routeBack =
+    pathname === '/drop-in'
+      ? { href: '/trainen', label: 'Trainen' }
+      : pathname.startsWith('/zakelijk/') && pathname !== '/zakelijk'
+        ? { href: '/zakelijk', label: 'Zakelijk' }
+        : null
+  const resolvedBackHref = routeBack?.href ?? backHref
+  const resolvedBackLabel = routeBack?.label ?? backLabel
+  const resolvedHideCta =
+    hideCta || pathname === '/kennismaken' || pathname === '/drop-in' || pathname === '/privacy' || pathname === '/voorwaarden'
+  const showBack = pathname !== resolvedBackHref
 
   function closeMenuIfHere(href: string) {
     const path = href.split(/[?#]/)[0]
@@ -117,8 +143,8 @@ export default function Nav({
           >
             <div className={styles.mobileMenuLinks}>
               {showBack ? (
-                <a href={backHref} className={styles.mobileNavBack} onClick={() => closeMenuIfHere(backHref)}>
-                  <span aria-hidden>←</span> {backLabel}
+                <a href={resolvedBackHref} className={styles.mobileNavBack} onClick={() => closeMenuIfHere(resolvedBackHref)}>
+                  <span aria-hidden>←</span> {resolvedBackLabel}
                 </a>
               ) : null}
               {NAV_TABS.map((tab) => {
@@ -136,7 +162,7 @@ export default function Nav({
                 )
               })}
             </div>
-            {hideCta ? null : (
+            {resolvedHideCta ? null : (
               <div className={styles.mobileMenuFoot}>
                 <a href={ctaHref} className={`${styles.mobileCta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`} onClick={() => closeMenuIfHere(ctaHref)}>
                   {ctaLabel}
@@ -151,11 +177,12 @@ export default function Nav({
   return (
     <>
       <header
-        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''} ${centerCta ? styles.navCenterCta : ''}`}
+        className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''} ${centerCta ? styles.navCenterCta : ''} ${scrolled ? 'scrolled' : ''} ${solid ? styles.solid : ''}`}
       >
         <a
           href="/"
           className={styles.home}
+          aria-label="STARK! Hardenberg, naar de homepage"
           aria-current={onHome ? 'page' : undefined}
         >
           <img
@@ -168,10 +195,6 @@ export default function Nav({
         <div className={styles.right}>
           {!compact ? (
             <>
-              {hideCta ? null : (
-                <a href={ctaHref} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_NAV} ${STARK_CTA_PRIMARY}`}>{ctaLabel}</a>
-              )}
-
               {!hideTabs ? (
                 <nav className={styles.tabBar} aria-label="Hoofdmenu">
                   <ul className={styles.tabList}>
@@ -192,6 +215,10 @@ export default function Nav({
                   </ul>
                 </nav>
               ) : null}
+
+              {resolvedHideCta ? null : (
+                <a href={ctaHref} className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_NAV} ${STARK_CTA_PRIMARY}`}>{ctaLabel}</a>
+              )}
             </>
           ) : null}
 

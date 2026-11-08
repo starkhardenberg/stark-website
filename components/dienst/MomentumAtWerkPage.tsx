@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import StarkImage from '@/components/StarkImage'
-import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
@@ -42,7 +41,6 @@ export default function MomentumAtWerkPage() {
       <FaqJsonLd items={MAW_FAQ} />
 
       <header className={styles.hero}>
-        <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <StarkImage

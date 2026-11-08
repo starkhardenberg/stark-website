@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Nav from '@/components/Nav'
 import StarkImage from '@/components/StarkImage'
 import Footer from '@/components/Footer'
 import WijBintStark from '@/components/WijBintStark'
@@ -25,7 +24,6 @@ export default function TeamPage() {
             priority
           />
         </div>
-        <Nav deep />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} aria-hidden />
           <h1 className={styles.heroTitle}>

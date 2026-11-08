@@ -1,4 +1,3 @@
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { parseLegalMarkdown, readLegalMarkdown, type Inline } from '@/lib/legal-markdown'
 import styles from './LegalDocument.module.css'
@@ -28,7 +27,6 @@ export default function LegalDocument({ file }: { file: 'privacy.md' | 'voorwaar
   return (
     <>
       <main className={styles.page}>
-        <Nav heroBar hideCta />
         <article className={styles.inner}>
           {blocks.map((block, index) => {
             if (block.type === 'h1') {

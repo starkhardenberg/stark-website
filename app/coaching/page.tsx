@@ -1,5 +1,4 @@
 import StarkImage from '@/components/StarkImage'
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
 import FaqJsonLd from '@/components/FaqJsonLd'
@@ -42,7 +41,6 @@ export default function CoachingPage() {
             style={{ objectPosition: '62% 42%' }}
           />
         </div>
-        <Nav deep />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>

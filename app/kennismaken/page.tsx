@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Nav from '@/components/Nav'
 import StarkBadge from '@/components/StarkBadge'
 import StarkImage from '@/components/StarkImage'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
@@ -20,8 +19,6 @@ export default function KennismakenPage() {
   return (
     <>
     <main className={styles.page}>
-      <Nav hideCta />
-
       <div className={styles.photo}>
         <StarkImage
           src="/images/foto-kennismaken-sessie.png"

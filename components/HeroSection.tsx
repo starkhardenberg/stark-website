@@ -1,4 +1,3 @@
-import Nav from './Nav'
 import HeroBadgePin from './HeroBadgePin'
 import HeroAdaptiveBackground from './HeroAdaptiveBackground'
 import {
@@ -19,8 +18,6 @@ export default function HeroSection() {
           desktopSrc={HERO_VIDEO_DESKTOP_URL}
         />
       </div>
-
-      <Nav deep />
 
       <HeroBadgePin />
 

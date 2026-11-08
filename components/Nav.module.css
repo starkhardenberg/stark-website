@@ -1,14 +1,32 @@
 .nav {
-  position: relative;
-  z-index: 20;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
   width: 100%;
-  padding: 20px 22px 0;
-  flex-shrink: 0;
+  min-height: var(--nav-bar);
+  padding: 18px 22px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
   pointer-events: none;
   font-size: 14px;
+  transition:
+    background-color 250ms ease,
+    backdrop-filter 250ms ease,
+    border-color 250ms ease;
+}
+
+.nav:global(.scrolled),
+.solid {
+  background: rgba(26, 26, 26, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Homepage-hero: CTA in het videobeeld, niet op de rand */
@@ -82,9 +100,7 @@
 }
 
 .home {
-  position: absolute;
-  top: 20px;
-  left: 22px;
+  position: static;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -657,29 +673,32 @@ button.tabLink {
 
 @media (min-width: 900px) {
   .nav {
-    padding: 28px 48px 0;
+    padding: 18px 48px;
   }
 
   .home {
-    top: 28px;
-    left: 48px;
+    position: static;
   }
 
-
-  /* Ná .nav-padding: anders wint desktop .nav en blijft CTA op de rand */
   .nav.navDeep {
-    padding-top: clamp(64px, calc(18vh - 2cm), 124px);
+    padding: 18px 48px;
   }
 
-  /* Woordmerk blijft linksboven, ook als de knop lager in de hero staat. */
   .nav.navDeep .home {
-    top: 28px;
+    position: static;
+    top: auto;
   }
 
   .right {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 44px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 28px;
+    max-width: none;
+  }
+
+  .tabLink {
+    white-space: nowrap;
   }
 
   .navAlignStart .right {
@@ -692,15 +711,17 @@ button.tabLink {
 
   .tabBar {
     display: block;
-    margin-top: 10px;
+    margin-top: 0;
   }
 
   .tabList {
-    padding-top: 4px;
+    align-items: center;
+    padding-top: 0;
+    border-bottom: none;
   }
 
   .navMenuOpen {
-    z-index: 5;
+    z-index: 200;
   }
 
   .burger {
@@ -740,6 +761,18 @@ button.tabLink {
     flex-direction: column;
     align-items: flex-end;
     gap: 28px;
+  }
+}
+
+/* Tussen 900 en 1100 px passen vijf tabs plus de knop anders niet op één rij. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .right {
+    gap: 16px;
+  }
+
+  .tabLink {
+    padding-inline: 6px;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -806,6 +839,10 @@ button.tabLink {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .nav {
+    transition: none;
+  }
+
   .tabItemActive .tabLink,
   .tabItem:not(.tabItemActive) .tabLink:hover {
     transform: none;

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { getImageProps } from 'next/image'
-import Nav from '@/components/Nav'
 import HeroTitle from '@/components/dienst/HeroTitle'
 import Footer from '@/components/Footer'
 import FaqList from '@/components/faq/FaqList'
@@ -81,7 +80,6 @@ export default function LeiderschapPage() {
       <FaqJsonLd items={L1O1_FAQ} />
 
       <header className={styles.hero}>
-        <Nav backHref="/zakelijk" backLabel="Zakelijk" heroBar />
         <div className={styles.heroSplit}>
           <div className={styles.heroPhotoWrap}>
             <LeiderschapHero />

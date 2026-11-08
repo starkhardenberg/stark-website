@@ -2,7 +2,7 @@
   min-height: 100svh;
   background: var(--navy);
   color: var(--off);
-  padding: clamp(40px, 8vw, 80px) clamp(20px, 4vw, 48px);
+  padding: calc(var(--nav-bar) + 28px) clamp(20px, 4vw, 48px) clamp(40px, 8vw, 80px);
 }
 
 .inner {

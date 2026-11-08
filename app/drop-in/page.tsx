@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { ADDRESS } from '@/lib/contact'
 import { DROPIN_PLANNER_URL } from '@/lib/drop-in'
@@ -19,8 +18,6 @@ export default function DropInPage() {
     <>
       <PlausiblePageEvent eventName="Drop-in" />
       <main className={styles.page}>
-        <Nav backHref="/trainen" backLabel="Trainen" heroBar hideCta />
-
         <section className={styles.inner} aria-labelledby="drop-in-title">
           <h1 id="drop-in-title" className={styles.title}>
             Drop-in

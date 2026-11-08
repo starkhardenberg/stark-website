@@ -2,6 +2,7 @@
   min-height: 100svh;
   min-height: 100dvh;
   overflow-x: hidden;
+  padding-top: var(--nav-bar);
   background-color: var(--stark-black);
   color: var(--off);
   font-family: var(--font-body), sans-serif;

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import StarkImage from '@/components/StarkImage'
-import Nav from '@/components/Nav'
 import ContactForm from '@/components/contact/ContactForm'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
@@ -20,8 +19,6 @@ export default function ContactPage() {
   return (
     <>
     <main className={styles.page}>
-      <Nav />
-
       <section className={styles.hero} aria-labelledby="contact-hero-title">
         <div className={styles.heroFrame}>
           <div className={styles.heroCopy}>

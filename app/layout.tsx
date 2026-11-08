@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
 import Script from 'next/script'
 import BackToTop from '@/components/BackToTop'
+import Nav from '@/components/Nav'
 import HealthClubJsonLd from '@/components/HealthClubJsonLd'
 import PlausibleClickListener from '@/components/PlausibleClickListener'
 import { getSiteRobots, SITE_URL } from '@/lib/site-seo'
@@ -74,6 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Nav />
         <PlausibleClickListener />
         <HealthClubJsonLd />
         {children}

@@ -1,13 +1,11 @@
 import type { ReactNode } from 'react'
 import Link from 'next/link'
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import StarkImage from '@/components/StarkImage'
 import HoeHetBegintSection from '@/components/zakelijk/HoeHetBegintSection'
 import cardStyles from '@/components/aanbod/AanbodFeatureCard.module.css'
 import pageStyles from '@/components/zakelijk/ZakelijkOndernemersPage.module.css'
 import landing from '@/app/landing.module.css'
-import { hrefKennismaking } from '@/lib/contact'
 import type { ServiceDetailBlock, ServiceDetailContent, ServiceDetailImage } from './types'
 import styles from './ServiceDetailPage.module.css'
 
@@ -107,7 +105,6 @@ export default function ServiceDetailPage({ page }: { page: ServiceDetailContent
           )
         ) : null}
         {page.chapterHero ? <div className={styles.scrim} aria-hidden /> : null}
-        <Nav ctaLabel={page.navCtaLabel} ctaHref={page.navCtaHref ?? hrefKennismaking} />
         {page.chapterHero ? (
           <div className={styles.chapterCopy}>
             <p className={styles.kicker}>{page.heroKicker ?? page.eyebrow}</p>

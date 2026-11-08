@@ -1,5 +1,4 @@
 import StarkImage from '@/components/StarkImage'
-import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import { trainenFaq } from '@/components/faq/faq-trainen'
@@ -42,7 +41,6 @@ export default function TrainenPage() {
             priority
           />
         </div>
-        <Nav deep />
         <div className={styles.heroContent}>
           <span className={styles.heroSlash} />
           <h1 className={`${styles.heroTitle} ${styles.heroTitleCompact}`}>

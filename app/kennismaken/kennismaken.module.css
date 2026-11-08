@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  padding-top: var(--nav-bar);
   background: var(--navy);
   color: var(--navy);
   font-family: var(--font-body), sans-serif;
