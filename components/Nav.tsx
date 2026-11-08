@@ -17,7 +17,7 @@ const NAV_TABS = [
 
 /** Paden die een dienst-tab actief maken.
  *  Subpagina's (Momentum, Impact) bewust níet: daar liegt een omhooggeklapte
- *  hoofdtab over waar je bent. Terug via ← Home of de tab zelf. */
+ *  hoofdtab over waar je bent. Terug via het woordmerk of de tab zelf. */
 const TAB_ACTIVE_PREFIXES: Record<string, string[]> = {
   coaching: ['/coaching'],
   trainen: ['/trainen'],
@@ -34,7 +34,6 @@ export default function Nav({
   backLabel = 'Home',
   align = 'end',
   deep = false,
-  photoBack = false,
   heroBar = false,
   centerCta = false,
   ctaLabel = CTA_KENNISMAKING_LABEL,
@@ -52,8 +51,6 @@ export default function Nav({
   align?: 'start' | 'end'
   /** Homepage-hero: CTA lager in het videobeeld */
   deep?: boolean
-  /** Teruglink op een foto: wit, met een donker vlak erachter */
-  photoBack?: boolean
   /** Eigen donkere balk boven de hero, niet over de foto */
   heroBar?: boolean
   /** Foto over de volle breedte: knop in het midden. Vanaf de gesplitste hero blijft hij rechts. */
@@ -103,6 +100,7 @@ export default function Nav({
     )
   }
 
+  const onHome = pathname === '/'
   const showBack = pathname !== backHref
 
   function closeMenuIfHere(href: string) {
@@ -155,16 +153,17 @@ export default function Nav({
       <header
         className={`${styles.nav} ${align === 'start' ? styles.navAlignStart : ''} ${deep ? styles.navDeep : ''} ${open ? styles.navMenuOpen : ''} ${variant === 'light' ? styles.navLight : ''} ${heroBar ? styles.navHeroBar : ''} ${centerCta ? styles.navCenterCta : ''}`}
       >
-        {showBack ? (
-          <a
-            href={backHref}
-            className={`${styles.home}${photoBack ? ` ${styles.homeOnPhoto}` : ''}`}
-            aria-label={`Terug naar ${backLabel}`}
-          >
-            <span aria-hidden>←</span>
-            {backLabel}
-          </a>
-        ) : null}
+        <a
+          href="/"
+          className={styles.home}
+          aria-current={onHome ? 'page' : undefined}
+        >
+          <img
+            src={variant === 'light' ? '/images/stark-logo-zwart.svg' : '/images/stark-logo-wit.svg'}
+            alt="STARK! Hardenberg"
+            className={styles.logo}
+          />
+        </a>
 
         <div className={styles.right}>
           {!compact ? (

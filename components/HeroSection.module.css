@@ -155,6 +155,8 @@
 /* ── Desktop ── */
 @media (min-width: 900px) {
   .stage {
+    /* safe: een te hoge titel schuift niet over het woordmerk linksboven. */
+    align-items: safe center;
     padding: 140px 48px clamp(64px, 13vh, 120px);
   }
 

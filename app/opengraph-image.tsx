@@ -9,8 +9,10 @@ export const contentType = 'image/png'
 export const runtime = 'nodejs'
 
 const PHOTO_PATH = join(process.cwd(), 'public/images/og-stark-photo.png')
-const OSWALD_BOLD_PATH = join(process.cwd(), 'public/fonts/oswald-latin-700.woff')
+const LOGO_PATH = join(process.cwd(), 'public/images/stark-logo-wit.svg')
 const BARLOW_MEDIUM_PATH = join(process.cwd(), 'public/fonts/barlow-latin-500.woff')
+const LOGO_WIDTH = 420
+const LOGO_HEIGHT = Math.round(LOGO_WIDTH * (991 / 2608.5))
 
 function toArrayBuffer(buffer: Buffer): ArrayBuffer {
   return buffer.buffer.slice(
@@ -20,15 +22,15 @@ function toArrayBuffer(buffer: Buffer): ArrayBuffer {
 }
 
 export default async function Image() {
-  const [photo, oswaldFile, barlowFile] = await Promise.all([
+  const [photo, logo, barlowFile] = await Promise.all([
     readFile(PHOTO_PATH),
-    readFile(OSWALD_BOLD_PATH),
+    readFile(LOGO_PATH),
     readFile(BARLOW_MEDIUM_PATH),
   ])
 
-  const oswaldBold = toArrayBuffer(oswaldFile)
   const barlowMedium = toArrayBuffer(barlowFile)
   const photoSrc = `data:image/jpeg;base64,${photo.toString('base64')}`
+  const logoSrc = `data:image/svg+xml;base64,${logo.toString('base64')}`
 
   return new ImageResponse(
     (
@@ -51,20 +53,13 @@ export default async function Image() {
             backgroundColor: '#212431',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              fontFamily: 'Oswald',
-              fontSize: 118,
-              fontWeight: 700,
-              color: '#F5F5F5',
-              letterSpacing: '-0.02em',
-              lineHeight: 0.92,
-              textTransform: 'uppercase',
-            }}
-          >
-            STARK!
-          </div>
+          <img
+            src={logoSrc}
+            alt=""
+            width={LOGO_WIDTH}
+            height={LOGO_HEIGHT}
+            style={{ width: LOGO_WIDTH, height: LOGO_HEIGHT }}
+          />
           <div
             style={{
               width: '100%',
@@ -115,12 +110,6 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        {
-          name: 'Oswald',
-          data: oswaldBold,
-          weight: 700,
-          style: 'normal',
-        },
         {
           name: 'Barlow',
           data: barlowMedium,

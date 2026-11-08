@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
-import Sinds2013Badge from '@/components/Sinds2013Badge'
+import StarkBadge from '@/components/StarkBadge'
 import StarkImage from '@/components/StarkImage'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import { pageMetadata } from '@/lib/open-graph'
@@ -13,7 +13,7 @@ const BOOKING_URL =
 export const metadata: Metadata = pageMetadata(
   'kennismaken',
   'Kom kennismaken — STARK! Hardenberg',
-  'Plan een kennismaking in de agenda. Een uur, bij STARK. Gratis en vrijblijvend.',
+  'Plan een kennismaking in de agenda. Een uur bij STARK! Gratis en vrijblijvend.',
 )
 
 export default function KennismakenPage() {
@@ -40,10 +40,7 @@ export default function KennismakenPage() {
             {' '}
             <span className={styles.titleLine}>kennismaking</span>
           </h1>
-          <p className={styles.fact}>
-            <span>Een uur, bij STARK.</span>
-            <span>Gratis en vrijblijvend.</span>
-          </p>
+          <p className={styles.fact}>Een uur bij STARK! Gratis en vrijblijvend.</p>
           <a
             href={BOOKING_URL}
             className={`${styles.agenda} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
@@ -52,7 +49,7 @@ export default function KennismakenPage() {
           >
             Open de agenda
           </a>
-          <Sinds2013Badge variant="block" className={styles.seamBadge} />
+          <StarkBadge variant="block" className={styles.seamBadge} />
         </div>
       </div>
     </main>

@@ -88,21 +88,22 @@
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  /* Zelfde regelhoogte als Menu, zodat de woorden op één lijn staan. Het tikvlak van Menu blijft 44px. */
   min-height: 44px;
-  gap: 6px;
-  font-family: var(--font-body), sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245, 245, 245, 0.62);
+  color: var(--stark-white);
   text-decoration: none;
-  transition: color 0.18s ease;
+  white-space: nowrap;
+  transition: opacity 0.18s ease;
+}
+
+.logo {
+  display: block;
+  height: 30px;
+  width: auto;
 }
 
 .home:hover {
-  color: var(--stark-grey);
+  color: var(--stark-white);
+  opacity: 0.82;
 }
 
 .homeOnPhoto {
@@ -171,11 +172,12 @@
 }
 
 .navLight .home {
-  color: rgba(33, 36, 49, 0.52);
+  color: var(--stark-black);
 }
 
 .navLight .home:hover {
-  color: var(--stark-grey);
+  color: var(--stark-black);
+  opacity: 0.72;
 }
 
 .navMenuOpen .home {
@@ -430,31 +432,33 @@ button.tabLink {
   color: var(--stark-grey);
 }
 
-/* Staande iPad en telefoon: Home en Menu leesbaar op de foto, kleiner dan de oranje knop. */
+/* Staande iPad en telefoon: Menu leesbaar op de foto. Het woordmerk blijft vlak, zonder vlak erachter. */
 @media (max-width: 899px) {
-  .home,
   .menuText {
     font-size: 17px;
   }
 
-  .nav:not(.navLight):not(.navHeroBar) .home,
   .nav:not(.navLight):not(.navHeroBar) .menuText {
     color: rgba(245, 245, 245, 0.92);
     background: rgba(24, 26, 24, 0.78);
-  }
-
-  .nav:not(.navLight):not(.navHeroBar) .home {
-    padding: 8px 12px 8px 10px;
-  }
-
-  .nav:not(.navLight):not(.navHeroBar) .menuText {
     padding: 8px 12px;
   }
 
-  .nav:not(.navLight):not(.navHeroBar) .home:hover,
   .nav:not(.navLight):not(.navHeroBar) .menuText:hover {
     color: var(--off);
     background: rgba(24, 26, 24, 0.92);
+  }
+
+  .nav:not(.navLight) .home {
+    color: var(--stark-white);
+    background: none;
+    padding: 0;
+  }
+
+  .navLight .home {
+    color: var(--stark-black);
+    background: none;
+    padding: 0;
   }
 }
 
@@ -643,6 +647,12 @@ button.tabLink {
   }
 }
 
+@media (min-width: 1024px) {
+  .logo {
+    height: 44px;
+  }
+}
+
 @media (min-width: 900px) {
   .nav {
     padding: 28px 48px 0;
@@ -653,13 +663,15 @@ button.tabLink {
     left: 48px;
   }
 
+
   /* Ná .nav-padding: anders wint desktop .nav en blijft CTA op de rand */
   .nav.navDeep {
     padding-top: clamp(64px, calc(18vh - 2cm), 124px);
   }
 
+  /* Woordmerk blijft linksboven, ook als de knop lager in de hero staat. */
   .nav.navDeep .home {
-    top: clamp(64px, calc(18vh - 2cm), 124px);
+    top: 28px;
   }
 
   .right {
@@ -726,6 +738,68 @@ button.tabLink {
     flex-direction: column;
     align-items: flex-end;
     gap: 28px;
+  }
+}
+
+/* Telefoon: woordmerk links, knop en Menu rechts, één rij. */
+@media (max-width: 899px) {
+  .nav,
+  .nav.navDeep,
+  .nav.navHeroBar,
+  .nav.navCenterCta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    column-gap: 8px;
+  }
+
+  .home,
+  .nav.navDeep .home,
+  .nav.navHeroBar .home,
+  .nav.navCenterCta .home,
+  .navAlignStart .home {
+    position: static;
+    top: auto;
+    left: auto;
+    flex: 0 0 auto;
+    margin-right: 0;
+  }
+
+  .right,
+  .nav.navHeroBar .right,
+  .nav.navCenterCta .right,
+  .navAlignStart .right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    max-width: none;
+    margin-left: auto;
+    min-width: 0;
+  }
+
+  .nav.navDeep .cta,
+  .nav.navCenterCta .cta,
+  .nav.navHeroBar .cta {
+    position: static;
+    left: auto;
+    top: auto;
+    translate: none;
+    grid-column: auto;
+    justify-self: auto;
+    max-width: none;
+  }
+
+  a.cta:global(.starkCtaNav) {
+    white-space: nowrap !important;
+    flex-shrink: 0;
+  }
+
+  .menuText {
+    white-space: nowrap;
   }
 }
 

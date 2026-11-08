@@ -5,9 +5,6 @@ import { ADDRESS, mailtoInfo } from '@/lib/contact'
 import { BEELDEN_CREDIT } from '@/lib/photo-credit'
 import styles from './Footer.module.css'
 
-/** Knip van het uitroepteken. stem = onderkant van de streep, dot = bovenkant van het bolletje. */
-const BANG_CLIP = { stem: 25, dot: 75 } as const
-
 const MENU = [
   { label: 'Training', href: '/trainen' },
   { label: 'Coaching', href: '/coaching' },
@@ -70,26 +67,11 @@ export default function Footer({
         <div className={styles.grid}>
           <div className={styles.brand}>
             <p className={styles.mark}>
-              STARK<span
-                aria-label="!"
-                style={{ position: 'relative', display: 'inline-block' }}
-              >
-                <span aria-hidden="true" style={{ clipPath: `inset(0 0 ${BANG_CLIP.stem}% 0)` }}>
-                  !
-                </span>
-                <span
-                  aria-hidden="true"
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    color: accent ? 'var(--orange)' : 'inherit',
-                    clipPath: `inset(${BANG_CLIP.dot}% 0 0 0)`,
-                  }}
-                >
-                  !
-                </span>
-              </span>
+              <img
+                src={variant === 'dark' ? '/images/stark-logo-wit.svg' : '/images/stark-logo-zwart.svg'}
+                alt="STARK! Hardenberg"
+                className={styles.logo}
+              />
             </p>
             <p className={styles.tagline}>
               Krachttraining en coaching in Hardenberg. Kleine groepen, een coach naast je.
@@ -174,6 +156,51 @@ export default function Footer({
                     Nijverheidsstraat 15c
                     <br />
                     7772 TP Hardenberg
+                  </a>
+                </li>
+                <li className={styles.social}>
+                  <a
+                    href="https://www.instagram.com/starkhardenberg/"
+                    className={styles.socialLink}
+                    aria-label="STARK! op Instagram"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <rect
+                        x="3.5"
+                        y="3.5"
+                        width="17"
+                        height="17"
+                        rx="5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/starkhardenberg/"
+                    className={styles.socialLink}
+                    aria-label="STARK! op Facebook"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        fill="currentColor"
+                        d="M14.2 21v-7.2h2.4l.4-2.8h-2.8V9.3c0-.8.2-1.4 1.4-1.4H17V5.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H8.4v2.8h2.5V21h3.3z"
+                      />
+                    </svg>
                   </a>
                 </li>
               </ul>
