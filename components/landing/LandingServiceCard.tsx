@@ -12,6 +12,8 @@ export type MenuRow = {
   link?: { href: string; label: string }
   /** Tekst met inline links: strings en links in volgorde. */
   parts?: Array<string | MenuLink>
+  /** Vult deze rij met de eerstvolgende Momentum-startdatum. */
+  momentumStart?: 'next'
 }
 
 function isMenuLink(part: string | MenuLink): part is MenuLink {

@@ -1,5 +1,4 @@
 import type { AanbodTrack } from '@/components/aanbod/aanbod-tracks'
-import { MOMENTUM_COACHING_START_LINE } from '@/lib/momentum-dates'
 
 /** Traject-tegels op /coaching — zelfde card-systeem als homepage/trainen. */
 export const coachingTracks: AanbodTrack[] = [
@@ -31,7 +30,7 @@ export const coachingTracks: AanbodTrack[] = [
       },
       {
         label: 'Start',
-        text: MOMENTUM_COACHING_START_LINE,
+        momentumStart: 'next',
       },
       {
         label: 'Daarna',

@@ -7,6 +7,7 @@ import type { MenuLink } from '@/components/landing/LandingServiceCard'
 import type { AanbodTrack } from './aanbod-tracks'
 import StarkArrow from '@/components/icons/StarkArrow'
 import { useTrainenRoosterOptional } from '@/components/trainen/TrainenRoosterContext'
+import MomentumStartdata from '@/components/MomentumStartdata'
 import styles from './AanbodFeatureCard.module.css'
 
 function isMenuLink(part: string | MenuLink): part is MenuLink {
@@ -150,6 +151,10 @@ export default function AanbodFeatureCard({ track, fitTitle = false, onLight = f
                               <span key={i}>{part}</span>
                             ),
                           )
+                        ) : row.momentumStart === 'next' ? (
+                          <>
+                            Plan een kennismaking. Start: <MomentumStartdata variant="next" />
+                          </>
                         ) : (
                           <>
                             {row.text

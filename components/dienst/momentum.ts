@@ -12,21 +12,6 @@ export const MOMENTUM_SCHEDULE = [
   },
 ] as const
 
-export type DienstStart = {
-  group: string
-  start: string
-  firstCoaching: string
-}
-
-/** Startdata. Toevoegen, wijzigen of verwijderen zonder de opmaak aan te raken. */
-export const MOMENTUM_STARTS: DienstStart[] = [
-  { group: 'groep 4', start: 'Vrijdag 29 januari 2027', firstCoaching: 'maandag 1 februari' },
-  { group: 'groep 5', start: 'Vrijdag 16 april 2027', firstCoaching: 'maandag 19 april' },
-  { group: 'groep 6', start: 'Vrijdag 3 september 2027', firstCoaching: 'maandag 6 september' },
-  { group: 'groep 7', start: 'Vrijdag 5 november 2027', firstCoaching: 'maandag 8 november' },
-  { group: 'groep 8', start: 'Vrijdag 28 januari 2028', firstCoaching: 'maandag 31 januari' },
-]
-
 export const MOMENTUM_QUOTE = {
   text: 'Ik wist de stemmetjes om te buigen naar gedachten die me de kracht gaven om tot het gaatje te gaan.',
   name: 'Annemarie',

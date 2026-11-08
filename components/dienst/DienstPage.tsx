@@ -8,12 +8,8 @@ import FaqJsonLd from '@/components/FaqJsonLd'
 import { BookButton, CloseStamp, Section, SplitAside, createPageRhythm } from './DienstParts'
 import DienstQuoteRoster from './DienstQuoteRoster'
 import { momentumPeople } from '@/components/testimonials/portrait-quotes'
-import { MOMENTUM_NEXT_START_HEADLINE } from '@/lib/momentum-dates'
-import {
-  MOMENTUM_FAQ,
-  MOMENTUM_SCHEDULE,
-  MOMENTUM_STARTS,
-} from './momentum'
+import MomentumStartdata from '@/components/MomentumStartdata'
+import { MOMENTUM_FAQ, MOMENTUM_SCHEDULE } from './momentum'
 import styles from './DienstPage.module.css'
 
 export default function DienstPage() {
@@ -215,18 +211,7 @@ export default function DienstPage() {
           </div>
           <div className={styles.group}>
             <h3 className={styles.h3}>Startdata</h3>
-            <ul className={styles.list}>
-              <li>
-                <b>{MOMENTUM_NEXT_START_HEADLINE}</b>
-                <span className={styles.small}>eerstvolgende start</span>
-              </li>
-              {MOMENTUM_STARTS.map((item) => (
-                <li key={item.start}>
-                  <b>{item.start}</b> · {item.group}
-                  <span className={styles.small}>eerste coachingsessie {item.firstCoaching}</span>
-                </li>
-              ))}
-            </ul>
+            <MomentumStartdata variant="list" />
           </div>
         </div>
         <BookButton className={`${styles.buttonTiles} ${styles.buttonWide}`} />
