@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect, useState, type SyntheticEvent } from 'react'
+import { useEffect, useRef, useState, type SyntheticEvent } from 'react'
 import { DROPIN_PLANNER_URL } from '@/lib/drop-in'
 import styles from './drop-in.module.css'
 
+const MIN_VISIBLE_MS = 4000
 const FALLBACK_MS = 30000
 
 function isPlannerFrame(frame: HTMLIFrameElement) {
@@ -13,16 +14,33 @@ function isPlannerFrame(frame: HTMLIFrameElement) {
 export default function DropInPlanner() {
   const [visible, setVisible] = useState(true)
   const [src, setSrc] = useState<string | undefined>(undefined)
+  const mountedAt = useRef(0)
+  const loaded = useRef(false)
+  const minTimer = useRef<number | undefined>(undefined)
+  const fallbackTimer = useRef<number | undefined>(undefined)
 
   useEffect(() => {
+    mountedAt.current = Date.now()
     setSrc(DROPIN_PLANNER_URL)
-    const timer = window.setTimeout(() => setVisible(false), FALLBACK_MS)
-    return () => window.clearTimeout(timer)
+    fallbackTimer.current = window.setTimeout(() => setVisible(false), FALLBACK_MS)
+    return () => {
+      window.clearTimeout(fallbackTimer.current)
+      window.clearTimeout(minTimer.current)
+    }
   }, [])
 
-  function onLoad(event: SyntheticEvent<HTMLIFrameElement>) {
-    if (!isPlannerFrame(event.currentTarget)) return
+  function hide() {
     setVisible(false)
+    window.clearTimeout(fallbackTimer.current)
+    window.clearTimeout(minTimer.current)
+  }
+
+  function onLoad(event: SyntheticEvent<HTMLIFrameElement>) {
+    if (!isPlannerFrame(event.currentTarget) || loaded.current) return
+    loaded.current = true
+    const wait = MIN_VISIBLE_MS - (Date.now() - mountedAt.current)
+    if (wait <= 0) hide()
+    else minTimer.current = window.setTimeout(hide, wait)
   }
 
   return (
