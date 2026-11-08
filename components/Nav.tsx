@@ -8,7 +8,7 @@ import { STARK_CTA, STARK_CTA_NAV, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './Nav.module.css'
 
 const NAV_TABS = [
-  { id: 'trainen', label: 'Training', href: '/trainen' },
+  { id: 'trainen', label: 'Trainen', href: '/trainen' },
   { id: 'coaching', label: 'Coaching', href: '/coaching' },
   { id: 'zakelijk', label: 'Zakelijk', href: '/zakelijk' },
   { id: 'team', label: 'Wie wij zijn', href: '/team' },

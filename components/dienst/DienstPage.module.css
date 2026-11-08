@@ -93,7 +93,7 @@
 .heroTitleOutline {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
+  -webkit-text-stroke: 1.5px var(--off);
 }
 
 .heroStack {
@@ -1033,7 +1033,7 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   .heroTitleLine[data-hero-line='1'] > span:nth-child(-n + 2) {
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
+    -webkit-text-stroke: 1.5px var(--off);
   }
 
   .heroLine {

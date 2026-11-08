@@ -194,7 +194,7 @@
 .heroLead {
   display: block;
   color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
+  -webkit-text-stroke: 1.5px var(--off);
   font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -216,14 +216,14 @@
   letter-spacing: -0.025em;
 }
 
-/* Vlakke donkere laag (geen gradient) voor leesbare hero-copy */
+/* Donkere gradient over de foto, onder de titel */
 .heroReadable .heroBg::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: rgba(15, 17, 24, 0.55);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
 }
 
 /* Orange line under title — "the slash" */

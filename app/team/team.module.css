@@ -82,7 +82,7 @@
 .heroLead {
   display: block;
   color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
+  -webkit-text-stroke: 1.5px var(--off);
   font-size: 0.75em;
   letter-spacing: 0.05em;
 }

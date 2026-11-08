@@ -6,7 +6,7 @@ import { BEELDEN_CREDIT } from '@/lib/photo-credit'
 import styles from './Footer.module.css'
 
 const MENU = [
-  { label: 'Training', href: '/trainen' },
+  { label: 'Trainen', href: '/trainen' },
   { label: 'Coaching', href: '/coaching' },
   { label: 'Zakelijk', href: '/zakelijk' },
   { label: 'Wie wij zijn', href: '/team' },

@@ -63,6 +63,15 @@
   pointer-events: none;
 }
 
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
+}
+
 .heroVideo::-webkit-media-controls,
 .heroVideo::-webkit-media-controls-start-playback-button,
 .heroVideo::-webkit-media-controls-overlay-play-button {
@@ -118,7 +127,7 @@
 
 .lead {
   color: transparent;
-  -webkit-text-stroke: var(--outline-stroke-hero) var(--off);
+  -webkit-text-stroke: 1.5px var(--off);
   font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
