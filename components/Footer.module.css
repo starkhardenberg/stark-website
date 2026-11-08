@@ -86,11 +86,14 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .link,
 .credit {
+  display: inline-block;
+  box-sizing: border-box;
+  min-height: 24px;
   color: inherit;
   font-size: 17px;
   font-weight: 500;

@@ -168,7 +168,7 @@
   font-family: var(--font-body), sans-serif;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(33, 36, 49, 0.62);
+  color: rgba(33, 36, 49, 0.75);
 }
 
 @media (max-width: 480px) {

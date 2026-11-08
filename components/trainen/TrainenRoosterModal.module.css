@@ -46,7 +46,7 @@
   font-family: var(--font-body), sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(33, 36, 49, 0.62);
+  color: rgba(33, 36, 49, 0.75);
 }
 
 .close {

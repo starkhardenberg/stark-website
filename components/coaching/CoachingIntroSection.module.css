@@ -264,7 +264,7 @@
   font-family: var(--font-body), sans-serif;
   font-size: var(--stark-body);
   line-height: 1.6;
-  color: rgba(33, 36, 49, 0.62);
+  color: rgba(33, 36, 49, 0.75);
 }
 
 .beatRestLine {

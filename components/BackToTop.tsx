@@ -78,7 +78,7 @@ export default function BackToTop() {
       <button
         type="button"
         className="starkBackToTop"
-        aria-label="Naar boven"
+        aria-label={visible ? 'Naar boven' : undefined}
         aria-hidden={visible ? undefined : true}
         tabIndex={visible ? 0 : -1}
         onClick={scrollToTop}

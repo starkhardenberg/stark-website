@@ -250,6 +250,8 @@
 .tabLink {
   position: relative;
   display: block;
+  box-sizing: border-box;
+  min-height: 24px;
   padding: 10px 16px 12px;
   font-family: var(--font-body), sans-serif;
   font-weight: 600;
