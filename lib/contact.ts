@@ -64,6 +64,26 @@ export const CONTACT_ONTDEKT_OPTIONS: { value: ContactOntdekt; label: string }[]
   { value: 'anders', label: 'Anders' },
 ]
 
+export function voornaamVan(naam: string) {
+  const eerste = naam.trim().split(/\s+/)[0]
+  return eerste || naam.trim()
+}
+
+/** 06… wordt +316…, zonder spaties of streepjes. */
+export function toBelLink(raw: string): string {
+  const compact = raw.replace(/[\s\-().]/g, '')
+  if (compact.startsWith('+')) {
+    return `tel:+${compact.slice(1).replace(/\D/g, '')}`
+  }
+  if (compact.startsWith('00')) {
+    return `tel:+${compact.slice(2).replace(/\D/g, '')}`
+  }
+  const digits = compact.replace(/\D/g, '')
+  if (digits.startsWith('0')) return `tel:+31${digits.slice(1)}`
+  if (digits.startsWith('31')) return `tel:+${digits}`
+  return `tel:+${digits}`
+}
+
 /** Bellen (algemeen bereikbaar) */
 export const PHONE_CALL = {
   display: '06 21248107',

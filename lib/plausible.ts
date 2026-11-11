@@ -1,4 +1,6 @@
-type PlausibleFn = (eventName: string) => void
+type PlausibleProps = Record<string, string | number | boolean>
+
+type PlausibleFn = (eventName: string, options?: { props?: PlausibleProps }) => void
 
 function readPlausible(): PlausibleFn | undefined {
   if (typeof window === 'undefined') return undefined
@@ -7,6 +9,12 @@ function readPlausible(): PlausibleFn | undefined {
 }
 
 /** No-op als het script geblokkeerd is, bijvoorbeeld door een adblocker. */
-export function track(eventName: string) {
-  readPlausible()?.(eventName)
+export function track(eventName: string, props?: PlausibleProps) {
+  const plausible = readPlausible()
+  if (!plausible) return
+  if (props && Object.keys(props).length > 0) {
+    plausible(eventName, { props })
+    return
+  }
+  plausible(eventName)
 }

@@ -31,5 +31,17 @@
       </select>
       <textarea name="bericht"></textarea>
     </form>
+
+    <form name="terugbelverzoek" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="terugbelverzoek" />
+      <p class="hidden"><label>Laat dit veld leeg: <input name="bot-field" /></label></p>
+      <input type="text" name="naam" />
+      <input type="text" name="bedrijf" />
+      <input type="tel" name="nummer" />
+      <input type="text" name="keuze_stap1" />
+      <input type="text" name="keuze_stap2" />
+      <input type="text" name="subject" />
+      <input type="text" name="bel_link" />
+    </form>
   </body>
 </html>
