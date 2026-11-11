@@ -278,8 +278,8 @@ a.heroAction:global(.starkCtaPrimary):hover {
 
 .formTitle {
   margin: 0 0 10px;
-  font-family: var(--font-bronz), var(--font-display), sans-serif;
-  font-weight: 400;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 900;
   font-size: var(--stark-h2);
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);

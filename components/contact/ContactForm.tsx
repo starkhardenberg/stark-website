@@ -1,37 +1,15 @@
 'use client'
 
-import { Suspense, useEffect, useState, type FormEvent } from 'react'
-import { useSearchParams } from 'next/navigation'
-import {
-  CONTACT_ONDERWERP_OPTIONS,
-  CONTACT_ONTDEKT_ANDERS,
-  CONTACT_ONTDEKT_VIA_LID,
-  CONTACT_ONTDEKT_OPTIONS,
-  parseOnderwerp,
-  PHONE_CALL,
-  type ContactOnderwerp,
-  type ContactOntdekt,
-} from '@/lib/contact'
+import { useRef, useState, type FormEvent } from 'react'
+import { PHONE_CALL, voornaamVan } from '@/lib/contact'
+import { postNetlifyForm } from '@/lib/netlify-form'
 import { track } from '@/lib/plausible'
 import styles from './ContactForm.module.css'
 
-function encodeFormBody(data: Record<string, string>) {
-  return new URLSearchParams(data).toString()
-}
-
-function ContactFormFields() {
-  const params = useSearchParams()
-  const initialOnderwerp = parseOnderwerp(params.get('onderwerp') ?? undefined)
-  const [onderwerp, setOnderwerp] = useState<ContactOnderwerp>(initialOnderwerp)
-  const [ontdekt, setOntdekt] = useState<ContactOntdekt | ''>('')
+export default function ContactForm() {
+  const headingRef = useRef<HTMLHeadingElement>(null)
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
-
-  const vraagtNaamVia = ontdekt === CONTACT_ONTDEKT_VIA_LID
-  const vraagtAndersToelichting = ontdekt === CONTACT_ONTDEKT_ANDERS
-
-  useEffect(() => {
-    setOnderwerp(initialOnderwerp)
-  }, [initialOnderwerp])
+  const [voornaam, setVoornaam] = useState('')
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -39,33 +17,24 @@ function ContactFormFields() {
 
     const form = event.currentTarget
     const data = new FormData(form)
-
-    const body = encodeFormBody({
-      'form-name': 'contact',
-      'bot-field': String(data.get('bot-field') ?? ''),
-      naam: String(data.get('naam') ?? ''),
-      email: String(data.get('email') ?? ''),
-      telefoon: String(data.get('telefoon') ?? ''),
-      ontdekt: String(data.get('ontdekt') ?? ''),
-      ontdekt_via_naam: String(data.get('ontdekt_via_naam') ?? ''),
-      ontdekt_anders: String(data.get('ontdekt_anders') ?? ''),
-      onderwerp: String(data.get('onderwerp') ?? ''),
-      bericht: String(data.get('bericht') ?? ''),
-    })
+    const naam = String(data.get('naam') ?? '').trim()
+    const vraag = String(data.get('vraag') ?? '').trim()
+    const bereikbaar = String(data.get('bereikbaar') ?? '').trim()
 
     try {
-      const res = await fetch('/contact-form.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
+      await postNetlifyForm({
+        'form-name': 'vraag',
+        'bot-field': String(data.get('bot-field') ?? ''),
+        vraag,
+        naam,
+        bereikbaar,
+        subject: `Vraag via de site van ${naam}`,
       })
-
-      if (!res.ok) throw new Error('submit failed')
       track('Contactformulier')
+      setVoornaam(voornaamVan(naam))
       setStatus('success')
       form.reset()
-      setOnderwerp(initialOnderwerp)
-      setOntdekt('')
+      requestAnimationFrame(() => headingRef.current?.focus({ preventScroll: true }))
     } catch {
       setStatus('error')
     }
@@ -74,28 +43,25 @@ function ContactFormFields() {
   if (status === 'success') {
     return (
       <div className={styles.success} role="status">
-        <p className={styles.successTitle}>Bedankt</p>
-        <p className={styles.successText}>
-          We nemen binnen uiterlijk 2 werkdagen contact met je op. Liever direct bellen?{' '}
-          {PHONE_CALL.display}.
-        </p>
-        <a href="/" className={styles.successLink}>
-          Terug naar home
-        </a>
+        <h3 className={styles.successTitle} tabIndex={-1} ref={headingRef}>
+          Geregeld, {voornaam}.
+        </h3>
+        <p className={styles.successText}>Je hoort binnen één werkdag van ons.</p>
       </div>
     )
   }
 
   return (
     <form
-      name="contact"
+      name="vraag"
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className={styles.form}
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="vraag" />
+      <input type="hidden" name="subject" value="" />
 
       <p className={styles.honeypot}>
         <label>
@@ -105,122 +71,36 @@ function ContactFormFields() {
       </p>
 
       <div className={styles.field}>
-        <label htmlFor="naam">Naam</label>
-        <input id="naam" name="naam" type="text" required autoComplete="name" />
+        <label htmlFor="vraag-tekst">Je vraag</label>
+        <textarea id="vraag-tekst" name="vraag" rows={3} required />
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="email">E-mail</label>
-        <input id="email" name="email" type="email" required autoComplete="email" />
+        <label htmlFor="vraag-naam">Naam</label>
+        <input id="vraag-naam" name="naam" type="text" required autoComplete="name" />
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="telefoon">Telefoon</label>
-        <input
-          id="telefoon"
-          name="telefoon"
-          type="tel"
-          required
-          autoComplete="tel"
-          inputMode="tel"
-        />
+        <label htmlFor="vraag-bereikbaar">Mobiel nummer of e-mail</label>
+        <input id="vraag-bereikbaar" name="bereikbaar" type="text" required autoComplete="on" />
       </div>
-
-      <div className={styles.field}>
-        <label htmlFor="onderwerp">Waar ben je naar op zoek?</label>
-        <select
-          id="onderwerp"
-          name="onderwerp"
-          required
-          value={onderwerp}
-          onChange={(e) => setOnderwerp(e.target.value as ContactOnderwerp)}
-        >
-          {CONTACT_ONDERWERP_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="bericht">
-          Bericht <span className={styles.optional}>(optioneel)</span>
-        </label>
-        <textarea id="bericht" name="bericht" rows={4} />
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="ontdekt">
-          Hoe heb je ons ontdekt? <span className={styles.optional}>(optioneel)</span>
-        </label>
-        <select
-          id="ontdekt"
-          name="ontdekt"
-          value={ontdekt}
-          onChange={(e) => setOntdekt(e.target.value as ContactOntdekt | '')}
-        >
-          <option value="">Kies een optie</option>
-          {CONTACT_ONTDEKT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {vraagtNaamVia && (
-        <div className={`${styles.field} ${styles.fieldNested}`}>
-          <label htmlFor="ontdekt_via_naam">Wie ken je bij STARK!?</label>
-          <input
-            id="ontdekt_via_naam"
-            name="ontdekt_via_naam"
-            type="text"
-            autoComplete="name"
-            placeholder="Voornaam en achternaam"
-          />
-        </div>
-      )}
-
-      {vraagtAndersToelichting && (
-        <div className={`${styles.field} ${styles.fieldNested}`}>
-          <label htmlFor="ontdekt_anders">Hoe precies?</label>
-          <input
-            id="ontdekt_anders"
-            name="ontdekt_anders"
-            type="text"
-            placeholder="Bijv. via een flyer, podcast of buurthuis"
-          />
-        </div>
-      )}
 
       <p className={styles.privacy}>
-        We gebruiken je gegevens alleen om contact met je op te nemen. Lees onze{' '}
+        We gebruiken je gegevens alleen om je vraag te beantwoorden. Lees de{' '}
         <a href="/privacy">privacyverklaring</a>.
       </p>
 
-      {status === 'error' && (
+      {status === 'error' ? (
         <p className={styles.error} role="alert">
           Er ging iets mis. Probeer het opnieuw of bel ons op {PHONE_CALL.display}.
         </p>
-      )}
+      ) : null}
 
       <div className={styles.actions}>
         <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
-          {status === 'submitting' ? 'Versturen…' : 'Verstuur je vraag'}
+          {status === 'submitting' ? 'Versturen…' : 'Versturen'}
         </button>
-        <a href="/#aanbod" className={styles.back}>
-          ← Terug naar home
-        </a>
       </div>
     </form>
-  )
-}
-
-export default function ContactForm() {
-  return (
-    <Suspense fallback={null}>
-      <ContactFormFields />
-    </Suspense>
   )
 }

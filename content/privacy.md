@@ -1,6 +1,6 @@
 # Privacyverklaring STARK! Hardenberg
 
-Versie 5 november 2026
+Versie 11 november 2026
 
 STARK! verwerkt persoonsgegevens van bezoekers van deze website en van leden en klanten. In deze verklaring lees je welke gegevens we verwerken, waarvoor, hoe lang we ze bewaren en welke rechten je hebt.
 
@@ -12,7 +12,9 @@ STARK! Hardenberg is de naam waaronder Stark Hardenberg V.O.F. werkt (KvK 981266
 
 **Statistieken.** We gebruiken Plausible Analytics om te zien hoeveel mensen de site bezoeken en welke pagina's ze bekijken. Plausible plaatst geen cookies en slaat geen gegevens op waarmee jij als persoon herkenbaar bent. Je IP-adres wordt niet bewaard. Daarom vragen we hiervoor geen toestemming en zie je geen cookiebanner.
 
-**Contactformulier.** Vul je het contactformulier in, dan verwerken we je naam, e-mailadres, telefoonnummer, je vraag en, als je dat invult, waar je naar op zoek bent en hoe je ons hebt gevonden. We gebruiken die gegevens alleen om contact met je op te nemen. Het formulier loopt via Netlify, de partij die onze website host. We bewaren je bericht zolang dat nodig is om je vraag af te handelen en verwijderen het daarna binnen een jaar.
+**Contactformulier.** Vul je het vraagformulier in, dan verwerken we je naam, je vraag en het mobiele nummer of e-mailadres dat je achterlaat. We gebruiken die gegevens alleen om je vraag te beantwoorden. Het formulier loopt via Netlify, de partij die onze website host. We bewaren je bericht zolang dat nodig is om je vraag af te handelen en verwijderen het daarna binnen een jaar.
+
+**Terugbelverzoek.** Laat je via de routekiezer op de homepage je nummer achter, dan verwerken we je naam, je bedrijfsnaam, je telefoonnummer en de keuzes die je daar maakte. We gebruiken die gegevens alleen om je terug te bellen. Ook dit formulier loopt via Netlify. We bewaren je bericht zolang dat nodig is om je te bellen en verwijderen het daarna binnen een jaar.
 
 **Kennismaking plannen.** Plan je een kennismakingsgesprek, dan doe je dat via Microsoft Bookings. Je vult daar je naam, e-mailadres en telefoonnummer in. Die gegevens komen in onze agenda en gebruiken we alleen voor dat gesprek.
 

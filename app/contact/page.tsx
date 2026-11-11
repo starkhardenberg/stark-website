@@ -62,9 +62,9 @@ export default function ContactPage() {
         <section className={styles.formSection} aria-label="Contactformulier">
           <div className={styles.formCard}>
             <header className={styles.formHead}>
-              <h2 className={styles.formTitle}>Stel je vraag</h2>
+              <h2 className={styles.formTitle}>Vraag maar raak</h2>
               <p className={styles.formLead}>
-                Vul het formulier in. We nemen binnen uiterlijk 2 werkdagen contact met je op.
+                Stel je vraag. Je hoort binnen één werkdag van ons.
               </p>
             </header>
             <ContactForm />
