@@ -14,7 +14,7 @@ type FaqListProps = {
   items: readonly FaqItem[]
   /** Light = tekst op een lichte band. Dark = tekst op een donkere band. */
   tone?: 'dark' | 'light'
-  /** Landing = Bronz. Dienst = de grotere Barlow-vragen. */
+  /** Zelfde Bronz als de andere koppen. Landing is iets ruimer gezet. */
   variant?: 'landing' | 'dienst'
   /** Index die bij laden open staat. Standaard alles dicht. */
   initialOpen?: number | null

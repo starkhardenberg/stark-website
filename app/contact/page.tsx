@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import StarkImage from '@/components/StarkImage'
 import ContactForm from '@/components/contact/ContactForm'
-import WhatsAppLink from '@/components/contact/WhatsAppLink'
-import WhatsAppIcon from '@/components/contact/WhatsAppIcon'
-import { ADDRESS, mailtoInfo, PHONE_CALL, PHONE_WHATSAPP } from '@/lib/contact'
+import { ADDRESS, PHONE_CALL, PHONE_WHATSAPP } from '@/lib/contact'
 import { pageMetadata } from '@/lib/open-graph'
-import { STARK_CTA, STARK_CTA_PRIMARY, STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
+import { STARK_CTA, STARK_CTA_MD, STARK_CTA_ROW, STARK_CTA_WHATSAPP } from '@/lib/stark-cta'
 import Footer from '@/components/Footer'
+import landing from '../landing.module.css'
 import styles from './contact.module.css'
 
 export const metadata: Metadata = pageMetadata(
@@ -18,117 +17,89 @@ export const metadata: Metadata = pageMetadata(
 export default function ContactPage() {
   return (
     <>
-    <main className={styles.page}>
-      <section className={styles.hero} aria-labelledby="contact-hero-title">
-        <div className={styles.heroFrame}>
-          <div className={styles.heroCopy}>
-            <h1 id="contact-hero-title" className={styles.heroTitle}>
-              We staan voor je klaar
+      <main className={landing.main}>
+        <section className={`${landing.hero} ${styles.heroSplit}`} aria-labelledby="contact-hero-title">
+          <div className={`${landing.heroContent} ${styles.heroCopy}`}>
+            <h1 id="contact-hero-title" className={`${landing.heroTitle} ${landing.heroTitleSplit}`}>
+              <span className={landing.heroLead}>We staan</span>
+              <span className={landing.heroPunch}>Voor je</span>
+              <span className={landing.heroPunch}>Klaar</span>
             </h1>
-            <p className={styles.heroSub}>Vrijblijvend en eerlijk.</p>
-            <div className={styles.heroActions}>
-              <a
-                href={PHONE_CALL.tel}
-                className={`${styles.heroAction} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
-              >
+            <p className={landing.heroSub}>Vrijblijvend en eerlijk.</p>
+            <div className={`${STARK_CTA_ROW} ${styles.heroActions}`}>
+              <a href={PHONE_CALL.tel} className={`${STARK_CTA} ${STARK_CTA_MD} ${STARK_CTA_WHATSAPP}`}>
                 Bel Engbert-Jan
               </a>
               <a
                 href={`https://wa.me/${PHONE_WHATSAPP.wa}`}
-                className={`${styles.heroAction} ${STARK_CTA} ${STARK_CTA_WHATSAPP}`}
+                className={`${STARK_CTA} ${STARK_CTA_MD} ${STARK_CTA_WHATSAPP}`}
               >
                 App Yvonne
               </a>
             </div>
           </div>
           <div className={styles.heroMedia}>
-            <div className={styles.heroPhoto}>
-              <StarkImage
-                src="/images/team/engbert-jan-yvonne-hero.jpg"
-                alt="Engbert-Jan en Yvonne lachen samen"
-                fill
-                unaltered
-                priority
-                quality={85}
-                sizes="100vw"
-                className={styles.heroImg}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className={styles.shell}>
-        <section className={styles.formSection} aria-label="Contactformulier">
-          <div className={styles.formCard}>
-            <header className={styles.formHead}>
-              <h2 className={styles.formTitle}>Vraag maar raak</h2>
-              <p className={styles.formLead}>
-                Stel je vraag. Je hoort binnen één werkdag van ons.
-              </p>
-            </header>
-            <ContactForm />
-          </div>
-        </section>
-
-        <section className={styles.practical} aria-label="Contactgegevens">
-          <div className={styles.infoCard}>
-            <h2 className={styles.infoTitle}>Direct contact</h2>
-            <ul className={styles.infoList}>
-              <li>
-                <span className={styles.infoLabel}>Telefoon</span>
-                <a href={PHONE_CALL.tel}>{PHONE_CALL.display}</a>
-              </li>
-              <li>
-                <span className={styles.infoLabel}>E-mail</span>
-                <a href={mailtoInfo}>info@starkhardenberg.nl</a>
-              </li>
-              <li>
-                <span className={styles.infoLabel}>WhatsApp</span>
-                <WhatsAppLink className={styles.whatsAppInline}>
-                  <WhatsAppIcon className={styles.whatsAppIcon} />
-                  <span>{PHONE_WHATSAPP.display}</span>
-                </WhatsAppLink>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section className={styles.visit} aria-label="Bezoekadres">
-          <h2 className={styles.infoTitle}>Bezoekadres</h2>
-          <p className={styles.address}>
-            {ADDRESS.street}
-            <br />
-            {ADDRESS.city}
-          </p>
-          <p className={styles.address}>
-            Onze leden komen uit de hele gemeente Hardenberg, zoals Dedemsvaart, Gramsbergen,
-            Bergentheim, Slagharen en Kloosterhaar, en uit Ommen en Coevorden.
-          </p>
-          <a
-            href={ADDRESS.maps}
-            className={styles.routeBtn}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Route openen in Google Maps
-            <span aria-hidden>→</span>
-          </a>
-          <div className={styles.mapWrap}>
-            <iframe
-              title="STARK! Hardenberg op Google Maps"
-              src={ADDRESS.mapsEmbed}
-              className={styles.map}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
+            <StarkImage
+              src="/images/team/engbert-jan-yvonne-hero.jpg"
+              alt="Engbert-Jan en Yvonne lachen samen"
+              fill
+              unaltered
+              priority
+              quality={85}
+              sizes="(min-width: 900px) 50vw, 100vw"
+              className={`${landing.heroBgImg} ${styles.heroImg}`}
             />
           </div>
         </section>
 
-      </div>
-    </main>
-    <Footer variant="dark" />
+        <section
+          className={`${landing.section} ${landing.sectionLight} ${landing.splitStatement}`}
+          aria-label="Vraag en bezoek"
+        >
+          <div className={`${landing.split} ${landing.reverse} ${styles.band}`}>
+            <div className={styles.formCol}>
+              <h2 className={landing.title}>Vraag maar raak</h2>
+              <p className={`${landing.processStepDesc} ${styles.lead}`}>
+                Stel je vraag. Je hoort binnen één werkdag van ons.
+              </p>
+              <ContactForm />
+            </div>
+            <div className={`${landing.introCol} ${styles.visit}`}>
+              <h2 className={landing.title}>Kom langs</h2>
+              <p className={landing.processStepDesc}>
+                {ADDRESS.street}
+                <br />
+                {ADDRESS.city}
+              </p>
+              <div className={styles.mapWrap}>
+                <iframe
+                  title="STARK! Hardenberg op Google Maps"
+                  src={ADDRESS.mapsEmbed}
+                  className={styles.map}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className={`${STARK_CTA_ROW} ${styles.route}`}>
+                <a
+                  href={ADDRESS.maps}
+                  className={`${STARK_CTA} ${STARK_CTA_MD} ${STARK_CTA_WHATSAPP}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Route openen
+                </a>
+              </div>
+              <p className={`${landing.processStepDesc} ${styles.towns}`}>
+                Onze leden komen uit de hele gemeente Hardenberg, zoals Dedemsvaart, Gramsbergen,
+                Bergentheim, Slagharen en Kloosterhaar, en uit Ommen en Coevorden.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer variant="dark" />
     </>
   )
 }

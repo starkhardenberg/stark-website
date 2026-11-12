@@ -11,7 +11,7 @@ STARK! Hardenberg is de naam waaronder Stark Hardenberg V.O.F. werkt. We zijn ge
 - Rechtsvorm en tenaamstelling: Stark Hardenberg, V.O.F.
 - Adres: Nijverheidsstraat 15c, 7772 TP Hardenberg
 - E-mail: info@starkhardenberg.nl
-- Telefoon: 06 21248107
+- Telefoon: 06 21 24 81 07
 
 In deze voorwaarden bedoelen we met:
 

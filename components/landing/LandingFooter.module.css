@@ -7,9 +7,9 @@
 .headline {
   margin: 0 0 clamp(22px, 3vw, 28px);
   max-width: 14ch;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: clamp(28px, 5vw, 44px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;

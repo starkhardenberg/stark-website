@@ -62,7 +62,7 @@
 }
 
 .railLabel {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: clamp(1.75rem, 4.5vw, 3rem);
   font-weight: 400;
   letter-spacing: var(--display-tracking);
@@ -171,7 +171,7 @@
 
 .hook {
   margin: 0;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: clamp(1.65rem, 4.2vw, var(--stark-h2));
   font-weight: 400;
   line-height: var(--display-leading);

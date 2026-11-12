@@ -4,6 +4,7 @@ import RouteKiezer from './aanbod/RouteKiezer'
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import Uitroepteken from '@/components/Uitroepteken'
 import { STARK_GRAIN } from '@/lib/stark-grain'
+import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './AanbodSection.module.css'
 
 export default function AanbodSection() {
@@ -32,8 +33,9 @@ export default function AanbodSection() {
           </p>
           <div className={styles.sectionCtaPicker}>
             <RouteKiezer />
-            <WhatsAppLink className={styles.sectionCtaDirect}>
-              Liever direct appen? Stuur Yvonne een bericht
+            <WhatsAppLink className={`${styles.sectionCtaDirect} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}>
+              <span>Liever direct appen?</span>
+              <span>Stuur Yvonne een bericht</span>
             </WhatsAppLink>
           </div>
         </div>

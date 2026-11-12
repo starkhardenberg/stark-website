@@ -6,7 +6,7 @@ STARK! verwerkt persoonsgegevens van bezoekers van deze website en van leden en 
 
 ## 1. Wie zijn wij
 
-STARK! Hardenberg is de naam waaronder Stark Hardenberg V.O.F. werkt (KvK 98126660). Wij zijn verantwoordelijk voor de verwerking van je gegevens. Je bereikt ons op Nijverheidsstraat 15c, 7772 TP Hardenberg, via info@starkhardenberg.nl of 06 21248107.
+STARK! Hardenberg is de naam waaronder Stark Hardenberg V.O.F. werkt (KvK 98126660). Wij zijn verantwoordelijk voor de verwerking van je gegevens. Je bereikt ons op Nijverheidsstraat 15c, 7772 TP Hardenberg, via info@starkhardenberg.nl of 06 21 24 81 07.
 
 ## 2. Als je onze website bezoekt
 

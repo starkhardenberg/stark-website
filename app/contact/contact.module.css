@@ -1,350 +1,95 @@
-.page {
-  min-height: 100svh;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  padding-top: var(--nav-bar);
-  background-color: var(--stark-black);
-  color: var(--off);
-  font-family: var(--font-body), sans-serif;
+/* Alleen de splitsing die landing.module.css niet heeft. */
+
+.heroSplit .heroCopy {
+  position: relative;
+  inset: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: calc(var(--nav-bar) + 0.15 * (190 / 1920) * 100vw);
+  padding-bottom: 48px;
 }
 
-.shell {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: clamp(72px, 10vw, 120px) clamp(20px, 4vw, 48px) clamp(72px, 10vw, 112px);
-  box-sizing: border-box;
-}
-
-.hero {
-  background: #020202;
-  padding: 28px 0 48px;
-}
-
-.heroFrame {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 22px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
+.heroSplit .heroActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 28px;
+  width: auto;
+  max-width: none;
+}
+
+.heroSplit .heroActions > a {
+  width: auto;
+  max-width: none;
+  flex: none;
 }
 
 .heroMedia {
-  width: 100%;
-  background: #020202;
-}
-
-.heroPhoto {
   position: relative;
   width: 100%;
-  height: auto;
   aspect-ratio: 2048 / 1365;
-  background: #020202;
-}
-
-.heroImg {
-  object-fit: cover;
-  object-position: 50% 100%;
-}
-
-.heroCopy {
-  position: relative;
-  min-width: 0;
-}
-
-.heroTitle {
-  margin: 0;
-  max-width: 11ch;
-  font-family: var(--font-bronz), var(--font-display), sans-serif;
-  font-weight: 400;
-  font-size: clamp(42px, 12vw, 64px);
-  line-height: 0.92;
-  letter-spacing: var(--display-tracking);
-  text-transform: uppercase;
-  color: var(--off);
-}
-
-.heroSub {
-  margin: 22px 0 0;
-  width: fit-content;
-  max-width: 100%;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--orange);
-  font-family: var(--font-body), sans-serif;
-  font-weight: 600;
-  font-size: clamp(22px, 2.4vw, 30px);
-  line-height: 1.2;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--off);
-}
-
-.heroActions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 22px;
-  width: 100%;
-}
-
-a.heroAction:global(.starkCta) {
-  box-sizing: border-box;
-  flex: none;
-  width: 100%;
-  max-width: 100%;
-  padding: 14px 32px !important;
-  font-size: 13px !important;
-  line-height: 1.2 !important;
-  border: 2px solid currentColor !important;
-  white-space: nowrap;
-}
-
-a.heroAction:global(.starkCtaPrimary) {
-  border-color: var(--stark-accent) !important;
-}
-
-a.heroAction:global(.starkCtaPrimary):hover {
-  border-color: var(--orange-deep) !important;
-}
-
-.practical {
-  margin-bottom: 64px;
-  padding-top: clamp(40px, 6vw, 64px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.visit {
-  padding: clamp(28px, 4vw, 36px);
-  background: var(--off);
-  color: var(--navy);
-  border-top: 4px solid var(--stark-black);
-}
-
-.visit .infoTitle {
-  color: var(--navy);
-}
-
-.visit .address {
-  color: rgba(24, 26, 24, 0.78);
-}
-
-.visit .routeBtn {
-  color: var(--navy);
-  border-color: rgba(24, 26, 24, 0.28);
-}
-
-.visit .routeBtn:hover {
-  border-color: var(--navy);
-  color: var(--navy);
-}
-
-.visit .mapWrap {
-  margin-top: clamp(22px, 3vw, 32px);
-  border-color: rgba(24, 26, 24, 0.12);
-}
-
-.infoCard {
-  padding: clamp(22px, 3vw, 28px);
-  background: rgba(245, 245, 245, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 2px solid var(--stark-black);
-}
-
-.infoTitle {
-  margin: 0 0 16px;
-  font-family: var(--font-bronz), var(--font-display), sans-serif;
-  font-weight: 400;
-  font-size: var(--stark-h2);
-  letter-spacing: var(--display-tracking);
-  line-height: var(--display-leading);
-  text-transform: uppercase;
-  color: var(--off);
-}
-
-.infoList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.infoList li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.infoLabel {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #888a88;
-}
-
-.infoList a,
-.whatsAppInline {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--off);
-  transition: color 0.18s ease;
-}
-
-.infoList a:hover,
-.whatsAppInline:hover {
-  color: var(--stark-grey);
-}
-
-.whatsAppInline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.whatsAppIcon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.address {
-  margin: 0 0 18px;
-  font-size: 16px;
-  line-height: 1.55;
-  color: rgba(245, 245, 245, 0.78);
-}
-
-.routeBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 16px;
-  border: 1px solid rgba(245, 245, 245, 0.22);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--off);
-  transition:
-    border-color 0.18s ease,
-    color 0.18s ease;
-}
-
-.routeBtn:hover {
-  border-color: var(--stark-grey);
-  color: var(--stark-grey);
-}
-
-.mapWrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  min-height: 220px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--stark-black);
 }
 
-.map {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  filter: grayscale(0.35) contrast(1.04);
+.heroMedia .heroImg {
+  object-position: 55% 42%;
 }
 
-.formSection {
-  margin-bottom: clamp(48px, 7vw, 72px);
-}
-
-.formCard {
-  padding: clamp(28px, 4vw, 36px);
-  background: var(--off);
-  border-radius: 0;
-  border: 1px solid rgba(24, 26, 24, 0.1);
-  border-top: 4px solid var(--stark-black);
-}
-
-.formHead {
-  margin-bottom: clamp(22px, 3vw, 28px);
-}
-
-.formTitle {
-  margin: 0 0 10px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
-  font-size: var(--stark-h2);
-  line-height: var(--display-leading);
-  letter-spacing: var(--display-tracking);
-  text-transform: uppercase;
-  color: var(--navy);
-  text-wrap: balance;
-}
-
-.formLead {
-  margin: 0;
-  font-size: var(--stark-body);
-  line-height: 1.55;
-  color: #707070;
-}
-
-@media (min-width: 720px) {
-  .heroActions {
-    flex-direction: row;
-    align-items: center;
-    width: auto;
-  }
-
-  a.heroAction:global(.starkCta) {
-    width: auto !important;
-    max-width: none;
+@media (max-width: 899px) {
+  .band .visit {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 48px;
   }
 }
 
 @media (min-width: 900px) {
-  .hero {
-    margin-top: 72px;
-    padding-top: 48px;
-  }
-
-  .heroTitle {
-    max-width: 9ch;
-    font-size: clamp(46px, 4vw, 68px);
-  }
-
-  .heroSub {
-    margin-top: 28px;
-    padding-bottom: 36px;
-  }
-
-  .mapWrap {
-    aspect-ratio: 21 / 9;
-  }
-}
-
-@media (min-width: 1024px) {
-  .heroFrame {
-    grid-template-columns: 5fr 7fr;
-    column-gap: 72px;
+  .heroSplit.heroSplit {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
     align-items: stretch;
-    padding-left: 48px;
-    padding-right: 48px;
   }
 
-  .heroCopy {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .heroSplit .heroCopy {
+    padding-bottom: 72px;
   }
 
   .heroMedia {
-    align-self: center;
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 100%;
   }
+
+  .band {
+    column-gap: 48px;
+  }
+}
+
+.formCol .lead {
+  margin: 0 0 32px;
+}
+
+.visit .mapWrap,
+.visit .route,
+.visit .towns {
+  margin-top: 24px;
+}
+
+.mapWrap {
+  height: 280px;
+  overflow: hidden;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(1);
 }

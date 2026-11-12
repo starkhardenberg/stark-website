@@ -370,8 +370,8 @@
 }
 
 .memberName {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(18px, 4vw, 26px);
   text-transform: uppercase;
   color: rgba(245, 245, 245, 0.55);

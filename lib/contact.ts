@@ -86,7 +86,7 @@ export function toBelLink(raw: string): string {
 
 /** Bellen (algemeen bereikbaar) */
 export const PHONE_CALL = {
-  display: '06 21248107',
+  display: '06 21 24 81 07',
   /** Volledige tel:-URI, direct bruikbaar als href */
   tel: 'tel:+31621248107',
 } as const

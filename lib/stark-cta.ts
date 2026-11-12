@@ -6,5 +6,7 @@ export const STARK_CTA_NAV = 'starkCtaNav'
 export const STARK_CTA_PRIMARY = 'starkCtaPrimary'
 /** Vaste WhatsApp-knop (Prompt 4/11). */
 export const STARK_CTA_WHATSAPP = 'starkCtaWhatsapp'
+/** Vaste hoogte voor knoppen die dezelfde maat moeten houden. */
+export const STARK_CTA_MD = 'starkCtaMd'
 /** Oranje uitroepteken in STARK! */
 export const STARK_EXCLAIM = 'starkExclaim'

@@ -17,7 +17,7 @@ export default function LandingFooter({ whatsapp = false }: LandingFooterProps) 
 
       <p className={styles.contact}>
         <a href="tel:+31621248107" className={styles.contactLink}>
-          06 21248107
+          06 21 24 81 07
         </a>
         <span className={styles.sep} aria-hidden>
           –

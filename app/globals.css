@@ -68,9 +68,9 @@ h3 {
 
 .stark-h1,
 h1.stark-display {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: var(--stark-h1);
-  font-weight: 900;
+  font-weight: 400;
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -78,9 +78,9 @@ h1.stark-display {
 
 .stark-h2,
 h2.stark-display {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: var(--stark-h2);
-  font-weight: 900;
+  font-weight: 400;
   line-height: var(--display-leading);
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;
@@ -284,5 +284,54 @@ button.starkCtaPrimary:not(.starkCtaNav) {
   .starkCta:not(.starkCtaNav) {
     padding-block: 18px !important;
     padding-inline: clamp(24px, 7vw, 36px) !important;
+  }
+}
+
+/* Vaste maat. Alleen met .starkCtaMd; bestaande knoppen blijven ongemoeid. */
+a.starkCta.starkCtaMd,
+button.starkCta.starkCtaMd {
+  height: 52px;
+  padding: 0 28px !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+  white-space: nowrap;
+}
+
+a.starkCtaPrimary.starkCtaMd:not(.starkCtaNav),
+button.starkCtaPrimary.starkCtaMd:not(.starkCtaNav) {
+  width: auto;
+  max-width: max-content;
+}
+
+@media (min-width: 900px) {
+  a.starkCtaPrimary.starkCtaMd:not(.starkCtaNav),
+  button.starkCtaPrimary.starkCtaMd:not(.starkCtaNav) {
+    width: auto;
+  }
+}
+
+@media (max-width: 899px) {
+  .starkCta.starkCtaMd:not(.starkCtaNav) {
+    height: 52px;
+    font-size: 13px !important;
+    letter-spacing: 0.12em !important;
+    padding: 0 28px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .starkCtaRow > a.starkCtaMd,
+  .starkCtaRow > button.starkCtaMd {
+    width: auto;
+    max-width: max-content;
+  }
+}
+
+@media (max-width: 519px) {
+  .starkCta.starkCtaMd:not(.starkCtaNav) {
+    height: 52px;
+    padding: 0 28px !important;
+    font-size: 13px !important;
   }
 }

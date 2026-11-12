@@ -392,8 +392,8 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 
 .h2 {
   margin: 0;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: var(--num-size);
   line-height: 1.05;
   letter-spacing: 0.005em;
@@ -419,8 +419,8 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 
 .h3 {
   margin: 0 0 14px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 22px;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -490,8 +490,8 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 .close {
   margin: 48px 0 0;
   max-width: 18em;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(28px, 3.6vw, 44px);
   line-height: 1.05;
   letter-spacing: 0.01em;
@@ -536,8 +536,8 @@ a.button.buttonWide:global(.starkCtaPrimary) {
 
 .partTitle {
   margin: 0 0 8px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 22px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -922,8 +922,8 @@ a.button.buttonWide:global(.starkCtaPrimary) {
   margin: 0 0 clamp(72px, 9vw, 112px);
   width: max-content;
   max-width: 100%;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(44px, 5.6vw, 76px);
   line-height: 0.85;
   letter-spacing: -0.03em;

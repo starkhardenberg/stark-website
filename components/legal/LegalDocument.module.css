@@ -27,7 +27,8 @@
 .h2,
 .h3,
 .chapterTitle {
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   letter-spacing: var(--display-tracking);
   line-height: var(--display-leading);
   text-transform: uppercase;
@@ -36,13 +37,13 @@
 
 .title {
   margin: 0;
-  font-weight: 900;
+  font-weight: 400;
   font-size: var(--stark-h2);
 }
 
 .h2 {
   margin: clamp(36px, 5vw, 52px) 0 0;
-  font-weight: 700;
+  font-weight: 400;
   font-size: clamp(22px, 3vw, 28px);
   letter-spacing: 0.02em;
   line-height: 1.05;
@@ -50,7 +51,7 @@
 
 .chapterTitle {
   margin: 5rem 0 0;
-  font-weight: 900;
+  font-weight: 400;
   font-size: var(--stark-h2);
   letter-spacing: var(--display-tracking);
   line-height: var(--display-leading);
@@ -58,7 +59,7 @@
 
 .h3 {
   margin: clamp(36px, 5vw, 52px) 0 0;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 22px;
   letter-spacing: 0.02em;
   line-height: 1.05;

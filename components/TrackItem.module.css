@@ -22,8 +22,8 @@
 .trainenRoutesTitle {
   margin: 0;
   width: 100%;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(48px, 14vw, 132px);
   line-height: 0.92;
   letter-spacing: var(--display-tracking);
@@ -107,8 +107,8 @@
 }
 
 .cat {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(26px, 6vw, 42px);
   letter-spacing: var(--display-tracking);
   line-height: 1;

@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from 'react'
 import { PHONE_CALL, voornaamVan } from '@/lib/contact'
 import { postNetlifyForm } from '@/lib/netlify-form'
 import { track } from '@/lib/plausible'
+import { STARK_CTA, STARK_CTA_MD, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
 import styles from './ContactForm.module.css'
 
 export default function ContactForm() {
@@ -85,11 +86,6 @@ export default function ContactForm() {
         <input id="vraag-bereikbaar" name="bereikbaar" type="text" required autoComplete="on" />
       </div>
 
-      <p className={styles.privacy}>
-        We gebruiken je gegevens alleen om je vraag te beantwoorden. Lees de{' '}
-        <a href="/privacy">privacyverklaring</a>.
-      </p>
-
       {status === 'error' ? (
         <p className={styles.error} role="alert">
           Er ging iets mis. Probeer het opnieuw of bel ons op {PHONE_CALL.display}.
@@ -97,9 +93,17 @@ export default function ContactForm() {
       ) : null}
 
       <div className={styles.actions}>
-        <button type="submit" className={styles.submit} disabled={status === 'submitting'}>
+        <button
+          type="submit"
+          className={`${styles.submit} ${STARK_CTA} ${STARK_CTA_MD} ${STARK_CTA_PRIMARY}`}
+          disabled={status === 'submitting'}
+        >
           {status === 'submitting' ? 'Versturen…' : 'Versturen'}
         </button>
+        <p className={styles.privacy}>
+          We gebruiken je gegevens alleen om je vraag te beantwoorden. Lees de{' '}
+          <a href="/privacy">privacyverklaring</a>.
+        </p>
       </div>
     </form>
   )

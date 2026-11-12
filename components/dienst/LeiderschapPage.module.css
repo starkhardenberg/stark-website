@@ -6,8 +6,8 @@
 
 .sheetHeading {
   margin: 0 0 8px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 22px;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -16,8 +16,8 @@
 
 .itemLabel {
   margin: 22px 0 6px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.04em;
   line-height: 1.2;

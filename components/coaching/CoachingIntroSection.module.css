@@ -248,9 +248,9 @@
 
 .beatLead {
   margin: 0;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-size: clamp(24px, 4.2vw, 40px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.96;
   letter-spacing: var(--display-tracking);
   text-transform: uppercase;

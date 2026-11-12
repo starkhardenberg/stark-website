@@ -11,8 +11,8 @@
 
 .title {
   margin: 0 0 clamp(12px, 2vw, 18px);
-  font-family: var(--font-display), sans-serif;
-  font-weight: 900;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: var(--stark-h2);
   letter-spacing: var(--display-tracking);
   line-height: var(--display-leading);
@@ -98,8 +98,8 @@
 
 .cardTitle {
   margin: 0 0 6px;
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(17px, 2vw, 20px);
   letter-spacing: -0.01em;
   text-transform: uppercase;

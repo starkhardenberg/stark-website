@@ -85,8 +85,8 @@
 }
 
 .heroTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(64px, 16vw, 160px);
   line-height: 0.88;
   text-transform: uppercase;
@@ -175,8 +175,8 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(26px, 4.5vw, 44px);
   text-transform: uppercase;
   color: var(--off);
@@ -223,8 +223,8 @@
 }
 
 .gridTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 22px;
   text-transform: uppercase;
   color: var(--off);
@@ -283,8 +283,8 @@
 }
 
 .priceItemTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: 20px;
   text-transform: uppercase;
   color: var(--off);
@@ -312,8 +312,8 @@
 }
 
 .ctaTitle {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(26px, 5vw, 44px);
   text-transform: uppercase;
   color: var(--off);

@@ -24,8 +24,8 @@
   background: transparent;
   text-align: left;
   cursor: pointer;
-  font-family: var(--font-body), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
+  font-weight: 400;
   font-size: clamp(21px, 2.15vw, 24px);
   line-height: 1.35;
   color: var(--off);
@@ -137,7 +137,7 @@
   color: var(--stark-black);
 }
 
-/* Landingspagina's: Bronz. Diensten houden de grotere Barlow-vragen, ook op een lichte band. */
+/* Vragen zijn Bronz, gelijk aan de andere koppen. */
 .listLanding .question {
   align-items: center;
   padding: 26px 0;

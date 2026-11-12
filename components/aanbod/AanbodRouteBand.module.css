@@ -63,7 +63,7 @@
 
 .name {
   margin: 0;
-  font-family: var(--font-display), sans-serif;
+  font-family: var(--font-bronz), var(--font-display), sans-serif;
   font-weight: 400;
   font-size: clamp(2rem, 5.5vw, var(--stark-h2));
   line-height: var(--display-leading);
