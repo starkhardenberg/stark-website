@@ -191,6 +191,11 @@ export const TRAJECT_FAQ = [
       'Ja. Draagkracht is voor teams die de volgende stap willen zetten. Het loopt, en je weet dat er nog iets in zit. Daar hoeft geen probleem voor te zijn.',
   },
   {
+    question: 'Kunnen we dit niet zelf?',
+    answer:
+      'Ja. Daar werkt Draagkracht naartoe. Je team leert weten wat er moet gebeuren, het toezeggen en het ook doen. Wij kijken mee van buitenaf en zien wat je van binnenuit mist. Na het traject doen jullie het zelf.',
+  },
+  {
     question: 'Waarom doe ik als eigenaar zelf mee?',
     answer:
       'Je team zet de stap met jou. In de teamcoaching en in de training ben je deel van het team. Een set van tien is een set van tien, ook voor jou. In je eigen coaching 1-op-1 werk je aan wat bij jou als eigenaar hoort.',
@@ -209,11 +214,6 @@ export const TRAJECT_FAQ = [
     question: 'Moeten mensen al sporten?',
     answer:
       'Nee. Iedereen traint op zijn eigen niveau. Blessures of klachten bespreken we voor de start.',
-  },
-  {
-    question: 'Wat gebeurt er met trainen na het eerste kwartaal?',
-    answer:
-      'Na een kwartaal ligt de basis. Dan beslis je of jullie die verder uitbouwen en blijven trainen bij STARK!. Dat valt buiten het traject. Hoe jullie doortrainen, spreken we samen af.',
   },
   {
     question: 'Hoe weet ik of het werkt?',
