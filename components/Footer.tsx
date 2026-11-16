@@ -1,7 +1,7 @@
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import { ADDRESS, mailtoInfo } from '@/lib/contact'
 import { BEELDEN_CREDIT } from '@/lib/photo-credit'
-import { getZichtbareVerhalen } from '@/lib/verhalen'
+import { getGepubliceerdeVerhalen } from '@/lib/verhalen'
 import styles from './Footer.module.css'
 
 const MENU = [
@@ -60,7 +60,7 @@ export default function Footer({
   /** Drop-in: geen oranje pijl of stip. */
   accent?: boolean
 }) {
-  const menu = getZichtbareVerhalen().length > 0
+  const menu = getGepubliceerdeVerhalen().length > 0
     ? [...MENU, { label: 'Starke verhalen', href: '/verhalen' }]
     : MENU
 
