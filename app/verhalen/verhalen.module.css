@@ -254,6 +254,11 @@
     min-width: 0;
   }
 
+  .copy {
+    max-width: 680px;
+    justify-self: start;
+  }
+
   .side {
     position: sticky;
     top: calc(var(--nav-bar) + 16px);
@@ -266,7 +271,8 @@
   }
 
   .photo {
-    width: min(100%, calc(55vh * 4 / 5));
+    width: 100%;
+    min-width: 100%;
     aspect-ratio: 4 / 5;
     max-height: 55vh;
   }
