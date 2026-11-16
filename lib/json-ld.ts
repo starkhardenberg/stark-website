@@ -42,12 +42,15 @@ export function buildFaqPageJsonLd(items: readonly FaqItem[]) {
 const HEALTH_CLUB_DESCRIPTION =
   'STARK! Hardenberg. Coaching, bedrijven en trainen. We houden je hand vast en geven je tegelijk een schop onder je kont. Hardenberg, sinds 2013.'
 
+const ORGANIZATION_ID = `${SITE_URL}/#organisatie`
+
 export function buildHealthClubJsonLd() {
   const email = mailtoInfo.replace('mailto:', '')
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'HealthClub',
+    '@type': ['HealthClub', 'ProfessionalService'],
+    '@id': ORGANIZATION_ID,
     name: 'STARK! Hardenberg',
     description: HEALTH_CLUB_DESCRIPTION,
     url: SITE_URL,
@@ -77,20 +80,21 @@ export function buildHealthClubJsonLd() {
     sameAs: [
       'https://www.instagram.com/starkhardenberg/',
       'https://www.facebook.com/starkhardenberg/',
+      'https://www.linkedin.com/company/stark-hardenberg/',
     ],
   }
 }
 
-const STARK_PROVIDER = {
-  '@type': 'HealthClub',
-  name: 'STARK! Hardenberg',
-  url: SITE_URL,
-} as const
-
 export function buildTeamJsonLd() {
   const people = [
-    { name: 'Yvonne Alards' },
-    { name: 'Engbert-Jan Lubbelinkhof' },
+    {
+      name: 'Yvonne Alards',
+      sameAs: 'https://www.linkedin.com/in/yvonne-alards-b3132217/',
+    },
+    {
+      name: 'Engbert-Jan Lubbelinkhof',
+      sameAs: 'https://www.linkedin.com/in/engbert-jan-lubbelinkhof-a1301b56/',
+    },
   ]
 
   return {
@@ -99,7 +103,8 @@ export function buildTeamJsonLd() {
       '@type': 'Person',
       name: person.name,
       jobTitle: 'Mede-eigenaar',
-      worksFor: STARK_PROVIDER,
+      sameAs: person.sameAs,
+      worksFor: { '@id': ORGANIZATION_ID },
     })),
   }
 }
@@ -110,7 +115,7 @@ export function buildServiceJsonLd(name: string, description: string, path: stri
     '@type': 'Service',
     name,
     description,
-    provider: STARK_PROVIDER,
+    provider: { '@id': ORGANIZATION_ID },
     areaServed: {
       '@type': 'City',
       name: 'Hardenberg',
