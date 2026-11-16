@@ -306,13 +306,6 @@ export const allTestimonials: TestimonialEntry[] = [
     context: 'Groepstraining',
     category: 'groepstraining',
   },
-  {
-    id: 'patrick-overmaat-1',
-    text: 'Hard werken konden we al. STARK! heeft ons geleerd om ook onder druk sterk te blijven staan.',
-    name: 'Patrick',
-    context: 'Eigenaar Overmaat Industrial Solutions',
-    category: 'zakelijk',
-  },
 ]
 
 /**
