@@ -77,71 +77,77 @@ export default function VerhaalPage({ params }: Props) {
             </p>
           </header>
 
-          <figure className={styles.photo}>
-            <StarkImage
-              src={verhaal.foto}
-              alt={`Foto bij het verhaal van ${verhaal.verteller}`}
-              fill
-              sizes="(min-width: 760px) 680px, 100vw"
-              className={styles.photoImg}
-            />
-          </figure>
+          <div className={styles.columns}>
+            <div className={styles.copy}>
+              <div className={styles.prose}>
+                {verhaal.blocks.map((block, index) => {
+                  if (block.type === 'h1' || block.type === 'h2') {
+                    return (
+                      <h2 key={index} className="stark-h2">
+                        <InlineText parts={block.inlines} />
+                      </h2>
+                    )
+                  }
+                  if (block.type === 'h3') {
+                    return (
+                      <h3 key={index} className="stark-h2">
+                        <InlineText parts={block.inlines} />
+                      </h3>
+                    )
+                  }
+                  if (block.type === 'ul' || block.type === 'ol') {
+                    const List = block.type
+                    return (
+                      <List key={index}>
+                        {block.items.map((item, itemIndex) => (
+                          <li key={itemIndex}>
+                            <InlineText parts={item} />
+                          </li>
+                        ))}
+                      </List>
+                    )
+                  }
+                  return (
+                    <p key={index}>
+                      <InlineText parts={block.inlines} />
+                    </p>
+                  )
+                })}
+              </div>
 
-          <div className={styles.prose}>
-            {verhaal.blocks.map((block, index) => {
-              if (block.type === 'h1' || block.type === 'h2') {
-                return (
-                  <h2 key={index} className="stark-h2">
-                    <InlineText parts={block.inlines} />
-                  </h2>
-                )
-              }
-              if (block.type === 'h3') {
-                return (
-                  <h3 key={index} className="stark-h2">
-                    <InlineText parts={block.inlines} />
-                  </h3>
-                )
-              }
-              if (block.type === 'ul' || block.type === 'ol') {
-                const List = block.type
-                return (
-                  <List key={index}>
-                    {block.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>
-                        <InlineText parts={item} />
-                      </li>
-                    ))}
-                  </List>
-                )
-              }
-              return (
-                <p key={index}>
-                  <InlineText parts={block.inlines} />
-                </p>
-              )
-            })}
-          </div>
+              <div className={styles.close}>
+                <a className={styles.more} href={verhaal.pagina}>
+                  Meer over {verhaal.programma}
+                </a>
+                <a
+                  className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
+                  href={knop.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {knop.label}
+                </a>
+              </div>
+            </div>
 
-          <figure className={styles.quote}>
-            <blockquote>
-              <p>{verhaal.uitspraak}</p>
-            </blockquote>
-            <figcaption>{verhaal.verteller}</figcaption>
-          </figure>
+            <div className={styles.side}>
+              <figure className={styles.photo}>
+                <StarkImage
+                  src={verhaal.foto}
+                  alt={`Foto bij het verhaal van ${verhaal.verteller}`}
+                  fill
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className={styles.photoImg}
+                />
+              </figure>
 
-          <div className={styles.close}>
-            <a className={styles.more} href={verhaal.pagina}>
-              Meer over {verhaal.programma}
-            </a>
-            <a
-              className={`${styles.cta} ${STARK_CTA} ${STARK_CTA_PRIMARY}`}
-              href={knop.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {knop.label}
-            </a>
+              <figure className={styles.quote}>
+                <blockquote>
+                  <p>{verhaal.uitspraak}</p>
+                </blockquote>
+                <figcaption>{verhaal.verteller}</figcaption>
+              </figure>
+            </div>
           </div>
         </article>
       </main>

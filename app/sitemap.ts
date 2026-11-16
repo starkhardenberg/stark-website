@@ -10,13 +10,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }))
 
-  const verhalen = [
-    { url: `${baseUrl}/verhalen`, lastModified: new Date() },
-    ...getGepubliceerdeVerhalen().map((verhaal) => ({
-      url: `${baseUrl}/verhalen/${verhaal.slug}`,
-      lastModified: new Date(verhaal.datum),
-    })),
-  ]
+  const gepubliceerd = getGepubliceerdeVerhalen()
+  const verhalen = gepubliceerd.length === 0
+    ? []
+    : [
+        { url: `${baseUrl}/verhalen`, lastModified: new Date() },
+        ...gepubliceerd.map((verhaal) => ({
+          url: `${baseUrl}/verhalen/${verhaal.slug}`,
+          lastModified: new Date(verhaal.datum),
+        })),
+      ]
 
   return [...pages, ...verhalen]
 }

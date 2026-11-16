@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import Footer from '@/components/Footer'
 import StarkImage from '@/components/StarkImage'
 import { pageMetadata } from '@/lib/open-graph'
@@ -12,6 +13,7 @@ export const metadata = pageMetadata(
 
 export default function VerhalenPage() {
   const verhalen = getZichtbareVerhalen()
+  if (verhalen.length === 0) notFound()
 
   return (
     <>

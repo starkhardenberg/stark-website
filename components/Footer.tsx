@@ -1,8 +1,7 @@
-'use client'
-
 import WhatsAppLink from '@/components/contact/WhatsAppLink'
 import { ADDRESS, mailtoInfo } from '@/lib/contact'
 import { BEELDEN_CREDIT } from '@/lib/photo-credit'
+import { getZichtbareVerhalen } from '@/lib/verhalen'
 import styles from './Footer.module.css'
 
 const MENU = [
@@ -11,7 +10,6 @@ const MENU = [
   { label: 'Zakelijk', href: '/zakelijk' },
   { label: 'Wie wij zijn', href: '/team' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Starke verhalen', href: '/verhalen' },
 ] as const
 
 const BEELDEN = `${BEELDEN_CREDIT.label}: ${BEELDEN_CREDIT.text}`
@@ -62,6 +60,10 @@ export default function Footer({
   /** Drop-in: geen oranje pijl of stip. */
   accent?: boolean
 }) {
+  const menu = getZichtbareVerhalen().length > 0
+    ? [...MENU, { label: 'Starke verhalen', href: '/verhalen' }]
+    : MENU
+
   return (
     <footer className={`${styles.footer} ${variant === 'dark' ? styles.dark : styles.light}${accent ? '' : ` ${styles.noAccent}`}`}>
       <div className={styles.inner}>
@@ -88,7 +90,7 @@ export default function Footer({
               <div className={styles.menu}>
                 <h2 className={styles.kicker}>Menu</h2>
                 <ul className={styles.list}>
-                  {MENU.map((item) => (
+                  {menu.map((item) => (
                     <li key={item.href}>
                       <a href={item.href} className={styles.link}>
                         {item.label}
