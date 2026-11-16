@@ -29,6 +29,27 @@ type Props = {
   spine?: boolean
 }
 
+function HeroContext({ hero }: { hero: HeroQuote }) {
+  const link = hero.contextLink
+  const at = link ? hero.context.indexOf(link.phrase) : -1
+  if (!link || at < 0) return hero.context
+
+  return (
+    <>
+      {hero.context.slice(0, at)}
+      <a
+        className={styles.contextLink}
+        href={link.href}
+        target="_blank"
+        rel="noopener"
+      >
+        {link.phrase}
+      </a>
+      {hero.context.slice(at + link.phrase.length)}
+    </>
+  )
+}
+
 function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
   return (
     <figure className={`${styles.heroQuote}${hero.darkPortrait ? ` ${styles.heroQuoteDark}` : ''}`}>
@@ -51,7 +72,9 @@ function HeroQuoteBlock({ hero }: { hero: HeroQuote }) {
         </blockquote>
         <figcaption className={styles.heroCite}>
           <span className={styles.heroName}>{hero.name}</span>
-          <span className={styles.heroContext}>{hero.context}</span>
+          <span className={styles.heroContext}>
+            <HeroContext hero={hero} />
+          </span>
         </figcaption>
       </div>
     </figure>

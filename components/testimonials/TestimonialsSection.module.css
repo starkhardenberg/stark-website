@@ -304,6 +304,17 @@
   color: var(--slate);
 }
 
+.contextLink {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.contextLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ── Dark portrait-variant: studioshot zweeft op zwart, volledig in beeld ──
    Alleen voor foto's met een zwarte studio-fond (bv. Renske). Het zwart van de
    foto loopt naadloos over in het blok, dus geen crop-spanning meer. */

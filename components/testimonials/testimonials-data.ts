@@ -17,6 +17,8 @@ export type HeroQuote = {
   text: string
   name: string
   context: string
+  /** Woordgroep in context die een link wordt. De rest van de regel blijft tekst. */
+  contextLink?: { phrase: string; href: string }
   image: string
   imageAlt?: string
   /** Foto horizontaal spiegelen (scaleX(-1)). */
@@ -346,8 +348,12 @@ export function getHomepageTestimonials(): Testimonial[] {
 
 export const heroQuotePatrick: HeroQuote = {
   text: 'Hard werken konden we al. STARK! heeft ons geleerd om ook onder druk sterk te blijven staan.',
-  name: 'Patrick',
-  context: 'Eigenaar Overmaat Industrial Solutions',
+  name: 'Patrick Overmaat',
+  context: 'Eigenaar Overmaat Industrial Solutions, Dedemsvaart',
+  contextLink: {
+    phrase: 'Overmaat Industrial Solutions',
+    href: 'https://www.overmaat.tech',
+  },
   image: '/images/foto-quote-overmaat-jas.jpg',
   imageAlt: 'Overmaat-jas in de trainingszaal van STARK! Hardenberg',
   imageBw: true,
