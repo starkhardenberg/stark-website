@@ -118,3 +118,35 @@ export function buildServiceJsonLd(name: string, description: string, path: stri
     url: `${SITE_URL}${path}`,
   }
 }
+
+export function buildArticleJsonLd(article: {
+  headline: string
+  description: string
+  datePublished: string
+  authorName: string
+  imagePath: string
+  path: string
+}) {
+  const image = article.imagePath.startsWith('http')
+    ? article.imagePath
+    : `${SITE_URL}${article.imagePath}`
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.headline,
+    description: article.description,
+    datePublished: article.datePublished,
+    author: {
+      '@type': 'Person',
+      name: article.authorName,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'STARK! Hardenberg',
+      url: SITE_URL,
+    },
+    image,
+    mainEntityOfPage: `${SITE_URL}${article.path}`,
+  }
+}

@@ -11,6 +11,7 @@ const MENU = [
   { label: 'Zakelijk', href: '/zakelijk' },
   { label: 'Wie wij zijn', href: '/team' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Starke verhalen', href: '/verhalen' },
 ] as const
 
 const BEELDEN = `${BEELDEN_CREDIT.label}: ${BEELDEN_CREDIT.text}`

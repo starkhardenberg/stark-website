@@ -114,6 +114,11 @@ export const openGraphByPage = {
     title: TRAJECT_META.title,
     description: TRAJECT_META.description,
   },
+  verhalen: {
+    title: 'Starke verhalen — STARK! Hardenberg',
+    description:
+      'Leden, coaches en bedrijven vertellen hoe het ging. Waar ze stonden, wat ze deden en wat er nu anders is.',
+  },
 } as const satisfies Record<string, { title: string; description: string }>
 
 const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
@@ -132,6 +137,7 @@ const pagePathByKey: Record<keyof typeof openGraphByPage, string> = {
   leiderschap: '/zakelijk/leiderschap-1-op-1',
   duurzameInzetbaarheid: '/zakelijk/duurzame-inzetbaarheid',
   draagkracht: '/zakelijk/draagkracht',
+  verhalen: '/verhalen',
 }
 
 export function pageMetadata(
@@ -147,5 +153,39 @@ export function pageMetadata(
       canonical: getCanonicalUrl(pagePathByKey[page]),
     },
     ...social,
+  }
+}
+
+/** Eén verhaal. pageMetadata gebruikt altijd de vaste deelfoto. */
+export function storyMetadata(input: {
+  slug: string
+  title: string
+  description: string
+  imagePath: string
+  imageAlt: string
+}): Metadata {
+  const path = `/verhalen/${input.slug}`
+  const url = getCanonicalUrl(path)
+  const imageUrl = `${SITE_URL}${input.imagePath}`
+
+  return {
+    title: input.title,
+    description: input.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: input.title,
+      description: input.description,
+      locale: 'nl_NL',
+      type: 'article',
+      url,
+      siteName: 'STARK! Hardenberg',
+      images: [{ url: imageUrl, alt: input.imageAlt }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: input.title,
+      description: input.description,
+      images: [imageUrl],
+    },
   }
 }
