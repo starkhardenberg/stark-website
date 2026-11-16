@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import StarkImage from '@/components/StarkImage'
+import { hrefKennismaking } from '@/lib/contact'
 import { STARK_CTA, STARK_CTA_PRIMARY } from '@/lib/stark-cta'
-import { BOOKINGS_URL } from './momentum'
 import styles from './DienstPage.module.css'
 
 /** Uitleg, kennismaken als zin, datumblok, dan de aanmeldknop. */
@@ -80,10 +80,8 @@ export function KennismakingClose({ text }: { text: string }) {
 export function BookButton({ className = '' }: { className?: string }) {
   return (
     <a
-      href={BOOKINGS_URL}
+      href={hrefKennismaking}
       className={`${styles.button} ${STARK_CTA} ${STARK_CTA_PRIMARY} ${className}`}
-      target="_blank"
-      rel="noopener noreferrer"
     >
       Plan je kennismaking
     </a>
