@@ -11,7 +11,7 @@ import { pageMetadata } from '@/lib/open-graph'
 export const metadata = {
   ...pageMetadata(
     'home',
-    'STARK! Hardenberg — Sterker worden. In lijf en hoofd.',
+    'STARK! Hardenberg · sportschool en persoonlijke coaching',
     'Krachttraining en conditie in kleine groepen, en coaching in Hardenberg. Een coach naast je, sinds 2013. Plan een gratis kennismaking.',
   ),
   robots: { index: true, follow: true },

@@ -17,7 +17,7 @@ import styles from '../landing.module.css'
 
 export const metadata = pageMetadata(
   'coaching',
-  'Coaching — STARK! Hardenberg',
+  'Coaching in Hardenberg: in een groep of 1-op-1 | STARK!',
   'Coachingstrajecten van eerste online stap tot intensief persoonlijk programma. Lijf en hoofd versterken elkaar.',
 )
 
